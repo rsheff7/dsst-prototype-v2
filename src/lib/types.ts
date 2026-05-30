@@ -1,3 +1,10 @@
+import { MlrNumber } from './mlrs';
+
+export interface MlrRef {
+  number: MlrNumber;
+  name: string;
+}
+
 export interface LessonMeta {
   grade: string;
   unit: string;
@@ -14,9 +21,15 @@ export interface KeyVocabularyTerm {
 export interface FrictionPoint {
   description: string;
   type: 'math' | 'language' | 'language-math';
+  mlr?: MlrRef;
 }
 
 export type ActivityFunction = 'Setup' | 'Crux' | 'Application' | 'Synthesis';
+
+export interface ActivityTeacherMove {
+  text: string;
+  mlr?: MlrRef;
+}
 
 export interface Activity {
   id: string;
@@ -29,23 +42,33 @@ export interface Activity {
   is_crux: boolean;
   friction_points: FrictionPoint[];
   success_signals: string[];
-  teacher_moves: string[];
+  teacher_moves: ActivityTeacherMove[];
   causal_link: string | null;
   extension: string | null;
 }
 
-export interface AdaptationProficiencyLevel {
-  entering: string;
-  developing: string;
-  bridging: string;
+export interface ProficiencyAdaptation {
+  text: string;
+  mlr?: MlrRef;
+}
+
+export interface AdaptationProficiencyLevels {
+  entering: ProficiencyAdaptation;
+  developing: ProficiencyAdaptation;
+  bridging: ProficiencyAdaptation;
+}
+
+export interface DoNotRemoveItem {
+  text: string;
+  mlr?: MlrRef;
 }
 
 export interface AdaptationGuardrails {
   mathematical_purpose: string;
   safe_to_change: string[];
-  do_not_remove: string[];
+  do_not_remove: DoNotRemoveItem[];
   rigor_check: string;
-  by_proficiency: AdaptationProficiencyLevel;
+  by_proficiency: AdaptationProficiencyLevels;
 }
 
 export interface ThinkingPattern {
@@ -55,12 +78,18 @@ export interface ThinkingPattern {
   description: string;
   move: string;
   is_mll_specific: boolean;
+  mlr?: MlrRef;
+}
+
+export interface SentenceFrame {
+  frame: string;
+  mlr?: MlrRef;
 }
 
 export interface AnticipatedThinkingActivity {
   activity_id: string;
   patterns: ThinkingPattern[];
-  sentence_frames: string[];
+  sentence_frames: SentenceFrame[];
   questions_to_listen_for: string[];
 }
 
@@ -97,6 +126,8 @@ export interface DecisionScenario {
   flat_move: TeacherMove | null;
   proficiency_moves: ProficiencyMoves | null;
   mll_framework_note: string | null;
+  mlr?: MlrRef;
+  proficiency_divergence_note?: string | null;
 }
 
 export interface DecisionGuideActivity {
@@ -108,6 +139,47 @@ export interface DecisionGuide {
   activities: DecisionGuideActivity[];
 }
 
+export interface MlrInferenceMlrItem {
+  number: MlrNumber;
+  name: string;
+  why_here: string;
+}
+
+export interface MlrInferenceActivity {
+  activity_id: string;
+  language_work: string;
+  mlrs: MlrInferenceMlrItem[];
+}
+
+export interface MlrInference {
+  activities: MlrInferenceActivity[];
+}
+
+export interface WristbandTile {
+  observation_short: string;
+  friction_type: 'math' | 'language' | 'language-math';
+  mlr?: MlrRef;
+  move_short: string;
+}
+
+export interface WristbandActivity {
+  activity_id: string;
+  tiles: WristbandTile[];
+}
+
+export interface WristbandLegendEntry {
+  mlr: MlrRef;
+  one_line_cue: string;
+}
+
+export interface Wristband {
+  arc_one_line: string;
+  top_signals: string[];
+  top_frictions: string[];
+  activities: WristbandActivity[];
+  mlr_legend: WristbandLegendEntry[];
+}
+
 export interface LessonData {
   meta: LessonMeta;
   arc_statement: string;
@@ -117,4 +189,6 @@ export interface LessonData {
   adaptation_guardrails: AdaptationGuardrails;
   anticipated_thinking: AnticipatedThinking;
   decision_guide: DecisionGuide;
+  mlr_inference: MlrInference;
+  wristband: Wristband;
 }

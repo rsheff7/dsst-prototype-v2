@@ -1,7 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Anthropic from '@anthropic-ai/sdk';
-import { LESSON_ANALYSIS_PROMPT, COHERENCE_EDITOR_PROMPT } from '@/lib/prompts';
-import { LessonData } from '@/lib/types';
+import { LESSON_ANALYSIS_PROMPT } from '@/lib/prompts';
+import {
+  LessonData,
+  MlrRef,
+  ActivityTeacherMove,
+  SentenceFrame,
+  DoNotRemoveItem,
+  ProficiencyAdaptation,
+} from '@/lib/types';
+import { isValidMlrNumber, MLRS, MlrNumber } from '@/lib/mlrs';
 
 export const maxDuration = 300;
 
@@ -24,7 +32,72 @@ function extractJSON(text: string): string {
   return text.trim();
 }
 
-function normalizeLesson(raw: Partial<LessonData>): LessonData {
+function normalizeMlr(raw: unknown): MlrRef | undefined {
+  if (!raw || typeof raw !== 'object') return undefined;
+  const r = raw as { number?: unknown; name?: unknown };
+  if (!isValidMlrNumber(r.number)) return undefined;
+  const number = r.number as MlrNumber;
+  return { number, name: typeof r.name === 'string' && r.name ? r.name : MLRS[number].name };
+}
+
+function normalizeTextItem(raw: unknown, textKey: string): { text: string; mlr?: MlrRef } | null {
+  if (typeof raw === 'string') return { text: raw };
+  if (raw && typeof raw === 'object') {
+    const r = raw as Record<string, unknown>;
+    const text = r[textKey];
+    if (typeof text !== 'string') return null;
+    const mlr = normalizeMlr(r.mlr);
+    return mlr ? { text, mlr } : { text };
+  }
+  return null;
+}
+
+function normalizeTeacherMoves(raw: unknown): ActivityTeacherMove[] {
+  if (!Array.isArray(raw)) return [];
+  return raw
+    .map((item) => normalizeTextItem(item, 'text'))
+    .filter((x): x is { text: string; mlr?: MlrRef } => x !== null)
+    .map((x) => ({ text: x.text, ...(x.mlr ? { mlr: x.mlr } : {}) }));
+}
+
+function normalizeFrames(raw: unknown): SentenceFrame[] {
+  if (!Array.isArray(raw)) return [];
+  return raw
+    .map((item) => {
+      if (typeof item === 'string') return { frame: item };
+      if (item && typeof item === 'object') {
+        const r = item as Record<string, unknown>;
+        const frame = typeof r.frame === 'string' ? r.frame : null;
+        if (!frame) return null;
+        const mlr = normalizeMlr(r.mlr);
+        return mlr ? { frame, mlr } : { frame };
+      }
+      return null;
+    })
+    .filter((x): x is SentenceFrame => x !== null);
+}
+
+function normalizeDoNotRemove(raw: unknown): DoNotRemoveItem[] {
+  if (!Array.isArray(raw)) return [];
+  return raw
+    .map((item) => normalizeTextItem(item, 'text'))
+    .filter((x): x is { text: string; mlr?: MlrRef } => x !== null)
+    .map((x) => ({ text: x.text, ...(x.mlr ? { mlr: x.mlr } : {}) }));
+}
+
+function normalizeProficiency(raw: unknown): ProficiencyAdaptation {
+  if (typeof raw === 'string') return { text: raw };
+  if (raw && typeof raw === 'object') {
+    const r = raw as Record<string, unknown>;
+    const text = typeof r.text === 'string' ? r.text : '';
+    const mlr = normalizeMlr(r.mlr);
+    return mlr ? { text, mlr } : { text };
+  }
+  return { text: '' };
+}
+
+function normalizeLesson(raw: Partial<LessonData> & Record<string, unknown>): LessonData {
+  const rawProf = (raw.adaptation_guardrails?.by_proficiency ?? {}) as Record<string, unknown>;
   return {
     meta: {
       grade: raw.meta?.grade ?? '',
@@ -45,21 +118,27 @@ function normalizeLesson(raw: Partial<LessonData>): LessonData {
       language_demand: a.language_demand ?? 'low',
       function_summary: a.function_summary ?? '',
       is_crux: a.is_crux ?? false,
-      friction_points: a.friction_points ?? [],
+      friction_points: (a.friction_points ?? []).map((fp) => ({
+        description: fp.description ?? '',
+        type: fp.type ?? 'math',
+        ...(normalizeMlr((fp as { mlr?: unknown }).mlr)
+          ? { mlr: normalizeMlr((fp as { mlr?: unknown }).mlr)! }
+          : {}),
+      })),
       success_signals: a.success_signals ?? [],
-      teacher_moves: a.teacher_moves ?? [],
+      teacher_moves: normalizeTeacherMoves(a.teacher_moves),
       causal_link: a.causal_link ?? null,
       extension: a.extension ?? null,
     })),
     adaptation_guardrails: {
       mathematical_purpose: raw.adaptation_guardrails?.mathematical_purpose ?? '',
       safe_to_change: raw.adaptation_guardrails?.safe_to_change ?? [],
-      do_not_remove: raw.adaptation_guardrails?.do_not_remove ?? [],
+      do_not_remove: normalizeDoNotRemove(raw.adaptation_guardrails?.do_not_remove),
       rigor_check: raw.adaptation_guardrails?.rigor_check ?? '',
       by_proficiency: {
-        entering: raw.adaptation_guardrails?.by_proficiency?.entering ?? '',
-        developing: raw.adaptation_guardrails?.by_proficiency?.developing ?? '',
-        bridging: raw.adaptation_guardrails?.by_proficiency?.bridging ?? '',
+        entering: normalizeProficiency(rawProf.entering),
+        developing: normalizeProficiency(rawProf.developing),
+        bridging: normalizeProficiency(rawProf.bridging),
       },
     },
     anticipated_thinking: {
@@ -73,8 +152,11 @@ function normalizeLesson(raw: Partial<LessonData>): LessonData {
           description: p.description ?? '',
           move: p.move ?? '',
           is_mll_specific: p.is_mll_specific ?? false,
+          ...(normalizeMlr((p as { mlr?: unknown }).mlr)
+            ? { mlr: normalizeMlr((p as { mlr?: unknown }).mlr)! }
+            : {}),
         })),
-        sentence_frames: a.sentence_frames ?? [],
+        sentence_frames: normalizeFrames(a.sentence_frames),
         questions_to_listen_for: a.questions_to_listen_for ?? [],
       })),
     },
@@ -89,8 +171,49 @@ function normalizeLesson(raw: Partial<LessonData>): LessonData {
           flat_move: s.flat_move ?? null,
           proficiency_moves: s.proficiency_moves ?? null,
           mll_framework_note: s.mll_framework_note ?? null,
+          proficiency_divergence_note:
+            (s as { proficiency_divergence_note?: string | null }).proficiency_divergence_note ?? null,
+          ...(normalizeMlr((s as { mlr?: unknown }).mlr)
+            ? { mlr: normalizeMlr((s as { mlr?: unknown }).mlr)! }
+            : {}),
         })),
       })),
+    },
+    mlr_inference: {
+      activities: (raw.mlr_inference?.activities ?? []).map((a) => ({
+        activity_id: a.activity_id ?? '',
+        language_work: a.language_work ?? '',
+        mlrs: (a.mlrs ?? [])
+          .filter((m) => isValidMlrNumber(m.number))
+          .map((m) => ({
+            number: m.number,
+            name: m.name || MLRS[m.number].name,
+            why_here: m.why_here ?? '',
+          })),
+      })),
+    },
+    wristband: {
+      arc_one_line: raw.wristband?.arc_one_line ?? '',
+      top_signals: raw.wristband?.top_signals ?? [],
+      top_frictions: raw.wristband?.top_frictions ?? [],
+      activities: (raw.wristband?.activities ?? []).map((a) => ({
+        activity_id: a.activity_id ?? '',
+        tiles: (a.tiles ?? []).map((t) => ({
+          observation_short: t.observation_short ?? '',
+          friction_type: t.friction_type ?? 'math',
+          move_short: t.move_short ?? '',
+          ...(normalizeMlr((t as { mlr?: unknown }).mlr)
+            ? { mlr: normalizeMlr((t as { mlr?: unknown }).mlr)! }
+            : {}),
+        })),
+      })),
+      mlr_legend: (raw.wristband?.mlr_legend ?? [])
+        .map((e) => {
+          const mlr = normalizeMlr(e.mlr);
+          if (!mlr) return null;
+          return { mlr, one_line_cue: e.one_line_cue ?? '' };
+        })
+        .filter((x): x is { mlr: MlrRef; one_line_cue: string } => x !== null),
     },
   };
 }
@@ -132,7 +255,9 @@ export async function POST(req: NextRequest) {
     const userMessage = `Analyze this math lesson and return the full JSON described in your system prompt.
 
 You MUST produce ALL top-level sections, fully populated for every activity in the lesson:
-- meta, arc_statement, destination, key_vocabulary, activities, adaptation_guardrails, anticipated_thinking, decision_guide
+- meta, arc_statement, destination, key_vocabulary, activities, adaptation_guardrails, anticipated_thinking, decision_guide, mlr_inference, wristband
+
+The mlr_inference block MUST appear first in your output. Subsequent fields must be consistent with what mlr_inference says about each activity.
 
 Across the decision_guide, the scenarios MUST include a mix of types — not just common-error. At minimum: 1-2 common-error, 1 productive-insight, 1 on-track, and 1 productive-struggle or partial-understanding across the lesson.
 
@@ -159,10 +284,10 @@ ${truncatedText}`;
       );
     }
 
-    let parsed: Partial<LessonData>;
+    let parsed: Partial<LessonData> & Record<string, unknown>;
     try {
       const json = extractJSON(textBlock.text);
-      parsed = JSON.parse(json) as Partial<LessonData>;
+      parsed = JSON.parse(json) as Partial<LessonData> & Record<string, unknown>;
     } catch (err) {
       console.error('JSON parse error:', err);
       return NextResponse.json(
@@ -170,13 +295,6 @@ ${truncatedText}`;
         { status: 500 }
       );
     }
-
-    // NOTE: The Coherence Editor second pass is intentionally disabled.
-    // It was timing out 100% of production uploads because regenerating
-    // the full ~15K-token JSON exceeds Haiku's output capacity in any
-    // reasonable budget. Code preserved in git history; will be redesigned
-    // to flag issues rather than rewrite the full JSON (see Option B in
-    // the May 26 update notes).
 
     const lesson = normalizeLesson(parsed);
     return NextResponse.json(lesson);
