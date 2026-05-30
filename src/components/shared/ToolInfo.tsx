@@ -12,6 +12,16 @@ const TOOL_CONTENT: Record<ToolId, {
   whenToUse: string;
   whatItGives: string;
 }> = {
+  quickread: {
+    title: 'Quick Read',
+    subtitle: 'The single sheet to carry into class',
+    accent: '#006C57',
+    purpose:
+      'See the lesson the way you will need to see it during class — the moments you will notice, the routines to run, the moves to make. Scan once before class, glance during.',
+    whenToUse: 'Before class — read once. During class — glance at it. Print and keep it nearby.',
+    whatItGives:
+      'A one-page tile view of the lesson: the arc in one line, the moments to look for in each activity (with the routine and the move attached), the top signals and frictions, and the routines this lesson runs on.',
+  },
   pathway: {
     title: 'Lesson Pathway',
     subtitle: 'Plan the lesson',

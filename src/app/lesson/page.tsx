@@ -9,13 +9,14 @@ import LessonPathway from '@/components/tools/LessonPathway';
 import AdaptationGuardrails from '@/components/tools/AdaptationGuardrails';
 import AnticipatedThinking from '@/components/tools/AnticipatedThinking';
 import MoveWalkthrough from '@/components/tools/MoveWalkthrough';
+import QuickRead from '@/components/tools/QuickRead';
 
-export type ToolId = 'pathway' | 'adapt' | 'thinking' | 'moves';
+export type ToolId = 'quickread' | 'pathway' | 'adapt' | 'thinking' | 'moves';
 
 export default function LessonPage() {
   const { lesson } = useLesson();
   const router = useRouter();
-  const [activeTool, setActiveTool] = useState<ToolId>('pathway');
+  const [activeTool, setActiveTool] = useState<ToolId>('quickread');
 
   useEffect(() => {
     if (!lesson) router.replace('/');
@@ -43,6 +44,9 @@ export default function LessonPage() {
       <main className="flex-1 mx-auto w-full max-w-3xl px-4 md:px-6 pb-28 md:pb-12">
         <div className="hidden md:block" style={{ height: 120 }} />
 
+        {activeTool === 'quickread' && (
+          <QuickRead lesson={lesson} />
+        )}
         {activeTool === 'pathway' && (
           <LessonPathway lesson={lesson} onNavigate={setActiveTool} />
         )}

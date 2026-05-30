@@ -5,6 +5,7 @@ import { LessonData } from '@/lib/types';
 import { ToolId } from '@/app/lesson/page';
 
 const TOOL_NAMES: Record<ToolId, string> = {
+  quickread: 'Quick Read',
   pathway: 'Pathway',
   adapt: 'Adapt',
   thinking: 'Thinking',

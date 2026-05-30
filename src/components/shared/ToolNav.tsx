@@ -3,6 +3,7 @@
 import { ToolId } from '@/app/lesson/page';
 
 const TABS: { id: ToolId; label: string; accent: string }[] = [
+  { id: 'quickread', label: 'Quick Read', accent: '#006C57' },
   { id: 'pathway', label: 'Pathway', accent: '#00876C' },
   { id: 'adapt', label: 'Adapt', accent: '#854F0B' },
   { id: 'thinking', label: 'Thinking', accent: '#534AB7' },
