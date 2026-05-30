@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+:root {
+  /* Surfaces — warm cream-white, slightly different from Premo's */
+  --color-surface: #F4F2EC;
+  --color-card: #FFFFFF;
+
+  /* Text */
+  --color-ink: #1A1916;
+  --color-ink-muted: #6B6B66;
+  --color-ink-faint: #A3A39E;
+
+  /* Borders */
+  --color-line: #E4E2DC;
+  --color-line-subtle: #EDEBE5;
+
+  /* Base accent */
+  --color-accent: #00876C;
+  --color-surface-accent: #E5EEEB;
+
+  /* Tool accents — Pathway is DSST primary teal, others differentiated */
+  --color-pathway: #00876C;
+  --color-adapt: #854F0B;
+  --color-thinking: #534AB7;
+  --color-moves: #185FA5;
+
+  /* Proficiency */
+  --color-entering-bg: #E1F5EE;
+  --color-entering-text: #085041;
+  --color-entering-border: #9FE1CB;
+  --color-developing-bg: #EEEDFE;
+  --color-developing-text: #26215C;
+  --color-developing-border: #AFA9EC;
+  --color-bridging-bg: #F1EFE8;
+  --color-bridging-text: #444441;
+  --color-bridging-border: #D3D1C7;
+
+  /* Language demand */
+  --color-demand-low-bg: #EAF3DE;
+  --color-demand-low-text: #27500A;
+  --color-demand-medium-bg: #FAEEDA;
+  --color-demand-medium-text: #633806;
+  --color-demand-high-bg: #FAECE7;
+  --color-demand-high-text: #712B13;
+
+  /* Pattern types */
+  --color-misconception-bg: #FAECE7;
+  --color-misconception-border: #F5C4B3;
+  --color-extension-bg: #EAF3DE;
+  --color-extension-border: #C0DD97;
+}
+
+@theme inline {
+  --color-surface: var(--color-surface);
+  --color-card: var(--color-card);
+  --color-ink: var(--color-ink);
+  --color-ink-muted: var(--color-ink-muted);
+  --color-ink-faint: var(--color-ink-faint);
+  --color-line: var(--color-line);
+  --color-line-subtle: var(--color-line-subtle);
+  --color-accent: var(--color-accent);
+  --color-surface-accent: var(--color-surface-accent);
+  --color-pathway: var(--color-pathway);
+  --color-adapt: var(--color-adapt);
+  --color-thinking: var(--color-thinking);
+  --color-moves: var(--color-moves);
+  --font-sans: var(--font-dm-sans);
+  --font-serif: var(--font-dm-serif);
+}
+
+body {
+  background-color: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-dm-sans), 'DM Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
