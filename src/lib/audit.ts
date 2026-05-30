@@ -32,7 +32,7 @@ export function findTermAppearances(term: string, lesson: LessonData): TermAppea
     search(a.function_summary, `Activity ${a.id}: function_summary`);
     a.friction_points.forEach((f, i) => search(f.description, `Activity ${a.id}: friction[${i}]`));
     a.success_signals.forEach((s, i) => search(s, `Activity ${a.id}: success_signal[${i}]`));
-    a.teacher_moves.forEach((m, i) => search(m, `Activity ${a.id}: teacher_move[${i}]`));
+    a.teacher_moves.forEach((m, i) => search(m.text, `Activity ${a.id}: teacher_move[${i}]`));
     search(a.causal_link, `Activity ${a.id}: causal_link`);
     search(a.extension, `Activity ${a.id}: extension`);
   }
@@ -41,10 +41,10 @@ export function findTermAppearances(term: string, lesson: LessonData): TermAppea
   search(g.mathematical_purpose, 'Adapt: mathematical_purpose');
   search(g.rigor_check, 'Adapt: rigor_check');
   g.safe_to_change.forEach((s, i) => search(s, `Adapt: safe_to_change[${i}]`));
-  g.do_not_remove.forEach((s, i) => search(s, `Adapt: do_not_remove[${i}]`));
-  search(g.by_proficiency.entering, 'Adapt: by_proficiency.entering');
-  search(g.by_proficiency.developing, 'Adapt: by_proficiency.developing');
-  search(g.by_proficiency.bridging, 'Adapt: by_proficiency.bridging');
+  g.do_not_remove.forEach((s, i) => search(s.text, `Adapt: do_not_remove[${i}]`));
+  search(g.by_proficiency.entering.text, 'Adapt: by_proficiency.entering');
+  search(g.by_proficiency.developing.text, 'Adapt: by_proficiency.developing');
+  search(g.by_proficiency.bridging.text, 'Adapt: by_proficiency.bridging');
 
   for (const a of lesson.anticipated_thinking.activities) {
     a.patterns.forEach((p, i) => {
@@ -52,7 +52,7 @@ export function findTermAppearances(term: string, lesson: LessonData): TermAppea
       search(p.description, `Thinking ${a.activity_id}: pattern[${i}].description`);
       search(p.move, `Thinking ${a.activity_id}: pattern[${i}].move`);
     });
-    a.sentence_frames.forEach((s, i) => search(s, `Thinking ${a.activity_id}: sentence_frame[${i}]`));
+    a.sentence_frames.forEach((s, i) => search(s.frame, `Thinking ${a.activity_id}: sentence_frame[${i}]`));
     a.questions_to_listen_for.forEach((q, i) =>
       search(q, `Thinking ${a.activity_id}: question[${i}]`)
     );
@@ -102,6 +102,64 @@ export function activityDensity(lesson: LessonData): ActivityDensity[] {
       thinking_patterns: t?.patterns.length ?? 0,
       moves_scenarios: d?.scenarios.length ?? 0,
       moves_mll: d?.scenarios.filter((s) => s.is_mll).length ?? 0,
+    };
+  });
+}
+
+// MLR coherence: per activity, what MLRs were inferred, and where each
+// MLR actually surfaces across the four tools. Used by the /audit page
+// to inspect whether the inference matches what teachers will see.
+export interface MlrCoherenceEntry {
+  activity_id: string;
+  language_work: string;
+  inferred: { number: number; name: string; why_here: string }[];
+  appearances: { number: number; name: string; locations: string[] }[];
+}
+
+export function mlrCoherenceMap(lesson: LessonData): MlrCoherenceEntry[] {
+  return lesson.activities.map((a) => {
+    const inf = lesson.mlr_inference.activities.find((x) => x.activity_id === a.id);
+    const appearancesByMlr = new Map<number, { name: string; locations: string[] }>();
+
+    const note = (n: number, name: string, location: string) => {
+      const existing = appearancesByMlr.get(n);
+      if (existing) existing.locations.push(location);
+      else appearancesByMlr.set(n, { name, locations: [location] });
+    };
+
+    a.friction_points.forEach((fp, i) => {
+      if (fp.mlr) note(fp.mlr.number, fp.mlr.name, `Pathway friction[${i}]`);
+    });
+    a.teacher_moves.forEach((m, i) => {
+      if (m.mlr) note(m.mlr.number, m.mlr.name, `Pathway teacher_move[${i}]`);
+    });
+
+    const thinking = lesson.anticipated_thinking.activities.find((x) => x.activity_id === a.id);
+    thinking?.patterns.forEach((p, i) => {
+      if (p.mlr) note(p.mlr.number, p.mlr.name, `Thinking pattern[${i}]`);
+    });
+    thinking?.sentence_frames.forEach((f, i) => {
+      if (f.mlr) note(f.mlr.number, f.mlr.name, `Thinking frame[${i}]`);
+    });
+
+    const dg = lesson.decision_guide.activities.find((x) => x.activity_id === a.id);
+    dg?.scenarios.forEach((s, i) => {
+      if (s.mlr) note(s.mlr.number, s.mlr.name, `Moves scenario[${i}]`);
+    });
+
+    lesson.wristband.activities
+      .find((x) => x.activity_id === a.id)
+      ?.tiles.forEach((t, i) => {
+        if (t.mlr) note(t.mlr.number, t.mlr.name, `Quick Read tile[${i}]`);
+      });
+
+    return {
+      activity_id: a.id,
+      language_work: inf?.language_work ?? '',
+      inferred: inf?.mlrs ?? [],
+      appearances: Array.from(appearancesByMlr.entries())
+        .map(([number, v]) => ({ number, ...v }))
+        .sort((x, y) => x.number - y.number),
     };
   });
 }

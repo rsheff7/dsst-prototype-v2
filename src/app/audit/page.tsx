@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 import Link from 'next/link';
 import { useLesson } from '@/lib/lessonContext';
 import { demoLesson } from '@/lib/demoLesson';
-import { findTermAppearances, activityDensity, toneSamples } from '@/lib/audit';
+import { findTermAppearances, activityDensity, toneSamples, mlrCoherenceMap } from '@/lib/audit';
 
 const SECTIONS = [
   { id: 'purpose', label: '1. Mathematical purpose anchor' },
@@ -14,6 +14,7 @@ const SECTIONS = [
   { id: 'friction', label: '5. Friction → scenarios per activity' },
   { id: 'tone', label: '6. Tone samples' },
   { id: 'non-negotiables', label: '7. Adapt non-negotiables' },
+  { id: 'mlr-coherence', label: '8. MLR coherence map' },
 ];
 
 export default function AuditPage() {
@@ -21,6 +22,7 @@ export default function AuditPage() {
 
   const density = useMemo(() => (lesson ? activityDensity(lesson) : []), [lesson]);
   const samples = useMemo(() => (lesson ? toneSamples(lesson) : []), [lesson]);
+  const mlrMap = useMemo(() => (lesson ? mlrCoherenceMap(lesson) : []), [lesson]);
 
   if (!lesson) {
     return (
@@ -351,7 +353,7 @@ export default function AuditPage() {
                   <p className="text-[10px] font-semibold uppercase tracking-[0.08em]" style={{ color: '#712B13' }}>
                     Do not remove #{i + 1}
                   </p>
-                  <p className="text-[0.875rem] text-ink mt-1 leading-relaxed">{item}</p>
+                  <p className="text-[0.875rem] text-ink mt-1 leading-relaxed">{item.text}</p>
                 </div>
                 <div className="px-5 py-3">
                   <p className="text-[10px] font-semibold uppercase tracking-[0.08em] text-ink-faint mb-2">
@@ -366,8 +368,81 @@ export default function AuditPage() {
           </div>
         </section>
 
+        {/* 8. MLR coherence map */}
+        <section id="mlr-coherence" className="mb-12 scroll-mt-6">
+          <h2 className="text-[1.05rem] font-semibold text-ink mb-1">
+            8. Does the MLR inference match what surfaces in the tools?
+          </h2>
+          <p className="text-[0.825rem] text-ink-muted mb-4 leading-relaxed">
+            For each activity, this shows the routines the analysis inferred and which routines actually appear in each tool. If a routine is inferred but never surfaces, the chip is missing. If a routine surfaces but was not inferred, it is detached from the reasoning.
+          </p>
+
+          <div className="space-y-5">
+            {mlrMap.map((entry) => (
+              <div
+                key={entry.activity_id}
+                className="rounded-xl border border-line bg-card overflow-hidden"
+              >
+                <div className="px-5 py-3 border-b border-line-subtle bg-surface">
+                  <p className="text-[0.9rem] font-semibold text-ink">Activity {entry.activity_id}</p>
+                  {entry.language_work && (
+                    <p className="text-[0.8rem] text-ink-muted mt-1 leading-relaxed italic">
+                      {entry.language_work}
+                    </p>
+                  )}
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-line-subtle">
+                  <div className="px-5 py-4">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.08em] text-ink-faint mb-2">
+                      Inferred ({entry.inferred.length})
+                    </p>
+                    {entry.inferred.length === 0 ? (
+                      <p className="text-[0.8rem] text-ink-faint italic">No routines inferred.</p>
+                    ) : (
+                      <ul className="space-y-2.5">
+                        {entry.inferred.map((m, i) => (
+                          <li key={i}>
+                            <p className="text-[0.825rem] text-ink font-semibold">
+                              MLR {m.number}: {m.name}
+                            </p>
+                            <p className="text-[0.78rem] text-ink-muted leading-relaxed mt-0.5">
+                              {m.why_here}
+                            </p>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                  <div className="px-5 py-4">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.08em] text-ink-faint mb-2">
+                      Surfaces in tools ({entry.appearances.length})
+                    </p>
+                    {entry.appearances.length === 0 ? (
+                      <p className="text-[0.8rem] text-ink-faint italic">No routine surfaces yet.</p>
+                    ) : (
+                      <ul className="space-y-2.5">
+                        {entry.appearances.map((a) => (
+                          <li key={a.number}>
+                            <p className="text-[0.825rem] text-ink font-semibold">
+                              MLR {a.number}: {a.name}
+                            </p>
+                            <p className="text-[0.78rem] text-ink-muted leading-relaxed mt-0.5">
+                              {a.locations.join(' · ')}
+                            </p>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <p className="text-[0.8rem] text-ink-faint italic mt-12 pt-6 border-t border-line">
-          Audit v1.0 · For structural pass/fail checks, see{' '}
+          Audit v2.0 · For structural pass/fail checks, see{' '}
           <Link href="/qa" className="underline-offset-2 underline">/qa</Link>
         </p>
       </main>

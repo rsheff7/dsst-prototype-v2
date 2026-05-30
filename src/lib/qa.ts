@@ -1,4 +1,5 @@
 import { LessonData } from './types';
+import { isValidMlrNumber } from './mlrs';
 
 export type CheckStatus = 'pass' | 'warn' | 'fail';
 
@@ -9,7 +10,8 @@ export type CheckCategory =
   | 'Adapt'
   | 'Thinking'
   | 'Moves'
-  | 'Register';
+  | 'Register'
+  | 'MLR';
 
 export interface CheckResult {
   id: string;
@@ -274,9 +276,9 @@ function adaptChecks(lesson: LessonData): CheckResult[] {
   });
 
   const profMissing: string[] = [];
-  if (g.by_proficiency.entering.length < 20) profMissing.push('Entering');
-  if (g.by_proficiency.developing.length < 20) profMissing.push('Developing');
-  if (g.by_proficiency.bridging.length < 20) profMissing.push('Bridging');
+  if (g.by_proficiency.entering.text.length < 20) profMissing.push('Entering');
+  if (g.by_proficiency.developing.text.length < 20) profMissing.push('Developing');
+  if (g.by_proficiency.bridging.text.length < 20) profMissing.push('Bridging');
 
   r.push({
     id: 'by-proficiency-populated',
@@ -563,6 +565,130 @@ function registerChecks(lesson: LessonData): CheckResult[] {
   return r;
 }
 
+function mlrChecks(lesson: LessonData): CheckResult[] {
+  const r: CheckResult[] = [];
+
+  // mlr_inference exists and covers every activity
+  const activityIds = lesson.activities.map((a) => a.id);
+  const inferredIds = lesson.mlr_inference.activities.map((a) => a.activity_id);
+  const missing = activityIds.filter((id) => !inferredIds.includes(id));
+  r.push({
+    id: 'mlr-inference-covers-activities',
+    category: 'MLR',
+    name: 'MLR inference block covers every activity',
+    status: missing.length === 0 ? 'pass' : 'fail',
+    message:
+      missing.length === 0
+        ? `${inferredIds.length} activities covered.`
+        : `Missing mlr_inference for activities: ${missing.join(', ')}`,
+  });
+
+  // Orphan MLLs: items flagged MLL but missing MLR anchor
+  const orphans: string[] = [];
+
+  for (const a of lesson.activities) {
+    a.friction_points.forEach((fp, i) => {
+      if ((fp.type === 'language' || fp.type === 'language-math') && !fp.mlr) {
+        orphans.push(`Pathway ${a.id} friction[${i}] (${fp.type})`);
+      }
+    });
+  }
+
+  for (const a of lesson.anticipated_thinking.activities) {
+    a.patterns.forEach((p, i) => {
+      if (p.is_mll_specific && !p.mlr) {
+        orphans.push(`Thinking ${a.activity_id} pattern[${i}] (MLL-specific)`);
+      }
+    });
+  }
+
+  for (const a of lesson.decision_guide.activities) {
+    a.scenarios.forEach((s, i) => {
+      if (s.is_mll && !s.mlr) {
+        orphans.push(`Moves ${a.activity_id} scenario[${i}] (MLL)`);
+      }
+    });
+  }
+
+  r.push({
+    id: 'mlr-no-orphan-mll',
+    category: 'MLR',
+    name: 'Every MLL-flagged item has an MLR anchor',
+    status: orphans.length === 0 ? 'pass' : 'fail',
+    message:
+      orphans.length === 0
+        ? 'No orphan MLL items.'
+        : `${orphans.length} orphan MLL item(s) missing MLR anchor.`,
+    details: orphans.length > 0 ? orphans : undefined,
+  });
+
+  // Hallucinated routine numbers
+  const allMlrs: { location: string; number: unknown }[] = [];
+  for (const a of lesson.activities) {
+    a.friction_points.forEach((fp, i) => fp.mlr && allMlrs.push({ location: `Pathway ${a.id} friction[${i}]`, number: fp.mlr.number }));
+    a.teacher_moves.forEach((m, i) => m.mlr && allMlrs.push({ location: `Pathway ${a.id} teacher_move[${i}]`, number: m.mlr.number }));
+  }
+  for (const a of lesson.anticipated_thinking.activities) {
+    a.patterns.forEach((p, i) => p.mlr && allMlrs.push({ location: `Thinking ${a.activity_id} pattern[${i}]`, number: p.mlr.number }));
+    a.sentence_frames.forEach((f, i) => f.mlr && allMlrs.push({ location: `Thinking ${a.activity_id} frame[${i}]`, number: f.mlr.number }));
+  }
+  for (const a of lesson.decision_guide.activities) {
+    a.scenarios.forEach((s, i) => s.mlr && allMlrs.push({ location: `Moves ${a.activity_id} scenario[${i}]`, number: s.mlr.number }));
+  }
+  for (const a of lesson.wristband.activities) {
+    a.tiles.forEach((t, i) => t.mlr && allMlrs.push({ location: `Quick Read ${a.activity_id} tile[${i}]`, number: t.mlr.number }));
+  }
+  const invalid = allMlrs.filter((x) => !isValidMlrNumber(x.number));
+  r.push({
+    id: 'mlr-no-hallucinated-routines',
+    category: 'MLR',
+    name: 'Every MLR reference is one of MLR 1-8',
+    status: invalid.length === 0 ? 'pass' : 'fail',
+    message:
+      invalid.length === 0
+        ? `${allMlrs.length} MLR references, all valid.`
+        : `${invalid.length} invalid MLR number(s) detected.`,
+    details: invalid.length > 0 ? invalid.map((x) => `${x.location} → ${String(x.number)}`) : undefined,
+  });
+
+  // Wristband word-count caps
+  const wordCount = (s: string) => s.trim().split(/\s+/).filter(Boolean).length;
+  const wbViolations: string[] = [];
+
+  if (lesson.wristband.arc_one_line && wordCount(lesson.wristband.arc_one_line) > 12) {
+    wbViolations.push(`arc_one_line: ${wordCount(lesson.wristband.arc_one_line)} words (cap 12)`);
+  }
+  lesson.wristband.top_signals.forEach((s, i) => {
+    if (wordCount(s) > 10) wbViolations.push(`top_signals[${i}]: ${wordCount(s)} words (cap ~10)`);
+  });
+  lesson.wristband.top_frictions.forEach((s, i) => {
+    if (wordCount(s) > 10) wbViolations.push(`top_frictions[${i}]: ${wordCount(s)} words (cap ~10)`);
+  });
+  lesson.wristband.activities.forEach((a) => {
+    if (a.tiles.length > 3) wbViolations.push(`Quick Read ${a.activity_id}: ${a.tiles.length} tiles (cap 3)`);
+    a.tiles.forEach((t, i) => {
+      if (wordCount(t.observation_short) > 10)
+        wbViolations.push(`Quick Read ${a.activity_id} tile[${i}] observation: ${wordCount(t.observation_short)} words (cap 10)`);
+      if (wordCount(t.move_short) > 16)
+        wbViolations.push(`Quick Read ${a.activity_id} tile[${i}] move: ${wordCount(t.move_short)} words (cap 16)`);
+    });
+  });
+
+  r.push({
+    id: 'wristband-word-counts',
+    category: 'MLR',
+    name: 'Quick Read tiles respect compression caps',
+    status: wbViolations.length === 0 ? 'pass' : 'warn',
+    message:
+      wbViolations.length === 0
+        ? 'All Quick Read compressions within caps.'
+        : `${wbViolations.length} compression cap violations.`,
+    details: wbViolations.length > 0 ? wbViolations : undefined,
+  });
+
+  return r;
+}
+
 export function runAllChecks(lesson: LessonData): CheckResult[] {
   return [
     ...structuralChecks(lesson),
@@ -571,6 +697,7 @@ export function runAllChecks(lesson: LessonData): CheckResult[] {
     ...adaptChecks(lesson),
     ...thinkingChecks(lesson),
     ...movesChecks(lesson),
+    ...mlrChecks(lesson),
     ...registerChecks(lesson),
   ];
 }
