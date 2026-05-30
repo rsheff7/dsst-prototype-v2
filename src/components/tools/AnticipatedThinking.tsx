@@ -1,8 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import { LessonData, ThinkingPattern } from '@/lib/types';
+import { LessonData, ThinkingPattern, MlrRef } from '@/lib/types';
 import ToolInfo from '@/components/shared/ToolInfo';
+import MlrChip from '@/components/shared/MlrChip';
+
+function whyHereFor(lesson: LessonData, activityId: string, mlr: MlrRef): string | undefined {
+  const a = lesson.mlr_inference.activities.find((x) => x.activity_id === activityId);
+  return a?.mlrs.find((m) => m.number === mlr.number)?.why_here;
+}
 
 const PATTERN_STYLES: Record<ThinkingPattern['type'], { bg: string; border: string; text: string; badge: string; badgeBg: string; badgeText: string }> = {
   'on-track': {
@@ -143,6 +149,12 @@ export default function AnticipatedThinking({ lesson }: Props) {
                         MLL
                       </span>
                     )}
+                    {pattern.mlr && (
+                      <MlrChip
+                        mlr={pattern.mlr}
+                        whyHere={whyHereFor(lesson, activeActivityId, pattern.mlr)}
+                      />
+                    )}
                   </div>
                   <span className="text-[11px] font-medium shrink-0" style={{ color: styles.text, opacity: 0.75 }}>
                     {FREQUENCY_LABELS[pattern.frequency]}
@@ -201,12 +213,17 @@ export default function AnticipatedThinking({ lesson }: Props) {
             Ready to hand to students
           </p>
           <div className="space-y-2">
-            {activeActivity.sentence_frames.map((frame, i) => (
+            {activeActivity.sentence_frames.map((sf, i) => (
               <div
                 key={i}
                 className="rounded-xl border-2 border-dashed border-line bg-card px-5 py-3"
               >
-                <p className="text-[0.85rem] text-ink-muted leading-relaxed italic">&ldquo;{frame}&rdquo;</p>
+                <p className="text-[0.85rem] text-ink-muted leading-relaxed italic">&ldquo;{sf.frame}&rdquo;</p>
+                {sf.mlr && (
+                  <div className="mt-1.5">
+                    <MlrChip mlr={sf.mlr} whyHere={whyHereFor(lesson, activeActivityId, sf.mlr)} />
+                  </div>
+                )}
               </div>
             ))}
           </div>

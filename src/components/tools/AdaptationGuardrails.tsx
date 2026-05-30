@@ -2,6 +2,7 @@
 
 import { LessonData } from '@/lib/types';
 import ToolInfo from '@/components/shared/ToolInfo';
+import MlrChip from '@/components/shared/MlrChip';
 
 interface Props {
   lesson: LessonData;
@@ -60,7 +61,14 @@ export default function AdaptationGuardrails({ lesson }: Props) {
               {g.do_not_remove.map((item, i) => (
                 <li key={i} className="flex items-start gap-2.5">
                   <span className="mt-[3px] shrink-0 text-[12px]" style={{ color: '#712B13' }}>▲</span>
-                  <p className="text-[0.85rem] text-ink leading-relaxed">{item}</p>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-[0.85rem] text-ink leading-relaxed">{item.text}</p>
+                    {item.mlr && (
+                      <div className="mt-1.5">
+                        <MlrChip mlr={item.mlr} />
+                      </div>
+                    )}
+                  </div>
                 </li>
               ))}
             </ul>
@@ -78,30 +86,39 @@ export default function AdaptationGuardrails({ lesson }: Props) {
             className="rounded-xl border px-5 py-4"
             style={{ backgroundColor: '#E1F5EE', borderColor: '#9FE1CB', color: '#085041' }}
           >
-            <p className="text-[10px] font-semibold uppercase tracking-[0.1em] mb-2" style={{ color: '#085041' }}>
-              Entering
-            </p>
-            <p className="text-[0.85rem] leading-relaxed">{g.by_proficiency.entering}</p>
+            <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: '#085041' }}>
+                Entering
+              </p>
+              {g.by_proficiency.entering.mlr && <MlrChip mlr={g.by_proficiency.entering.mlr} />}
+            </div>
+            <p className="text-[0.85rem] leading-relaxed">{g.by_proficiency.entering.text}</p>
           </div>
 
           <div
             className="rounded-xl border px-5 py-4"
             style={{ backgroundColor: '#EEEDFE', borderColor: '#AFA9EC', color: '#26215C' }}
           >
-            <p className="text-[10px] font-semibold uppercase tracking-[0.1em] mb-2" style={{ color: '#26215C' }}>
-              Developing
-            </p>
-            <p className="text-[0.85rem] leading-relaxed">{g.by_proficiency.developing}</p>
+            <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: '#26215C' }}>
+                Developing
+              </p>
+              {g.by_proficiency.developing.mlr && <MlrChip mlr={g.by_proficiency.developing.mlr} />}
+            </div>
+            <p className="text-[0.85rem] leading-relaxed">{g.by_proficiency.developing.text}</p>
           </div>
 
           <div
             className="rounded-xl border px-5 py-4"
             style={{ backgroundColor: '#F1EFE8', borderColor: '#D3D1C7', color: '#444441' }}
           >
-            <p className="text-[10px] font-semibold uppercase tracking-[0.1em] mb-2" style={{ color: '#444441' }}>
-              Bridging
-            </p>
-            <p className="text-[0.85rem] leading-relaxed">{g.by_proficiency.bridging}</p>
+            <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: '#444441' }}>
+                Bridging
+              </p>
+              {g.by_proficiency.bridging.mlr && <MlrChip mlr={g.by_proficiency.bridging.mlr} />}
+            </div>
+            <p className="text-[0.85rem] leading-relaxed">{g.by_proficiency.bridging.text}</p>
           </div>
         </div>
       </div>

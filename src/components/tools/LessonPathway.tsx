@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { LessonData, Activity, FrictionPoint } from '@/lib/types';
 import { ToolId } from '@/app/lesson/page';
 import ToolInfo from '@/components/shared/ToolInfo';
+import MlrChip from '@/components/shared/MlrChip';
 
 const ACCENT = '#00876C';
 
@@ -135,12 +136,15 @@ function ActivityCard({ activity }: { activity: Activity }) {
                         <span className="mt-[3px] shrink-0 text-[#854F0B] text-[12px]">▲</span>
                         <div className="flex-1 min-w-0">
                           <p className="text-[0.8rem] text-ink-muted leading-relaxed">{fp.description}</p>
-                          <span
-                            className="mt-1.5 inline-block rounded-full px-2 py-0.5 text-[10px] font-semibold"
-                            style={{ backgroundColor: typeStyle.bg, color: typeStyle.text }}
-                          >
-                            {typeStyle.label}
-                          </span>
+                          <div className="mt-1.5 flex items-center gap-1.5 flex-wrap">
+                            <span
+                              className="inline-block rounded-full px-2 py-0.5 text-[10px] font-semibold"
+                              style={{ backgroundColor: typeStyle.bg, color: typeStyle.text }}
+                            >
+                              {typeStyle.label}
+                            </span>
+                            {fp.mlr && <MlrChip mlr={fp.mlr} />}
+                          </div>
                         </div>
                       </div>
                     );
@@ -154,11 +158,18 @@ function ActivityCard({ activity }: { activity: Activity }) {
                 <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-2.5">
                   Teacher moves
                 </p>
-                <ul className="space-y-2">
+                <ul className="space-y-2.5">
                   {activity.teacher_moves.map((move, i) => (
                     <li key={i} className="flex items-start gap-2.5">
                       <span className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-line" />
-                      <span className="text-[0.825rem] text-ink-muted leading-relaxed">{move}</span>
+                      <div className="flex-1 min-w-0">
+                        <span className="text-[0.825rem] text-ink-muted leading-relaxed">{move.text}</span>
+                        {move.mlr && (
+                          <div className="mt-1">
+                            <MlrChip mlr={move.mlr} />
+                          </div>
+                        )}
+                      </div>
                     </li>
                   ))}
                 </ul>

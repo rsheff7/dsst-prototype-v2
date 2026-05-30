@@ -2,8 +2,15 @@
 
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
-import { LessonData, TeacherMove, ScenarioType, DecisionScenario } from '@/lib/types';
+import { LessonData, TeacherMove, ScenarioType, DecisionScenario, MlrRef } from '@/lib/types';
+import { MlrNumber, MLRS } from '@/lib/mlrs';
 import ToolInfo from '@/components/shared/ToolInfo';
+import MlrChip from '@/components/shared/MlrChip';
+
+function whyHereFor(lesson: LessonData, activityId: string, mlr: MlrRef): string | undefined {
+  const a = lesson.mlr_inference.activities.find((x) => x.activity_id === activityId);
+  return a?.mlrs.find((m) => m.number === mlr.number)?.why_here;
+}
 
 const ACCENT = '#185FA5';
 const MLL_ACCENT = '#534AB7';
@@ -143,10 +150,12 @@ function ScenarioCard({
   scenario,
   visited,
   onOpen,
+  lesson,
 }: {
   scenario: FlatScenario;
   visited: boolean;
   onOpen: () => void;
+  lesson: LessonData;
 }) {
   const meta = SCENARIO_TYPE_META[scenario.scenario_type];
   return (
@@ -169,6 +178,9 @@ function ScenarioCard({
           >
             MLL
           </span>
+        )}
+        {scenario.mlr && (
+          <MlrChip mlr={scenario.mlr} whyHere={whyHereFor(lesson, scenario.activity_id, scenario.mlr)} />
         )}
         {visited && (
           <span className="ml-auto text-[10px] text-ink-faint flex items-center gap-1">
@@ -212,6 +224,7 @@ export default function MoveWalkthrough({ lesson }: Props) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visited, setVisited] = useState<Set<number>>(new Set());
   const [reflections, setReflections] = useState<Record<number, string>>({});
+  const [grouping, setGrouping] = useState<'activity' | 'mlr'>('activity');
 
   if (scenarios.length === 0) {
     return (
@@ -225,6 +238,9 @@ export default function MoveWalkthrough({ lesson }: Props) {
   const current = scenarios[currentIndex];
   const activityIds = Array.from(new Set(scenarios.map((s) => s.activity_id)));
   const mllCount = scenarios.filter((s) => s.is_mll).length;
+  const mlrNumbersInLesson = Array.from(
+    new Set(scenarios.filter((s) => s.mlr).map((s) => s.mlr!.number)),
+  ).sort((a, b) => a - b) as MlrNumber[];
 
   const openScenario = (idx: number) => {
     setCurrentIndex(idx);
@@ -268,7 +284,7 @@ export default function MoveWalkthrough({ lesson }: Props) {
           </div>
         </div>
 
-        <div className="mt-6 mb-6">
+        <div className="mt-6 mb-4">
           <p
             className="text-[0.825rem] leading-relaxed rounded-lg px-3 py-2"
             style={{ backgroundColor: '#F4F2FE', color: '#26215C' }}
@@ -280,7 +296,37 @@ export default function MoveWalkthrough({ lesson }: Props) {
           </p>
         </div>
 
-        {activityIds.map((aid) => {
+        {mlrNumbersInLesson.length > 0 && (
+          <div className="mb-5 flex items-center gap-2 flex-wrap">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint">View:</span>
+            <div className="inline-flex rounded-full border" style={{ borderColor: '#E6E4DE' }}>
+              <button
+                onClick={() => setGrouping('activity')}
+                className="px-3 py-1 text-[11px] font-semibold rounded-full cursor-pointer transition-colors focus-visible:outline-none"
+                style={
+                  grouping === 'activity'
+                    ? { backgroundColor: ACCENT, color: 'white' }
+                    : { color: '#706E69' }
+                }
+              >
+                By activity
+              </button>
+              <button
+                onClick={() => setGrouping('mlr')}
+                className="px-3 py-1 text-[11px] font-semibold rounded-full cursor-pointer transition-colors focus-visible:outline-none"
+                style={
+                  grouping === 'mlr'
+                    ? { backgroundColor: ACCENT, color: 'white' }
+                    : { color: '#706E69' }
+                }
+              >
+                By MLR
+              </button>
+            </div>
+          </div>
+        )}
+
+        {grouping === 'activity' && activityIds.map((aid) => {
           const items = scenarios.filter((s) => s.activity_id === aid);
           const first = items[0];
           return (
@@ -305,6 +351,34 @@ export default function MoveWalkthrough({ lesson }: Props) {
                     scenario={s}
                     visited={visited.has(s.index)}
                     onOpen={() => openScenario(s.index)}
+                    lesson={lesson}
+                  />
+                ))}
+              </div>
+            </section>
+          );
+        })}
+
+        {grouping === 'mlr' && mlrNumbersInLesson.map((n) => {
+          const items = scenarios.filter((s) => s.mlr?.number === n);
+          if (items.length === 0) return null;
+          const mlrMeta = MLRS[n];
+          return (
+            <section key={n} className="mb-8">
+              <div className="flex items-baseline justify-between mb-3 gap-3 flex-wrap">
+                <h3 className="text-[0.95rem] font-semibold text-ink">
+                  MLR {n}: {mlrMeta.name}
+                </h3>
+                <span className="text-[11px] text-ink-faint">{items.length} moment{items.length === 1 ? '' : 's'}</span>
+              </div>
+              <div className="space-y-2">
+                {items.map((s) => (
+                  <ScenarioCard
+                    key={s.index}
+                    scenario={s}
+                    visited={visited.has(s.index)}
+                    onOpen={() => openScenario(s.index)}
+                    lesson={lesson}
                   />
                 ))}
               </div>
@@ -572,6 +646,9 @@ export default function MoveWalkthrough({ lesson }: Props) {
             MLL
           </span>
         )}
+        {current.mlr && (
+          <MlrChip mlr={current.mlr} whyHere={whyHereFor(lesson, current.activity_id, current.mlr)} />
+        )}
       </div>
 
       {/* Observation */}
@@ -679,6 +756,20 @@ export default function MoveWalkthrough({ lesson }: Props) {
                 </p>
                 <p className="text-[0.85rem] leading-relaxed" style={{ color: '#26215C' }}>
                   {current.mll_framework_note}
+                </p>
+              </div>
+            )}
+
+            {current.proficiency_divergence_note && (
+              <div
+                className="mt-4 rounded-xl border-l-[3px] px-5 py-3"
+                style={{ backgroundColor: '#FAFAF7', borderLeftColor: '#534AB7', borderTopWidth: 1, borderRightWidth: 1, borderBottomWidth: 1, borderColor: '#E6E4DE' }}
+              >
+                <p className="text-[10px] font-semibold uppercase tracking-[0.1em] mb-1" style={{ color: '#534AB7' }}>
+                  Routine across proficiency
+                </p>
+                <p className="text-[0.82rem] text-ink-muted leading-relaxed">
+                  {current.proficiency_divergence_note}
                 </p>
               </div>
             )}
