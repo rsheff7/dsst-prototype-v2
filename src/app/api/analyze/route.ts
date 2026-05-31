@@ -203,6 +203,7 @@ function normalizeLesson(raw: Partial<LessonData> & Record<string, unknown>): Le
           observation_short: t.observation_short ?? '',
           friction_type: t.friction_type ?? 'math',
           move_short: t.move_short ?? '',
+          ...(t.avoid_short ? { avoid_short: t.avoid_short } : {}),
           ...(t.is_crux_moment ? { is_crux_moment: true } : {}),
           ...(t.has_proficiency_variants ? { has_proficiency_variants: true } : {}),
           ...(t.glyph_observation ? { glyph_observation: t.glyph_observation } : {}),

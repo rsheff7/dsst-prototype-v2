@@ -672,10 +672,10 @@ export const demoLesson: LessonData = {
   wristband: {
     arc_one_line: 'Sort, see it, say it: turn relationships into ratio language.',
     preflight: [
-      'Pair students who share a home language for partner work in 1.2.',
-      'Pick 2 student phrases to capture on the board during 1.1.',
-      'Identify the 2 students you will call on first in 1.2.',
-      'Have the sentence frames visible — print or display.',
+      'Pre-pair: match each MLL with a partner who shares their home language for 1.2.',
+      'Pre-plan capture: which 2 student phrases will you write on the board during 1.1?',
+      'Pre-call: which 2 students will you call on first in 1.2 to anchor the language?',
+      'Pre-display: sentence frames printed AND on the board before 1.2 begins.',
     ],
     top_signals: [
       'Students use "for every" without being asked.',
@@ -692,25 +692,34 @@ export const demoLesson: LessonData = {
         activity_id: '1.1',
         tiles: [
           {
-            observation_short: 'Student says "for every" without prompting.',
+            observation_short:
+              'Student says "for every" unprompted — they\'re previewing the lesson\'s target language.',
             friction_type: 'language',
             mlr: MLR8,
-            move_short: 'Stop class. Have them repeat it. Revoice it once.',
+            move_short:
+              'Stop the room. Have them say it again so everyone hears "for every." MLR 8 revoicing turns one student\'s words into class language you can return to in 1.2.',
+            avoid_short: '"Great!" and moving on — privatizes the insight.',
             glyph_observation: 'SAYS "FOR EVERY"',
             glyph_move: 'STOP · REPEAT · REVOICE',
           },
           {
-            observation_short: 'Student argues over the "right" sort.',
+            observation_short:
+              'Two students argue about the "right" sort — they expect one categorization to be correct.',
             friction_type: 'math',
-            move_short: 'Validate many ways. Disagreement is the lesson.',
+            move_short:
+              'Affirm BOTH sorts as mathematically valid. "You both have a way that works." Different categorizations of the same items will produce different ratios — that IS the lesson.',
+            avoid_short: 'Picking a winner — kills the lesson\'s move.',
             glyph_observation: 'ARGUES "RIGHT" SORT',
             glyph_move: 'VALIDATE MANY WAYS',
           },
           {
-            observation_short: 'MLL student sorts silently.',
+            observation_short:
+              'MLL sorting cleanly but silent — hands are doing the math; English isn\'t available right now.',
             friction_type: 'language',
             mlr: MLR8,
-            move_short: 'Use gestures. Accept gestures back. Sort is the contribution.',
+            move_short:
+              'Smile and point at the groups. Use one nonverbal question — point + puzzled face — to invite a regroup. MLR 8 nonverbal supports: the gesture IS the math question.',
+            avoid_short: '"Can you explain?" — English they don\'t have.',
             has_proficiency_variants: true,
             glyph_observation: 'MLL SORTS SILENTLY',
             glyph_move: 'GESTURES · ACCEPT GESTURES',
@@ -721,27 +730,36 @@ export const demoLesson: LessonData = {
         activity_id: '1.2',
         tiles: [
           {
-            observation_short: 'Numbers written in wrong order.',
+            observation_short:
+              'Numbers flipped in the frame — likely defaulted to bigger-first; word order didn\'t register.',
             friction_type: 'language-math',
             mlr: MLR8,
-            move_short: 'Have them read aloud. Ask: which one comes first?',
+            move_short:
+              'Have them read it aloud. Ask "which one comes first — squares or circles?" MLR 8 read-aloud lets them feel the mismatch between words and numbers — and they self-correct.',
+            avoid_short: 'Correcting the order yourself.',
             glyph_observation: 'NUMBERS FLIPPED',
             glyph_move: 'READ ALOUD · WHICH FIRST?',
           },
           {
-            observation_short: 'MLL student frozen at sentence frame.',
+            observation_short:
+              'MLL frozen at the frame — stuck on which category to label first. Not a math problem; a labeling problem.',
             friction_type: 'language-math',
             mlr: MLR8,
-            move_short: 'Point to items, then to blanks. Assign order with gestures.',
+            move_short:
+              'Point to one item, then the first blank; point to the other item, then the second blank. Gesture assigns the order so they can focus on counting. MLR 8 nonverbal scaffold.',
+            avoid_short: 'Re-reading the frame aloud — more English isn\'t the help.',
             has_proficiency_variants: true,
             glyph_observation: 'MLL FROZEN AT FRAME',
             glyph_move: 'POINT ITEM · POINT BLANK',
           },
           {
-            observation_short: 'Asks "do we have to write all three?"',
+            observation_short:
+              'Asks "why all three forms?" — they\'re noticing equivalence. This IS the lesson\'s big idea surfacing.',
             friction_type: 'math',
             mlr: MLR7,
-            move_short: 'Throw question to class. Compare two forms side by side.',
+            move_short:
+              'Throw it to the class: "Look at \'3 to 6\' and \'3 for every 6\' — same? different?" MLR 7 compare-and-connect. They reach equivalence themselves.',
+            avoid_short: 'Answering it yourself — privatizes the synthesis.',
             is_crux_moment: true,
             glyph_observation: 'ASKS "ALL THREE?"',
             glyph_move: 'THROW TO CLASS · COMPARE',
@@ -752,27 +770,36 @@ export const demoLesson: LessonData = {
         activity_id: '1.3',
         tiles: [
           {
-            observation_short: 'MLL student uses only colon form.',
+            observation_short:
+              'MLL using only the colon form (3:6) — choosing what needs the least English. The math is right; the verbal work is being skipped.',
             friction_type: 'language',
             mlr: MLR1,
-            move_short: 'Affirm colon. For verbal: say it aloud first, then write.',
+            move_short:
+              'Affirm the colon as correct. Ask them to SAY "three to six" aloud — no writing yet. Saying first, writing next. MLR 1: each form is a stronger draft of the same relationship.',
+            avoid_short: 'Marking the colon-only as incomplete — it isn\'t.',
             has_proficiency_variants: true,
             glyph_observation: 'COLON ONLY',
             glyph_move: 'AFFIRM · SAY THEN WRITE',
           },
           {
-            observation_short: 'Crossed out and rereading the frame.',
+            observation_short:
+              'Student crossed out their ratio and is rereading the frame — self-correcting in real time.',
             friction_type: 'math',
+            move_short:
+              'Stand near, don\'t speak. If they look up, nod and step back. MLR 8 wait time at length — 10+ seconds. The work is happening; your job is not to interrupt it.',
+            avoid_short: '"Are you stuck?" — they aren\'t.',
             mlr: MLR8,
-            move_short: 'Wait. Do not ask "stuck?" Step away.',
             glyph_observation: 'CROSSED OUT · REREADING',
             glyph_move: 'WAIT · STEP AWAY',
           },
           {
-            observation_short: 'Different ratios from same items.',
+            observation_short:
+              'Partners have the same items but wrote different ratios — they\'ve surfaced that ratios depend on what you compare.',
             friction_type: 'math',
             mlr: MLR7,
-            move_short: 'Put both on the board. Class: what is same, different?',
+            move_short:
+              'Put both ratios on the board. Ask: "Same items — how can the ratios be different?" MLR 7 compare-and-connect. They reach "we picked different categories." Sets up tomorrow.',
+            avoid_short: 'Explaining it — the wrestle IS the learning.',
             glyph_observation: 'SAME ITEMS · DIFFERENT RATIOS',
             glyph_move: 'BOTH ON BOARD · COMPARE',
           },

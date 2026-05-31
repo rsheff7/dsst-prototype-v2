@@ -160,10 +160,11 @@ The JSON has this shape. mlr_inference MUST be the FIRST field. wristband MUST b
     "activities": [{
       "activity_id": "1.1",
       "tiles": [{
-        "observation_short": "string — 5-8 words: what the teacher sees",
+        "observation_short": "string — 8-15 words. Name the behavior AND a working diagnostic — what the teacher would also be reading into the moment. Example: 'Numbers flipped — defaulted to bigger-first; missed the word order.' NOT just 'Numbers in wrong order.'",
         "friction_type": "math | language | language-math",
         "mlr": { "number", "name" } or omit,
-        "move_short": "string — 8-14 words: what to do",
+        "move_short": "string — 18-28 words. The move written as the routine actually running (named MLR mechanics — revoice, wait time, partner share, compare/connect) PLUS why it works (the math gain or the noticing gain). NOT generic advice. Example: 'Read aloud; ask which comes first. MLR 8 read-aloud lets them feel the mismatch without you naming it — they self-correct.'",
+        "avoid_short": "string — 4-8 words. The most common over-helping trap a novice teacher falls into for this specific moment. The thing that would undo the move. Example: 'Fixing the order yourself.' or 'Saying great and moving on.'",
         "is_crux_moment": "boolean — true for ONE tile across the entire lesson, on the crux activity, marking the moment that — if missed — the lesson does not land. Usually a productive-insight moment, not an error. Exactly one tile should have this true.",
         "has_proficiency_variants": "boolean — true when this moment's response actually differs by Entering/Developing/Bridging proficiency (signals the teacher to consult Moves for the side-by-side). Set true for MLL frictions where proficiency_moves are present in the corresponding decision_guide scenario.",
         "glyph_observation": "string — 2-4 word ALL-CAPS compression of the observation for the in-class view. Verb-noun or noun-only. Example: 'NUMBERS FLIPPED' or 'MLL FROZEN AT FRAME'.",

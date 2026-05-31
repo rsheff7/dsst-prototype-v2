@@ -160,6 +160,7 @@ export interface WristbandTile {
   friction_type: 'math' | 'language' | 'language-math';
   mlr?: MlrRef;
   move_short: string;
+  avoid_short?: string;
   is_crux_moment?: boolean;
   has_proficiency_variants?: boolean;
   glyph_observation?: string;

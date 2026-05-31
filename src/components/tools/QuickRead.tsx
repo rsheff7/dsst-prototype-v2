@@ -291,6 +291,11 @@ function PlanTile({ tile }: { tile: WristbandTile }) {
         {tile.mlr && <MlrChip mlr={tile.mlr} showName={false} />}
         <p className="text-[0.75rem] text-ink-muted leading-snug flex-1 min-w-0">{tile.move_short}</p>
       </div>
+      {tile.avoid_short && (
+        <p className="qr-tile-avoid mt-1.5 text-[0.7rem] leading-snug italic" style={{ color: '#712B13' }}>
+          <span className="font-semibold not-italic">Avoid:</span> {tile.avoid_short}
+        </p>
+      )}
     </div>
   );
 }
@@ -487,6 +492,7 @@ const planPrintStyles = `
     .qr-tile > div { margin-bottom: 2pt !important; gap: 3pt !important; }
     .qr-tile span { font-size: 6.5pt !important; padding: 1pt 4pt !important; }
     .qr-tile div[class*="absolute"] { font-size: 6pt !important; padding: 1pt 4pt !important; top: -6pt !important; }
+    .qr-tile .qr-tile-avoid { font-size: 6.5pt !important; line-height: 1.25 !important; margin-top: 2pt !important; }
     .qr-legend > div:first-child { padding: 3pt 8pt !important; }
     .qr-legend > div:first-child p { font-size: 7pt !important; margin: 0 !important; }
     .qr-legend ul { display: flex !important; flex-direction: row !important; border-top: none !important; }
