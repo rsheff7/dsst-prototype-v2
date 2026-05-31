@@ -40,63 +40,62 @@ export default function QuickRead({ lesson }: Props) {
   return (
     <div className={`pt-6 pb-12 quickread-root quickread-${mode}`}>
       <ToolInfo toolId="quickread" />
-      <div className="h-4 qr-print-hide" />
-      {/* Header tile */}
+      <div className="h-6 qr-print-hide" />
+
+      {/* Toolbar (screen only) */}
+      <div className="qr-print-hide mb-5 flex items-center justify-between gap-3 flex-wrap">
+        <ModeToggle mode={mode} onChange={setMode} />
+        {mode === 'plan' && (
+          <button
+            type="button"
+            onClick={() => window.print()}
+            className="rounded-full px-3 py-1 text-[11px] font-semibold cursor-pointer hover:opacity-85 transition-opacity"
+            style={{ backgroundColor: QR_ACCENT, color: '#FFFFFF' }}
+          >
+            Print
+          </button>
+        )}
+        {mode === 'inclass' && (
+          <p className="text-[10px] text-ink-faint">For your phone, mid-lesson.</p>
+        )}
+      </div>
+
+      {/* Print-only lesson title */}
+      <div className="hidden print:block mb-3">
+        <p className="text-[7pt] font-semibold uppercase tracking-[0.1em] text-ink-faint">
+          {lesson.meta.grade} · {lesson.meta.unit} · {lesson.meta.lesson_number} · {lesson.meta.total_time}
+        </p>
+        <p className="text-[11pt] font-bold text-ink leading-tight">{lesson.meta.lesson_title}</p>
+      </div>
+
+      {/* Lesson context card — mirrors Pathway's arc card */}
       <header
-        className="rounded-2xl border bg-card shadow-sm overflow-hidden border-l-[4px] mb-5"
-        style={{ borderLeftColor: QR_ACCENT, borderColor: '#E6E4DE' }}
+        className="rounded-xl border border-line bg-card shadow-sm overflow-hidden border-l-[3px] mb-8"
+        style={{ borderLeftColor: QR_ACCENT }}
       >
         <div className="px-6 py-5">
-          <div className="qr-print-hide flex items-baseline justify-end gap-3 mb-2 flex-wrap">
-            <p className="text-[10px] font-medium text-ink-faint">
-              {lesson.meta.grade} · {lesson.meta.unit} · {lesson.meta.lesson_number} · {lesson.meta.total_time}
-            </p>
-          </div>
-          <h1
-            className="text-[1.25rem] text-ink leading-tight mb-2"
+          <p
+            className="text-[10px] font-semibold uppercase tracking-[0.12em] mb-2"
+            style={{ color: QR_ACCENT }}
+          >
+            The arc of this lesson
+          </p>
+          <p
+            className="text-[1rem] text-ink leading-[1.65]"
             style={{ fontFamily: 'var(--font-dm-serif), serif' }}
           >
-            {lesson.meta.lesson_title}
-          </h1>
-          {wb.arc_one_line && (
-            <p
-              className="text-[1rem] text-ink leading-[1.5] mb-3"
-              style={{ fontFamily: 'var(--font-dm-serif), serif' }}
-            >
-              {wb.arc_one_line}
+            {wb.arc_one_line}
+          </p>
+        </div>
+
+        {lesson.destination && (
+          <div className="border-t border-line-subtle px-6 py-4 bg-surface">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-1">
+              By the end, students can
             </p>
-          )}
-          {lesson.destination && (
-            <div className="qr-destination mt-2 pt-3 border-t" style={{ borderColor: '#E6E4DE' }}>
-              <p
-                className="text-[10px] font-semibold uppercase tracking-[0.1em] mb-1"
-                style={{ color: QR_ACCENT }}
-              >
-                By the end, students can
-              </p>
-              <p className="text-[0.875rem] text-ink leading-[1.55]">{lesson.destination}</p>
-            </div>
-          )}
-        </div>
-        <div
-          className="print:hidden border-t bg-surface px-4 py-2 flex items-center justify-between gap-3 flex-wrap"
-          style={{ borderColor: '#E6E4DE' }}
-        >
-          <ModeToggle mode={mode} onChange={setMode} />
-          {mode === 'plan' && (
-            <button
-              type="button"
-              onClick={() => window.print()}
-              className="rounded-full px-3 py-1 text-[11px] font-semibold cursor-pointer hover:opacity-85 transition-opacity"
-              style={{ backgroundColor: QR_ACCENT, color: '#FFFFFF' }}
-            >
-              Print
-            </button>
-          )}
-          {mode === 'inclass' && (
-            <p className="text-[10px] text-ink-faint">For your phone, mid-lesson.</p>
-          )}
-        </div>
+            <p className="text-[0.825rem] text-ink-muted leading-[1.65]">{lesson.destination}</p>
+          </div>
+        )}
       </header>
 
       {mode === 'plan' && <PlanView wb={wb} activityById={activityById} windowById={windowById} />}
@@ -210,8 +209,8 @@ function PlanActivityRow({
   if (!activity) return null;
   return (
     <section
-      className="qr-activity rounded-2xl border bg-card shadow-sm overflow-hidden flex flex-col md:flex-row"
-      style={{ borderColor: activity.is_crux ? QR_ACCENT : '#E6E4DE', borderWidth: activity.is_crux ? 2 : 1 }}
+      className={`qr-activity rounded-xl border bg-card shadow-sm overflow-hidden flex flex-col md:flex-row ${activity.is_crux ? 'border-l-[3px]' : 'border-line'}`}
+      style={activity.is_crux ? { borderLeftColor: QR_ACCENT } : {}}
     >
       <div
         className="qr-activity-rail shrink-0 md:w-52 px-4 py-3 border-b md:border-b-0 md:border-r"
@@ -244,16 +243,12 @@ function PlanActivityRow({
       <div className="qr-activity-tiles flex-1 flex flex-col">
         {activity.learning_target && (
           <div
-            className="qr-activity-target px-3 py-2 border-b"
-            style={{ borderColor: '#E6E4DE', backgroundColor: '#F4F9F7' }}
+            className="qr-activity-target border-b border-line-subtle px-4 py-2.5 bg-surface"
           >
-            <p
-              className="text-[9px] font-semibold uppercase tracking-[0.1em] mb-0.5"
-              style={{ color: QR_ACCENT }}
-            >
-              By the end, students can
+            <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-1">
+              Learning target
             </p>
-            <p className="text-[0.78rem] text-ink leading-snug">{activity.learning_target}</p>
+            <p className="text-[0.825rem] text-ink-muted leading-[1.65]">{activity.learning_target}</p>
           </div>
         )}
         <div className="qr-activity-tilegrid px-3 py-3 flex flex-row gap-2 flex-1 overflow-x-auto">
@@ -501,12 +496,12 @@ const planPrintStyles = `
       break-inside: avoid; page-break-inside: avoid; box-shadow: none !important; border-radius: 4px !important;
     }
     .quickread-root header { margin-bottom: 6pt !important; border-left-width: 2px !important; }
-    .quickread-root header > div { padding: 5pt 10pt !important; }
-    .quickread-root header h1 { font-size: 12pt !important; line-height: 1.2 !important; margin-bottom: 2pt !important; }
-    .quickread-root header p { font-size: 8.5pt !important; line-height: 1.3 !important; margin: 0 !important; }
-    .quickread-root .qr-destination { margin-top: 3pt !important; padding-top: 3pt !important; }
-    .quickread-root .qr-destination p:first-child { font-size: 7pt !important; margin-bottom: 1pt !important; }
-    .quickread-root .qr-destination p:last-child { font-size: 8pt !important; }
+    .quickread-root header > div { padding: 4pt 10pt !important; }
+    .quickread-root header p { font-size: 8pt !important; line-height: 1.3 !important; margin: 0 !important; }
+    .quickread-root header > div:first-child p:first-child { font-size: 6.5pt !important; margin-bottom: 1pt !important; }
+    .quickread-root header > div:first-child p:last-child { font-size: 8.5pt !important; line-height: 1.3 !important; margin-top: 1pt !important; }
+    .quickread-root header > div:last-child p:first-child { font-size: 6.5pt !important; margin-bottom: 0 !important; }
+    .quickread-root header > div:last-child p:last-child { font-size: 7.5pt !important; line-height: 1.3 !important; margin-top: 1pt !important; }
     .qr-print-hide { display: none !important; }
     .qr-preflight { margin-bottom: 6pt !important; }
     .qr-preflight > div:first-child { padding: 3pt 8pt !important; }
