@@ -1,9 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { LessonData, WristbandTile, WristbandActivity, WristbandLegendEntry } from '@/lib/types';
+import { LessonData, WristbandTile, WristbandActivity, WristbandLegendEntry, Activity } from '@/lib/types';
 import { MLRS } from '@/lib/mlrs';
 import MlrChip from '@/components/shared/MlrChip';
+import ToolInfo from '@/components/shared/ToolInfo';
+import { activitySlot, activityHeading, activityShortLabel } from '@/lib/activityLabel';
 
 const FRICTION_PILL: Record<WristbandTile['friction_type'], { bg: string; text: string; label: string }> = {
   math: { bg: '#F1EFE8', text: '#444441', label: 'Math' },
@@ -30,22 +32,22 @@ export default function QuickRead({ lesson }: Props) {
   const [mode, setMode] = useState<Mode>('plan');
   const wb = lesson.wristband;
   const activityById = Object.fromEntries(lesson.activities.map((a) => [a.id, a]));
+  const windows = timeWindows(lesson.activities);
+  const windowById: Record<string, { start: number; end: number }> = Object.fromEntries(
+    lesson.activities.map((a, i) => [a.id, windows[i]]),
+  );
 
   return (
     <div className={`pt-6 pb-12 quickread-root quickread-${mode}`}>
+      <ToolInfo toolId="quickread" />
+      <div className="h-4 qr-print-hide" />
       {/* Header tile */}
       <header
         className="rounded-2xl border bg-card shadow-sm overflow-hidden border-l-[4px] mb-5"
         style={{ borderLeftColor: QR_ACCENT, borderColor: '#E6E4DE' }}
       >
         <div className="px-6 py-5">
-          <div className="qr-print-hide flex items-baseline justify-between gap-3 mb-2 flex-wrap">
-            <p
-              className="text-[10px] font-semibold uppercase tracking-[0.12em]"
-              style={{ color: QR_ACCENT }}
-            >
-              Quick Read
-            </p>
+          <div className="qr-print-hide flex items-baseline justify-end gap-3 mb-2 flex-wrap">
             <p className="text-[10px] font-medium text-ink-faint">
               {lesson.meta.grade} · {lesson.meta.unit} · {lesson.meta.lesson_number} · {lesson.meta.total_time}
             </p>
@@ -97,8 +99,8 @@ export default function QuickRead({ lesson }: Props) {
         </div>
       </header>
 
-      {mode === 'plan' && <PlanView wb={wb} activityById={activityById} />}
-      {mode === 'inclass' && <InClassView wb={wb} activityById={activityById} />}
+      {mode === 'plan' && <PlanView wb={wb} activityById={activityById} windowById={windowById} />}
+      {mode === 'inclass' && <InClassView wb={wb} activityById={activityById} windowById={windowById} />}
 
       <style jsx global>{planPrintStyles}</style>
     </div>
@@ -133,9 +135,11 @@ function ModeToggle({ mode, onChange }: { mode: Mode; onChange: (m: Mode) => voi
 function PlanView({
   wb,
   activityById,
+  windowById,
 }: {
   wb: LessonData['wristband'];
-  activityById: Record<string, LessonData['activities'][number]>;
+  activityById: Record<string, Activity>;
+  windowById: Record<string, { start: number; end: number }>;
 }) {
   return (
     <>
@@ -168,6 +172,7 @@ function PlanView({
             key={wba.activity_id}
             wba={wba}
             activity={activityById[wba.activity_id]}
+            window={windowById[wba.activity_id]}
           />
         ))}
       </div>
@@ -196,9 +201,11 @@ function PlanView({
 function PlanActivityRow({
   wba,
   activity,
+  window,
 }: {
   wba: WristbandActivity;
-  activity: LessonData['activities'][number] | undefined;
+  activity: Activity | undefined;
+  window: { start: number; end: number } | undefined;
 }) {
   if (!activity) return null;
   return (
@@ -207,13 +214,13 @@ function PlanActivityRow({
       style={{ borderColor: activity.is_crux ? QR_ACCENT : '#E6E4DE', borderWidth: activity.is_crux ? 2 : 1 }}
     >
       <div
-        className="qr-activity-rail shrink-0 md:w-48 px-4 py-3 border-b md:border-b-0 md:border-r flex md:flex-col items-baseline md:items-start justify-between md:justify-start gap-2"
+        className="qr-activity-rail shrink-0 md:w-52 px-4 py-3 border-b md:border-b-0 md:border-r"
         style={{ borderColor: '#E6E4DE', backgroundColor: '#FAFAF7' }}
       >
-        <div className="min-w-0 flex-1 md:flex-none">
+        <div className="min-w-0">
           <div className="flex items-center gap-2 mb-1 flex-wrap">
             <p className="text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: QR_ACCENT }}>
-              {activitySlot(activity.title)}
+              {activityShortLabel(activity)}
             </p>
             {activity.is_crux && (
               <span
@@ -230,14 +237,30 @@ function PlanActivityRow({
           >
             {activityHeading(activity.title)}
           </h2>
-          <p className="text-[11px] text-ink-faint">{activity.duration}</p>
+          <p className="text-[11px] text-ink-faint">{formatWindow(window, activity.duration)}</p>
         </div>
       </div>
 
-      <div className="qr-activity-tiles flex-1 px-3 py-3 flex flex-col md:flex-row gap-2">
-        {wba.tiles.map((tile, i) => (
-          <PlanTile key={i} tile={tile} />
-        ))}
+      <div className="qr-activity-tiles flex-1 flex flex-col">
+        {activity.learning_target && (
+          <div
+            className="qr-activity-target px-3 py-2 border-b"
+            style={{ borderColor: '#E6E4DE', backgroundColor: '#F4F9F7' }}
+          >
+            <p
+              className="text-[9px] font-semibold uppercase tracking-[0.1em] mb-0.5"
+              style={{ color: QR_ACCENT }}
+            >
+              By the end, students can
+            </p>
+            <p className="text-[0.78rem] text-ink leading-snug">{activity.learning_target}</p>
+          </div>
+        )}
+        <div className="qr-activity-tilegrid px-3 py-3 flex flex-col md:flex-row gap-2 flex-1">
+          {wba.tiles.map((tile, i) => (
+            <PlanTile key={i} tile={tile} />
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -305,9 +328,11 @@ function PlanTile({ tile }: { tile: WristbandTile }) {
 function InClassView({
   wb,
   activityById,
+  windowById,
 }: {
   wb: LessonData['wristband'];
-  activityById: Record<string, LessonData['activities'][number]>;
+  activityById: Record<string, Activity>;
+  windowById: Record<string, { start: number; end: number }>;
 }) {
   return (
     <div className="space-y-3 max-w-md mx-auto">
@@ -316,6 +341,7 @@ function InClassView({
           key={wba.activity_id}
           wba={wba}
           activity={activityById[wba.activity_id]}
+          window={windowById[wba.activity_id]}
         />
       ))}
       {wb.mlr_legend.length > 0 && <InClassLegend entries={wb.mlr_legend} />}
@@ -326,19 +352,23 @@ function InClassView({
 function InClassActivityBlock({
   wba,
   activity,
+  window,
 }: {
   wba: WristbandActivity;
-  activity: LessonData['activities'][number] | undefined;
+  activity: Activity | undefined;
+  window: { start: number; end: number } | undefined;
 }) {
   if (!activity) return null;
   return (
     <section className="rounded-xl overflow-hidden" style={{ backgroundColor: '#1A1916' }}>
       <div className="px-4 py-2 flex items-baseline justify-between gap-3">
-        <div className="flex items-baseline gap-2 flex-wrap">
+        <div className="flex items-baseline gap-2 flex-wrap min-w-0">
           <span className="text-[11px] font-bold uppercase tracking-[0.12em] text-white">
-            {activitySlot(activity.title)}
+            {activityShortLabel(activity)}
           </span>
-          <span className="text-[10px] text-white opacity-60">{activity.duration}</span>
+          <span className="text-[10px] text-white opacity-60">
+            {formatWindow(window, activity.duration)}
+          </span>
         </div>
         {activity.is_crux && (
           <span
@@ -432,24 +462,29 @@ function InClassLegend({ entries }: { entries: WristbandLegendEntry[] }) {
 
 // ---------------- helpers ----------------
 
-function activitySlot(title: string): string {
-  const match = title.match(/^(Warm-Up|Activity\s+\d+|Lesson Synthesis|Cool-Down|Synthesis)/i);
-  if (match) return match[1];
-  const colonIdx = title.indexOf(':');
-  if (colonIdx > 0) return title.slice(0, colonIdx);
-  return title;
-}
-
-function activityHeading(title: string): string {
-  const colonIdx = title.indexOf(':');
-  if (colonIdx > 0 && colonIdx < title.length - 1) return title.slice(colonIdx + 1).trim();
-  return title;
-}
-
 function firstSentence(text: string): string {
   const trimmed = text.trim();
   const idx = trimmed.search(/[.!?]\s/);
   return idx > 0 ? trimmed.slice(0, idx).toUpperCase() : trimmed.toUpperCase();
+}
+
+function timeWindows(activities: Activity[]): { start: number; end: number }[] {
+  let cumulative = 0;
+  return activities.map((a) => {
+    const match = a.duration.match(/(\d+)/);
+    const minutes = match ? parseInt(match[1], 10) : 0;
+    const start = cumulative;
+    cumulative += minutes;
+    return { start, end: cumulative };
+  });
+}
+
+function formatWindow(
+  window: { start: number; end: number } | undefined,
+  fallback: string,
+): string {
+  if (!window || window.end === window.start) return fallback;
+  return `${window.start}–${window.end} min`;
 }
 
 // ---------------- print stylesheet (plan view only) ----------------
@@ -484,7 +519,11 @@ const planPrintStyles = `
     .qr-activity-rail p { font-size: 7.5pt !important; line-height: 1.2 !important; margin: 0 !important; }
     .qr-activity-rail h2 { font-size: 9pt !important; line-height: 1.2 !important; margin: 1pt 0 1pt !important; }
     .qr-activity-rail span { font-size: 6.5pt !important; padding: 1pt 4pt !important; }
-    .qr-activity-tiles { padding: 4pt 5pt !important; gap: 4pt !important; flex-direction: row !important; }
+    .qr-activity-tiles { flex-direction: column !important; padding: 0 !important; gap: 0 !important; }
+    .qr-activity-target { padding: 3pt 8pt !important; border-bottom: 1px solid #E6E4DE !important; background: #F4F9F7 !important; }
+    .qr-activity-target p:first-child { font-size: 6.5pt !important; line-height: 1.1 !important; margin: 0 !important; }
+    .qr-activity-target p:last-child { font-size: 7.5pt !important; line-height: 1.25 !important; margin: 1pt 0 0 !important; }
+    .qr-activity-tilegrid { padding: 4pt 5pt !important; gap: 4pt !important; flex-direction: row !important; }
     .qr-tile { padding: 4pt 5pt !important; border-width: 1px !important; flex: 1 1 0 !important; position: relative !important; }
     .qr-tile > p { font-size: 6.5pt !important; line-height: 1.2 !important; margin: 0 !important; }
     .qr-tile > p[class*="font-medium"] { font-size: 7.5pt !important; margin-top: 1pt !important; margin-bottom: 2pt !important; }

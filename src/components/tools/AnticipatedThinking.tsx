@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { LessonData, ThinkingPattern, MlrRef } from '@/lib/types';
 import ToolInfo from '@/components/shared/ToolInfo';
 import MlrChip from '@/components/shared/MlrChip';
+import { activitySlot } from '@/lib/activityLabel';
 
 function whyHereFor(lesson: LessonData, activityId: string, mlr: MlrRef): string | undefined {
   const a = lesson.mlr_inference.activities.find((x) => x.activity_id === activityId);
@@ -98,6 +99,10 @@ export default function AnticipatedThinking({ lesson }: Props) {
         <div className="flex border-b border-line mb-6 overflow-x-auto">
           {activities.map((a) => {
             const isActive = a.activity_id === activeActivityId;
+            const sourceActivity = lesson.activities.find((x) => x.id === a.activity_id);
+            const label = sourceActivity
+              ? `${sourceActivity.id} ${activitySlot(sourceActivity.title)}`
+              : `Activity ${a.activity_id}`;
             return (
               <button
                 key={a.activity_id}
@@ -112,7 +117,7 @@ export default function AnticipatedThinking({ lesson }: Props) {
                 }`}
                 style={isActive ? { borderBottomColor: '#534AB7', color: '#534AB7' } : {}}
               >
-                Activity {a.activity_id}
+                {label}
               </button>
             );
           })}

@@ -101,6 +101,8 @@ export const demoLesson: LessonData = {
       language_demand: 'low',
       function_summary:
         'Students show you how they already think about sorting and counting groups — every student brings a way of seeing relationships, even before any ratio language enters the room. What you are listening for: which students naturally pair quantities together ("there are 3 of these for every 1 of those") and which students are focused on totals first. Both are doing real mathematical work. The lesson will move both groups toward seeing the relationship between quantities.',
+      learning_target:
+        'Students compare their categorization choices and notice that different sorts of the same items produce different numbers.',
       is_crux: false,
       friction_points: [
         {
@@ -137,6 +139,8 @@ export const demoLesson: LessonData = {
       language_demand: 'high',
       function_summary:
         'This is the most important part of the lesson. Students take a collection you have prepared (markers, blocks, paper clips — whatever you have) and try to write a sentence using one of the three ratio forms. Some students will breeze through. Others will stare at the page. Both happen for the same reason: this is the first time they have been asked to put a relationship into words. Listen for students reading their sentence aloud as they fill it in. That is how the language becomes theirs.',
+      learning_target:
+        'Students attach precise ratio language to a relationship they can see, writing it in at least one of the three forms (X to Y, X:Y, X for every Y) and reading it aloud.',
       is_crux: true,
       friction_points: [
         {
@@ -186,6 +190,8 @@ export const demoLesson: LessonData = {
       language_demand: 'high',
       function_summary:
         'Students take what they learned about writing ratio sentences and try it on a collection they sort themselves — their own school supplies, items on their desk, classroom objects. You will see the language work or not work depending on whether the lesson landed in 1.2. The visual display step at the end is where they see their ratio represented two ways: in words, and as a picture.',
+      learning_target:
+        'Students apply ratio language to their own collection and recognize the same relationship expressed in words and as a visual display.',
       is_crux: false,
       friction_points: [
         {

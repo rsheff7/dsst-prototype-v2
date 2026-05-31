@@ -39,6 +39,7 @@ export interface Activity {
   grouping: string;
   language_demand: 'low' | 'medium' | 'high';
   function_summary: string;
+  learning_target: string;
   is_crux: boolean;
   friction_points: FrictionPoint[];
   success_signals: string[];

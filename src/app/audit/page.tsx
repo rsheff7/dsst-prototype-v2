@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useLesson } from '@/lib/lessonContext';
 import { demoLesson } from '@/lib/demoLesson';
 import { findTermAppearances, activityDensity, toneSamples, mlrCoherenceMap } from '@/lib/audit';
+import { activitySlot } from '@/lib/activityLabel';
 
 const SECTIONS = [
   { id: 'purpose', label: '1. Mathematical purpose anchor' },
@@ -263,7 +264,7 @@ export default function AuditPage() {
                 >
                   <div className="px-5 py-3 border-b border-line-subtle bg-surface">
                     <p className="text-[0.9rem] font-semibold text-ink">
-                      Activity {a.id} — {a.title}
+                      {a.id} {a.title}
                       {a.is_crux && (
                         <span
                           className="ml-2 text-[9px] font-bold uppercase tracking-[0.1em] text-white px-2 py-0.5 rounded-full"
@@ -384,7 +385,10 @@ export default function AuditPage() {
                 className="rounded-xl border border-line bg-card overflow-hidden"
               >
                 <div className="px-5 py-3 border-b border-line-subtle bg-surface">
-                  <p className="text-[0.9rem] font-semibold text-ink">Activity {entry.activity_id}</p>
+                  <p className="text-[0.9rem] font-semibold text-ink">{entry.activity_id}{(() => {
+                    const src = lesson.activities.find((x) => x.id === entry.activity_id);
+                    return src ? ` ${activitySlot(src.title)}` : '';
+                  })()}</p>
                   {entry.language_work && (
                     <p className="text-[0.8rem] text-ink-muted mt-1 leading-relaxed italic">
                       {entry.language_work}

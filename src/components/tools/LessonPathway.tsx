@@ -25,9 +25,53 @@ interface Props {
   onNavigate: (tool: ToolId) => void;
 }
 
-function ActivityCard({ activity }: { activity: Activity }) {
+function ProficiencyRow({
+  label,
+  level,
+  bg,
+  border,
+  text,
+}: {
+  label: string;
+  level: { text: string; mlr?: { number: number; name: string } };
+  bg: string;
+  border: string;
+  text: string;
+}) {
+  return (
+    <div
+      className="rounded-lg border px-3 py-2"
+      style={{ backgroundColor: bg, borderColor: border, color: text }}
+    >
+      <div className="flex items-baseline justify-between gap-2 mb-1 flex-wrap">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.08em]">{label}</p>
+        {level.mlr && (
+          <span
+            className="text-[9px] font-semibold rounded-full px-1.5 py-0.5"
+            style={{ backgroundColor: '#EEEDFE', color: '#26215C' }}
+          >
+            MLR {level.mlr.number}
+          </span>
+        )}
+      </div>
+      <p className="text-[0.78rem] leading-snug">{level.text}</p>
+    </div>
+  );
+}
+
+function ActivityCard({
+  activity,
+  proficiency,
+}: {
+  activity: Activity;
+  proficiency: LessonData['adaptation_guardrails']['by_proficiency'];
+}) {
   const [open, setOpen] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
   const demand = DEMAND_STYLES[activity.language_demand];
+  const langFrictions = activity.friction_points.filter(
+    (fp) => fp.type === 'language' || fp.type === 'language-math',
+  );
 
   return (
     <div className="relative pl-12 pb-6">
@@ -77,16 +121,90 @@ function ActivityCard({ activity }: { activity: Activity }) {
             <span className="text-ink-faint text-[0.65rem]">·</span>
             <span className="text-[0.7rem] text-ink-faint">{activity.grouping}</span>
             <span
-              className="ml-auto rounded-full px-2 py-0.5 text-[10px] font-semibold"
+              role="button"
+              tabIndex={0}
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                setLangOpen((v) => !v);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  setLangOpen((v) => !v);
+                }
+              }}
+              className="ml-auto rounded-full px-2 py-0.5 text-[10px] font-semibold cursor-pointer hover:opacity-85 transition-opacity focus-visible:outline-none inline-flex items-center gap-1"
               style={{ backgroundColor: demand.bg, color: demand.text }}
+              aria-label={`${langOpen ? 'Hide' : 'Show'} language detail`}
+              aria-expanded={langOpen}
             >
               {demand.label} language
+              <span aria-hidden="true" className="text-[9px] opacity-60">
+                {langOpen ? '−' : '+'}
+              </span>
             </span>
             <span className="text-[11px] font-semibold text-ink-faint select-none">
               {open ? '−' : '+'}
             </span>
           </div>
         </button>
+
+        {/* Language demand accordion */}
+        <div
+          className="grid transition-all duration-200 ease-in-out"
+          style={{ gridTemplateRows: langOpen ? '1fr' : '0fr' }}
+        >
+          <div className="overflow-hidden">
+            <div className="border-t border-line-subtle px-5 py-4" style={{ backgroundColor: '#F1FAF7' }}>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.1em] mb-2" style={{ color: ACCENT }}>
+                Language demand · {demand.label.toLowerCase()}
+              </p>
+
+              {langFrictions.length > 0 && (
+                <div className="mb-4">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.08em] text-ink-faint mb-1.5">
+                    Where language gets in the way
+                  </p>
+                  <div className="space-y-2">
+                    {langFrictions.map((fp, i) => {
+                      const typeStyle = FRICTION_TYPE_LABEL[fp.type];
+                      return (
+                        <div key={i} className="flex items-start gap-2">
+                          <span className="mt-[3px] shrink-0 text-[#854F0B] text-[11px]">▲</span>
+                          <div className="flex-1 min-w-0">
+                            <p className="text-[0.8rem] text-ink-muted leading-relaxed">{fp.description}</p>
+                            <div className="mt-1.5 flex items-center gap-1.5 flex-wrap">
+                              <span
+                                className="rounded-full px-2 py-0.5 text-[10px] font-semibold"
+                                style={{ backgroundColor: typeStyle.bg, color: typeStyle.text }}
+                              >
+                                {typeStyle.label}
+                              </span>
+                              {fp.mlr && <MlrChip mlr={fp.mlr} />}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+              <div>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.08em] text-ink-faint mb-2">
+                  How to support across proficiency
+                </p>
+                <div className="space-y-2">
+                  <ProficiencyRow label="Entering" level={proficiency.entering} bg="#E1F5EE" border="#9FE1CB" text="#085041" />
+                  <ProficiencyRow label="Developing" level={proficiency.developing} bg="#EEEDFE" border="#AFA9EC" text="#26215C" />
+                  <ProficiencyRow label="Bridging" level={proficiency.bridging} bg="#F1EFE8" border="#D3D1C7" text="#444441" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div
           className="grid transition-all duration-200 ease-in-out"
@@ -236,7 +354,11 @@ export default function LessonPathway({ lesson, onNavigate }: Props) {
 
         <div className="space-y-0">
           {lesson.activities.map((activity) => (
-            <ActivityCard key={activity.id} activity={activity} />
+            <ActivityCard
+              key={activity.id}
+              activity={activity}
+              proficiency={lesson.adaptation_guardrails.by_proficiency}
+            />
           ))}
         </div>
       </div>

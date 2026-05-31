@@ -6,6 +6,16 @@ import { LessonData, TeacherMove, ScenarioType, DecisionScenario, MlrRef } from 
 import { MlrNumber, MLRS } from '@/lib/mlrs';
 import ToolInfo from '@/components/shared/ToolInfo';
 import MlrChip from '@/components/shared/MlrChip';
+import { activitySlot, activityHeading } from '@/lib/activityLabel';
+
+function activityLabel(activityId: string, activityTitle: string): string {
+  const slot = activitySlot(activityTitle);
+  const heading = activityHeading(activityTitle);
+  if (heading && heading !== slot) {
+    return `${activityId} ${slot} — ${heading}`;
+  }
+  return `${activityId} ${slot}`;
+}
 
 function whyHereFor(lesson: LessonData, activityId: string, mlr: MlrRef): string | undefined {
   const a = lesson.mlr_inference.activities.find((x) => x.activity_id === activityId);
@@ -333,7 +343,7 @@ export default function MoveWalkthrough({ lesson }: Props) {
             <section key={aid} className="mb-8">
               <div className="flex items-baseline justify-between mb-3 gap-3">
                 <h3 className="text-[0.95rem] font-semibold text-ink">
-                  Activity {aid} — {first.activity_title}
+                  {activityLabel(aid, first.activity_title)}
                 </h3>
                 {first.is_crux_activity && (
                   <span
@@ -461,7 +471,7 @@ export default function MoveWalkthrough({ lesson }: Props) {
                     )}
                   </div>
                   <p className="text-[1rem] text-ink font-semibold leading-snug mb-2">
-                    Activity {aid} — {items[0]?.activity_title}
+                    {activityLabel(aid, items[0]?.activity_title ?? '')}
                   </p>
                 </div>
 
@@ -560,7 +570,7 @@ export default function MoveWalkthrough({ lesson }: Props) {
                 .map((s) => (
                   <div key={s.index}>
                     <p className="text-[0.75rem] text-ink-faint mb-0.5">
-                      Activity {s.activity_id} · {s.label}
+                      {s.activity_id} {activitySlot(s.activity_title)} · {s.label}
                     </p>
                     <p className="text-[0.825rem] text-ink-muted italic">{reflections[s.index]}</p>
                   </div>
@@ -625,7 +635,7 @@ export default function MoveWalkthrough({ lesson }: Props) {
       </div>
 
       <p className="text-[0.75rem] text-ink-faint mb-3">
-        Activity {current.activity_id} — {current.activity_title}
+        {activityLabel(current.activity_id, current.activity_title)}
       </p>
 
       <div className="flex items-center gap-2 mb-3 flex-wrap">

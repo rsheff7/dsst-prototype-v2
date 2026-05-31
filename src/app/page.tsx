@@ -181,10 +181,17 @@ export default function HomePage() {
           </button>
           <span className="hidden sm:block text-ink-faint text-[0.7rem]">·</span>
           <a
+            href="/how-to"
+            className="text-[0.875rem] text-ink-muted hover:text-ink cursor-pointer transition-colors"
+          >
+            How to use Premo →
+          </a>
+          <span className="hidden sm:block text-ink-faint text-[0.7rem]">·</span>
+          <a
             href="/framework"
             className="text-[0.875rem] text-ink-muted hover:text-ink cursor-pointer transition-colors"
           >
-            Read the framework →
+            About Premo →
           </a>
         </div>
       </div>

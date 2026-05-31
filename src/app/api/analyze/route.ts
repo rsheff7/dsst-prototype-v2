@@ -117,6 +117,7 @@ function normalizeLesson(raw: Partial<LessonData> & Record<string, unknown>): Le
       grouping: a.grouping ?? '',
       language_demand: a.language_demand ?? 'low',
       function_summary: a.function_summary ?? '',
+      learning_target: a.learning_target ?? '',
       is_crux: a.is_crux ?? false,
       friction_points: (a.friction_points ?? []).map((fp) => ({
         description: fp.description ?? '',

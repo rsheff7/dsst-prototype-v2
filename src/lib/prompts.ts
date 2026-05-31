@@ -88,6 +88,7 @@ The JSON has this shape. mlr_inference MUST be the FIRST field. wristband MUST b
     "grouping": "Whole group | Small groups | Individual | Partners",
     "language_demand": "low | medium | high",
     "function_summary": "string — 2-3 sentences explaining what this activity is FOR in the lesson.",
+    "learning_target": "string — 1 sentence in 'Students ___' voice naming what students will be able to do by the end of THIS activity. Concrete and observable. Aligns to but is narrower than the lesson destination.",
     "is_crux": boolean,
     "friction_points": [{
       "description": "string — what the teacher will see",
