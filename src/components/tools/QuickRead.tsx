@@ -28,7 +28,7 @@ export default function QuickRead({ lesson }: Props) {
         style={{ borderLeftColor: QR_ACCENT, borderColor: '#E6E4DE' }}
       >
         <div className="px-6 py-5">
-          <div className="flex items-baseline justify-between gap-3 mb-2 flex-wrap">
+          <div className="qr-print-hide flex items-baseline justify-between gap-3 mb-2 flex-wrap">
             <p
               className="text-[10px] font-semibold uppercase tracking-[0.12em]"
               style={{ color: QR_ACCENT }}
@@ -54,9 +54,6 @@ export default function QuickRead({ lesson }: Props) {
             </p>
           )}
         </div>
-        <div className="hidden print:block bg-card border-t px-6 py-2" style={{ borderColor: '#E6E4DE' }}>
-          <p className="text-[10px] text-ink-faint">Print this and carry it into class.</p>
-        </div>
         <div className="print:hidden border-t bg-surface px-6 py-2 flex items-center justify-between" style={{ borderColor: '#E6E4DE' }}>
           <p className="text-[10px] text-ink-faint">The single sheet to carry into class.</p>
           <button
@@ -71,7 +68,7 @@ export default function QuickRead({ lesson }: Props) {
       </header>
 
       {/* Activity tiles — side by side on desktop, stacked on mobile */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
+      <div className="qr-activities grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
         {wb.activities.map((wba) => {
           const activity = activityById[wba.activity_id];
           if (!activity) return null;
@@ -117,7 +114,7 @@ export default function QuickRead({ lesson }: Props) {
                   return (
                     <div
                       key={i}
-                      className="rounded-lg border px-3 py-2.5"
+                      className="qr-tile rounded-lg border px-3 py-2.5"
                       style={{ borderColor: '#E6E4DE', backgroundColor: '#FFFFFF' }}
                     >
                       <div className="flex items-center gap-1.5 flex-wrap mb-1.5">
@@ -143,7 +140,7 @@ export default function QuickRead({ lesson }: Props) {
       </div>
 
       {/* Signals + frictions strips */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
+      <div className="qr-strips grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
         <div className="rounded-xl border bg-card overflow-hidden" style={{ borderColor: '#E6E4DE' }}>
           <div className="px-4 py-2 border-b" style={{ backgroundColor: '#EAF3DE', borderColor: '#C0DD97' }}>
             <p className="text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: '#27500A' }}>
@@ -178,7 +175,7 @@ export default function QuickRead({ lesson }: Props) {
 
       {/* MLR legend */}
       {wb.mlr_legend.length > 0 && (
-        <div className="rounded-xl border bg-card overflow-hidden" style={{ borderColor: '#E6E4DE' }}>
+        <div className="qr-legend rounded-xl border bg-card overflow-hidden" style={{ borderColor: '#E6E4DE' }}>
           <div className="px-4 py-2 border-b" style={{ backgroundColor: '#EEEDFE', borderColor: '#AFA9EC' }}>
             <p className="text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: '#26215C' }}>
               The routines this lesson runs on
@@ -195,27 +192,175 @@ export default function QuickRead({ lesson }: Props) {
         </div>
       )}
 
-      {/* Print stylesheet */}
+      {/* Print stylesheet — optimized to fit one letter-size page */}
       <style jsx global>{`
         @media print {
+          @page {
+            size: letter;
+            margin: 0.35in;
+          }
           html, body {
             background: white !important;
+            color: black !important;
+            font-size: 9pt !important;
           }
           nav, .print\\:hidden, [class*="fixed"], [class*="sticky"] {
             display: none !important;
           }
           .quickread-root {
-            padding-top: 0 !important;
-            padding-bottom: 0 !important;
+            padding: 0 !important;
           }
           main {
             padding: 0 !important;
             max-width: 100% !important;
           }
-          .quickread-root section, .quickread-root header, .quickread-root .rounded-xl, .quickread-root .rounded-2xl {
+          .quickread-root section,
+          .quickread-root header,
+          .quickread-root .rounded-xl,
+          .quickread-root .rounded-2xl,
+          .quickread-root .rounded-lg {
             break-inside: avoid;
             page-break-inside: avoid;
             box-shadow: none !important;
+            border-radius: 4px !important;
+          }
+
+          /* Tighten the outer header tile */
+          .quickread-root header {
+            margin-bottom: 8pt !important;
+            border-left-width: 2px !important;
+          }
+          .quickread-root header > div {
+            padding: 6pt 10pt !important;
+          }
+          .quickread-root header h1 {
+            font-size: 13pt !important;
+            line-height: 1.2 !important;
+            margin-bottom: 2pt !important;
+          }
+          .quickread-root header p {
+            font-size: 9pt !important;
+            line-height: 1.3 !important;
+            margin: 0 !important;
+          }
+          .qr-print-hide {
+            display: none !important;
+          }
+
+          /* Force activity tiles to a 3-column print grid */
+          .qr-activities {
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 6pt !important;
+            margin-bottom: 8pt !important;
+          }
+          .qr-activities > section {
+            border-width: 1px !important;
+          }
+          .qr-activities > section > div:first-child {
+            padding: 4pt 6pt !important;
+          }
+          .qr-activities > section > div:first-child p {
+            font-size: 8pt !important;
+            line-height: 1.2 !important;
+            margin: 0 !important;
+          }
+          .qr-activities > section > div:first-child span {
+            font-size: 7pt !important;
+            padding: 1pt 4pt !important;
+          }
+          .qr-activities > section h2 {
+            font-size: 9pt !important;
+            line-height: 1.2 !important;
+            padding: 3pt 6pt 1pt !important;
+            margin: 0 !important;
+          }
+          .qr-activities > section > div:last-child {
+            padding: 0 6pt 6pt !important;
+          }
+          .qr-activities .qr-tile {
+            padding: 4pt 5pt !important;
+            margin-top: 4pt !important;
+            border-width: 1px !important;
+          }
+          .qr-activities .qr-tile > div {
+            margin-bottom: 2pt !important;
+            gap: 3pt !important;
+          }
+          .qr-activities .qr-tile p {
+            font-size: 8pt !important;
+            line-height: 1.25 !important;
+            margin: 0 !important;
+          }
+          .qr-activities .qr-tile p + p {
+            margin-top: 2pt !important;
+          }
+          .qr-activities .qr-tile span {
+            font-size: 7pt !important;
+            padding: 1pt 4pt !important;
+          }
+
+          /* Signals + frictions strips, compact */
+          .qr-strips {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 6pt !important;
+            margin-bottom: 8pt !important;
+          }
+          .qr-strips > div > div:first-child {
+            padding: 3pt 8pt !important;
+          }
+          .qr-strips > div > div:first-child p {
+            font-size: 7pt !important;
+            margin: 0 !important;
+          }
+          .qr-strips ul {
+            padding: 4pt 8pt !important;
+          }
+          .qr-strips ul li {
+            font-size: 8pt !important;
+            line-height: 1.3 !important;
+            margin-bottom: 2pt !important;
+          }
+
+          /* MLR legend — single row */
+          .qr-legend > div:first-child {
+            padding: 3pt 8pt !important;
+          }
+          .qr-legend > div:first-child p {
+            font-size: 7pt !important;
+            margin: 0 !important;
+          }
+          .qr-legend ul {
+            display: flex !important;
+            flex-direction: row !important;
+            divide: none !important;
+            border-top: none !important;
+          }
+          .qr-legend ul li {
+            flex: 1 !important;
+            padding: 4pt 8pt !important;
+            border-right: 1px solid #E6E4DE !important;
+            font-size: 8pt !important;
+            line-height: 1.3 !important;
+            align-items: flex-start !important;
+            flex-direction: column !important;
+            gap: 2pt !important;
+          }
+          .qr-legend ul li:last-child {
+            border-right: none !important;
+          }
+
+          /* Chip i indicator off */
+          .qr-activities button[aria-label*="About MLR"] span:last-child,
+          .qr-strips button[aria-label*="About MLR"] span:last-child,
+          .qr-legend button[aria-label*="About MLR"] span:last-child {
+            display: none !important;
+          }
+          button[aria-label*="About MLR"] {
+            padding: 1pt 4pt !important;
+            font-size: 7pt !important;
+            cursor: default !important;
           }
         }
       `}</style>
