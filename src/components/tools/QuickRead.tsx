@@ -47,11 +47,22 @@ export default function QuickRead({ lesson }: Props) {
           </h1>
           {wb.arc_one_line && (
             <p
-              className="text-[1rem] text-ink leading-[1.5]"
+              className="text-[1rem] text-ink leading-[1.5] mb-3"
               style={{ fontFamily: 'var(--font-dm-serif), serif' }}
             >
               {wb.arc_one_line}
             </p>
+          )}
+          {lesson.destination && (
+            <div className="qr-destination mt-2 pt-3 border-t" style={{ borderColor: '#E6E4DE' }}>
+              <p
+                className="text-[10px] font-semibold uppercase tracking-[0.1em] mb-1"
+                style={{ color: QR_ACCENT }}
+              >
+                By the end, students can
+              </p>
+              <p className="text-[0.875rem] text-ink leading-[1.55]">{lesson.destination}</p>
+            </div>
           )}
         </div>
         <div className="print:hidden border-t bg-surface px-6 py-2 flex items-center justify-between" style={{ borderColor: '#E6E4DE' }}>
@@ -67,54 +78,57 @@ export default function QuickRead({ lesson }: Props) {
         </div>
       </header>
 
-      {/* Activity tiles — side by side on desktop, stacked on mobile */}
-      <div className="qr-activities grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
+      {/* Activity rows — each activity is a horizontal row */}
+      <div className="qr-activities flex flex-col gap-3 mb-5">
         {wb.activities.map((wba) => {
           const activity = activityById[wba.activity_id];
           if (!activity) return null;
           return (
             <section
               key={wba.activity_id}
-              className="rounded-2xl border bg-card shadow-sm overflow-hidden flex flex-col"
+              className="qr-activity rounded-2xl border bg-card shadow-sm overflow-hidden flex flex-col md:flex-row"
               style={{ borderColor: activity.is_crux ? QR_ACCENT : '#E6E4DE', borderWidth: activity.is_crux ? 2 : 1 }}
             >
+              {/* Left rail: identity of the activity */}
               <div
-                className="px-4 py-3 border-b flex items-baseline justify-between gap-2"
+                className="qr-activity-rail shrink-0 md:w-48 px-4 py-3 border-b md:border-b-0 md:border-r flex md:flex-col items-baseline md:items-start justify-between md:justify-start gap-2"
                 style={{ borderColor: '#E6E4DE', backgroundColor: '#FAFAF7' }}
               >
-                <div className="min-w-0">
-                  <p
-                    className="text-[10px] font-semibold uppercase tracking-[0.1em]"
-                    style={{ color: QR_ACCENT }}
+                <div className="min-w-0 flex-1 md:flex-none">
+                  <div className="flex items-center gap-2 mb-1 flex-wrap">
+                    <p
+                      className="text-[10px] font-semibold uppercase tracking-[0.1em]"
+                      style={{ color: QR_ACCENT }}
+                    >
+                      {activitySlot(activity.title)}
+                    </p>
+                    {activity.is_crux && (
+                      <span
+                        className="text-[9px] font-bold uppercase tracking-[0.1em] text-white px-2 py-0.5 rounded-full"
+                        style={{ backgroundColor: QR_ACCENT }}
+                      >
+                        Crux
+                      </span>
+                    )}
+                  </div>
+                  <h2
+                    className="text-[0.9rem] leading-tight text-ink mb-1"
+                    style={{ fontFamily: 'var(--font-dm-serif), serif' }}
                   >
-                    {activitySlot(activity.title)}
-                  </p>
+                    {activityHeading(activity.title)}
+                  </h2>
                   <p className="text-[11px] text-ink-faint">{activity.duration}</p>
                 </div>
-                {activity.is_crux && (
-                  <span
-                    className="text-[9px] font-bold uppercase tracking-[0.1em] text-white px-2 py-0.5 rounded-full"
-                    style={{ backgroundColor: QR_ACCENT }}
-                  >
-                    Crux
-                  </span>
-                )}
               </div>
 
-              <h2
-                className="px-4 pt-3 pb-2 text-[0.95rem] leading-tight text-ink"
-                style={{ fontFamily: 'var(--font-dm-serif), serif' }}
-              >
-                {activityHeading(activity.title)}
-              </h2>
-
-              <div className="px-4 pb-4 space-y-2.5 flex-1">
+              {/* Moment tiles flow horizontally to the right */}
+              <div className="qr-activity-tiles flex-1 px-3 py-3 flex flex-col md:flex-row gap-2">
                 {wba.tiles.map((tile, i) => {
                   const pill = FRICTION_PILL[tile.friction_type];
                   return (
                     <div
                       key={i}
-                      className="qr-tile rounded-lg border px-3 py-2.5"
+                      className="qr-tile flex-1 rounded-lg border px-3 py-2.5"
                       style={{ borderColor: '#E6E4DE', backgroundColor: '#FFFFFF' }}
                     >
                       <div className="flex items-center gap-1.5 flex-wrap mb-1.5">
@@ -227,76 +241,94 @@ export default function QuickRead({ lesson }: Props) {
 
           /* Tighten the outer header tile */
           .quickread-root header {
-            margin-bottom: 8pt !important;
+            margin-bottom: 6pt !important;
             border-left-width: 2px !important;
           }
           .quickread-root header > div {
-            padding: 6pt 10pt !important;
+            padding: 5pt 10pt !important;
           }
           .quickread-root header h1 {
-            font-size: 13pt !important;
+            font-size: 12pt !important;
             line-height: 1.2 !important;
             margin-bottom: 2pt !important;
           }
           .quickread-root header p {
-            font-size: 9pt !important;
+            font-size: 8.5pt !important;
             line-height: 1.3 !important;
             margin: 0 !important;
+          }
+          .quickread-root .qr-destination {
+            margin-top: 3pt !important;
+            padding-top: 3pt !important;
+          }
+          .quickread-root .qr-destination p:first-child {
+            font-size: 7pt !important;
+            margin-bottom: 1pt !important;
+          }
+          .quickread-root .qr-destination p:last-child {
+            font-size: 8pt !important;
           }
           .qr-print-hide {
             display: none !important;
           }
 
-          /* Force activity tiles to a 3-column print grid */
+          /* Activity rows — flow horizontally on print */
           .qr-activities {
-            display: grid !important;
-            grid-template-columns: repeat(3, 1fr) !important;
-            gap: 6pt !important;
-            margin-bottom: 8pt !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 5pt !important;
+            margin-bottom: 6pt !important;
           }
-          .qr-activities > section {
+          .qr-activity {
+            flex-direction: row !important;
             border-width: 1px !important;
           }
-          .qr-activities > section > div:first-child {
-            padding: 4pt 6pt !important;
+          .qr-activity-rail {
+            width: 1.5in !important;
+            padding: 5pt 8pt !important;
+            border-bottom: none !important;
+            border-right: 1px solid #E6E4DE !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
           }
-          .qr-activities > section > div:first-child p {
-            font-size: 8pt !important;
+          .qr-activity-rail p {
+            font-size: 7.5pt !important;
             line-height: 1.2 !important;
             margin: 0 !important;
           }
-          .qr-activities > section > div:first-child span {
-            font-size: 7pt !important;
-            padding: 1pt 4pt !important;
-          }
-          .qr-activities > section h2 {
+          .qr-activity-rail h2 {
             font-size: 9pt !important;
             line-height: 1.2 !important;
-            padding: 3pt 6pt 1pt !important;
-            margin: 0 !important;
+            margin: 1pt 0 1pt !important;
           }
-          .qr-activities > section > div:last-child {
-            padding: 0 6pt 6pt !important;
+          .qr-activity-rail span {
+            font-size: 6.5pt !important;
+            padding: 1pt 4pt !important;
           }
-          .qr-activities .qr-tile {
+          .qr-activity-tiles {
             padding: 4pt 5pt !important;
-            margin-top: 4pt !important;
-            border-width: 1px !important;
+            gap: 4pt !important;
+            flex-direction: row !important;
           }
-          .qr-activities .qr-tile > div {
+          .qr-tile {
+            padding: 4pt 5pt !important;
+            border-width: 1px !important;
+            flex: 1 1 0 !important;
+          }
+          .qr-tile > div {
             margin-bottom: 2pt !important;
             gap: 3pt !important;
           }
-          .qr-activities .qr-tile p {
-            font-size: 8pt !important;
+          .qr-tile p {
+            font-size: 7.5pt !important;
             line-height: 1.25 !important;
             margin: 0 !important;
           }
-          .qr-activities .qr-tile p + p {
+          .qr-tile p + p {
             margin-top: 2pt !important;
           }
-          .qr-activities .qr-tile span {
-            font-size: 7pt !important;
+          .qr-tile span {
+            font-size: 6.5pt !important;
             padding: 1pt 4pt !important;
           }
 
