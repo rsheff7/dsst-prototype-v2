@@ -160,6 +160,10 @@ export interface WristbandTile {
   friction_type: 'math' | 'language' | 'language-math';
   mlr?: MlrRef;
   move_short: string;
+  is_crux_moment?: boolean;
+  has_proficiency_variants?: boolean;
+  glyph_observation?: string;
+  glyph_move?: string;
 }
 
 export interface WristbandActivity {
@@ -174,6 +178,7 @@ export interface WristbandLegendEntry {
 
 export interface Wristband {
   arc_one_line: string;
+  preflight: string[];
   top_signals: string[];
   top_frictions: string[];
   activities: WristbandActivity[];

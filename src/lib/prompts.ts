@@ -154,6 +154,7 @@ The JSON has this shape. mlr_inference MUST be the FIRST field. wristband MUST b
   },
   "wristband": {
     "arc_one_line": "string — the lesson's arc compressed to 8-12 words. Strict.",
+    "preflight": ["string — 3-4 pre-class cues a teacher should set up BEFORE the lesson begins (pre-pair students, identify who to call on first, prep displays). 8-12 words each. Pulled from adapt do_not_remove and by_proficiency where relevant."],
     "top_signals": ["string — top 3 signals of strong thinking across the lesson, ~7 words each, strict"],
     "top_frictions": ["string — top 3 frictions across the lesson, ~7 words each, strict"],
     "activities": [{
@@ -162,7 +163,11 @@ The JSON has this shape. mlr_inference MUST be the FIRST field. wristband MUST b
         "observation_short": "string — 5-8 words: what the teacher sees",
         "friction_type": "math | language | language-math",
         "mlr": { "number", "name" } or omit,
-        "move_short": "string — 8-14 words: what to do"
+        "move_short": "string — 8-14 words: what to do",
+        "is_crux_moment": "boolean — true for ONE tile across the entire lesson, on the crux activity, marking the moment that — if missed — the lesson does not land. Usually a productive-insight moment, not an error. Exactly one tile should have this true.",
+        "has_proficiency_variants": "boolean — true when this moment's response actually differs by Entering/Developing/Bridging proficiency (signals the teacher to consult Moves for the side-by-side). Set true for MLL frictions where proficiency_moves are present in the corresponding decision_guide scenario.",
+        "glyph_observation": "string — 2-4 word ALL-CAPS compression of the observation for the in-class view. Verb-noun or noun-only. Example: 'NUMBERS FLIPPED' or 'MLL FROZEN AT FRAME'.",
+        "glyph_move": "string — 3-6 word verb-first cue for the in-class view. Use middle dots (·) to separate steps. Example: 'READ ALOUD · WHICH FIRST?' or 'POINT ITEM · POINT BLANK'."
       }]
     }],
     "mlr_legend": [{

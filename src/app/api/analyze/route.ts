@@ -194,6 +194,7 @@ function normalizeLesson(raw: Partial<LessonData> & Record<string, unknown>): Le
     },
     wristband: {
       arc_one_line: raw.wristband?.arc_one_line ?? '',
+      preflight: raw.wristband?.preflight ?? [],
       top_signals: raw.wristband?.top_signals ?? [],
       top_frictions: raw.wristband?.top_frictions ?? [],
       activities: (raw.wristband?.activities ?? []).map((a) => ({
@@ -202,6 +203,10 @@ function normalizeLesson(raw: Partial<LessonData> & Record<string, unknown>): Le
           observation_short: t.observation_short ?? '',
           friction_type: t.friction_type ?? 'math',
           move_short: t.move_short ?? '',
+          ...(t.is_crux_moment ? { is_crux_moment: true } : {}),
+          ...(t.has_proficiency_variants ? { has_proficiency_variants: true } : {}),
+          ...(t.glyph_observation ? { glyph_observation: t.glyph_observation } : {}),
+          ...(t.glyph_move ? { glyph_move: t.glyph_move } : {}),
           ...(normalizeMlr((t as { mlr?: unknown }).mlr)
             ? { mlr: normalizeMlr((t as { mlr?: unknown }).mlr)! }
             : {}),
