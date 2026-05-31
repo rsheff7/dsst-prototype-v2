@@ -209,53 +209,57 @@ function PlanActivityRow({
   if (!activity) return null;
   return (
     <section
-      className={`qr-activity rounded-xl border bg-card shadow-sm overflow-hidden flex flex-col md:flex-row ${activity.is_crux ? 'border-l-[3px]' : 'border-line'}`}
+      className={`qr-activity rounded-xl border bg-card shadow-sm overflow-hidden ${activity.is_crux ? 'border-l-[3px]' : 'border-line'}`}
       style={activity.is_crux ? { borderLeftColor: QR_ACCENT } : {}}
     >
+      {/* Identity bar — one horizontal line */}
       <div
-        className="qr-activity-rail shrink-0 md:w-52 px-4 py-3 border-b md:border-b-0 md:border-r"
-        style={{ borderColor: '#E6E4DE', backgroundColor: '#FAFAF7' }}
+        className="qr-activity-header px-4 py-3 border-b border-line-subtle bg-surface flex items-baseline justify-between gap-3 flex-wrap"
       >
-        <div className="min-w-0">
-          <div className="flex items-center gap-2 mb-1 flex-wrap">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: QR_ACCENT }}>
-              {activityShortLabel(activity)}
-            </p>
-            {activity.is_crux && (
-              <span
-                className="text-[9px] font-bold uppercase tracking-[0.1em] text-white px-2 py-0.5 rounded-full"
-                style={{ backgroundColor: QR_ACCENT }}
-              >
-                Crux
-              </span>
-            )}
-          </div>
+        <div className="min-w-0 flex items-baseline gap-2.5 flex-wrap">
+          <span
+            className="text-[10px] font-semibold uppercase tracking-[0.12em] shrink-0"
+            style={{ color: QR_ACCENT }}
+          >
+            {activityShortLabel(activity)}
+          </span>
+          <span className="text-ink-faint text-[11px] shrink-0">·</span>
           <h2
-            className="text-[0.9rem] leading-tight text-ink mb-1"
+            className="text-[1rem] text-ink leading-tight"
             style={{ fontFamily: 'var(--font-dm-serif), serif' }}
           >
             {activityHeading(activity.title)}
           </h2>
-          <p className="text-[11px] text-ink-faint">{formatWindow(window, activity.duration)}</p>
+          <span className="text-ink-faint text-[11px] shrink-0">·</span>
+          <span className="text-[11px] text-ink-faint shrink-0">
+            {formatWindow(window, activity.duration)}
+          </span>
         </div>
+        {activity.is_crux && (
+          <span
+            className="shrink-0 text-[9px] font-bold uppercase tracking-[0.1em] text-white px-2 py-0.5 rounded-full"
+            style={{ backgroundColor: QR_ACCENT }}
+          >
+            Crux
+          </span>
+        )}
       </div>
 
-      <div className="qr-activity-tiles flex-1 flex flex-col">
-        {activity.learning_target && (
-          <div
-            className="qr-activity-target border-b border-line-subtle px-4 py-2.5 bg-surface"
-          >
-            <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-1">
-              Learning target
-            </p>
-            <p className="text-[0.825rem] text-ink-muted leading-[1.65]">{activity.learning_target}</p>
-          </div>
-        )}
-        <div className="qr-activity-tilegrid px-3 py-3 flex flex-row gap-2 flex-1 overflow-x-auto">
-          {wba.tiles.map((tile, i) => (
-            <PlanTile key={i} tile={tile} />
-          ))}
+      {/* Learning target band */}
+      {activity.learning_target && (
+        <div className="qr-activity-target border-b border-line-subtle px-4 py-2.5">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-1">
+            Learning target
+          </p>
+          <p className="text-[0.825rem] text-ink-muted leading-[1.65]">{activity.learning_target}</p>
         </div>
+      )}
+
+      {/* Tiles flow horizontally, full width */}
+      <div className="qr-activity-tilegrid px-3 py-3 flex flex-row gap-2 overflow-x-auto">
+        {wba.tiles.map((tile, i) => (
+          <PlanTile key={i} tile={tile} />
+        ))}
       </div>
     </section>
   );
@@ -509,13 +513,13 @@ const planPrintStyles = `
     .qr-preflight ul { padding: 4pt 8pt !important; gap: 1pt 8pt !important; }
     .qr-preflight ul li { font-size: 7.5pt !important; line-height: 1.3 !important; }
     .qr-activities { display: flex !important; flex-direction: column !important; gap: 5pt !important; margin-bottom: 6pt !important; }
-    .qr-activity { flex-direction: row !important; border-width: 1px !important; }
-    .qr-activity-rail { width: 1.5in !important; padding: 5pt 8pt !important; border-bottom: none !important; border-right: 1px solid #E6E4DE !important; flex-direction: column !important; align-items: flex-start !important; }
-    .qr-activity-rail p { font-size: 7.5pt !important; line-height: 1.2 !important; margin: 0 !important; }
-    .qr-activity-rail h2 { font-size: 9pt !important; line-height: 1.2 !important; margin: 1pt 0 1pt !important; }
-    .qr-activity-rail span { font-size: 6.5pt !important; padding: 1pt 4pt !important; }
-    .qr-activity-tiles { flex-direction: column !important; padding: 0 !important; gap: 0 !important; }
-    .qr-activity-target { padding: 3pt 8pt !important; border-bottom: 1px solid #E6E4DE !important; background: #F4F9F7 !important; }
+    .qr-activity { border-width: 1px !important; }
+    .qr-activity-header { padding: 3pt 8pt !important; gap: 5pt !important; flex-wrap: nowrap !important; }
+    .qr-activity-header > div { gap: 5pt !important; }
+    .qr-activity-header span { font-size: 7pt !important; }
+    .qr-activity-header h2 { font-size: 9pt !important; line-height: 1.2 !important; margin: 0 !important; }
+    .qr-activity-header > span { font-size: 6.5pt !important; padding: 1pt 4pt !important; }
+    .qr-activity-target { padding: 3pt 8pt !important; border-bottom: 1px solid #E6E4DE !important; }
     .qr-activity-target p:first-child { font-size: 6.5pt !important; line-height: 1.1 !important; margin: 0 !important; }
     .qr-activity-target p:last-child { font-size: 7.5pt !important; line-height: 1.25 !important; margin: 1pt 0 0 !important; }
     .qr-activity-tilegrid { padding: 4pt 5pt !important; gap: 4pt !important; flex-direction: row !important; }
