@@ -73,6 +73,21 @@ function ActivityCard({
     (fp) => fp.type === 'language' || fp.type === 'language-math',
   );
 
+  const toggleMain = () => {
+    setOpen((o) => {
+      const next = !o;
+      if (next) setLangOpen(false);
+      return next;
+    });
+  };
+  const toggleLang = () => {
+    setLangOpen((v) => {
+      const next = !v;
+      if (next) setOpen(false);
+      return next;
+    });
+  };
+
   return (
     <div className="relative pl-12 pb-6">
       <div
@@ -87,7 +102,7 @@ function ActivityCard({
         style={activity.is_crux ? { borderLeftColor: ACCENT } : {}}
       >
         <button
-          onClick={() => setOpen((o) => !o)}
+          onClick={toggleMain}
           className="w-full text-left px-5 pt-5 pb-3 focus-visible:outline-none cursor-pointer"
         >
           <div className="flex items-center justify-between gap-3 mb-1.5">
@@ -126,24 +141,21 @@ function ActivityCard({
               onClick={(e) => {
                 e.stopPropagation();
                 e.preventDefault();
-                setLangOpen((v) => !v);
+                toggleLang();
               }}
               onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                   e.stopPropagation();
                   e.preventDefault();
-                  setLangOpen((v) => !v);
+                  toggleLang();
                 }
               }}
-              className="ml-auto rounded-full px-2 py-0.5 text-[10px] font-semibold cursor-pointer hover:opacity-85 transition-opacity focus-visible:outline-none inline-flex items-center gap-1"
+              className="ml-auto rounded-full px-2 py-0.5 text-[10px] font-semibold cursor-pointer hover:opacity-85 transition-opacity focus-visible:outline-none"
               style={{ backgroundColor: demand.bg, color: demand.text }}
               aria-label={`${langOpen ? 'Hide' : 'Show'} language detail`}
               aria-expanded={langOpen}
             >
               {demand.label} language
-              <span aria-hidden="true" className="text-[9px] opacity-60">
-                {langOpen ? '−' : '+'}
-              </span>
             </span>
             <span className="text-[11px] font-semibold text-ink-faint select-none">
               {open ? '−' : '+'}
@@ -157,50 +169,43 @@ function ActivityCard({
           style={{ gridTemplateRows: langOpen ? '1fr' : '0fr' }}
         >
           <div className="overflow-hidden">
-            <div className="border-t border-line-subtle px-5 py-4" style={{ backgroundColor: '#F1FAF7' }}>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.1em] mb-2" style={{ color: ACCENT }}>
-                Language demand · {demand.label.toLowerCase()}
-              </p>
-
-              {langFrictions.length > 0 && (
-                <div className="mb-4">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.08em] text-ink-faint mb-1.5">
-                    Where language gets in the way
-                  </p>
-                  <div className="space-y-2">
-                    {langFrictions.map((fp, i) => {
-                      const typeStyle = FRICTION_TYPE_LABEL[fp.type];
-                      return (
-                        <div key={i} className="flex items-start gap-2">
-                          <span className="mt-[3px] shrink-0 text-[#854F0B] text-[11px]">▲</span>
-                          <div className="flex-1 min-w-0">
-                            <p className="text-[0.8rem] text-ink-muted leading-relaxed">{fp.description}</p>
-                            <div className="mt-1.5 flex items-center gap-1.5 flex-wrap">
-                              <span
-                                className="rounded-full px-2 py-0.5 text-[10px] font-semibold"
-                                style={{ backgroundColor: typeStyle.bg, color: typeStyle.text }}
-                              >
-                                {typeStyle.label}
-                              </span>
-                              {fp.mlr && <MlrChip mlr={fp.mlr} />}
-                            </div>
+            {langFrictions.length > 0 && (
+              <div className="border-t border-line-subtle px-5 py-4">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-2.5">
+                  Where language gets in the way
+                </p>
+                <div className="space-y-2.5">
+                  {langFrictions.map((fp, i) => {
+                    const typeStyle = FRICTION_TYPE_LABEL[fp.type];
+                    return (
+                      <div key={i} className="flex items-start gap-2.5">
+                        <span className="mt-[3px] shrink-0 text-[#854F0B] text-[12px]">▲</span>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-[0.8rem] text-ink-muted leading-relaxed">{fp.description}</p>
+                          <div className="mt-1.5 flex items-center gap-1.5 flex-wrap">
+                            <span
+                              className="inline-block rounded-full px-2 py-0.5 text-[10px] font-semibold"
+                              style={{ backgroundColor: typeStyle.bg, color: typeStyle.text }}
+                            >
+                              {typeStyle.label}
+                            </span>
+                            {fp.mlr && <MlrChip mlr={fp.mlr} />}
                           </div>
                         </div>
-                      );
-                    })}
-                  </div>
+                      </div>
+                    );
+                  })}
                 </div>
-              )}
-
-              <div>
-                <p className="text-[10px] font-semibold uppercase tracking-[0.08em] text-ink-faint mb-2">
-                  How to support across proficiency
-                </p>
-                <div className="space-y-2">
-                  <ProficiencyRow label="Entering" level={proficiency.entering} bg="#E1F5EE" border="#9FE1CB" text="#085041" />
-                  <ProficiencyRow label="Developing" level={proficiency.developing} bg="#EEEDFE" border="#AFA9EC" text="#26215C" />
-                  <ProficiencyRow label="Bridging" level={proficiency.bridging} bg="#F1EFE8" border="#D3D1C7" text="#444441" />
-                </div>
+              </div>
+            )}
+            <div className="border-t border-line-subtle px-5 py-4">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-2.5">
+                How to support across proficiency
+              </p>
+              <div className="space-y-2">
+                <ProficiencyRow label="Entering" level={proficiency.entering} bg="#E1F5EE" border="#9FE1CB" text="#085041" />
+                <ProficiencyRow label="Developing" level={proficiency.developing} bg="#EEEDFE" border="#AFA9EC" text="#26215C" />
+                <ProficiencyRow label="Bridging" level={proficiency.bridging} bg="#F1EFE8" border="#D3D1C7" text="#444441" />
               </div>
             </div>
           </div>

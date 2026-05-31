@@ -256,7 +256,7 @@ function PlanActivityRow({
             <p className="text-[0.78rem] text-ink leading-snug">{activity.learning_target}</p>
           </div>
         )}
-        <div className="qr-activity-tilegrid px-3 py-3 flex flex-col md:flex-row gap-2 flex-1">
+        <div className="qr-activity-tilegrid px-3 py-3 flex flex-row gap-2 flex-1 overflow-x-auto">
           {wba.tiles.map((tile, i) => (
             <PlanTile key={i} tile={tile} />
           ))}
@@ -271,7 +271,7 @@ function PlanTile({ tile }: { tile: WristbandTile }) {
   const isCrux = tile.is_crux_moment;
   return (
     <div
-      className="qr-tile flex-1 rounded-lg border px-3 py-2.5 relative"
+      className="qr-tile flex-1 min-w-[180px] rounded-lg border px-3 py-2.5 relative"
       style={{
         borderColor: isCrux ? CRUX_ACCENT : '#E6E4DE',
         borderWidth: isCrux ? 2 : 1,
@@ -288,8 +288,8 @@ function PlanTile({ tile }: { tile: WristbandTile }) {
       <p className="text-[8px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-0.5">Notice</p>
       <p className="text-[0.78rem] font-medium text-ink leading-snug mb-1.5">{tile.observation_short}</p>
 
-      {/* SORT */}
-      <p className="text-[8px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-1">Sort</p>
+      {/* CLARIFY */}
+      <p className="text-[8px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-1">Clarify</p>
       <div className="flex items-center gap-1.5 flex-wrap mb-1.5">
         <span
           className="rounded-full px-1.5 py-0.5 text-[9px] font-semibold"
