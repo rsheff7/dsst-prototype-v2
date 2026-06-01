@@ -260,15 +260,17 @@ function PlanTile({ tile }: { tile: WristbandTile }) {
   const isCrux = tile.is_crux_moment;
   return (
     <div
-      className={`qr-tile flex-1 min-w-[200px] rounded-xl border bg-card shadow-sm relative overflow-hidden ${isCrux ? 'border-l-[3px]' : 'border-line'}`}
+      className={`qr-tile flex-1 min-w-[200px] rounded-xl border bg-card shadow-sm overflow-hidden ${isCrux ? 'border-l-[3px]' : 'border-line'}`}
       style={isCrux ? { borderLeftColor: CRUX_ACCENT, backgroundColor: '#FFF8F4' } : {}}
     >
       {isCrux && (
         <div
-          className="absolute -top-2.5 left-3 px-2 py-0.5 rounded-full text-[8px] font-bold uppercase tracking-[0.1em] text-white"
+          className="qr-tile-crux-header px-4 py-2 border-b border-line-subtle"
           style={{ backgroundColor: CRUX_ACCENT }}
         >
-          Crux moment
+          <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-white">
+            Crux moment
+          </p>
         </div>
       )}
 
@@ -542,7 +544,8 @@ const planPrintStyles = `
     .qr-tile-section p { font-size: 7.5pt !important; line-height: 1.3 !important; margin: 0 !important; }
     .qr-tile-section div { gap: 3pt !important; }
     .qr-tile-section span { font-size: 6.5pt !important; padding: 1pt 4pt !important; }
-    .qr-tile > div[class*="absolute"] { font-size: 6pt !important; padding: 1pt 4pt !important; top: -6pt !important; }
+    .qr-tile-crux-header { padding: 2pt 6pt !important; }
+    .qr-tile-crux-header p { font-size: 7pt !important; line-height: 1.2 !important; margin: 0 !important; }
     .qr-tile .qr-tile-avoid { font-size: 6.5pt !important; line-height: 1.25 !important; margin-top: 2pt !important; }
     .qr-legend > div:first-child { padding: 3pt 8pt !important; }
     .qr-legend > div:first-child p { font-size: 7pt !important; margin: 0 !important; }
