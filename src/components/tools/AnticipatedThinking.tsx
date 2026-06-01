@@ -14,15 +14,15 @@ function whyHereFor(lesson: LessonData, activityId: string, mlr: MlrRef): string
 const PATTERN_STYLES: Record<ThinkingPattern['type'], { bg: string; border: string; text: string; badge: string; badgeBg: string; badgeText: string }> = {
   'on-track': {
     bg: '#EEEDFE', border: '#AFA9EC', text: '#26215C',
-    badge: 'On track', badgeBg: '#534AB7', badgeText: '#fff',
+    badge: 'Build on this', badgeBg: '#534AB7', badgeText: '#fff',
   },
   'misconception': {
     bg: '#FAECE7', border: '#F5C4B3', text: '#712B13',
-    badge: 'Watch for this', badgeBg: '#712B13', badgeText: '#fff',
+    badge: 'Common error', badgeBg: '#712B13', badgeText: '#fff',
   },
   'partial': {
     bg: '#F1EFE8', border: '#D3D1C7', text: '#444441',
-    badge: 'Partial', badgeBg: '#A8A59E', badgeText: '#fff',
+    badge: 'Almost there', badgeBg: '#A8A59E', badgeText: '#fff',
   },
   'extension': {
     bg: '#EAF3DE', border: '#C0DD97', text: '#27500A',
@@ -30,14 +30,14 @@ const PATTERN_STYLES: Record<ThinkingPattern['type'], { bg: string; border: stri
   },
   'language-math': {
     bg: '#EEEDFE', border: '#AFA9EC', text: '#26215C',
-    badge: 'Language + math', badgeBg: '#534AB7', badgeText: '#fff',
+    badge: 'Language barrier', badgeBg: '#534AB7', badgeText: '#fff',
   },
 };
 
 const FREQUENCY_LABELS: Record<string, string> = {
-  'most students': 'Most students',
-  'some students': 'Some students',
-  'watch for this': 'Watch for this',
+  'most students': 'Plan around this',
+  'some students': 'Have a move ready',
+  'watch for this': 'Notice when it appears',
 };
 
 interface Props {
