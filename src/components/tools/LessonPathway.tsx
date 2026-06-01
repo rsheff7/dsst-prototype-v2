@@ -151,19 +151,20 @@ function ActivityCard({
                     toggleLang();
                   }
                 }}
-                className="rounded-full px-2 py-0.5 text-[10px] font-semibold cursor-pointer hover:opacity-85 transition-opacity focus-visible:outline-none"
+                className="rounded-full px-2 py-0.5 text-[10px] font-semibold cursor-pointer hover:opacity-85 transition-opacity focus-visible:outline-none inline-flex items-center gap-1"
                 style={{ backgroundColor: demand.bg, color: demand.text }}
-                aria-label={`${langOpen ? 'Hide' : 'Show'} language detail`}
+                aria-label={`${demand.label} language demand. ${langOpen ? 'Hide' : 'Show'} language support.`}
                 aria-expanded={langOpen}
               >
-                {demand.label} language
+                Language Support
+                <span className="text-[9px] opacity-70">{langOpen ? '−' : '+'}</span>
               </span>
               <span
                 className="rounded-full border px-2 py-0.5 text-[10px] font-semibold inline-flex items-center gap-1 select-none"
-                style={{ borderColor: '#D3D1C7', color: '#706E69', backgroundColor: '#FFFFFF' }}
+                style={{ borderColor: ACCENT, color: ACCENT, backgroundColor: '#FFFFFF' }}
                 aria-hidden="true"
               >
-                Activity guidance
+                Activity Guidance
                 <span className="text-[9px] opacity-70">{open ? '−' : '+'}</span>
               </span>
             </span>

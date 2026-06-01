@@ -221,10 +221,7 @@ function PlanActivityRow({
             {activityShortLabel(activity)}
           </span>
           <span className="text-ink-faint text-[11px] shrink-0">·</span>
-          <h2
-            className="text-[1rem] text-ink leading-tight"
-            style={{ fontFamily: 'var(--font-dm-serif), serif' }}
-          >
+          <h2 className="text-[1rem] font-semibold text-ink leading-tight">
             {activityHeading(activity.title)}
           </h2>
           <span className="text-ink-faint text-[11px] shrink-0">·</span>
@@ -267,54 +264,70 @@ function PlanTile({ tile }: { tile: WristbandTile }) {
   const isCrux = tile.is_crux_moment;
   return (
     <div
-      className="qr-tile flex-1 min-w-[180px] rounded-lg border px-3 py-2.5 relative"
-      style={{
-        borderColor: isCrux ? CRUX_ACCENT : '#E6E4DE',
-        borderWidth: isCrux ? 2 : 1,
-        backgroundColor: isCrux ? '#FFF8F4' : '#FFFFFF',
-      }}
+      className={`qr-tile flex-1 min-w-[200px] rounded-xl border bg-card shadow-sm relative overflow-hidden ${isCrux ? 'border-l-[3px]' : 'border-line'}`}
+      style={isCrux ? { borderLeftColor: CRUX_ACCENT, backgroundColor: '#FFF8F4' } : {}}
     >
       {isCrux && (
-        <div className="absolute -top-2 left-3 px-1.5 py-0.5 rounded-full text-[8px] font-bold uppercase tracking-[0.1em] text-white" style={{ backgroundColor: CRUX_ACCENT }}>
+        <div
+          className="absolute -top-2.5 left-3 px-2 py-0.5 rounded-full text-[8px] font-bold uppercase tracking-[0.1em] text-white"
+          style={{ backgroundColor: CRUX_ACCENT }}
+        >
           Crux moment
         </div>
       )}
 
       {/* NOTICE */}
-      <p className="text-[8px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-0.5">Notice</p>
-      <p className="text-[0.78rem] font-medium text-ink leading-snug mb-1.5">{tile.observation_short}</p>
+      <div className="qr-tile-section px-4 py-3">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-1.5">
+          Notice
+        </p>
+        <p className="text-[0.825rem] text-ink leading-relaxed">{tile.observation_short}</p>
+      </div>
 
       {/* CLARIFY */}
-      <p className="text-[8px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-1">Clarify</p>
-      <div className="flex items-center gap-1.5 flex-wrap mb-1.5">
-        <span
-          className="rounded-full px-1.5 py-0.5 text-[9px] font-semibold"
-          style={{ backgroundColor: pill.bg, color: pill.text }}
-        >
-          {pill.label}
-        </span>
-        {tile.has_proficiency_variants && (
+      <div className="qr-tile-section border-t border-line-subtle px-4 py-3">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-1.5">
+          Clarify
+        </p>
+        <div className="flex items-center gap-1.5 flex-wrap">
           <span
-            className="rounded-full px-1.5 py-0.5 text-[9px] font-semibold"
-            style={{ backgroundColor: '#EEEDFE', color: '#26215C' }}
-            title="Response differs across Entering / Developing / Bridging — see Moves"
+            className="rounded-full px-2 py-0.5 text-[10px] font-semibold"
+            style={{ backgroundColor: pill.bg, color: pill.text }}
           >
-            3 levels
+            {pill.label}
           </span>
-        )}
+          {tile.has_proficiency_variants && (
+            <span
+              className="rounded-full px-2 py-0.5 text-[10px] font-semibold"
+              style={{ backgroundColor: '#EEEDFE', color: '#26215C' }}
+              title="Response differs across Entering / Developing / Bridging — see Moves"
+            >
+              3 levels
+            </span>
+          )}
+        </div>
       </div>
 
       {/* RESPOND */}
-      <p className="text-[8px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-1">Respond</p>
-      <div className="flex items-start gap-1.5 flex-wrap">
-        {tile.mlr && <MlrChip mlr={tile.mlr} showName={false} />}
-        <p className="text-[0.75rem] text-ink-muted leading-snug flex-1 min-w-0">{tile.move_short}</p>
-      </div>
-      {tile.avoid_short && (
-        <p className="qr-tile-avoid mt-1.5 text-[0.7rem] leading-snug italic" style={{ color: '#712B13' }}>
-          <span className="font-semibold not-italic">Avoid:</span> {tile.avoid_short}
+      <div className="qr-tile-section border-t border-line-subtle px-4 py-3">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-1.5">
+          Respond
         </p>
-      )}
+        <div className="flex items-start gap-2 flex-wrap">
+          {tile.mlr && <MlrChip mlr={tile.mlr} showName={false} />}
+          <p className="text-[0.825rem] text-ink-muted leading-relaxed flex-1 min-w-0">
+            {tile.move_short}
+          </p>
+        </div>
+        {tile.avoid_short && (
+          <p
+            className="qr-tile-avoid mt-2 text-[0.75rem] leading-relaxed italic"
+            style={{ color: '#712B13' }}
+          >
+            <span className="font-semibold not-italic">Avoid:</span> {tile.avoid_short}
+          </p>
+        )}
+      </div>
     </div>
   );
 }
@@ -522,13 +535,13 @@ const planPrintStyles = `
     .qr-activity-target p:first-child { font-size: 6.5pt !important; line-height: 1.1 !important; margin: 0 !important; }
     .qr-activity-target p:last-child { font-size: 7.5pt !important; line-height: 1.25 !important; margin: 1pt 0 0 !important; }
     .qr-activity-tilegrid { padding: 4pt 5pt !important; gap: 4pt !important; flex-direction: row !important; }
-    .qr-tile { padding: 4pt 5pt !important; border-width: 1px !important; flex: 1 1 0 !important; position: relative !important; }
-    .qr-tile > p { font-size: 6.5pt !important; line-height: 1.2 !important; margin: 0 !important; }
-    .qr-tile > p[class*="font-medium"] { font-size: 7.5pt !important; margin-top: 1pt !important; margin-bottom: 2pt !important; }
-    .qr-tile > p[class*="text-ink-muted"] { font-size: 7pt !important; margin-top: 1pt !important; }
-    .qr-tile > div { margin-bottom: 2pt !important; gap: 3pt !important; }
-    .qr-tile span { font-size: 6.5pt !important; padding: 1pt 4pt !important; }
-    .qr-tile div[class*="absolute"] { font-size: 6pt !important; padding: 1pt 4pt !important; top: -6pt !important; }
+    .qr-tile { padding: 0 !important; border-width: 1px !important; flex: 1 1 0 !important; position: relative !important; box-shadow: none !important; }
+    .qr-tile-section { padding: 3pt 6pt !important; }
+    .qr-tile-section p:first-child { font-size: 6.5pt !important; line-height: 1.1 !important; margin-bottom: 1pt !important; }
+    .qr-tile-section p { font-size: 7.5pt !important; line-height: 1.3 !important; margin: 0 !important; }
+    .qr-tile-section div { gap: 3pt !important; }
+    .qr-tile-section span { font-size: 6.5pt !important; padding: 1pt 4pt !important; }
+    .qr-tile > div[class*="absolute"] { font-size: 6pt !important; padding: 1pt 4pt !important; top: -6pt !important; }
     .qr-tile .qr-tile-avoid { font-size: 6.5pt !important; line-height: 1.25 !important; margin-top: 2pt !important; }
     .qr-legend > div:first-child { padding: 3pt 8pt !important; }
     .qr-legend > div:first-child p { font-size: 7pt !important; margin: 0 !important; }
