@@ -85,7 +85,7 @@ export default function QuickRead({ lesson }: Props) {
               className="text-[1.35rem] text-ink leading-[1.4]"
               style={{ fontFamily: 'var(--font-dm-serif), serif' }}
             >
-              {lesson.destination}
+              {stripSwbatPrefix(lesson.destination)}
             </p>
           </div>
         )}
@@ -472,6 +472,12 @@ function InClassLegend({ entries }: { entries: WristbandLegendEntry[] }) {
 }
 
 // ---------------- helpers ----------------
+
+function stripSwbatPrefix(s: string): string {
+  const trimmed = s.replace(/^\s*Students\s+(?:can|will be able to)\s+/i, '').trim();
+  if (!trimmed) return s;
+  return trimmed.charAt(0).toLowerCase() + trimmed.slice(1);
+}
 
 function firstSentence(text: string): string {
   const trimmed = text.trim();
