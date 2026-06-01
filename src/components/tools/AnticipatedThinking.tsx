@@ -35,7 +35,7 @@ const PATTERN_STYLES: Record<ThinkingPattern['type'], { bg: string; border: stri
 };
 
 const FREQUENCY_LABELS: Record<string, string> = {
-  'most students': 'Plan around this',
+  'most students': 'Plan for this',
   'some students': 'Have a move ready',
   'watch for this': 'Notice when it appears',
 };
@@ -47,7 +47,6 @@ interface Props {
 export default function AnticipatedThinking({ lesson }: Props) {
   const activities = lesson.anticipated_thinking.activities;
   const [activeActivityId, setActiveActivityId] = useState(activities[0]?.activity_id ?? '');
-  const [expandedMoves, setExpandedMoves] = useState<Set<string>>(new Set());
 
   const activeActivity = activities.find((a) => a.activity_id === activeActivityId);
   if (!activeActivity) return null;
@@ -59,14 +58,6 @@ export default function AnticipatedThinking({ lesson }: Props) {
     if (a.type !== 'misconception' && b.type === 'misconception') return 1;
     return 0;
   });
-
-  const toggleMove = (key: string) => {
-    setExpandedMoves((prev) => {
-      const next = new Set(prev);
-      next.has(key) ? next.delete(key) : next.add(key);
-      return next;
-    });
-  };
 
   return (
     <div className="pt-6">
@@ -108,7 +99,6 @@ export default function AnticipatedThinking({ lesson }: Props) {
                 key={a.activity_id}
                 onClick={() => {
                   setActiveActivityId(a.activity_id);
-                  setExpandedMoves(new Set());
                 }}
                 className={`px-4 py-2.5 text-[12px] font-semibold cursor-pointer transition-colors whitespace-nowrap border-b-2 -mb-px focus-visible:outline-none ${
                   isActive
@@ -124,24 +114,23 @@ export default function AnticipatedThinking({ lesson }: Props) {
         </div>
       )}
 
-      <div className="space-y-3 mb-8">
+      <div className="space-y-4 mb-8">
         {sortedPatterns.map((pattern, i) => {
           const styles = PATTERN_STYLES[pattern.type];
           const key = `${activeActivityId}-${i}`;
-          const isMisconception = pattern.type === 'misconception';
-          const isMoveVisible = isMisconception || expandedMoves.has(key);
 
           return (
-            <div
+            <article
               key={key}
-              className="rounded-xl border overflow-hidden shadow-sm"
-              style={{ backgroundColor: styles.bg, borderColor: styles.border }}
+              className="rounded-xl border border-line bg-card shadow-sm overflow-hidden border-l-[3px]"
+              style={{ borderLeftColor: styles.badgeBg }}
             >
+              {/* Header section — white card */}
               <div className="px-5 py-4">
-                <div className="flex items-start justify-between gap-3 mb-2">
+                <div className="flex items-baseline justify-between gap-3 mb-3 flex-wrap">
                   <div className="flex items-center gap-2 flex-wrap">
                     <span
-                      className="rounded-full px-2.5 py-0.5 text-[11px] font-semibold"
+                      className="rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.08em]"
                       style={{ backgroundColor: styles.badgeBg, color: styles.badgeText }}
                     >
                       {styles.badge}
@@ -149,7 +138,7 @@ export default function AnticipatedThinking({ lesson }: Props) {
                     {pattern.is_mll_specific && (
                       <span
                         className="rounded-full px-2 py-0.5 text-[10px] font-semibold"
-                        style={{ backgroundColor: '#534AB7', color: '#fff', opacity: 0.85 }}
+                        style={{ backgroundColor: '#534AB7', color: '#fff' }}
                       >
                         MLL
                       </span>
@@ -161,53 +150,31 @@ export default function AnticipatedThinking({ lesson }: Props) {
                       />
                     )}
                   </div>
-                  <span className="text-[11px] font-medium shrink-0" style={{ color: styles.text, opacity: 0.75 }}>
+                  <span className="text-[11px] font-medium text-ink-faint shrink-0">
                     {FREQUENCY_LABELS[pattern.frequency]}
                   </span>
                 </div>
 
-                <p className="text-[0.875rem] font-semibold mb-2" style={{ color: styles.text }}>
+                <h3
+                  className="text-[1.1rem] text-ink leading-snug mb-2"
+                  style={{ fontFamily: 'var(--font-dm-serif), serif' }}
+                >
                   {pattern.label}
-                </p>
+                </h3>
 
-                <p className="text-[0.82rem] leading-relaxed" style={{ color: styles.text, opacity: 0.85 }}>
+                <p className="text-[0.875rem] text-ink-muted leading-relaxed">
                   {pattern.description}
                 </p>
               </div>
 
-              <div className="border-t" style={{ borderColor: styles.border }}>
-                {!isMisconception && (
-                  <button
-                    onClick={() => toggleMove(key)}
-                    className="w-full flex items-center justify-between px-5 py-2.5 cursor-pointer focus-visible:outline-none group"
-                  >
-                    <span className="text-[11px] font-semibold" style={{ color: styles.text, opacity: 0.75 }}>
-                      What to do
-                    </span>
-                    <span className="text-[10px] font-semibold select-none" style={{ color: styles.text, opacity: 0.6 }}>
-                      {isMoveVisible ? '−' : '+'}
-                    </span>
-                  </button>
-                )}
-                <div
-                  className="grid transition-all duration-200"
-                  style={{ gridTemplateRows: isMoveVisible ? '1fr' : '0fr' }}
-                >
-                  <div className="overflow-hidden">
-                    <div className="px-5 pb-4" style={isMisconception ? { paddingTop: '0.75rem' } : {}}>
-                      {isMisconception && (
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.1em] mb-2" style={{ color: styles.text, opacity: 0.7 }}>
-                          What to do
-                        </p>
-                      )}
-                      <p className="text-[0.82rem] leading-relaxed font-medium" style={{ color: styles.text }}>
-                        {pattern.move}
-                      </p>
-                    </div>
-                  </div>
-                </div>
+              {/* Move section — bg-surface tinted, always visible */}
+              <div className="border-t border-line-subtle bg-surface px-5 py-4">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-2">
+                  What to do
+                </p>
+                <p className="text-[0.875rem] text-ink leading-relaxed">{pattern.move}</p>
               </div>
-            </div>
+            </article>
           );
         })}
       </div>

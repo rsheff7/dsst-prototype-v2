@@ -348,6 +348,86 @@ function thinkingChecks(lesson: LessonData): CheckResult[] {
     details: missingFrames.map((a) => `Activity ${a.activity_id}`),
   });
 
+  // ---- Coherence editor: type ↔ frequency ↔ move alignment ----
+  const coherenceIssues: string[] = [];
+
+  for (const a of lesson.anticipated_thinking.activities) {
+    a.patterns.forEach((p, i) => {
+      const loc = `Thinking ${a.activity_id} '${p.label || `pattern[${i}]`}'`;
+      const move = (p.move || '').toLowerCase();
+
+      // ---- Type ↔ frequency pairings (uncommon combos) ----
+      if (p.type === 'extension' && p.frequency === 'most students') {
+        coherenceIssues.push(
+          `${loc}: type 'extension' with frequency 'most students' — extensions are typically rare. Consider 'watch for this'.`,
+        );
+      }
+      if (p.type === 'misconception' && p.frequency === 'watch for this') {
+        coherenceIssues.push(
+          `${loc}: type 'misconception' with frequency 'watch for this' — misconceptions are typically 'most' or 'some students'.`,
+        );
+      }
+
+      // ---- Type ↔ move text alignment (heuristic) ----
+      if (
+        p.type === 'on-track' &&
+        !/(extend|build|confirm|affirm|accept|validate|highlight|ask .* (why|how|more)|repeat)/.test(move)
+      ) {
+        coherenceIssues.push(
+          `${loc}: type 'on-track' but move text doesn't extend, affirm, or build on the thinking.`,
+        );
+      }
+      if (
+        p.type === 'misconception' &&
+        !/(ask|read aloud|wait|show|compare|let them|address|catch|redirect|self.?correct|feel)/.test(move)
+      ) {
+        coherenceIssues.push(
+          `${loc}: type 'misconception' but move text doesn't probe, redirect, or let the student self-correct.`,
+        );
+      }
+      if (
+        p.type === 'extension' &&
+        !/(share|stop|public|class|hear|tell|ask .*explain|make .*public|pause|synthesis)/.test(move)
+      ) {
+        coherenceIssues.push(
+          `${loc}: type 'extension' but move text doesn't make the insight public or share with the class.`,
+        );
+      }
+      if (
+        p.type === 'language-math' &&
+        !/(gesture|point|frame|partner|repeat|nonverbal|home language|aloud|hands|smile|nod)/.test(move)
+      ) {
+        coherenceIssues.push(
+          `${loc}: type 'language-math' but move text doesn't include language scaffolding (gesture, partner share, sentence frame, aloud).`,
+        );
+      }
+
+      // ---- Frequency ↔ move emphasis (heuristic) ----
+      // 'watch for this' = rare AND high-leverage. The move should be a public moment.
+      if (
+        p.frequency === 'watch for this' &&
+        p.type !== 'misconception' &&
+        !/(stop|pause|public|class|share|hear|make .* (public|hear)|tell|whole.room|whole group)/.test(move)
+      ) {
+        coherenceIssues.push(
+          `${loc}: frequency 'watch for this' (rare, high-leverage) but move isn't a 'stop the room' / make-public moment.`,
+        );
+      }
+    });
+  }
+
+  r.push({
+    id: 'thinking-type-frequency-move-coherence',
+    category: 'Thinking',
+    name: 'Pattern type, frequency, and move text align',
+    status: coherenceIssues.length === 0 ? 'pass' : 'warn',
+    message:
+      coherenceIssues.length === 0
+        ? 'All thinking patterns coherent.'
+        : `${coherenceIssues.length} potential alignment issue(s) — review for false positives.`,
+    details: coherenceIssues.length > 0 ? coherenceIssues : undefined,
+  });
+
   return r;
 }
 
