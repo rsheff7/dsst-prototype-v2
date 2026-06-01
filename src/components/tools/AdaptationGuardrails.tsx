@@ -24,7 +24,7 @@ export default function AdaptationGuardrails({ lesson }: Props) {
           <p className="text-[10px] font-semibold uppercase tracking-[0.12em] mb-2" style={{ color: '#854F0B' }}>
             What this lesson is for
           </p>
-          <p className="text-[0.95rem] text-ink leading-[1.7]" style={{ fontFamily: 'var(--font-dm-serif), serif' }}>
+          <p className="text-[1.05rem] text-ink leading-[1.65]" style={{ fontFamily: 'var(--font-dm-serif), serif' }}>
             {g.mathematical_purpose}
           </p>
         </div>
@@ -43,7 +43,7 @@ export default function AdaptationGuardrails({ lesson }: Props) {
               {g.safe_to_change.map((item, i) => (
                 <li key={i} className="flex items-start gap-2.5">
                   <span className="mt-[3px] shrink-0 text-[12px]" style={{ color: '#27500A' }}>●</span>
-                  <p className="text-[0.85rem] text-ink leading-relaxed">{item}</p>
+                  <p className="text-[0.825rem] text-ink leading-relaxed">{item}</p>
                 </li>
               ))}
             </ul>
@@ -62,7 +62,7 @@ export default function AdaptationGuardrails({ lesson }: Props) {
                 <li key={i} className="flex items-start gap-2.5">
                   <span className="mt-[3px] shrink-0 text-[12px]" style={{ color: '#712B13' }}>▲</span>
                   <div className="flex-1 min-w-0">
-                    <p className="text-[0.85rem] text-ink leading-relaxed">{item.text}</p>
+                    <p className="text-[0.825rem] text-ink leading-relaxed">{item.text}</p>
                     {item.mlr && (
                       <div className="mt-1.5">
                         <MlrChip mlr={item.mlr} />
@@ -92,7 +92,7 @@ export default function AdaptationGuardrails({ lesson }: Props) {
               </p>
               {g.by_proficiency.entering.mlr && <MlrChip mlr={g.by_proficiency.entering.mlr} />}
             </div>
-            <p className="text-[0.85rem] leading-relaxed">{g.by_proficiency.entering.text}</p>
+            <p className="text-[0.825rem] leading-relaxed">{g.by_proficiency.entering.text}</p>
           </div>
 
           <div
@@ -105,7 +105,7 @@ export default function AdaptationGuardrails({ lesson }: Props) {
               </p>
               {g.by_proficiency.developing.mlr && <MlrChip mlr={g.by_proficiency.developing.mlr} />}
             </div>
-            <p className="text-[0.85rem] leading-relaxed">{g.by_proficiency.developing.text}</p>
+            <p className="text-[0.825rem] leading-relaxed">{g.by_proficiency.developing.text}</p>
           </div>
 
           <div
@@ -118,7 +118,7 @@ export default function AdaptationGuardrails({ lesson }: Props) {
               </p>
               {g.by_proficiency.bridging.mlr && <MlrChip mlr={g.by_proficiency.bridging.mlr} />}
             </div>
-            <p className="text-[0.85rem] leading-relaxed">{g.by_proficiency.bridging.text}</p>
+            <p className="text-[0.825rem] leading-relaxed">{g.by_proficiency.bridging.text}</p>
           </div>
         </div>
       </div>

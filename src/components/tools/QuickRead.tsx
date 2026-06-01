@@ -70,7 +70,7 @@ export default function QuickRead({ lesson }: Props) {
 
       {/* Lesson context card — destination is the headline; arc supports it */}
       <header
-        className="rounded-xl border border-line shadow-sm overflow-hidden border-l-[4px] mb-8"
+        className="rounded-xl border border-line shadow-sm overflow-hidden border-l-[3px] mb-8"
         style={{ borderLeftColor: QR_ACCENT, backgroundColor: '#FFFFFF' }}
       >
         {lesson.destination && (

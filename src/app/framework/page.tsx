@@ -88,7 +88,7 @@ export default function FrameworkPage() {
 
           {/* The triangle */}
           <div className="mt-10">
-            <div className="rounded-2xl border bg-card overflow-hidden" style={{ borderColor: '#E6E4DE' }}>
+            <div className="rounded-xl border bg-card overflow-hidden" style={{ borderColor: '#E6E4DE' }}>
               <div className="px-5 py-3 border-b" style={{ backgroundColor: '#FAFAF7', borderColor: '#E6E4DE' }}>
                 <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint">
                   The Instructional Core, mapped to Premo
@@ -220,7 +220,7 @@ export default function FrameworkPage() {
         </section>
 
         {/* CTA */}
-        <section className="mt-16 mb-2 rounded-2xl border border-line bg-card p-6">
+        <section className="mt-16 mb-2 rounded-xl border border-line bg-card p-6">
           <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-2">
             See it in practice
           </p>
@@ -285,7 +285,7 @@ function TrustBlock({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-2xl border bg-card px-5 py-4" style={{ borderColor: '#E6E4DE' }}>
+    <div className="rounded-xl border bg-card px-5 py-4" style={{ borderColor: '#E6E4DE' }}>
       <p
         className="text-[10px] font-semibold uppercase tracking-[0.1em] mb-1"
         style={{ color: ACCENT }}

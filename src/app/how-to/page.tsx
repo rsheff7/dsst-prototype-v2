@@ -148,7 +148,7 @@ export default function HowToPage() {
         </div>
 
         {/* CTA */}
-        <section className="mt-14 mb-2 rounded-2xl border border-line bg-card p-6">
+        <section className="mt-14 mb-2 rounded-xl border border-line bg-card p-6">
           <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-2">
             Want to see all of this on one lesson?
           </p>
@@ -224,7 +224,7 @@ function ToolCard({
 }) {
   return (
     <div
-      className="rounded-2xl border bg-card overflow-hidden border-l-[3px]"
+      className="rounded-xl border bg-card overflow-hidden border-l-[3px]"
       style={{ borderLeftColor: accent, borderColor: '#E6E4DE' }}
     >
       <div className="px-5 py-4">

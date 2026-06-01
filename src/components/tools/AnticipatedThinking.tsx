@@ -100,7 +100,7 @@ export default function AnticipatedThinking({ lesson }: Props) {
                 onClick={() => {
                   setActiveActivityId(a.activity_id);
                 }}
-                className={`px-4 py-2.5 text-[12px] font-semibold cursor-pointer transition-colors whitespace-nowrap border-b-2 -mb-px focus-visible:outline-none ${
+                className={`px-4 py-2.5 text-[11px] font-semibold cursor-pointer transition-colors whitespace-nowrap border-b-2 -mb-px focus-visible:outline-none ${
                   isActive
                     ? 'text-ink border-b-2'
                     : 'text-ink-faint hover:text-ink-muted border-transparent'
@@ -181,7 +181,7 @@ export default function AnticipatedThinking({ lesson }: Props) {
 
       {activeActivity.sentence_frames.length > 0 && (
         <div className="mb-8">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-ink-faint mb-3">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-3">
             Ready to hand to students
           </p>
           <div className="space-y-2">
@@ -204,7 +204,7 @@ export default function AnticipatedThinking({ lesson }: Props) {
 
       {activeActivity.questions_to_listen_for.length > 0 && (
         <div>
-          <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-ink-faint mb-3">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-3">
             Questions worth listening for
           </p>
           <ul className="space-y-2">

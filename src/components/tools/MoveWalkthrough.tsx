@@ -50,7 +50,7 @@ function MoveCard({ move }: { move: TeacherMove }) {
   return (
     <div className="space-y-3">
       <div
-        className="rounded-xl border-l-[4px] px-5 py-4"
+        className="rounded-xl border-l-[3px] px-5 py-4"
         style={{
           borderColor: ACCENT,
           borderLeftColor: ACCENT,
@@ -128,28 +128,28 @@ function ProficiencyColumn({
       </div>
       <div className="space-y-3">
         <div>
-          <p className="text-[9px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-1">Move</p>
-          <p className="text-[0.8rem] text-ink leading-snug">{move.move}</p>
+          <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-1">Move</p>
+          <p className="text-[0.825rem] text-ink leading-relaxed">{move.move}</p>
         </div>
         {move.say && (
           <div>
-            <p className="text-[9px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-1">Say</p>
-            <p className="text-[0.8rem] text-ink-muted leading-snug italic">{move.say}</p>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-1">Say</p>
+            <p className="text-[0.825rem] text-ink-muted leading-relaxed italic">{move.say}</p>
           </div>
         )}
         {move.nonverbal && (
           <div>
-            <p className="text-[9px] font-semibold uppercase tracking-[0.1em] mb-1" style={{ color: '#085041' }}>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.1em] mb-1" style={{ color: '#085041' }}>
               Non-verbal
             </p>
-            <p className="text-[0.8rem] leading-snug" style={{ color: '#085041' }}>
+            <p className="text-[0.825rem] leading-relaxed" style={{ color: '#085041' }}>
               {move.nonverbal}
             </p>
           </div>
         )}
         <div>
-          <p className="text-[9px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-1">Avoid</p>
-          <p className="text-[0.8rem] text-ink-muted leading-snug">{move.avoid}</p>
+          <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-1">Avoid</p>
+          <p className="text-[0.825rem] text-ink-muted leading-relaxed">{move.avoid}</p>
         </div>
       </div>
     </div>
@@ -663,7 +663,7 @@ export default function MoveWalkthrough({ lesson }: Props) {
 
       {/* Observation */}
       <div
-        className="rounded-xl border-l-[4px] px-6 py-5 mb-6"
+        className="rounded-xl border-l-[3px] px-6 py-5 mb-6"
         style={{
           borderColor: ACCENT,
           borderLeftColor: ACCENT,
@@ -693,7 +693,7 @@ export default function MoveWalkthrough({ lesson }: Props) {
           What this usually means
         </p>
         <div
-          className="rounded-xl border-l-[4px] px-6 py-5"
+          className="rounded-xl border-l-[3px] px-6 py-5"
           style={{
             borderColor: ACCENT,
             borderLeftColor: ACCENT,

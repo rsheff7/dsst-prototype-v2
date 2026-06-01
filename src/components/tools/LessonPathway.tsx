@@ -54,7 +54,7 @@ function ProficiencyRow({
           </span>
         )}
       </div>
-      <p className="text-[0.78rem] leading-snug">{level.text}</p>
+      <p className="text-[0.825rem] leading-relaxed">{level.text}</p>
     </div>
   );
 }
@@ -98,7 +98,7 @@ function ActivityCard({
       </div>
 
       <div
-        className={`rounded-xl bg-card shadow-sm overflow-hidden border ${activity.is_crux ? 'border-l-[3px]' : 'border-line'}`}
+        className={`rounded-xl border border-line bg-card shadow-sm overflow-hidden ${activity.is_crux ? 'border-l-[3px]' : ''}`}
         style={activity.is_crux ? { borderLeftColor: ACCENT } : {}}
       >
         <button
@@ -189,7 +189,7 @@ function ActivityCard({
                       <div key={i} className="flex items-start gap-2.5">
                         <span className="mt-[3px] shrink-0 text-[#854F0B] text-[12px]">▲</span>
                         <div className="flex-1 min-w-0">
-                          <p className="text-[0.8rem] text-ink-muted leading-relaxed">{fp.description}</p>
+                          <p className="text-[0.825rem] text-ink-muted leading-relaxed">{fp.description}</p>
                           <div className="mt-1.5 flex items-center gap-1.5 flex-wrap">
                             <span
                               className="inline-block rounded-full px-2 py-0.5 text-[10px] font-semibold"
@@ -247,7 +247,7 @@ function ActivityCard({
                   {activity.success_signals.map((signal, i) => (
                     <div key={i} className="flex items-start gap-2.5">
                       <span className="mt-[3px] shrink-0 text-[12px]" style={{ color: ACCENT }}>●</span>
-                      <p className="text-[0.8rem] text-ink-muted leading-relaxed">{signal}</p>
+                      <p className="text-[0.825rem] text-ink-muted leading-relaxed">{signal}</p>
                     </div>
                   ))}
                 </div>
@@ -266,7 +266,7 @@ function ActivityCard({
                       <div key={i} className="flex items-start gap-2.5">
                         <span className="mt-[3px] shrink-0 text-[#854F0B] text-[12px]">▲</span>
                         <div className="flex-1 min-w-0">
-                          <p className="text-[0.8rem] text-ink-muted leading-relaxed">{fp.description}</p>
+                          <p className="text-[0.825rem] text-ink-muted leading-relaxed">{fp.description}</p>
                           <div className="mt-1.5 flex items-center gap-1.5 flex-wrap">
                             <span
                               className="inline-block rounded-full px-2 py-0.5 text-[10px] font-semibold"
@@ -313,7 +313,7 @@ function ActivityCard({
                   For students who finish early
                 </p>
                 <div className="rounded-lg border-2 border-dashed border-line p-3">
-                  <p className="text-[0.8rem] text-ink-muted leading-relaxed">{activity.extension}</p>
+                  <p className="text-[0.825rem] text-ink-muted leading-relaxed">{activity.extension}</p>
                 </div>
               </div>
             )}
