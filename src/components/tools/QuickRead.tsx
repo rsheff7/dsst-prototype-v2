@@ -143,22 +143,19 @@ function PlanView({
   return (
     <>
       {wb.preflight.length > 0 && (
-        <section className="qr-preflight rounded-2xl border bg-card overflow-hidden mb-5" style={{ borderColor: '#E6E4DE' }}>
-          <div className="px-4 py-2 border-b" style={{ backgroundColor: '#FAEEDA', borderColor: '#E8C68A' }}>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: '#633806' }}>
+        <section
+          className="qr-preflight rounded-xl border border-line bg-card shadow-sm overflow-hidden mb-6"
+        >
+          <div className="px-5 py-3 border-b border-line-subtle bg-surface">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint">
               Before you begin
             </p>
           </div>
-          <ul className="px-4 py-3 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1.5">
+          <ul className="px-5 py-4 space-y-2.5">
             {wb.preflight.map((item, i) => (
-              <li key={i} className="flex items-start gap-2 text-[0.8rem] text-ink leading-snug">
-                <span
-                  className="mt-[2px] shrink-0 inline-flex h-4 w-4 items-center justify-center rounded-full text-[10px] font-bold"
-                  style={{ backgroundColor: '#FAEEDA', color: '#633806' }}
-                >
-                  {i + 1}
-                </span>
-                <span>{item}</span>
+              <li key={i} className="flex items-start gap-2.5">
+                <span className="mt-[3px] shrink-0 text-[12px]" style={{ color: QR_ACCENT }}>●</span>
+                <p className="text-[0.825rem] text-ink-muted leading-relaxed">{item}</p>
               </li>
             ))}
           </ul>
@@ -177,17 +174,17 @@ function PlanView({
       </div>
 
       {wb.mlr_legend.length > 0 && (
-        <div className="qr-legend rounded-xl border bg-card overflow-hidden" style={{ borderColor: '#E6E4DE' }}>
-          <div className="px-4 py-2 border-b" style={{ backgroundColor: '#EEEDFE', borderColor: '#AFA9EC' }}>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: '#26215C' }}>
+        <div className="qr-legend rounded-xl border border-line bg-card shadow-sm overflow-hidden">
+          <div className="px-5 py-3 border-b border-line-subtle bg-surface">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint">
               The routines this lesson runs on
             </p>
           </div>
-          <ul className="divide-y" style={{ borderColor: '#E6E4DE' }}>
+          <ul className="divide-y divide-line-subtle">
             {wb.mlr_legend.map((entry, i) => (
-              <li key={i} className="px-4 py-2.5 flex items-center gap-3 flex-wrap">
+              <li key={i} className="px-5 py-3 flex items-center gap-3 flex-wrap">
                 <MlrChip mlr={entry.mlr} />
-                <span className="text-[0.8rem] text-ink-muted leading-snug">{entry.one_line_cue}</span>
+                <span className="text-[0.825rem] text-ink-muted leading-relaxed">{entry.one_line_cue}</span>
               </li>
             ))}
           </ul>
@@ -510,8 +507,10 @@ const planPrintStyles = `
     .qr-preflight { margin-bottom: 6pt !important; }
     .qr-preflight > div:first-child { padding: 3pt 8pt !important; }
     .qr-preflight > div:first-child p { font-size: 7pt !important; margin: 0 !important; }
-    .qr-preflight ul { padding: 4pt 8pt !important; gap: 1pt 8pt !important; }
-    .qr-preflight ul li { font-size: 7.5pt !important; line-height: 1.3 !important; }
+    .qr-preflight ul { padding: 4pt 8pt !important; }
+    .qr-preflight ul li { font-size: 7.5pt !important; line-height: 1.3 !important; margin-bottom: 1.5pt !important; gap: 4pt !important; }
+    .qr-preflight ul li:last-child { margin-bottom: 0 !important; }
+    .qr-preflight ul li span:first-child { font-size: 9pt !important; line-height: 1 !important; }
     .qr-activities { display: flex !important; flex-direction: column !important; gap: 5pt !important; margin-bottom: 6pt !important; }
     .qr-activity { border-width: 1px !important; }
     .qr-activity-header { padding: 3pt 8pt !important; gap: 5pt !important; flex-wrap: nowrap !important; }

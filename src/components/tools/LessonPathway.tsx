@@ -135,30 +135,37 @@ function ActivityCard({
             <span className="text-[0.7rem] text-ink-faint">{activity.duration}</span>
             <span className="text-ink-faint text-[0.65rem]">·</span>
             <span className="text-[0.7rem] text-ink-faint">{activity.grouping}</span>
-            <span
-              role="button"
-              tabIndex={0}
-              onClick={(e) => {
-                e.stopPropagation();
-                e.preventDefault();
-                toggleLang();
-              }}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
+            <span className="ml-auto inline-flex items-center gap-1.5 flex-wrap">
+              <span
+                role="button"
+                tabIndex={0}
+                onClick={(e) => {
                   e.stopPropagation();
                   e.preventDefault();
                   toggleLang();
-                }
-              }}
-              className="ml-auto rounded-full px-2 py-0.5 text-[10px] font-semibold cursor-pointer hover:opacity-85 transition-opacity focus-visible:outline-none"
-              style={{ backgroundColor: demand.bg, color: demand.text }}
-              aria-label={`${langOpen ? 'Hide' : 'Show'} language detail`}
-              aria-expanded={langOpen}
-            >
-              {demand.label} language
-            </span>
-            <span className="text-[11px] font-semibold text-ink-faint select-none">
-              {open ? '−' : '+'}
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    toggleLang();
+                  }
+                }}
+                className="rounded-full px-2 py-0.5 text-[10px] font-semibold cursor-pointer hover:opacity-85 transition-opacity focus-visible:outline-none"
+                style={{ backgroundColor: demand.bg, color: demand.text }}
+                aria-label={`${langOpen ? 'Hide' : 'Show'} language detail`}
+                aria-expanded={langOpen}
+              >
+                {demand.label} language
+              </span>
+              <span
+                className="rounded-full border px-2 py-0.5 text-[10px] font-semibold inline-flex items-center gap-1 select-none"
+                style={{ borderColor: '#D3D1C7', color: '#706E69', backgroundColor: '#FFFFFF' }}
+                aria-hidden="true"
+              >
+                Activity guidance
+                <span className="text-[9px] opacity-70">{open ? '−' : '+'}</span>
+              </span>
             </span>
           </div>
         </button>
