@@ -68,32 +68,34 @@ export default function QuickRead({ lesson }: Props) {
         <p className="text-[11pt] font-bold text-ink leading-tight">{lesson.meta.lesson_title}</p>
       </div>
 
-      {/* Lesson context card — mirrors Pathway's arc card */}
+      {/* Lesson context card — destination is the headline; arc supports it */}
       <header
-        className="rounded-xl border border-line bg-card shadow-sm overflow-hidden border-l-[3px] mb-8"
-        style={{ borderLeftColor: QR_ACCENT }}
+        className="rounded-xl border border-line shadow-sm overflow-hidden border-l-[4px] mb-8"
+        style={{ borderLeftColor: QR_ACCENT, backgroundColor: '#FFFFFF' }}
       >
-        <div className="px-6 py-5">
-          <p
-            className="text-[10px] font-semibold uppercase tracking-[0.12em] mb-2"
-            style={{ color: QR_ACCENT }}
-          >
-            The arc of this lesson
-          </p>
-          <p
-            className="text-[1rem] text-ink leading-[1.65]"
-            style={{ fontFamily: 'var(--font-dm-serif), serif' }}
-          >
-            {wb.arc_one_line}
-          </p>
-        </div>
-
         {lesson.destination && (
-          <div className="border-t border-line-subtle px-6 py-4 bg-surface">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-1">
-              By the end, students can
+          <div className="px-7 py-7" style={{ backgroundColor: '#F4FAF7' }}>
+            <p
+              className="text-[11px] font-bold uppercase tracking-[0.14em] mb-3"
+              style={{ color: QR_ACCENT }}
+            >
+              By the end of the lesson, students can
             </p>
-            <p className="text-[0.825rem] text-ink-muted leading-[1.65]">{lesson.destination}</p>
+            <p
+              className="text-[1.35rem] text-ink leading-[1.4]"
+              style={{ fontFamily: 'var(--font-dm-serif), serif' }}
+            >
+              {lesson.destination}
+            </p>
+          </div>
+        )}
+
+        {wb.arc_one_line && (
+          <div className="border-t border-line-subtle px-7 py-4 bg-card">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-1.5">
+              The arc that gets them there
+            </p>
+            <p className="text-[0.875rem] text-ink-muted leading-[1.65]">{wb.arc_one_line}</p>
           </div>
         )}
       </header>
@@ -509,13 +511,13 @@ const planPrintStyles = `
     .quickread-root section, .quickread-root header, .quickread-root .rounded-xl, .quickread-root .rounded-2xl, .quickread-root .rounded-lg {
       break-inside: avoid; page-break-inside: avoid; box-shadow: none !important; border-radius: 4px !important;
     }
-    .quickread-root header { margin-bottom: 6pt !important; border-left-width: 2px !important; }
-    .quickread-root header > div { padding: 4pt 10pt !important; }
-    .quickread-root header p { font-size: 8pt !important; line-height: 1.3 !important; margin: 0 !important; }
-    .quickread-root header > div:first-child p:first-child { font-size: 6.5pt !important; margin-bottom: 1pt !important; }
-    .quickread-root header > div:first-child p:last-child { font-size: 8.5pt !important; line-height: 1.3 !important; margin-top: 1pt !important; }
-    .quickread-root header > div:last-child p:first-child { font-size: 6.5pt !important; margin-bottom: 0 !important; }
-    .quickread-root header > div:last-child p:last-child { font-size: 7.5pt !important; line-height: 1.3 !important; margin-top: 1pt !important; }
+    .quickread-root header { margin-bottom: 8pt !important; border-left-width: 3px !important; }
+    .quickread-root header > div { padding: 6pt 12pt !important; }
+    .quickread-root header > div:first-child p:first-child { font-size: 7pt !important; margin: 0 0 2pt 0 !important; }
+    .quickread-root header > div:first-child p:last-child { font-size: 11pt !important; line-height: 1.3 !important; margin: 0 !important; }
+    .quickread-root header > div:last-child { padding: 3pt 12pt !important; }
+    .quickread-root header > div:last-child p:first-child { font-size: 6.5pt !important; margin: 0 !important; }
+    .quickread-root header > div:last-child p:last-child { font-size: 7.5pt !important; line-height: 1.3 !important; margin: 1pt 0 0 0 !important; }
     .qr-print-hide { display: none !important; }
     .qr-preflight { margin-bottom: 6pt !important; }
     .qr-preflight > div:first-child { padding: 3pt 8pt !important; }
