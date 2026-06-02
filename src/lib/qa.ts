@@ -11,7 +11,8 @@ export type CheckCategory =
   | 'Thinking'
   | 'Moves'
   | 'Register'
-  | 'MLR';
+  | 'MLR'
+  | 'ELSF';
 
 export interface CheckResult {
   id: string;
@@ -276,9 +277,9 @@ function adaptChecks(lesson: LessonData): CheckResult[] {
   });
 
   const profMissing: string[] = [];
-  if (g.by_proficiency.entering.text.length < 20) profMissing.push('Entering');
+  if (g.by_proficiency.emerging.text.length < 20) profMissing.push('Emerging');
   if (g.by_proficiency.developing.text.length < 20) profMissing.push('Developing');
-  if (g.by_proficiency.bridging.text.length < 20) profMissing.push('Bridging');
+  if (g.by_proficiency.expanding.text.length < 20) profMissing.push('Expanding');
 
   r.push({
     id: 'by-proficiency-populated',
@@ -498,9 +499,9 @@ function movesChecks(lesson: LessonData): CheckResult[] {
       mllStructuralIssues.push(`Activity ${s.activity_id}: MLL scenario missing proficiency_moves`);
       continue;
     }
-    if (!s.proficiency_moves.entering.move) mllStructuralIssues.push(`Activity ${s.activity_id}: Entering move missing`);
+    if (!s.proficiency_moves.emerging.move) mllStructuralIssues.push(`Activity ${s.activity_id}: Emerging move missing`);
     if (!s.proficiency_moves.developing.move) mllStructuralIssues.push(`Activity ${s.activity_id}: Developing move missing`);
-    if (!s.proficiency_moves.bridging.move) mllStructuralIssues.push(`Activity ${s.activity_id}: Bridging move missing`);
+    if (!s.proficiency_moves.expanding.move) mllStructuralIssues.push(`Activity ${s.activity_id}: Expanding move missing`);
   }
   r.push({
     id: 'mll-proficiency-populated',
@@ -509,25 +510,25 @@ function movesChecks(lesson: LessonData): CheckResult[] {
     status: mllStructuralIssues.length === 0 ? 'pass' : 'fail',
     message:
       mllStructuralIssues.length === 0
-        ? 'All MLL scenarios have Entering / Developing / Bridging populated.'
+        ? 'All MLL scenarios have Emerging / Developing / Expanding populated.'
         : `${mllStructuralIssues.length} MLL completeness issues.`,
     details: mllStructuralIssues,
   });
 
-  // MLL Entering moves MUST have nonverbal populated
-  const enteringWithoutNonverbal = mllScenarios.filter(
-    (s) => s.proficiency_moves && (!s.proficiency_moves.entering.nonverbal || s.proficiency_moves.entering.nonverbal.length < 10)
+  // MLL Emerging moves MUST have nonverbal populated
+  const emergingWithoutNonverbal = mllScenarios.filter(
+    (s) => s.proficiency_moves && (!s.proficiency_moves.emerging.nonverbal || s.proficiency_moves.emerging.nonverbal.length < 10)
   );
   r.push({
-    id: 'entering-nonverbal',
+    id: 'emerging-nonverbal',
     category: 'Moves',
-    name: 'Every MLL Entering move has a non-verbal action',
-    status: enteringWithoutNonverbal.length === 0 ? 'pass' : 'fail',
+    name: 'Every MLL Emerging move has a non-verbal action',
+    status: emergingWithoutNonverbal.length === 0 ? 'pass' : 'fail',
     message:
-      enteringWithoutNonverbal.length === 0
-        ? 'All Entering moves have non-verbal actions — framework requirement met.'
-        : `${enteringWithoutNonverbal.length} MLL scenarios missing Entering non-verbal. Framework requirement violated.`,
-    details: enteringWithoutNonverbal.map((s) => `Activity ${s.activity_id}: ${s.label.slice(0, 80)}...`),
+      emergingWithoutNonverbal.length === 0
+        ? 'All Emerging moves have non-verbal actions — framework requirement met.'
+        : `${emergingWithoutNonverbal.length} MLL scenarios missing Emerging non-verbal. Framework requirement violated.`,
+    details: emergingWithoutNonverbal.map((s) => `Activity ${s.activity_id}: ${s.label.slice(0, 80)}...`),
   });
 
   // Non-MLL scenarios must have flat_move
@@ -565,14 +566,14 @@ function movesChecks(lesson: LessonData): CheckResult[] {
       missingAvoid.push(`Activity ${s.activity_id}: ${s.label.slice(0, 60)}...`);
     }
     if (s.proficiency_moves) {
-      if (!s.proficiency_moves.entering.avoid || s.proficiency_moves.entering.avoid.length < 20) {
-        missingAvoid.push(`Activity ${s.activity_id}: Entering — ${s.label.slice(0, 60)}...`);
+      if (!s.proficiency_moves.emerging.avoid || s.proficiency_moves.emerging.avoid.length < 20) {
+        missingAvoid.push(`Activity ${s.activity_id}: Emerging — ${s.label.slice(0, 60)}...`);
       }
       if (!s.proficiency_moves.developing.avoid || s.proficiency_moves.developing.avoid.length < 20) {
         missingAvoid.push(`Activity ${s.activity_id}: Developing — ${s.label.slice(0, 60)}...`);
       }
-      if (!s.proficiency_moves.bridging.avoid || s.proficiency_moves.bridging.avoid.length < 20) {
-        missingAvoid.push(`Activity ${s.activity_id}: Bridging — ${s.label.slice(0, 60)}...`);
+      if (!s.proficiency_moves.expanding.avoid || s.proficiency_moves.expanding.avoid.length < 20) {
+        missingAvoid.push(`Activity ${s.activity_id}: Expanding — ${s.label.slice(0, 60)}...`);
       }
     }
   }
@@ -769,6 +770,113 @@ function mlrChecks(lesson: LessonData): CheckResult[] {
   return r;
 }
 
+function elsfChecks(lesson: LessonData): CheckResult[] {
+  const r: CheckResult[] = [];
+
+  const activityIds = lesson.activities.map((a) => a.id);
+  const elsfActivities = lesson.elsf_inference?.activities ?? [];
+  const elsfActivityIds = elsfActivities.map((a) => a.activity_id);
+
+  // 1. elsf_inference covers every activity
+  const missing = activityIds.filter((id) => !elsfActivityIds.includes(id));
+  r.push({
+    id: 'elsf-inference-covers-activities',
+    category: 'ELSF',
+    name: 'ELSF inference covers every activity',
+    status: missing.length === 0 ? 'pass' : 'fail',
+    message:
+      missing.length === 0
+        ? `${elsfActivityIds.length} activities covered by ELSF inference.`
+        : `Missing elsf_inference for activities: ${missing.join(', ')}`,
+  });
+
+  // 2. Language demands populated
+  const ldIssues: string[] = [];
+  for (const a of elsfActivities) {
+    const ld = a.language_demands;
+    if (!ld) {
+      ldIssues.push(`Activity ${a.activity_id}: language_demands missing`);
+      continue;
+    }
+    if (!ld.receptive || ld.receptive.length < 20)
+      ldIssues.push(`Activity ${a.activity_id}: receptive demand thin or missing`);
+    if (!ld.productive || ld.productive.length < 20)
+      ldIssues.push(`Activity ${a.activity_id}: productive demand thin or missing`);
+    if (!ld.interactive || ld.interactive.length < 20)
+      ldIssues.push(`Activity ${a.activity_id}: interactive demand thin or missing`);
+    if (!ld.everyday_to_academic_bridge || ld.everyday_to_academic_bridge.length < 20)
+      ldIssues.push(`Activity ${a.activity_id}: everyday_to_academic_bridge thin or missing`);
+  }
+  r.push({
+    id: 'elsf-language-demands-populated',
+    category: 'ELSF',
+    name: 'language_demands has all four facets populated per activity',
+    status: ldIssues.length === 0 ? 'pass' : 'warn',
+    message:
+      ldIssues.length === 0
+        ? 'All language demand facets populated.'
+        : `${ldIssues.length} language demand facet issues.`,
+    details: ldIssues.length > 0 ? ldIssues : undefined,
+  });
+
+  // 3. Functional language populated
+  const flIssues: string[] = [];
+  for (const a of elsfActivities) {
+    const fl = a.functional_language;
+    if (!fl) {
+      flIssues.push(`Activity ${a.activity_id}: functional_language missing`);
+      continue;
+    }
+    if (!fl.language_functions || fl.language_functions.length < 2)
+      flIssues.push(`Activity ${a.activity_id}: needs at least 2 language_functions`);
+    if (!fl.example_phrases || fl.example_phrases.length < 2)
+      flIssues.push(`Activity ${a.activity_id}: needs at least 2 example_phrases`);
+  }
+  r.push({
+    id: 'elsf-functional-language-populated',
+    category: 'ELSF',
+    name: 'functional_language has at least 2 functions and 2 phrases per activity',
+    status: flIssues.length === 0 ? 'pass' : 'warn',
+    message:
+      flIssues.length === 0
+        ? 'All functional language entries meet minimum density.'
+        : `${flIssues.length} functional language density issues.`,
+    details: flIssues.length > 0 ? flIssues : undefined,
+  });
+
+  // 4. Cited guidelines are valid (1-15)
+  const invalidGuidelines: string[] = [];
+  for (const a of elsfActivities) {
+    const ld = a.language_demands?.elsf_guidelines_applied ?? [];
+    const fl = a.functional_language?.elsf_guidelines_applied ?? [];
+    for (const n of ld) {
+      if (n < 1 || n > 15)
+        invalidGuidelines.push(`Activity ${a.activity_id}: language_demands cites invalid guideline ${n}`);
+    }
+    for (const n of fl) {
+      if (n < 1 || n > 15)
+        invalidGuidelines.push(`Activity ${a.activity_id}: functional_language cites invalid guideline ${n}`);
+    }
+    if (ld.length === 0)
+      invalidGuidelines.push(`Activity ${a.activity_id}: language_demands cites no guidelines`);
+    if (fl.length === 0)
+      invalidGuidelines.push(`Activity ${a.activity_id}: functional_language cites no guidelines`);
+  }
+  r.push({
+    id: 'elsf-guidelines-cited-and-valid',
+    category: 'ELSF',
+    name: 'Every ELSF block cites at least one valid guideline (1-15)',
+    status: invalidGuidelines.length === 0 ? 'pass' : 'fail',
+    message:
+      invalidGuidelines.length === 0
+        ? 'All ELSF guideline citations are valid.'
+        : `${invalidGuidelines.length} guideline citation issue(s).`,
+    details: invalidGuidelines.length > 0 ? invalidGuidelines : undefined,
+  });
+
+  return r;
+}
+
 export function runAllChecks(lesson: LessonData): CheckResult[] {
   return [
     ...structuralChecks(lesson),
@@ -778,6 +886,7 @@ export function runAllChecks(lesson: LessonData): CheckResult[] {
     ...thinkingChecks(lesson),
     ...movesChecks(lesson),
     ...mlrChecks(lesson),
+    ...elsfChecks(lesson),
     ...registerChecks(lesson),
   ];
 }

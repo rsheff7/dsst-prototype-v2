@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Anthropic from '@anthropic-ai/sdk';
-import { LESSON_ANALYSIS_PROMPT } from '@/lib/prompts';
+import { composeSystemPrompt } from '@/lib/prompts';
 import {
   LessonData,
   MlrRef,
@@ -10,6 +10,7 @@ import {
   ProficiencyAdaptation,
 } from '@/lib/types';
 import { isValidMlrNumber, MLRS, MlrNumber } from '@/lib/mlrs';
+import { isValidELSFGuidelineNumber, ELSFGuidelineNumber } from '@/lib/elsf';
 
 export const maxDuration = 300;
 
@@ -85,6 +86,25 @@ function normalizeDoNotRemove(raw: unknown): DoNotRemoveItem[] {
     .map((x) => ({ text: x.text, ...(x.mlr ? { mlr: x.mlr } : {}) }));
 }
 
+// Accepts both ELSF (emerging/developing/expanding) and legacy IM/WIDA
+// (entering/developing/bridging) labels for proficiency_moves. Returns the
+// ELSF-labeled object the schema expects.
+function normalizeProficiencyMoves(raw: unknown): unknown {
+  if (!raw || typeof raw !== 'object') return null;
+  const r = raw as Record<string, unknown>;
+  const emerging = r.emerging ?? r.entering;
+  const developing = r.developing;
+  const expanding = r.expanding ?? r.bridging;
+  if (!emerging && !developing && !expanding) return null;
+  return { emerging, developing, expanding };
+}
+
+function normalizeELSFGuidelinesApplied(raw: unknown): ELSFGuidelineNumber[] {
+  if (!Array.isArray(raw)) return [];
+  return raw
+    .filter((n): n is ELSFGuidelineNumber => isValidELSFGuidelineNumber(n));
+}
+
 function normalizeProficiency(raw: unknown): ProficiencyAdaptation {
   if (typeof raw === 'string') return { text: raw };
   if (raw && typeof raw === 'object') {
@@ -137,9 +157,10 @@ function normalizeLesson(raw: Partial<LessonData> & Record<string, unknown>): Le
       do_not_remove: normalizeDoNotRemove(raw.adaptation_guardrails?.do_not_remove),
       rigor_check: raw.adaptation_guardrails?.rigor_check ?? '',
       by_proficiency: {
-        entering: normalizeProficiency(rawProf.entering),
+        // Accept both ELSF labels (preferred) and legacy IM/WIDA labels for defense
+        emerging: normalizeProficiency(rawProf.emerging ?? rawProf.entering),
         developing: normalizeProficiency(rawProf.developing),
-        bridging: normalizeProficiency(rawProf.bridging),
+        expanding: normalizeProficiency(rawProf.expanding ?? rawProf.bridging),
       },
     },
     anticipated_thinking: {
@@ -170,7 +191,7 @@ function normalizeLesson(raw: Partial<LessonData> & Record<string, unknown>): Le
           interpretation: s.interpretation ?? '',
           is_mll: s.is_mll ?? false,
           flat_move: s.flat_move ?? null,
-          proficiency_moves: s.proficiency_moves ?? null,
+          proficiency_moves: normalizeProficiencyMoves(s.proficiency_moves) as typeof s.proficiency_moves,
           mll_framework_note: s.mll_framework_note ?? null,
           proficiency_divergence_note:
             (s as { proficiency_divergence_note?: string | null }).proficiency_divergence_note ?? null,
@@ -179,6 +200,35 @@ function normalizeLesson(raw: Partial<LessonData> & Record<string, unknown>): Le
             : {}),
         })),
       })),
+    },
+    elsf_inference: {
+      activities: ((raw as { elsf_inference?: { activities?: unknown[] } }).elsf_inference?.activities ?? [])
+        .map((rawA) => {
+          const a = rawA as Record<string, unknown>;
+          const ld = (a.language_demands ?? {}) as Record<string, unknown>;
+          const fl = (a.functional_language ?? {}) as Record<string, unknown>;
+          return {
+            activity_id: typeof a.activity_id === 'string' ? a.activity_id : '',
+            language_demands: {
+              receptive: typeof ld.receptive === 'string' ? ld.receptive : '',
+              productive: typeof ld.productive === 'string' ? ld.productive : '',
+              interactive: typeof ld.interactive === 'string' ? ld.interactive : '',
+              everyday_to_academic_bridge:
+                typeof ld.everyday_to_academic_bridge === 'string' ? ld.everyday_to_academic_bridge : '',
+              elsf_guidelines_applied: normalizeELSFGuidelinesApplied(ld.elsf_guidelines_applied),
+            },
+            functional_language: {
+              language_functions: Array.isArray(fl.language_functions)
+                ? (fl.language_functions as unknown[]).filter((s): s is string => typeof s === 'string')
+                : [],
+              example_phrases: Array.isArray(fl.example_phrases)
+                ? (fl.example_phrases as unknown[]).filter((s): s is string => typeof s === 'string')
+                : [],
+              l1_bridge: typeof fl.l1_bridge === 'string' ? fl.l1_bridge : null,
+              elsf_guidelines_applied: normalizeELSFGuidelinesApplied(fl.elsf_guidelines_applied),
+            },
+          };
+        }),
     },
     mlr_inference: {
       activities: (raw.mlr_inference?.activities ?? []).map((a) => ({
@@ -278,7 +328,7 @@ ${truncatedText}`;
     const message = await client.messages.create({
       model: 'claude-sonnet-4-6',
       max_tokens: 16000,
-      system: LESSON_ANALYSIS_PROMPT,
+      system: composeSystemPrompt(),
       messages: [{ role: 'user', content: userMessage }],
     });
 

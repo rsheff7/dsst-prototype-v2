@@ -211,9 +211,9 @@ function ActivityCard({
                 How to support across proficiency
               </p>
               <div className="space-y-2">
-                <ProficiencyRow label="Entering" level={proficiency.entering} bg="#E1F5EE" border="#9FE1CB" text="#085041" />
+                <ProficiencyRow label="Emerging" level={proficiency.emerging} bg="#E1F5EE" border="#9FE1CB" text="#085041" />
                 <ProficiencyRow label="Developing" level={proficiency.developing} bg="#EEEDFE" border="#AFA9EC" text="#26215C" />
-                <ProficiencyRow label="Bridging" level={proficiency.bridging} bg="#F1EFE8" border="#D3D1C7" text="#444441" />
+                <ProficiencyRow label="Expanding" level={proficiency.expanding} bg="#F1EFE8" border="#D3D1C7" text="#444441" />
               </div>
             </div>
           </div>

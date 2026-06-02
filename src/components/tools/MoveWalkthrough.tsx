@@ -541,12 +541,12 @@ export default function MoveWalkthrough({ lesson }: Props) {
                               Response by proficiency
                             </p>
                             <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1.5 text-[0.85rem] text-ink leading-snug">
-                              <span className="font-bold" style={{ color: '#00876C' }}>E</span>
-                              <span>{s.proficiency_moves.entering.move}</span>
+                              <span className="font-bold" style={{ color: '#00876C' }}>Em</span>
+                              <span>{s.proficiency_moves.emerging.move}</span>
                               <span className="font-bold" style={{ color: '#534AB7' }}>D</span>
                               <span>{s.proficiency_moves.developing.move}</span>
-                              <span className="font-bold" style={{ color: '#706E69' }}>B</span>
-                              <span>{s.proficiency_moves.bridging.move}</span>
+                              <span className="font-bold" style={{ color: '#706E69' }}>Ex</span>
+                              <span>{s.proficiency_moves.expanding.move}</span>
                             </div>
                           </div>
                         )}
@@ -737,9 +737,9 @@ export default function MoveWalkthrough({ lesson }: Props) {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               <ProficiencyColumn
-                label="Entering"
-                letter="E"
-                move={current.proficiency_moves.entering}
+                label="Emerging"
+                letter="Em"
+                move={current.proficiency_moves.emerging}
                 color="#00876C"
               />
               <ProficiencyColumn
@@ -749,9 +749,9 @@ export default function MoveWalkthrough({ lesson }: Props) {
                 color="#534AB7"
               />
               <ProficiencyColumn
-                label="Bridging"
-                letter="B"
-                move={current.proficiency_moves.bridging}
+                label="Expanding"
+                letter="Ex"
+                move={current.proficiency_moves.expanding}
                 color="#706E69"
               />
             </div>

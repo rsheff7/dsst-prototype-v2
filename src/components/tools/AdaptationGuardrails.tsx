@@ -88,11 +88,11 @@ export default function AdaptationGuardrails({ lesson }: Props) {
           >
             <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
               <p className="text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: '#085041' }}>
-                Entering
+                Emerging
               </p>
-              {g.by_proficiency.entering.mlr && <MlrChip mlr={g.by_proficiency.entering.mlr} />}
+              {g.by_proficiency.emerging.mlr && <MlrChip mlr={g.by_proficiency.emerging.mlr} />}
             </div>
-            <p className="text-[0.825rem] leading-relaxed">{g.by_proficiency.entering.text}</p>
+            <p className="text-[0.825rem] leading-relaxed">{g.by_proficiency.emerging.text}</p>
           </div>
 
           <div
@@ -114,11 +114,11 @@ export default function AdaptationGuardrails({ lesson }: Props) {
           >
             <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
               <p className="text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: '#444441' }}>
-                Bridging
+                Expanding
               </p>
-              {g.by_proficiency.bridging.mlr && <MlrChip mlr={g.by_proficiency.bridging.mlr} />}
+              {g.by_proficiency.expanding.mlr && <MlrChip mlr={g.by_proficiency.expanding.mlr} />}
             </div>
-            <p className="text-[0.825rem] leading-relaxed">{g.by_proficiency.bridging.text}</p>
+            <p className="text-[0.825rem] leading-relaxed">{g.by_proficiency.expanding.text}</p>
           </div>
         </div>
       </div>

@@ -56,15 +56,65 @@ MLR 8 — Discussion Supports
 
 When a language friction exists but no MLR fits cleanly, default to MLR 8 — it is the broadest, and discussion supports are almost always useful.
 
+# THE ELSF LANGUAGE LAYER (ADDITIONAL REASONING)
+
+ELSF — the English Learners Success Forum Guidelines for Improving Math Materials for English Learners — is an ADDITIONAL reasoning layer that sharpens two specific things in your guidance:
+
+  1. Identifying the key LANGUAGE DEMANDS of each activity.
+  2. Surfacing the FUNCTIONAL LANGUAGE students need to engage the task.
+
+ELSF does NOT replace the MLR layer; it deepens the language reasoning that downstream guidance (friction points, proficiency adaptations, sentence frames) draws on. The two layers work together: ELSF diagnoses what language work an activity demands; MLRs name the response vocabulary the teacher uses for language-rich moments.
+
+For each activity in the lesson, you must produce an elsf_inference entry with two structured blocks.
+
+LANGUAGE_DEMANDS — name the kinds of language work the activity requires:
+  - receptive: what students must read, listen to, or interpret to engage the task
+  - productive: what students must say or write to demonstrate their thinking
+  - interactive: what back-and-forth language work happens with peers
+  - everyday_to_academic_bridge: where students' informal/home language sits in relation to the academic register the task requires (this IS the bridge ELSF Guideline 1c and 6c name explicitly)
+  - elsf_guidelines_applied: which of the 15 ELSF guideline numbers informed this reasoning (most relevant for this lens: 1, 2, 6 — but you may cite others)
+
+FUNCTIONAL_LANGUAGE — name the specific language students must USE:
+  - language_functions: 2-4 functions (e.g., "explain reasoning", "describe a relationship", "compare quantities", "justify a conjecture", "translate between forms"). These are FUNCTIONS, not topics.
+  - example_phrases: 2-4 concrete academic English forms students need to PRODUCE. Distinct from the sentence_frames field elsewhere — these are the forms; sentence_frames are the scaffolds.
+  - l1_bridge: 1-2 sentences naming where home language or everyday English can be leveraged; null if not applicable
+  - elsf_guidelines_applied: which ELSF guideline numbers (most relevant for this lens: 1, 3, 7, 12)
+
+The ELSF reasoning must inform what you produce downstream. Specifically:
+  - by_proficiency adaptations should reflect the bridge each level needs (Emerging students need more receptive scaffolding; Expanding students need finer functional-language work)
+  - sentence_frames should match the functional language identified
+  - friction_points should cite the receptive/productive/interactive demand they sit at
+  - the orientation card in anticipated_thinking should reflect the everyday-to-academic bridge at the lesson level
+
+REASONING ORDER: elsf_inference MUST be the FIRST field in your output. mlr_inference SECOND. Everything else flows from those two named layers.
+
 # REGISTER REQUIREMENT
 
 Write in plain, direct language a first-year teacher can read at 9pm the night before teaching. Avoid academic and pedagogical jargon ("intuiting," "construct a precise tool," "structural insight," "privatizes the insight," "interpretive work," "articulate," "noticing capacity"). Use everyday vocabulary, short sentences, and the second person ("you," not "the teacher"). Math vocabulary specific to the lesson (ratio, unit rate, proportional, etc.) is fine — that is what teachers are teaching. Asset-based throughout: name what students bring, never what they lack.
 
 # OUTPUT JSON SHAPE
 
-The JSON has this shape. mlr_inference MUST be the FIRST field. wristband MUST be the LAST field.
+The JSON has this shape. elsf_inference MUST be the FIRST field. mlr_inference SECOND. wristband MUST be the LAST field.
 
 {
+  "elsf_inference": {
+    "activities": [{
+      "activity_id": "1.1",
+      "language_demands": {
+        "receptive": "string — what students must read or listen to to engage the task",
+        "productive": "string — what students must say or write to demonstrate their thinking",
+        "interactive": "string — the back-and-forth language work that happens with peers",
+        "everyday_to_academic_bridge": "string — where students' informal/home language sits in relation to the academic register the task requires",
+        "elsf_guidelines_applied": [array of 1-15 numbers — which ELSF guidelines informed this; most relevant for language demands: 1, 2, 6]
+      },
+      "functional_language": {
+        "language_functions": ["string — 2-4 functions students must use (explain reasoning, describe a relationship, compare quantities, etc.)"],
+        "example_phrases": ["string — 2-4 concrete academic English forms students need to produce"],
+        "l1_bridge": "string or null — where home language or everyday English can be leveraged",
+        "elsf_guidelines_applied": [array of 1-15 numbers — most relevant for functional language: 1, 3, 7, 12]
+      }
+    }]
+  },
   "mlr_inference": {
     "activities": [{
       "activity_id": "1.1",
@@ -112,9 +162,9 @@ The JSON has this shape. mlr_inference MUST be the FIRST field. wristband MUST b
     }],
     "rigor_check": "string — one specific question",
     "by_proficiency": {
-      "entering": { "text": "string — concrete move for Entering MLLs", "mlr": { "number", "name" } or omit },
-      "developing": { "text": "string — concrete move for Developing MLLs", "mlr": { "number", "name" } or omit },
-      "bridging": { "text": "string — concrete move for Bridging MLLs", "mlr": { "number", "name" } or omit }
+      "emerging": { "text": "string — concrete move for Emerging ELs (ELSF proficiency level: limited receptive and productive English; need substantial nonverbal scaffolding and home-language bridges)", "mlr": { "number", "name" } or omit },
+      "developing": { "text": "string — concrete move for Developing ELs (ELSF level: beyond newly-emerging; can use learned phrases; need continued targeted language support)", "mlr": { "number", "name" } or omit },
+      "expanding": { "text": "string — concrete move for Expanding ELs (ELSF level: can communicate appropriately for task; refining academic English; need lighter linguistic supports)", "mlr": { "number", "name" } or omit }
     }
   },
   "anticipated_thinking": {
@@ -146,10 +196,10 @@ The JSON has this shape. mlr_inference MUST be the FIRST field. wristband MUST b
         "interpretation": "string — 2-3 sentences naming what the observable behavior signals.",
         "is_mll": boolean,
         "flat_move": { "move", "say", "nonverbal", "avoid" } or null,
-        "proficiency_moves": { "entering": {...}, "developing": {...}, "bridging": {...} } or null,
+        "proficiency_moves": { "emerging": {...}, "developing": {...}, "expanding": {...} } or null,
         "mll_framework_note": "string or null — for MLL scenarios, briefly explain how the response adapts across proficiency levels",
         "mlr": { "number": 1-8, "name": "string" } or omit — REQUIRED when is_mll is true; this is the headline routine for the scenario,
-        "proficiency_divergence_note": "string or null — when the routine for Entering/Developing/Bridging meaningfully differs from the headline (e.g., 'For Entering, this becomes MLR 8 — partner read-aloud carries the work'), name the divergence in prose; otherwise null"
+        "proficiency_divergence_note": "string or null — when the routine for Emerging/Developing/Expanding meaningfully differs from the headline (e.g., 'For Emerging, this becomes MLR 8 — partner read-aloud carries the work'), name the divergence in prose; otherwise null"
       }]
     }]
   },
@@ -167,7 +217,7 @@ The JSON has this shape. mlr_inference MUST be the FIRST field. wristband MUST b
         "move_short": "string — 18-28 words. The move written as the routine actually running (named MLR mechanics — revoice, wait time, partner share, compare/connect) PLUS why it works (the math gain or the noticing gain). NOT generic advice. Example: 'Read aloud; ask which comes first. MLR 8 read-aloud lets them feel the mismatch without you naming it — they self-correct.'",
         "avoid_short": "string — 4-8 words. The most common over-helping trap a novice teacher falls into for this specific moment. The thing that would undo the move. Example: 'Fixing the order yourself.' or 'Saying great and moving on.'",
         "is_crux_moment": "boolean — true for ONE tile across the entire lesson, on the crux activity, marking the moment that — if missed — the lesson does not land. Usually a productive-insight moment, not an error. Exactly one tile should have this true.",
-        "has_proficiency_variants": "boolean — true when this moment's response actually differs by Entering/Developing/Bridging proficiency (signals the teacher to consult Moves for the side-by-side). Set true for MLL frictions where proficiency_moves are present in the corresponding decision_guide scenario.",
+        "has_proficiency_variants": "boolean — true when this moment's response actually differs by Emerging/Developing/Expanding proficiency (signals the teacher to consult Moves for the side-by-side). Set true for MLL frictions where proficiency_moves are present in the corresponding decision_guide scenario.",
         "glyph_observation": "string — 2-4 word ALL-CAPS compression of the observation for the in-class view. Verb-noun or noun-only. Example: 'NUMBERS FLIPPED' or 'MLL FROZEN AT FRAME'.",
         "glyph_move": "string — 3-6 word verb-first cue for the in-class view. Use middle dots (·) to separate steps. Example: 'READ ALOUD · WHICH FIRST?' or 'POINT ITEM · POINT BLANK'."
       }]
@@ -184,7 +234,7 @@ The JSON has this shape. mlr_inference MUST be the FIRST field. wristband MUST b
 - mlr_inference comes first. Everything else must be consistent with it.
 - Be specific to THIS lesson. Concrete observable behaviors and concrete responses. Never generic advice.
 - Across every activity, produce a mix of scenarios in the decision_guide — NOT just errors. Include 1-2 common-error scenarios, 1 productive-insight, 1 on-track, and at least 1 productive-struggle or partial-understanding per activity. Total ~10-12 scenarios across the lesson.
-- For MLL scenarios (is_mll: true), proficiency_moves must have all three (entering, developing, bridging), each with a complete move. Entering nonverbal field must be populated with a concrete physical action. Other proficiency levels may have nonverbal: null.
+- For MLL scenarios (is_mll: true), proficiency_moves must have all three (emerging, developing, expanding), each with a complete move. Emerging nonverbal field must be populated with a concrete physical action. Other proficiency levels may have nonverbal: null.
 - For non-MLL scenarios (is_mll: false), use flat_move and set proficiency_moves: null and mll_framework_note: null.
 - Every MLR-anchored item's move text must be execution-faithful. A teacher reading it should be running the routine, not learning about it.
 - The "avoid" line on each move names the over-scaffolding traps a novice teacher would fall into.
@@ -193,3 +243,27 @@ The JSON has this shape. mlr_inference MUST be the FIRST field. wristband MUST b
 - wristband.activities should have 2-3 tiles per activity, max. The wristband is curated, not exhaustive.
 - wristband.mlr_legend should list the 2-3 routines this lesson runs on most heavily, not all 8.
 - Use plain language throughout. Asset-based throughout. No deficit framing.`;
+
+// ---------------------------------------------------------------------------
+// composeSystemPrompt: builds the full system prompt by appending the ELSF
+// Guidelines as a structured reference block. Keeps the guidelines in code
+// (src/lib/elsf.ts) rather than buried in a prompt string, so the language
+// layer is tunable by editing the constants module.
+// ---------------------------------------------------------------------------
+import { ELSF_GUIDELINES, ELSF_AREAS, LANGUAGE_DEMAND_GUIDELINES, FUNCTIONAL_LANGUAGE_GUIDELINES } from './elsf';
+
+export function composeSystemPrompt(): string {
+  const guidelinesByArea = ELSF_AREAS.map((area) => {
+    const inArea = ELSF_GUIDELINES.filter((g) => g.area === area.number);
+    const lines = inArea.map((g) => {
+      const specs = g.specs.map((s) => `      ${s.id}. ${s.text}`).join('\n');
+      return `  Guideline ${g.number}: ${g.title}\n${specs}`;
+    });
+    return `Area ${area.number} — ${area.name}\n${lines.join('\n\n')}`;
+  }).join('\n\n');
+
+  const reference = `\n\n# ELSF GUIDELINES REFERENCE — structured injection\n\nThe following is the ELSF Guidelines for Improving Math Materials for English Learners, organized by Area of Focus. Use these to ground your elsf_inference reasoning. Cite specific guideline numbers in elsf_guidelines_applied. Most relevant for LANGUAGE_DEMANDS: ${LANGUAGE_DEMAND_GUIDELINES.join(', ')}. Most relevant for FUNCTIONAL_LANGUAGE: ${FUNCTIONAL_LANGUAGE_GUIDELINES.join(', ')}.\n\n${guidelinesByArea}\n`;
+
+  return LESSON_ANALYSIS_PROMPT + reference;
+}
+

@@ -16,6 +16,7 @@ const SECTIONS = [
   { id: 'tone', label: '6. Tone samples' },
   { id: 'non-negotiables', label: '7. Adapt non-negotiables' },
   { id: 'mlr-coherence', label: '8. MLR coherence map' },
+  { id: 'elsf-inference', label: '9. ELSF language layer' },
 ];
 
 export default function AuditPage() {
@@ -445,8 +446,105 @@ export default function AuditPage() {
           </div>
         </section>
 
+        {/* 9. ELSF language layer */}
+        <section id="elsf-inference" className="mb-12 scroll-mt-6">
+          <h2 className="text-[1.05rem] font-semibold text-ink mb-1">
+            9. ELSF language layer
+          </h2>
+          <p className="text-[0.825rem] text-ink-muted mb-4 leading-relaxed">
+            For each activity, the ELSF reasoning layer produces a language_demands block (receptive / productive / interactive / everyday-to-academic bridge) and a functional_language block (functions students must use, example phrases, L1 bridges). Cited guideline numbers in brackets are from the 15 ELSF Guidelines. The MLR layer and other downstream guidance must align with this inference.
+          </p>
+
+          {lesson.elsf_inference.activities.length === 0 ? (
+            <p className="text-[0.825rem] text-ink-faint italic">No ELSF inference present.</p>
+          ) : (
+            <div className="space-y-5">
+              {lesson.elsf_inference.activities.map((a) => {
+                const sourceActivity = lesson.activities.find((x) => x.id === a.activity_id);
+                const label = sourceActivity
+                  ? `${sourceActivity.id} ${activitySlot(sourceActivity.title)}`
+                  : `Activity ${a.activity_id}`;
+                return (
+                  <div key={a.activity_id} className="rounded-xl border border-line bg-card shadow-sm overflow-hidden">
+                    <div className="px-5 py-3 border-b border-line-subtle bg-surface">
+                      <p className="text-[0.875rem] font-semibold text-ink">{label}</p>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-line-subtle">
+                      {/* Language demands */}
+                      <div className="px-5 py-4">
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-2">
+                          Language demands
+                          {a.language_demands.elsf_guidelines_applied.length > 0 && (
+                            <span className="ml-2 text-ink-faint">[ELSF {a.language_demands.elsf_guidelines_applied.join(', ')}]</span>
+                          )}
+                        </p>
+                        <dl className="space-y-2">
+                          <div>
+                            <dt className="text-[10px] font-semibold uppercase tracking-[0.08em] text-ink-faint">Receptive</dt>
+                            <dd className="text-[0.8rem] text-ink-muted leading-relaxed">{a.language_demands.receptive}</dd>
+                          </div>
+                          <div>
+                            <dt className="text-[10px] font-semibold uppercase tracking-[0.08em] text-ink-faint">Productive</dt>
+                            <dd className="text-[0.8rem] text-ink-muted leading-relaxed">{a.language_demands.productive}</dd>
+                          </div>
+                          <div>
+                            <dt className="text-[10px] font-semibold uppercase tracking-[0.08em] text-ink-faint">Interactive</dt>
+                            <dd className="text-[0.8rem] text-ink-muted leading-relaxed">{a.language_demands.interactive}</dd>
+                          </div>
+                          <div>
+                            <dt className="text-[10px] font-semibold uppercase tracking-[0.08em] text-ink-faint">Everyday → academic bridge</dt>
+                            <dd className="text-[0.8rem] text-ink-muted leading-relaxed">{a.language_demands.everyday_to_academic_bridge}</dd>
+                          </div>
+                        </dl>
+                      </div>
+
+                      {/* Functional language */}
+                      <div className="px-5 py-4">
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-2">
+                          Functional language
+                          {a.functional_language.elsf_guidelines_applied.length > 0 && (
+                            <span className="ml-2 text-ink-faint">[ELSF {a.functional_language.elsf_guidelines_applied.join(', ')}]</span>
+                          )}
+                        </p>
+                        <dl className="space-y-2">
+                          <div>
+                            <dt className="text-[10px] font-semibold uppercase tracking-[0.08em] text-ink-faint">Language functions</dt>
+                            <dd className="text-[0.8rem] text-ink-muted leading-relaxed">
+                              <ul className="list-disc pl-5">
+                                {a.functional_language.language_functions.map((f, i) => (
+                                  <li key={i}>{f}</li>
+                                ))}
+                              </ul>
+                            </dd>
+                          </div>
+                          <div>
+                            <dt className="text-[10px] font-semibold uppercase tracking-[0.08em] text-ink-faint">Example phrases</dt>
+                            <dd className="text-[0.8rem] text-ink-muted leading-relaxed italic">
+                              <ul className="list-disc pl-5">
+                                {a.functional_language.example_phrases.map((p, i) => (
+                                  <li key={i}>{p}</li>
+                                ))}
+                              </ul>
+                            </dd>
+                          </div>
+                          {a.functional_language.l1_bridge && (
+                            <div>
+                              <dt className="text-[10px] font-semibold uppercase tracking-[0.08em] text-ink-faint">L1 bridge</dt>
+                              <dd className="text-[0.8rem] text-ink-muted leading-relaxed">{a.functional_language.l1_bridge}</dd>
+                            </div>
+                          )}
+                        </dl>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </section>
+
         <p className="text-[0.8rem] text-ink-faint italic mt-12 pt-6 border-t border-line">
-          Audit v2.0 · For structural pass/fail checks, see{' '}
+          Audit v2.1 · For structural pass/fail checks, see{' '}
           <Link href="/qa" className="underline-offset-2 underline">/qa</Link>
         </p>
       </main>
