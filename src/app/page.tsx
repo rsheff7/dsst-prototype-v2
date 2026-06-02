@@ -194,6 +194,9 @@ export default function HomePage() {
             About Premo →
           </a>
         </div>
+        <p className="mt-10 text-[0.7rem] text-ink-faint italic">
+          Premo · v2.1 — DSST 6/1 review
+        </p>
       </div>
     </div>
   );

@@ -238,7 +238,7 @@ export default function FrameworkPage() {
 
         <footer className="mt-16 pt-6 border-t border-line">
           <p className="text-[0.8rem] text-ink-faint italic">
-            Premo v2 · for DSST Public Schools · Scale Up Partners, LLC
+            Premo · v2.1 — DSST 6/1 review · for DSST Public Schools · Scale Up Partners, LLC
           </p>
         </footer>
       </article>
