@@ -291,13 +291,39 @@ function normalizeLesson(raw: Partial<LessonData> & Record<string, unknown>): Le
 }
 
 export async function POST(req: NextRequest) {
-  try {
-    const formData = await req.formData();
-    const file = formData.get('pdf') as File | null;
+  const t0 = Date.now();
+  const log = (msg: string, extra?: Record<string, unknown>) => {
+    console.log(`[analyze +${Date.now() - t0}ms] ${msg}`, extra ?? '');
+  };
 
+  try {
+    if (!process.env.ANTHROPIC_API_KEY) {
+      console.error('[analyze] ANTHROPIC_API_KEY not set on this deployment');
+      return NextResponse.json(
+        {
+          error:
+            'Server is missing the Anthropic API key. The deployment needs ANTHROPIC_API_KEY set (Vercel → Project → Settings → Environment Variables, scope: Preview + Production).',
+        },
+        { status: 500 },
+      );
+    }
+
+    let formData: FormData;
+    try {
+      formData = await req.formData();
+    } catch (err) {
+      console.error('[analyze] formData parse failed:', err);
+      return NextResponse.json(
+        { error: 'Could not parse the upload. The file may be too large or corrupted.' },
+        { status: 400 },
+      );
+    }
+
+    const file = formData.get('pdf') as File | null;
     if (!file) {
       return NextResponse.json({ error: 'No file uploaded.' }, { status: 400 });
     }
+    log('received file', { name: file.name, size: file.size });
 
     const buffer = Buffer.from(await file.arrayBuffer());
 
@@ -307,17 +333,24 @@ export async function POST(req: NextRequest) {
       const pdfParse = require('pdf-parse/lib/pdf-parse.js');
       const data = await pdfParse(buffer);
       pdfText = data.text;
-    } catch {
+      log('pdf parsed', { chars: pdfText.length });
+    } catch (err) {
+      console.error('[analyze] pdf-parse failed:', err);
       return NextResponse.json(
-        { error: 'Could not read this PDF. Try a text-based PDF rather than a scan.' },
-        { status: 400 }
+        {
+          error:
+            'Could not read this PDF. It may be a scan (image-only) or use an unsupported encoding. Re-export as a text-based PDF and try again.',
+        },
+        { status: 400 },
       );
     }
 
     if (!pdfText || pdfText.trim().length < 100) {
       return NextResponse.json(
-        { error: 'Could not read this PDF. Try a text-based PDF rather than a scan.' },
-        { status: 400 }
+        {
+          error: `The PDF parsed to only ${pdfText?.trim().length ?? 0} characters of text — likely a scanned/image PDF. Try a text-based PDF.`,
+        },
+        { status: 400 },
       );
     }
 
@@ -327,11 +360,13 @@ export async function POST(req: NextRequest) {
     const userMessage = `Analyze this math lesson and return the full JSON described in your system prompt.
 
 You MUST produce ALL top-level sections, fully populated for every activity in the lesson:
-- meta, arc_statement, destination, key_vocabulary, activities, adaptation_guardrails, anticipated_thinking, decision_guide, mlr_inference, wristband
+- meta, arc_statement, destination, key_vocabulary, activities, adaptation_guardrails, anticipated_thinking, decision_guide, mlr_inference, wristband, lesson_synthesis
 
 The mlr_inference block MUST appear first in your output. Subsequent fields must be consistent with what mlr_inference says about each activity.
 
 Across the decision_guide, the scenarios MUST include a mix of types — not just common-error. At minimum: 1-2 common-error, 1 productive-insight, 1 on-track, and 1 productive-struggle or partial-understanding across the lesson.
+
+Every activity MUST include a synthesis_prompt that points back to that activity's learning_target in lesson-specific language. The lesson_synthesis block MUST consolidate the activity-level syntheses toward the destination. The wristband MUST include synthesis_short per activity and lesson_synthesis_short. NEVER use generic reminders like "have students share what they learned" or "reflect on the learning target" in any synthesis field.
 
 Write in plain language a first-year teacher could read at 9pm the night before teaching. No academic jargon.
 
@@ -340,19 +375,47 @@ ${truncatedText}`;
 
     const client = new Anthropic();
 
-    const message = await client.messages.create({
-      model: 'claude-sonnet-4-6',
-      max_tokens: 16000,
-      system: composeSystemPrompt(),
-      messages: [{ role: 'user', content: userMessage }],
-    });
+    let message;
+    try {
+      log('calling Anthropic');
+      message = await client.messages.create({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 16000,
+        system: composeSystemPrompt(),
+        messages: [{ role: 'user', content: userMessage }],
+      });
+      log('Anthropic returned', { stop_reason: message.stop_reason });
+    } catch (err) {
+      console.error('[analyze] Anthropic call failed:', err);
+      const apiErr = err as { status?: number; message?: string; error?: { message?: string } };
+      const detail =
+        apiErr?.error?.message ?? apiErr?.message ?? 'Unknown Anthropic error';
+      if (apiErr?.status === 401) {
+        return NextResponse.json(
+          { error: 'Anthropic rejected the API key (401). The deployment key is invalid or expired.' },
+          { status: 502 },
+        );
+      }
+      if (apiErr?.status === 429) {
+        return NextResponse.json(
+          { error: 'Anthropic rate limit hit. Wait a minute and try again.' },
+          { status: 502 },
+        );
+      }
+      return NextResponse.json(
+        { error: `Anthropic API error: ${detail}` },
+        { status: 502 },
+      );
+    }
 
     const textBlock = message.content.find((b) => b.type === 'text');
     if (!textBlock || textBlock.type !== 'text') {
-      console.error('No text block. stop_reason:', message.stop_reason);
+      console.error('[analyze] No text block returned. stop_reason:', message.stop_reason);
       return NextResponse.json(
-        { error: 'Something went wrong. Try uploading again.' },
-        { status: 500 }
+        {
+          error: `Model returned no text (stop_reason: ${message.stop_reason}). Likely hit max_tokens — the lesson may be too long.`,
+        },
+        { status: 502 },
       );
     }
 
@@ -361,20 +424,29 @@ ${truncatedText}`;
       const json = extractJSON(textBlock.text);
       parsed = JSON.parse(json) as Partial<LessonData> & Record<string, unknown>;
     } catch (err) {
-      console.error('JSON parse error:', err);
+      console.error('[analyze] JSON parse error:', err);
+      console.error(
+        '[analyze] First 500 chars of model output:',
+        textBlock.text.slice(0, 500),
+      );
       return NextResponse.json(
-        { error: 'Something went wrong. Try uploading again.' },
-        { status: 500 }
+        {
+          error:
+            'The model returned text that was not valid JSON. Try uploading again — this is usually transient.',
+        },
+        { status: 502 },
       );
     }
 
     const lesson = normalizeLesson(parsed);
+    log('normalized lesson');
     return NextResponse.json(lesson);
   } catch (err) {
-    console.error('Analyze route error:', err);
+    console.error('[analyze] Unexpected error:', err);
+    const msg = err instanceof Error ? err.message : String(err);
     return NextResponse.json(
-      { error: 'Something went wrong. Try uploading again.' },
-      { status: 500 }
+      { error: `Unexpected server error: ${msg}` },
+      { status: 500 },
     );
   }
 }

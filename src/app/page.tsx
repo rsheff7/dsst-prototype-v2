@@ -40,6 +40,18 @@ export default function HomePage() {
         return;
       }
 
+      // Vercel App Router POST bodies are capped at 4.5 MB. Reject early with a
+      // specific message so the teacher knows what to do.
+      const MAX_BYTES = 4_300_000;
+      if (file.size > MAX_BYTES) {
+        const mb = (file.size / 1_000_000).toFixed(1);
+        setErrorMessage(
+          `This PDF is ${mb} MB — uploads are capped at 4.3 MB. Re-export as a text-only PDF, or split it into a single-lesson PDF.`,
+        );
+        setUploadState('error');
+        return;
+      }
+
       setUploadState('analyzing');
       setLoadingMessageIndex(0);
 
@@ -48,18 +60,51 @@ export default function HomePage() {
 
       try {
         const res = await fetch('/api/analyze', { method: 'POST', body: formData });
-        const data = await res.json();
 
-        if (!res.ok) {
-          setErrorMessage(data.error ?? 'Something went wrong. Try uploading again.');
+        // Try JSON first; fall back to raw text if the server returned HTML
+        // (e.g. Vercel's 413 page when the body is over the platform limit).
+        let serverMessage = '';
+        let data: { error?: string } | null = null;
+        try {
+          data = (await res.clone().json()) as { error?: string };
+          if (data?.error) serverMessage = data.error;
+        } catch {
+          try {
+            const text = await res.text();
+            if (text && text.length < 500) serverMessage = text;
+          } catch {
+            // ignore
+          }
+        }
+
+        if (!res.ok || !data) {
+          if (res.status === 413) {
+            setErrorMessage(
+              'The PDF was rejected as too large by the server. Re-export the PDF without images or split it to a single lesson.',
+            );
+          } else if (res.status === 504) {
+            setErrorMessage(
+              'The analysis timed out. The lesson may be long — try a shorter excerpt or re-upload.',
+            );
+          } else if (serverMessage) {
+            setErrorMessage(serverMessage);
+          } else {
+            setErrorMessage(
+              `Upload failed (HTTP ${res.status}). Check your connection and try again.`,
+            );
+          }
           setUploadState('error');
           return;
         }
 
-        setLesson(data as LessonData);
+        setLesson(data as unknown as LessonData);
         router.push('/lesson');
-      } catch {
-        setErrorMessage('Something went wrong. Try uploading again.');
+      } catch (err) {
+        setErrorMessage(
+          err instanceof Error
+            ? `Network error: ${err.message}`
+            : 'Network error. Check your connection and try again.',
+        );
         setUploadState('error');
       }
     },
