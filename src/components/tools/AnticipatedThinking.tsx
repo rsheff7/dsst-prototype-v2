@@ -116,7 +116,10 @@ export default function AnticipatedThinking({ lesson }: Props) {
 
       <div className="space-y-4 mb-8">
         {sortedPatterns.map((pattern, i) => {
-          const styles = PATTERN_STYLES[pattern.type];
+          // Defensive: if the model emitted an out-of-enum pattern.type that
+          // slipped past the normalizer, fall back to on-track styling rather
+          // than crashing the React tree.
+          const styles = PATTERN_STYLES[pattern.type] ?? PATTERN_STYLES['on-track'];
           const key = `${activeActivityId}-${i}`;
 
           return (
@@ -151,7 +154,7 @@ export default function AnticipatedThinking({ lesson }: Props) {
                     )}
                   </div>
                   <span className="text-[11px] font-medium text-ink-faint shrink-0">
-                    {FREQUENCY_LABELS[pattern.frequency]}
+                    {FREQUENCY_LABELS[pattern.frequency] ?? pattern.frequency}
                   </span>
                 </div>
 

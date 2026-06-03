@@ -33,6 +33,12 @@ const SCENARIO_TYPE_META: Record<ScenarioType, { label: string; color: string }>
   'productive-struggle': { label: 'Productive struggle', color: '#854F0B' },
 };
 
+// Defensive lookup: if the model emitted a scenario_type that slipped past
+// the normalizer, fall back to common-error styling rather than crashing.
+function metaFor(scenarioType: ScenarioType): { label: string; color: string } {
+  return SCENARIO_TYPE_META[scenarioType] ?? SCENARIO_TYPE_META['common-error'];
+}
+
 type Screen = 'overview' | 'detail' | 'cheat-sheet';
 
 interface FlatScenario extends DecisionScenario {
@@ -167,7 +173,7 @@ function ScenarioCard({
   onOpen: () => void;
   lesson: LessonData;
 }) {
-  const meta = SCENARIO_TYPE_META[scenario.scenario_type];
+  const meta = metaFor(scenario.scenario_type);
   return (
     <button
       onClick={onOpen}
@@ -481,7 +487,7 @@ export default function MoveWalkthrough({ lesson }: Props) {
                       <div className="flex items-start gap-2.5 mb-3">
                         <span
                           className="mt-[0.5rem] h-1.5 w-1.5 shrink-0 rounded-full"
-                          style={{ backgroundColor: SCENARIO_TYPE_META[s.scenario_type].color }}
+                          style={{ backgroundColor: metaFor(s.scenario_type).color }}
                         />
                         <div className="flex-1 min-w-0">
                           <p
@@ -494,11 +500,11 @@ export default function MoveWalkthrough({ lesson }: Props) {
                             <span
                               className="inline-block text-[9px] font-bold uppercase tracking-[0.08em] px-1.5 py-0.5 rounded-full border"
                               style={{
-                                color: SCENARIO_TYPE_META[s.scenario_type].color,
-                                borderColor: SCENARIO_TYPE_META[s.scenario_type].color,
+                                color: metaFor(s.scenario_type).color,
+                                borderColor: metaFor(s.scenario_type).color,
                               }}
                             >
-                              {SCENARIO_TYPE_META[s.scenario_type].label}
+                              {metaFor(s.scenario_type).label}
                             </span>
                             {s.is_mll && (
                               <span
@@ -642,11 +648,11 @@ export default function MoveWalkthrough({ lesson }: Props) {
         <span
           className="text-[10px] font-bold uppercase tracking-[0.08em] px-2 py-0.5 rounded-full border"
           style={{
-            color: SCENARIO_TYPE_META[current.scenario_type].color,
-            borderColor: SCENARIO_TYPE_META[current.scenario_type].color,
+            color: metaFor(current.scenario_type).color,
+            borderColor: metaFor(current.scenario_type).color,
           }}
         >
-          {SCENARIO_TYPE_META[current.scenario_type].label}
+          {metaFor(current.scenario_type).label}
         </span>
         {current.is_mll && (
           <span
