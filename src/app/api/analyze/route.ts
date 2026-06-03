@@ -105,6 +105,44 @@ function normalizeELSFGuidelinesApplied(raw: unknown): ELSFGuidelineNumber[] {
     .filter((n): n is ELSFGuidelineNumber => isValidELSFGuidelineNumber(n));
 }
 
+// Strict enum validation: if the model emits a string outside the allowed set,
+// snap to the fallback. Without this, downstream LOOKUP[invalidValue].field
+// throws and crashes the React tree. The fallback is chosen to be safe — the
+// least dangerous interpretation if the model misnames the field.
+function oneOf<T extends string>(
+  value: unknown,
+  allowed: readonly T[],
+  fallback: T,
+): T {
+  if (typeof value === 'string' && (allowed as readonly string[]).includes(value)) {
+    return value as T;
+  }
+  return fallback;
+}
+
+const ACTIVITY_FUNCTIONS = ['Setup', 'Crux', 'Application', 'Synthesis'] as const;
+const LANGUAGE_DEMANDS = ['low', 'medium', 'high'] as const;
+const FRICTION_TYPES = ['math', 'language', 'language-math'] as const;
+const PATTERN_TYPES = [
+  'on-track',
+  'misconception',
+  'partial',
+  'extension',
+  'language-math',
+] as const;
+const PATTERN_FREQUENCIES = [
+  'most students',
+  'some students',
+  'watch for this',
+] as const;
+const SCENARIO_TYPES = [
+  'common-error',
+  'productive-insight',
+  'on-track',
+  'partial-understanding',
+  'productive-struggle',
+] as const;
+
 function normalizeProficiency(raw: unknown): ProficiencyAdaptation {
   if (typeof raw === 'string') return { text: raw };
   if (raw && typeof raw === 'object') {
@@ -132,17 +170,17 @@ function normalizeLesson(raw: Partial<LessonData> & Record<string, unknown>): Le
     activities: (raw.activities ?? []).map((a) => ({
       id: a.id ?? '',
       title: a.title ?? '',
-      function: a.function ?? 'Application',
+      function: oneOf(a.function, ACTIVITY_FUNCTIONS, 'Application'),
       duration: a.duration ?? '',
       grouping: a.grouping ?? '',
-      language_demand: a.language_demand ?? 'low',
+      language_demand: oneOf(a.language_demand, LANGUAGE_DEMANDS, 'low'),
       function_summary: a.function_summary ?? '',
       learning_target: a.learning_target ?? '',
       synthesis_prompt: a.synthesis_prompt ?? '',
       is_crux: a.is_crux ?? false,
       friction_points: (a.friction_points ?? []).map((fp) => ({
         description: fp.description ?? '',
-        type: fp.type ?? 'math',
+        type: oneOf(fp.type, FRICTION_TYPES, 'math'),
         ...(normalizeMlr((fp as { mlr?: unknown }).mlr)
           ? { mlr: normalizeMlr((fp as { mlr?: unknown }).mlr)! }
           : {}),
@@ -170,8 +208,8 @@ function normalizeLesson(raw: Partial<LessonData> & Record<string, unknown>): Le
         activity_id: a.activity_id ?? '',
         patterns: (a.patterns ?? []).map((p) => ({
           label: p.label ?? '',
-          frequency: p.frequency ?? 'some students',
-          type: p.type ?? 'on-track',
+          frequency: oneOf(p.frequency, PATTERN_FREQUENCIES, 'some students'),
+          type: oneOf(p.type, PATTERN_TYPES, 'on-track'),
           description: p.description ?? '',
           move: p.move ?? '',
           is_mll_specific: p.is_mll_specific ?? false,
@@ -187,7 +225,7 @@ function normalizeLesson(raw: Partial<LessonData> & Record<string, unknown>): Le
       activities: (raw.decision_guide?.activities ?? []).map((a) => ({
         activity_id: a.activity_id ?? '',
         scenarios: (a.scenarios ?? []).map((s) => ({
-          scenario_type: s.scenario_type ?? 'common-error',
+          scenario_type: oneOf(s.scenario_type, SCENARIO_TYPES, 'common-error'),
           label: s.label ?? '',
           interpretation: s.interpretation ?? '',
           is_mll: s.is_mll ?? false,
@@ -253,7 +291,7 @@ function normalizeLesson(raw: Partial<LessonData> & Record<string, unknown>): Le
         activity_id: a.activity_id ?? '',
         tiles: (a.tiles ?? []).map((t) => ({
           observation_short: t.observation_short ?? '',
-          friction_type: t.friction_type ?? 'math',
+          friction_type: oneOf(t.friction_type, FRICTION_TYPES, 'math'),
           move_short: t.move_short ?? '',
           ...(t.avoid_short ? { avoid_short: t.avoid_short } : {}),
           ...(t.is_crux_moment ? { is_crux_moment: true } : {}),
