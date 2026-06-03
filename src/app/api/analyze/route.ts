@@ -12,7 +12,10 @@ import {
 import { isValidMlrNumber, MLRS, MlrNumber } from '@/lib/mlrs';
 import { isValidELSFGuidelineNumber, ELSFGuidelineNumber } from '@/lib/elsf';
 
-export const maxDuration = 300;
+// Two-pass generation needs more than the default 300s. Vercel Pro allows up
+// to 800s on serverless functions; 600s leaves headroom for two ~240s Anthropic
+// calls plus pdf-parse, normalization, and the error path.
+export const maxDuration = 600;
 
 const MAX_PDF_CHARS = 12000;
 
@@ -395,67 +398,95 @@ export async function POST(req: NextRequest) {
     const truncatedText =
       pdfText.length > MAX_PDF_CHARS ? pdfText.slice(0, MAX_PDF_CHARS) : pdfText;
 
-    const userMessage = `Analyze this math lesson and return the full JSON described in your system prompt.
+    // Two-pass generation. The v2.3 schema (Elmore + MLR + ELSF + synthesis)
+    // is structurally too large to generate in a single ~270s call without
+    // truncation. We split: Pass 1 produces the structural fields (a teacher's
+    // mental model of the lesson), Pass 2 produces the reasoning layers
+    // (anticipating, deciding, MLR/ELSF inference, wristband) given Pass 1
+    // and the lesson text as input. Each call fits comfortably in budget.
+    //
+    // Per-call client timeout 240s leaves the function maxDuration room for
+    // both calls plus pdf-parse, normalization, and error paths.
+    const client = new Anthropic({ timeout: 240_000, maxRetries: 0 });
 
-You MUST produce ALL top-level sections, fully populated for every activity in the lesson:
-- meta, arc_statement, destination, key_vocabulary, activities, adaptation_guardrails, anticipated_thinking, decision_guide, mlr_inference, wristband, lesson_synthesis
-
-The mlr_inference block MUST appear first in your output. Subsequent fields must be consistent with what mlr_inference says about each activity.
-
-Across the decision_guide, the scenarios MUST include a mix of types — not just common-error. At minimum: 1-2 common-error, 1 productive-insight, 1 on-track, and 1 productive-struggle or partial-understanding across the lesson.
-
-Every activity MUST include a synthesis_prompt that points back to that activity's learning_target in lesson-specific language. The lesson_synthesis block MUST consolidate the activity-level syntheses toward the destination. The wristband MUST include synthesis_short per activity and lesson_synthesis_short. NEVER use generic reminders like "have students share what they learned" or "reflect on the learning target" in any synthesis field.
-
-Write in plain language a first-year teacher could read at 9pm the night before teaching. No academic jargon.
-
-OUTPUT FORMAT — MANDATORY:
+    const concisionRules = `OUTPUT FORMAT — MANDATORY:
 - Begin your response immediately with the opening brace { of the JSON object.
 - End with the closing brace }.
 - No preamble, no commentary, no markdown fences (do NOT wrap in \`\`\`json).
 
 CONCISION — STRICT:
-- Total output MUST fit in 16000 tokens. Truncated JSON cannot be used.
 - Keep every string short and concrete. No throat-clearing, no restating what other fields already say.
-- Long descriptive fields (function_summary, arc_statement) cap at ~3 sentences. Move descriptions cap at ~2 sentences. Interpretation fields cap at ~2 sentences. observation_short, move_short, glyph_observation, glyph_move stay at their stated word caps.
-- If you find yourself approaching the budget, drop redundant scenarios from decision_guide before truncating any required field. Required fields MUST be present.
+- Long descriptive fields cap at ~3 sentences. Move and interpretation fields cap at ~2 sentences. observation_short, move_short, glyph_observation, glyph_move stay at their stated word caps.`;
+
+    const pass1Message = `Analyze this math lesson. This is PASS 1 of a two-pass analysis — return ONLY the structural fields. The reasoning layers (anticipated thinking, decision guide, MLR inference, ELSF inference, wristband) will be requested in Pass 2.
+
+Return a single JSON object with EXACTLY these top-level fields (and no others):
+- meta { grade, unit, lesson_number, lesson_title, total_time }
+- arc_statement
+- destination
+- key_vocabulary
+- activities — each activity must be a FULL activity object per the system prompt schema (id, title, function, duration, grouping, language_demand, function_summary, learning_target, synthesis_prompt, is_crux, friction_points, success_signals, teacher_moves, causal_link, extension)
+- adaptation_guardrails (full)
+- lesson_synthesis { prompt, builds_on }
+
+Every activity MUST include synthesis_prompt that points back to that activity's learning_target in lesson-specific language. The lesson_synthesis block MUST consolidate activity-level syntheses toward the destination. NEVER use generic reminders like "have students share what they learned" or "reflect on the learning target."
+
+Exactly ONE activity should have is_crux: true.
+
+Write in plain language a first-year teacher could read at 9pm the night before teaching. No academic jargon.
+
+${concisionRules}
 
 Lesson text:
 ${truncatedText}`;
 
-    // Bounded timeout so we return our own JSON error before Vercel kills the
-    // function at 300s (which yields a generic HTML "Internal Server Error" page).
-    // 270s leaves margin for pdf-parse, the normalizer, and the error path itself.
-    // maxRetries: 0 prevents silent retries from compounding wall time.
-    const client = new Anthropic({ timeout: 270_000, maxRetries: 0 });
-
-    let message;
+    let pass1Text = '';
     try {
-      log('calling Anthropic');
-      // 16000 — raised from 12000 after a real IM lesson truncated. At Sonnet
-      // 4.6's ~50-60 tok/sec this can take 260-320s and approach the 270s
-      // client timeout for very dense lessons; the prompt now enforces strict
-      // concision to give the budget margin. If a real lesson still truncates
-      // or times out at this ceiling, the route needs splitting into two
-      // passes (structure pass + reasoning pass).
-      message = await client.messages.create({
+      log('calling Anthropic — pass 1 (structure)');
+      const pass1Message_ = await client.messages.create({
         model: 'claude-sonnet-4-6',
-        max_tokens: 16000,
+        max_tokens: 10000,
         system: composeSystemPrompt(),
-        messages: [{ role: 'user', content: userMessage }],
+        messages: [{ role: 'user', content: pass1Message }],
       });
-      log('Anthropic returned', { stop_reason: message.stop_reason });
+      log('Pass 1 returned', {
+        stop_reason: pass1Message_.stop_reason,
+        output_tokens: pass1Message_.usage?.output_tokens,
+      });
+      const block = pass1Message_.content.find((b) => b.type === 'text');
+      if (!block || block.type !== 'text') {
+        console.error('[analyze] Pass 1: no text block. stop_reason:', pass1Message_.stop_reason);
+        return NextResponse.json(
+          {
+            error: `Pass 1 returned no text (stop_reason: ${pass1Message_.stop_reason}). Likely hit max_tokens.`,
+          },
+          { status: 502 },
+        );
+      }
+      if (pass1Message_.stop_reason === 'max_tokens') {
+        const outputTokens = pass1Message_.usage?.output_tokens ?? '?';
+        console.error(
+          `[analyze] Pass 1 truncated at ${outputTokens} tokens. Last 300 chars:`,
+          block.text.slice(-300),
+        );
+        return NextResponse.json(
+          {
+            error: `Pass 1 was truncated at ${outputTokens} tokens. The lesson's structural content is unusually dense; try uploading a shorter excerpt.`,
+          },
+          { status: 502 },
+        );
+      }
+      pass1Text = block.text;
     } catch (err) {
-      console.error('[analyze] Anthropic call failed:', err);
+      console.error('[analyze] Pass 1 Anthropic call failed:', err);
       const apiErr = err as { status?: number; message?: string; error?: { message?: string } };
-      const detail =
-        apiErr?.error?.message ?? apiErr?.message ?? 'Unknown Anthropic error';
-      const isTimeout =
-        /timeout|timed out|aborted/i.test(detail) || apiErr?.status === 408;
+      const detail = apiErr?.error?.message ?? apiErr?.message ?? 'Unknown Anthropic error';
+      const isTimeout = /timeout|timed out|aborted/i.test(detail) || apiErr?.status === 408;
       if (isTimeout) {
         return NextResponse.json(
           {
             error:
-              'The analysis took longer than the server allows (270s). This lesson is unusually long. Try uploading a shorter excerpt or a single-activity PDF.',
+              'Pass 1 took longer than the server allows (240s). This lesson is unusually long. Try a shorter excerpt.',
           },
           { status: 504 },
         );
@@ -468,69 +499,137 @@ ${truncatedText}`;
       }
       if (apiErr?.status === 429) {
         return NextResponse.json(
-          { error: 'Anthropic rate limit hit. Wait a minute and try again.' },
+          { error: 'Anthropic rate limit hit on Pass 1. Wait a minute and try again.' },
           { status: 502 },
         );
       }
       return NextResponse.json(
-        { error: `Anthropic API error: ${detail}` },
+        { error: `Anthropic API error on Pass 1: ${detail}` },
         { status: 502 },
       );
     }
 
-    const textBlock = message.content.find((b) => b.type === 'text');
-    if (!textBlock || textBlock.type !== 'text') {
-      console.error('[analyze] No text block returned. stop_reason:', message.stop_reason);
-      return NextResponse.json(
-        {
-          error: `Model returned no text (stop_reason: ${message.stop_reason}). Likely hit max_tokens — the lesson may be too long.`,
-        },
-        { status: 502 },
-      );
-    }
-
-    // If the model hit max_tokens, the JSON is truncated. Report that directly
-    // instead of letting the JSON parser fail with a generic "not valid JSON"
-    // — the fix for truncation is different from the fix for malformed JSON.
-    if (message.stop_reason === 'max_tokens') {
-      const outputTokens = message.usage?.output_tokens ?? '?';
-      console.error(
-        `[analyze] Output truncated at max_tokens (${outputTokens} tokens). Last 300 chars:`,
-        textBlock.text.slice(-300),
-      );
-      return NextResponse.json(
-        {
-          error: `Output was truncated at ${outputTokens} tokens — this lesson is too dense for the current budget. Try uploading a single-activity excerpt, or contact the developer to raise the token limit.`,
-        },
-        { status: 502 },
-      );
-    }
-
-    let parsed: Partial<LessonData> & Record<string, unknown>;
+    let pass1Parsed: Partial<LessonData> & Record<string, unknown>;
     try {
-      const json = extractJSON(textBlock.text);
-      parsed = JSON.parse(json) as Partial<LessonData> & Record<string, unknown>;
+      pass1Parsed = JSON.parse(extractJSON(pass1Text)) as Partial<LessonData> &
+        Record<string, unknown>;
     } catch (err) {
-      console.error('[analyze] JSON parse error:', err);
-      console.error(
-        '[analyze] stop_reason:', message.stop_reason,
-        'output_tokens:', message.usage?.output_tokens,
-      );
-      console.error(
-        '[analyze] First 500 chars of model output:',
-        textBlock.text.slice(0, 500),
-      );
-      console.error(
-        '[analyze] Last 500 chars of model output:',
-        textBlock.text.slice(-500),
-      );
+      console.error('[analyze] Pass 1 JSON parse error:', err);
+      console.error('[analyze] Pass 1 last 500 chars:', pass1Text.slice(-500));
       return NextResponse.json(
-        {
-          error: `The model returned text that was not valid JSON (stop_reason: ${message.stop_reason}). Try uploading again — this is usually transient.`,
-        },
+        { error: 'Pass 1 returned text that was not valid JSON. Try uploading again — this is usually transient.' },
         { status: 502 },
       );
     }
+
+    const pass2Message = `This is PASS 2 of a two-pass analysis. Pass 1 produced the structural JSON below. Return ONLY the remaining top-level fields as a single JSON object (and no others):
+- mlr_inference (this MUST be the first field in your output)
+- elsf_inference (this MUST be the second field)
+- anticipated_thinking
+- decision_guide
+- wristband (with synthesis_short per activity and lesson_synthesis_short)
+
+ALIGNMENT RULES — strict:
+- Every activity_id in your output MUST match an id in Pass 1's activities array.
+- mlr_inference.activities, elsf_inference.activities, anticipated_thinking.activities, decision_guide.activities, and wristband.activities MUST each cover EVERY activity from Pass 1.
+- Every MLL-flagged item (friction_points typed "language" or "language-math", patterns marked is_mll_specific: true, scenarios marked is_mll: true, wristband tiles marked friction_type "language" or "language-math") MUST be anchored to a specific MLR by number and name.
+- decision_guide MUST include a mix of scenario types — not just common-error. Aim for 1-2 common-error, 1 productive-insight, 1 on-track, and 1 productive-struggle or partial-understanding across the lesson.
+- wristband.activities each get 2-3 tiles max. wristband.mlr_legend lists the 2-3 routines this lesson runs on most heavily.
+- Exactly ONE wristband tile across the whole lesson has is_crux_moment: true, on the activity Pass 1 marked is_crux: true.
+
+The wristband.synthesis_short and lesson_synthesis_short MUST be lesson-specific compressions tied to the actual learning targets and lesson_synthesis from Pass 1. NEVER generic.
+
+${concisionRules}
+
+Pass 1 output (the structural JSON to build on):
+${pass1Text}
+
+Original lesson text (for grounding):
+${truncatedText}`;
+
+    let pass2Text = '';
+    try {
+      log('calling Anthropic — pass 2 (reasoning)');
+      const pass2Message_ = await client.messages.create({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 12000,
+        system: composeSystemPrompt(),
+        messages: [{ role: 'user', content: pass2Message }],
+      });
+      log('Pass 2 returned', {
+        stop_reason: pass2Message_.stop_reason,
+        output_tokens: pass2Message_.usage?.output_tokens,
+      });
+      const block = pass2Message_.content.find((b) => b.type === 'text');
+      if (!block || block.type !== 'text') {
+        console.error('[analyze] Pass 2: no text block. stop_reason:', pass2Message_.stop_reason);
+        return NextResponse.json(
+          {
+            error: `Pass 2 returned no text (stop_reason: ${pass2Message_.stop_reason}). Likely hit max_tokens.`,
+          },
+          { status: 502 },
+        );
+      }
+      if (pass2Message_.stop_reason === 'max_tokens') {
+        const outputTokens = pass2Message_.usage?.output_tokens ?? '?';
+        console.error(
+          `[analyze] Pass 2 truncated at ${outputTokens} tokens. Last 300 chars:`,
+          block.text.slice(-300),
+        );
+        return NextResponse.json(
+          {
+            error: `Pass 2 was truncated at ${outputTokens} tokens. The reasoning layer is unusually dense; try a shorter excerpt.`,
+          },
+          { status: 502 },
+        );
+      }
+      pass2Text = block.text;
+    } catch (err) {
+      console.error('[analyze] Pass 2 Anthropic call failed:', err);
+      const apiErr = err as { status?: number; message?: string; error?: { message?: string } };
+      const detail = apiErr?.error?.message ?? apiErr?.message ?? 'Unknown Anthropic error';
+      const isTimeout = /timeout|timed out|aborted/i.test(detail) || apiErr?.status === 408;
+      if (isTimeout) {
+        return NextResponse.json(
+          {
+            error:
+              'Pass 2 took longer than the server allows (240s). The reasoning layer for this lesson is unusually dense. Try a shorter excerpt.',
+          },
+          { status: 504 },
+        );
+      }
+      if (apiErr?.status === 429) {
+        return NextResponse.json(
+          { error: 'Anthropic rate limit hit on Pass 2. Wait a minute and try again.' },
+          { status: 502 },
+        );
+      }
+      return NextResponse.json(
+        { error: `Anthropic API error on Pass 2: ${detail}` },
+        { status: 502 },
+      );
+    }
+
+    let pass2Parsed: Partial<LessonData> & Record<string, unknown>;
+    try {
+      pass2Parsed = JSON.parse(extractJSON(pass2Text)) as Partial<LessonData> &
+        Record<string, unknown>;
+    } catch (err) {
+      console.error('[analyze] Pass 2 JSON parse error:', err);
+      console.error('[analyze] Pass 2 last 500 chars:', pass2Text.slice(-500));
+      return NextResponse.json(
+        { error: 'Pass 2 returned text that was not valid JSON. Try uploading again — this is usually transient.' },
+        { status: 502 },
+      );
+    }
+
+    // Merge: Pass 2 layers reasoning on top of Pass 1's structure. Pass 2
+    // shouldn't be touching structural fields, but if it does we trust Pass 1
+    // (the structure pass). For any field Pass 2 owns (reasoning layers),
+    // Pass 1 won't have produced it.
+    const parsed = { ...pass2Parsed, ...pass1Parsed } as Partial<LessonData> &
+      Record<string, unknown>;
+    log('merged passes');
 
     const lesson = normalizeLesson(parsed);
     log('normalized lesson');
