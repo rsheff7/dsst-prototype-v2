@@ -370,6 +370,12 @@ Every activity MUST include a synthesis_prompt that points back to that activity
 
 Write in plain language a first-year teacher could read at 9pm the night before teaching. No academic jargon.
 
+OUTPUT FORMAT — MANDATORY:
+- Begin your response immediately with the opening brace { of the JSON object.
+- End with the closing brace }.
+- No preamble, no commentary, no markdown fences (do NOT wrap in \`\`\`json).
+- Be concise in every string field — the budget is bounded. Long strings risk truncation.
+
 Lesson text:
 ${truncatedText}`;
 
@@ -382,11 +388,12 @@ ${truncatedText}`;
     let message;
     try {
       log('calling Anthropic');
-      // 8000 tokens is comfortably above the ~6k-token full demo lesson output;
-      // 16000 was overshooting and lengthening generation past the function cap.
+      // 12000 fits a real 4-5 activity IM lesson with the v2.3 schema (ELSF +
+      // synthesis blocks). At Sonnet 4.6's ~50-60 tok/sec, 12k tokens generates
+      // in ~200-240s — comfortably under the 270s client timeout.
       message = await client.messages.create({
         model: 'claude-sonnet-4-6',
-        max_tokens: 8000,
+        max_tokens: 12000,
         system: composeSystemPrompt(),
         messages: [{ role: 'user', content: userMessage }],
       });
@@ -436,6 +443,23 @@ ${truncatedText}`;
       );
     }
 
+    // If the model hit max_tokens, the JSON is truncated. Report that directly
+    // instead of letting the JSON parser fail with a generic "not valid JSON"
+    // — the fix for truncation is different from the fix for malformed JSON.
+    if (message.stop_reason === 'max_tokens') {
+      const outputTokens = message.usage?.output_tokens ?? '?';
+      console.error(
+        `[analyze] Output truncated at max_tokens (${outputTokens} tokens). Last 300 chars:`,
+        textBlock.text.slice(-300),
+      );
+      return NextResponse.json(
+        {
+          error: `Output was truncated at ${outputTokens} tokens — this lesson is too dense for the current budget. Try uploading a single-activity excerpt, or contact the developer to raise the token limit.`,
+        },
+        { status: 502 },
+      );
+    }
+
     let parsed: Partial<LessonData> & Record<string, unknown>;
     try {
       const json = extractJSON(textBlock.text);
@@ -443,13 +467,20 @@ ${truncatedText}`;
     } catch (err) {
       console.error('[analyze] JSON parse error:', err);
       console.error(
+        '[analyze] stop_reason:', message.stop_reason,
+        'output_tokens:', message.usage?.output_tokens,
+      );
+      console.error(
         '[analyze] First 500 chars of model output:',
         textBlock.text.slice(0, 500),
       );
+      console.error(
+        '[analyze] Last 500 chars of model output:',
+        textBlock.text.slice(-500),
+      );
       return NextResponse.json(
         {
-          error:
-            'The model returned text that was not valid JSON. Try uploading again — this is usually transient.',
+          error: `The model returned text that was not valid JSON (stop_reason: ${message.stop_reason}). Try uploading again — this is usually transient.`,
         },
         { status: 502 },
       );
