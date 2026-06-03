@@ -374,7 +374,12 @@ OUTPUT FORMAT — MANDATORY:
 - Begin your response immediately with the opening brace { of the JSON object.
 - End with the closing brace }.
 - No preamble, no commentary, no markdown fences (do NOT wrap in \`\`\`json).
-- Be concise in every string field — the budget is bounded. Long strings risk truncation.
+
+CONCISION — STRICT:
+- Total output MUST fit in 16000 tokens. Truncated JSON cannot be used.
+- Keep every string short and concrete. No throat-clearing, no restating what other fields already say.
+- Long descriptive fields (function_summary, arc_statement) cap at ~3 sentences. Move descriptions cap at ~2 sentences. Interpretation fields cap at ~2 sentences. observation_short, move_short, glyph_observation, glyph_move stay at their stated word caps.
+- If you find yourself approaching the budget, drop redundant scenarios from decision_guide before truncating any required field. Required fields MUST be present.
 
 Lesson text:
 ${truncatedText}`;
@@ -388,12 +393,15 @@ ${truncatedText}`;
     let message;
     try {
       log('calling Anthropic');
-      // 12000 fits a real 4-5 activity IM lesson with the v2.3 schema (ELSF +
-      // synthesis blocks). At Sonnet 4.6's ~50-60 tok/sec, 12k tokens generates
-      // in ~200-240s — comfortably under the 270s client timeout.
+      // 16000 — raised from 12000 after a real IM lesson truncated. At Sonnet
+      // 4.6's ~50-60 tok/sec this can take 260-320s and approach the 270s
+      // client timeout for very dense lessons; the prompt now enforces strict
+      // concision to give the budget margin. If a real lesson still truncates
+      // or times out at this ceiling, the route needs splitting into two
+      // passes (structure pass + reasoning pass).
       message = await client.messages.create({
         model: 'claude-sonnet-4-6',
-        max_tokens: 12000,
+        max_tokens: 16000,
         system: composeSystemPrompt(),
         messages: [{ role: 'user', content: userMessage }],
       });
