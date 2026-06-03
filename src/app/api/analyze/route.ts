@@ -398,16 +398,18 @@ export async function POST(req: NextRequest) {
     const truncatedText =
       pdfText.length > MAX_PDF_CHARS ? pdfText.slice(0, MAX_PDF_CHARS) : pdfText;
 
-    // Two-pass generation. The v2.3 schema (Elmore + MLR + ELSF + synthesis)
-    // is structurally too large to generate in a single ~270s call without
-    // truncation. We split: Pass 1 produces the structural fields (a teacher's
-    // mental model of the lesson), Pass 2 produces the reasoning layers
-    // (anticipating, deciding, MLR/ELSF inference, wristband) given Pass 1
-    // and the lesson text as input. Each call fits comfortably in budget.
+    // ANCHOR + 3-PARALLEL architecture. Pass 0 (anchor) runs first and
+    // produces a small skeleton: meta, destination, and a canonical activity
+    // list (id, title, learning_target, function, is_crux). Then Passes A, B,
+    // C run in parallel given the anchor, so they align on the same activity
+    // IDs/titles/crux marker. Each downstream pass produces a disjoint slice
+    // of the final schema.
     //
-    // Per-call client timeout 240s leaves the function maxDuration room for
-    // both calls plus pdf-parse, normalization, and error paths.
-    const client = new Anthropic({ timeout: 240_000, maxRetries: 0 });
+    // Total wall time: ~30-40s (anchor) + max(A, B, C) ~120-150s = ~180s = 3 min.
+    //
+    // Per-call client timeout 200s gives margin over typical wall times and
+    // stays well under the 600s function maxDuration.
+    const client = new Anthropic({ timeout: 200_000, maxRetries: 0 });
 
     const concisionRules = `OUTPUT FORMAT — MANDATORY:
 - Begin your response immediately with the opening brace { of the JSON object.
@@ -418,20 +420,50 @@ CONCISION — STRICT:
 - Keep every string short and concrete. No throat-clearing, no restating what other fields already say.
 - Long descriptive fields cap at ~3 sentences. Move and interpretation fields cap at ~2 sentences. observation_short, move_short, glyph_observation, glyph_move stay at their stated word caps.`;
 
-    const pass1Message = `Analyze this math lesson. This is PASS 1 of a two-pass analysis — return ONLY the structural fields. The reasoning layers (anticipated thinking, decision guide, MLR inference, ELSF inference, wristband) will be requested in Pass 2.
+    // The anchor JSON is produced by Pass 0 (sequentially, before A/B/C) and
+    // is embedded into each parallel pass's user message as the source of
+    // truth for activity IDs, titles, learning targets, and crux marker.
+    // This string is templated by the runner — each pass message references
+    // ${anchorJson} which is substituted in at call time.
+    const makeAlignmentBlock = (anchorJson: string) =>
+      `ANCHOR — SOURCE OF TRUTH FOR ALIGNMENT:
+A prior pass produced the following anchor. Every activity_id you emit MUST match an id in this anchor's activities array. Every activity referenced in any block (mlr_inference, elsf_inference, anticipated_thinking, decision_guide, wristband) MUST cover EVERY activity in the anchor. The activity marked is_crux: true in the anchor is THE crux for this lesson — use it consistently.
+
+${anchorJson}`;
+
+    const passAnchorMessage = `Analyze this math lesson. This is PASS 0 (anchor) of a four-pass analysis. Your output will be passed to three parallel downstream passes as the source of truth for activity alignment. Keep it short and structural — just enough for the downstream passes to align on.
 
 Return a single JSON object with EXACTLY these top-level fields (and no others):
 - meta { grade, unit, lesson_number, lesson_title, total_time }
-- arc_statement
-- destination
-- key_vocabulary
-- activities — each activity must be a FULL activity object per the system prompt schema (id, title, function, duration, grouping, language_demand, function_summary, learning_target, synthesis_prompt, is_crux, friction_points, success_signals, teacher_moves, causal_link, extension)
-- adaptation_guardrails (full)
+- destination — 1-2 sentences naming what students should understand by end of lesson
+- activities — array of activity SKELETONS, each with EXACTLY: { id, title, function (Setup | Crux | Application | Synthesis), duration, grouping, language_demand (low | medium | high), learning_target, is_crux (boolean) }
+  - Use the activity numbering as it appears in the lesson document (typically "1.1", "1.2", "1.3" — but use whatever the source uses)
+  - title MUST be verbatim from the document (e.g., "Warm-Up: What Kind and How Many?", "Activity 1: The Teacher's Collection")
+  - Exactly ONE activity has is_crux: true — the activity that does the central mathematical work, typically not the warm-up or cool-down
+  - learning_target is 1 sentence in "Students ___" voice, concrete and observable
+
+Be FAST. This anchor is the cheap pass. Each field is one short string except activities which is an array of small objects. No prose, no commentary.
+
+${concisionRules}
+
+Lesson text:
+${truncatedText}`;
+
+    // The downstream parallel passes (A, B, C) are built as functions of the
+    // anchor JSON. We can't construct them until Pass 0 returns.
+    const buildPassAMessage = (anchorJson: string) =>
+      `Analyze this math lesson. This is PASS A (structure) of THREE PARALLEL passes after the anchor. Passes B (thinking + inference) and C (decisions + wristband) are running in parallel.
+
+Return a single JSON object with EXACTLY these top-level fields (and no others):
+- arc_statement — a short narrative paragraph (3-4 sentences)
+- key_vocabulary — array of { term, definition }
+- activities — each is a FULL activity object per the system prompt schema (id, title, function, duration, grouping, language_demand, function_summary, learning_target, synthesis_prompt, is_crux, friction_points, success_signals, teacher_moves, causal_link, extension). The ids, titles, functions, durations, groupings, language_demands, learning_targets, and is_crux flags MUST match the anchor exactly.
+- adaptation_guardrails (full per the system prompt schema)
 - lesson_synthesis { prompt, builds_on }
 
-Every activity MUST include synthesis_prompt that points back to that activity's learning_target in lesson-specific language. The lesson_synthesis block MUST consolidate activity-level syntheses toward the destination. NEVER use generic reminders like "have students share what they learned" or "reflect on the learning target."
+Every activity MUST include a synthesis_prompt that points back to the activity's learning_target in lesson-specific language. The lesson_synthesis block MUST consolidate activity-level syntheses toward the destination from the anchor. NEVER use generic reminders like "have students share what they learned" or "reflect on the learning target."
 
-Exactly ONE activity should have is_crux: true.
+${makeAlignmentBlock(anchorJson)}
 
 Write in plain language a first-year teacher could read at 9pm the night before teaching. No academic jargon.
 
@@ -440,196 +472,214 @@ ${concisionRules}
 Lesson text:
 ${truncatedText}`;
 
-    let pass1Text = '';
-    try {
-      log('calling Anthropic — pass 1 (structure)');
-      const pass1Message_ = await client.messages.create({
-        model: 'claude-sonnet-4-6',
-        max_tokens: 10000,
-        system: composeSystemPrompt(),
-        messages: [{ role: 'user', content: pass1Message }],
-      });
-      log('Pass 1 returned', {
-        stop_reason: pass1Message_.stop_reason,
-        output_tokens: pass1Message_.usage?.output_tokens,
-      });
-      const block = pass1Message_.content.find((b) => b.type === 'text');
-      if (!block || block.type !== 'text') {
-        console.error('[analyze] Pass 1: no text block. stop_reason:', pass1Message_.stop_reason);
-        return NextResponse.json(
-          {
-            error: `Pass 1 returned no text (stop_reason: ${pass1Message_.stop_reason}). Likely hit max_tokens.`,
-          },
-          { status: 502 },
-        );
-      }
-      if (pass1Message_.stop_reason === 'max_tokens') {
-        const outputTokens = pass1Message_.usage?.output_tokens ?? '?';
-        console.error(
-          `[analyze] Pass 1 truncated at ${outputTokens} tokens. Last 300 chars:`,
-          block.text.slice(-300),
-        );
-        return NextResponse.json(
-          {
-            error: `Pass 1 was truncated at ${outputTokens} tokens. The lesson's structural content is unusually dense; try uploading a shorter excerpt.`,
-          },
-          { status: 502 },
-        );
-      }
-      pass1Text = block.text;
-    } catch (err) {
-      console.error('[analyze] Pass 1 Anthropic call failed:', err);
-      const apiErr = err as { status?: number; message?: string; error?: { message?: string } };
-      const detail = apiErr?.error?.message ?? apiErr?.message ?? 'Unknown Anthropic error';
-      const isTimeout = /timeout|timed out|aborted/i.test(detail) || apiErr?.status === 408;
-      if (isTimeout) {
-        return NextResponse.json(
-          {
-            error:
-              'Pass 1 took longer than the server allows (240s). This lesson is unusually long. Try a shorter excerpt.',
-          },
-          { status: 504 },
-        );
-      }
-      if (apiErr?.status === 401) {
-        return NextResponse.json(
-          { error: 'Anthropic rejected the API key (401). The deployment key is invalid or expired.' },
-          { status: 502 },
-        );
-      }
-      if (apiErr?.status === 429) {
-        return NextResponse.json(
-          { error: 'Anthropic rate limit hit on Pass 1. Wait a minute and try again.' },
-          { status: 502 },
-        );
-      }
-      return NextResponse.json(
-        { error: `Anthropic API error on Pass 1: ${detail}` },
-        { status: 502 },
-      );
-    }
+    const buildPassBMessage = (anchorJson: string) =>
+      `Analyze this math lesson. This is PASS B (thinking + inference) of THREE PARALLEL passes after the anchor. Passes A (structure) and C (decisions + wristband) are running in parallel.
 
-    let pass1Parsed: Partial<LessonData> & Record<string, unknown>;
-    try {
-      pass1Parsed = JSON.parse(extractJSON(pass1Text)) as Partial<LessonData> &
-        Record<string, unknown>;
-    } catch (err) {
-      console.error('[analyze] Pass 1 JSON parse error:', err);
-      console.error('[analyze] Pass 1 last 500 chars:', pass1Text.slice(-500));
-      return NextResponse.json(
-        { error: 'Pass 1 returned text that was not valid JSON. Try uploading again — this is usually transient.' },
-        { status: 502 },
-      );
-    }
-
-    const pass2Message = `This is PASS 2 of a two-pass analysis. Pass 1 produced the structural JSON below. Return ONLY the remaining top-level fields as a single JSON object (and no others):
-- mlr_inference (this MUST be the first field in your output)
+Return a single JSON object with EXACTLY these top-level fields (and no others):
+- mlr_inference (this MUST be the first field)
 - elsf_inference (this MUST be the second field)
-- anticipated_thinking
-- decision_guide
-- wristband (with synthesis_short per activity and lesson_synthesis_short)
+- anticipated_thinking { orientation, activities: [{ activity_id, patterns, sentence_frames, questions_to_listen_for }] }
 
-ALIGNMENT RULES — strict:
-- Every activity_id in your output MUST match an id in Pass 1's activities array.
-- mlr_inference.activities, elsf_inference.activities, anticipated_thinking.activities, decision_guide.activities, and wristband.activities MUST each cover EVERY activity from Pass 1.
-- Every MLL-flagged item (friction_points typed "language" or "language-math", patterns marked is_mll_specific: true, scenarios marked is_mll: true, wristband tiles marked friction_type "language" or "language-math") MUST be anchored to a specific MLR by number and name.
-- decision_guide MUST include a mix of scenario types — not just common-error. Aim for 1-2 common-error, 1 productive-insight, 1 on-track, and 1 productive-struggle or partial-understanding across the lesson.
-- wristband.activities each get 2-3 tiles max. wristband.mlr_legend lists the 2-3 routines this lesson runs on most heavily.
-- Exactly ONE wristband tile across the whole lesson has is_crux_moment: true, on the activity Pass 1 marked is_crux: true.
+mlr_inference.activities, elsf_inference.activities, and anticipated_thinking.activities MUST each cover EVERY activity from the anchor.
 
-The wristband.synthesis_short and lesson_synthesis_short MUST be lesson-specific compressions tied to the actual learning targets and lesson_synthesis from Pass 1. NEVER generic.
+Every MLL-flagged item (patterns marked is_mll_specific: true) MUST be anchored to a specific MLR by number and name. The 'move' text for MLL patterns MUST walk through the routine's actual steps for THIS specific pattern — not generic advice.
+
+For each activity in elsf_inference, produce both:
+- language_demands { receptive, productive, interactive, everyday_to_academic_bridge, elsf_guidelines_applied }
+- functional_language { language_functions, example_phrases, l1_bridge, elsf_guidelines_applied }
+
+${makeAlignmentBlock(anchorJson)}
+
+Write in plain language a first-year teacher could read at 9pm the night before teaching. No academic jargon.
 
 ${concisionRules}
 
-Pass 1 output (the structural JSON to build on):
-${pass1Text}
-
-Original lesson text (for grounding):
+Lesson text:
 ${truncatedText}`;
 
-    let pass2Text = '';
-    try {
-      log('calling Anthropic — pass 2 (reasoning)');
-      const pass2Message_ = await client.messages.create({
-        model: 'claude-sonnet-4-6',
-        max_tokens: 12000,
-        system: composeSystemPrompt(),
-        messages: [{ role: 'user', content: pass2Message }],
-      });
-      log('Pass 2 returned', {
-        stop_reason: pass2Message_.stop_reason,
-        output_tokens: pass2Message_.usage?.output_tokens,
-      });
-      const block = pass2Message_.content.find((b) => b.type === 'text');
-      if (!block || block.type !== 'text') {
-        console.error('[analyze] Pass 2: no text block. stop_reason:', pass2Message_.stop_reason);
-        return NextResponse.json(
-          {
-            error: `Pass 2 returned no text (stop_reason: ${pass2Message_.stop_reason}). Likely hit max_tokens.`,
-          },
-          { status: 502 },
-        );
+    const buildPassCMessage = (anchorJson: string) =>
+      `Analyze this math lesson. This is PASS C (decisions + wristband) of THREE PARALLEL passes after the anchor. Passes A (structure) and B (thinking + inference) are running in parallel.
+
+Return a single JSON object with EXACTLY these top-level fields (and no others):
+- decision_guide { activities: [{ activity_id, scenarios }] }
+- wristband { arc_one_line, preflight, top_signals, top_frictions, activities: [{ activity_id, tiles, synthesis_short }], mlr_legend, lesson_synthesis_short }
+
+decision_guide.activities and wristband.activities MUST each cover EVERY activity from the anchor.
+
+decision_guide MUST include a mix of scenario types: 1-2 common-error, 1 productive-insight, 1 on-track, 1 productive-struggle or partial-understanding across the lesson. Total ~10-12 scenarios.
+
+For MLL scenarios (is_mll: true), proficiency_moves MUST have emerging/developing/expanding all populated. Emerging.nonverbal MUST be a concrete physical action. For non-MLL scenarios, use flat_move and set proficiency_moves: null.
+
+Every MLL scenario MUST be anchored to a specific MLR. Every wristband tile with friction_type 'language' or 'language-math' MUST anchor to an MLR.
+
+wristband.activities each get 2-3 tiles MAXIMUM.
+wristband.mlr_legend lists the 2-3 routines this lesson runs on most heavily.
+EXACTLY ONE wristband tile across the whole lesson has is_crux_moment: true, on the activity the anchor marked is_crux: true.
+
+wristband.synthesis_short per activity is the in-class compression of the activity's close — 10-18 words, verb-first, lesson-specific. NEVER generic. Must name a specific student work or question. Tied to the learning_target in the anchor.
+wristband.lesson_synthesis_short is the in-class compression of the lesson close — 12-22 words, verb-first, lesson-specific. NEVER generic. Tied to the destination in the anchor.
+
+${makeAlignmentBlock(anchorJson)}
+
+Write in plain language a first-year teacher could read at 9pm the night before teaching. No academic jargon.
+
+${concisionRules}
+
+Lesson text:
+${truncatedText}`;
+
+    type PassResult =
+      | { ok: true; parsed: Partial<LessonData> & Record<string, unknown> }
+      | { ok: false; response: NextResponse };
+
+    async function runPass(
+      passName: string,
+      userMessage: string,
+      max_tokens: number,
+    ): Promise<PassResult> {
+      try {
+        log(`calling Anthropic — pass ${passName}`);
+        const message = await client.messages.create({
+          model: 'claude-sonnet-4-6',
+          max_tokens,
+          system: composeSystemPrompt(),
+          messages: [{ role: 'user', content: userMessage }],
+        });
+        log(`Pass ${passName} returned`, {
+          stop_reason: message.stop_reason,
+          output_tokens: message.usage?.output_tokens,
+        });
+
+        const block = message.content.find((b) => b.type === 'text');
+        if (!block || block.type !== 'text') {
+          console.error(`[analyze] Pass ${passName}: no text block. stop_reason:`, message.stop_reason);
+          return {
+            ok: false,
+            response: NextResponse.json(
+              { error: `Pass ${passName} returned no text (stop_reason: ${message.stop_reason}).` },
+              { status: 502 },
+            ),
+          };
+        }
+
+        if (message.stop_reason === 'max_tokens') {
+          const outputTokens = message.usage?.output_tokens ?? '?';
+          console.error(
+            `[analyze] Pass ${passName} truncated at ${outputTokens} tokens. Last 300 chars:`,
+            block.text.slice(-300),
+          );
+          return {
+            ok: false,
+            response: NextResponse.json(
+              {
+                error: `Pass ${passName} was truncated at ${outputTokens} tokens — that pass needs a larger budget. Contact the developer.`,
+              },
+              { status: 502 },
+            ),
+          };
+        }
+
+        try {
+          const parsed = JSON.parse(extractJSON(block.text)) as Partial<LessonData> &
+            Record<string, unknown>;
+          return { ok: true, parsed };
+        } catch (err) {
+          console.error(`[analyze] Pass ${passName} JSON parse error:`, err);
+          console.error(`[analyze] Pass ${passName} last 500 chars:`, block.text.slice(-500));
+          return {
+            ok: false,
+            response: NextResponse.json(
+              {
+                error: `Pass ${passName} returned text that was not valid JSON (stop_reason: ${message.stop_reason}). Try uploading again — this is usually transient.`,
+              },
+              { status: 502 },
+            ),
+          };
+        }
+      } catch (err) {
+        console.error(`[analyze] Pass ${passName} Anthropic call failed:`, err);
+        const apiErr = err as { status?: number; message?: string; error?: { message?: string } };
+        const detail = apiErr?.error?.message ?? apiErr?.message ?? 'Unknown Anthropic error';
+        const isTimeout = /timeout|timed out|aborted/i.test(detail) || apiErr?.status === 408;
+        if (isTimeout) {
+          return {
+            ok: false,
+            response: NextResponse.json(
+              { error: `Pass ${passName} took longer than 200s. The lesson is unusually long for this pass.` },
+              { status: 504 },
+            ),
+          };
+        }
+        if (apiErr?.status === 401) {
+          return {
+            ok: false,
+            response: NextResponse.json(
+              { error: 'Anthropic rejected the API key (401). The deployment key is invalid or expired.' },
+              { status: 502 },
+            ),
+          };
+        }
+        if (apiErr?.status === 429) {
+          return {
+            ok: false,
+            response: NextResponse.json(
+              { error: `Anthropic rate limit hit on Pass ${passName}. Wait a minute and try again.` },
+              { status: 502 },
+            ),
+          };
+        }
+        return {
+          ok: false,
+          response: NextResponse.json(
+            { error: `Anthropic API error on Pass ${passName}: ${detail}` },
+            { status: 502 },
+          ),
+        };
       }
-      if (pass2Message_.stop_reason === 'max_tokens') {
-        const outputTokens = pass2Message_.usage?.output_tokens ?? '?';
-        console.error(
-          `[analyze] Pass 2 truncated at ${outputTokens} tokens. Last 300 chars:`,
-          block.text.slice(-300),
-        );
-        return NextResponse.json(
-          {
-            error: `Pass 2 was truncated at ${outputTokens} tokens. The reasoning layer is unusually dense; try a shorter excerpt.`,
-          },
-          { status: 502 },
-        );
-      }
-      pass2Text = block.text;
-    } catch (err) {
-      console.error('[analyze] Pass 2 Anthropic call failed:', err);
-      const apiErr = err as { status?: number; message?: string; error?: { message?: string } };
-      const detail = apiErr?.error?.message ?? apiErr?.message ?? 'Unknown Anthropic error';
-      const isTimeout = /timeout|timed out|aborted/i.test(detail) || apiErr?.status === 408;
-      if (isTimeout) {
-        return NextResponse.json(
-          {
-            error:
-              'Pass 2 took longer than the server allows (240s). The reasoning layer for this lesson is unusually dense. Try a shorter excerpt.',
-          },
-          { status: 504 },
-        );
-      }
-      if (apiErr?.status === 429) {
-        return NextResponse.json(
-          { error: 'Anthropic rate limit hit on Pass 2. Wait a minute and try again.' },
-          { status: 502 },
-        );
-      }
-      return NextResponse.json(
-        { error: `Anthropic API error on Pass 2: ${detail}` },
-        { status: 502 },
-      );
     }
 
-    let pass2Parsed: Partial<LessonData> & Record<string, unknown>;
-    try {
-      pass2Parsed = JSON.parse(extractJSON(pass2Text)) as Partial<LessonData> &
-        Record<string, unknown>;
-    } catch (err) {
-      console.error('[analyze] Pass 2 JSON parse error:', err);
-      console.error('[analyze] Pass 2 last 500 chars:', pass2Text.slice(-500));
-      return NextResponse.json(
-        { error: 'Pass 2 returned text that was not valid JSON. Try uploading again — this is usually transient.' },
-        { status: 502 },
-      );
-    }
+    log('starting anchor pass (Pass 0)');
+    const resAnchor = await runPass('0 (anchor)', passAnchorMessage, 2000);
+    if (!resAnchor.ok) return resAnchor.response;
+    const anchorJson = JSON.stringify(resAnchor.parsed, null, 2);
+    log('anchor returned', { anchor_size_chars: anchorJson.length });
 
-    // Merge: Pass 2 layers reasoning on top of Pass 1's structure. Pass 2
-    // shouldn't be touching structural fields, but if it does we trust Pass 1
-    // (the structure pass). For any field Pass 2 owns (reasoning layers),
-    // Pass 1 won't have produced it.
-    const parsed = { ...pass2Parsed, ...pass1Parsed } as Partial<LessonData> &
-      Record<string, unknown>;
-    log('merged passes');
+    log('starting 3 parallel passes given anchor');
+    const [resA, resB, resC] = await Promise.all([
+      runPass('A (structure)', buildPassAMessage(anchorJson), 8000),
+      runPass('B (thinking + inference)', buildPassBMessage(anchorJson), 7000),
+      runPass('C (decisions + wristband)', buildPassCMessage(anchorJson), 8000),
+    ]);
+    log('all 3 passes settled');
+
+    // First failure wins — return its error message.
+    if (!resA.ok) return resA.response;
+    if (!resB.ok) return resB.response;
+    if (!resC.ok) return resC.response;
+
+    // Merge. Each pass owns a disjoint set of top-level fields.
+    // - Anchor produces: meta, destination, activities (skeleton).
+    // - Pass A produces: arc_statement, key_vocabulary, activities (FULL),
+    //   adaptation_guardrails, lesson_synthesis.
+    // - Pass B produces: mlr_inference, elsf_inference, anticipated_thinking.
+    // - Pass C produces: decision_guide, wristband.
+    //
+    // On overlap, Pass A's activities (full) beat the anchor's skeleton; the
+    // anchor's meta + destination win since they were the alignment source of
+    // truth that A built on top of.
+    const parsed = {
+      ...resC.parsed,
+      ...resB.parsed,
+      ...resA.parsed,
+      // Re-apply anchor's meta + destination LAST so they win over anything
+      // A accidentally emitted. The anchor's `activities` skeleton is
+      // intentionally NOT re-applied — Pass A's full activities array wins.
+      ...(resAnchor.parsed.meta ? { meta: resAnchor.parsed.meta } : {}),
+      ...(resAnchor.parsed.destination
+        ? { destination: resAnchor.parsed.destination }
+        : {}),
+    } as Partial<LessonData> & Record<string, unknown>;
+    log('merged anchor + 3 passes');
 
     const lesson = normalizeLesson(parsed);
     log('normalized lesson');
