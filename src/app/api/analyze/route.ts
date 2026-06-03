@@ -473,16 +473,15 @@ Lesson text:
 ${truncatedText}`;
 
     const buildPassBMessage = (anchorJson: string) =>
-      `Analyze this math lesson. This is PASS B (thinking + inference) of THREE PARALLEL passes after the anchor. Passes A (structure) and C (decisions + wristband) are running in parallel.
+      `Analyze this math lesson. This is PASS B (MLR + ELSF inference) of FOUR PARALLEL passes after the anchor. Passes A (structure), C (anticipated thinking), and D (decisions + wristband) are running in parallel.
 
 Return a single JSON object with EXACTLY these top-level fields (and no others):
 - mlr_inference (this MUST be the first field)
 - elsf_inference (this MUST be the second field)
-- anticipated_thinking { orientation, activities: [{ activity_id, patterns, sentence_frames, questions_to_listen_for }] }
 
-mlr_inference.activities, elsf_inference.activities, and anticipated_thinking.activities MUST each cover EVERY activity from the anchor.
+mlr_inference.activities and elsf_inference.activities MUST each cover EVERY activity from the anchor.
 
-Every MLL-flagged item (patterns marked is_mll_specific: true) MUST be anchored to a specific MLR by number and name. The 'move' text for MLL patterns MUST walk through the routine's actual steps for THIS specific pattern — not generic advice.
+For each activity in mlr_inference, produce { activity_id, language_work, mlrs: [{ number, name, why_here }] }. Select 1-2 MLRs per activity. why_here is 1-2 sentences explaining why THIS routine fits THIS activity, referencing the specific student behavior or prompt.
 
 For each activity in elsf_inference, produce both:
 - language_demands { receptive, productive, interactive, everyday_to_academic_bridge, elsf_guidelines_applied }
@@ -497,8 +496,30 @@ ${concisionRules}
 Lesson text:
 ${truncatedText}`;
 
-    const buildPassCMessage = (anchorJson: string) =>
-      `Analyze this math lesson. This is PASS C (decisions + wristband) of THREE PARALLEL passes after the anchor. Passes A (structure) and B (thinking + inference) are running in parallel.
+    const buildPassCMessage_Thinking = (anchorJson: string) =>
+      `Analyze this math lesson. This is PASS C (anticipated thinking) of FOUR PARALLEL passes after the anchor. Passes A (structure), B (MLR + ELSF inference), and D (decisions + wristband) are running in parallel.
+
+Return a single JSON object with EXACTLY these top-level fields (and no others):
+- anticipated_thinking { orientation, activities: [{ activity_id, patterns, sentence_frames, questions_to_listen_for }] }
+
+anticipated_thinking.orientation is 2 sentences orienting the teacher to the dominant pattern of student thinking for THIS lesson. Asset-based. Name what students will bring AND where their thinking will most likely take work.
+
+anticipated_thinking.activities MUST cover EVERY activity from the anchor. Each activity has:
+- 3-4 patterns. Each pattern: { label, frequency (most students | some students | watch for this), type (on-track | misconception | partial | extension | language-math), description, move, is_mll_specific (boolean), mlr (when is_mll_specific is true) }. The move text MUST be specific — for MLL patterns it MUST walk through the named routine's actual steps for THIS specific pattern, not generic advice.
+- 2-3 sentence_frames. Each is { frame, mlr (optional) }.
+- 2-3 questions_to_listen_for (strings).
+
+${makeAlignmentBlock(anchorJson)}
+
+Write in plain language a first-year teacher could read at 9pm the night before teaching. No academic jargon.
+
+${concisionRules}
+
+Lesson text:
+${truncatedText}`;
+
+    const buildPassDMessage = (anchorJson: string) =>
+      `Analyze this math lesson. This is PASS D (decisions + wristband) of FOUR PARALLEL passes after the anchor. Passes A (structure), B (MLR + ELSF inference), and C (anticipated thinking) are running in parallel.
 
 Return a single JSON object with EXACTLY these top-level fields (and no others):
 - decision_guide { activities: [{ activity_id, scenarios }] }
@@ -644,30 +665,34 @@ ${truncatedText}`;
     const anchorJson = JSON.stringify(resAnchor.parsed, null, 2);
     log('anchor returned', { anchor_size_chars: anchorJson.length });
 
-    log('starting 3 parallel passes given anchor');
-    const [resA, resB, resC] = await Promise.all([
+    log('starting 4 parallel passes given anchor');
+    const [resA, resB, resC, resD] = await Promise.all([
       runPass('A (structure)', buildPassAMessage(anchorJson), 8000),
-      runPass('B (thinking + inference)', buildPassBMessage(anchorJson), 7000),
-      runPass('C (decisions + wristband)', buildPassCMessage(anchorJson), 8000),
+      runPass('B (MLR + ELSF inference)', buildPassBMessage(anchorJson), 6000),
+      runPass('C (anticipated thinking)', buildPassCMessage_Thinking(anchorJson), 6000),
+      runPass('D (decisions + wristband)', buildPassDMessage(anchorJson), 8000),
     ]);
-    log('all 3 passes settled');
+    log('all 4 passes settled');
 
     // First failure wins — return its error message.
     if (!resA.ok) return resA.response;
     if (!resB.ok) return resB.response;
     if (!resC.ok) return resC.response;
+    if (!resD.ok) return resD.response;
 
     // Merge. Each pass owns a disjoint set of top-level fields.
     // - Anchor produces: meta, destination, activities (skeleton).
     // - Pass A produces: arc_statement, key_vocabulary, activities (FULL),
     //   adaptation_guardrails, lesson_synthesis.
-    // - Pass B produces: mlr_inference, elsf_inference, anticipated_thinking.
-    // - Pass C produces: decision_guide, wristband.
+    // - Pass B produces: mlr_inference, elsf_inference.
+    // - Pass C produces: anticipated_thinking.
+    // - Pass D produces: decision_guide, wristband.
     //
     // On overlap, Pass A's activities (full) beat the anchor's skeleton; the
     // anchor's meta + destination win since they were the alignment source of
     // truth that A built on top of.
     const parsed = {
+      ...resD.parsed,
       ...resC.parsed,
       ...resB.parsed,
       ...resA.parsed,
@@ -679,7 +704,7 @@ ${truncatedText}`;
         ? { destination: resAnchor.parsed.destination }
         : {}),
     } as Partial<LessonData> & Record<string, unknown>;
-    log('merged anchor + 3 passes');
+    log('merged anchor + 4 passes');
 
     const lesson = normalizeLesson(parsed);
     log('normalized lesson');
