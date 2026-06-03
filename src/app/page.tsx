@@ -62,20 +62,27 @@ export default function HomePage() {
         const res = await fetch('/api/analyze', { method: 'POST', body: formData });
 
         // Try JSON first; fall back to raw text if the server returned HTML
-        // (e.g. Vercel's 413 page when the body is over the platform limit).
+        // (e.g. Vercel's 413 page when the body is over the platform limit, or
+        // an HTML 500 page when the function was killed by the platform).
         let serverMessage = '';
         let data: { error?: string } | null = null;
+        let rawText = '';
         try {
           data = (await res.clone().json()) as { error?: string };
           if (data?.error) serverMessage = data.error;
         } catch {
           try {
-            const text = await res.text();
-            if (text && text.length < 500) serverMessage = text;
+            rawText = await res.text();
+            if (rawText && rawText.length < 500) serverMessage = rawText;
           } catch {
             // ignore
           }
         }
+
+        // Vercel's HTML error pages embed a request ID — surface it so failures
+        // are debuggable instead of opaque.
+        const vercelRequestId = res.headers.get('x-vercel-id') ?? '';
+        const isHtmlPage = !data && /<html|Internal Server Error/i.test(rawText);
 
         if (!res.ok || !data) {
           if (res.status === 413) {
@@ -84,13 +91,22 @@ export default function HomePage() {
             );
           } else if (res.status === 504) {
             setErrorMessage(
-              'The analysis timed out. The lesson may be long — try a shorter excerpt or re-upload.',
+              serverMessage ||
+                'The analysis timed out. The lesson may be long — try a shorter excerpt or re-upload.',
+            );
+          } else if (isHtmlPage && res.status >= 500) {
+            setErrorMessage(
+              `The Vercel function was killed mid-execution (likely a 300s timeout)${
+                vercelRequestId ? ` — request ID ${vercelRequestId}` : ''
+              }. Try a shorter PDF, or re-upload.`,
             );
           } else if (serverMessage) {
             setErrorMessage(serverMessage);
           } else {
             setErrorMessage(
-              `Upload failed (HTTP ${res.status}). Check your connection and try again.`,
+              `Upload failed (HTTP ${res.status}${
+                vercelRequestId ? `, request ID ${vercelRequestId}` : ''
+              }). Check your connection and try again.`,
             );
           }
           setUploadState('error');

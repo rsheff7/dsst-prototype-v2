@@ -373,14 +373,20 @@ Write in plain language a first-year teacher could read at 9pm the night before 
 Lesson text:
 ${truncatedText}`;
 
-    const client = new Anthropic();
+    // Bounded timeout so we return our own JSON error before Vercel kills the
+    // function at 300s (which yields a generic HTML "Internal Server Error" page).
+    // 270s leaves margin for pdf-parse, the normalizer, and the error path itself.
+    // maxRetries: 0 prevents silent retries from compounding wall time.
+    const client = new Anthropic({ timeout: 270_000, maxRetries: 0 });
 
     let message;
     try {
       log('calling Anthropic');
+      // 8000 tokens is comfortably above the ~6k-token full demo lesson output;
+      // 16000 was overshooting and lengthening generation past the function cap.
       message = await client.messages.create({
         model: 'claude-sonnet-4-6',
-        max_tokens: 16000,
+        max_tokens: 8000,
         system: composeSystemPrompt(),
         messages: [{ role: 'user', content: userMessage }],
       });
@@ -390,6 +396,17 @@ ${truncatedText}`;
       const apiErr = err as { status?: number; message?: string; error?: { message?: string } };
       const detail =
         apiErr?.error?.message ?? apiErr?.message ?? 'Unknown Anthropic error';
+      const isTimeout =
+        /timeout|timed out|aborted/i.test(detail) || apiErr?.status === 408;
+      if (isTimeout) {
+        return NextResponse.json(
+          {
+            error:
+              'The analysis took longer than the server allows (270s). This lesson is unusually long. Try uploading a shorter excerpt or a single-activity PDF.',
+          },
+          { status: 504 },
+        );
+      }
       if (apiErr?.status === 401) {
         return NextResponse.json(
           { error: 'Anthropic rejected the API key (401). The deployment key is invalid or expired.' },
