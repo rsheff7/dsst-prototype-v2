@@ -12,7 +12,8 @@ export type CheckCategory =
   | 'Moves'
   | 'Register'
   | 'MLR'
-  | 'ELSF';
+  | 'ELSF'
+  | 'Synthesis';
 
 export interface CheckResult {
   id: string;
@@ -877,6 +878,166 @@ function elsfChecks(lesson: LessonData): CheckResult[] {
   return r;
 }
 
+// Generic phrases that hollow out synthesis prompts. Synthesis is the most-skipped
+// move; the tool exists to make it pronounced, so generic templates that could fit
+// any lesson are a failure mode worth catching.
+const SYNTHESIS_GENERIC_PHRASES = [
+  'have students share what they learned',
+  'reflect on the learning target',
+  'ask students what they noticed',
+  'synthesize the activity',
+  'wrap up the lesson',
+  'discuss what was learned',
+  'review the key idea',
+  'students summarize their learning',
+  'have students summarize',
+  'reflect on what they learned',
+  'recap the lesson',
+  'go over the main idea',
+];
+
+function findGenericPhrasesInSynthesis(text: string): string[] {
+  const lower = text.toLowerCase();
+  return SYNTHESIS_GENERIC_PHRASES.filter((p) => lower.includes(p));
+}
+
+function synthesisChecks(lesson: LessonData): CheckResult[] {
+  const r: CheckResult[] = [];
+
+  // 1. Every activity has a synthesis_prompt
+  const missingPrompts = lesson.activities.filter(
+    (a) => !a.synthesis_prompt || a.synthesis_prompt.length < 40,
+  );
+  r.push({
+    id: 'synthesis-per-activity',
+    category: 'Synthesis',
+    name: 'Every activity has a synthesis_prompt',
+    status: missingPrompts.length === 0 ? 'pass' : 'fail',
+    message:
+      missingPrompts.length === 0
+        ? `All ${lesson.activities.length} activities have synthesis prompts.`
+        : `${missingPrompts.length} activities missing or too-short synthesis_prompt.`,
+    details: missingPrompts.map((a) => `Activity ${a.id}`),
+  });
+
+  // 2. Lesson-level synthesis prompt populated
+  const ls = lesson.lesson_synthesis;
+  const lsPromptOk = ls.prompt && ls.prompt.length >= 80;
+  r.push({
+    id: 'lesson-synthesis-populated',
+    category: 'Synthesis',
+    name: 'lesson_synthesis.prompt is populated and substantive',
+    status: lsPromptOk ? 'pass' : 'fail',
+    message: lsPromptOk
+      ? `Lesson synthesis prompt present (${ls.prompt.length} chars).`
+      : 'Lesson synthesis prompt is empty or too short — the lesson close has nothing to consolidate.',
+  });
+
+  // 3. builds_on covers every activity (one entry per activity)
+  const buildsOnOk = ls.builds_on.length >= lesson.activities.length;
+  r.push({
+    id: 'lesson-synthesis-builds-on',
+    category: 'Synthesis',
+    name: 'lesson_synthesis.builds_on has one entry per activity',
+    status: buildsOnOk ? 'pass' : 'warn',
+    message: buildsOnOk
+      ? `${ls.builds_on.length} build-on entries for ${lesson.activities.length} activities.`
+      : `${ls.builds_on.length} build-on entries for ${lesson.activities.length} activities — the consolidation line back to each activity is thin.`,
+  });
+
+  // 4. Wristband activity synthesis_short populated
+  const missingShort = lesson.wristband.activities.filter(
+    (a) => !a.synthesis_short || a.synthesis_short.length < 10,
+  );
+  r.push({
+    id: 'wristband-activity-synthesis-short',
+    category: 'Synthesis',
+    name: 'Every wristband activity has a synthesis_short',
+    status: missingShort.length === 0 ? 'pass' : 'fail',
+    message:
+      missingShort.length === 0
+        ? 'All Quick Read activities have a close band.'
+        : `${missingShort.length} Quick Read activities missing synthesis_short — the close band will be empty.`,
+    details: missingShort.map((a) => `Quick Read ${a.activity_id}`),
+  });
+
+  // 5. Wristband lesson_synthesis_short populated
+  const wbShort = lesson.wristband.lesson_synthesis_short;
+  const wbShortOk = wbShort && wbShort.length >= 12;
+  r.push({
+    id: 'wristband-lesson-synthesis-short',
+    category: 'Synthesis',
+    name: 'wristband.lesson_synthesis_short is populated',
+    status: wbShortOk ? 'pass' : 'fail',
+    message: wbShortOk
+      ? `Lesson close compression present (${wbShort.length} chars).`
+      : 'Lesson close compression empty — Quick Read has no in-class lesson close.',
+  });
+
+  // 6. Generic-phrase detection — forbidden language across all synthesis fields
+  const flagged: string[] = [];
+  for (const a of lesson.activities) {
+    if (a.synthesis_prompt) {
+      const hits = findGenericPhrasesInSynthesis(a.synthesis_prompt);
+      if (hits.length > 0)
+        flagged.push(`Activity ${a.id} synthesis_prompt: "${hits.join('", "')}"`);
+    }
+  }
+  if (ls.prompt) {
+    const hits = findGenericPhrasesInSynthesis(ls.prompt);
+    if (hits.length > 0)
+      flagged.push(`lesson_synthesis.prompt: "${hits.join('", "')}"`);
+  }
+  for (const a of lesson.wristband.activities) {
+    if (a.synthesis_short) {
+      const hits = findGenericPhrasesInSynthesis(a.synthesis_short);
+      if (hits.length > 0)
+        flagged.push(`Quick Read ${a.activity_id} synthesis_short: "${hits.join('", "')}"`);
+    }
+  }
+  if (wbShort) {
+    const hits = findGenericPhrasesInSynthesis(wbShort);
+    if (hits.length > 0)
+      flagged.push(`wristband.lesson_synthesis_short: "${hits.join('", "')}"`);
+  }
+  r.push({
+    id: 'synthesis-no-generic-phrases',
+    category: 'Synthesis',
+    name: 'No generic reminder phrases in any synthesis field',
+    status: flagged.length === 0 ? 'pass' : 'fail',
+    message:
+      flagged.length === 0
+        ? 'All synthesis fields are lesson-specific — no generic templates detected.'
+        : `${flagged.length} synthesis field(s) contain generic reminders the tool is designed to replace.`,
+    details: flagged.length > 0 ? flagged : undefined,
+  });
+
+  // 7. Wristband synthesis_short word-count cap
+  const wordCount = (s: string) => s.trim().split(/\s+/).filter(Boolean).length;
+  const shortOverages: string[] = [];
+  for (const a of lesson.wristband.activities) {
+    if (a.synthesis_short && wordCount(a.synthesis_short) > 22) {
+      shortOverages.push(`Quick Read ${a.activity_id}: ${wordCount(a.synthesis_short)} words (cap 22)`);
+    }
+  }
+  if (wbShort && wordCount(wbShort) > 26) {
+    shortOverages.push(`lesson_synthesis_short: ${wordCount(wbShort)} words (cap 26)`);
+  }
+  r.push({
+    id: 'synthesis-short-word-counts',
+    category: 'Synthesis',
+    name: 'Quick Read synthesis compressions respect word caps',
+    status: shortOverages.length === 0 ? 'pass' : 'warn',
+    message:
+      shortOverages.length === 0
+        ? 'All synthesis compressions within caps.'
+        : `${shortOverages.length} synthesis_short overages.`,
+    details: shortOverages.length > 0 ? shortOverages : undefined,
+  });
+
+  return r;
+}
+
 export function runAllChecks(lesson: LessonData): CheckResult[] {
   return [
     ...structuralChecks(lesson),
@@ -887,6 +1048,7 @@ export function runAllChecks(lesson: LessonData): CheckResult[] {
     ...movesChecks(lesson),
     ...mlrChecks(lesson),
     ...elsfChecks(lesson),
+    ...synthesisChecks(lesson),
     ...registerChecks(lesson),
   ];
 }

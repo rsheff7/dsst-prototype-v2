@@ -139,6 +139,7 @@ The JSON has this shape. elsf_inference MUST be the FIRST field. mlr_inference S
     "language_demand": "low | medium | high",
     "function_summary": "string — 2-3 sentences explaining what this activity is FOR in the lesson.",
     "learning_target": "string — 1 sentence in 'Students ___' voice naming what students will be able to do by the end of THIS activity. Concrete and observable. Aligns to but is narrower than the lesson destination.",
+    "synthesis_prompt": "string — 1-2 sentences telling the teacher how to close THIS activity by pointing back to the activity's learning_target. Pattern: 'Synthesize toward [the learning_target] by [a concrete, lesson-specific move]'. Name the specific mathematical idea, the specific student work to surface, the specific question to ask. Must use this lesson's actual content (ratios, equivalent ratios, double number lines, the specific scenario in this lesson, etc.). NEVER generic like 'have students share what they learned' or 'reflect on the learning target' — those phrases are forbidden.",
     "is_crux": boolean,
     "friction_points": [{
       "description": "string — what the teacher will see",
@@ -203,6 +204,10 @@ The JSON has this shape. elsf_inference MUST be the FIRST field. mlr_inference S
       }]
     }]
   },
+  "lesson_synthesis": {
+    "prompt": "string — 2-3 sentences telling the teacher how to close the WHOLE lesson by pointing back to the lesson destination. Must consolidate the activity-level syntheses into one coherent landing. Name the specific mathematical idea students should leave holding, the specific student work or representation to surface as the anchor, and one specific question that drives the consolidation. Use this lesson's actual content. NEVER generic.",
+    "builds_on": ["string — 2-3 short references (one per activity) showing how this closing builds on what each activity surfaced. Example: 'Activity 1: students named the two quantities' or 'Activity 2: students saw the multiplicative jump'. ~8-14 words each."]
+  },
   "wristband": {
     "arc_one_line": "string — the lesson's arc compressed to 8-12 words. Strict.",
     "preflight": ["string — 3-4 pre-class cues a teacher should set up BEFORE the lesson begins (pre-pair students, identify who to call on first, prep displays). 8-12 words each. Pulled from adapt do_not_remove and by_proficiency where relevant."],
@@ -220,12 +225,14 @@ The JSON has this shape. elsf_inference MUST be the FIRST field. mlr_inference S
         "has_proficiency_variants": "boolean — true when this moment's response actually differs by Emerging/Developing/Expanding proficiency (signals the teacher to consult Moves for the side-by-side). Set true for MLL frictions where proficiency_moves are present in the corresponding decision_guide scenario.",
         "glyph_observation": "string — 2-4 word ALL-CAPS compression of the observation for the in-class view. Verb-noun or noun-only. Example: 'NUMBERS FLIPPED' or 'MLL FROZEN AT FRAME'.",
         "glyph_move": "string — 3-6 word verb-first cue for the in-class view. Use middle dots (·) to separate steps. Example: 'READ ALOUD · WHICH FIRST?' or 'POINT ITEM · POINT BLANK'."
-      }]
+      }],
+      "synthesis_short": "string — 10-18 words. The activity-close synthesis compressed for the wristband. Verb-first. Names the specific student work to surface AND the specific consolidation question. Lesson-specific. NEVER 'have students synthesize' or 'reflect on learning'. Example: 'Surface the partner's diagram. Ask: where does the 3-to-2 ratio show up?'"
     }],
     "mlr_legend": [{
       "mlr": { "number", "name" },
       "one_line_cue": "string — 5-10 words: how to run the routine, in cue form"
-    }]
+    }],
+    "lesson_synthesis_short": "string — 12-22 words. The lesson-close synthesis compressed for the wristband. Names the specific consolidating idea AND one specific anchor (a student strategy, a representation, a key question) the teacher pulls forward. Lesson-specific. Verb-first. NEVER generic reflection language."
   }
 }
 
@@ -242,7 +249,19 @@ The JSON has this shape. elsf_inference MUST be the FIRST field. mlr_inference S
 - wristband: each tile and each legend entry must respect its word limit. If a thought needs more words, it does not belong on the wristband.
 - wristband.activities should have 2-3 tiles per activity, max. The wristband is curated, not exhaustive.
 - wristband.mlr_legend should list the 2-3 routines this lesson runs on most heavily, not all 8.
-- Use plain language throughout. Asset-based throughout. No deficit framing.`;
+- Use plain language throughout. Asset-based throughout. No deficit framing.
+
+# SYNTHESIS PROMPTS — CRITICAL
+
+Synthesis is the move teachers skip most. The tool exists in part to make synthesis pronounced and hard to skip. These rules are non-negotiable:
+
+1. EVERY activity must have a synthesis_prompt. It is the activity's closing landing, written as a directive to the teacher.
+2. EVERY synthesis_prompt must reference the activity's own learning_target by content (not by the phrase "learning target") and tell the teacher how to drive students there. Pattern: "Synthesize toward [the specific math idea from the learning target] by [a specific lesson-grounded move]."
+3. LESSON-SPECIFIC LANGUAGE ONLY. Use the actual quantities, terms, scenarios, representations, and student work patterns from THIS lesson. If the synthesis_prompt could be pasted into a different lesson without editing, it has failed.
+4. FORBIDDEN PHRASES in any synthesis field (activity-level, lesson-level, or wristband short forms). Do not write: "have students share what they learned", "reflect on the learning target", "ask students what they noticed", "synthesize the activity", "wrap up the lesson", "discuss what was learned", "review the key idea", "students summarize their learning". These are the generic reminders the tool is designed to replace.
+5. The lesson_synthesis must consolidate the activity-level syntheses into one landing. Reference what each activity surfaced (via builds_on) and name the specific representation, student strategy, or pivotal question that anchors the close. The lesson_synthesis prompt is what the teacher actually says or does at lesson close — concrete and lesson-grounded.
+6. WRISTBAND SHORT FORMS (synthesis_short per activity, lesson_synthesis_short for the lesson) are the in-class compressions. They MUST stay verb-first, MUST name a specific student work or question, and MUST follow the same lesson-specific rule. They are NOT generic placeholders that hand off to the robust view.
+7. Cohesion: the activity synthesis_prompts and the lesson_synthesis must trace a clear line into the lesson destination. A teacher reading the lesson_synthesis should feel it land BECAUSE the activity syntheses set it up.`;
 
 // ---------------------------------------------------------------------------
 // composeSystemPrompt: builds the full system prompt by appending the ELSF

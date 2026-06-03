@@ -50,6 +50,9 @@ export default function AnticipatedThinking({ lesson }: Props) {
 
   const activeActivity = activities.find((a) => a.activity_id === activeActivityId);
   if (!activeActivity) return null;
+  const sourceActivity = lesson.activities.find((x) => x.id === activeActivityId);
+  const isLastActivity =
+    activities.length > 0 && activities[activities.length - 1].activity_id === activeActivityId;
 
   const sortedPatterns = [...activeActivity.patterns].sort((a, b) => {
     if (a.is_mll_specific && !b.is_mll_specific) return -1;
@@ -217,6 +220,63 @@ export default function AnticipatedThinking({ lesson }: Props) {
           </ul>
         </div>
       )}
+
+      {sourceActivity?.synthesis_prompt && (
+        <div
+          className="mt-8 rounded-xl border shadow-sm overflow-hidden border-l-[3px]"
+          style={{ backgroundColor: '#FBF3EA', borderColor: '#E6CFB5', borderLeftColor: '#7A3E1C' }}
+        >
+          <div
+            className="px-5 py-3 border-b"
+            style={{ borderColor: '#E6CFB5', backgroundColor: '#F6E7D2' }}
+          >
+            <p
+              className="text-[10px] font-bold uppercase tracking-[0.14em]"
+              style={{ color: '#7A3E1C' }}
+            >
+              Close this activity — synthesize what their thinking surfaced
+            </p>
+          </div>
+          {sourceActivity.learning_target && (
+            <div className="px-5 py-3 border-b" style={{ borderColor: '#E6CFB5' }}>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-1">
+                Drive them toward
+              </p>
+              <p className="text-[0.875rem] text-ink leading-[1.55]">{sourceActivity.learning_target}</p>
+            </div>
+          )}
+          <div className="px-5 py-4">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-2">
+              How to close
+            </p>
+            <p className="text-[0.9rem] text-ink leading-[1.65]">{sourceActivity.synthesis_prompt}</p>
+          </div>
+        </div>
+      )}
+
+      {isLastActivity &&
+        (lesson.lesson_synthesis.prompt || lesson.lesson_synthesis.builds_on.length > 0) && (
+          <div
+            className="mt-4 rounded-xl border shadow-sm overflow-hidden border-l-[3px]"
+            style={{ backgroundColor: '#3A2614', borderColor: '#7A3E1C', borderLeftColor: '#FBF3EA' }}
+          >
+            <div className="px-5 py-3 border-b" style={{ borderColor: '#7A3E1C' }}>
+              <p
+                className="text-[10px] font-bold uppercase tracking-[0.14em]"
+                style={{ color: '#FBF3EA' }}
+              >
+                Then — lesson close
+              </p>
+            </div>
+            {lesson.lesson_synthesis.prompt && (
+              <div className="px-5 py-4">
+                <p className="text-[0.9rem] leading-[1.65]" style={{ color: '#FBF3EA' }}>
+                  {lesson.lesson_synthesis.prompt}
+                </p>
+              </div>
+            )}
+          </div>
+        )}
     </div>
   );
 }

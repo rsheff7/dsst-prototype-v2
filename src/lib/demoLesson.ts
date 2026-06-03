@@ -199,6 +199,8 @@ export const demoLesson: LessonData = {
         'Students show you how they already think about sorting and counting groups — every student brings a way of seeing relationships, even before any ratio language enters the room. What you are listening for: which students naturally pair quantities together ("there are 3 of these for every 1 of those") and which students are focused on totals first. Both are doing real mathematical work. The lesson will move both groups toward seeing the relationship between quantities.',
       learning_target:
         'Students compare their categorization choices and notice that different sorts of the same items produce different numbers.',
+      synthesis_prompt:
+        'Synthesize toward students noticing that different sorts of the same items produce different counts: put two students\' sorts of the SAME figures side by side on the board with their counts written underneath. Ask: "Same items — why are the counts different?" Land the answer in students\' words: the way you choose to sort changes the pair of numbers you end up comparing. Leave the "for every" phrase you captured visible — it carries forward into 1.2.',
       is_crux: false,
       friction_points: [
         {
@@ -237,6 +239,8 @@ export const demoLesson: LessonData = {
         'This is the most important part of the lesson. Students take a collection you have prepared (markers, blocks, paper clips — whatever you have) and try to write a sentence using one of the three ratio forms. Some students will breeze through. Others will stare at the page. Both happen for the same reason: this is the first time they have been asked to put a relationship into words. Listen for students reading their sentence aloud as they fill it in. That is how the language becomes theirs.',
       learning_target:
         'Students attach precise ratio language to a relationship they can see, writing it in at least one of the three forms (X to Y, X:Y, X for every Y) and reading it aloud.',
+      synthesis_prompt:
+        'Synthesize toward attaching all three ratio forms to one visible relationship: pick one ratio from the teacher\'s collection (e.g., 3 markers to 5 pencils) and write all three forms on the board — "3 to 5," "3:5," "3 for every 5." Read each one aloud. Ask the class: "These three sentences — are they the same thing said three ways, or three different things?" Press until students name that the three forms describe one relationship. Tape these sentences over the "for every" phrase from 1.1 so the through-line shows.',
       is_crux: true,
       friction_points: [
         {
@@ -288,6 +292,8 @@ export const demoLesson: LessonData = {
         'Students take what they learned about writing ratio sentences and try it on a collection they sort themselves — their own school supplies, items on their desk, classroom objects. You will see the language work or not work depending on whether the lesson landed in 1.2. The visual display step at the end is where they see their ratio represented two ways: in words, and as a picture.',
       learning_target:
         'Students apply ratio language to their own collection and recognize the same relationship expressed in words and as a visual display.',
+      synthesis_prompt:
+        'Synthesize toward recognizing that the same ratio can describe different collections: hold up two student displays whose collections are different but whose ratios match (e.g., 2:3 markers vs. 2:3 paperclips). Read both sentences aloud. Ask: "Different stuff — same ratio. What makes them the same?" Land the answer: the ratio names the relationship between the counts, not the items themselves. Then have the two students point to the part of their displays that proves the ratio.',
       is_crux: false,
       friction_points: [
         {
@@ -771,6 +777,16 @@ export const demoLesson: LessonData = {
     ],
   },
 
+  lesson_synthesis: {
+    prompt:
+      'Close the lesson by returning to the board: the "for every" phrase captured in 1.1, the three taped sentences from 1.2 ("3 to 5," "3:5," "3 for every 5"), and one 1.3 student display you select underneath. Trace the path aloud in one sentence: "We started by noticing \'for every\' in a collection, we learned three ways to write that relationship, and we saw those three ways work on collections you sorted yourself." Then ask: "Trade collections with a partner. Say your partner\'s ratio out loud — in two of the three forms." The lesson lands when students use the academic forms unprompted to describe a relationship someone else can see.',
+    builds_on: [
+      '1.1: students surfaced their own phrase — "for every" — for the relationship between two groups.',
+      '1.2: students mapped the three ratio forms onto one visible relationship and read them aloud.',
+      '1.3: students applied the three forms to a collection they chose themselves.',
+    ],
+  },
+
   wristband: {
     arc_one_line: 'Sort, see it, say it: turn relationships into ratio language.',
     preflight: [
@@ -827,6 +843,8 @@ export const demoLesson: LessonData = {
             glyph_move: 'GESTURES · ACCEPT GESTURES',
           },
         ],
+        synthesis_short:
+          'Put two students\' sorts of the SAME figures side by side. Ask: "Same items — why different counts?"',
       },
       {
         activity_id: '1.2',
@@ -867,6 +885,8 @@ export const demoLesson: LessonData = {
             glyph_move: 'THROW TO CLASS · COMPARE',
           },
         ],
+        synthesis_short:
+          'Write one ratio in all three forms ("3 to 5," "3:5," "3 for every 5"). Ask: same thing or different?',
       },
       {
         activity_id: '1.3',
@@ -906,6 +926,8 @@ export const demoLesson: LessonData = {
             glyph_move: 'BOTH ON BOARD · COMPARE',
           },
         ],
+        synthesis_short:
+          'Hold up two displays — different items, matching ratios. Ask: "Different stuff, same ratio — why?"',
       },
     ],
     mlr_legend: [
@@ -922,5 +944,7 @@ export const demoLesson: LessonData = {
         one_line_cue: 'Two solutions side by side; name what they share.',
       },
     ],
+    lesson_synthesis_short:
+      'Return to the "for every" board AND the three taped forms. Ask partners: say each other\'s ratio in two forms.',
   },
 };

@@ -138,6 +138,7 @@ function normalizeLesson(raw: Partial<LessonData> & Record<string, unknown>): Le
       language_demand: a.language_demand ?? 'low',
       function_summary: a.function_summary ?? '',
       learning_target: a.learning_target ?? '',
+      synthesis_prompt: a.synthesis_prompt ?? '',
       is_crux: a.is_crux ?? false,
       friction_points: (a.friction_points ?? []).map((fp) => ({
         description: fp.description ?? '',
@@ -263,6 +264,8 @@ function normalizeLesson(raw: Partial<LessonData> & Record<string, unknown>): Le
             ? { mlr: normalizeMlr((t as { mlr?: unknown }).mlr)! }
             : {}),
         })),
+        synthesis_short:
+          (a as { synthesis_short?: string }).synthesis_short ?? '',
       })),
       mlr_legend: (raw.wristband?.mlr_legend ?? [])
         .map((e) => {
@@ -271,6 +274,18 @@ function normalizeLesson(raw: Partial<LessonData> & Record<string, unknown>): Le
           return { mlr, one_line_cue: e.one_line_cue ?? '' };
         })
         .filter((x): x is { mlr: MlrRef; one_line_cue: string } => x !== null),
+      lesson_synthesis_short: raw.wristband?.lesson_synthesis_short ?? '',
+    },
+    lesson_synthesis: {
+      prompt:
+        (raw as { lesson_synthesis?: { prompt?: string } }).lesson_synthesis?.prompt ?? '',
+      builds_on: Array.isArray(
+        (raw as { lesson_synthesis?: { builds_on?: unknown } }).lesson_synthesis?.builds_on,
+      )
+        ? (
+            (raw as { lesson_synthesis: { builds_on: unknown[] } }).lesson_synthesis.builds_on
+          ).filter((s): s is string => typeof s === 'string')
+        : [],
     },
   };
 }

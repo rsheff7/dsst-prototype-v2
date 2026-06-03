@@ -17,6 +17,7 @@ const SECTIONS = [
   { id: 'non-negotiables', label: '7. Adapt non-negotiables' },
   { id: 'mlr-coherence', label: '8. MLR coherence map' },
   { id: 'elsf-inference', label: '9. ELSF language layer' },
+  { id: 'synthesis', label: '10. Synthesis arc' },
 ];
 
 export default function AuditPage() {
@@ -543,8 +544,110 @@ export default function AuditPage() {
           )}
         </section>
 
+        {/* 10. Synthesis arc */}
+        <section id="synthesis" className="mb-12 scroll-mt-6">
+          <h2 className="text-[1.05rem] font-semibold text-ink mb-1">10. Synthesis arc</h2>
+          <p className="text-[0.825rem] text-ink-muted mb-4 leading-relaxed">
+            Synthesis is the most-skipped move in math instruction. Every activity must close with a synthesis that points toward its learning target in lesson-specific language. The lesson close must consolidate those activity-level syntheses toward the destination. This section shows the full synthesis arc — activity syntheses traced into the lesson close — so you can verify the through-line is concrete and traceable.
+          </p>
+
+          <div className="space-y-4">
+            {lesson.activities.map((a) => {
+              const wba = lesson.wristband.activities.find((w) => w.activity_id === a.id);
+              return (
+                <div key={a.id} className="rounded-xl border border-line bg-card shadow-sm overflow-hidden">
+                  <div className="px-5 py-3 border-b border-line-subtle bg-surface">
+                    <p className="text-[0.875rem] font-semibold text-ink">
+                      {a.id} {activitySlot(a.title)}
+                    </p>
+                  </div>
+                  <dl className="px-5 py-4 space-y-3">
+                    <div>
+                      <dt className="text-[10px] font-semibold uppercase tracking-[0.08em] text-ink-faint">
+                        Learning target
+                      </dt>
+                      <dd className="text-[0.825rem] text-ink leading-relaxed">{a.learning_target}</dd>
+                    </div>
+                    <div>
+                      <dt className="text-[10px] font-semibold uppercase tracking-[0.08em] text-ink-faint">
+                        Synthesis prompt (robust)
+                      </dt>
+                      <dd className="text-[0.825rem] text-ink-muted leading-relaxed">
+                        {a.synthesis_prompt || <span className="italic text-ink-faint">missing</span>}
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="text-[10px] font-semibold uppercase tracking-[0.08em] text-ink-faint">
+                        Quick Read synthesis_short
+                      </dt>
+                      <dd className="text-[0.825rem] text-ink-muted leading-relaxed italic">
+                        {wba?.synthesis_short || <span className="text-ink-faint">missing</span>}
+                      </dd>
+                    </div>
+                  </dl>
+                </div>
+              );
+            })}
+
+            <div
+              className="rounded-xl border shadow-sm overflow-hidden border-l-[3px]"
+              style={{ backgroundColor: '#FBF3EA', borderColor: '#E6CFB5', borderLeftColor: '#7A3E1C' }}
+            >
+              <div className="px-5 py-3 border-b" style={{ borderColor: '#E6CFB5', backgroundColor: '#F6E7D2' }}>
+                <p className="text-[10px] font-bold uppercase tracking-[0.12em]" style={{ color: '#7A3E1C' }}>
+                  Lesson close
+                </p>
+              </div>
+              <dl className="px-5 py-4 space-y-3">
+                <div>
+                  <dt className="text-[10px] font-semibold uppercase tracking-[0.08em] text-ink-faint">
+                    Destination
+                  </dt>
+                  <dd className="text-[0.825rem] text-ink leading-relaxed">{lesson.destination}</dd>
+                </div>
+                <div>
+                  <dt className="text-[10px] font-semibold uppercase tracking-[0.08em] text-ink-faint">
+                    Lesson synthesis prompt (robust)
+                  </dt>
+                  <dd className="text-[0.825rem] text-ink-muted leading-relaxed">
+                    {lesson.lesson_synthesis.prompt || (
+                      <span className="italic text-ink-faint">missing</span>
+                    )}
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-[10px] font-semibold uppercase tracking-[0.08em] text-ink-faint">
+                    Builds on
+                  </dt>
+                  <dd className="text-[0.825rem] text-ink-muted leading-relaxed">
+                    {lesson.lesson_synthesis.builds_on.length > 0 ? (
+                      <ul className="list-disc pl-5">
+                        {lesson.lesson_synthesis.builds_on.map((line, i) => (
+                          <li key={i}>{line}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <span className="italic text-ink-faint">no builds_on entries</span>
+                    )}
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-[10px] font-semibold uppercase tracking-[0.08em] text-ink-faint">
+                    Quick Read lesson_synthesis_short
+                  </dt>
+                  <dd className="text-[0.825rem] text-ink-muted leading-relaxed italic">
+                    {lesson.wristband.lesson_synthesis_short || (
+                      <span className="text-ink-faint">missing</span>
+                    )}
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </section>
+
         <p className="text-[0.8rem] text-ink-faint italic mt-12 pt-6 border-t border-line">
-          Audit v2.1 · For structural pass/fail checks, see{' '}
+          Audit v2.3 · For structural pass/fail checks, see{' '}
           <Link href="/qa" className="underline-offset-2 underline">/qa</Link>
         </p>
       </main>

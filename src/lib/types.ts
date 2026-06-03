@@ -41,6 +41,7 @@ export interface Activity {
   language_demand: 'low' | 'medium' | 'high';
   function_summary: string;
   learning_target: string;
+  synthesis_prompt: string;
   is_crux: boolean;
   friction_points: FrictionPoint[];
   success_signals: string[];
@@ -215,6 +216,7 @@ export interface WristbandTile {
 export interface WristbandActivity {
   activity_id: string;
   tiles: WristbandTile[];
+  synthesis_short: string;
 }
 
 export interface WristbandLegendEntry {
@@ -229,6 +231,12 @@ export interface Wristband {
   top_frictions: string[];
   activities: WristbandActivity[];
   mlr_legend: WristbandLegendEntry[];
+  lesson_synthesis_short: string;
+}
+
+export interface LessonSynthesis {
+  prompt: string;
+  builds_on: string[];
 }
 
 export interface LessonData {
@@ -242,5 +250,6 @@ export interface LessonData {
   decision_guide: DecisionGuide;
   elsf_inference: ELSFInference;
   mlr_inference: MlrInference;
+  lesson_synthesis: LessonSynthesis;
   wristband: Wristband;
 }
