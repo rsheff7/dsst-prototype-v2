@@ -234,11 +234,37 @@ function ActivityCard({
               <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-2.5">
                 How to support across proficiency
               </p>
-              <div className="space-y-2">
-                <ProficiencyRow label="Emerging" level={proficiency.emerging} bg="#E1F5EE" border="#9FE1CB" text="#085041" />
-                <ProficiencyRow label="Developing" level={proficiency.developing} bg="#EEEDFE" border="#AFA9EC" text="#26215C" />
-                <ProficiencyRow label="Expanding" level={proficiency.expanding} bg="#F1EFE8" border="#D3D1C7" text="#444441" />
-              </div>
+              {eldResolved ? (
+                // When a WIDA level is selected, the level-specific embedded move
+                // is shown inline in the Teacher moves list above. Collapse the
+                // 3-card view to a small pointer so the two surfaces don't compete.
+                <div
+                  className="rounded-lg border px-3 py-2 flex items-start gap-2"
+                  style={{ backgroundColor: '#EEEDFE', borderColor: '#AFA9EC' }}
+                >
+                  <span
+                    className="mt-[2px] text-[14px] shrink-0"
+                    style={{ color: '#26215C' }}
+                    aria-hidden="true"
+                  >
+                    ↑
+                  </span>
+                  <p
+                    className="text-[0.8rem] leading-relaxed"
+                    style={{ color: '#26215C' }}
+                  >
+                    Differentiation for a learner at WIDA {eldResolved.surfaceAnchor.level}:{' '}
+                    {eldResolved.surfaceAnchor.label} is embedded in the teacher moves
+                    above. Clear the level in the header to compare across proficiencies.
+                  </p>
+                </div>
+              ) : (
+                <div className="space-y-2">
+                  <ProficiencyRow label="Emerging" level={proficiency.emerging} bg="#E1F5EE" border="#9FE1CB" text="#085041" />
+                  <ProficiencyRow label="Developing" level={proficiency.developing} bg="#EEEDFE" border="#AFA9EC" text="#26215C" />
+                  <ProficiencyRow label="Expanding" level={proficiency.expanding} bg="#F1EFE8" border="#D3D1C7" text="#444441" />
+                </div>
+              )}
             </div>
           </div>
         </div>
