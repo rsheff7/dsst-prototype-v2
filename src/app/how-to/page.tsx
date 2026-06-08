@@ -108,6 +108,33 @@ export default function HowToPage() {
           </p>
         </Step>
 
+        {/* Step 4 — WIDA-level differentiation */}
+        <Step
+          number={4}
+          title="Pick a WIDA level for the learner in front of you"
+          summary="The header carries a six-button WIDA selector. Once you pick a level, Pathway and Moves show the differentiated move for that learner — embedded inline, not in a separate panel."
+        >
+          <p>
+            The WIDA selector lives at the top of every tool view. Select a level — Entering, Emerging, Developing, Expanding, Bridging, or Reaching — and two things happen:
+          </p>
+          <ul className="space-y-1.5 mt-2 mb-3">
+            <li className="flex items-start gap-2">
+              <span className="mt-1.5 shrink-0 h-1.5 w-1.5 rounded-full" style={{ backgroundColor: ACCENT }} />
+              <span><strong>Lesson Pathway</strong> adds a calibrated move to each activity&apos;s teacher-moves list, marked with a <em>For [Label]</em> chip.</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="mt-1.5 shrink-0 h-1.5 w-1.5 rounded-full" style={{ backgroundColor: ACCENT }} />
+              <span><strong>Move Walkthrough</strong> shows the embedded move for that learner inside each multilingual-learner scenario, with the discourse, sentence, and word/phrase targets they are reaching toward.</span>
+            </li>
+          </ul>
+          <p>
+            Clear the selector to compare across levels. The selector persists across views — pick once, the read carries through.
+          </p>
+          <p className="text-ink-muted italic text-[0.85rem]">
+            Differentiation is no longer in Adapt. Adapt is for what the task is for, mathematically; the learner side moved per-activity.
+          </p>
+        </Step>
+
         {/* Tool descriptions */}
         <div className="mt-6 space-y-4">
           <ToolCard
@@ -116,7 +143,7 @@ export default function HowToPage() {
             title="Lesson Pathway"
             tag="What is this lesson really doing?"
           >
-            The teacher&apos;s read of the lesson&apos;s structure and arc. Walks you through each activity in order, naming what it is for, the signals of strong student thinking to listen for, the friction points to expect, and the teacher moves that anchor each activity. Use this to plan how to teach the lesson, not just deliver it.
+            The teacher&apos;s read of the lesson&apos;s structure and arc. Walks you through each activity in order, naming what it is for, the signals of strong student thinking to listen for, the friction points to expect, and the teacher moves that anchor each activity. When a WIDA level is selected in the header, an embedded move calibrated to that learner appears inside each activity&apos;s moves list. Use this to plan how to teach the lesson, not just deliver it.
           </ToolCard>
 
           <ToolCard
@@ -125,7 +152,7 @@ export default function HowToPage() {
             title="Adapt"
             tag="What can I change without breaking the math?"
           >
-            The task&apos;s read on what is non-negotiable and what is open. Names the mathematical purpose, the items you can safely adjust, the items you cannot remove, and the three proficiency-specific adaptations (Entering, Developing, Bridging) for multilingual learners. Use this when you need to modify the lesson for a class, a small group, or a single student.
+            The task&apos;s read on what is non-negotiable and what is open. Names the mathematical purpose, the items you can safely adjust, the items you cannot remove, and a rigor-check question to ask before any adaptation. Use this when you need to modify the lesson for a class, a small group, or a single student. Learner-specific differentiation lives in Pathway and Moves now.
           </ToolCard>
 
           <ToolCard
@@ -143,7 +170,7 @@ export default function HowToPage() {
             title="Move Walkthrough"
             tag="What do I do when I see this in class?"
           >
-            Practice-based scenarios for every moment that brings teacher, task, and student together — observation, interpretation, response. For multilingual learner scenarios, the response is shown side-by-side across Entering, Developing, and Bridging proficiency levels. Use this to rehearse the moves before you teach. A coaching session works well here too.
+            Practice-based scenarios for every moment that brings teacher, task, and student together — observation, interpretation, response. For multilingual-learner scenarios, the response is calibrated to the WIDA level you select in the header, with the embedded move plus the discourse, sentence, and word/phrase targets that learner is reaching toward. Use this to rehearse the moves before you teach. A coaching session works well here too.
           </ToolCard>
         </div>
 
@@ -166,7 +193,7 @@ export default function HowToPage() {
 
         <footer className="mt-16 pt-6 border-t border-line">
           <p className="text-[0.8rem] text-ink-faint italic">
-            Premo · v2.3 — Synthesis preview · for DSST Public Schools · Scale Up Partners, LLC
+            Premo · v2.4 — ELD Convergence preview · for DSST Public Schools · Scale Up Partners, LLC
           </p>
         </footer>
       </article>
