@@ -5,6 +5,8 @@ import { LessonData, Activity, FrictionPoint } from '@/lib/types';
 import { ToolId } from '@/app/lesson/page';
 import ToolInfo from '@/components/shared/ToolInfo';
 import MlrChip from '@/components/shared/MlrChip';
+import { useLesson } from '@/lib/lessonContext';
+import { kluFromElsf, resolve, WIDA_LABELS } from '@/lib/eld';
 
 const ACCENT = '#00876C';
 const SYNTH_ACCENT = '#7A3E1C';
@@ -65,12 +67,31 @@ function ProficiencyRow({
 function ActivityCard({
   activity,
   proficiency,
+  lesson,
 }: {
   activity: Activity;
   proficiency: LessonData['adaptation_guardrails']['by_proficiency'];
+  lesson: LessonData;
 }) {
   const [open, setOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+  const { selectedWidaLevel } = useLesson();
+
+  // ELD Convergence — resolve the embedded move for the educator-selected
+  // WIDA level. The KLU is DERIVED from ELSF's existing language_functions
+  // output (never re-inferred). If no WIDA level is selected, or no ELSF
+  // inference exists for this activity, the embedded ELD move is not
+  // surfaced. Per architectural rule: deterministic, never runtime model.
+  const elsfActivity = lesson.elsf_inference?.activities.find(
+    (a) => a.activity_id === activity.id,
+  );
+  const eldResolved =
+    selectedWidaLevel !== null && elsfActivity
+      ? resolve(
+          kluFromElsf(elsfActivity.functional_language.language_functions),
+          selectedWidaLevel,
+        )
+      : null;
   const demand = DEMAND_STYLES[activity.language_demand];
   const langFrictions = activity.friction_points.filter(
     (fp) => fp.type === 'language' || fp.type === 'language-math',
@@ -306,7 +327,7 @@ function ActivityCard({
               </div>
             )}
 
-            {activity.teacher_moves.length > 0 && (
+            {(activity.teacher_moves.length > 0 || eldResolved) && (
               <div className="border-t border-line-subtle px-5 py-4">
                 <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-2.5">
                   Teacher moves
@@ -325,6 +346,29 @@ function ActivityCard({
                       </div>
                     </li>
                   ))}
+                  {eldResolved && (
+                    <li className="flex items-start gap-2.5">
+                      <span
+                        className="mt-[0.4rem] h-1.5 w-1.5 shrink-0 rounded-full"
+                        style={{ backgroundColor: '#534AB7' }}
+                      />
+                      <div className="flex-1 min-w-0">
+                        <span className="text-[0.825rem] text-ink leading-relaxed">
+                          {eldResolved.embeddedMove}
+                        </span>
+                        <div className="mt-1">
+                          <span
+                            className="inline-block rounded-full px-2 py-0.5 text-[10px] font-semibold"
+                            style={{ backgroundColor: '#EEEDFE', color: '#26215C' }}
+                            title={`Differentiated for a learner at WIDA ${eldResolved.surfaceAnchor.level}: ${eldResolved.surfaceAnchor.label}`}
+                          >
+                            For {eldResolved.surfaceAnchor.label} ·{' '}
+                            {eldResolved.dimensionTargets.discourse.does}
+                          </span>
+                        </div>
+                      </div>
+                    </li>
+                  )}
                 </ul>
               </div>
             )}
@@ -418,6 +462,7 @@ export default function LessonPathway({ lesson, onNavigate }: Props) {
               key={activity.id}
               activity={activity}
               proficiency={lesson.adaptation_guardrails.by_proficiency}
+              lesson={lesson}
             />
           ))}
         </div>
