@@ -27,9 +27,14 @@ yarn-error.log*
 # env files
 .env*
 
-# vercel
-.vercel
-
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Sal conversation artifacts (auto-generated context files)
+.ai.hellopartner.context.json
+*~.ai.hellopartner.context.json.swp
+
+# environment variables
+.env.local
+.env.*.local
