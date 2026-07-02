@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import ExportIcon from '@/components/icons/ExportIcon';
+import ImportIcon from '@/components/icons/ImportIcon';
 import { LessonData, ToolId } from '@/lib/types';
 
 const TOOL_NAMES: Record<ToolId, string> = {
