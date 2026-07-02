@@ -199,3 +199,5 @@ export interface LessonData {
   mlr_inference: MlrInference;
   wristband: Wristband;
 }
+
+export type ToolId = 'quickread' | 'pathway' | 'adapt' | 'thinking' | 'moves';

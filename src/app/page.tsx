@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useLesson } from '@/lib/lessonContext';
 import { demoLesson } from '@/lib/demoLesson';
 import { LessonData } from '@/lib/types';
+import { importLessonFromFile } from '@/lib/fileUtils';
 
 const LOADING_MESSAGES = [
   'Reading your lesson...',
@@ -19,8 +20,10 @@ export default function HomePage() {
   const { setLesson } = useLesson();
   const router = useRouter();
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const importFileInputRef = useRef<HTMLInputElement>(null);
   const [uploadState, setUploadState] = useState<UploadState>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const [importErrorMessage, setImportErrorMessage] = useState('');
   const [loadingMessageIndex, setLoadingMessageIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
 
@@ -133,6 +136,23 @@ export default function HomePage() {
     if (file) handleFile(file);
   };
 
+  const handleImportFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    e.target.value = '';
+    if (file) {
+      importLessonFromFile(file)
+        .then((lesson) => {
+          setLesson(lesson);
+          router.push('/lesson');
+        })
+        .catch((error) => {
+          setImportErrorMessage(
+            error instanceof Error ? error.message : 'Failed to import lesson file.'
+          );
+        });
+    }
+  };
+
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
     setIsDragging(false);
@@ -233,7 +253,32 @@ export default function HomePage() {
           </div>
         )}
 
+        {importErrorMessage && (
+          <div className="mt-4 rounded-xl border border-line bg-card px-5 py-4">
+            <p className="text-[0.875rem] text-ink">{importErrorMessage}</p>
+            <button
+              onClick={() => setImportErrorMessage('')}
+              className="mt-2 text-[0.8rem] font-medium text-ink-muted hover:text-ink cursor-pointer transition-colors"
+            >
+              Try again
+            </button>
+          </div>
+        )}
+
         <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-5">
+          <input
+            ref={importFileInputRef}
+            type="file"
+            accept=".dsst,application/json"
+            className="sr-only"
+            onChange={handleImportFile}
+          />
+          <button
+            onClick={() => importFileInputRef.current?.click()}
+            className="text-[0.875rem] text-ink-muted hover:text-ink cursor-pointer transition-colors"
+          >
+            Load existing plan →
+          </button>
           <button
             onClick={handleDemo}
             className="text-[0.875rem] text-ink-muted hover:text-ink cursor-pointer transition-colors"

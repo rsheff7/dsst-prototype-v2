@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ToolId } from '@/app/lesson/page';
+import { ToolId } from '@/lib/types';
 
 const TOOL_CONTENT: Record<ToolId, {
   title: string;

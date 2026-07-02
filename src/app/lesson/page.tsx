@@ -3,15 +3,15 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useLesson } from '@/lib/lessonContext';
+import { LessonData, ToolId } from '@/lib/types';
 import LessonHeader from '@/components/shared/LessonHeader';
 import ToolNav from '@/components/shared/ToolNav';
 import LessonPathway from '@/components/tools/LessonPathway';
 import AdaptationGuardrails from '@/components/tools/AdaptationGuardrails';
 import AnticipatedThinking from '@/components/tools/AnticipatedThinking';
 import MoveWalkthrough from '@/components/tools/MoveWalkthrough';
+import { exportLessonToFile } from '@/lib/fileUtils';
 import QuickRead from '@/components/tools/QuickRead';
-
-export type ToolId = 'quickread' | 'pathway' | 'adapt' | 'thinking' | 'moves';
 
 export default function LessonPage() {
   const { lesson } = useLesson();
@@ -22,6 +22,11 @@ export default function LessonPage() {
     if (!lesson) router.replace('/');
   }, [lesson, router]);
 
+  const handleSavePlan = () => {
+    if (!lesson) return;
+    exportLessonToFile(lesson);
+  };
+
   if (!lesson) return null;
 
   return (
@@ -29,7 +34,7 @@ export default function LessonPage() {
       {/* Desktop: fixed top bar with header + nav */}
       <div className="hidden md:block fixed top-0 left-0 right-0 z-40 bg-card border-b border-line">
         <div className="mx-auto max-w-3xl px-6">
-          <LessonHeader lesson={lesson} activeTool={activeTool} compact={false} />
+          <LessonHeader lesson={lesson} activeTool={activeTool} compact={false} onSavePlan={handleSavePlan} />
           <ToolNav activeTool={activeTool} onSelect={setActiveTool} />
         </div>
       </div>
@@ -37,7 +42,7 @@ export default function LessonPage() {
       {/* Mobile: compact sticky header */}
       <div className="md:hidden sticky top-0 z-40 bg-card border-b border-line">
         <div className="px-4">
-          <LessonHeader lesson={lesson} activeTool={activeTool} compact={true} />
+          <LessonHeader lesson={lesson} activeTool={activeTool} compact={true} onSavePlan={handleSavePlan} />
         </div>
       </div>
 

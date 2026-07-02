@@ -1,8 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { LessonData, Activity, FrictionPoint } from '@/lib/types';
-import { ToolId } from '@/app/lesson/page';
+import { LessonData, Activity, FrictionPoint, ToolId } from '@/lib/types';
 import ToolInfo from '@/components/shared/ToolInfo';
 import MlrChip from '@/components/shared/MlrChip';
 

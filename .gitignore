@@ -38,3 +38,6 @@ next-env.d.ts
 # environment variables
 .env.local
 .env.*.local
+
+# Workstream folders (planning docs, local to each dev)
+ws-*/

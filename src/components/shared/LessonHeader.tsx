@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { LessonData } from '@/lib/types';
-import { ToolId } from '@/app/lesson/page';
+import ExportIcon from '@/components/icons/ExportIcon';
+import { LessonData, ToolId } from '@/lib/types';
 
 const TOOL_NAMES: Record<ToolId, string> = {
   quickread: 'Quick Read',
@@ -16,9 +16,10 @@ interface LessonHeaderProps {
   lesson: LessonData;
   activeTool: ToolId;
   compact: boolean;
+  onSavePlan?: () => void;
 }
 
-export default function LessonHeader({ lesson, activeTool, compact }: LessonHeaderProps) {
+export default function LessonHeader({ lesson, activeTool, compact, onSavePlan }: LessonHeaderProps) {
   const { meta } = lesson;
 
   if (compact) {
@@ -41,12 +42,23 @@ export default function LessonHeader({ lesson, activeTool, compact }: LessonHead
         <p className="text-[0.7rem] font-semibold uppercase tracking-[0.08em] text-ink-faint">
           {meta.grade} · {meta.unit} · {meta.lesson_number}
         </p>
-        <Link
-          href="/"
-          className="text-[0.75rem] font-medium text-ink-muted hover:text-ink transition-colors shrink-0"
-        >
-          ← Upload a different lesson
-        </Link>
+        <div className="flex items-center gap-3">
+          {onSavePlan && (
+            <button
+              onClick={onSavePlan}
+              className="flex items-center gap-2 px-3 py-1.5 text-[0.75rem] font-medium text-ink-muted hover:text-ink transition-colors rounded border border-ink-muted hover:border-ink"
+            >
+              <ExportIcon className="w-4 h-4" />
+              Export to file
+            </button>
+          )}
+          <Link
+            href="/"
+            className="text-[0.75rem] font-medium text-ink-muted hover:text-ink transition-colors shrink-0"
+          >
+            ← Upload a different lesson
+          </Link>
+        </div>
       </div>
       <p
         className="mt-1 text-[1.1rem] text-ink leading-snug"

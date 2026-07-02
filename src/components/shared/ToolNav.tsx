@@ -1,6 +1,6 @@
 'use client';
 
-import { ToolId } from '@/app/lesson/page';
+import { ToolId } from '@/lib/types';
 
 const TABS: { id: ToolId; label: string; accent: string }[] = [
   { id: 'quickread', label: 'Quick Read', accent: '#006C57' },
