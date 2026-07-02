@@ -9,14 +9,14 @@ export default function ExportIcon({ className }: { className?: string }) {
       style={{ color: '#00876C' }}
     >
       <path
-        d="M10 2L10 13M10 2L7 5M10 2L13 5"
+        d="M10 13L10 4M10 13L7 10M10 13L13 10"
         stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
-        d="M3 14v1a2 2 0 002 2h10a2 2 0 002-2v-1"
+        d="M3 15v1a2 2 0 002 2h10a2 2 0 002-2v-1"
         stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"

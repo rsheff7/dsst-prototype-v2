@@ -26,12 +26,12 @@ export default function LessonHeader({ lesson, activeTool, compact, onSavePlan }
   if (compact) {
     return (
       <div className="py-3 flex items-center justify-between gap-3">
-        <Link
-          href="/"
-          className="text-[0.75rem] font-medium text-ink-muted hover:text-ink transition-colors truncate"
-        >
-          ← {meta.grade} · {meta.lesson_number}
-        </Link>
+<Link
+            href="/"
+            className="text-[0.75rem] font-medium text-ink-muted hover:text-ink transition-colors truncate"
+          >
+            {meta.grade} · {meta.lesson_number}
+          </Link>
         <p className="text-[0.75rem] font-semibold text-ink shrink-0">{TOOL_NAMES[activeTool]}</p>
       </div>
     );
@@ -57,7 +57,7 @@ export default function LessonHeader({ lesson, activeTool, compact, onSavePlan }
             href="/"
             className="text-[0.75rem] font-medium text-ink-muted hover:text-ink transition-colors shrink-0"
           >
-            ← Upload a different lesson
+            Upload a different lesson
           </Link>
         </div>
       </div>
