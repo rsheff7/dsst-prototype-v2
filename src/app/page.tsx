@@ -241,6 +241,22 @@ export default function HomePage() {
           </p>
         </label>
 
+        <div className="mt-4 text-center">
+          <input
+            ref={importFileInputRef}
+            type="file"
+            accept=".dsst,application/json"
+            className="sr-only"
+            onChange={handleImportFile}
+          />
+          <button
+            onClick={() => importFileInputRef.current?.click()}
+            className="text-[0.875rem] text-ink-muted hover:text-ink cursor-pointer transition-colors"
+          >
+            Load existing plan →
+          </button>
+        </div>
+
         {uploadState === 'error' && (
           <div className="mt-4 rounded-xl border border-line bg-card px-5 py-4">
             <p className="text-[0.875rem] text-ink">{errorMessage}</p>
@@ -265,20 +281,7 @@ export default function HomePage() {
           </div>
         )}
 
-        <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-5">
-          <input
-            ref={importFileInputRef}
-            type="file"
-            accept=".dsst,application/json"
-            className="sr-only"
-            onChange={handleImportFile}
-          />
-          <button
-            onClick={() => importFileInputRef.current?.click()}
-            className="text-[0.875rem] text-ink-muted hover:text-ink cursor-pointer transition-colors"
-          >
-            Load existing plan →
-          </button>
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-5">
           <button
             onClick={handleDemo}
             className="text-[0.875rem] text-ink-muted hover:text-ink cursor-pointer transition-colors"
