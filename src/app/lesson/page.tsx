@@ -66,10 +66,7 @@ export default function LessonPage() {
         )}
       </main>
 
-      {/* Mobile: fixed bottom nav */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-card border-t border-line">
-        <ToolNav activeTool={activeTool} onSelect={setActiveTool} mobile />
-      </div>
+      
     </div>
   );
 }

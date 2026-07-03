@@ -42,8 +42,8 @@ export default function QuickRead({ lesson }: Props) {
       <ToolInfo toolId="quickread" />
       <div className="h-6 qr-print-hide" />
 
-      {/* Toolbar (screen only) */}
-      <div className="qr-print-hide mb-5 flex items-center justify-between gap-3 flex-wrap">
+{/* Toolbar (desktop only - mobile uses inclass mode always) */}
+      <div className="hidden md:flex md:justify-between qr-print-hide mb-5 items-center gap-3">
         <ModeToggle mode={mode} onChange={setMode} />
         {mode === 'plan' && (
           <button
@@ -100,8 +100,23 @@ export default function QuickRead({ lesson }: Props) {
         )}
       </header>
 
-      {mode === 'plan' && <PlanView wb={wb} activityById={activityById} windowById={windowById} />}
-      {mode === 'inclass' && <InClassView wb={wb} activityById={activityById} windowById={windowById} />}
+      {/* Plan view - desktop only */}
+      <div className="hidden md:block">
+        {mode === 'plan' && <PlanView wb={wb} activityById={activityById} windowById={windowById} />}
+      </div>
+
+      {/* Plan view - desktop only */}
+      <div className="hidden md:block">
+        {mode === 'plan' && <PlanView wb={wb} activityById={activityById} windowById={windowById} />}
+      </div>
+
+      {/* In-class view - mobile default, desktop when mode === 'inclass' */}
+      <div className="md:hidden">
+        <InClassView wb={wb} activityById={activityById} windowById={windowById} />
+      </div>
+      <div className="hidden md:block">
+        {mode === 'inclass' && <InClassView wb={wb} activityById={activityById} windowById={windowById} />}
+      </div>
 
       <style jsx global>{planPrintStyles}</style>
     </div>
