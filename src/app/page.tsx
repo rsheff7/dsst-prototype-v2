@@ -245,7 +245,7 @@ export default function HomePage() {
           <input
             ref={importFileInputRef}
             type="file"
-            accept=".dsst,application/json"
+            accept="application/json"
             className="sr-only"
             onChange={handleImportFile}
           />
