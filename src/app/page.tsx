@@ -242,7 +242,7 @@ export default function HomePage() {
         </label>
 
         <div className="mt-4 text-center">
-          <input
+<input
             ref={importFileInputRef}
             type="file"
             accept=".dsst"
