@@ -5,8 +5,14 @@ import { LessonData, Activity, FrictionPoint } from '@/lib/types';
 import { ToolId } from '@/app/lesson/page';
 import ToolInfo from '@/components/shared/ToolInfo';
 import MlrChip from '@/components/shared/MlrChip';
+import { useLesson } from '@/lib/lessonContext';
+import { kluFromElsf, resolve } from '@/lib/eld';
+import EldProficiencyView from '@/components/shared/EldProficiencyView';
 
 const ACCENT = '#00876C';
+const SYNTH_ACCENT = '#7A3E1C';
+const SYNTH_BG = '#FBF3EA';
+const SYNTH_BG_TINT = '#F6E7D2';
 
 const DEMAND_STYLES: Record<string, { bg: string; text: string; label: string }> = {
   low: { bg: '#EAF3DE', text: '#27500A', label: 'Low' },
@@ -62,12 +68,31 @@ function ProficiencyRow({
 function ActivityCard({
   activity,
   proficiency,
+  lesson,
 }: {
   activity: Activity;
   proficiency: LessonData['adaptation_guardrails']['by_proficiency'];
+  lesson: LessonData;
 }) {
   const [open, setOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+  const { selectedWidaLevel } = useLesson();
+
+  // ELD Convergence — resolve the embedded move for the educator-selected
+  // WIDA level. The KLU is DERIVED from ELSF's existing language_functions
+  // output (never re-inferred). If no WIDA level is selected, or no ELSF
+  // inference exists for this activity, the embedded ELD move is not
+  // surfaced. Per architectural rule: deterministic, never runtime model.
+  const elsfActivity = lesson.elsf_inference?.activities.find(
+    (a) => a.activity_id === activity.id,
+  );
+  const eldResolved =
+    selectedWidaLevel !== null && elsfActivity
+      ? resolve(
+          kluFromElsf(elsfActivity.functional_language.language_functions),
+          selectedWidaLevel,
+        )
+      : null;
   const demand = DEMAND_STYLES[activity.language_demand];
   const langFrictions = activity.friction_points.filter(
     (fp) => fp.type === 'language' || fp.type === 'language-math',
@@ -208,13 +233,9 @@ function ActivityCard({
             )}
             <div className="border-t border-line-subtle px-5 py-4">
               <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-2.5">
-                How to support across proficiency
+                Differentiation for this learner
               </p>
-              <div className="space-y-2">
-                <ProficiencyRow label="Entering" level={proficiency.entering} bg="#E1F5EE" border="#9FE1CB" text="#085041" />
-                <ProficiencyRow label="Developing" level={proficiency.developing} bg="#EEEDFE" border="#AFA9EC" text="#26215C" />
-                <ProficiencyRow label="Bridging" level={proficiency.bridging} bg="#F1EFE8" border="#D3D1C7" text="#444441" />
-              </div>
+              <EldProficiencyView activityId={activity.id} lesson={lesson} compact />
             </div>
           </div>
         </div>
@@ -224,6 +245,25 @@ function ActivityCard({
           style={{ gridTemplateRows: open ? '1fr' : '0fr' }}
         >
           <div className="overflow-hidden">
+            {activity.learning_target && (
+              <div
+                className="border-t border-line-subtle px-5 py-4"
+                style={{ backgroundColor: '#F4FAF7' }}
+              >
+                <p
+                  className="text-[10px] font-bold uppercase tracking-[0.14em] mb-1.5"
+                  style={{ color: ACCENT }}
+                >
+                  Learning target for this activity
+                </p>
+                <p
+                  className="text-[0.95rem] text-ink leading-[1.55]"
+                  style={{ fontFamily: 'var(--font-dm-serif), serif' }}
+                >
+                  {activity.learning_target}
+                </p>
+              </div>
+            )}
             {activity.causal_link && (
               <div
                 className="border-t border-line-subtle px-5 py-4"
@@ -284,7 +324,7 @@ function ActivityCard({
               </div>
             )}
 
-            {activity.teacher_moves.length > 0 && (
+            {(activity.teacher_moves.length > 0 || eldResolved) && (
               <div className="border-t border-line-subtle px-5 py-4">
                 <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-2.5">
                   Teacher moves
@@ -303,7 +343,55 @@ function ActivityCard({
                       </div>
                     </li>
                   ))}
+                  {eldResolved && (
+                    <li className="flex items-start gap-2.5">
+                      <span
+                        className="mt-[0.4rem] h-1.5 w-1.5 shrink-0 rounded-full"
+                        style={{ backgroundColor: '#534AB7' }}
+                      />
+                      <div className="flex-1 min-w-0">
+                        <span className="text-[0.825rem] text-ink leading-relaxed">
+                          {eldResolved.embeddedMove}
+                        </span>
+                        <div className="mt-1">
+                          <span
+                            className="inline-block rounded-full px-2 py-0.5 text-[10px] font-semibold"
+                            style={{ backgroundColor: '#EEEDFE', color: '#26215C' }}
+                            title={`Differentiated for a learner at WIDA ${eldResolved.surfaceAnchor.level}: ${eldResolved.surfaceAnchor.label}`}
+                          >
+                            For {eldResolved.surfaceAnchor.label} ·{' '}
+                            {eldResolved.dimensionTargets.discourse.does}
+                          </span>
+                        </div>
+                      </div>
+                    </li>
+                  )}
                 </ul>
+              </div>
+            )}
+
+            {activity.synthesis_prompt && (
+              <div
+                className="border-t-2 px-5 py-4"
+                style={{ backgroundColor: SYNTH_BG, borderTopColor: SYNTH_ACCENT }}
+              >
+                <div className="flex items-center gap-2 mb-2">
+                  <span
+                    className="text-[9px] font-bold uppercase tracking-[0.12em] text-white px-2 py-0.5 rounded-full"
+                    style={{ backgroundColor: SYNTH_ACCENT }}
+                  >
+                    Close
+                  </span>
+                  <p
+                    className="text-[10px] font-bold uppercase tracking-[0.14em]"
+                    style={{ color: SYNTH_ACCENT }}
+                  >
+                    Synthesize toward the learning target
+                  </p>
+                </div>
+                <p className="text-[0.875rem] text-ink leading-[1.65]">
+                  {activity.synthesis_prompt}
+                </p>
               </div>
             )}
 
@@ -371,10 +459,81 @@ export default function LessonPathway({ lesson, onNavigate }: Props) {
               key={activity.id}
               activity={activity}
               proficiency={lesson.adaptation_guardrails.by_proficiency}
+              lesson={lesson}
             />
           ))}
         </div>
       </div>
+
+      {/* Lesson close — lesson_synthesis */}
+      {(lesson.lesson_synthesis.prompt || lesson.lesson_synthesis.builds_on.length > 0) && (
+        <div className="relative pl-12 pb-2">
+          <div
+            className="absolute left-0 top-5 h-10 w-10 rounded-full border-2 flex items-center justify-center shadow-sm"
+            style={{ borderColor: SYNTH_ACCENT, backgroundColor: SYNTH_BG_TINT, borderWidth: 2 }}
+          >
+            <span className="text-[14px] font-bold" style={{ color: SYNTH_ACCENT }}>★</span>
+          </div>
+
+          <div
+            className="rounded-xl border shadow-sm overflow-hidden border-l-[3px]"
+            style={{ backgroundColor: SYNTH_BG, borderColor: '#E6CFB5', borderLeftColor: SYNTH_ACCENT }}
+          >
+            <div
+              className="px-5 py-3 border-b"
+              style={{ borderColor: '#E6CFB5', backgroundColor: SYNTH_BG_TINT }}
+            >
+              <p
+                className="text-[10px] font-bold uppercase tracking-[0.14em]"
+                style={{ color: SYNTH_ACCENT }}
+              >
+                Lesson close — synthesize toward the destination
+              </p>
+            </div>
+
+            {lesson.destination && (
+              <div className="px-6 py-4 border-b" style={{ borderColor: '#E6CFB5' }}>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-1.5">
+                  Land here
+                </p>
+                <p
+                  className="text-[1rem] text-ink leading-[1.55]"
+                  style={{ fontFamily: 'var(--font-dm-serif), serif' }}
+                >
+                  {lesson.destination}
+                </p>
+              </div>
+            )}
+
+            {lesson.lesson_synthesis.prompt && (
+              <div className="px-6 py-5">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-2">
+                  How to close
+                </p>
+                <p className="text-[0.95rem] text-ink leading-[1.65]">
+                  {lesson.lesson_synthesis.prompt}
+                </p>
+              </div>
+            )}
+
+            {lesson.lesson_synthesis.builds_on.length > 0 && (
+              <div className="px-6 py-4 border-t" style={{ borderColor: '#E6CFB5' }}>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-2">
+                  This close builds on
+                </p>
+                <ul className="space-y-1.5">
+                  {lesson.lesson_synthesis.builds_on.map((line, i) => (
+                    <li key={i} className="flex items-start gap-2">
+                      <span className="mt-[5px] shrink-0" style={{ color: SYNTH_ACCENT }}>›</span>
+                      <span className="text-[0.825rem] text-ink-muted leading-[1.55]">{line}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* Key vocabulary if present */}
       {lesson.key_vocabulary.length > 0 && (

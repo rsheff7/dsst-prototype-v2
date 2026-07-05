@@ -21,6 +21,9 @@ const FRICTION_BAR: Record<WristbandTile['friction_type'], string> = {
 
 const QR_ACCENT = '#006C57';
 const CRUX_ACCENT = '#9F2F1A';
+const SYNTH_ACCENT = '#7A3E1C';
+const SYNTH_BG = '#FBF3EA';
+const SYNTH_BG_DARK = '#3A2614';
 
 interface Props {
   lesson: LessonData;
@@ -100,8 +103,23 @@ export default function QuickRead({ lesson }: Props) {
         )}
       </header>
 
-      {mode === 'plan' && <PlanView wb={wb} activityById={activityById} windowById={windowById} />}
-      {mode === 'inclass' && <InClassView wb={wb} activityById={activityById} windowById={windowById} />}
+      {mode === 'plan' && (
+        <PlanView
+          wb={wb}
+          activityById={activityById}
+          windowById={windowById}
+          lessonSynthesis={lesson.lesson_synthesis}
+          destination={lesson.destination}
+        />
+      )}
+      {mode === 'inclass' && (
+        <InClassView
+          wb={wb}
+          activityById={activityById}
+          windowById={windowById}
+          lessonSynthesis={lesson.lesson_synthesis}
+        />
+      )}
 
       <style jsx global>{planPrintStyles}</style>
     </div>
@@ -137,10 +155,14 @@ function PlanView({
   wb,
   activityById,
   windowById,
+  lessonSynthesis,
+  destination,
 }: {
   wb: LessonData['wristband'];
   activityById: Record<string, Activity>;
   windowById: Record<string, { start: number; end: number }>;
+  lessonSynthesis: LessonData['lesson_synthesis'];
+  destination: string;
 }) {
   return (
     <>
@@ -174,6 +196,47 @@ function PlanView({
           />
         ))}
       </div>
+
+      {(wb.lesson_synthesis_short || lessonSynthesis.prompt) && (
+        <section
+          className="qr-lesson-close rounded-xl border shadow-sm overflow-hidden mb-6 border-l-[3px]"
+          style={{ backgroundColor: SYNTH_BG, borderColor: '#E6CFB5', borderLeftColor: SYNTH_ACCENT }}
+        >
+          <div
+            className="px-5 py-3 border-b"
+            style={{ borderColor: '#E6CFB5', backgroundColor: '#F6E7D2' }}
+          >
+            <p
+              className="text-[10px] font-bold uppercase tracking-[0.14em]"
+              style={{ color: SYNTH_ACCENT }}
+            >
+              Lesson close — synthesize toward the destination
+            </p>
+          </div>
+          <div className="px-5 py-4">
+            {destination && (
+              <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-1.5">
+                Land here: {stripSwbatPrefix(destination)}
+              </p>
+            )}
+            {wb.lesson_synthesis_short && (
+              <p className="text-[0.925rem] font-semibold text-ink leading-[1.55] mb-2">
+                {wb.lesson_synthesis_short}
+              </p>
+            )}
+            {lessonSynthesis.builds_on.length > 0 && (
+              <ul className="mt-3 space-y-1">
+                {lessonSynthesis.builds_on.map((line, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <span className="mt-[5px] shrink-0" style={{ color: SYNTH_ACCENT }}>›</span>
+                    <span className="text-[0.78rem] text-ink-muted leading-[1.5]">{line}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </section>
+      )}
 
       {wb.mlr_legend.length > 0 && (
         <div className="qr-legend rounded-xl border border-line bg-card shadow-sm overflow-hidden">
@@ -253,6 +316,24 @@ function PlanActivityRow({
           <PlanTile key={i} tile={tile} />
         ))}
       </div>
+
+      {/* Synthesis close band — hard to skip */}
+      {wba.synthesis_short && (
+        <div
+          className="qr-activity-synth border-t-2 px-5 py-3.5 flex items-start gap-3"
+          style={{ backgroundColor: SYNTH_BG, borderTopColor: SYNTH_ACCENT }}
+        >
+          <span
+            className="shrink-0 text-[9px] font-bold uppercase tracking-[0.12em] text-white px-2 py-0.5 rounded-full mt-[1px]"
+            style={{ backgroundColor: SYNTH_ACCENT }}
+          >
+            Close
+          </span>
+          <p className="text-[0.875rem] font-semibold text-ink leading-[1.55] flex-1">
+            {wba.synthesis_short}
+          </p>
+        </div>
+      )}
     </section>
   );
 }
@@ -340,10 +421,12 @@ function InClassView({
   wb,
   activityById,
   windowById,
+  lessonSynthesis,
 }: {
   wb: LessonData['wristband'];
   activityById: Record<string, Activity>;
   windowById: Record<string, { start: number; end: number }>;
+  lessonSynthesis: LessonData['lesson_synthesis'];
 }) {
   return (
     <div className="space-y-3 max-w-md mx-auto">
@@ -355,8 +438,44 @@ function InClassView({
           window={windowById[wba.activity_id]}
         />
       ))}
+      {(wb.lesson_synthesis_short || lessonSynthesis.prompt) && (
+        <InClassLessonClose
+          short={wb.lesson_synthesis_short}
+          buildsOn={lessonSynthesis.builds_on}
+        />
+      )}
       {wb.mlr_legend.length > 0 && <InClassLegend entries={wb.mlr_legend} />}
     </div>
+  );
+}
+
+function InClassLessonClose({ short, buildsOn }: { short: string; buildsOn: string[] }) {
+  return (
+    <section className="rounded-xl overflow-hidden" style={{ backgroundColor: SYNTH_BG_DARK }}>
+      <div className="px-4 py-2 flex items-baseline gap-2">
+        <span className="text-[11px] font-bold uppercase tracking-[0.12em] text-white">
+          Lesson close
+        </span>
+        <span className="text-[10px] text-white opacity-60">synthesize</span>
+      </div>
+      <div className="bg-white px-4 py-3">
+        {short && (
+          <p className="text-[0.9rem] font-semibold text-ink leading-tight tracking-tight">
+            {short}
+          </p>
+        )}
+        {buildsOn.length > 0 && (
+          <ul className="mt-2 space-y-1">
+            {buildsOn.map((line, i) => (
+              <li key={i} className="flex items-start gap-1.5">
+                <span className="mt-[3px] text-[10px]" style={{ color: SYNTH_ACCENT }}>›</span>
+                <span className="text-[0.72rem] text-ink-muted leading-snug">{line}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </section>
   );
 }
 
@@ -394,8 +513,32 @@ function InClassActivityBlock({
         {wba.tiles.map((tile, i) => (
           <InClassTile key={i} tile={tile} />
         ))}
+        {wba.synthesis_short && <InClassSynthRow text={wba.synthesis_short} />}
       </div>
     </section>
+  );
+}
+
+function InClassSynthRow({ text }: { text: string }) {
+  return (
+    <div
+      className="flex items-stretch border-t"
+      style={{ borderColor: '#E6E4DE', backgroundColor: SYNTH_BG }}
+    >
+      <div className="shrink-0 w-1.5" style={{ backgroundColor: SYNTH_ACCENT }} />
+      <div
+        className="shrink-0 w-8 flex items-center justify-center"
+        style={{ borderRight: '1px solid #F1EFE8' }}
+      >
+        <span className="text-[10px] font-bold" style={{ color: SYNTH_ACCENT }}>↳</span>
+      </div>
+      <div className="flex-1 min-w-0 px-3 py-2.5">
+        <p className="text-[0.7rem] font-bold uppercase tracking-[0.1em] mb-1" style={{ color: SYNTH_ACCENT }}>
+          Close — synthesize
+        </p>
+        <p className="text-[0.83rem] font-semibold text-ink leading-tight tracking-tight">{text}</p>
+      </div>
+    </div>
   );
 }
 

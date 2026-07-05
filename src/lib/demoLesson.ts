@@ -7,6 +7,102 @@ const MLR7 = { number: 7 as const, name: MLRS[7].name };
 const MLR8 = { number: 8 as const, name: MLRS[8].name };
 
 export const demoLesson: LessonData = {
+  elsf_inference: {
+    activities: [
+      {
+        activity_id: '1.1',
+        language_demands: {
+          receptive:
+            'Students take in the visual collection and listen to a teacher prompt to sort. The reading load is low; the listening load is to track a multi-step direction ("sort and tell me how many").',
+          productive:
+            'Students must name their categories aloud and count each group. They are NOT yet required to use ratio language, but the warm-up is where their everyday categorization vocabulary surfaces.',
+          interactive:
+            'Partners compare sorts and explain why they chose specific categories. The talk here is largely informal — the productive language students bring is the raw material the next activity will refine.',
+          everyday_to_academic_bridge:
+            'Everyday words like "color," "shape," and "kind" are the bridge. One target phrase — "for every" — may surface here unprompted; capturing it on the board (MLR 2) turns student language into the academic resource Activity 1.2 will draw on.',
+          elsf_guidelines_applied: [1, 2, 6],
+        },
+        functional_language: {
+          language_functions: [
+            'describe a categorization',
+            'compare quantities across groups',
+            'preview the relationship between two quantities',
+          ],
+          example_phrases: [
+            'I sorted by ___',
+            'There are ___ groups of ___',
+            'There are ___ of these for every ___ of those (target preview)',
+          ],
+          l1_bridge:
+            'Students can count and categorize in their home language first. Capture phrases like "tres por cada uno" alongside English equivalents — both versions are the academic work.',
+          elsf_guidelines_applied: [1, 3, 12],
+        },
+      },
+      {
+        activity_id: '1.2',
+        language_demands: {
+          receptive:
+            'Students read the three sentence frames and visually parse the prepared collection. Sentence frames carry the heaviest receptive load of the lesson — students must distinguish "X to Y" from "X:Y" from "X for every Y" and recognize they describe the same relationship.',
+          productive:
+            'Students must produce ratio sentences in three forms. The labeling decision (which category goes first) is the productive friction. Reading the sentence aloud is required for the lesson to land.',
+          interactive:
+            'Partners check each other\'s sentences against the collection and discuss flipped orders. The interactive work is where the language solidifies — students hear the forms in another voice and self-correct.',
+          everyday_to_academic_bridge:
+            'This is the bridge moment. Students arrive with informal counting language ("five and three") and leave with the academic ratio register ("the ratio of squares to circles is 5 to 3"). The frame holds the bridge together — without it, students stay in everyday register.',
+          elsf_guidelines_applied: [1, 2, 6],
+        },
+        functional_language: {
+          language_functions: [
+            'describe a relationship using precise ratio language',
+            'verify a description against a visible referent',
+            'translate between three equivalent forms of the same relationship',
+            'justify the order of quantities in a ratio sentence',
+          ],
+          example_phrases: [
+            'The ratio of ___ to ___ is ___ to ___',
+            'There are ___ ___ for every ___ ___',
+            '___ : ___',
+            'I put ___ first because the sentence says ___ first',
+          ],
+          l1_bridge:
+            'A first draft in home language is encouraged. The structure transfers directly — only the category names change. For an Emerging student, swapping category names while keeping the home-language structure intact IS the work.',
+          elsf_guidelines_applied: [1, 7, 12],
+        },
+      },
+      {
+        activity_id: '1.3',
+        language_demands: {
+          receptive:
+            'Students re-read the same sentence frames as 1.2 and observe their own collection. Receptive load is lower than 1.2 because the forms are now familiar — students focus on application, not decoding.',
+          productive:
+            'Students independently produce ratio sentences AND choose which form to use. The choice itself is a productive language decision: which form best fits what they want to communicate.',
+          interactive:
+            'Students display their visual representation alongside their sentence. The cross-room display is where students see the same ratio language applied to many different student-chosen collections — the academic forms generalize through this peer-to-peer comparison.',
+          everyday_to_academic_bridge:
+            'Students walk the bridge again with content they chose. Familiar material (their own collection) carries unfamiliar language (the academic forms), which is how the academic register becomes theirs to keep.',
+          elsf_guidelines_applied: [1, 3, 10],
+        },
+        functional_language: {
+          language_functions: [
+            'apply ratio language to a self-selected example',
+            'make a representational choice between three equivalent forms',
+            'explain why two forms describe the same relationship',
+            'connect a visual display to a verbal description',
+          ],
+          example_phrases: [
+            'I sorted my collection by ___',
+            'The ratio of ___ to ___ is ___ to ___',
+            'I can see this in my display because ___',
+            'I chose the ___ form because ___',
+          ],
+          l1_bridge:
+            'Students choose their own collection — culture and lived experience naturally surface here. Invite students to share what their collection means; the L1 connection is often in the collection itself, not just in the language used to describe it.',
+          elsf_guidelines_applied: [1, 10, 12],
+        },
+      },
+    ],
+  },
+
   mlr_inference: {
     activities: [
       {
@@ -103,6 +199,8 @@ export const demoLesson: LessonData = {
         'Students show you how they already think about sorting and counting groups — every student brings a way of seeing relationships, even before any ratio language enters the room. What you are listening for: which students naturally pair quantities together ("there are 3 of these for every 1 of those") and which students are focused on totals first. Both are doing real mathematical work. The lesson will move both groups toward seeing the relationship between quantities.',
       learning_target:
         'Students compare their categorization choices and notice that different sorts of the same items produce different numbers.',
+      synthesis_prompt:
+        'Synthesize toward students noticing that different sorts of the same items produce different counts: put two students\' sorts of the SAME figures side by side on the board with their counts written underneath. Ask: "Same items — why are the counts different?" Land the answer in students\' words: the way you choose to sort changes the pair of numbers you end up comparing. Leave the "for every" phrase you captured visible — it carries forward into 1.2.',
       is_crux: false,
       friction_points: [
         {
@@ -141,6 +239,8 @@ export const demoLesson: LessonData = {
         'This is the most important part of the lesson. Students take a collection you have prepared (markers, blocks, paper clips — whatever you have) and try to write a sentence using one of the three ratio forms. Some students will breeze through. Others will stare at the page. Both happen for the same reason: this is the first time they have been asked to put a relationship into words. Listen for students reading their sentence aloud as they fill it in. That is how the language becomes theirs.',
       learning_target:
         'Students attach precise ratio language to a relationship they can see, writing it in at least one of the three forms (X to Y, X:Y, X for every Y) and reading it aloud.',
+      synthesis_prompt:
+        'Synthesize toward attaching all three ratio forms to one visible relationship: pick one ratio from the teacher\'s collection (e.g., 3 markers to 5 pencils) and write all three forms on the board — "3 to 5," "3:5," "3 for every 5." Read each one aloud. Ask the class: "These three sentences — are they the same thing said three ways, or three different things?" Press until students name that the three forms describe one relationship. Tape these sentences over the "for every" phrase from 1.1 so the through-line shows.',
       is_crux: true,
       friction_points: [
         {
@@ -192,6 +292,8 @@ export const demoLesson: LessonData = {
         'Students take what they learned about writing ratio sentences and try it on a collection they sort themselves — their own school supplies, items on their desk, classroom objects. You will see the language work or not work depending on whether the lesson landed in 1.2. The visual display step at the end is where they see their ratio represented two ways: in words, and as a picture.',
       learning_target:
         'Students apply ratio language to their own collection and recognize the same relationship expressed in words and as a visual display.',
+      synthesis_prompt:
+        'Synthesize toward recognizing that the same ratio can describe different collections: hold up two student displays whose collections are different but whose ratios match (e.g., 2:3 markers vs. 2:3 paperclips). Read both sentences aloud. Ask: "Different stuff — same ratio. What makes them the same?" Land the answer: the ratio names the relationship between the counts, not the items themselves. Then have the two students point to the part of their displays that proves the ratio.',
       is_crux: false,
       friction_points: [
         {
@@ -255,7 +357,7 @@ export const demoLesson: LessonData = {
     rigor_check:
       'If I make this adaptation, will my student still be producing ratio language themselves — or am I just having them point at the right answer?',
     by_proficiency: {
-      entering: {
+      emerging: {
         text:
           'Pair the student with someone who shares their home language. Let them write the ratio sentence in their home language first, then translate one form into English. The math work is in writing the sentence — not in English specifically. This is MLR 1 with the first draft in home language.',
         mlr: MLR1,
@@ -265,7 +367,7 @@ export const demoLesson: LessonData = {
           'Provide the sentence frames written out clearly. Let the student say the sentence aloud with their partner before writing it alone. Hearing the sentence said correctly first is the support — that is the partner-share step of MLR 1.',
         mlr: MLR1,
       },
-      bridging: {
+      expanding: {
         text:
           'Use the lesson as written. Push these students to write all three forms and explain which one feels most natural. Comparing the three forms is MLR 7 — they are connecting different representations of the same relationship.',
         mlr: MLR7,
@@ -441,7 +543,7 @@ export const demoLesson: LessonData = {
             mlr: MLR8,
             flat_move: null,
             proficiency_moves: {
-              entering: {
+              emerging: {
                 move: 'Use a gesture to acknowledge their groups. Ask one question with your hands.',
                 say: null,
                 nonverbal:
@@ -454,7 +556,7 @@ export const demoLesson: LessonData = {
                 nonverbal: null,
                 avoid: 'Asking for a full sentence. One word is the right amount of language for right now.',
               },
-              bridging: {
+              expanding: {
                 move: 'Ask what they noticed first. Let them choose the words.',
                 say: '"What did you notice first when you started sorting? You can use whatever words you want."',
                 nonverbal: null,
@@ -530,7 +632,7 @@ export const demoLesson: LessonData = {
             mlr: MLR8,
             flat_move: null,
             proficiency_moves: {
-              entering: {
+              emerging: {
                 move: 'Point to one item in the collection and gesture: this one first.',
                 say: null,
                 nonverbal:
@@ -545,7 +647,7 @@ export const demoLesson: LessonData = {
                 avoid:
                   'Asking "what is the ratio?" That assumes they already have the language. They do not. Start with the categories.',
               },
-              bridging: {
+              expanding: {
                 move: 'Ask which form feels easier to start with.',
                 say: '"Two of the forms ask you to label the categories with words; the third just uses numbers and a colon. Which would be easiest to try first? Start there and the others will follow."',
                 nonverbal: null,
@@ -567,7 +669,7 @@ export const demoLesson: LessonData = {
             mlr: MLR1,
             flat_move: null,
             proficiency_moves: {
-              entering: {
+              emerging: {
                 move: 'Affirm what they wrote. Help them swap in the English category names.',
                 say: null,
                 nonverbal:
@@ -582,7 +684,7 @@ export const demoLesson: LessonData = {
                 avoid:
                   'Reading the English sentence aloud and asking them to copy. The point is for them to make the translation, not for you to do it.',
               },
-              bridging: {
+              expanding: {
                 move: 'Acknowledge the choice; ask them to write the English version next to it.',
                 say: '"Your home-language version is correct. Try writing it in English now using one of the sentence frames. Which form do you want to try?"',
                 nonverbal: null,
@@ -609,7 +711,7 @@ export const demoLesson: LessonData = {
             mlr: MLR1,
             flat_move: null,
             proficiency_moves: {
-              entering: {
+              emerging: {
                 move: 'Affirm the colon form. Show the "for every" version with your fingers.',
                 say: null,
                 nonverbal:
@@ -622,7 +724,7 @@ export const demoLesson: LessonData = {
                 nonverbal: null,
                 avoid: 'Making them write the verbal form right now. Saying it aloud is the step before writing.',
               },
-              bridging: {
+              expanding: {
                 move: 'Offer the choice of which form to try next.',
                 say: '"You have the colon form. Which of the other two forms feels easier to try — the \'to\' one or the \'for every\' one? Pick one and write that next."',
                 nonverbal: null,
@@ -672,6 +774,16 @@ export const demoLesson: LessonData = {
           },
         ],
       },
+    ],
+  },
+
+  lesson_synthesis: {
+    prompt:
+      'Close the lesson by returning to the board: the "for every" phrase captured in 1.1, the three taped sentences from 1.2 ("3 to 5," "3:5," "3 for every 5"), and one 1.3 student display you select underneath. Trace the path aloud in one sentence: "We started by noticing \'for every\' in a collection, we learned three ways to write that relationship, and we saw those three ways work on collections you sorted yourself." Then ask: "Trade collections with a partner. Say your partner\'s ratio out loud — in two of the three forms." The lesson lands when students use the academic forms unprompted to describe a relationship someone else can see.',
+    builds_on: [
+      '1.1: students surfaced their own phrase — "for every" — for the relationship between two groups.',
+      '1.2: students mapped the three ratio forms onto one visible relationship and read them aloud.',
+      '1.3: students applied the three forms to a collection they chose themselves.',
     ],
   },
 
@@ -731,6 +843,8 @@ export const demoLesson: LessonData = {
             glyph_move: 'GESTURES · ACCEPT GESTURES',
           },
         ],
+        synthesis_short:
+          'Put two students\' sorts of the SAME figures side by side. Ask: "Same items — why different counts?"',
       },
       {
         activity_id: '1.2',
@@ -771,6 +885,8 @@ export const demoLesson: LessonData = {
             glyph_move: 'THROW TO CLASS · COMPARE',
           },
         ],
+        synthesis_short:
+          'Write one ratio in all three forms ("3 to 5," "3:5," "3 for every 5"). Ask: same thing or different?',
       },
       {
         activity_id: '1.3',
@@ -810,6 +926,8 @@ export const demoLesson: LessonData = {
             glyph_move: 'BOTH ON BOARD · COMPARE',
           },
         ],
+        synthesis_short:
+          'Hold up two displays — different items, matching ratios. Ask: "Different stuff, same ratio — why?"',
       },
     ],
     mlr_legend: [
@@ -826,5 +944,7 @@ export const demoLesson: LessonData = {
         one_line_cue: 'Two solutions side by side; name what they share.',
       },
     ],
+    lesson_synthesis_short:
+      'Return to the "for every" board AND the three taped forms. Ask partners: say each other\'s ratio in two forms.',
   },
 };
