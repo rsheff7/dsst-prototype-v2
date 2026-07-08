@@ -212,7 +212,7 @@ function PlanView({
         ))}
       </div>
 
-      {(wb.lesson_synthesis_short || lessonSynthesis.prompt) && (
+      {(wb.lesson_synthesis_short || lessonSynthesis?.prompt) && (
         <section
           className="qr-lesson-close rounded-xl border shadow-sm overflow-hidden mb-6 border-l-[3px]"
           style={{ backgroundColor: SYNTH_BG, borderColor: '#E6CFB5', borderLeftColor: SYNTH_ACCENT }}
@@ -239,7 +239,7 @@ function PlanView({
                 {wb.lesson_synthesis_short}
               </p>
             )}
-            {lessonSynthesis.builds_on.length > 0 && (
+            {lessonSynthesis?.builds_on && lessonSynthesis.builds_on.length > 0 && (
               <ul className="mt-3 space-y-1">
                 {lessonSynthesis.builds_on.map((line, i) => (
                   <li key={i} className="flex items-start gap-2">
@@ -453,10 +453,10 @@ function InClassView({
           window={windowById[wba.activity_id]}
         />
       ))}
-      {(wb.lesson_synthesis_short || lessonSynthesis.prompt) && (
+      {(wb.lesson_synthesis_short || lessonSynthesis?.prompt) && (
         <InClassLessonClose
           short={wb.lesson_synthesis_short}
-          buildsOn={lessonSynthesis.builds_on}
+          buildsOn={lessonSynthesis?.builds_on || []}
         />
       )}
       {wb.mlr_legend.length > 0 && <InClassLegend entries={wb.mlr_legend} />}
