@@ -41,7 +41,7 @@ export default function QuickRead({ lesson }: Props) {
   );
 
   return (
-    <div className={`pt-6 pb-12 quickread-root quickread-${mode}`}>
+    <div className={`pt-12 pb-12 quickread-root quickread-${mode}`}>
       <ToolInfo toolId="quickread" />
       <div className="h-6 qr-print-hide" />
 
