@@ -76,51 +76,24 @@ export default function AdaptationGuardrails({ lesson }: Props) {
         </div>
       </div>
 
-      {/* By proficiency */}
-      <div>
-        <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-ink-faint mb-3">
-          Adaptations by language proficiency
+      {/* Adapt is task-axis only. Learner-axis differentiation moved to the
+          activity-level surfaces (Pathway, Moves) where the ELD Convergence
+          layer resolves to a specific WIDA level. */}
+      <div
+        className="rounded-xl border px-5 py-4"
+        style={{ backgroundColor: '#EEEDFE', borderColor: '#AFA9EC' }}
+      >
+        <p
+          className="text-[10px] font-semibold uppercase tracking-[0.1em] mb-2"
+          style={{ color: '#26215C' }}
+        >
+          Differentiation by language proficiency
         </p>
-        <div className="space-y-3">
-          <div
-            className="rounded-xl border px-5 py-4"
-            style={{ backgroundColor: '#E1F5EE', borderColor: '#9FE1CB', color: '#085041' }}
-          >
-            <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: '#085041' }}>
-                Entering
-              </p>
-              {g.by_proficiency.entering.mlr && <MlrChip mlr={g.by_proficiency.entering.mlr} />}
-            </div>
-            <p className="text-[0.825rem] leading-relaxed">{g.by_proficiency.entering.text}</p>
-          </div>
-
-          <div
-            className="rounded-xl border px-5 py-4"
-            style={{ backgroundColor: '#EEEDFE', borderColor: '#AFA9EC', color: '#26215C' }}
-          >
-            <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: '#26215C' }}>
-                Developing
-              </p>
-              {g.by_proficiency.developing.mlr && <MlrChip mlr={g.by_proficiency.developing.mlr} />}
-            </div>
-            <p className="text-[0.825rem] leading-relaxed">{g.by_proficiency.developing.text}</p>
-          </div>
-
-          <div
-            className="rounded-xl border px-5 py-4"
-            style={{ backgroundColor: '#F1EFE8', borderColor: '#D3D1C7', color: '#444441' }}
-          >
-            <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: '#444441' }}>
-                Bridging
-              </p>
-              {g.by_proficiency.bridging.mlr && <MlrChip mlr={g.by_proficiency.bridging.mlr} />}
-            </div>
-            <p className="text-[0.825rem] leading-relaxed">{g.by_proficiency.bridging.text}</p>
-          </div>
-        </div>
+        <p className="text-[0.85rem] leading-relaxed" style={{ color: '#26215C' }}>
+          Differentiation is now activity-specific and tied to a learner&apos;s WIDA
+          level. Select a WIDA level in the header, then open <strong>Pathway</strong>{' '}
+          or <strong>Moves</strong> to see the embedded move per activity.
+        </p>
       </div>
 
       {/* Rigor check */}

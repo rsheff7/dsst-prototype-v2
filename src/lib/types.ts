@@ -1,4 +1,5 @@
 import { MlrNumber } from './mlrs';
+import { ELSFGuidelineNumber } from './elsf';
 
 export interface MlrRef {
   number: MlrNumber;
@@ -40,6 +41,7 @@ export interface Activity {
   language_demand: 'low' | 'medium' | 'high';
   function_summary: string;
   learning_target: string;
+  synthesis_prompt: string;
   is_crux: boolean;
   friction_points: FrictionPoint[];
   success_signals: string[];
@@ -54,9 +56,9 @@ export interface ProficiencyAdaptation {
 }
 
 export interface AdaptationProficiencyLevels {
-  entering: ProficiencyAdaptation;
+  emerging: ProficiencyAdaptation;
   developing: ProficiencyAdaptation;
-  bridging: ProficiencyAdaptation;
+  expanding: ProficiencyAdaptation;
 }
 
 export interface DoNotRemoveItem {
@@ -107,9 +109,9 @@ export interface TeacherMove {
 }
 
 export interface ProficiencyMoves {
-  entering: TeacherMove;
+  emerging: TeacherMove;
   developing: TeacherMove;
-  bridging: TeacherMove;
+  expanding: TeacherMove;
 }
 
 export type ScenarioType =
@@ -156,6 +158,49 @@ export interface MlrInference {
   activities: MlrInferenceActivity[];
 }
 
+// ---------------- ELSF reasoning layer ----------------
+// Premo's ELSF layer sharpens two specific aspects of the generated guidance:
+// (1) identifying the LANGUAGE DEMANDS of each activity, and
+// (2) surfacing the FUNCTIONAL LANGUAGE students need to engage the task.
+// The two blocks below capture that reasoning per activity, citing which
+// ELSF guidelines (1-15) informed the reasoning.
+
+export interface LanguageDemandsForActivity {
+  // What students must read or listen to in order to engage the task
+  receptive: string;
+  // What students must say or write to demonstrate their thinking
+  productive: string;
+  // What students must discuss with peers; the back-and-forth language work
+  interactive: string;
+  // The gap between students' everyday/home language and the academic register the task requires
+  everyday_to_academic_bridge: string;
+  // Which of the 15 ELSF guidelines were applied in this reasoning (citation, not free text)
+  elsf_guidelines_applied: ELSFGuidelineNumber[];
+}
+
+export interface FunctionalLanguageForActivity {
+  // The language FUNCTIONS students must use (e.g., "explain reasoning",
+  // "describe a relationship", "justify a conjecture", "compare quantities")
+  language_functions: string[];
+  // Concrete academic English phrases or sentence forms students need to PRODUCE
+  // (distinct from sentence_frames, which are fill-in scaffolds)
+  example_phrases: string[];
+  // Where home language (L1) or everyday English can be leveraged; null if not applicable
+  l1_bridge: string | null;
+  // Which ELSF guidelines informed this
+  elsf_guidelines_applied: ELSFGuidelineNumber[];
+}
+
+export interface ELSFInferenceActivity {
+  activity_id: string;
+  language_demands: LanguageDemandsForActivity;
+  functional_language: FunctionalLanguageForActivity;
+}
+
+export interface ELSFInference {
+  activities: ELSFInferenceActivity[];
+}
+
 export interface WristbandTile {
   observation_short: string;
   friction_type: 'math' | 'language' | 'language-math';
@@ -171,6 +216,7 @@ export interface WristbandTile {
 export interface WristbandActivity {
   activity_id: string;
   tiles: WristbandTile[];
+  synthesis_short: string;
 }
 
 export interface WristbandLegendEntry {
@@ -185,6 +231,12 @@ export interface Wristband {
   top_frictions: string[];
   activities: WristbandActivity[];
   mlr_legend: WristbandLegendEntry[];
+  lesson_synthesis_short: string;
+}
+
+export interface LessonSynthesis {
+  prompt: string;
+  builds_on: string[];
 }
 
 export interface LessonData {
@@ -196,7 +248,9 @@ export interface LessonData {
   adaptation_guardrails: AdaptationGuardrails;
   anticipated_thinking: AnticipatedThinking;
   decision_guide: DecisionGuide;
+  elsf_inference: ELSFInference;
   mlr_inference: MlrInference;
+  lesson_synthesis: LessonSynthesis;
   wristband: Wristband;
 }
 

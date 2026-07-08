@@ -43,8 +43,8 @@ export default function HomePage() {
         return;
       }
 
-      // Vercel App Router POST bodies are capped at 4.5 MB. Reject early with
-      // a specific message so the teacher knows what to do.
+      // Vercel App Router POST bodies are capped at 4.5 MB. Reject early with a
+      // specific message so the teacher knows what to do.
       const MAX_BYTES = 4_300_000;
       if (file.size > MAX_BYTES) {
         const mb = (file.size / 1_000_000).toFixed(1);
@@ -83,7 +83,7 @@ export default function HomePage() {
         }
 
         // Vercel's HTML error pages embed a request ID — surface it so failures
-        // are debuggable.
+        // are debuggable instead of opaque.
         const vercelRequestId = res.headers.get('x-vercel-id') ?? '';
         const isHtmlPage = !data && /<html|Internal Server Error/i.test(rawText);
 
@@ -99,7 +99,7 @@ export default function HomePage() {
             );
           } else if (isHtmlPage && res.status >= 500) {
             setErrorMessage(
-              `The Vercel function was killed mid-execution${
+              `The Vercel function was killed mid-execution (likely a 300s timeout)${
                 vercelRequestId ? ` — request ID ${vercelRequestId}` : ''
               }. Try a shorter PDF, or re-upload.`,
             );
@@ -304,7 +304,7 @@ export default function HomePage() {
           </a>
         </div>
         <p className="mt-10 text-[0.7rem] text-ink-faint italic">
-          Premo · v2.1 — DSST 6/1 review
+          Premo · v2.4 — ELD Convergence preview
         </p>
       </div>
     </div>

@@ -4,6 +4,8 @@ import Link from 'next/link';
 import ExportIcon from '@/components/icons/ExportIcon';
 import ImportIcon from '@/components/icons/ImportIcon';
 import { LessonData, ToolId } from '@/lib/types';
+import { useLesson } from '@/lib/lessonContext';
+import { WIDA_LABELS, WIDA_LEVELS, type WidaLevel } from '@/lib/eld';
 
 const TOOL_NAMES: Record<ToolId, string> = {
   quickread: 'Quick Read',
@@ -67,6 +69,49 @@ export default function LessonHeader({ lesson, activeTool, compact, onSavePlan }
       >
         {meta.lesson_title}
       </p>
+      <WidaLevelSelector />
+    </div>
+  );
+}
+
+function WidaLevelSelector() {
+  const { selectedWidaLevel, setSelectedWidaLevel } = useLesson();
+  return (
+    <div className="mt-3 flex items-center gap-2 flex-wrap">
+      <p className="text-[10px] font-semibold uppercase tracking-[0.08em] text-ink-faint shrink-0">
+        Show moves for a learner at
+      </p>
+      <div className="inline-flex rounded-full border" style={{ borderColor: '#E6E4DE' }}>
+        {WIDA_LEVELS.map((level: WidaLevel) => {
+          const isActive = selectedWidaLevel === level;
+          return (
+            <button
+              key={level}
+              type="button"
+              onClick={() => setSelectedWidaLevel(isActive ? null : level)}
+              className="px-2.5 py-1 text-[10px] font-semibold cursor-pointer transition-colors focus-visible:outline-none first:rounded-l-full last:rounded-r-full"
+              style={
+                isActive
+                  ? { backgroundColor: '#534AB7', color: 'white' }
+                  : { color: '#706E69' }
+              }
+              aria-pressed={isActive}
+              aria-label={`WIDA level ${level}: ${WIDA_LABELS[level]}`}
+            >
+              {WIDA_LABELS[level]}
+            </button>
+          );
+        })}
+      </div>
+      {selectedWidaLevel !== null && (
+        <button
+          type="button"
+          onClick={() => setSelectedWidaLevel(null)}
+          className="text-[10px] text-ink-faint hover:text-ink-muted cursor-pointer underline-offset-2 hover:underline"
+        >
+          clear
+        </button>
+      )}
     </div>
   );
 }

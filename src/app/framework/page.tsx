@@ -79,7 +79,7 @@ export default function FrameworkPage() {
 
           <div className="space-y-5 text-[0.95rem] leading-[1.7] text-ink">
             <p>
-              Premo reads a math lesson and produces planning guidance for the teacher who will teach it. The version you are using is built for DSST Public Schools and is anchored to Illustrative Mathematics, though the engine works on any text-based lesson PDF.
+              Premo reads a math lesson and produces planning guidance for the teacher who will teach it. The version you are using is built for DSST Public Schools and is anchored to Illustrative Mathematics, though the engine works on any text-based lesson PDF. Because DSST is a WIDA state, the proficiency vocabulary throughout the tool is WIDA&apos;s six-level scale — Entering, Emerging, Developing, Expanding, Bridging, Reaching.
             </p>
             <p>
               The tool is organized around <em>Richard Elmore&apos;s Instructional Core</em>: the idea that learning happens at the intersection of three things — the teacher, the task, and the student — and that you cannot improve learning by working on one of those corners alone. Premo gives each corner its own view of the lesson, then brings them together in a fourth view for practice.
@@ -106,7 +106,7 @@ export default function FrameworkPage() {
                   vertex="Task"
                   tool="Adapt"
                   toolAccent={ADAPT}
-                  description="What the task is for, mathematically — what is safe to change, what cannot be removed without losing the lesson, how to adapt for multilingual learners at three proficiency levels."
+                  description="What the task is for, mathematically — what is safe to change, what cannot be removed without losing the lesson, and the rigor check question to ask before any adaptation."
                 />
                 <CoreRow
                   vertex="Student"
@@ -129,13 +129,67 @@ export default function FrameworkPage() {
                   </p>
                 </div>
                 <p className="text-[0.875rem] text-ink leading-[1.65]">
-                  Practice-based scenarios that bring teacher, task, and student together in specific moments. Each scenario shows what the teacher would see, what it usually means, and the response — including a side-by-side comparison across multilingual learner proficiency levels.
+                  Practice-based scenarios that bring teacher, task, and student together in specific moments. Each scenario shows what the teacher would see, what it usually means, and the response — calibrated to the WIDA level you select in the header.
                 </p>
               </div>
             </div>
 
             <p className="mt-5 text-[0.9rem] text-ink-muted leading-[1.7]">
               Above all four sits the <DemoLink>Quick Read</DemoLink> — the single page that carries the integrated read into class. It is the artifact a teacher takes onto the floor.
+            </p>
+          </div>
+        </section>
+
+        {/* SECTION 1.5: The language axis */}
+        <section className="mt-16">
+          <p
+            className="text-[10px] font-semibold uppercase tracking-[0.12em] mb-2"
+            style={{ color: ACCENT }}
+          >
+            Part one — continued
+          </p>
+          <h2
+            className="text-[1.6rem] leading-tight text-ink mb-5"
+            style={{ fontFamily: 'var(--font-dm-serif), serif' }}
+          >
+            How the tool reasons about language
+          </h2>
+
+          <div className="space-y-5 text-[0.95rem] leading-[1.7] text-ink">
+            <p>
+              The Instructional Core organizes the views. Inside those views, two language layers stack to give the language guidance its precision.
+            </p>
+          </div>
+
+          <div className="mt-6 rounded-xl border bg-card overflow-hidden" style={{ borderColor: '#E6E4DE' }}>
+            <LangLayerRow
+              order="Layer 1"
+              title="ELSF — what kind of language work does this activity demand?"
+              accent={ACCENT}
+              description={
+                <>
+                  The English Learners Success Forum guidelines diagnose the activity itself — the receptive, productive, and interactive demand it carries, and the bridge from everyday to academic register that students will have to cross. This is task-axis reasoning: it describes the activity, not the learner. ELSF&apos;s output also drives the language functions students must use — describe, explain, compare, justify.
+                </>
+              }
+            />
+            <LangLayerRow
+              order="Layer 2"
+              title="ELD Convergence — given that demand, what is the move for THIS learner?"
+              accent={MOVES}
+              description={
+                <>
+                  Once ELSF has named the demand, the convergence layer specializes it per learner. The activity&apos;s language functions map deterministically to one of four Key Language Uses (Argue, Explain, Inform, Narrate), and (KLU + WIDA level) resolves to the embedded move the teacher should make — the language work calibrated to where the learner actually is. This is learner-axis reasoning. Select a WIDA level in the header and the calibrated move appears inline in Pathway and Moves, sitting alongside the teacher moves the lesson already calls for.
+                </>
+              }
+            />
+          </div>
+
+          <div className="mt-5 space-y-3 text-[0.9rem] text-ink-muted leading-[1.7]">
+            <p>
+              Two things matter about this design. First, both layers are anchored to <em>actual frameworks</em> — ELSF&apos;s 15 published guidelines and WIDA&apos;s six-level proficiency scale — not invented inside the tool. Second, the convergence layer is <em>deterministic</em>: a fixed lookup keyed by KLU and WIDA level, not a fresh model judgment each time. The model never reconciles WIDA and another framework at runtime. That makes the differentiation auditable, consistent across lessons, and faster to render.
+            </p>
+            <p>
+              The proficiency vocabulary across the tool is WIDA only. Other frameworks may inform the planning logic internally, but they never surface in language a teacher reads.
             </p>
           </div>
         </section>
@@ -174,7 +228,7 @@ export default function FrameworkPage() {
               title="What the tool applies"
             >
               <span className="block mb-2">
-                The guidance layer applies four specific rules to every lesson:
+                The guidance layer applies six specific rules to every lesson:
               </span>
               <ul className="space-y-1.5 mt-2 pl-1">
                 <li className="flex items-start gap-2">
@@ -183,11 +237,19 @@ export default function FrameworkPage() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="mt-1 shrink-0 h-1.5 w-1.5 rounded-full" style={{ backgroundColor: ACCENT }} />
+                  <span><strong>The ELSF guidelines</strong> (15 published guidelines for math materials for English learners). They diagnose the language demand of each activity — receptive, productive, interactive, and the everyday-to-academic bridge — and surface the language functions students must use.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-1 shrink-0 h-1.5 w-1.5 rounded-full" style={{ backgroundColor: ACCENT }} />
+                  <span><strong>The ELD Convergence layer.</strong> A deterministic lookup keyed by Key Language Use (Argue / Explain / Inform / Narrate) and WIDA level, producing the embedded move per learner. No model judgment at runtime; the lookup is auditable and the same for every lesson.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-1 shrink-0 h-1.5 w-1.5 rounded-full" style={{ backgroundColor: ACCENT }} />
                   <span><strong>The friction taxonomy.</strong> Every difficulty point is tagged math, language, or language+math — so the response can match the actual barrier rather than treating all confusion as math confusion.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="mt-1 shrink-0 h-1.5 w-1.5 rounded-full" style={{ backgroundColor: ACCENT }} />
-                  <span><strong>Asset-based framing.</strong> No deficit language about students anywhere in the output. The tool describes what students bring and where their thinking takes work — never what they lack.</span>
+                  <span><strong>Asset-based framing.</strong> No deficit language about students anywhere in the output. The tool describes what students bring and what they are reaching toward — never what they lack.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="mt-1 shrink-0 h-1.5 w-1.5 rounded-full" style={{ backgroundColor: ACCENT }} />
@@ -238,7 +300,7 @@ export default function FrameworkPage() {
 
         <footer className="mt-16 pt-6 border-t border-line">
           <p className="text-[0.8rem] text-ink-faint italic">
-            Premo · v2.1 — DSST 6/1 review · for DSST Public Schools · Scale Up Partners, LLC
+            Premo · v2.4 — ELD Convergence preview · for DSST Public Schools · Scale Up Partners, LLC
           </p>
         </footer>
       </article>
@@ -268,6 +330,35 @@ function CoreRow({
           style={{ fontFamily: 'var(--font-dm-serif), serif', color: toolAccent }}
         >
           {tool}
+        </p>
+      </div>
+      <p className="text-[0.875rem] text-ink leading-[1.65]">{description}</p>
+    </div>
+  );
+}
+
+function LangLayerRow({
+  order,
+  title,
+  accent,
+  description,
+}: {
+  order: string;
+  title: string;
+  accent: string;
+  description: React.ReactNode;
+}) {
+  return (
+    <div className="px-5 py-4 border-b last:border-b-0" style={{ borderColor: '#E6E4DE' }}>
+      <div className="flex items-baseline gap-3 mb-1.5 flex-wrap">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint">
+          {order}
+        </p>
+        <p
+          className="text-[1rem] font-semibold"
+          style={{ fontFamily: 'var(--font-dm-serif), serif', color: accent }}
+        >
+          {title}
         </p>
       </div>
       <p className="text-[0.875rem] text-ink leading-[1.65]">{description}</p>

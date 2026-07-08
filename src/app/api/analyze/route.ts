@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Anthropic from '@anthropic-ai/sdk';
-import { LESSON_ANALYSIS_PROMPT } from '@/lib/prompts';
+import { composeSystemPrompt } from '@/lib/prompts';
 import {
   LessonData,
   MlrRef,
@@ -10,10 +10,11 @@ import {
   ProficiencyAdaptation,
 } from '@/lib/types';
 import { isValidMlrNumber, MLRS, MlrNumber } from '@/lib/mlrs';
+import { isValidELSFGuidelineNumber, ELSFGuidelineNumber } from '@/lib/elsf';
 
-// Anchor + 4-parallel-pass architecture needs more than 300s. Vercel Pro
-// allows up to 800s; 600s leaves headroom for one ~30s anchor + four ~140s
-// parallel calls + pdf-parse + normalization + error paths.
+// Two-pass generation needs more than the default 300s. Vercel Pro allows up
+// to 800s on serverless functions; 600s leaves headroom for two ~240s Anthropic
+// calls plus pdf-parse, normalization, and the error path.
 export const maxDuration = 600;
 
 const MAX_PDF_CHARS = 12000;
@@ -88,20 +89,29 @@ function normalizeDoNotRemove(raw: unknown): DoNotRemoveItem[] {
     .map((x) => ({ text: x.text, ...(x.mlr ? { mlr: x.mlr } : {}) }));
 }
 
-function normalizeProficiency(raw: unknown): ProficiencyAdaptation {
-  if (typeof raw === 'string') return { text: raw };
-  if (raw && typeof raw === 'object') {
-    const r = raw as Record<string, unknown>;
-    const text = typeof r.text === 'string' ? r.text : '';
-    const mlr = normalizeMlr(r.mlr);
-    return mlr ? { text, mlr } : { text };
-  }
-  return { text: '' };
+// Accepts both ELSF (emerging/developing/expanding) and legacy IM/WIDA
+// (entering/developing/bridging) labels for proficiency_moves. Returns the
+// ELSF-labeled object the schema expects.
+function normalizeProficiencyMoves(raw: unknown): unknown {
+  if (!raw || typeof raw !== 'object') return null;
+  const r = raw as Record<string, unknown>;
+  const emerging = r.emerging ?? r.entering;
+  const developing = r.developing;
+  const expanding = r.expanding ?? r.bridging;
+  if (!emerging && !developing && !expanding) return null;
+  return { emerging, developing, expanding };
+}
+
+function normalizeELSFGuidelinesApplied(raw: unknown): ELSFGuidelineNumber[] {
+  if (!Array.isArray(raw)) return [];
+  return raw
+    .filter((n): n is ELSFGuidelineNumber => isValidELSFGuidelineNumber(n));
 }
 
 // Strict enum validation: if the model emits a string outside the allowed set,
 // snap to the fallback. Without this, downstream LOOKUP[invalidValue].field
-// throws and crashes the React tree on real model output.
+// throws and crashes the React tree. The fallback is chosen to be safe — the
+// least dangerous interpretation if the model misnames the field.
 function oneOf<T extends string>(
   value: unknown,
   allowed: readonly T[],
@@ -136,6 +146,17 @@ const SCENARIO_TYPES = [
   'productive-struggle',
 ] as const;
 
+function normalizeProficiency(raw: unknown): ProficiencyAdaptation {
+  if (typeof raw === 'string') return { text: raw };
+  if (raw && typeof raw === 'object') {
+    const r = raw as Record<string, unknown>;
+    const text = typeof r.text === 'string' ? r.text : '';
+    const mlr = normalizeMlr(r.mlr);
+    return mlr ? { text, mlr } : { text };
+  }
+  return { text: '' };
+}
+
 function normalizeLesson(raw: Partial<LessonData> & Record<string, unknown>): LessonData {
   const rawProf = (raw.adaptation_guardrails?.by_proficiency ?? {}) as Record<string, unknown>;
   return {
@@ -158,6 +179,7 @@ function normalizeLesson(raw: Partial<LessonData> & Record<string, unknown>): Le
       language_demand: oneOf(a.language_demand, LANGUAGE_DEMANDS, 'low'),
       function_summary: a.function_summary ?? '',
       learning_target: a.learning_target ?? '',
+      synthesis_prompt: a.synthesis_prompt ?? '',
       is_crux: a.is_crux ?? false,
       friction_points: (a.friction_points ?? []).map((fp) => ({
         description: fp.description ?? '',
@@ -177,9 +199,10 @@ function normalizeLesson(raw: Partial<LessonData> & Record<string, unknown>): Le
       do_not_remove: normalizeDoNotRemove(raw.adaptation_guardrails?.do_not_remove),
       rigor_check: raw.adaptation_guardrails?.rigor_check ?? '',
       by_proficiency: {
-        entering: normalizeProficiency(rawProf.entering),
+        // Accept both ELSF labels (preferred) and legacy IM/WIDA labels for defense
+        emerging: normalizeProficiency(rawProf.emerging ?? rawProf.entering),
         developing: normalizeProficiency(rawProf.developing),
-        bridging: normalizeProficiency(rawProf.bridging),
+        expanding: normalizeProficiency(rawProf.expanding ?? rawProf.bridging),
       },
     },
     anticipated_thinking: {
@@ -210,7 +233,7 @@ function normalizeLesson(raw: Partial<LessonData> & Record<string, unknown>): Le
           interpretation: s.interpretation ?? '',
           is_mll: s.is_mll ?? false,
           flat_move: s.flat_move ?? null,
-          proficiency_moves: s.proficiency_moves ?? null,
+          proficiency_moves: normalizeProficiencyMoves(s.proficiency_moves) as typeof s.proficiency_moves,
           mll_framework_note: s.mll_framework_note ?? null,
           proficiency_divergence_note:
             (s as { proficiency_divergence_note?: string | null }).proficiency_divergence_note ?? null,
@@ -219,6 +242,35 @@ function normalizeLesson(raw: Partial<LessonData> & Record<string, unknown>): Le
             : {}),
         })),
       })),
+    },
+    elsf_inference: {
+      activities: ((raw as { elsf_inference?: { activities?: unknown[] } }).elsf_inference?.activities ?? [])
+        .map((rawA) => {
+          const a = rawA as Record<string, unknown>;
+          const ld = (a.language_demands ?? {}) as Record<string, unknown>;
+          const fl = (a.functional_language ?? {}) as Record<string, unknown>;
+          return {
+            activity_id: typeof a.activity_id === 'string' ? a.activity_id : '',
+            language_demands: {
+              receptive: typeof ld.receptive === 'string' ? ld.receptive : '',
+              productive: typeof ld.productive === 'string' ? ld.productive : '',
+              interactive: typeof ld.interactive === 'string' ? ld.interactive : '',
+              everyday_to_academic_bridge:
+                typeof ld.everyday_to_academic_bridge === 'string' ? ld.everyday_to_academic_bridge : '',
+              elsf_guidelines_applied: normalizeELSFGuidelinesApplied(ld.elsf_guidelines_applied),
+            },
+            functional_language: {
+              language_functions: Array.isArray(fl.language_functions)
+                ? (fl.language_functions as unknown[]).filter((s): s is string => typeof s === 'string')
+                : [],
+              example_phrases: Array.isArray(fl.example_phrases)
+                ? (fl.example_phrases as unknown[]).filter((s): s is string => typeof s === 'string')
+                : [],
+              l1_bridge: typeof fl.l1_bridge === 'string' ? fl.l1_bridge : null,
+              elsf_guidelines_applied: normalizeELSFGuidelinesApplied(fl.elsf_guidelines_applied),
+            },
+          };
+        }),
     },
     mlr_inference: {
       activities: (raw.mlr_inference?.activities ?? []).map((a) => ({
@@ -253,6 +305,8 @@ function normalizeLesson(raw: Partial<LessonData> & Record<string, unknown>): Le
             ? { mlr: normalizeMlr((t as { mlr?: unknown }).mlr)! }
             : {}),
         })),
+        synthesis_short:
+          (a as { synthesis_short?: string }).synthesis_short ?? '',
       })),
       mlr_legend: (raw.wristband?.mlr_legend ?? [])
         .map((e) => {
@@ -261,6 +315,18 @@ function normalizeLesson(raw: Partial<LessonData> & Record<string, unknown>): Le
           return { mlr, one_line_cue: e.one_line_cue ?? '' };
         })
         .filter((x): x is { mlr: MlrRef; one_line_cue: string } => x !== null),
+      lesson_synthesis_short: raw.wristband?.lesson_synthesis_short ?? '',
+    },
+    lesson_synthesis: {
+      prompt:
+        (raw as { lesson_synthesis?: { prompt?: string } }).lesson_synthesis?.prompt ?? '',
+      builds_on: Array.isArray(
+        (raw as { lesson_synthesis?: { builds_on?: unknown } }).lesson_synthesis?.builds_on,
+      )
+        ? (
+            (raw as { lesson_synthesis: { builds_on: unknown[] } }).lesson_synthesis.builds_on
+          ).filter((s): s is string => typeof s === 'string')
+        : [],
     },
   };
 }
@@ -332,13 +398,14 @@ export async function POST(req: NextRequest) {
     const truncatedText =
       pdfText.length > MAX_PDF_CHARS ? pdfText.slice(0, MAX_PDF_CHARS) : pdfText;
 
-    // ANCHOR + 4-PARALLEL architecture. Single-pass generation truncated or
-    // timed out on real IM lessons with the full schema. Pass 0 (anchor)
-    // produces a small skeleton — meta, destination, activity IDs/titles/
-    // learning_targets/crux marker. Then Passes A, B, C, D run in parallel
-    // given the anchor, each owning a disjoint slice of the schema.
+    // ANCHOR + 3-PARALLEL architecture. Pass 0 (anchor) runs first and
+    // produces a small skeleton: meta, destination, and a canonical activity
+    // list (id, title, learning_target, function, is_crux). Then Passes A, B,
+    // C run in parallel given the anchor, so they align on the same activity
+    // IDs/titles/crux marker. Each downstream pass produces a disjoint slice
+    // of the final schema.
     //
-    // Total wall time: ~30s anchor + max(A, B, C, D) ~140s = ~170s = ~2.8 min.
+    // Total wall time: ~30-40s (anchor) + max(A, B, C) ~120-150s = ~180s = 3 min.
     //
     // Per-call client timeout 200s gives margin over typical wall times and
     // stays well under the 600s function maxDuration.
@@ -353,13 +420,18 @@ CONCISION — STRICT:
 - Keep every string short and concrete. No throat-clearing, no restating what other fields already say.
 - Long descriptive fields cap at ~3 sentences. Move and interpretation fields cap at ~2 sentences. observation_short, move_short, glyph_observation, glyph_move stay at their stated word caps.`;
 
+    // The anchor JSON is produced by Pass 0 (sequentially, before A/B/C) and
+    // is embedded into each parallel pass's user message as the source of
+    // truth for activity IDs, titles, learning targets, and crux marker.
+    // This string is templated by the runner — each pass message references
+    // ${anchorJson} which is substituted in at call time.
     const makeAlignmentBlock = (anchorJson: string) =>
       `ANCHOR — SOURCE OF TRUTH FOR ALIGNMENT:
-A prior pass produced the following anchor. Every activity_id you emit MUST match an id in this anchor's activities array. Every activity referenced in any block MUST cover EVERY activity in the anchor. The activity marked is_crux: true in the anchor is THE crux for this lesson — use it consistently.
+A prior pass produced the following anchor. Every activity_id you emit MUST match an id in this anchor's activities array. Every activity referenced in any block (mlr_inference, elsf_inference, anticipated_thinking, decision_guide, wristband) MUST cover EVERY activity in the anchor. The activity marked is_crux: true in the anchor is THE crux for this lesson — use it consistently.
 
 ${anchorJson}`;
 
-    const passAnchorMessage = `Analyze this math lesson. This is PASS 0 (anchor) of a five-pass analysis. Your output will be passed to four parallel downstream passes as the source of truth for activity alignment. Keep it short and structural — just enough for the downstream passes to align on.
+    const passAnchorMessage = `Analyze this math lesson. This is PASS 0 (anchor) of a four-pass analysis. Your output will be passed to three parallel downstream passes as the source of truth for activity alignment. Keep it short and structural — just enough for the downstream passes to align on.
 
 Return a single JSON object with EXACTLY these top-level fields (and no others):
 - meta { grade, unit, lesson_number, lesson_title, total_time }
@@ -370,21 +442,26 @@ Return a single JSON object with EXACTLY these top-level fields (and no others):
   - Exactly ONE activity has is_crux: true — the activity that does the central mathematical work, typically not the warm-up or cool-down
   - learning_target is 1 sentence in "Students ___" voice, concrete and observable
 
-Be FAST. This anchor is the cheap pass. No prose, no commentary.
+Be FAST. This anchor is the cheap pass. Each field is one short string except activities which is an array of small objects. No prose, no commentary.
 
 ${concisionRules}
 
 Lesson text:
 ${truncatedText}`;
 
+    // The downstream parallel passes (A, B, C) are built as functions of the
+    // anchor JSON. We can't construct them until Pass 0 returns.
     const buildPassAMessage = (anchorJson: string) =>
-      `Analyze this math lesson. This is PASS A (structure) of FOUR PARALLEL passes after the anchor. Passes B (MLR inference), C (anticipated thinking), and D (decisions + wristband) are running in parallel.
+      `Analyze this math lesson. This is PASS A (structure) of THREE PARALLEL passes after the anchor. Passes B (thinking + inference) and C (decisions + wristband) are running in parallel.
 
 Return a single JSON object with EXACTLY these top-level fields (and no others):
 - arc_statement — a short narrative paragraph (3-4 sentences)
 - key_vocabulary — array of { term, definition }
-- activities — each is a FULL activity object per the system prompt schema (id, title, function, duration, grouping, language_demand, function_summary, learning_target, is_crux, friction_points, success_signals, teacher_moves, causal_link, extension). The ids, titles, functions, durations, groupings, language_demands, learning_targets, and is_crux flags MUST match the anchor exactly.
-- adaptation_guardrails (full per the system prompt schema, including by_proficiency with entering/developing/bridging)
+- activities — each is a FULL activity object per the system prompt schema (id, title, function, duration, grouping, language_demand, function_summary, learning_target, synthesis_prompt, is_crux, friction_points, success_signals, teacher_moves, causal_link, extension). The ids, titles, functions, durations, groupings, language_demands, learning_targets, and is_crux flags MUST match the anchor exactly.
+- adaptation_guardrails (full per the system prompt schema)
+- lesson_synthesis { prompt, builds_on }
+
+Every activity MUST include a synthesis_prompt that points back to the activity's learning_target in lesson-specific language. The lesson_synthesis block MUST consolidate activity-level syntheses toward the destination from the anchor. NEVER use generic reminders like "have students share what they learned" or "reflect on the learning target."
 
 ${makeAlignmentBlock(anchorJson)}
 
@@ -396,16 +473,19 @@ Lesson text:
 ${truncatedText}`;
 
     const buildPassBMessage = (anchorJson: string) =>
-      `Analyze this math lesson. This is PASS B (MLR inference) of FOUR PARALLEL passes after the anchor. Passes A (structure), C (anticipated thinking), and D (decisions + wristband) are running in parallel.
+      `Analyze this math lesson. This is PASS B (MLR + ELSF inference) of FOUR PARALLEL passes after the anchor. Passes A (structure), C (anticipated thinking), and D (decisions + wristband) are running in parallel.
 
-Return a single JSON object with EXACTLY one top-level field:
-- mlr_inference { activities: [{ activity_id, language_work, mlrs: [{ number, name, why_here }] }] }
+Return a single JSON object with EXACTLY these top-level fields (and no others):
+- mlr_inference (this MUST be the first field)
+- elsf_inference (this MUST be the second field)
 
-mlr_inference.activities MUST cover EVERY activity from the anchor.
+mlr_inference.activities and elsf_inference.activities MUST each cover EVERY activity from the anchor.
 
-For each activity, produce:
-- language_work: 1-2 sentences naming the kind of language work students do in this activity.
-- mlrs: 1-2 MLRs that fit this activity. why_here is 1-2 sentences explaining why THIS routine fits THIS activity, referencing the specific student behavior or prompt.
+For each activity in mlr_inference, produce { activity_id, language_work, mlrs: [{ number, name, why_here }] }. Select 1-2 MLRs per activity. why_here is 1-2 sentences explaining why THIS routine fits THIS activity, referencing the specific student behavior or prompt.
+
+For each activity in elsf_inference, produce both:
+- language_demands { receptive, productive, interactive, everyday_to_academic_bridge, elsf_guidelines_applied }
+- functional_language { language_functions, example_phrases, l1_bridge, elsf_guidelines_applied }
 
 ${makeAlignmentBlock(anchorJson)}
 
@@ -416,10 +496,10 @@ ${concisionRules}
 Lesson text:
 ${truncatedText}`;
 
-    const buildPassCMessage = (anchorJson: string) =>
-      `Analyze this math lesson. This is PASS C (anticipated thinking) of FOUR PARALLEL passes after the anchor. Passes A (structure), B (MLR inference), and D (decisions + wristband) are running in parallel.
+    const buildPassCMessage_Thinking = (anchorJson: string) =>
+      `Analyze this math lesson. This is PASS C (anticipated thinking) of FOUR PARALLEL passes after the anchor. Passes A (structure), B (MLR + ELSF inference), and D (decisions + wristband) are running in parallel.
 
-Return a single JSON object with EXACTLY one top-level field:
+Return a single JSON object with EXACTLY these top-level fields (and no others):
 - anticipated_thinking { orientation, activities: [{ activity_id, patterns, sentence_frames, questions_to_listen_for }] }
 
 anticipated_thinking.orientation is 2 sentences orienting the teacher to the dominant pattern of student thinking for THIS lesson. Asset-based. Name what students will bring AND where their thinking will most likely take work.
@@ -439,23 +519,26 @@ Lesson text:
 ${truncatedText}`;
 
     const buildPassDMessage = (anchorJson: string) =>
-      `Analyze this math lesson. This is PASS D (decisions + wristband) of FOUR PARALLEL passes after the anchor. Passes A (structure), B (MLR inference), and C (anticipated thinking) are running in parallel.
+      `Analyze this math lesson. This is PASS D (decisions + wristband) of FOUR PARALLEL passes after the anchor. Passes A (structure), B (MLR + ELSF inference), and C (anticipated thinking) are running in parallel.
 
 Return a single JSON object with EXACTLY these top-level fields (and no others):
 - decision_guide { activities: [{ activity_id, scenarios }] }
-- wristband { arc_one_line, preflight, top_signals, top_frictions, activities: [{ activity_id, tiles }], mlr_legend }
+- wristband { arc_one_line, preflight, top_signals, top_frictions, activities: [{ activity_id, tiles, synthesis_short }], mlr_legend, lesson_synthesis_short }
 
 decision_guide.activities and wristband.activities MUST each cover EVERY activity from the anchor.
 
 decision_guide MUST include a mix of scenario types: 1-2 common-error, 1 productive-insight, 1 on-track, 1 productive-struggle or partial-understanding across the lesson. Total ~10-12 scenarios.
 
-For MLL scenarios (is_mll: true), proficiency_moves MUST have entering/developing/bridging all populated. Entering.nonverbal MUST be a concrete physical action. For non-MLL scenarios, use flat_move and set proficiency_moves: null.
+For MLL scenarios (is_mll: true), proficiency_moves MUST have emerging/developing/expanding all populated. Emerging.nonverbal MUST be a concrete physical action. For non-MLL scenarios, use flat_move and set proficiency_moves: null.
 
 Every MLL scenario MUST be anchored to a specific MLR. Every wristband tile with friction_type 'language' or 'language-math' MUST anchor to an MLR.
 
 wristband.activities each get 2-3 tiles MAXIMUM.
 wristband.mlr_legend lists the 2-3 routines this lesson runs on most heavily.
 EXACTLY ONE wristband tile across the whole lesson has is_crux_moment: true, on the activity the anchor marked is_crux: true.
+
+wristband.synthesis_short per activity is the in-class compression of the activity's close — 10-18 words, verb-first, lesson-specific. NEVER generic. Must name a specific student work or question. Tied to the learning_target in the anchor.
+wristband.lesson_synthesis_short is the in-class compression of the lesson close — 12-22 words, verb-first, lesson-specific. NEVER generic. Tied to the destination in the anchor.
 
 ${makeAlignmentBlock(anchorJson)}
 
@@ -480,7 +563,7 @@ ${truncatedText}`;
         const message = await client.messages.create({
           model: 'claude-sonnet-4-6',
           max_tokens,
-          system: LESSON_ANALYSIS_PROMPT,
+          system: composeSystemPrompt(),
           messages: [{ role: 'user', content: userMessage }],
         });
         log(`Pass ${passName} returned`, {
@@ -585,32 +668,37 @@ ${truncatedText}`;
     log('starting 4 parallel passes given anchor');
     const [resA, resB, resC, resD] = await Promise.all([
       runPass('A (structure)', buildPassAMessage(anchorJson), 8000),
-      runPass('B (MLR inference)', buildPassBMessage(anchorJson), 4000),
-      runPass('C (anticipated thinking)', buildPassCMessage(anchorJson), 6000),
+      runPass('B (MLR + ELSF inference)', buildPassBMessage(anchorJson), 6000),
+      runPass('C (anticipated thinking)', buildPassCMessage_Thinking(anchorJson), 6000),
       runPass('D (decisions + wristband)', buildPassDMessage(anchorJson), 8000),
     ]);
     log('all 4 passes settled');
 
+    // First failure wins — return its error message.
     if (!resA.ok) return resA.response;
     if (!resB.ok) return resB.response;
     if (!resC.ok) return resC.response;
     if (!resD.ok) return resD.response;
 
     // Merge. Each pass owns a disjoint set of top-level fields.
-    // - Anchor: meta, destination, activities (skeleton).
-    // - Pass A: arc_statement, key_vocabulary, activities (FULL), adaptation_guardrails.
-    // - Pass B: mlr_inference.
-    // - Pass C: anticipated_thinking.
-    // - Pass D: decision_guide, wristband.
+    // - Anchor produces: meta, destination, activities (skeleton).
+    // - Pass A produces: arc_statement, key_vocabulary, activities (FULL),
+    //   adaptation_guardrails, lesson_synthesis.
+    // - Pass B produces: mlr_inference, elsf_inference.
+    // - Pass C produces: anticipated_thinking.
+    // - Pass D produces: decision_guide, wristband.
     //
     // On overlap, Pass A's activities (full) beat the anchor's skeleton; the
-    // anchor's meta + destination win since they were the alignment source
-    // of truth.
+    // anchor's meta + destination win since they were the alignment source of
+    // truth that A built on top of.
     const parsed = {
       ...resD.parsed,
       ...resC.parsed,
       ...resB.parsed,
       ...resA.parsed,
+      // Re-apply anchor's meta + destination LAST so they win over anything
+      // A accidentally emitted. The anchor's `activities` skeleton is
+      // intentionally NOT re-applied — Pass A's full activities array wins.
       ...(resAnchor.parsed.meta ? { meta: resAnchor.parsed.meta } : {}),
       ...(resAnchor.parsed.destination
         ? { destination: resAnchor.parsed.destination }

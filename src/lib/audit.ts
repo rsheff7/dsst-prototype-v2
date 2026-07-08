@@ -42,9 +42,9 @@ export function findTermAppearances(term: string, lesson: LessonData): TermAppea
   search(g.rigor_check, 'Adapt: rigor_check');
   g.safe_to_change.forEach((s, i) => search(s, `Adapt: safe_to_change[${i}]`));
   g.do_not_remove.forEach((s, i) => search(s.text, `Adapt: do_not_remove[${i}]`));
-  search(g.by_proficiency.entering.text, 'Adapt: by_proficiency.entering');
+  search(g.by_proficiency.emerging.text, 'Adapt: by_proficiency.emerging');
   search(g.by_proficiency.developing.text, 'Adapt: by_proficiency.developing');
-  search(g.by_proficiency.bridging.text, 'Adapt: by_proficiency.bridging');
+  search(g.by_proficiency.expanding.text, 'Adapt: by_proficiency.expanding');
 
   for (const a of lesson.anticipated_thinking.activities) {
     a.patterns.forEach((p, i) => {
@@ -69,7 +69,7 @@ export function findTermAppearances(term: string, lesson: LessonData): TermAppea
         search(s.flat_move.avoid, `Moves ${a.activity_id}: flat_move.avoid`);
       }
       if (s.proficiency_moves) {
-        (['entering', 'developing', 'bridging'] as const).forEach((level) => {
+        (['emerging', 'developing', 'expanding'] as const).forEach((level) => {
           const move = s.proficiency_moves![level];
           search(move.move, `Moves ${a.activity_id}: ${level}.move`);
           search(move.say, `Moves ${a.activity_id}: ${level}.say`);

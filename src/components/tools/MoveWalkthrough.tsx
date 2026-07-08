@@ -7,6 +7,7 @@ import { MlrNumber, MLRS } from '@/lib/mlrs';
 import ToolInfo from '@/components/shared/ToolInfo';
 import MlrChip from '@/components/shared/MlrChip';
 import { activitySlot, activityHeading } from '@/lib/activityLabel';
+import EldProficiencyView from '@/components/shared/EldProficiencyView';
 
 function activityLabel(activityId: string, activityTitle: string): string {
   const slot = activitySlot(activityTitle);
@@ -308,7 +309,7 @@ export default function MoveWalkthrough({ lesson }: Props) {
             <span className="font-semibold">
               {mllCount} of {scenarios.length} moments involve multilingual learners.
             </span>{' '}
-            These show the response across Entering, Developing, and Bridging proficiency levels side by side — the proficiency-differentiated move is one of the most distinctive things this tool teaches.
+            The response is calibrated to a learner&apos;s WIDA level — select one in the header to see the move embedded inside each scenario.
           </p>
         </div>
 
@@ -541,19 +542,14 @@ export default function MoveWalkthrough({ lesson }: Props) {
                             </span>
                           </>
                         )}
-                        {s.is_mll && s.proficiency_moves && (
-                          <div className="space-y-1.5">
-                            <p className="text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: MLL_ACCENT }}>
-                              Response by proficiency
+                        {s.is_mll && (
+                          <div
+                            className="rounded-md border px-2.5 py-1.5"
+                            style={{ backgroundColor: '#EEEDFE', borderColor: '#AFA9EC' }}
+                          >
+                            <p className="text-[0.78rem] leading-snug" style={{ color: '#26215C' }}>
+                              Response is calibrated to the learner&apos;s WIDA level — open this scenario to see the move.
                             </p>
-                            <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1.5 text-[0.85rem] text-ink leading-snug">
-                              <span className="font-bold" style={{ color: '#00876C' }}>E</span>
-                              <span>{s.proficiency_moves.entering.move}</span>
-                              <span className="font-bold" style={{ color: '#534AB7' }}>D</span>
-                              <span>{s.proficiency_moves.developing.move}</span>
-                              <span className="font-bold" style={{ color: '#706E69' }}>B</span>
-                              <span>{s.proficiency_moves.bridging.move}</span>
-                            </div>
                           </div>
                         )}
                       </div>
@@ -729,68 +725,22 @@ export default function MoveWalkthrough({ lesson }: Props) {
           </>
         )}
 
-        {current.is_mll && current.proficiency_moves && (
+        {current.is_mll && (
           <>
             <p
               className="text-[10px] font-semibold uppercase tracking-[0.12em] mb-2"
               style={{ color: MLL_ACCENT }}
             >
-              The response depends on the student&apos;s proficiency level
+              The response depends on the learner&apos;s proficiency level
             </p>
             <p className="text-[0.825rem] text-ink-muted mb-4 leading-relaxed">
-              Read across — notice how the move adapts to what is available in shared language.
+              Select a WIDA level in the header to see the move calibrated to that learner.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              <ProficiencyColumn
-                label="Entering"
-                letter="E"
-                move={current.proficiency_moves.entering}
-                color="#00876C"
-              />
-              <ProficiencyColumn
-                label="Developing"
-                letter="D"
-                move={current.proficiency_moves.developing}
-                color="#534AB7"
-              />
-              <ProficiencyColumn
-                label="Bridging"
-                letter="B"
-                move={current.proficiency_moves.bridging}
-                color="#706E69"
-              />
-            </div>
-
-            {current.mll_framework_note && (
-              <div
-                className="mt-4 rounded-xl border px-5 py-4"
-                style={{ backgroundColor: '#F4F2FE', borderColor: '#D9D4F4' }}
-              >
-                <p className="text-[10px] font-semibold uppercase tracking-[0.1em] mb-2" style={{ color: MLL_ACCENT }}>
-                  Notice the progression
-                </p>
-                <p className="text-[0.85rem] leading-relaxed" style={{ color: '#26215C' }}>
-                  {current.mll_framework_note}
-                </p>
-              </div>
-            )}
-
-            {current.proficiency_divergence_note && (
-              <div
-                className="mt-4 rounded-xl border-l-[3px] px-5 py-3"
-                style={{ backgroundColor: '#FAFAF7', borderLeftColor: '#534AB7', borderTopWidth: 1, borderRightWidth: 1, borderBottomWidth: 1, borderColor: '#E6E4DE' }}
-              >
-                <p className="text-[10px] font-semibold uppercase tracking-[0.1em] mb-1" style={{ color: '#534AB7' }}>
-                  Routine across proficiency
-                </p>
-                <p className="text-[0.82rem] text-ink-muted leading-relaxed">
-                  {current.proficiency_divergence_note}
-                </p>
-              </div>
-            )}
+            <EldProficiencyView activityId={current.activity_id} lesson={lesson} />
           </>
         )}
+
       </div>
 
       {/* Reflection — optional */}
