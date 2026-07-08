@@ -1,3 +1,5 @@
+import { LessonData } from './types';
+
 export function exportLessonToFile(lessonData: LessonData) {
   const jsonString = JSON.stringify(lessonData, null, 2);
   const blob = new Blob([jsonString], { type: 'application/json' });
