@@ -6,6 +6,8 @@ import { useLesson } from '@/lib/lessonContext';
 import { LessonData, ToolId } from '@/lib/types';
 import LessonHeader from '@/components/shared/LessonHeader';
 import ToolNav from '@/components/shared/ToolNav';
+import MobileNav from '@/components/mobile/MobileNav';
+import MobileQuickRead from '@/components/mobile/MobileQuickRead';
 import LessonPathway from '@/components/tools/LessonPathway';
 import AdaptationGuardrails from '@/components/tools/AdaptationGuardrails';
 import AnticipatedThinking from '@/components/tools/AnticipatedThinking';
@@ -30,7 +32,7 @@ export default function LessonPage() {
   if (!lesson) return null;
 
   return (
-    <div className="min-h-screen bg-surface flex flex-col">
+    <div className="min-h-screen bg-surface flex flex-col pb-16 md:pb-0">
       {/* Desktop: fixed top bar with header + nav */}
       <div className="hidden md:block fixed top-0 left-0 right-0 z-40 bg-card border-b border-line">
         <div className="mx-auto max-w-3xl px-6">
@@ -46,11 +48,18 @@ export default function LessonPage() {
         </div>
       </div>
 
-      <main className="flex-1 mx-auto w-full max-w-3xl px-4 md:px-6 pb-28 md:pb-12">
+      <main className="flex-1 mx-auto w-full max-w-3xl px-4 md:px-6 pb-28 md:pb-12 pt-16 md:pt-20">
         <div className="hidden md:block" style={{ height: 120 }} />
 
         {activeTool === 'quickread' && (
-          <QuickRead lesson={lesson} />
+          <>
+            <div className="hidden md:block">
+              <QuickRead lesson={lesson} />
+            </div>
+            <div className="md:hidden">
+              <MobileQuickRead lesson={lesson} />
+            </div>
+          </>
         )}
         {activeTool === 'pathway' && (
           <LessonPathway lesson={lesson} onNavigate={setActiveTool} />
@@ -64,9 +73,7 @@ export default function LessonPage() {
         {activeTool === 'moves' && (
           <MoveWalkthrough lesson={lesson} />
         )}
-      </main>
-
-      
+</main>
     </div>
-  );
+  )
 }

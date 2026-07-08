@@ -43,11 +43,18 @@
   --color-demand-high-bg: #FAECE7;
   --color-demand-high-text: #712B13;
 
-  /* Pattern types */
-  --color-misconception-bg: #FAECE7;
-  --color-misconception-border: #F5C4B3;
-  --color-extension-bg: #EAF3DE;
-  --color-extension-border: #C0DD97;
+  /* Mobile-specific tokens */
+  --mobile-touch-target: 44px;
+  --mobile-spacing-xs: 8px;
+  --mobile-spacing-sm: 12px;
+  --mobile-spacing-md: 16px;
+  --mobile-spacing-lg: 24px;
+  --mobile-card-radius: 12px;
+
+  /* Friction colors for mobile */
+  --mobile-friction-math: #0066cc;
+  --mobile-friction-language: #28a745;
+  --mobile-friction-both: #ff9800;
 }
 
 @theme inline {
