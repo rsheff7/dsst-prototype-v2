@@ -241,7 +241,7 @@ function PlanView({
             )}
             {lessonSynthesis?.builds_on && lessonSynthesis.builds_on.length > 0 && (
               <ul className="mt-3 space-y-1">
-                {lessonSynthesis.builds_on.map((line, i) => (
+                {lessonSynthesis?.builds_on.map((line, i) => (
                   <li key={i} className="flex items-start gap-2">
                     <span className="mt-[5px] shrink-0" style={{ color: SYNTH_ACCENT }}>›</span>
                     <span className="text-[0.78rem] text-ink-muted leading-[1.5]">{line}</span>
