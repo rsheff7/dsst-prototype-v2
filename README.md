@@ -18,7 +18,9 @@ The second major build of the DSST math teacher tools prototype. Integrates the 
 
 **DIRECTORY-STRUCTURE.md** — File-by-file mapping of every folder and module. Use when onboarding new developers or planning feature additions.
 
-Both documents live in the repo root alongside this README.
+**RULES.md** — Development guidelines for AI coding agents: viewport & stickiness rules, progressive disclosure patterns, mobile scope constraints. Read before making UI/layout changes to prevent common bugs.
+
+All three documents live in the repo root alongside this README.
 
 ```bash
 npm install

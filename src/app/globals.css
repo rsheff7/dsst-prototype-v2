@@ -81,3 +81,13 @@ body {
   font-family: var(--font-dm-sans), 'DM Sans', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
+
+/* Moment card styling for mobile quick read */
+.moment-card {
+  @apply flex flex-col gap-2 mx-4;
+}
+
+.moment-card-content {
+  @apply flex-1 min-w-0 px-3 py-2 rounded-lg bg-gray-50 border-l-4;
+  border-left-style: solid;
+}

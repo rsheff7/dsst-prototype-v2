@@ -154,75 +154,74 @@ function ActivityCard({
         </span>
       </button>
 
-      {/* Activity target/avoid section - only shows when expanded */}
-      {expanded && activity.learning_target && (
-        <div className="px-4 py-3 border-t border-gray-100">
-          <div className="mb-2 px-3 py-2 bg-gray-50 rounded-lg">
-            <p className="text-[9px] font-bold uppercase tracking-[0.1em] text-gray-500 mb-1">
-              Target
-            </p>
-            <p className="text-[0.825rem] text-gray-700 leading-snug">
-              {activity.learning_target}
-            </p>
-          </div>
+      {/* Collapsible content - shows when expanded */}
+{expanded && (
+          <div className={`space-y-3 ${!wba.synthesis_short ? 'pb-4' : ''}`}>
+            {activity.learning_target && (
+              <div className="px-3 py-2 bg-gray-50 rounded-lg">
+                <p className="text-[10px] font-bold uppercase tracking-[0.1em] text-gray-500 mb-1">
+                  Target
+                </p>
+                <p className="text-[0.825rem] text-gray-700 leading-snug">
+                  {activity.learning_target}
+                </p>
+              </div>
+            )}
 
-          {/* Avoid guidance */}
-          {activity.avoid_guidance && (
-            <div className="mt-2 px-3 py-2 bg-red-50 rounded-lg border-l-2 border-red-300">
-              <p className="text-[9px] font-bold uppercase tracking-[0.1em] text-red-700 mb-1">
-                Avoid
-              </p>
-              <p className="text-[0.825rem] text-red-800 leading-snug">
-                {activity.avoid_guidance}
-              </p>
+            {activity.avoid_guidance && (
+              <div className="px-3 py-2 bg-red-50 rounded-lg border-l-2 border-red-300">
+                <p className="text-[10px] font-bold uppercase tracking-[0.1em] text-red-700 mb-1">
+                  Avoid
+                </p>
+                <p className="text-[0.825rem] text-red-800 leading-snug">
+                  {activity.avoid_guidance}
+                </p>
+              </div>
+            )}
+
+            {/* Moments */}
+            <div className="space-y-2">
+              {wba.tiles.map((tile, i) => (
+                <MomentTile key={i} tile={tile} openMlrModal={openMlrModal} />
+              ))}
             </div>
-          )}
-        </div>
-      )}
 
-      {/* Moments - always visible but tap to expand details */}
-      <div className="px-4 py-3 border-t border-gray-100 space-y-2">
-        {wba.tiles.map((tile, i) => (
-          <MomentTile key={i} tile={tile} openMlrModal={openMlrModal} />
-        ))}
-      </div>
-
-      {/* Synthesis */}
-      {wba.synthesis_short && (
-        <div className="px-4 py-2 mt-2 bg-[#FBF3EA] border-t-2 border-[#7A3E1C]">
-          <p className="text-[9px] font-bold uppercase tracking-[0.1em] mb-1" style={{ color: '#7A3E1C' }}>
-            Close
-          </p>
-          <p className="text-[0.825rem] font-semibold text-gray-800 leading-tight">
-            {wba.synthesis_short}
-          </p>
-        </div>
-      )}
+            {/* Synthesis */}
+            {wba.synthesis_short && (
+              <div className="px-4 pt-2 pb-4 mt-2 bg-[#FBF3EA] border-t-2 border-[#7A3E1C]">
+                <p className="text-[10px] font-bold uppercase tracking-[0.1em] mb-1" style={{ color: '#7A3E1C' }}>
+                  Synthesis
+                </p>
+                <p className="text-[0.825rem] font-semibold text-gray-800 leading-tight">
+                  {wba.synthesis_short}
+                </p>
+              </div>
+            )}
+          </div>
+        )}
     </article>
   );
 }
 
 function MomentTile({ tile, openMlrModal }: { tile: WristbandTile; openMlrModal: (mlr: WristbandTile['mlr']) => void }) {
   const frictionColor = getFrictionColor(tile.friction_type);
-  const [expanded, setExpanded] = useState(false);
-  const hasDetails = tile.avoid_short || tile.mlr;
 
   return (
-    <div className="flex gap-3 min-h-[44px] items-start">
-      {/* Friction bar */}
-      <div
-        className="w-1.5 rounded-sm flex-shrink-0"
-        style={{ backgroundColor: frictionColor, minHeight: '24px' }}
-      />
-
-      {/* Content */}
-      <div className="flex-1 min-w-0 px-3 py-2 rounded-lg bg-gray-50">
+    <div className="moment-card">
+      <div className="moment-card-content" style={{ borderLeftColor: frictionColor }}>
         <p className="text-[0.875rem] font-semibold text-gray-800 mb-1">
           {tile.observation_short}
         </p>
         <p className="text-[0.825rem] font-medium text-gray-700 leading-snug">
           {tile.move_short}
         </p>
+
+        {/* Avoid guidance - always visible */}
+        {tile.avoid_short && (
+          <p className="mt-2 text-[0.75rem] text-red-700">
+            <strong>Avoid:</strong> {tile.avoid_short}
+          </p>
+        )}
 
         {/* MLR badge - tap to open modal */}
         {tile.mlr && (
@@ -237,33 +236,6 @@ function MomentTile({ tile, openMlrModal }: { tile: WristbandTile; openMlrModal:
           >
             <span className="text-[9px] font-bold">MLR {tile.mlr.number}</span>
           </button>
-        )}
-
-        {/* Tap to expand details */}
-        {hasDetails && (
-          <button
-            type="button"
-            onClick={() => setExpanded(!expanded)}
-            className="mt-2 text-[9px] text-blue-600 font-medium"
-          >
-            {expanded ? 'Hide details ▲' : 'Show details ▼'}
-          </button>
-        )}
-
-        {/* Expanded details */}
-        {expanded && hasDetails && (
-          <div className="mt-2 pt-2 border-t border-gray-200">
-            {tile.avoid_short && (
-              <p className="text-[0.75rem] text-red-700 mb-1">
-                <strong>Avoid:</strong> {tile.avoid_short}
-              </p>
-            )}
-            {tile.mlr && (
-              <p className="text-[0.75rem] text-gray-700">
-                <strong>MLR {tile.mlr.number}:</strong> {tile.mlr.name}
-              </p>
-            )}
-          </div>
         )}
       </div>
     </div>

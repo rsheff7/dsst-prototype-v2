@@ -33,6 +33,7 @@ type Mode = 'plan' | 'inclass';
 
 export default function QuickRead({ lesson }: Props) {
   const [mode, setMode] = useState<Mode>('plan');
+  const [destinationExpanded, setDestinationExpanded] = useState(true);
   const wb = lesson.wristband;
   const activityById = Object.fromEntries(lesson.activities.map((a) => [a.id, a]));
   const windows = timeWindows(lesson.activities);
@@ -76,22 +77,34 @@ export default function QuickRead({ lesson }: Props) {
         className="rounded-xl border border-line shadow-sm overflow-hidden border-l-[3px] mb-8"
         style={{ borderLeftColor: QR_ACCENT, backgroundColor: '#FFFFFF' }}
       >
-        {lesson.destination && (
-          <div className="px-7 py-7" style={{ backgroundColor: '#F4FAF7' }}>
-            <p
-              className="text-[11px] font-bold uppercase tracking-[0.14em] mb-3"
-              style={{ color: QR_ACCENT }}
-            >
-              By the end of the lesson, students can
-            </p>
-            <p
-              className="text-[1.35rem] text-ink leading-[1.4]"
-              style={{ fontFamily: 'var(--font-dm-serif), serif' }}
-            >
-              {stripSwbatPrefix(lesson.destination)}
-            </p>
-          </div>
-        )}
+        {/* Destination section - progressive disclosure */}
+{lesson.destination && (
+            <>
+              {destinationExpanded && (
+                <div className="px-7 py-7" style={{ backgroundColor: '#F4FAF7' }}>
+                  <p
+                    className="text-[11px] font-bold uppercase tracking-[0.14em] mb-3"
+                    style={{ color: QR_ACCENT }}
+                  >
+                    By the end of the lesson, students can
+                  </p>
+                  <p
+                    className="text-[1.35rem] text-ink leading-[1.4]"
+                    style={{ fontFamily: 'var(--font-dm-serif), serif' }}
+                  >
+                    {stripSwbatPrefix(lesson.destination)}
+                  </p>
+                </div>
+              )}
+              <button
+                type="button"
+                onClick={() => setDestinationExpanded(!destinationExpanded)}
+                className="w-full py-3 text-[10px] font-medium text-ink-faint hover:text-ink transition-colors border-t border-line-subtle flex items-center justify-center gap-1"
+              >
+                {destinationExpanded ? 'Hide destination ▲' : 'Show destination ▼'}
+              </button>
+            </>
+          )}
 
         {wb.arc_one_line && (
           <div className="border-t border-line-subtle px-7 py-4 bg-card">
@@ -99,8 +112,8 @@ export default function QuickRead({ lesson }: Props) {
               The arc that gets them there
             </p>
             <p className="text-[0.875rem] text-ink-muted leading-[1.65]">{wb.arc_one_line}</p>
-          </div>
-        )}
+</div>
+      )}
       </header>
 
 {/* Plan view - desktop only */}

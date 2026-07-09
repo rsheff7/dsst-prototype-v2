@@ -25,16 +25,15 @@ interface LessonHeaderProps {
 export default function LessonHeader({ lesson, activeTool, compact, onSavePlan }: LessonHeaderProps) {
   const { meta } = lesson;
 
-  if (compact) {
+if (compact) {
     return (
-      <div className="py-3 flex items-center justify-between gap-3">
-<Link
-            href="/"
-            className="text-[0.75rem] font-medium text-ink-muted hover:text-ink transition-colors truncate"
-          >
-            {meta.grade} · {meta.lesson_number}
-          </Link>
-        <p className="text-[0.75rem] font-semibold text-ink shrink-0">{TOOL_NAMES[activeTool]}</p>
+      <div className="py-3 flex flex-col gap-1">
+        <div className="flex items-center justify-between gap-3">
+<p className="text-[0.8rem] font-bold text-gray-900 truncate">
+            Lesson {meta.grade}.{meta.lesson_number}: {meta.lesson_title}
+          </p>
+          <p className="text-[0.75rem] font-semibold text-ink shrink-0">{TOOL_NAMES[activeTool]}</p>
+        </div>
       </div>
     );
   }
