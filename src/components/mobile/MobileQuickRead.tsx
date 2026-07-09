@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { LessonData, WristbandActivity, WristbandTile } from '@/lib/types';
-import { MLRS } from '@/lib/mlrs';
+import { MLRS, MlrEntry } from '@/lib/mlrs';
 
 interface Props {
   lesson: LessonData;
@@ -13,10 +13,13 @@ export default function MobileQuickRead({ lesson }: Props) {
   const activityById = Object.fromEntries(lesson.activities.map((a) => [a.id, a]));
   const [destinationExpanded, setDestinationExpanded] = useState(true);
   const [mlrModalOpen, setMlrModalOpen] = useState(false);
-  const [activeMlr, setActiveMlr] = useState<WristbandTile['mlr']>(null);
+  const [activeMlr, setActiveMlr] = useState<MlrEntry | null>(null);
 
-  const openMlrModal = (mlr: WristbandTile['mlr']) => {
-    setActiveMlr(mlr);
+const openMlrModal = (mlr: WristbandTile['mlr']) => {
+    if (!mlr) return;
+    
+    const fullData = MLRS[mlr.number];
+    setActiveMlr(fullData);
     setMlrModalOpen(true);
   };
 
@@ -100,9 +103,34 @@ export default function MobileQuickRead({ lesson }: Props) {
             <h3 className="text-lg font-bold mb-2">
               MLR {activeMlr.number} — {activeMlr.name}
             </h3>
-            <p className="text-gray-700 leading-relaxed">
-              {activeMlr.description}
+            
+            <p className="text-gray-700 leading-relaxed mb-4">
+              {activeMlr.definition}
             </p>
+            
+            {activeMlr.structure && activeMlr.structure.length > 0 && (
+              <div className="mb-4">
+                <h4 className="text-sm font-semibold text-gray-900 mb-2">How to use it</h4>
+                <ol className="space-y-2">
+                  {activeMlr.structure.map((step, i) => (
+                    <li key={i} className="text-sm text-gray-700 leading-relaxed flex gap-2">
+                      <span className="text-blue-600 font-medium">{i + 1}.</span>
+                      <span>{step}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            )}
+            
+            {activeMlr.example && (
+              <div className="mb-4">
+                <h4 className="text-sm font-semibold text-gray-900 mb-2">Example</h4>
+                <p className="text-sm text-gray-700 leading-relaxed">
+                  {activeMlr.example}
+                </p>
+              </div>
+            )}
+            
             <button
               type="button"
               onClick={closeMlrModal}
