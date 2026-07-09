@@ -48,7 +48,7 @@ export default function LessonPage() {
         </div>
       </div>
 
-      <main className="flex-1 mx-auto w-full max-w-3xl px-4 md:px-6 pb-28 md:pb-12 pt-16 md:pt-20">
+<main className="flex-1 mx-auto w-full max-w-3xl px-4 md:px-6 pb-28 md:pb-12 pt-4 md:pt-20">
         <div className="hidden md:block" style={{ height: 120 }} />
 
         {activeTool === 'quickread' && (
