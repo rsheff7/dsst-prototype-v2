@@ -1,22 +1,57 @@
 'use client';
 
 import { useState } from 'react';
-import { LessonData, WristbandActivity, WristbandTile, Activity } from '@/lib/types';
+import { LessonData, WristbandActivity, WristbandTile } from '@/lib/types';
 import { MLRS } from '@/lib/mlrs';
 
 interface Props {
   lesson: LessonData;
 }
 
-type MobileTab = 'quickread' | 'pathway' | 'adapt';
-
 export default function MobileQuickRead({ lesson }: Props) {
   const wb = lesson.wristband;
   const activityById = Object.fromEntries(lesson.activities.map((a) => [a.id, a]));
+  const [destinationExpanded, setDestinationExpanded] = useState(true);
+  const [mlrModalOpen, setMlrModalOpen] = useState(false);
+  const [activeMlr, setActiveMlr] = useState<WristbandTile['mlr']>(null);
+
+  const openMlrModal = (mlr: WristbandTile['mlr']) => {
+    setActiveMlr(mlr);
+    setMlrModalOpen(true);
+  };
+
+  const closeMlrModal = () => {
+    setMlrModalOpen(false);
+    setActiveMlr(null);
+  };
 
   return (
-    <div className="min-h-screen bg-surface flex flex-col pb-16">
-      {/* Legend for friction types */}
+    <div className="min-h-screen bg-surface flex flex-col">
+      {/* Lesson Destination - Collapsible Header */}
+      <header className="bg-white border-b border-gray-200">
+        <div className="px-4 py-3">
+          {/* Header row with title and toggle inline */}
+          <div className="flex items-center justify-between">
+            <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-gray-500">
+              Lesson Destination
+            </p>
+            <button
+              type="button"
+              onClick={() => setDestinationExpanded(!destinationExpanded)}
+              className="text-[9px] text-blue-600 font-medium"
+              aria-expanded={destinationExpanded}
+            >
+              {destinationExpanded ? 'Hide ▲' : 'Show destination ▼'}
+            </button>
+          </div>
+          
+          {destinationExpanded && (
+            <p className="text-[0.825rem] font-semibold text-gray-800 leading-snug mt-2">
+              {lesson.destination}
+            </p>
+          )}
+        </div>
+      </header>
       {wb.activities.some((wba) => wba.tiles.some((t) => t.friction_type && (t.friction_type === 'math' || t.friction_type === 'language' || t.friction_type === 'language-math'))) && (
         <section className="mx-4 mt-4 rounded-lg bg-white border border-gray-200 shadow-sm">
           <div className="px-3 py-2 border-b border-gray-100 bg-blue-50">
@@ -48,9 +83,37 @@ export default function MobileQuickRead({ lesson }: Props) {
             key={wba.activity_id}
             wba={wba}
             activity={activityById[wba.activity_id]}
+            openMlrModal={openMlrModal}
           />
         ))}
       </div>
+
+      {/* MLR Modal */}
+      {mlrModalOpen && activeMlr && (
+        <div
+          className="fixed inset-0 bg-black/50 flex items-end justify-center z-50"
+          onClick={closeMlrModal}
+        >
+          <div
+            className="bg-white w-full max-w-md rounded-t-2xl p-6 max-h-[80vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h3 className="text-lg font-bold mb-2">
+              MLR {activeMlr.number} — {activeMlr.name}
+            </h3>
+            <p className="text-gray-700 leading-relaxed">
+              {activeMlr.description}
+            </p>
+            <button
+              type="button"
+              onClick={closeMlrModal}
+              className="mt-4 w-full bg-gray-100 border-none py-3.5 rounded-lg font-semibold text-gray-800"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -58,9 +121,11 @@ export default function MobileQuickRead({ lesson }: Props) {
 function ActivityCard({
   wba,
   activity,
+  openMlrModal,
 }: {
   wba: WristbandActivity;
   activity: Activity | undefined;
+  openMlrModal: (mlr: WristbandTile['mlr']) => void;
 }) {
   const [expanded, setExpanded] = useState(false);
 
@@ -70,7 +135,7 @@ function ActivityCard({
 
   return (
     <article className="rounded-lg bg-white border border-gray-200 shadow-sm overflow-hidden">
-      {/* Activity header */}
+      {/* Activity header - tap to expand */}
       <button
         type="button"
         onClick={() => setExpanded(!expanded)}
@@ -90,47 +155,57 @@ function ActivityCard({
         </span>
       </button>
 
-      {/* Activity content */}
-      {expanded && (
+      {/* Activity target/avoid section - only shows when expanded */}
+      {expanded && activity.learning_target && (
         <div className="px-4 py-3 border-t border-gray-100">
-          {/* Learning target */}
-          {activity.learning_target && (
-            <div className="mb-3 px-3 py-2 bg-gray-50 rounded-lg">
-              <p className="text-[9px] font-bold uppercase tracking-[0.1em] text-gray-500 mb-1">
-                Target
-              </p>
-              <p className="text-[0.825rem] text-gray-700 leading-snug">
-                {activity.learning_target}
-              </p>
-            </div>
-          )}
-
-          {/* Moments */}
-          <div className="space-y-2">
-            {wba.tiles.map((tile, i) => (
-              <MomentTile key={i} tile={tile} />
-            ))}
+          <div className="mb-2 px-3 py-2 bg-gray-50 rounded-lg">
+            <p className="text-[9px] font-bold uppercase tracking-[0.1em] text-gray-500 mb-1">
+              Target
+            </p>
+            <p className="text-[0.825rem] text-gray-700 leading-snug">
+              {activity.learning_target}
+            </p>
           </div>
 
-          {/* Synthesis */}
-          {wba.synthesis_short && (
-            <div className="mt-3 px-3 py-2 bg-[#FBF3EA] border-t-2 border-[#7A3E1C]">
-              <p className="text-[9px] font-bold uppercase tracking-[0.1em] mb-1" style={{ color: '#7A3E1C' }}>
-                Close
+          {/* Avoid guidance */}
+          {activity.avoid_guidance && (
+            <div className="mt-2 px-3 py-2 bg-red-50 rounded-lg border-l-2 border-red-300">
+              <p className="text-[9px] font-bold uppercase tracking-[0.1em] text-red-700 mb-1">
+                Avoid
               </p>
-              <p className="text-[0.825rem] font-semibold text-gray-800 leading-tight">
-                {wba.synthesis_short}
+              <p className="text-[0.825rem] text-red-800 leading-snug">
+                {activity.avoid_guidance}
               </p>
             </div>
           )}
+        </div>
+      )}
+
+      {/* Moments - always visible but tap to expand details */}
+      <div className="px-4 py-3 border-t border-gray-100 space-y-2">
+        {wba.tiles.map((tile, i) => (
+          <MomentTile key={i} tile={tile} openMlrModal={openMlrModal} />
+        ))}
+      </div>
+
+      {/* Synthesis */}
+      {wba.synthesis_short && (
+        <div className="px-4 py-2 mt-2 bg-[#FBF3EA] border-t-2 border-[#7A3E1C]">
+          <p className="text-[9px] font-bold uppercase tracking-[0.1em] mb-1" style={{ color: '#7A3E1C' }}>
+            Close
+          </p>
+          <p className="text-[0.825rem] font-semibold text-gray-800 leading-tight">
+            {wba.synthesis_short}
+          </p>
         </div>
       )}
     </article>
   );
 }
 
-function MomentTile({ tile }: { tile: WristbandTile }) {
+function MomentTile({ tile, openMlrModal }: { tile: WristbandTile; openMlrModal: (mlr: WristbandTile['mlr']) => void }) {
   const frictionColor = getFrictionColor(tile.friction_type);
+  const [expanded, setExpanded] = useState(false);
   const hasDetails = tile.avoid_short || tile.mlr;
 
   return (
@@ -150,15 +225,46 @@ function MomentTile({ tile }: { tile: WristbandTile }) {
           {tile.move_short}
         </p>
 
-        {/* MLR badge */}
+        {/* MLR badge - tap to open modal */}
         {tile.mlr && (
           <button
             type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              openMlrModal(tile.mlr);
+            }}
             className="mt-2 inline-flex items-center px-2 py-1 rounded-full"
             style={{ backgroundColor: '#EEEDFE', color: '#26215C' }}
           >
             <span className="text-[9px] font-bold">MLR {tile.mlr.number}</span>
           </button>
+        )}
+
+        {/* Tap to expand details */}
+        {hasDetails && (
+          <button
+            type="button"
+            onClick={() => setExpanded(!expanded)}
+            className="mt-2 text-[9px] text-blue-600 font-medium"
+          >
+            {expanded ? 'Hide details ▲' : 'Show details ▼'}
+          </button>
+        )}
+
+        {/* Expanded details */}
+        {expanded && hasDetails && (
+          <div className="mt-2 pt-2 border-t border-gray-200">
+            {tile.avoid_short && (
+              <p className="text-[0.75rem] text-red-700 mb-1">
+                <strong>Avoid:</strong> {tile.avoid_short}
+              </p>
+            )}
+            {tile.mlr && (
+              <p className="text-[0.75rem] text-gray-700">
+                <strong>MLR {tile.mlr.number}:</strong> {tile.mlr.name}
+              </p>
+            )}
+          </div>
         )}
       </div>
     </div>
