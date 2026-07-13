@@ -48,6 +48,7 @@ export interface Activity {
   teacher_moves: ActivityTeacherMove[];
   causal_link: string | null;
   extension: string | null;
+  avoid_guidance?: string;
 }
 
 export interface ProficiencyAdaptation {
