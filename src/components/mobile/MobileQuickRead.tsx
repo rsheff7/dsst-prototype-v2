@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { LessonData, WristbandActivity, WristbandTile } from '@/lib/types';
+import { LessonData, WristbandActivity, WristbandTile, Activity } from '@/lib/types';
 import { MLRS, MlrEntry } from '@/lib/mlrs';
 
 interface Props {
