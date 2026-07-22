@@ -33,7 +33,7 @@ const WIDA_BORDER = '#AFA9EC';
 const WIDA_INK = '#26215C';
 
 export default function EldProficiencyView({ activityId, lesson, compact = false }: Props) {
-  const { selectedWidaLevel } = useLesson();
+  const { selectedWidaLevel, setSelectedWidaLevel } = useLesson();
   const elsfActivity = lesson.elsf_inference?.activities.find(
     (a) => a.activity_id === activityId,
   );
@@ -68,16 +68,13 @@ export default function EldProficiencyView({ activityId, lesson, compact = false
 
   if (compact) {
     return (
-      <div
-        className="rounded-lg border px-3 py-2.5"
-        style={{ backgroundColor: WIDA_BG, borderColor: WIDA_BORDER }}
-      >
+      <div className="px-4 pt-2 pb-4 mt-2 border-t-2" style={{ borderColor: WIDA_BORDER }}>
         <div className="flex items-baseline gap-2 mb-1.5 flex-wrap">
           <span
-            className="text-[9px] font-bold uppercase tracking-[0.1em] text-white px-1.5 py-0.5 rounded-full"
+            className="text-[9px] font-bold uppercase tracking-[0.1em] text-white px-2 py-0.5 rounded-full"
             style={{ backgroundColor: WIDA_ACCENT }}
           >
-            WIDA {surfaceAnchor.level}
+            WIDA
           </span>
           <p
             className="text-[0.8rem] font-semibold"
@@ -86,7 +83,7 @@ export default function EldProficiencyView({ activityId, lesson, compact = false
             {surfaceAnchor.label}
           </p>
         </div>
-        <p className="text-[0.8rem] leading-relaxed" style={{ color: WIDA_INK }}>
+        <p className="text-[0.825rem] font-semibold text-gray-800 leading-tight">
           {embeddedMove}
         </p>
       </div>
@@ -98,20 +95,20 @@ export default function EldProficiencyView({ activityId, lesson, compact = false
       className="rounded-lg border overflow-hidden"
       style={{ backgroundColor: WIDA_BG, borderColor: WIDA_BORDER }}
     >
-      <div
-        className="px-4 py-2.5 flex items-baseline gap-2 flex-wrap border-b"
-        style={{ borderColor: WIDA_BORDER }}
-      >
-        <span
-          className="text-[9px] font-bold uppercase tracking-[0.1em] text-white px-2 py-0.5 rounded-full"
-          style={{ backgroundColor: WIDA_ACCENT }}
-        >
-          WIDA {surfaceAnchor.level}
-        </span>
-        <p className="text-[0.95rem] font-semibold" style={{ color: WIDA_INK }}>
-          For a learner at {surfaceAnchor.label}
-        </p>
-      </div>
+        <div className="px-4 py-2.5 flex items-baseline gap-2 flex-wrap border-b" style={{ borderColor: WIDA_BORDER }}>
+          <span
+            className="text-[9px] font-bold uppercase tracking-[0.1em] text-white px-2 py-0.5 rounded-full"
+            style={{ backgroundColor: WIDA_ACCENT }}
+          >
+            WIDA
+          </span>
+          <p
+            className="text-[0.95rem] font-semibold"
+            style={{ color: WIDA_INK }}
+          >
+            {surfaceAnchor.label}
+          </p>
+        </div>
 
       <div className="px-4 py-3">
         <p className="text-[10px] font-semibold uppercase tracking-[0.1em] mb-1.5" style={{ color: WIDA_INK, opacity: 0.7 }}>

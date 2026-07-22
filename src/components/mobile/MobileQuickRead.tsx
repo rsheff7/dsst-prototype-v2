@@ -1,8 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { LessonData, WristbandActivity, WristbandTile, Activity } from '@/lib/types';
 import { MLRS, MlrEntry } from '@/lib/mlrs';
+import { useLesson } from '@/lib/lessonContext';
+import { kluFromElsf, resolve } from '@/lib/eld';
+import WidaMobileSelector from './WidaMobileSelector';
+import EldProficiencyView from '@/components/shared/EldProficiencyView';
 
 interface Props {
   lesson: LessonData;
@@ -30,6 +34,11 @@ const openMlrModal = (mlr: WristbandTile['mlr']) => {
 
   return (
     <div className="min-h-screen bg-surface flex flex-col">
+      {/* WIDA Proficiency Selector - Only shows when lesson has ELSF inference data */}
+      {lesson.elsf_inference && lesson.elsf_inference.activities.length > 0 && (
+        <WidaMobileSelector />
+      )}
+      
       {/* Lesson Destination - Collapsible Header */}
       <header className="bg-white border-b border-gray-200 px-4">
         <div className="py-3">
@@ -85,6 +94,7 @@ const openMlrModal = (mlr: WristbandTile['mlr']) => {
             key={wba.activity_id}
             wba={wba}
             activity={activityById[wba.activity_id]}
+            lesson={lesson}
             openMlrModal={openMlrModal}
           />
         ))}
@@ -149,16 +159,35 @@ function ActivityCard({
   wba,
   activity,
   openMlrModal,
+  lesson,
 }: {
   wba: WristbandActivity;
   activity: Activity | undefined;
   openMlrModal: (mlr: WristbandTile['mlr']) => void;
+  lesson: LessonData;
 }) {
   const [expanded, setExpanded] = useState(false);
+  const { selectedWidaLevel } = useLesson();
 
   if (!activity) return null;
 
   const frictionColor = getFrictionColor(wba.tiles[0]?.friction_type);
+
+  // ELD Convergence — resolve the embedded move for the educator-selected
+  // WIDA level. The KLU is DERIVED from ELSF's existing language_functions
+  // output (never re-inferred). If no WIDA level is selected, the embedded
+  // ELD move is not surfaced. Per architectural rule: deterministic, never
+  // runtime model.
+  const elsfActivity = lesson.elsf_inference?.activities.find(
+    (elsf) => elsf.activity_id === activity.id,
+  );
+  const eldResolved =
+    selectedWidaLevel !== null && elsfActivity
+      ? resolve(
+          kluFromElsf(elsfActivity.functional_language.language_functions),
+          selectedWidaLevel,
+        )
+      : null;
 
   return (
     <article className="w-full rounded-lg bg-white border border-gray-200 shadow-sm overflow-hidden">
@@ -213,6 +242,9 @@ function ActivityCard({
                 <MomentTile key={i} tile={tile} openMlrModal={openMlrModal} />
               ))}
             </div>
+
+            {/* ELD Guidance - only shows when WIDA level is selected */}
+            <EldProficiencyView activityId={activity.id} lesson={lesson} compact />
 
             {/* Synthesis */}
             {wba.synthesis_short && (

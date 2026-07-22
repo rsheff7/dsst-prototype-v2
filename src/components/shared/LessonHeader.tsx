@@ -24,6 +24,7 @@ interface LessonHeaderProps {
 
 export default function LessonHeader({ lesson, activeTool, compact, onSavePlan }: LessonHeaderProps) {
   const { meta } = lesson;
+  const hasElsfInference = lesson.elsf_inference?.activities && lesson.elsf_inference.activities.length > 0;
 
 if (compact) {
     return (
@@ -68,7 +69,7 @@ if (compact) {
       >
         {meta.lesson_title}
       </p>
-      <WidaLevelSelector />
+      {hasElsfInference && <WidaLevelSelector />}
     </div>
   );
 }
