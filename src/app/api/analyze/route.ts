@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Anthropic from '@anthropic-ai/sdk';
 import { composeSystemPrompt } from '@/lib/prompts';
+import { telemetry } from '@/lib/telemetry';
 import {
   LessonData,
   MlrRef,
@@ -332,6 +333,7 @@ function normalizeLesson(raw: Partial<LessonData> & Record<string, unknown>): Le
 }
 
 export async function POST(req: NextRequest) {
+  const pipelineStart = Date.now();
   const t0 = Date.now();
   const log = (msg: string, extra?: Record<string, unknown>) => {
     console.log(`[analyze +${Date.now() - t0}ms] ${msg}`, extra ?? '');
@@ -365,16 +367,22 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'No file uploaded.' }, { status: 400 });
     }
     log('received file', { name: file.name, size: file.size });
+    
+    // Log pipeline start with PDF size
+    telemetry.logPipelineStart(file.name, file.size);
 
     const buffer = Buffer.from(await file.arrayBuffer());
 
     let pdfText: string;
+    const pdfParseStart = Date.now();
     try {
       // eslint-disable-next-line @typescript-eslint/no-require-imports
       const pdfParse = require('pdf-parse/lib/pdf-parse.js');
       const data = await pdfParse(buffer);
       pdfText = data.text;
-      log('pdf parsed', { chars: pdfText.length });
+      const pdfDuration = Date.now() - pdfParseStart;
+      log('pdf parsed', { chars: pdfText.length, duration_ms: pdfDuration });
+      telemetry.logPdfExtractionComplete(pdfDuration, pdfText.length);
     } catch (err) {
       console.error('[analyze] pdf-parse failed:', err);
       return NextResponse.json(
@@ -558,6 +566,8 @@ ${truncatedText}`;
       userMessage: string,
       max_tokens: number,
     ): Promise<PassResult> {
+      const passStart = Date.now();
+      telemetry.logInferenceStart(passName, passName);
       try {
         log(`calling Anthropic — pass ${passName}`);
         const message = await client.messages.create({
@@ -566,10 +576,18 @@ ${truncatedText}`;
           system: composeSystemPrompt(),
           messages: [{ role: 'user', content: userMessage }],
         });
+        const passDuration = Date.now() - passStart;
         log(`Pass ${passName} returned`, {
           stop_reason: message.stop_reason,
           output_tokens: message.usage?.output_tokens,
+          duration_ms: passDuration,
         });
+        telemetry.logInferenceComplete(
+          passName,
+          passDuration,
+          message.usage?.input_tokens ?? 0,
+          message.usage?.output_tokens ?? 0,
+        );
 
         const block = message.content.find((b) => b.type === 'text');
         if (!block || block.type !== 'text') {
@@ -618,9 +636,29 @@ ${truncatedText}`;
           };
         }
       } catch (err) {
+        const passDuration = Date.now() - passStart;
         console.error(`[analyze] Pass ${passName} Anthropic call failed:`, err);
         const apiErr = err as { status?: number; message?: string; error?: { message?: string } };
         const detail = apiErr?.error?.message ?? apiErr?.message ?? 'Unknown Anthropic error';
+        
+        // Categorize the error for telemetry
+        let errorCategory = 'unknown';
+        if (/timeout|timed out|aborted/i.test(detail)) {
+          errorCategory = 'timeout';
+        } else if (apiErr?.status === 401) {
+          errorCategory = 'authentication';
+        } else if (apiErr?.status === 429) {
+          errorCategory = 'rate_limit';
+        } else if (apiErr?.status === 408) {
+          errorCategory = 'timeout';
+        } else if (apiErr?.status && apiErr.status >= 500) {
+          errorCategory = 'server_error';
+        } else if (apiErr?.status === 400) {
+          errorCategory = 'bad_request';
+        }
+        
+        telemetry.logInferenceError(passName, errorCategory, detail, passDuration);
+        
         const isTimeout = /timeout|timed out|aborted/i.test(detail) || apiErr?.status === 408;
         if (isTimeout) {
           return {
@@ -708,10 +746,16 @@ ${truncatedText}`;
 
     const lesson = normalizeLesson(parsed);
     log('normalized lesson');
+    
+    const totalDuration = Date.now() - pipelineStart;
+    telemetry.logPipelineComplete(totalDuration, 4);
+    
     return NextResponse.json(lesson);
   } catch (err) {
+    const totalDuration = Date.now() - pipelineStart;
     console.error('[analyze] Unexpected error:', err);
     const msg = err instanceof Error ? err.message : String(err);
+    telemetry.logPipelineError('unexpected', msg, totalDuration);
     return NextResponse.json(
       { error: `Unexpected server error: ${msg}` },
       { status: 500 },
