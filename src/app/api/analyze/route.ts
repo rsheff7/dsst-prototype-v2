@@ -619,12 +619,17 @@ ${truncatedText}`;
         }
 
         try {
-          const parsed = JSON.parse(extractJSON(block.text)) as Partial<LessonData> &
+          const extracted = extractJSON(block.text);
+          const parsed = JSON.parse(extracted) as Partial<LessonData> &
             Record<string, unknown>;
           return { ok: true, parsed };
         } catch (err) {
+          const extracted = extractJSON(block.text);
           console.error(`[analyze] Pass ${passName} JSON parse error:`, err);
-          console.error(`[analyze] Pass ${passName} last 500 chars:`, block.text.slice(-500));
+          console.error(`[analyze] Pass ${passName} extracted JSON (first 500 chars):`, extracted.slice(0, 500));
+          console.error(`[analyze] Pass ${passName} extracted JSON (last 500 chars):`, extracted.slice(-500));
+          console.error(`[analyze] Pass ${passName} raw text length:`, block.text.length);
+          console.error(`[analyze] Pass ${passName} extracted length:`, extracted.length);
           return {
             ok: false,
             response: NextResponse.json(

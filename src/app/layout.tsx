@@ -2,6 +2,12 @@ import type { Metadata } from 'next';
 import { DM_Sans, DM_Serif_Display } from 'next/font/google';
 import './globals.css';
 import { LessonProvider } from '@/lib/lessonContext';
+import { telemetry } from '@/lib/telemetry';
+
+// Log app startup when telemetry is enabled
+if (process.env.DSST_TELEMETRY_ENABLED === 'true') {
+  telemetry.logDebug('app_startup', { version: '2.4' });
+}
 
 const dmSans = DM_Sans({
   variable: '--font-dm-sans',
