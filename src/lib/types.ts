@@ -1,5 +1,6 @@
 import { MlrNumber } from './mlrs';
 import { ELSFGuidelineNumber } from './elsf';
+import { LLMResponse } from './llm-client';
 
 export interface MlrRef {
   number: MlrNumber;
@@ -240,6 +241,13 @@ export interface LessonSynthesis {
   builds_on: string[];
 }
 
+export interface AnchorOutput {
+  text: string;
+  stop_reason: string;
+  input_tokens: number;
+  output_tokens: number;
+}
+
 export interface LessonData {
   meta: LessonMeta;
   arc_statement: string;
@@ -253,6 +261,7 @@ export interface LessonData {
   mlr_inference: MlrInference;
   lesson_synthesis: LessonSynthesis;
   wristband: Wristband;
+  anchor?: AnchorOutput;
 }
 
 export type ToolId = 'quickread' | 'pathway' | 'adapt' | 'thinking' | 'moves';

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import Anthropic from '@anthropic-ai/sdk';
+import { createLLMClient, LLMClient, LLMResponse } from '@/lib/llm-client';
 import { composeSystemPrompt } from '@/lib/prompts';
 import { telemetry } from '@/lib/telemetry';
 import {
@@ -340,12 +340,23 @@ export async function POST(req: NextRequest) {
   };
 
   try {
-    if (!process.env.ANTHROPIC_API_KEY) {
+    const provider = (process.env.MODEL_PROVIDER ?? 'anthropic').toLowerCase();
+    if (provider === 'anthropic' && !process.env.ANTHROPIC_API_KEY) {
       console.error('[analyze] ANTHROPIC_API_KEY not set on this deployment');
       return NextResponse.json(
         {
           error:
             'Server is missing the Anthropic API key. The deployment needs ANTHROPIC_API_KEY set (Vercel → Project → Settings → Environment Variables, scope: Preview + Production).',
+        },
+        { status: 500 },
+      );
+    }
+    if (provider === 'gemini' && !process.env.GEMINI_API_KEY) {
+      console.error('[analyze] GEMINI_API_KEY not set on this deployment');
+      return NextResponse.json(
+        {
+          error:
+            'Server is missing the Gemini API key. The deployment needs GEMINI_API_KEY set.',
         },
         { status: 500 },
       );
@@ -417,7 +428,7 @@ export async function POST(req: NextRequest) {
     //
     // Per-call client timeout 200s gives margin over typical wall times and
     // stays well under the 600s function maxDuration.
-    const client = new Anthropic({ timeout: 200_000, maxRetries: 0 });
+    const llm = createLLMClient(provider);
 
     const concisionRules = `OUTPUT FORMAT — MANDATORY:
 - Begin your response immediately with the opening brace { of the JSON object.
@@ -558,54 +569,49 @@ Lesson text:
 ${truncatedText}`;
 
     type PassResult =
-      | { ok: true; parsed: Partial<LessonData> & Record<string, unknown> }
+      | { ok: true; parsed: Partial<LessonData> & Record<string, unknown>; resp: LLMResponse }
       | { ok: false; response: NextResponse };
 
     async function runPass(
       passName: string,
       userMessage: string,
-      max_tokens: number,
+      maxTokens: number,
     ): Promise<PassResult> {
       const passStart = Date.now();
       telemetry.logInferenceStart(passName, passName);
       try {
-        log(`calling Anthropic — pass ${passName}`);
-        const message = await client.messages.create({
-          model: 'claude-sonnet-4-6',
-          max_tokens,
-          system: composeSystemPrompt(),
-          messages: [{ role: 'user', content: userMessage }],
-        });
+        log(`calling ${provider} — pass ${passName}`);
+        const resp = await llm.run(composeSystemPrompt(), userMessage, maxTokens);
         const passDuration = Date.now() - passStart;
         log(`Pass ${passName} returned`, {
-          stop_reason: message.stop_reason,
-          output_tokens: message.usage?.output_tokens,
+          stop_reason: resp.stopReason,
+          output_tokens: resp.outputTokens,
           duration_ms: passDuration,
         });
         telemetry.logInferenceComplete(
           passName,
           passDuration,
-          message.usage?.input_tokens ?? 0,
-          message.usage?.output_tokens ?? 0,
+          resp.inputTokens,
+          resp.outputTokens,
         );
 
-        const block = message.content.find((b) => b.type === 'text');
-        if (!block || block.type !== 'text') {
-          console.error(`[analyze] Pass ${passName}: no text block. stop_reason:`, message.stop_reason);
+        if (!resp.text) {
+          console.error(`[analyze] Pass ${passName}: no text. stop_reason:`, resp.stopReason);
           return {
             ok: false,
             response: NextResponse.json(
-              { error: `Pass ${passName} returned no text (stop_reason: ${message.stop_reason}).` },
+              { error: `Pass ${passName} returned no text (stop_reason: ${resp.stopReason}).` },
               { status: 502 },
             ),
           };
         }
 
-        if (message.stop_reason === 'max_tokens') {
-          const outputTokens = message.usage?.output_tokens ?? '?';
+        const hitTokenLimit = resp.stopReason === 'max_tokens' || resp.stopReason === 'max-tokens';
+        if (hitTokenLimit) {
+          const outputTokens = resp.outputTokens ?? '?';
           console.error(
             `[analyze] Pass ${passName} truncated at ${outputTokens} tokens. Last 300 chars:`,
-            block.text.slice(-300),
+            resp.text.slice(-300),
           );
           return {
             ok: false,
@@ -619,22 +625,22 @@ ${truncatedText}`;
         }
 
         try {
-          const extracted = extractJSON(block.text);
+          const extracted = extractJSON(resp.text);
           const parsed = JSON.parse(extracted) as Partial<LessonData> &
             Record<string, unknown>;
-          return { ok: true, parsed };
+          return { ok: true, parsed, resp };
         } catch (err) {
-          const extracted = extractJSON(block.text);
+          const extracted = extractJSON(resp.text);
           console.error(`[analyze] Pass ${passName} JSON parse error:`, err);
           console.error(`[analyze] Pass ${passName} extracted JSON (first 500 chars):`, extracted.slice(0, 500));
           console.error(`[analyze] Pass ${passName} extracted JSON (last 500 chars):`, extracted.slice(-500));
-          console.error(`[analyze] Pass ${passName} raw text length:`, block.text.length);
+          console.error(`[analyze] Pass ${passName} raw text length:`, resp.text.length);
           console.error(`[analyze] Pass ${passName} extracted length:`, extracted.length);
           return {
             ok: false,
             response: NextResponse.json(
               {
-                error: `Pass ${passName} returned text that was not valid JSON (stop_reason: ${message.stop_reason}). Try uploading again — this is usually transient.`,
+                error: `Pass ${passName} returned text that was not valid JSON (stop_reason: ${resp.stopReason}). Try uploading again — this is usually transient.`,
               },
               { status: 502 },
             ),
@@ -642,10 +648,10 @@ ${truncatedText}`;
         }
       } catch (err) {
         const passDuration = Date.now() - passStart;
-        console.error(`[analyze] Pass ${passName} Anthropic call failed:`, err);
+        console.error(`[analyze] Pass ${passName} API call failed:`, err);
         const apiErr = err as { status?: number; message?: string; error?: { message?: string } };
-        const detail = apiErr?.error?.message ?? apiErr?.message ?? 'Unknown Anthropic error';
-        
+        const detail = apiErr?.error?.message ?? apiErr?.message ?? 'Unknown API error';
+
         // Categorize the error for telemetry
         let errorCategory = 'unknown';
         if (/timeout|timed out|aborted/i.test(detail)) {
@@ -661,9 +667,9 @@ ${truncatedText}`;
         } else if (apiErr?.status === 400) {
           errorCategory = 'bad_request';
         }
-        
+
         telemetry.logInferenceError(passName, errorCategory, detail, passDuration);
-        
+
         const isTimeout = /timeout|timed out|aborted/i.test(detail) || apiErr?.status === 408;
         if (isTimeout) {
           return {
@@ -678,7 +684,7 @@ ${truncatedText}`;
           return {
             ok: false,
             response: NextResponse.json(
-              { error: 'Anthropic rejected the API key (401). The deployment key is invalid or expired.' },
+              { error: `${provider} rejected the API key (401). The deployment key is invalid or expired.` },
               { status: 502 },
             ),
           };
@@ -687,7 +693,7 @@ ${truncatedText}`;
           return {
             ok: false,
             response: NextResponse.json(
-              { error: `Anthropic rate limit hit on Pass ${passName}. Wait a minute and try again.` },
+              { error: `${provider} rate limit hit on Pass ${passName}. Wait a minute and try again.` },
               { status: 502 },
             ),
           };
@@ -695,7 +701,7 @@ ${truncatedText}`;
         return {
           ok: false,
           response: NextResponse.json(
-            { error: `Anthropic API error on Pass ${passName}: ${detail}` },
+            { error: `${provider} API error on Pass ${passName}: ${detail}` },
             { status: 502 },
           ),
         };
@@ -751,6 +757,16 @@ ${truncatedText}`;
 
     const lesson = normalizeLesson(parsed);
     log('normalized lesson');
+    
+    // Persist the raw anchor response for quality evaluation (Gemini vs Claude comparison).
+    if (resAnchor.ok) {
+      (lesson as any).anchor = {
+        text: resAnchor.resp.text,
+        stop_reason: resAnchor.resp.stopReason,
+        input_tokens: resAnchor.resp.inputTokens ?? 0,
+        output_tokens: resAnchor.resp.outputTokens ?? 0,
+      };
+    }
     
     const totalDuration = Date.now() - pipelineStart;
     telemetry.logPipelineComplete(totalDuration, 4);
