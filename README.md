@@ -28,3 +28,23 @@ npm run dev
 ```
 
 Set `ANTHROPIC_API_KEY` in `.env.local`.
+
+## Telemetry
+
+Structured logging for the PDF inference pipeline. Disabled by default.
+
+**Enable:** Set `DSST_TELEMETRY_ENABLED=true` in `.env.local` and restart the dev server.
+
+**Logs:** `~/Library/Logs/DSST/dsst_structured.jsonl` — one JSON object per line.
+
+**Format:** Each entry has `timestamp`, `level`, `category`, `event`, and `metadata`. See `ws-telemetry/README.md` for the full schema, event catalog, and developer guidelines.
+
+## Telemetry
+
+Structured logging for the PDF inference pipeline. Disabled by default.
+
+**Enable:** Set `DSST_TELEMETRY_ENABLED=true` in `.env.local` and restart the dev server.
+
+**Logs:** `~/Library/Logs/DSST/dsst_structured.jsonl` — one JSON object per line.
+
+**Format:** Each entry has `timestamp`, `level`, `category`, `event`, and `metadata`. See `ws-telemetry/README.md` for the full schema, event catalog, and developer guidelines.

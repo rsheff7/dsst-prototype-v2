@@ -1,15 +1,15 @@
 import Anthropic from '@anthropic-ai/sdk';
-import { GoogleGenerativeAI } from '@google/generative-ai';
 
 export interface LLMResponse {
   text: string;
   stopReason: string;
   inputTokens: number;
   outputTokens: number;
+  thinkingTokens?: number;
 }
 
 export interface LLMClient {
-  run(systemPrompt: string, userMessage: string, maxTokens: number): Promise<LLMResponse>;
+  run(systemPrompt: string, userMessage: string, maxTokens: number, thinkingLevel?: 'MINIMAL' | 'LOW' | 'MEDIUM' | 'HIGH'): Promise<LLMResponse>;
 }
 
 export class AnthropicClient implements LLMClient {
@@ -23,9 +23,14 @@ export class AnthropicClient implements LLMClient {
     });
   }
 
-  async run(systemPrompt: string, userMessage: string, maxTokens: number): Promise<LLMResponse> {
+  async run(systemPrompt: string, userMessage: string, maxTokens: number, _thinkingLevel?: 'MINIMAL' | 'LOW' | 'MEDIUM' | 'HIGH'): Promise<LLMResponse> {
+    // Model name — configurable via CLAUDE_MODEL env var (default: claude-sonnet-4-6).
+    const modelName = process.env.CLAUDE_MODEL ?? 'claude-sonnet-4-6';
+
+    // Anthropic counts thinking tokens separately from max_tokens.
+    // _thinkingLevel is accepted for interface compatibility but ignored.
     const message = await this.client.messages.create({
-      model: 'claude-sonnet-4-6',
+      model: modelName,
       max_tokens: maxTokens,
       system: systemPrompt,
       messages: [{ role: 'user', content: userMessage }],
@@ -46,45 +51,109 @@ export class AnthropicClient implements LLMClient {
 }
 
 export class GeminiClient implements LLMClient {
-  private model: ReturnType<GoogleGenerativeAI['getGenerativeModel']>;
+  private apiKey: string;
 
   constructor(apiKey?: string) {
-    const genAI = new GoogleGenerativeAI(apiKey ?? process.env.GEMINI_API_KEY!);
-    this.model = genAI.getGenerativeModel({ model: 'gemini-3.6-flash' });
+    // Automatically reads from process.env.GEMINI_API_KEY if apiKey argument is omitted.
+    this.apiKey = apiKey ?? (process.env.GEMINI_API_KEY ?? '');
   }
 
-  async run(systemPrompt: string, userMessage: string, maxTokens: number): Promise<LLMResponse> {
+  async run(systemPrompt: string, userMessage: string, maxTokens: number, thinkingLevel?: 'MINIMAL' | 'LOW' | 'MEDIUM' | 'HIGH'): Promise<LLMResponse> {
+    // Model name — configurable via GEMINI_MODEL env var (default: gemini-3.6-flash).
+    const modelName = process.env.GEMINI_MODEL ?? 'gemini-3.6-flash';
+
     // Gemini doesn't understand markdown <img> tags. Extract base64 images
     // and convert them to inlineData parts, interleaved with plain text blocks.
     const parts = this.parseUserMessage(userMessage);
 
-    const result = await this.model.generateContent({
-      systemInstruction: { text: systemPrompt },
-      contents: [{ role: 'user', parts }],
-      generationConfig: {
-        maxOutputTokens: maxTokens,
+    // Gemini 3.6 uses the Interactions API with a different request shape.
+    // system_instruction is a plain string; input handles text/multimodal content.
+    // thinking_level uses lowercase values: minimal | low | medium | high
+    const level = (thinkingLevel ?? 'MINIMAL').toLowerCase();
+
+    const body: Record<string, unknown> = {
+      model: modelName,
+      system_instruction: systemPrompt || null,
+      input: parts.map((p) => {
+            // Map parts to the Interactions API input format.
+        if ('inlineData' in p) {
+          const id = p.inlineData;
+          // PDFs use the `document` type with base64 data + mime_type
+          if (id.mimeType === 'application/pdf') {
+            return { type: 'document', data: id.data, mime_type: id.mimeType };
+          }
+          // Images use snake_case `mime_type` inside inline_data
+          return { type: 'image', inline_data: { mime_type: id.mimeType, data: id.data } };
+        }
+        // Plain text parts
+        if ('text' in p) {
+          return { type: 'text', text: p.text };
+        }
+        return { type: 'text', text: '' };
+      }),
+      generation_config: {
+        max_output_tokens: maxTokens,
+        thinking_level: level,
       },
-    });
+    };
 
-    const response = result.response;
-    const text = response.text();
-
-    if (!text) {
-      throw new Error('Gemini returned no text');
+    // Remove system_instruction if null to keep the payload clean.
+    if (!systemPrompt) {
+      delete body.system_instruction;
     }
 
-    const usage = response.usageMetadata;
-    const candidate = response.candidates?.[0];
-    const finishReason = candidate?.finishReason ?? 'unknown';
+    const url = `https://generativelanguage.googleapis.com/v1beta/interactions?key=${this.apiKey}`;
 
-    console.log(`[Gemini] finish_reason: ${finishReason}, output_tokens: ${usage?.candidatesTokenCount ?? 0}`);
+    console.log(`[GEMINI] REQUEST → model=${modelName} maxOutputTokens=${maxTokens} thinkingLevel=${level} parts=${parts.length}`);
 
-    return {
-      text,
-      stopReason: finishReason.toLowerCase().replace(/_/g, '-'),
-      inputTokens: usage?.promptTokenCount ?? 0,
-      outputTokens: usage?.candidatesTokenCount ?? 0,
-    };
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+
+      const data: Record<string, unknown> = await response.json();
+
+      // Check for API errors first.
+      if (data.error) {
+        throw new Error(`Gemini API error: ${JSON.stringify(data.error)}`);
+      }
+
+      // Interactions API returns a `steps` array with typed content blocks.
+      // Extract text from `model_output` steps.
+      const steps = Array.isArray(data.steps) ? (data.steps as Array<{ type: string; content?: Array<{ type: string; text?: string }> }>) : [];
+      let outputText = '';
+      for (const step of steps) {
+        if (step.type === 'model_output') {
+          for (const block of (step.content || [])) {
+            if (block.type === 'text' && block.text) outputText += block.text;
+          }
+        }
+      }
+      if (!outputText) {
+        throw new Error('Gemini returned no text content');
+      }
+
+      // Usage metadata — Interactions API uses flat `usage` object with snake_case keys.
+      const usage = (data.usage || {}) as Record<string, unknown>;
+      const inputTokens = (usage.total_input_tokens as number) ?? 0;
+      const outputTokens = (usage.total_output_tokens as number) ?? 0;
+      const thinkingTokens = (usage.total_thought_tokens as number) ?? 0;
+
+      console.log(`[GEMINI] RESPONSE ← output_tokens=${outputTokens} input_tokens=${inputTokens} thinking_tokens=${thinkingTokens}`);
+
+      return {
+        text: outputText,
+        stopReason: 'stop',
+        inputTokens,
+        outputTokens,
+        thinkingTokens,
+      };
+    } catch (error) {
+      console.error('[GEMINI] Runtime error:', error);
+      throw error;
+    }
   }
 
   /**
@@ -92,10 +161,10 @@ export class GeminiClient implements LLMClient {
    * data URIs. Returns an array of Gemini content parts — text blocks for
    * prose and inlineData blocks for images, preserving original order.
    */
-  private parseUserMessage(message: string): Array<{ text: string } | { inlineData: { mimeType: string; data: string } }> {
+  private parseUserMessage(message: string): Array<{ type: 'text'; text: string } | { type: 'image'; inlineData: { mimeType: string; data: string } }> {
     // Matches: <img src="data:<mime>;base64,<base64>" ...>
     const imgRegex = /<img[^>]+src="data:([^;]+);base64,([^"]+)"[^>]*>/gi;
-    const parts: Array<{ text: string } | { inlineData: { mimeType: string; data: string } }> = [];
+    const parts: Array<{ type: 'text'; text: string } | { type: 'image'; inlineData: { mimeType: string; data: string } }> = [];
     let lastIndex = 0;
     let match;
 
@@ -104,14 +173,14 @@ export class GeminiClient implements LLMClient {
       if (match.index > lastIndex) {
         const textBefore = message.slice(lastIndex, match.index).trim();
         if (textBefore) {
-          parts.push({ text: textBefore });
+          parts.push({ type: 'text', text: textBefore });
         }
       }
 
       // Add the image as inlineData
       const mimeType = match[1];
       const base64Data = match[2];
-      parts.push({ inlineData: { mimeType, data: base64Data } });
+      parts.push({ type: 'image', inlineData: { mimeType, data: base64Data } });
 
       lastIndex = match.index + match[0].length;
     }
@@ -120,13 +189,13 @@ export class GeminiClient implements LLMClient {
     if (lastIndex < message.length) {
       const textAfter = message.slice(lastIndex).trim();
       if (textAfter) {
-        parts.push({ text: textAfter });
+        parts.push({ type: 'text', text: textAfter });
       }
     }
 
     // If no images found, return the whole message as a single text part
     if (parts.length === 0) {
-      parts.push({ text: message });
+      parts.push({ type: 'text', text: message });
     }
 
     return parts;

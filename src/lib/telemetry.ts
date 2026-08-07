@@ -18,6 +18,8 @@ class TelemetryLogger {
   private readonly maxFileSize: number = 10 * 1024 * 1024 // 10MB
   private readonly backupCount: number = 1
   private enabled: boolean
+  private currentRunId: string | null = null
+  private currentConfig: Record<string, unknown> | null = null
 
   private constructor() {
     // Log to ~/Library/Logs/DSST/dsst_structured.jsonl
@@ -46,6 +48,22 @@ class TelemetryLogger {
     return this.enabled
   }
 
+  // Set the run identifier for benchmark tracking.
+  // When non-null, every emitted event gets a `run_id` metadata field.
+  setRunId(runId: string | null): void {
+    this.currentRunId = runId
+  }
+
+  getRunId(): string | null {
+    return this.currentRunId
+  }
+
+  // Set run-level configuration snapshot (provider, model, thinking_budgets, etc.)
+  // This gets injected into every event in the run.
+  setRunConfig(config: Record<string, unknown> | null): void {
+    this.currentConfig = config
+  }
+
   // Rotate log file if it exceeds max size
   private rotateIfNeeded(): void {
     if (!fs.existsSync(this.logFile)) return
@@ -65,13 +83,21 @@ class TelemetryLogger {
     }
   }
 
-  // Write a single event to the log file
+  // Write a single event to the log file. Automatically injects run_id and config.
   private write(event: TelemetryEvent): void {
     if (!this.enabled) return
 
     try {
       this.rotateIfNeeded()
-      const line = JSON.stringify(event) + '\n'
+      const enriched = {
+        ...event,
+        metadata: {
+          ...event.metadata,
+          ...(this.currentConfig || {}),
+          ...(this.currentRunId ? { run_id: this.currentRunId } : {}),
+        }
+      }
+      const line = JSON.stringify(enriched) + '\n'
       fs.appendFileSync(this.logFile, line, 'utf8')
     } catch (error) {
       console.error('Failed to write telemetry event:', error)
@@ -80,13 +106,18 @@ class TelemetryLogger {
 
   // Convenience methods for common event types
 
-  logPipelineStart(lessonId: string, pdfSizeBytes: number): void {
+  // Begin a pipeline run with optional configuration snapshot.
+  // `config` captures model, provider, thinking_budgets, max_tokens per pass, system_prompt_hash, etc.
+  logPipelineStart(lessonId: string, pdfSizeBytes: number, config?: Record<string, unknown>): void {
+    if (config) {
+      this.setRunConfig(config)
+    }
     this.write({
       timestamp: new Date().toISOString(),
       level: 'info',
       category: 'pipeline',
       event: 'pipeline_start',
-      metadata: { lesson_id: lessonId, pdf_size_bytes: pdfSizeBytes }
+      metadata: { lesson_id: lessonId, pdf_size_bytes: pdfSizeBytes, ...(config || {}) }
     })
   }
 
@@ -100,23 +131,23 @@ class TelemetryLogger {
     })
   }
 
-  logInferenceStart(pass: string, passName: string): void {
+  logInferenceStart(pass: string, passName: string, config?: Record<string, unknown>): void {
     this.write({
       timestamp: new Date().toISOString(),
       level: 'info',
       category: 'inference',
       event: 'inference_start',
-      metadata: { pass, pass_name: passName }
+      metadata: { pass, pass_name: passName, ...(config || {}) }
     })
   }
 
-  logInferenceComplete(pass: string, durationMs: number, inputTokens: number, outputTokens: number): void {
+  logInferenceComplete(runId: string | null, pass: string, durationMs: number, inputTokens: number, outputTokens: number, extra?: Record<string, unknown>): void {
     this.write({
       timestamp: new Date().toISOString(),
       level: 'info',
       category: 'inference',
       event: 'inference_complete',
-      metadata: { pass, duration_ms: durationMs, input_tokens: inputTokens, output_tokens: outputTokens }
+      metadata: { ...(runId ? { run_id: runId } : {}), pass, duration_ms: durationMs, input_tokens: inputTokens, output_tokens: outputTokens, ...(extra || {}) }
     })
   }
 
@@ -135,13 +166,14 @@ class TelemetryLogger {
     })
   }
 
-  logPipelineComplete(totalDurationMs: number, passCount: number): void {
+  // Complete pipeline with optional extra metadata (provider, model snapshot, thinking_budgets used)
+  logPipelineComplete(totalDurationMs: number, passCount: number, extra?: Record<string, unknown>): void {
     this.write({
       timestamp: new Date().toISOString(),
       level: 'info',
       category: 'pipeline',
       event: 'pipeline_complete',
-      metadata: { total_duration_ms: totalDurationMs, pass_count: passCount }
+      metadata: { total_duration_ms: totalDurationMs, pass_count: passCount, ...(extra || {}) }
     })
   }
 

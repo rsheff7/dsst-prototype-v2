@@ -194,14 +194,10 @@ function PlanView({
 }) {
   return (
     <>
-      {wb.preflight.length > 0 && (
-        <section
-          className="qr-preflight rounded-xl border border-line bg-card shadow-sm overflow-hidden mb-6"
-        >
+      {Array.isArray(wb.preflight) && wb.preflight.length > 0 && (
+        <section className="qr-preflight rounded-xl border border-line bg-card shadow-sm overflow-hidden mb-6">
           <div className="px-5 py-3 border-b border-line-subtle bg-surface">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint">
-              Before you begin
-            </p>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint">Before you begin</p>
           </div>
           <ul className="px-5 py-4 space-y-2.5">
             {wb.preflight.map((item, i) => (

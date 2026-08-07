@@ -379,8 +379,24 @@ export async function POST(req: NextRequest) {
     }
     log('received file', { name: file.name, size: file.size });
     
-    // Log pipeline start with PDF size
-    telemetry.logPipelineStart(file.name, file.size);
+// Telemetry: inject run_id and run config into every event.
+    // DSST_RUN_ID env var sets the benchmark run identifier.
+    const runId = process.env.DSST_RUN_ID || null;
+    if (runId) {
+      telemetry.setRunId(runId);
+    }
+
+    // Read model names from env with sensible defaults so testing doesn't require code changes.
+    const geminiModel = process.env.GEMINI_MODEL ?? 'gemini-3.6-flash';
+    const claudeModel = process.env.CLAUDE_MODEL ?? 'claude-sonnet-4-6';
+
+    const runConfig: Record<string, unknown> = {
+      provider,
+      model: provider === 'gemini' ? geminiModel : claudeModel,
+      // max_tokens and thinking_budgets are logged per-pass in runPass
+    };
+
+    telemetry.logPipelineStart(file.name, file.size, runConfig);
 
     const buffer = Buffer.from(await file.arrayBuffer());
 
@@ -576,12 +592,13 @@ ${truncatedText}`;
       passName: string,
       userMessage: string,
       maxTokens: number,
+      thinkingLevel?: 'MINIMAL' | 'LOW' | 'MEDIUM' | 'HIGH',
     ): Promise<PassResult> {
       const passStart = Date.now();
       telemetry.logInferenceStart(passName, passName);
       try {
         log(`calling ${provider} — pass ${passName}`);
-        const resp = await llm.run(composeSystemPrompt(), userMessage, maxTokens);
+        const resp = await llm.run(composeSystemPrompt(), userMessage, maxTokens, thinkingLevel);
         const passDuration = Date.now() - passStart;
         log(`Pass ${passName} returned`, {
           stop_reason: resp.stopReason,
@@ -589,10 +606,12 @@ ${truncatedText}`;
           duration_ms: passDuration,
         });
         telemetry.logInferenceComplete(
+          runId,
           passName,
           passDuration,
           resp.inputTokens,
           resp.outputTokens,
+          { stop_reason: resp.stopReason, ...(resp.thinkingTokens !== undefined && { thinking_tokens: resp.thinkingTokens }) },
         );
 
         if (!resp.text) {
@@ -708,18 +727,25 @@ ${truncatedText}`;
       }
     }
 
-    log('starting anchor pass (Pass 0)');
-    const resAnchor = await runPass('0 (anchor)', passAnchorMessage, 2000);
+log('starting anchor pass (Pass 0)');
+
+    // Gemini uses thinkingLevel (MINIMAL | LOW | MEDIUM | HIGH).
+    // Override with GEMINI_THINKING_LEVEL env var. Cap all passes at MAX_TOKENS
+    // when set — useful for benchmarks where we want uniform limits across models.
+    const geminiThinking = provider === 'gemini' ? (process.env.GEMINI_THINKING_LEVEL ?? 'LOW') as 'MINIMAL' | 'LOW' | 'MEDIUM' | 'HIGH' : undefined;
+    const maxTokensCap = process.env.MAX_TOKENS ? Number(process.env.MAX_TOKENS) : 32000;
+
+    const resAnchor = await runPass('0 (anchor)', passAnchorMessage, maxTokensCap, geminiThinking);
     if (!resAnchor.ok) return resAnchor.response;
     const anchorJson = JSON.stringify(resAnchor.parsed, null, 2);
     log('anchor returned', { anchor_size_chars: anchorJson.length });
 
-    log('starting 4 parallel passes given anchor');
+    log('starting parallel passes');
     const [resA, resB, resC, resD] = await Promise.all([
-      runPass('A (structure)', buildPassAMessage(anchorJson), 8000),
-      runPass('B (MLR + ELSF inference)', buildPassBMessage(anchorJson), 6000),
-      runPass('C (anticipated thinking)', buildPassCMessage_Thinking(anchorJson), 6000),
-      runPass('D (decisions + wristband)', buildPassDMessage(anchorJson), 8000),
+      runPass('A (structure)', buildPassAMessage(anchorJson), maxTokensCap, geminiThinking),
+      runPass('B (MLR + ELSF inference)', buildPassBMessage(anchorJson), maxTokensCap, geminiThinking),
+      runPass('C (anticipated thinking)', buildPassCMessage_Thinking(anchorJson), maxTokensCap, geminiThinking),
+      runPass('D (decisions + wristband)', buildPassDMessage(anchorJson), maxTokensCap, geminiThinking),
     ]);
     log('all 4 passes settled');
 
