@@ -162,16 +162,18 @@ class TelemetryLogger {
     })
   }
 
-  logInferenceError(errorCategory: string, errorMessage: string, durationMs: number): void {
+  logInferenceError(passName: string, errorCategory: string, errorMessage: string, durationMs: number): void {
     this.write({
       timestamp: new Date().toISOString(),
       level: 'error',
       category: 'error',
       event: 'inference_error',
       metadata: {
+        pass: passName,
         error_category: errorCategory,
         error_message: errorMessage,
-        duration_ms: durationMs
+        duration_ms: durationMs,
+        ...(runId ? { run_id: runId } : {})
       }
     })
   }
