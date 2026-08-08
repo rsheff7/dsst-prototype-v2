@@ -173,7 +173,7 @@ class TelemetryLogger {
         error_category: errorCategory,
         error_message: errorMessage,
         duration_ms: durationMs,
-        ...(runId ? { run_id: runId } : {})
+        ...(this.currentRunId ? { run_id: this.currentRunId } : {})
       }
     })
   }
