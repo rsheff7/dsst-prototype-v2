@@ -1,3 +1,12 @@
+import path from 'path';
+import fs from 'fs';
+import {
+  ELSF_AREAS,
+  ELSF_GUIDELINES,
+  LANGUAGE_DEMAND_GUIDELINES,
+  FUNCTIONAL_LANGUAGE_GUIDELINES,
+} from '@/lib/elsf';
+
 export const LESSON_ANALYSIS_PROMPT = `You are an expert instructional analyst supporting math teachers with 0-3 years of experience and the instructional coaches who support them. You will receive the text of a math lesson (student-facing in most cases, so MLRs will NOT be pre-labeled) and return a single JSON object describing it. Return ONLY valid JSON — no preamble, no explanation, no markdown fences.
 
 # THE FRAMEWORK — Professional Noticing in Math
@@ -72,13 +81,13 @@ LANGUAGE_DEMANDS — name the kinds of language work the activity requires:
   - productive: what students must say or write to demonstrate their thinking
   - interactive: what back-and-forth language work happens with peers
   - everyday_to_academic_bridge: where students' informal/home language sits in relation to the academic register the task requires (this IS the bridge ELSF Guideline 1c and 6c name explicitly)
-  - elsf_guidelines_applied: which of the 15 ELSF guideline numbers informed this reasoning (most relevant for this lens: 1, 2, 6 — but you may cite others)
+  - elsf_guidelines_applied: which of the 15 ELSF guideline numbers informed this reasoning (most relevant for LANGUAGE_DEMANDS: ${LANGUAGE_DEMAND_GUIDELINES.join(', ')})
 
 FUNCTIONAL_LANGUAGE — name the specific language students must USE:
   - language_functions: 2-4 functions (e.g., "explain reasoning", "describe a relationship", "compare quantities", "justify a conjecture", "translate between forms"). These are FUNCTIONS, not topics.
   - example_phrases: 2-4 concrete academic English forms students need to PRODUCE. Distinct from the sentence_frames field elsewhere — these are the forms; sentence_frames are the scaffolds.
   - l1_bridge: 1-2 sentences naming where home language or everyday English can be leveraged; null if not applicable
-  - elsf_guidelines_applied: which ELSF guideline numbers (most relevant for this lens: 1, 3, 7, 12)
+  - elsf_guidelines_applied: which ELSF guideline numbers (most relevant for FUNCTIONAL_LANGUAGE: ${FUNCTIONAL_LANGUAGE_GUIDELINES.join(', ')})
 
 The ELSF reasoning must inform what you produce downstream. Specifically:
   - by_proficiency adaptations should reflect the bridge each level needs (Emerging students need more receptive scaffolding; Expanding students need finer functional-language work)
@@ -105,13 +114,13 @@ The JSON has this shape. elsf_inference MUST be the FIRST field. mlr_inference S
         "productive": "string — what students must say or write to demonstrate their thinking",
         "interactive": "string — the back-and-forth language work that happens with peers",
         "everyday_to_academic_bridge": "string — where students' informal/home language sits in relation to the academic register the task requires",
-        "elsf_guidelines_applied": [array of 1-15 numbers — which ELSF guidelines informed this; most relevant for language demands: 1, 2, 6]
+        "elsf_guidelines_applied": [array of 1-15 numbers — which ELSF guidelines informed this; most relevant for language demands: ${LANGUAGE_DEMAND_GUIDELINES.join(', ')}]
       },
       "functional_language": {
         "language_functions": ["string — 2-4 functions students must use (explain reasoning, describe a relationship, compare quantities, etc.)"],
         "example_phrases": ["string — 2-4 concrete academic English forms students need to produce"],
         "l1_bridge": "string or null — where home language or everyday English can be leveraged",
-        "elsf_guidelines_applied": [array of 1-15 numbers — most relevant for functional language: 1, 3, 7, 12]
+        "elsf_guidelines_applied": [array of 1-15 numbers — most relevant for functional language: ${FUNCTIONAL_LANGUAGE_GUIDELINES.join(', ')}]
       }
     }]
   },
@@ -263,26 +272,64 @@ Synthesis is the move teachers skip most. The tool exists in part to make synthe
 6. WRISTBAND SHORT FORMS (synthesis_short per activity, lesson_synthesis_short for the lesson) are the in-class compressions. They MUST stay verb-first, MUST name a specific student work or question, and MUST follow the same lesson-specific rule. They are NOT generic placeholders that hand off to the robust view.
 7. Cohesion: the activity synthesis_prompts and the lesson_synthesis must trace a clear line into the lesson destination. A teacher reading the lesson_synthesis should feel it land BECAUSE the activity syntheses set it up.`;
 
-// ---------------------------------------------------------------------------
-// composeSystemPrompt: builds the full system prompt by appending the ELSF
-// Guidelines as a structured reference block. Keeps the guidelines in code
-// (src/lib/elsf.ts) rather than buried in a prompt string, so the language
-// layer is tunable by editing the constants module.
-// ---------------------------------------------------------------------------
-import { ELSF_GUIDELINES, ELSF_AREAS, LANGUAGE_DEMAND_GUIDELINES, FUNCTIONAL_LANGUAGE_GUIDELINES } from './elsf';
+/* ------------------------------------------------------------------ */
+/*  Prompt loading                                                     */
+/* ------------------------------------------------------------------ */
 
-export function composeSystemPrompt(): string {
+// Load prompt from external file if DSST_PROMPT_FILE env var is set.
+// The file may contain ${ELSF_GUIDELINES} which gets replaced at compose time.
+// Falls back to the inline constant when no file is configured.
+function loadPromptBase(): string {
+  const filePath = process.env.DSST_PROMPT_FILE;
+  if (filePath) {
+    const absPath = path.isAbsolute(filePath)
+      ? filePath
+      : path.join(process.cwd(), filePath);
+    try {
+      const content = fs.readFileSync(absPath, 'utf-8');
+      console.log(`[prompts] Loaded prompt template from: ${absPath}`);
+      return content;
+    } catch (err) {
+      console.error(`[prompts] Failed to load prompt file: ${absPath}`, err);
+      return LESSON_ANALYSIS_PROMPT;
+    }
+  }
+  return LESSON_ANALYSIS_PROMPT;
+}
+
+// Build the ELSF reference block from our structured constants.
+function buildElsfReference(): string {
   const guidelinesByArea = ELSF_AREAS.map((area) => {
     const inArea = ELSF_GUIDELINES.filter((g) => g.area === area.number);
     const lines = inArea.map((g) => {
-      const specs = g.specs.map((s) => `      ${s.id}. ${s.text}`).join('\n');
+      const specs = g.specs.map((spec) => `      ${spec.id}. ${spec.text}`).join('\n');
       return `  Guideline ${g.number}: ${g.title}\n${specs}`;
     });
     return `Area ${area.number} — ${area.name}\n${lines.join('\n\n')}`;
   }).join('\n\n');
 
-  const reference = `\n\n# ELSF GUIDELINES REFERENCE — structured injection\n\nThe following is the ELSF Guidelines for Improving Math Materials for English Learners, organized by Area of Focus. Use these to ground your elsf_inference reasoning. Cite specific guideline numbers in elsf_guidelines_applied. Most relevant for LANGUAGE_DEMANDS: ${LANGUAGE_DEMAND_GUIDELINES.join(', ')}. Most relevant for FUNCTIONAL_LANGUAGE: ${FUNCTIONAL_LANGUAGE_GUIDELINES.join(', ')}.\n\n${guidelinesByArea}\n`;
-
-  return LESSON_ANALYSIS_PROMPT + reference;
+  return `\n# ELSF GUIDELINES REFERENCE — structured injection\n\nThe following is the ELSF Guidelines for Improving Math Materials for English Learners, organized by Area of Focus. Use these to ground your elsf_inference reasoning. Cite specific guideline numbers in elsf_guidelines_applied. Most relevant for LANGUAGE_DEMANDS: ${LANGUAGE_DEMAND_GUIDELINES.join(', ')}. Most relevant for FUNCTIONAL_LANGUAGE: ${FUNCTIONAL_LANGUAGE_GUIDELINES.join(', ')}\n\n${guidelinesByArea}\n`;
 }
 
+export function composeSystemPrompt(): string {
+  const base = loadPromptBase();
+  // If the prompt file contains the ELSF placeholder, replace it. Otherwise append.
+  if (base.includes('${ELSF_GUIDELINES}')) {
+    return base.replace(/\$\{ELSF_GUIDELINES\}/, buildElsfReference());
+  }
+  return base + buildElsfReference();
+}
+
+// Snapshot the fully composed prompt (with ELSF injected) into a run folder.
+// Call this once per benchmark run so the exact prompt text is archived alongside results.
+export async function snapshotPrompt(runDir: string): Promise<void> {
+  try {
+    const fullPrompt = composeSystemPrompt();
+    const targetPath = path.join(runDir, 'prompt_snapshot.md');
+    fs.mkdirSync(runDir, { recursive: true });
+    fs.writeFileSync(targetPath, fullPrompt, 'utf-8');
+    console.log(`[prompts] Prompt snapshot written to ${targetPath}`);
+  } catch (err) {
+    console.error(`[prompts] Failed to snapshot prompt to ${runDir}:`, err);
+  }
+}

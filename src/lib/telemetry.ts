@@ -16,17 +16,28 @@ class TelemetryLogger {
   private readonly logDir: string
   private readonly logFile: string
   private readonly maxFileSize: number = 10 * 1024 * 1024 // 10MB
-  private readonly backupCount: number = 1
   private enabled: boolean
   private currentRunId: string | null = null
   private currentConfig: Record<string, unknown> | null = null
 
   private constructor() {
-    // Log to ~/Library/Logs/DSST/dsst_structured.jsonl
-    this.logDir = path.join(process.env.HOME || '', 'Library', 'Logs', 'DSST')
-    this.logFile = path.join(this.logDir, 'dsst_structured.jsonl')
+    // If DSST_TELEMETRY_FILE is set, write directly to that path (e.g., into a benchmark run folder).
+    // Otherwise fall back to the default global log at ~/Library/Logs/DSST/dsst_structured.jsonl
+    const customFile = process.env.DSST_TELEMETRY_FILE
+    if (customFile) {
+      this.logFile = customFile.startsWith('/') ? customFile : path.join(process.cwd(), customFile)
+      this.logDir = path.dirname(this.logFile)
+    } else {
+      this.logDir = path.join(process.env.HOME || '', 'Library', 'Logs', 'DSST')
+      this.logFile = path.join(this.logDir, 'dsst_structured.jsonl')
+    }
     this.enabled = process.env.DSST_TELEMETRY_ENABLED === 'true'
-    
+
+    // If DSST_RUN_ID is set, tag every event with it
+    if (process.env.DSST_RUN_ID) {
+      this.currentRunId = process.env.DSST_RUN_ID
+    }
+
     // Ensure log directory exists
     if (!fs.existsSync(this.logDir)) {
       fs.mkdirSync(this.logDir, { recursive: true })
@@ -73,11 +84,11 @@ class TelemetryLogger {
 
     // Rotate: backup -> backup.1, current -> backup
     const backupFile = `${this.logFile}.1`
-    
+
     if (fs.existsSync(backupFile)) {
       fs.unlinkSync(backupFile)
     }
-    
+
     if (fs.existsSync(this.logFile)) {
       fs.renameSync(this.logFile, backupFile)
     }
@@ -151,14 +162,13 @@ class TelemetryLogger {
     })
   }
 
-  logInferenceError(pass: string, errorCategory: string, errorMessage: string, durationMs: number): void {
+  logInferenceError(errorCategory: string, errorMessage: string, durationMs: number): void {
     this.write({
       timestamp: new Date().toISOString(),
       level: 'error',
       category: 'error',
       event: 'inference_error',
       metadata: {
-        pass,
         error_category: errorCategory,
         error_message: errorMessage,
         duration_ms: durationMs

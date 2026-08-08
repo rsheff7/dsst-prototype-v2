@@ -135,7 +135,8 @@ export class GeminiClient implements LLMClient {
         throw new Error('Gemini returned no text content');
       }
 
-      // Usage metadata — Interactions API uses flat `usage` object with snake_case keys.
+      // Usage metadata — the Interactions API returns usage at top level.
+      // See: https://ai.google.dev/gemini-api/docs/thinking#signatures
       const usage = (data.usage || {}) as Record<string, unknown>;
       const inputTokens = (usage.total_input_tokens as number) ?? 0;
       const outputTokens = (usage.total_output_tokens as number) ?? 0;

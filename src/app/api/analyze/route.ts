@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
+import path from 'path';
 import { createLLMClient, LLMClient, LLMResponse } from '@/lib/llm-client';
-import { composeSystemPrompt } from '@/lib/prompts';
+import { composeSystemPrompt, snapshotPrompt } from '@/lib/prompts';
 import { telemetry } from '@/lib/telemetry';
 import {
   LessonData,
@@ -796,6 +797,14 @@ log('starting anchor pass (Pass 0)');
     
     const totalDuration = Date.now() - pipelineStart;
     telemetry.logPipelineComplete(totalDuration, 4);
+    
+    // Snapshot the exact prompt used (with ELSF injected) into the run folder.
+    // Only runs when a telemetry file is configured and a run ID is set.
+    if (runId && process.env.DSST_TELEMETRY_FILE) {
+      const telemetryPath = process.env.DSST_TELEMETRY_FILE;
+      const runDir = path.dirname(telemetryPath);
+      snapshotPrompt(runDir).catch((err) => console.error(`[analyze] Prompt snapshot failed:`, err));
+    }
     
     return NextResponse.json(lesson);
   } catch (err) {
