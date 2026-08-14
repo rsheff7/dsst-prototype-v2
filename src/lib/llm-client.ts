@@ -1,4 +1,5 @@
 import Anthropic from '@anthropic-ai/sdk';
+import { ThinkingLevel } from './model-presets';
 
 export interface LLMResponse {
   text: string;
@@ -9,32 +10,49 @@ export interface LLMResponse {
 }
 
 export interface LLMClient {
-  run(systemPrompt: string, userMessage: string, maxTokens: number, thinkingLevel?: 'MINIMAL' | 'LOW' | 'MEDIUM' | 'HIGH'): Promise<LLMResponse>;
+  run(systemPrompt: string, userMessage: string, maxTokens: number, thinkingLevel?: ThinkingLevel): Promise<LLMResponse>;
 }
+
+// Claude extended thinking token budgets mapped from universal ThinkingLevel values.
+const CLAUDE_THINKING_TOKENS: Record<Exclude<ThinkingLevel, 'off'>, number> = {
+  minimal: 4096,
+  low: 8192,
+  medium: 16384,
+  high: 32768,
+} as const;
 
 export class AnthropicClient implements LLMClient {
   private client: Anthropic;
+  private modelName: string;
+  private defaultThinking: ThinkingLevel;
 
-  constructor(apiKey?: string) {
+  constructor(apiKey?: string, modelName?: string, defaultThinking?: ThinkingLevel) {
     this.client = new Anthropic({
       apiKey: apiKey ?? process.env.ANTHROPIC_API_KEY,
       timeout: 200_000,
       maxRetries: 0,
     });
+    this.modelName = modelName ?? process.env.CLAUDE_MODEL ?? 'claude-sonnet-4-20250514';
+    this.defaultThinking = defaultThinking ?? 'off';
   }
 
-  async run(systemPrompt: string, userMessage: string, maxTokens: number, _thinkingLevel?: 'MINIMAL' | 'LOW' | 'MEDIUM' | 'HIGH'): Promise<LLMResponse> {
-    // Model name — configurable via CLAUDE_MODEL env var (default: claude-sonnet-4-6).
-    const modelName = process.env.CLAUDE_MODEL ?? 'claude-sonnet-4-6';
+  async run(systemPrompt: string, userMessage: string, maxTokens: number, thinkingLevel?: ThinkingLevel): Promise<LLMResponse> {
+    const effectiveThinking = thinkingLevel ?? this.defaultThinking;
 
-    // Anthropic counts thinking tokens separately from max_tokens.
-    // _thinkingLevel is accepted for interface compatibility but ignored.
-    const message = await this.client.messages.create({
-      model: modelName,
+    // Build request body. Add extended_thinking if enabled.
+    const body: Record<string, unknown> = {
+      model: this.modelName,
       max_tokens: maxTokens,
       system: systemPrompt,
       messages: [{ role: 'user', content: userMessage }],
-    });
+    };
+
+    // Extended thinking uses a token budget. Map ThinkingLevel to budget_tokens.
+    if (effectiveThinking !== 'off') {
+      body.extended_thinking = { budget_tokens: CLAUDE_THINKING_TOKENS[effectiveThinking] };
+    }
+
+    const message = await this.client.messages.create(body as any);
 
     const block = message.content.find((b) => b.type === 'text');
     if (!block || block.type !== 'text') {
@@ -52,30 +70,30 @@ export class AnthropicClient implements LLMClient {
 
 export class GeminiClient implements LLMClient {
   private apiKey: string;
+  private modelName: string;
+  private defaultThinking: ThinkingLevel;
 
-  constructor(apiKey?: string) {
-    // Automatically reads from process.env.GEMINI_API_KEY if apiKey argument is omitted.
+  constructor(apiKey?: string, modelName?: string, defaultThinking?: ThinkingLevel) {
     this.apiKey = apiKey ?? (process.env.GEMINI_API_KEY ?? '');
+    this.modelName = modelName ?? process.env.GEMINI_MODEL ?? 'gemini-3.1-pro-preview-06-05';
+    this.defaultThinking = defaultThinking ?? 'medium';
   }
 
-  async run(systemPrompt: string, userMessage: string, maxTokens: number, thinkingLevel?: 'MINIMAL' | 'LOW' | 'MEDIUM' | 'HIGH'): Promise<LLMResponse> {
-    // Model name — configurable via GEMINI_MODEL env var (default: gemini-3.6-flash).
-    const modelName = process.env.GEMINI_MODEL ?? 'gemini-3.6-flash';
+  async run(systemPrompt: string, userMessage: string, maxTokens: number, thinkingLevel?: ThinkingLevel): Promise<LLMResponse> {
+    const effectiveThinking = thinkingLevel ?? this.defaultThinking;
 
     // Gemini doesn't understand markdown <img> tags. Extract base64 images
     // and convert them to inlineData parts, interleaved with plain text blocks.
     const parts = this.parseUserMessage(userMessage);
 
-    // Gemini 3.6 uses the Interactions API with a different request shape.
+    // Gemini 3.x uses the Interactions API with a different request shape.
     // system_instruction is a plain string; input handles text/multimodal content.
     // thinking_level uses lowercase values: minimal | low | medium | high
-    const level = (thinkingLevel ?? 'MINIMAL').toLowerCase();
-
     const body: Record<string, unknown> = {
-      model: modelName,
+      model: this.modelName,
       system_instruction: systemPrompt || null,
       input: parts.map((p) => {
-            // Map parts to the Interactions API input format.
+        // Map parts to the Interactions API input format.
         if ('inlineData' in p) {
           const id = p.inlineData;
           // PDFs use the `document` type with base64 data + mime_type
@@ -91,11 +109,19 @@ export class GeminiClient implements LLMClient {
         }
         return { type: 'text', text: '' };
       }),
-      generation_config: {
-        max_output_tokens: maxTokens,
-        thinking_level: level,
-      },
     };
+
+    // Only add thinking_level if not 'off'. Gemini disables thinking when absent.
+    if (effectiveThinking !== 'off') {
+      body.generation_config = {
+        max_output_tokens: maxTokens,
+        thinking_level: effectiveThinking.toLowerCase(),
+      };
+    } else {
+      body.generation_config = {
+        max_output_tokens: maxTokens,
+      };
+    }
 
     // Remove system_instruction if null to keep the payload clean.
     if (!systemPrompt) {
@@ -104,7 +130,7 @@ export class GeminiClient implements LLMClient {
 
     const url = `https://generativelanguage.googleapis.com/v1beta/interactions?key=${this.apiKey}`;
 
-    console.log(`[GEMINI] REQUEST → model=${modelName} maxOutputTokens=${maxTokens} thinkingLevel=${level} parts=${parts.length}`);
+    console.log(`[GEMINI] REQUEST → model=${this.modelName} maxOutputTokens=${maxTokens} thinkingLevel=${effectiveThinking} parts=${parts.length}`);
 
     try {
       const response = await fetch(url, {
@@ -203,12 +229,16 @@ export class GeminiClient implements LLMClient {
   }
 }
 
-export function createLLMClient(provider: string): LLMClient {
+export function createLLMClient(
+  provider: string,
+  modelName?: string,
+  defaultThinking?: ThinkingLevel,
+): LLMClient {
   switch (provider.toLowerCase()) {
     case 'gemini':
-      return new GeminiClient();
+      return new GeminiClient(undefined, modelName, defaultThinking);
     case 'anthropic':
     default:
-      return new AnthropicClient();
+      return new AnthropicClient(undefined, modelName, defaultThinking);
   }
 }

@@ -241,3 +241,20 @@ export function getELSFGuideline(n: ELSFGuidelineNumber): ELSFGuideline {
 export function getELSFArea(n: ELSFAreaNumber): ELSFArea {
   return ELSF_AREAS[n - 1];
 }
+
+/**
+ * Formats the full ELSF guideline reference block for injection into prompts.
+ * Organized by Area of Focus with numbered guidelines and alpha specs.
+ */
+export function buildElsfReference(): string {
+  const guidelinesByArea = ELSF_AREAS.map((area) => {
+    const inArea = ELSF_GUIDELINES.filter((g) => g.area === area.number);
+    const lines = inArea.map((g) => {
+      const specs = g.specs.map((spec) => `      ${spec.id}. ${spec.text}`).join('\n');
+      return `  Guideline ${g.number}: ${g.title}\n${specs}`;
+    });
+    return `Area ${area.number} — ${area.name}\n${lines.join('\n\n')}`;
+  }).join('\n\n');
+
+  return `\n# ELSF GUIDELINES REFERENCE — structured injection\n\nThe following is the ELSF Guidelines for Improving Math Materials for English Learners, organized by Area of Focus. Use these to ground your elsf_inference reasoning. Cite specific guideline numbers in elsf_guidelines_applied.\n\n${guidelinesByArea}\n`;
+}

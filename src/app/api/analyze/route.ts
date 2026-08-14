@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import path from 'path';
 import { createLLMClient, LLMClient, LLMResponse } from '@/lib/llm-client';
 import { composeSystemPrompt, snapshotPrompt } from '@/lib/prompts';
+import { MODEL_PRESETS, ThinkingLevel } from '@/lib/model-presets';
 import { telemetry } from '@/lib/telemetry';
 import {
   LessonData,
@@ -341,8 +342,26 @@ export async function POST(req: NextRequest) {
   };
 
   try {
-    const provider = (process.env.MODEL_PROVIDER ?? 'anthropic').toLowerCase();
-    if (provider === 'anthropic' && !process.env.ANTHROPIC_API_KEY) {
+    // Runtime config from query params → env var → hardcoded defaults.
+    const searchParams = req.nextUrl.searchParams;
+    const profile = searchParams.get('profile') ?? 'math-lesson-baseline';
+    const presetId = searchParams.get('preset') ?? process.env.DSST_MODEL_PRESET ?? 'claude-sonnet';
+
+    // Resolve preset to provider + model + default thinking
+    const preset = MODEL_PRESETS[presetId];
+    if (!preset) {
+      console.error(`[analyze] Unknown preset: "${presetId}". Valid: ${Object.keys(MODEL_PRESETS).join(', ')}`);
+      return NextResponse.json(
+        { error: `Unknown model preset: "${presetId}". Valid presets: ${Object.keys(MODEL_PRESETS).join(', ')}.` },
+        { status: 400 },
+      );
+    }
+
+    // Thinking: query param overrides preset default
+    const queryThinking = searchParams.get('thinking') as 'minimal' | 'low' | 'medium' | 'high' | 'off' | null;
+    const thinkingLevel: ThinkingLevel = queryThinking ?? preset.defaultThinking;
+    // Validate API key for the resolved provider
+    if (preset.provider === 'anthropic' && !process.env.ANTHROPIC_API_KEY) {
       console.error('[analyze] ANTHROPIC_API_KEY not set on this deployment');
       return NextResponse.json(
         {
@@ -352,7 +371,7 @@ export async function POST(req: NextRequest) {
         { status: 500 },
       );
     }
-    if (provider === 'gemini' && !process.env.GEMINI_API_KEY) {
+    if (preset.provider === 'gemini' && !process.env.GEMINI_API_KEY) {
       console.error('[analyze] GEMINI_API_KEY not set on this deployment');
       return NextResponse.json(
         {
@@ -387,14 +406,11 @@ export async function POST(req: NextRequest) {
       telemetry.setRunId(runId);
     }
 
-    // Read model names from env with sensible defaults so testing doesn't require code changes.
-    const geminiModel = process.env.GEMINI_MODEL ?? 'gemini-3.6-flash';
-    const claudeModel = process.env.CLAUDE_MODEL ?? 'claude-sonnet-4-6';
-
     const runConfig: Record<string, unknown> = {
-      provider,
-      model: provider === 'gemini' ? geminiModel : claudeModel,
-      // max_tokens and thinking_budgets are logged per-pass in runPass
+      provider: preset.provider,
+      model: preset.model,
+      thinking: thinkingLevel,
+      profile,
     };
 
     telemetry.logPipelineStart(file.name, file.size, runConfig);
@@ -445,7 +461,7 @@ export async function POST(req: NextRequest) {
     //
     // Per-call client timeout 200s gives margin over typical wall times and
     // stays well under the 600s function maxDuration.
-    const llm = createLLMClient(provider);
+    const llm = createLLMClient(preset.provider, preset.model, preset.defaultThinking);
 
     const concisionRules = `OUTPUT FORMAT — MANDATORY:
 - Begin your response immediately with the opening brace { of the JSON object.
@@ -593,13 +609,13 @@ ${truncatedText}`;
       passName: string,
       userMessage: string,
       maxTokens: number,
-      thinkingLevel?: 'MINIMAL' | 'LOW' | 'MEDIUM' | 'HIGH',
+      thinkingLevel?: ThinkingLevel,
     ): Promise<PassResult> {
       const passStart = Date.now();
       telemetry.logInferenceStart(passName, passName);
       try {
-        log(`calling ${provider} — pass ${passName}`);
-        const resp = await llm.run(composeSystemPrompt(), userMessage, maxTokens, thinkingLevel);
+        log(`calling ${preset.provider} — pass ${passName}`);
+        const resp = await llm.run(composeSystemPrompt(profile), userMessage, maxTokens, thinkingLevel);
         const passDuration = Date.now() - passStart;
         log(`Pass ${passName} returned`, {
           stop_reason: resp.stopReason,
@@ -704,7 +720,7 @@ ${truncatedText}`;
           return {
             ok: false,
             response: NextResponse.json(
-              { error: `${provider} rejected the API key (401). The deployment key is invalid or expired.` },
+              { error: `${preset.provider} rejected the API key (401). The deployment key is invalid or expired.` },
               { status: 502 },
             ),
           };
@@ -713,7 +729,7 @@ ${truncatedText}`;
           return {
             ok: false,
             response: NextResponse.json(
-              { error: `${provider} rate limit hit on Pass ${passName}. Wait a minute and try again.` },
+              { error: `${preset.provider} rate limit hit on Pass ${passName}. Wait a minute and try again.` },
               { status: 502 },
             ),
           };
@@ -721,7 +737,7 @@ ${truncatedText}`;
         return {
           ok: false,
           response: NextResponse.json(
-            { error: `${provider} API error on Pass ${passName}: ${detail}` },
+            { error: `${preset.provider} API error on Pass ${passName}: ${detail}` },
             { status: 502 },
           ),
         };
@@ -730,23 +746,21 @@ ${truncatedText}`;
 
 log('starting anchor pass (Pass 0)');
 
-    // Gemini uses thinkingLevel (MINIMAL | LOW | MEDIUM | HIGH).
-    // Override with GEMINI_THINKING_LEVEL env var. Cap all passes at MAX_TOKENS
-    // when set — useful for benchmarks where we want uniform limits across models.
-    const geminiThinking = provider === 'gemini' ? (process.env.GEMINI_THINKING_LEVEL ?? 'LOW') as 'MINIMAL' | 'LOW' | 'MEDIUM' | 'HIGH' : undefined;
+    // Thinking: use the resolved level from query param or preset default.
+    // Cap all passes at MAX_TOKENS when set — useful for benchmarks.
     const maxTokensCap = process.env.MAX_TOKENS ? Number(process.env.MAX_TOKENS) : 32000;
 
-    const resAnchor = await runPass('0 (anchor)', passAnchorMessage, maxTokensCap, geminiThinking);
+const resAnchor = await runPass('0 (anchor)', passAnchorMessage, maxTokensCap, thinkingLevel);
     if (!resAnchor.ok) return resAnchor.response;
     const anchorJson = JSON.stringify(resAnchor.parsed, null, 2);
     log('anchor returned', { anchor_size_chars: anchorJson.length });
 
     log('starting parallel passes');
     const [resA, resB, resC, resD] = await Promise.all([
-      runPass('A (structure)', buildPassAMessage(anchorJson), maxTokensCap, geminiThinking),
-      runPass('B (MLR + ELSF inference)', buildPassBMessage(anchorJson), maxTokensCap, geminiThinking),
-      runPass('C (anticipated thinking)', buildPassCMessage_Thinking(anchorJson), maxTokensCap, geminiThinking),
-      runPass('D (decisions + wristband)', buildPassDMessage(anchorJson), maxTokensCap, geminiThinking),
+runPass('A (structure)', buildPassAMessage(anchorJson), maxTokensCap, thinkingLevel),
+      runPass('B (MLR + ELSF inference)', buildPassBMessage(anchorJson), maxTokensCap, thinkingLevel),
+      runPass('C (anticipated thinking)', buildPassCMessage_Thinking(anchorJson), maxTokensCap, thinkingLevel),
+      runPass('D (decisions + wristband)', buildPassDMessage(anchorJson), maxTokensCap, thinkingLevel),
     ]);
     log('all 4 passes settled');
 
