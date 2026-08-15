@@ -1,6 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 import { buildSystemPrompt, resolvePlaceholders } from './prompts/composer';
+import { DEFAULT_PROFILE } from './prompts/profiles';
 
 /* ------------------------------------------------------------------ */
 /*  Prompt loading                                                     */
@@ -23,7 +24,7 @@ function loadPromptBase(profileId?: string): string {
       // Fall through to composed prompt
     }
   }
-  return buildSystemPrompt(profileId ?? 'math-lesson-baseline');
+  return buildSystemPrompt(profileId ?? DEFAULT_PROFILE);
 }
 
 // Compose the system prompt with ELSF reference injected.

@@ -8,11 +8,14 @@ export interface PromptProfile {
   outputFormat: string;
 }
 
+export const DEFAULT_PROFILE = 'math-lesson-baseline' as const;
+
 export const PROFILES = [
   {
     id: 'math-lesson-baseline',
     name: 'Math Lesson (K-8) — Baseline',
     coreRole: 'core-role/math-novice',
+    persona: 'persona/plain-language',
     framework: 'framework/mlr-noticing',
     elsfLayer: 'elsf-layer/language-demands',
     outputFormat: 'output-format/full-json-wristband',

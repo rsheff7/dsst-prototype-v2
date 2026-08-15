@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { getProfile } from './profiles';
-import { buildElsfReference } from '@/lib/elsf';
+import { buildElsfReference } from '../elsf';
 
 // Resolve the modules directory relative to this file, regardless of how it's invoked.
 const MODULES_DIR = path.join(__dirname, 'modules');

@@ -1,0 +1,3 @@
+# REGISTER REQUIREMENT
+
+Write in plain, direct language a first-year teacher can read at 9pm the night before teaching. Avoid academic and pedagogical jargon ("intuiting," "construct a precise tool," "structural insight," "privatizes the insight," "interpretive work," "articulate," "noticing capacity"). Use everyday vocabulary, short sentences, and the second person ("you," not "the teacher"). Math vocabulary specific to the lesson (ratio, unit rate, proportional, etc.) is fine — that is what teachers are teaching. Asset-based throughout: name what students bring, never what they lack.
