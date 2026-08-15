@@ -1,20 +1,19 @@
 # DSST V2 Prototype — Architecture Overview
 
-**Version**: 0.2.0  
-**Last Updated**: June 24, 2026  
-**Status**: Production-ready for partner testing (with known limitations documented below)
+**Version 0.3.0 — Last Updated August 15, 2026**
+*Production-ready for partner testing.*
 
 ---
 
 ## Executive Summary
 
-The DSST Math Teacher Tools v2 is a Next.js 15 web application that analyzes math lesson PDFs using Claude Sonnet 4.6 to generate five integrated teacher-facing views anchored to the eight Mathematical Language Routines (MLRs). The architecture uses an **anchor + parallel passes** pattern to balance generation quality with wall-clock time (~3 minutes per lesson analysis).
+The DSST Math Teacher Tools v2 is a Next.js 15 web application that analyzes math lesson PDFs using Claude Sonnet 4.6 to generate five integrated teacher-facing views anchored to the eight Mathematical Language Routines (MLRs). The architecture uses an **anchor + parallel passes** pattern to balance generation quality with wall-clock time (~3 minutes per lesson analysis). Prompt engineering has been refactored into a composable five-module system supporting multiple voices and runtime model selection.
 
 ### Core Design Principles
 
 1. **Mobile-first in-class usability** over print functionality
 2. **Single codebase** for frontend UI and backend API logic (Next.js App Router)
-3. **Explicit MLR anchoring** — every MLL-flagged item must reference one of eight routines
+3. **Explicit MLR anchoring** — every flagged item must reference one of eight routines
 4. **Concise output** — prompts enforce short, concrete language a first-year teacher can read at 9pm
 5. **Graceful degradation** — validation functions snap invalid model outputs to safe defaults rather than crashing
 
@@ -25,7 +24,6 @@ The DSST Math Teacher Tools v2 is a Next.js 15 web application that analyzes mat
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                    Browser (Client)                         │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐     │
 │  │   Upload     │  │    Five      │  │  Edit &      │     │
 │  │   PDF Form   │→ │    Views     │← │  Regenerate  │     │
 │  └──────────────┘  └──────────────┘  └──────────────┘     │
@@ -41,20 +39,15 @@ The DSST Math Teacher Tools v2 is a Next.js 15 web application that analyzes mat
 │  │         (pdf-parse library, max 12K chars)           │   │
 │  │                                                       │   │
 │  │  Step 2: ANCHOR PASS (Pass 0)                        │   │
-│  │         • Claude Sonnet 4.6 call                      │   │
+│  │         • Model-agnostic call (Sonnet default)       │   │
 │  │         • ~30 seconds, cheap pass                     │   │
-│  │         • Returns skeleton: meta, destination,        │   │
-│  │           activity IDs/titles/functions/crux flag     │   │
+│  │         • Returns skeleton: meta, destination,       │   │
+│  │           activity IDs/titles/functions/crux flag    │   │
 │  │                                                       │   │
 │  │  Step 3: FOUR PARALLEL PASSES (A, B, C, D)          │   │
 │  │         • All calls run simultaneously                │   │
 │  │         • Each receives anchor JSON as context        │   │
 │  │         • ~140 seconds max wall time                  │   │
-│  │                                                       │   │
-│  │         Pass A → Lesson Pathway (full activities)    │   │
-│  │         Pass B → MLR Inference                       │   │
-│  │         Pass C → Anticipated Thinking                │   │
-│  │         Pass D → Decision Guide + Wristband          │   │
 │  │                                                       │   │
 │  │  Step 4: Merge results into single LessonData object │   │
 │  │                                                       │   │
@@ -72,6 +65,73 @@ The DSST Math Teacher Tools v2 is a Next.js 15 web application that analyzes mat
 │  Display uses shared Chip/Overlay UI primitives             │
 └─────────────────────────────────────────────────────────────┘
 ```
+
+---
+
+## Composable Prompt Architecture ✅ COMPLETE
+
+Implemented August 13–14 during Sprint 5. Replaced monolithic prompt files with a modular five-slot composition system.
+
+### Composition Pattern
+
+Every profile specifies exactly one markdown module per slot:
+
+| Slot | Module Example | Purpose |
+|------|---------------|---------|
+| `core_role` | `core-role.md` | Base identity, audience framing, core constraints |
+| `framework` | `framework.md` | Pedagogical scaffolding rules, learning progression requirements |
+| `elsf_layer` | `elsf-layer/language-demands.md` | ELSS guideline cross-reference integration |
+| `output_format` | `output-format.md` | JSON schema definitions, structural constraints |
+| `persona` | `plain-language.md` or `robert-voice.md` | Voice/style variation for A/B testing |
+
+Slots are optional — the composer skips undefined entries gracefully. Adding a future variant requires one `.md` file plus one registry entry; zero changes to routes or composition logic.
+
+### Dynamic Token Resolution
+
+Modules may contain placeholders like `${ELSF_GUIDELINES}`. At composition time, `composer.ts` substitutes these via a `DYNAMIC_TOKENS` lookup map:
+
+```typescript
+// src/lib/prompts/composer.ts
+const resolved = rawContent.replaceAll(token.name, token.resolver(profileId));
+```
+
+The resolver function calls `buildElsfReference()` from `elsf.ts`, which formats guideline data into structured text. Both `elsf.ts` definitions serve two purposes: prompt injection and runtime validation (response checking verifies returned guideline numbers exist in the canonical list). Single source of truth maintained.
+
+### Profiles Registry
+
+Defined in `profiles.ts` as a simple associative array mapping profile ID to module objects. Two shipped profiles:
+
+- `math-lesson-baseline` — core role + plain-language register (default)
+- `math-lesson-analysis` — adds Robert voice persona with specific operational rules
+
+Default controlled by shared `DEFAULT_PROFILE` constant. Invalid profile IDs return clean 400 errors with instructions on valid options.
+
+### Runtime Configuration
+
+Both Anthropic and Google Gemini SDKs load at startup. Model selection, model ID, and thinking budget resolve from the unified `MODEL_PRESETS` map in `model-presets.ts`:
+
+```typescript
+// src/lib/model-presets.ts
+const MODEL_PRESETS = {
+  'claude-sonnet': { provider: 'anthropic', model: 'claude-sonnet-4-6', defaultThinking: 'none' },
+  'claude-opus': { provider: 'anthropic', model: 'claude-opus-4-1', defaultThinking: 'short' },
+  'gemini-flash': { provider: 'gemini', model: 'gemini-2.5-flash-preview-05-20', defaultThinking: 'short' },
+  'gemini-pro': { provider: 'gemini', model: 'gemini-2.5-pro-preview-05-06', defaultThinking: 'long' }
+} as const;
+```
+
+Thinking levels normalize across providers: Claude maps to `budget_tokens`, Gemini maps to `thinkingConfig`. This abstraction lets us swap base models without touching route code or prompt templates.
+
+Developers independently test different models, thinking budgets, and profiles via URL query params (`?preset`, `?thinking`, `?profile`) without sharing `.env.local` edits or restarting servers.
+
+### Verification Results
+
+Diff analysis against original monolithic prompts confirms functional parity:
+
+- **Baseline diff**: ~9KB size increase due to expanded ELSF reference table (structural improvement); no pedagogical content dropped
+- **Robert voice diff**: ~91 lines added (full ELSF expansion replacing unresolved placeholders); no text dropped or reordered. Original monolithic version contained broken placeholder references
+
+Cross-model impact assessment pending: measure how different LLM providers respond to the same persona modules. Claude tends toward pedagogical depth while Gemini leans conversational — the interaction between model personality and injected persona remains untested.
 
 ---
 
@@ -122,6 +182,7 @@ Initial single-pass attempts to generate the full `LessonData` schema failed on 
 ## Data Flow & Validation
 
 ### PDF Parsing
+
 ```typescript
 // src/app/api/analyze/route.ts
 const buffer = Buffer.from(await file.arrayBuffer());
@@ -189,38 +250,22 @@ Each tool implements one view of the same `LessonData`:
 
 **MoveWalkthrough.tsx **(33 KB) In-the-moment decision guide: scenario trees with interpretation, moves differentiated by proficiency level, MLR-anchored responses for language moments. Most interactive component.
 
-### Context & Types (`src/lib`)
+---
+
+## TypeScript Module Structure (`src/lib`)
 
 | File | Purpose |
 |------|---------|
 | `types.ts` | TypeScript interfaces: `LessonData`, `Activity`, `MlrRef`, `SentenceFrame`, etc. Source of truth for validation |
 | `mlrs.ts` | Canonical MLR definitions (8 routines), lookup table, validation helpers (`isValidMlrNumber`) |
-| `prompts.ts` | System prompt constants passed to Claude API (lesson analysis instructions, concision rules) |
+| `prompts.ts` | Legacy compatibility layer only. Delegates to `buildSystemPrompt(composer)` for composition |
+| `model-presets.ts` | Provider-to-model routing map with preset names (`claude-sonnet`, `gemini-pro`, etc.) and default thinking levels |
+| `llm-client.ts` | Unified client accepting provider string, model name, and thinking level. Handles API key discovery and request construction |
+| `elsf.ts` | Single source of truth for ELSS guidelines. Provides `getByCategory()`, `getAllByGuidelineNumber()`, `buildElsfReference()` |
 | `activityLabel.ts` | Human-readable labels for activity functions (Setup → "Getting Started") |
 | `audit.ts` | Post-generation validation: checks all activities covered in each pass, exactly one crux, MLR coverage |
 | `qa.ts` | Demo/testing utilities for development |
 | `demoLesson.ts` | Hardcoded sample lesson data for offline demo mode (no API key required) |
-
----
-
-## Technical Debt & Known Limitations
-
-### Critical (Blocks Partner Testing)
-
-| Issue | Impact | Status | Mitigation |
-|-------|--------|--------|------------|
-| **Vercel payload limits** | Textbook PDFs >4MB rejected on Pro plan | 🔴 Open | Implement presigned S3 uploads (see DSST-V2-Prototype-Review.md) |
-| **No persistence layer** | Refresh = data loss, prevents iteration tracking | 🟡 Partial fix planned | Add localStorage caching for June sprint; Supabase July-August |
-| **Missing authentication** | Cannot track teacher identity or saved work | ⚪ Deferred to Phase 2 | Implement Supabase Auth after partner testing begins |
-
-### Medium Priority (Post-Test Refinement)
-
-| Issue | Impact | Recommendation |
-|-------|--------|----------------|
-| **PDF parsing reliability** | OCR errors in scanned textbooks may break anchor detection | Add preprocessing step + manual entry fallback |
-| **Offline capability** | Classrooms with unreliable WiFi cannot use app | Defer until validated demand (>40% report connectivity issues) |
-| **Model cost optimization** | Using Sonnet exclusively becomes expensive at scale (estimate $18K/month at district rollout) | Implement hybrid routing: Haiku for simple tasks, Sonnet for complex reasoning |
-| **Print stylesheets incomplete** | Four of five views lack print-optimized CSS | Add during June sprint (blocked until critical debt resolved) |
 
 ---
 
@@ -231,15 +276,30 @@ Each tool implements one view of the same `LessonData`:
 - **Language**: TypeScript (ES2017 target, strict mode enabled)
 - **Styling**: Tailwind CSS v4
 - **Hosting**: Vercel Pro plan ($20/month)
-- **AI Provider**: Anthropic Claude Sonnet 4.6
+- **AI Providers**: Anthropic Claude Sonnet 4.6 (primary), Google Gemini (experimental)
 - **PDF Parsing**: `pdf-parse` library (server-side only)
 
 ### Environment Variables Required
+
 ```bash
-ANTHROPIC_API_KEY=<your-key-here>  # Scoped to Preview + Production in Vercel dashboard
+# Required
+ANTHROPIC_API_KEY=sk-ant-...           # Scoped to Preview + Production in Vercel dashboard
+GEMINI_API_KEY=your-gemini-key-here     # Enables Gemini model presets
+
+# Optional overrides
+PORT=3000
+LOG_LEVEL=info
+# DSST_PROMPT_FILE=./custom-prompt.md   # Full prompt file override (bypasses modular composition)
+
+# Deprecated / Ignored
+# MODEL_PROVIDER, CLAUDE_MODEL, GEMINI_MODEL, GEMINI_THINKING_LEVEL
+# These were replaced by MODEL_PRESETS map + runtime query parameters
 ```
 
+Runtime configuration resolves entirely from code and query parameters. Only the two API keys are required to start the server. Environment variables for model selection (`MODEL_PROVIDER`, `CLAUDE_MODEL`, etc.) are read by old logic paths but ignored by the new preset-based system.
+
 ### Build & Deploy Commands
+
 ```bash
 npm install        # Install dependencies
 npm run dev        # Local development server (localhost:3000)
@@ -255,7 +315,8 @@ npm run start      # Start production server
 ✅ **Anchor + parallel pattern** — Consistently produces aligned, high-quality analyses in ~3 minutes  
 ✅ **Validation layer** — Gracefully handles model output inconsistencies without crashes  
 ✅ **Mobile-first design** — Teachers successfully use app on phones during instruction  
-✅ **MLR anchoring rule** — Every MLL item traces to specific routine with reasoning
+✅ **MLR anchoring rule** — Every flagged item traces to specific routine with reasoning  
+✅ **Composable prompts** — Modular architecture supports multiple voices without duplicating core content
 
 ### What Needs Attention Before District Scale
 🔴 **File upload architecture** — Must implement presigned S3 uploads for textbook-sized PDFs  
@@ -287,12 +348,15 @@ npm run start      # Start production server
 | Date | Decision | Rationale | Alternative Considered |
 |------|----------|-----------|----------------------|
 | May 2026 | Single-pass → Anchor + 4 parallel passes | Single-pass failed on real IM lessons (token limits, inconsistent alignment) | Chunking by activity (more complex orchestration) |
-| May 2026 | Explicit MLR anchoring requirement | Ensures every MLL scaffold traces to specific routine with reasoning | Implicit MLR selection (less transparent, harder to audit) |
-| June 2024 | Next.js 15 App Router over separate backend/frontend monoliths | Single codebase reduces deployment complexity for prototype phase | Separate Express API + React SPA (more ops overhead) |
+| May 2026 | Explicit MLR anchoring requirement | Ensures every scaffold traces to specific routine with reasoning | Implicit MLR selection (less transparent, harder to audit) |
+| June 2026 | Next.js 15 App Router over separate backend/frontend monoliths | Single codebase reduces deployment complexity for prototype phase | Separate Express API + React SPA (more ops overhead) |
 | June 2026 | Stay on Vercel initially, add external storage later | Keeps deployment simple during partner testing; can refactor file handling without touching core logic | Self-hosted from day one (premature optimization) |
+| August 2026 | Monolithic prompts → composable five-module architecture | Reduces maintenance burden when pedagogy changes; enables voice variants without duplicating core content | Static markdown files with templating (harder to validate at runtime) |
+| August 2026 | `elsf.ts` as single source of truth for guidelines | Maintains bidirectional mapping between IDs ↔︎ text for both prompt injection AND response validation | Markdown-only guidelines (decouples from runtime checking logic) |
+| August 2026 | Thinking budgets normalized across providers | Lets us swap Claude ↔ Gemini without rewriting route handlers or prompt templates | Provider-specific thinking configs (duplicates effort) |
 
 ---
 
-*Document Version: 1.0*  
+*Document Version: 2.0*  
 *Maintained by: Sal (Partner AI)*  
 *Related Documents: DIRECTORY-STRUCTURE.md, DSST-V2-Prototype-Review.md (in Premo DSST Docs folder)*
