@@ -29,6 +29,18 @@ npm run dev
 
 Set `ANTHROPIC_API_KEY` in `.env.local`.
 
+## Runtime Configuration
+
+The modular architecture is driven by three query parameters you can pass to `/api/analyze`:
+
+- `?preset` — Model backend selection (e.g., `claude-sonnet`, `gemini-pro`). Falls back to your `DSST_MODEL_PRESET` environment variable if omitted.
+- `?profile` — Prompt profile ID. Selects a pre-configured five-slot template (`coreRole`, `persona`, `framework`, `elsfLayer`, `outputFormat`). Defaults to `math-lesson-baseline`.
+- `?thinking` — Reasoning budget override. Accepts `minimal`, `low`, `medium`, `high`, or `off`. Overrides the default thinking level for the chosen preset.
+
+Example: `POST /api/analyze?preset=claude-sonnet&profile=math-lesson-analysis&thinking=high`
+
+See `src/lib/prompts/profiles.ts` for all available profile IDs, and `ARCHITECTURE.md` for how the five slots map to individual prompt modules.
+
 ## Telemetry
 
 Structured logging for the PDF inference pipeline. Disabled by default.
