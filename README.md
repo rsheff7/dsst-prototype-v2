@@ -41,19 +41,7 @@ Example: `POST /api/analyze?preset=claude-sonnet&profile=math-lesson-analysis&th
 
 See `src/lib/prompts/profiles.ts` for all available profile IDs, and `ARCHITECTURE.md` for how the five slots map to individual prompt modules.
 
-## Telemetry
-
-Structured logging for the PDF inference pipeline. Disabled by default.
-
-**Enable:** Set `DSST_TELEMETRY_ENABLED=true` in `.env.local` and restart the dev server.
-
-**Logs:** `~/Library/Logs/DSST/dsst_structured.jsonl` — one JSON object per line.
-
-**Format:** Each entry has `timestamp`, `level`, `category`, `event`, and `metadata`. See `ws-telemetry/README.md` for the full schema, event catalog, and developer guidelines.
-
-## Telemetry
-
-Structured logging for the PDF inference pipeline. Disabled by default.
+Structured logging for the PDF inference pipeline. disabled by default.
 
 **Enable:** Set `DSST_TELEMETRY_ENABLED=true` in `.env.local` and restart the dev server.
 
