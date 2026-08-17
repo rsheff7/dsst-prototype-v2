@@ -41,7 +41,9 @@ Example: `POST /api/analyze?preset=claude-sonnet&profile=math-lesson-analysis&th
 
 See `src/lib/prompts/profiles.ts` for all available profile IDs, and `ARCHITECTURE.md` for how the five slots map to individual prompt modules.
 
-Structured logging for the PDF inference pipeline. disabled by default.
+## Telemetry
+
+Structured logging for the PDF inference pipeline. Disabled by default.
 
 **Enable:** Set `DSST_TELEMETRY_ENABLED=true` in `.env.local` and restart the dev server.
 
