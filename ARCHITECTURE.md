@@ -360,3 +360,74 @@ npm run start      # Start production server
 *Document Version: 2.0*  
 *Maintained by: Sal (Partner AI)*  
 *Related Documents: DIRECTORY-STRUCTURE.md, DSST-V2-Prototype-Review.md (in Premo DSST Docs folder)*
+
+---
+
+## Writing & Registering Prompt Modules
+
+The system architecture relies on a composable five-slot model. Instead of a monolithic prompt, every generated request is stitched together at runtime from individual Markdown files mapped to specific roles. 
+
+### Anatomy of the Five Slots
+Every profile consists of five distinct components that define its personality and output structure:
+
+| Slot | Purpose | File Path Example |
+| :--- | :--- | :--- |
+| `coreRole` | The absolute ground rules for the AI's identity and tone. | `modules/core_role/teacher-math-guide.md` |
+| `persona` | The teaching style or "voice" applied to the conversation. | `modules/persona/professional-noticing.md` |
+| `framework` | The theoretical or pedagogical lens used for analysis. | `modules/framework/mlr-noticing.md` |
+| `elsfLayer` | Specialized support layers (e.g., MLL proficiency adaptations). | `modules/elsf/wida-level-1-support.md` |
+| `outputFormat` | The structural constraints (JSON, Markdown, Wristband format). | `modules/output-format/full-json-wristband.md` |
+
+### Creating a New Module
+Modules are plain Markdown files stored under the `src/lib/prompts/modules` directory. 
+
+**1. Create the file:**
+Pick the appropriate slot folder (or create a new one) and drop in your Markdown file. For example, to create a new analytical voice:
+```bash
+touch src/lib/prompts/modules/persona/data-driven-analyst.md
+```
+
+**2. Write the Content:**
+Write your instructions as natural language or system directives. You can use double-brace syntax to inject dynamic data at runtime.
+
+*Example `data-driven-analyst.md`:*
+```markdown
+# PERSONA INSTRUCTIONS
+You are a data-driven educational analyst reviewing lesson outcomes. 
+Focus heavily on {{student_profile}} metrics.
+
+Analyze the provided scenario through the following three criteria:
+1. Cognitive load assessment.
+2. Framework adherence.
+3. Actionable feedback for the instructor.
+```
+
+**3. Available Variables:**
+The Composer object pulls data from the current lesson context and makes it available for injection. Common variables include:
+- `{{student_profile}}` — Age group, grade level, and demographic specifics.
+- `{{lesson_topic}}` — The primary mathematical concept being taught.
+- `{{proficiency_band}}` — Current estimated performance bracket.
+- `{{mlr_context}}` — Contextual metadata regarding the Mathematical Language Routine.
+
+### Registering a New Profile
+Once your modules are written, they must be registered in `src/lib/prompts/profiles.ts` to become accessible via the query parameters. 
+
+Locate the `PROFILES` constant. Each entry maps a unique string ID to the five slots we defined above. 
+
+To register our new "data-driven" configuration, you would add this block:
+
+```typescript
+const PROFILES = {
+  // ...existing profiles...
+  
+  'math-data-analysis': {
+    coreRole: 'role/teacher-math-guide',
+    persona: 'persona/data-driven-analyst',
+    framework: 'framework/mlr-noticing',
+    elsfLayer: null, // Or another specific path
+    outputFormat: 'format/wristband'
+  }
+} as const;
+```
+
+After this, you can activate your new configuration instantly at runtime by passing `?profile=math-data-analysis` in the API request.
