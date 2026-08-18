@@ -38,9 +38,17 @@ class TelemetryLogger {
       this.currentRunId = process.env.DSST_RUN_ID
     }
 
-    // Ensure log directory exists
-    if (!fs.existsSync(this.logDir)) {
-      fs.mkdirSync(this.logDir, { recursive: true })
+    // Ensure log directory exists — only when telemetry is enabled and guard
+    // against read-only filesystems (e.g. Vercel serverless functions).
+    if (this.enabled) {
+      try {
+        if (!fs.existsSync(this.logDir)) {
+          fs.mkdirSync(this.logDir, { recursive: true })
+        }
+      } catch (err) {
+        console.warn('[telemetry] Cannot create log directory, disabling telemetry:', err)
+        this.enabled = false
+      }
     }
   }
 
