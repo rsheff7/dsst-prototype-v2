@@ -18,7 +18,7 @@ import { isValidELSFGuidelineNumber, ELSFGuidelineNumber } from '@/lib/elsf';
 // Two-pass generation needs more than the default 300s. Vercel Pro allows up
 // to 800s on serverless functions; 600s leaves headroom for two ~240s Anthropic
 // calls plus pdf-parse, normalization, and the error path.
-export const maxDuration = 600;
+export const maxDuration = 300;
 
 const MAX_PDF_CHARS = 12000;
 
