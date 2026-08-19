@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import path from 'path';
+
 import { createLLMClient, LLMClient, LLMResponse } from '@/lib/llm-client';
-import { composeSystemPrompt, snapshotPrompt } from '@/lib/prompts';
+import { PRODUCTION_SYSTEM_PROMPT } from '@/lib/prompts/production-prompt';
 import { MODEL_PRESETS, ThinkingLevel } from '@/lib/model-presets';
 import { telemetry } from '@/lib/telemetry';
 import {
@@ -344,7 +344,7 @@ export async function POST(req: NextRequest) {
   try {
     // Runtime config from query params → env var → hardcoded defaults.
     const searchParams = req.nextUrl.searchParams;
-    const profile = searchParams.get('profile') ?? 'math-lesson-baseline';
+    const profile = 'math-lesson-analysis';
     const presetId = searchParams.get('preset') ?? process.env.DSST_MODEL_PRESET ?? 'claude-sonnet';
 
     // Resolve preset to provider + model + default thinking
@@ -615,7 +615,7 @@ ${truncatedText}`;
       telemetry.logInferenceStart(passName, passName);
       try {
         log(`calling ${preset.provider} — pass ${passName}`);
-        const resp = await llm.run(composeSystemPrompt(profile), userMessage, maxTokens, thinkingLevel);
+        const resp = await llm.run(PRODUCTION_SYSTEM_PROMPT, userMessage, maxTokens, thinkingLevel);
         const passDuration = Date.now() - passStart;
         log(`Pass ${passName} returned`, {
           stop_reason: resp.stopReason,
@@ -812,13 +812,7 @@ runPass('A (structure)', buildPassAMessage(anchorJson), maxTokensCap, thinkingLe
     const totalDuration = Date.now() - pipelineStart;
     telemetry.logPipelineComplete(totalDuration, 4);
     
-    // Snapshot the exact prompt used (with ELSF injected) into the run folder.
-    // Only runs when a telemetry file is configured and a run ID is set.
-    if (runId && process.env.DSST_TELEMETRY_FILE) {
-      const telemetryPath = process.env.DSST_TELEMETRY_FILE;
-      const runDir = path.dirname(telemetryPath);
-      snapshotPrompt(runDir).catch((err) => console.error(`[analyze] Prompt snapshot failed:`, err));
-    }
+    
     
     return NextResponse.json(lesson);
   } catch (err) {
