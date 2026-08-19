@@ -23,7 +23,7 @@ export const CLAUDE_THINKING_TOKENS: Record<Exclude<ThinkingLevel, 'off'>, numbe
 export const MODEL_PRESETS: Record<string, ModelPreset> = {
   'claude-sonnet': {
     provider: 'anthropic',
-    model: 'claude-sonnet-4-20250514',
+    model: 'claude-sonnet-5',
     defaultThinking: 'off',
   },
   'claude-opus': {

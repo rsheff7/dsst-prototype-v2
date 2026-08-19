@@ -113,7 +113,7 @@ Both Anthropic and Google Gemini SDKs load at startup. Model selection, model ID
 ```typescript
 // src/lib/model-presets.ts
 const MODEL_PRESETS = {
-  'claude-sonnet': { provider: 'anthropic', model: 'claude-sonnet-4-6', defaultThinking: 'none' },
+  'claude-sonnet': { provider: 'anthropic', model: 'claude-sonnet-5', defaultThinking: 'none' },
   'claude-opus': { provider: 'anthropic', model: 'claude-opus-4-1', defaultThinking: 'short' },
   'gemini-flash': { provider: 'gemini', model: 'gemini-2.5-flash-preview-05-20', defaultThinking: 'short' },
   'gemini-pro': { provider: 'gemini', model: 'gemini-2.5-pro-preview-05-06', defaultThinking: 'long' }

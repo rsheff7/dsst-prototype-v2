@@ -32,7 +32,7 @@ export class AnthropicClient implements LLMClient {
       timeout: 200_000,
       maxRetries: 0,
     });
-    this.modelName = modelName ?? process.env.CLAUDE_MODEL ?? 'claude-sonnet-4-20250514';
+    this.modelName = modelName ?? process.env.CLAUDE_MODEL ?? 'claude-sonnet-5';
     this.defaultThinking = defaultThinking ?? 'off';
   }
 
