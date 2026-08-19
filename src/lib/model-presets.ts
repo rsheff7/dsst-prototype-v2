@@ -20,25 +20,34 @@ export const CLAUDE_THINKING_TOKENS: Record<Exclude<ThinkingLevel, 'off'>, numbe
   high: 32768,
 } as const;
 
+// Canonical model IDs — the single source of truth for every consumer.
+// Bump these when a new snapshot releases; nothing else should hardcode an ID.
+export const MODELS = {
+  claudeSonnet: 'claude-sonnet-5',
+  claudeOpus: 'claude-opus-5',
+  geminiPro: 'gemini-3.1-pro-preview',
+  geminiFlash: 'gemini-3.7-flash',
+} as const;
+
 export const MODEL_PRESETS: Record<string, ModelPreset> = {
   'claude-sonnet': {
     provider: 'anthropic',
-    model: 'claude-sonnet-5',
+    model: MODELS.claudeSonnet,
     defaultThinking: 'off',
   },
   'claude-opus': {
     provider: 'anthropic',
-    model: 'claude-opus-5-20250201',
+    model: MODELS.claudeOpus,
     defaultThinking: 'off',
   },
   'gemini-pro': {
     provider: 'gemini',
-    model: 'gemini-3.1-pro-preview-06-05',
+    model: MODELS.geminiPro,
     defaultThinking: 'medium',
   },
   'gemini-flash': {
     provider: 'gemini',
-    model: 'gemini-3.7-flash-preview-09-2025',
+    model: MODELS.geminiFlash,
     defaultThinking: 'medium',
   },
 };
