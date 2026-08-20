@@ -4,6 +4,7 @@ import { createLLMClient, LLMClient, LLMResponse } from '@/lib/llm-client';
 import { PRODUCTION_SYSTEM_PROMPT } from '@/lib/prompts/production-prompt';
 import { MODEL_PRESETS, ThinkingLevel } from '@/lib/model-presets';
 import { PASS_SCHEMAS } from '@/lib/passSchemas';
+import { buildMlrPlan, describeMlrPlan, enforceMlrPlan } from '@/lib/mlrSelection';
 import { telemetry } from '@/lib/telemetry';
 import {
   LessonData,
@@ -810,13 +811,23 @@ const resAnchor = await runPass('0 (anchor)', passAnchorMessage, maxTokensCap, t
     const anchorJson = JSON.stringify(resAnchor.parsed, null, 2);
     log('anchor returned', { anchor_size_chars: anchorJson.length });
 
+    // Which MLRs an activity uses is computed, not generated — see
+    // src/lib/mlrSelection.ts. Deriving it from the anchor means every parallel
+    // pass argues for the same routines instead of each picking its own, which
+    // was the largest remaining source of run-to-run difference.
+    const mlrPlan = buildMlrPlan(
+      (resAnchor.parsed.activities ?? []) as { id: string }[],
+    );
+    const anchorWithPlan = `${anchorJson}\n\n${describeMlrPlan(mlrPlan, (n) => MLRS[n].name)}`;
+    log('mlr plan', mlrPlan);
+
     log('starting parallel passes');
     const [resA, resB, resC, resD1, resD2] = await Promise.all([
-runPass('A (structure)', buildPassAMessage(anchorJson), maxTokensCap, thinkingLevel, PASS_SCHEMAS.A),
-      runPass('B (MLR + ELSF inference)', buildPassBMessage(anchorJson), maxTokensCap, thinkingLevel, PASS_SCHEMAS.B),
-      runPass('C (anticipated thinking)', buildPassCMessage_Thinking(anchorJson), maxTokensCap, thinkingLevel, PASS_SCHEMAS.C),
-      runPass('D1 (decision guide)', buildPassD1Message(anchorJson), maxTokensCap, thinkingLevel, PASS_SCHEMAS.D1),
-      runPass('D2 (wristband)', buildPassD2Message(anchorJson), maxTokensCap, thinkingLevel, PASS_SCHEMAS.D2),
+runPass('A (structure)', buildPassAMessage(anchorWithPlan), maxTokensCap, thinkingLevel, PASS_SCHEMAS.A),
+      runPass('B (MLR + ELSF inference)', buildPassBMessage(anchorWithPlan), maxTokensCap, thinkingLevel, PASS_SCHEMAS.B),
+      runPass('C (anticipated thinking)', buildPassCMessage_Thinking(anchorWithPlan), maxTokensCap, thinkingLevel, PASS_SCHEMAS.C),
+      runPass('D1 (decision guide)', buildPassD1Message(anchorWithPlan), maxTokensCap, thinkingLevel, PASS_SCHEMAS.D1),
+      runPass('D2 (wristband)', buildPassD2Message(anchorWithPlan), maxTokensCap, thinkingLevel, PASS_SCHEMAS.D2),
     ]);
     log('all 5 passes settled');
 
@@ -858,6 +869,10 @@ runPass('A (structure)', buildPassAMessage(anchorJson), maxTokensCap, thinkingLe
 
     const lesson = normalizeLesson(parsed);
     log('normalized lesson');
+
+    // Backstop for a pass that ignored the assignment.
+    const { deviations } = enforceMlrPlan(lesson, mlrPlan);
+    if (deviations > 0) log('mlr plan deviations snapped', { deviations });
     
     // Persist the raw anchor response for quality evaluation (Gemini vs Claude comparison).
     if (resAnchor.ok) {

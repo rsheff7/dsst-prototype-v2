@@ -132,15 +132,27 @@ export class GeminiClient implements LLMClient {
       }),
     };
 
+    // Sampling temperature. Nothing set one before, so every call ran at the
+    // provider default (~1.0) and the anchor's learning_target prose came back
+    // 8-9 distinct across 10 runs of the same PDF. That instability propagates:
+    // the MLR assignment is computed from the anchor, so a moving anchor moves
+    // the routines too. Tunable via GEMINI_TEMPERATURE; 0 for maximum
+    // reproducibility, raise it if the prose reads flat.
+    const temperature = process.env.GEMINI_TEMPERATURE
+      ? Number(process.env.GEMINI_TEMPERATURE)
+      : 0;
+
     // Only add thinking_level if not 'off'. Gemini disables thinking when absent.
     if (effectiveThinking !== 'off') {
       body.generation_config = {
         max_output_tokens: maxTokens,
         thinking_level: effectiveThinking.toLowerCase(),
+        temperature,
       };
     } else {
       body.generation_config = {
         max_output_tokens: maxTokens,
+        temperature,
       };
     }
 
