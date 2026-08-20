@@ -5,6 +5,13 @@ import { PRODUCTION_SYSTEM_PROMPT } from '@/lib/prompts/production-prompt';
 import { MODEL_PRESETS, ThinkingLevel } from '@/lib/model-presets';
 import { PASS_SCHEMAS } from '@/lib/passSchemas';
 import { buildMlrPlan, describeMlrPlan, enforceMlrPlan } from '@/lib/mlrSelection';
+import {
+  PIPELINE_VERSION,
+  lessonCacheKey,
+  readCachedLesson,
+  writeCachedLesson,
+  isCacheEnabled,
+} from '@/lib/lessonCache';
 import { telemetry } from '@/lib/telemetry';
 import {
   LessonData,
@@ -503,6 +510,24 @@ export async function POST(req: NextRequest) {
     //
     // Per-call client timeout 200s gives margin over typical wall times and
     // stays well under the 600s function maxDuration.
+    // Cache lookup happens before any model call: a hit costs one blob read and
+    // returns the identical plan a previous upload produced. See lessonCache.ts
+    // for why identity-keyed caching is the mechanism rather than an
+    // optimization.
+    const cacheKey = lessonCacheKey(truncatedText, preset.model);
+    if (isCacheEnabled()) {
+      const cached = await readCachedLesson(cacheKey);
+      if (cached) {
+        log('cache hit', { cacheKey });
+        telemetry.logPipelineComplete(Date.now() - pipelineStart, 0);
+        return NextResponse.json({
+          ...cached,
+          provenance: { ...cached.provenance, served_from_cache: true },
+        });
+      }
+      log('cache miss', { cacheKey });
+    }
+
     const llm = createLLMClient(preset.provider, preset.model, preset.defaultThinking);
 
     const concisionRules = `OUTPUT FORMAT — MANDATORY:
@@ -880,12 +905,29 @@ runPass('A (structure)', buildPassAMessage(anchorWithPlan), maxTokensCap, thinki
       };
     }
     
+    // Provenance: until now a generated lesson carried no record of what made
+    // it, so a .dsst file could not be attributed after the fact — and the
+    // provider is switchable by env var.
+    const stamped = {
+      ...lesson,
+      provenance: {
+        pipeline_version: PIPELINE_VERSION,
+        cache_key: cacheKey,
+        provider: preset.provider,
+        model: preset.model,
+        thinking: thinkingLevel,
+        generated_at: new Date().toISOString(),
+        served_from_cache: false,
+      },
+    };
+    await writeCachedLesson(cacheKey, stamped);
+
     const totalDuration = Date.now() - pipelineStart;
     telemetry.logPipelineComplete(totalDuration, 4);
     
     
     
-    return NextResponse.json(lesson);
+    return NextResponse.json(stamped);
   } catch (err) {
     const totalDuration = Date.now() - pipelineStart;
     console.error('[analyze] Unexpected error:', err);
