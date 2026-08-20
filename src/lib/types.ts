@@ -241,13 +241,6 @@ export interface LessonSynthesis {
   builds_on: string[];
 }
 
-export interface AnchorOutput {
-  text: string;
-  stop_reason: string;
-  input_tokens: number;
-  output_tokens: number;
-}
-
 // Stamped by the analyze route so a generated lesson can be attributed after
 // the fact — which model made it, under which prompt/schema version, and
 // whether this copy came from the cache. Optional so existing .dsst files and
@@ -275,7 +268,6 @@ export interface LessonData {
   mlr_inference: MlrInference;
   lesson_synthesis: LessonSynthesis;
   wristband: Wristband;
-  anchor?: AnchorOutput;
   provenance?: LessonProvenance;
 }
 
