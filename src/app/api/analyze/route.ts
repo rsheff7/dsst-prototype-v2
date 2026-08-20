@@ -185,6 +185,25 @@ type RawDecisionGuide = {
   scenarios?: RawScenario[];
 };
 
+// Gemini writes the activity number into the title ("1.1 What Kind and How
+// Many?"), while the UI composes its own label as `${id} ${slot}` — so the
+// number renders twice: "1.1 1.1 What Kind and How Many?". The label helpers in
+// activityLabel.ts were built for the earlier "Warm-Up:" / "Activity 1:"
+// convention and have no colon to split on here. Normalize the title instead of
+// teaching every render site about the other convention.
+function stripLeadingId(id: string, title: string): string {
+  if (!id || !title) return title;
+  const escaped = id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  // (?![0-9]) so id "1.1" does not eat into a title that starts "1.11".
+  const stripped = title.replace(
+    new RegExp(`^\\s*${escaped}(?![0-9])\\s*[:.)\\-\u2013\u2014]?\\s*`, 'i'),
+    '',
+  );
+  // Never strip the whole title away — a title that is only the id is worse
+  // than a redundant one.
+  return stripped.trim().length ? stripped.trim() : title;
+}
+
 function regroupScenarios(
   guide: RawDecisionGuide | undefined,
 ): { activity_id?: string; scenarios?: RawScenario[] }[] {
@@ -217,7 +236,7 @@ function normalizeLesson(raw: Partial<LessonData> & Record<string, unknown>): Le
     key_vocabulary: raw.key_vocabulary ?? [],
     activities: (raw.activities ?? []).map((a) => ({
       id: a.id ?? '',
-      title: a.title ?? '',
+      title: stripLeadingId(a.id ?? '', a.title ?? ''),
       function: oneOf(a.function, ACTIVITY_FUNCTIONS, 'Application'),
       duration: a.duration ?? '',
       grouping: a.grouping ?? '',
@@ -600,7 +619,7 @@ Return a single JSON object with EXACTLY these top-level fields (and no others):
 
 mlr_inference.activities and elsf_inference.activities MUST each cover EVERY activity from the anchor.
 
-For each activity in mlr_inference, produce { activity_id, language_work, mlrs: [{ number, name, why_here }] }. Select 1-2 MLRs per activity. why_here is 1-2 sentences explaining why THIS routine fits THIS activity, referencing the specific student behavior or prompt.
+For each activity in mlr_inference, produce { activity_id, language_work, mlrs: [{ number, name, why_here }] }. Select EXACTLY 2 MLRs per activity — the assignment above tells you which. why_here is 1-2 sentences explaining why THIS routine fits THIS activity, referencing the specific student behavior or prompt.
 
 For each activity in elsf_inference, produce both:
 - language_demands { receptive, productive, interactive, everyday_to_academic_bridge, elsf_guidelines_applied }
@@ -894,16 +913,11 @@ runPass('A (structure)', buildPassAMessage(anchorWithPlan), maxTokensCap, thinki
     // Backstop for a pass that ignored the assignment.
     const { deviations } = enforceMlrPlan(lesson, mlrPlan);
     if (deviations > 0) log('mlr plan deviations snapped', { deviations });
-    
-    // Persist the raw anchor response for quality evaluation (Gemini vs Claude comparison).
-    if (resAnchor.ok) {
-      (lesson as any).anchor = {
-        text: resAnchor.resp.text,
-        stop_reason: resAnchor.resp.stopReason,
-        input_tokens: resAnchor.resp.inputTokens ?? 0,
-        output_tokens: resAnchor.resp.outputTokens ?? 0,
-      };
-    }
+
+    // The raw anchor response used to be attached here for the Gemini-vs-Claude
+    // comparison. It shipped ~20KB of debug text to the browser and was baked
+    // into every exported .dsst. Token counts now live in telemetry, which is
+    // where benchmark data belongs.
     
     // Provenance: until now a generated lesson carried no record of what made
     // it, so a .dsst file could not be attributed after the fact — and the
