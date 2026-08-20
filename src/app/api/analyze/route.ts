@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createLLMClient, LLMClient, LLMResponse } from '@/lib/llm-client';
 import { PRODUCTION_SYSTEM_PROMPT } from '@/lib/prompts/production-prompt';
 import { MODEL_PRESETS, ThinkingLevel } from '@/lib/model-presets';
+import { PASS_SCHEMAS } from '@/lib/passSchemas';
 import { telemetry } from '@/lib/telemetry';
 import {
   LessonData,
@@ -610,12 +611,19 @@ ${truncatedText}`;
       userMessage: string,
       maxTokens: number,
       thinkingLevel?: ThinkingLevel,
+      responseSchema?: unknown,
     ): Promise<PassResult> {
       const passStart = Date.now();
       telemetry.logInferenceStart(passName, passName);
       try {
         log(`calling ${preset.provider} — pass ${passName}`);
-        const resp = await llm.run(PRODUCTION_SYSTEM_PROMPT, userMessage, maxTokens, thinkingLevel);
+        const resp = await llm.run(
+          PRODUCTION_SYSTEM_PROMPT,
+          userMessage,
+          maxTokens,
+          thinkingLevel,
+          responseSchema,
+        );
         const passDuration = Date.now() - passStart;
         log(`Pass ${passName} returned`, {
           stop_reason: resp.stopReason,
@@ -750,17 +758,17 @@ log('starting anchor pass (Pass 0)');
     // Cap all passes at MAX_TOKENS when set — useful for benchmarks.
     const maxTokensCap = process.env.MAX_TOKENS ? Number(process.env.MAX_TOKENS) : 32000;
 
-const resAnchor = await runPass('0 (anchor)', passAnchorMessage, maxTokensCap, thinkingLevel);
+const resAnchor = await runPass('0 (anchor)', passAnchorMessage, maxTokensCap, thinkingLevel, PASS_SCHEMAS.anchor);
     if (!resAnchor.ok) return resAnchor.response;
     const anchorJson = JSON.stringify(resAnchor.parsed, null, 2);
     log('anchor returned', { anchor_size_chars: anchorJson.length });
 
     log('starting parallel passes');
     const [resA, resB, resC, resD] = await Promise.all([
-runPass('A (structure)', buildPassAMessage(anchorJson), maxTokensCap, thinkingLevel),
-      runPass('B (MLR + ELSF inference)', buildPassBMessage(anchorJson), maxTokensCap, thinkingLevel),
-      runPass('C (anticipated thinking)', buildPassCMessage_Thinking(anchorJson), maxTokensCap, thinkingLevel),
-      runPass('D (decisions + wristband)', buildPassDMessage(anchorJson), maxTokensCap, thinkingLevel),
+runPass('A (structure)', buildPassAMessage(anchorJson), maxTokensCap, thinkingLevel, PASS_SCHEMAS.A),
+      runPass('B (MLR + ELSF inference)', buildPassBMessage(anchorJson), maxTokensCap, thinkingLevel, PASS_SCHEMAS.B),
+      runPass('C (anticipated thinking)', buildPassCMessage_Thinking(anchorJson), maxTokensCap, thinkingLevel, PASS_SCHEMAS.C),
+      runPass('D (decisions + wristband)', buildPassDMessage(anchorJson), maxTokensCap, thinkingLevel, PASS_SCHEMAS.D),
     ]);
     log('all 4 passes settled');
 

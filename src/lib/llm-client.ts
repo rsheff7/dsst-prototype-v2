@@ -10,7 +10,13 @@ export interface LLMResponse {
 }
 
 export interface LLMClient {
-  run(systemPrompt: string, userMessage: string, maxTokens: number, thinkingLevel?: ThinkingLevel): Promise<LLMResponse>;
+  run(
+    systemPrompt: string,
+    userMessage: string,
+    maxTokens: number,
+    thinkingLevel?: ThinkingLevel,
+    responseSchema?: unknown,
+  ): Promise<LLMResponse>;
 }
 
 // Claude extended thinking token budgets mapped from universal ThinkingLevel values.
@@ -36,7 +42,16 @@ export class AnthropicClient implements LLMClient {
     this.defaultThinking = defaultThinking ?? 'off';
   }
 
-  async run(systemPrompt: string, userMessage: string, maxTokens: number, thinkingLevel?: ThinkingLevel): Promise<LLMResponse> {
+  // _responseSchema is accepted for interface parity. Claude would enforce a
+  // schema through forced tool use, which is a different call shape; not wired
+  // up while Gemini is the launch provider.
+  async run(
+    systemPrompt: string,
+    userMessage: string,
+    maxTokens: number,
+    thinkingLevel?: ThinkingLevel,
+    _responseSchema?: unknown,
+  ): Promise<LLMResponse> {
     const effectiveThinking = thinkingLevel ?? this.defaultThinking;
 
     // Build request body. Add extended_thinking if enabled.
@@ -79,7 +94,13 @@ export class GeminiClient implements LLMClient {
     this.defaultThinking = defaultThinking ?? 'medium';
   }
 
-  async run(systemPrompt: string, userMessage: string, maxTokens: number, thinkingLevel?: ThinkingLevel): Promise<LLMResponse> {
+  async run(
+    systemPrompt: string,
+    userMessage: string,
+    maxTokens: number,
+    thinkingLevel?: ThinkingLevel,
+    responseSchema?: unknown,
+  ): Promise<LLMResponse> {
     const effectiveThinking = thinkingLevel ?? this.defaultThinking;
 
     // Gemini doesn't understand markdown <img> tags. Extract base64 images
@@ -120,6 +141,18 @@ export class GeminiClient implements LLMClient {
     } else {
       body.generation_config = {
         max_output_tokens: maxTokens,
+      };
+    }
+
+    // Constrained decoding. `response_format` sits at the TOP LEVEL of the
+    // Interactions request — not inside generation_config — and takes a JSON
+    // Schema subset supporting required/enum/minItems/maxItems.
+    // https://ai.google.dev/gemini-api/docs/interactions/structured-output
+    if (responseSchema) {
+      body.response_format = {
+        type: 'text',
+        mime_type: 'application/json',
+        schema: responseSchema,
       };
     }
 
