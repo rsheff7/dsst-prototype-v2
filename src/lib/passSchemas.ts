@@ -424,57 +424,73 @@ const WRISTBAND_TILE = {
   required: ['observation_short', 'friction_type', 'mlr', 'move_short'],
 } as const;
 
-export const PASS_D_SCHEMA = {
+// decision_guide is FLAT here — one scenarios[] array, each entry carrying its
+// own activity_id — rather than activities[] -> scenarios[]. Removing that array
+// level is what brings the schema under the complexity ceiling described at the
+// top of this file. normalizeLesson's regroupScenarios() re-nests it, so nothing
+// downstream sees the flat shape.
+// Pass D was split into two calls (D1 decision guide, D2 wristband). Combined,
+// its schema was rejected even after flattening decision_guide — the
+// proficiency_moves object tree alone pushes it past the ceiling. Split, each
+// half validates, and the wristband half is the one that matters most: it is
+// where the MLR chips live.
+//
+// D1 keeps decision_guide FLAT — scenarios[] each carrying activity_id — which
+// normalizeLesson's regroupScenarios() re-nests into the grouped shape
+// everything downstream expects.
+//
+// flat_move / proficiency_moves must be spelled out in full. Declaring them as
+// free-form `{ type: 'object' }` type-checks and validates, but constrained
+// decoding then emits an empty `{}` — there are no properties to fill — which
+// silently drops every proficiency move in the decision guide.
+export const PASS_D1_SCHEMA = {
   type: 'object',
   properties: {
     decision_guide: {
       type: 'object',
       properties: {
-        activities: {
+        scenarios: {
           type: 'array',
-          minItems: 3,
           items: {
             type: 'object',
             properties: {
               activity_id: { type: 'string' },
-              scenarios: {
-                type: 'array',
-                minItems: 3,
-                items: {
-                  type: 'object',
-                  properties: {
-                    scenario_type: {
-                      type: 'string',
-                      enum: [
-                        'common-error',
-                        'productive-insight',
-                        'on-track',
-                        'partial-understanding',
-                        'productive-struggle',
-                      ],
-                    },
-                    label: { type: 'string' },
-                    interpretation: { type: 'string' },
-                    is_mll: { type: 'boolean' },
-                    flat_move: { type: 'object', properties: TEACHER_MOVE.properties },
-                    proficiency_moves: {
-                      type: 'object',
-                      properties: PROFICIENCY_MOVES.properties,
-                    },
-                    mll_framework_note: { type: 'string' },
-                    mlr: MLR_REF,
-                    proficiency_divergence_note: { type: 'string' },
-                  },
-                  required: ['scenario_type', 'label', 'interpretation', 'is_mll'],
-                },
+              scenario_type: {
+                type: 'string',
+                enum: [
+                  'common-error',
+                  'productive-insight',
+                  'on-track',
+                  'partial-understanding',
+                  'productive-struggle',
+                ],
               },
+              label: { type: 'string' },
+              interpretation: { type: 'string' },
+              is_mll: { type: 'boolean' },
+              flat_move: TEACHER_MOVE,
+              proficiency_moves: PROFICIENCY_MOVES,
+              mll_framework_note: { type: 'string' },
+              mlr: MLR_REF,
+              proficiency_divergence_note: { type: 'string' },
             },
-            required: ['activity_id', 'scenarios'],
+            required: ['activity_id', 'scenario_type', 'label', 'interpretation', 'is_mll'],
           },
         },
       },
-      required: ['activities'],
+      required: ['scenarios'],
     },
+  },
+  required: ['decision_guide'],
+} as const;
+
+// `mlr` is required on every tile. Chip placement was the least stable thing in
+// the 2026-08-19 baseline — 8 distinct maps across 8 runs, 2-4 tiles per run
+// with no chip at all — and chips-at-the-point-of-need is what the IM reviewers
+// validated on 2026-06-01.
+export const PASS_D2_SCHEMA = {
+  type: 'object',
+  properties: {
     wristband: {
       type: 'object',
       properties: {
@@ -517,15 +533,14 @@ export const PASS_D_SCHEMA = {
       ],
     },
   },
-  required: ['decision_guide', 'wristband'],
+  required: ['wristband'],
 } as const;
 
-// D is deliberately absent — see the complexity-ceiling note at the top of this
-// file. runPass treats an undefined schema as "no constrained decoding", so
-// Pass D behaves exactly as it did before this change.
 export const PASS_SCHEMAS: Record<string, unknown> = {
   anchor: ANCHOR_SCHEMA,
   A: PASS_A_SCHEMA,
   B: PASS_B_SCHEMA,
   C: PASS_C_SCHEMA,
+  D1: PASS_D1_SCHEMA,
+  D2: PASS_D2_SCHEMA,
 };

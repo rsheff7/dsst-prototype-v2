@@ -12,6 +12,7 @@ import {
   SentenceFrame,
   DoNotRemoveItem,
   ProficiencyAdaptation,
+  DecisionScenario,
 } from '@/lib/types';
 import { isValidMlrNumber, MLRS, MlrNumber } from '@/lib/mlrs';
 import { isValidELSFGuidelineNumber, ELSFGuidelineNumber } from '@/lib/elsf';
@@ -161,6 +162,38 @@ function normalizeProficiency(raw: unknown): ProficiencyAdaptation {
   return { text: '' };
 }
 
+// Pass D emits decision_guide as a FLAT scenarios[] array, each scenario tagging
+// its own activity_id. That shape exists because the nested
+// activities[] -> scenarios[] form pushed the response schema past the
+// Interactions API's complexity ceiling (see src/lib/passSchemas.ts). We re-nest
+// here so everything downstream — types, components, saved .dsst files — keeps
+// the grouped shape it has always had.
+//
+// Accepts either shape: already-grouped input passes through untouched, so
+// existing lesson files and any unconstrained/Claude output still normalize.
+type RawScenario = Partial<DecisionScenario> & { activity_id?: string };
+type RawDecisionGuide = {
+  activities?: { activity_id?: string; scenarios?: RawScenario[] }[];
+  scenarios?: RawScenario[];
+};
+
+function regroupScenarios(
+  guide: RawDecisionGuide | undefined,
+): { activity_id?: string; scenarios?: RawScenario[] }[] {
+  if (guide?.activities?.length) return guide.activities;
+  if (!guide?.scenarios?.length) return [];
+
+  // Preserve first-seen activity order rather than sorting — the anchor's
+  // ordering is the lesson's ordering.
+  const grouped = new Map<string, RawScenario[]>();
+  for (const scenario of guide.scenarios) {
+    const id = scenario.activity_id ?? '';
+    if (!grouped.has(id)) grouped.set(id, []);
+    grouped.get(id)!.push(scenario);
+  }
+  return [...grouped].map(([activity_id, scenarios]) => ({ activity_id, scenarios }));
+}
+
 function normalizeLesson(raw: Partial<LessonData> & Record<string, unknown>): LessonData {
   const rawProf = (raw.adaptation_guardrails?.by_proficiency ?? {}) as Record<string, unknown>;
   return {
@@ -229,7 +262,7 @@ function normalizeLesson(raw: Partial<LessonData> & Record<string, unknown>): Le
       })),
     },
     decision_guide: {
-      activities: (raw.decision_guide?.activities ?? []).map((a) => ({
+      activities: regroupScenarios(raw.decision_guide as RawDecisionGuide | undefined).map((a) => ({
         activity_id: a.activity_id ?? '',
         scenarios: (a.scenarios ?? []).map((s) => ({
           scenario_type: oneOf(s.scenario_type, SCENARIO_TYPES, 'common-error'),
@@ -237,7 +270,14 @@ function normalizeLesson(raw: Partial<LessonData> & Record<string, unknown>): Le
           interpretation: s.interpretation ?? '',
           is_mll: s.is_mll ?? false,
           flat_move: s.flat_move ?? null,
-          proficiency_moves: normalizeProficiencyMoves(s.proficiency_moves) as typeof s.proficiency_moves,
+          // Non-MLL scenarios carry flat_move and nothing else. The prompt says
+          // so, but constrained decoding fills every declared property and the
+          // schema cannot express "null" (type unions are rejected on this API
+          // surface), so the model returns proficiency_moves on all scenarios.
+          // Enforce the rule here instead of hoping it is sampled correctly.
+          proficiency_moves: (s.is_mll
+            ? normalizeProficiencyMoves(s.proficiency_moves)
+            : null) as DecisionScenario['proficiency_moves'],
           mll_framework_note: s.mll_framework_note ?? null,
           proficiency_divergence_note:
             (s as { proficiency_divergence_note?: string | null }).proficiency_divergence_note ?? null,
@@ -575,33 +615,36 @@ ${concisionRules}
 Lesson text:
 ${truncatedText}`;
 
-    const buildPassDMessage = (anchorJson: string) =>
-      `Analyze this math lesson. This is PASS D (decisions + wristband) of FOUR PARALLEL passes after the anchor. Passes A (structure), B (MLR + ELSF inference), and C (anticipated thinking) are running in parallel.
+    const buildPassD1Message = (anchorJson: string) =>
+      `Analyze this math lesson. This is PASS D1 (decision guide) of FIVE PARALLEL passes after the anchor. Passes A (structure), B (MLR + ELSF inference), C (anticipated thinking), and D2 (wristband) are running in parallel.
 
 Return a single JSON object with EXACTLY these top-level fields (and no others):
-- decision_guide { activities: [{ activity_id, scenarios }] }
-- wristband { arc_one_line, preflight, top_signals, top_frictions, activities: [{ activity_id, tiles, synthesis_short }], mlr_legend, lesson_synthesis_short }
+- decision_guide { scenarios: [{ activity_id, ...scenario fields }] } — a FLAT array. Every scenario names the activity it belongs to via activity_id; do NOT group them under an activities array.
 
-decision_guide.activities and wristband.activities MUST each cover EVERY activity from the anchor.
+The activity_ids across decision_guide.scenarios MUST cover EVERY activity from the anchor.
 
 decision_guide MUST include a mix of scenario types: 1-2 common-error, 1 productive-insight, 1 on-track, 1 productive-struggle or partial-understanding across the lesson. Total ~10-12 scenarios.
 
 For MLL scenarios (is_mll: true), proficiency_moves MUST have emerging/developing/expanding all populated. Emerging.nonverbal MUST be a concrete physical action. For non-MLL scenarios, use flat_move and set proficiency_moves: null.
 
-Every MLL scenario MUST be anchored to a specific MLR. Every wristband tile with friction_type 'language' or 'language-math' MUST anchor to an MLR.
+Every MLL scenario MUST be anchored to a specific MLR.
 
-wristband.activities each get 2-3 tiles MAXIMUM.
-wristband.mlr_legend lists the 2-3 routines this lesson runs on most heavily.
-EXACTLY ONE wristband tile across the whole lesson has is_crux_moment: true, on the activity the anchor marked is_crux: true.
+${anchorJson}
 
-wristband.synthesis_short per activity is the in-class compression of the activity's close — 10-18 words, verb-first, lesson-specific. NEVER generic. Must name a specific student work or question. Tied to the learning_target in the anchor.
-wristband.lesson_synthesis_short is the in-class compression of the lesson close — 12-22 words, verb-first, lesson-specific. NEVER generic. Tied to the destination in the anchor.
+Lesson text:
+${truncatedText}`;
 
-${makeAlignmentBlock(anchorJson)}
+    const buildPassD2Message = (anchorJson: string) =>
+      `Analyze this math lesson. This is PASS D2 (wristband) of FIVE PARALLEL passes after the anchor. Passes A (structure), B (MLR + ELSF inference), C (anticipated thinking), and D1 (decision guide) are running in parallel.
 
-Write in plain language a first-year teacher could read at 9pm the night before teaching. No academic jargon.
+Return a single JSON object with EXACTLY these top-level fields (and no others):
+- wristband { arc_one_line, preflight, top_signals, top_frictions, activities: [{ activity_id, tiles, synthesis_short }], mlr_legend, lesson_synthesis_short }
 
-${concisionRules}
+wristband.activities MUST cover EVERY activity from the anchor.
+
+EVERY wristband tile MUST carry an mlr. The chip at the point of need is the thing this view exists for; a tile without one is incomplete.
+
+${anchorJson}
 
 Lesson text:
 ${truncatedText}`;
@@ -768,19 +811,21 @@ const resAnchor = await runPass('0 (anchor)', passAnchorMessage, maxTokensCap, t
     log('anchor returned', { anchor_size_chars: anchorJson.length });
 
     log('starting parallel passes');
-    const [resA, resB, resC, resD] = await Promise.all([
+    const [resA, resB, resC, resD1, resD2] = await Promise.all([
 runPass('A (structure)', buildPassAMessage(anchorJson), maxTokensCap, thinkingLevel, PASS_SCHEMAS.A),
       runPass('B (MLR + ELSF inference)', buildPassBMessage(anchorJson), maxTokensCap, thinkingLevel, PASS_SCHEMAS.B),
       runPass('C (anticipated thinking)', buildPassCMessage_Thinking(anchorJson), maxTokensCap, thinkingLevel, PASS_SCHEMAS.C),
-      runPass('D (decisions + wristband)', buildPassDMessage(anchorJson), maxTokensCap, thinkingLevel, PASS_SCHEMAS.D),
+      runPass('D1 (decision guide)', buildPassD1Message(anchorJson), maxTokensCap, thinkingLevel, PASS_SCHEMAS.D1),
+      runPass('D2 (wristband)', buildPassD2Message(anchorJson), maxTokensCap, thinkingLevel, PASS_SCHEMAS.D2),
     ]);
-    log('all 4 passes settled');
+    log('all 5 passes settled');
 
     // First failure wins — return its error message.
     if (!resA.ok) return resA.response;
     if (!resB.ok) return resB.response;
     if (!resC.ok) return resC.response;
-    if (!resD.ok) return resD.response;
+    if (!resD1.ok) return resD1.response;
+    if (!resD2.ok) return resD2.response;
 
     // Merge. Each pass owns a disjoint set of top-level fields.
     // - Anchor produces: meta, destination, activities (skeleton).
@@ -788,13 +833,16 @@ runPass('A (structure)', buildPassAMessage(anchorJson), maxTokensCap, thinkingLe
     //   adaptation_guardrails, lesson_synthesis.
     // - Pass B produces: mlr_inference, elsf_inference.
     // - Pass C produces: anticipated_thinking.
-    // - Pass D produces: decision_guide, wristband.
+    // - Pass D1 produces: decision_guide. Pass D2 produces: wristband.
+    //   D was split in two because the combined response schema exceeded the
+    //   Interactions API's complexity ceiling; see src/lib/passSchemas.ts.
     //
     // On overlap, Pass A's activities (full) beat the anchor's skeleton; the
     // anchor's meta + destination win since they were the alignment source of
     // truth that A built on top of.
     const parsed = {
-      ...resD.parsed,
+      ...resD2.parsed,
+      ...resD1.parsed,
       ...resC.parsed,
       ...resB.parsed,
       ...resA.parsed,
