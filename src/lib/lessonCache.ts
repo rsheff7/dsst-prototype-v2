@@ -26,7 +26,10 @@ import { get, put } from '@vercel/blob';
 import type { LessonData } from './types';
 
 // Bump when a prompt, schema, or normalizer change should invalidate the cache.
-export const PIPELINE_VERSION = '2026-08-20.1';
+// 2026-08-20.2 — title normalization, anchor blob removal, MLR count alignment.
+// Those changed the shape of the artifact, so entries written by .1 must not be
+// served. Bumping is cheap; serving a stale artifact is not.
+export const PIPELINE_VERSION = '2026-08-20.2';
 
 const PREFIX = 'lessons';
 
@@ -69,9 +72,13 @@ const pathFor = (key: string) => `${PREFIX}/${key}.json`;
 export async function readCachedLesson(key: string): Promise<CachedLesson | null> {
   if (!isCacheEnabled()) return null;
   try {
-    // Pathnames are content-addressed and never overwritten, so the default
-    // cached read is correct here and avoids origin transfer on every hit.
-    const result = await get(pathFor(key), { access: 'private' });
+    // useCache:false reads from origin. The CDN read cache also caches the 404
+    // from a miss, and a stale negative entry makes a stored lesson look absent
+    // — observed 2026-08-20: three sequential requests for the same PDF went
+    // miss, hit, MISS, and the third regenerated a different plan. Origin reads
+    // cost Fast Origin Transfer, which is nothing against a ~30s generation and
+    // is the whole point of the cache.
+    const result = await get(pathFor(key), { access: 'private', useCache: false });
     if (!result || result.statusCode !== 200 || !result.stream) return null;
     const text = await new Response(result.stream).text();
     return JSON.parse(text) as CachedLesson;
@@ -87,12 +94,20 @@ export async function writeCachedLesson(key: string, lesson: CachedLesson): Prom
     await put(pathFor(key), JSON.stringify(lesson), {
       access: 'private',
       contentType: 'application/json',
-      // Content-addressed, so a repeat write is the same bytes. Allowing
-      // overwrite keeps a concurrent double-generation from throwing.
-      allowOverwrite: true,
+      // First write wins. The stored lesson is the reviewed artifact, and a
+      // spurious miss must never replace it with a freshly sampled one — that
+      // would quietly undo the guarantee this whole module exists to provide.
+      // Losing the race just means one wasted generation.
+      allowOverwrite: false,
     });
     return true;
   } catch (err) {
+    // An "already exists" rejection is the expected outcome of a lost race, not
+    // a failure: the copy that is already there is the one we want to keep.
+    if (err instanceof Error && /already exists/i.test(err.message)) {
+      console.log('[cache] entry already present, keeping the stored copy');
+      return true;
+    }
     console.warn('[cache] write failed, continuing:', err);
     return false;
   }
