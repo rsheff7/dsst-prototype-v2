@@ -15,7 +15,7 @@
  * - Output is deterministic: same modules, same bytes. Re-running with
  *   unchanged inputs produces a zero-diff file.
  *
- * The .md modules under src/lib/prompts/modules/ remain the single
+ * The .md modules under prompt-dev/modules/ remain the single
  * source of truth for wording; this script closes the loop back into
  * the repo instead of expecting a manual paste.
  *
@@ -25,7 +25,7 @@
  */
 import fs from 'fs';
 import path from 'path';
-import { buildSystemPrompt } from './src/lib/prompts/composer';
+import { buildSystemPrompt } from './prompt-dev/composer';
 import { getProfile, PROFILES } from './src/lib/prompts/profiles';
 
 const profileArg = process.argv[2];

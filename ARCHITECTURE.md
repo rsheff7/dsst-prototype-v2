@@ -75,9 +75,9 @@ Two distinct layers serve different audiences:
 | Layer | Where It Lives | Who Uses It |
 |-------|---------------|-------------|
 | **Frozen constant** (`production-prompt.ts`) | Imported by `/api/analyze/route.ts` | Production deployment (Vercel) |
-| **Modular composition** (`composer.ts`, `modules/*.md`, `profiles.ts`) | Invoked only by local scripts/tests | Developers iterating on prompt versions |
+| **Modular composition** (`prompt-dev/composer.ts`, `prompt-dev/modules/*.md`, `profiles.ts`) | Invoked only by local scripts/tests |
 
-Nothing in `src/app/` imports from the modular system. The two are fully decoupled.
+Nothing in `src/app/` imports from the modular system — the assembly machinery now lives in top-level `prompt-dev/`, physically outside the deployable tree.
 
 ### Production: Frozen Prompt Constant
 
@@ -293,14 +293,16 @@ Each tool implements one view of the same `LessonData`:
 | `qa.ts` | Demo/testing utilities for development |
 | `demoLesson.ts` | Hardcoded sample lesson data for offline demo mode (no API key required) |
 
-### Prompt Files (`src/lib/prompts/`)
+### Prompt Files (two physical zones)
 
-| File | Purpose |
-|------|---------|
-| `production-prompt.ts` | **~38 KB frozen string** exported as `PRODUCTION_SYSTEM_PROMPT`. Imported by `route.ts`. Ships in the Vercel bundle. Regenerated manually when a new prompt version wins benchmarks |
-| `composer.ts` | Slot-based composition engine. Loads `.md` modules, resolves `${PLACEHOLDER}` tokens via `DYNAMIC_TOKENS`. **Dev/benchmark only** — never imported from `src/app/` |
-| `profiles.ts` | Profile registry mapping IDs to slot configurations. Exports `DEFAULT_PROFILE` and `getProfile(id)` |
-| `modules/*.md` | Markdown module files (core-role, framework, elsf-layer, output-format, personas). One file per slot per profile |
+The prod/dev split is enforced by *location*: shipped prompt code lives in `src/lib/prompts/`; the dev-only assembly machinery lives in top-level `prompt-dev/` (tracked, but unreachable from routes — Next/Vercel only packages things reachable from them).
+
+| File | Zone | Purpose |
+|------|------|---------|
+| `src/lib/prompts/production-prompt.ts` | ships | **~38 KB frozen string** exported as `PRODUCTION_SYSTEM_PROMPT`. Imported by `route.ts`. The live site runs on this constant and nothing else. Regenerated manually when a new prompt version wins benchmarks |
+| `src/lib/prompts/profiles.ts` | ships | Profile registry mapping IDs to slot configurations. Exports `DEFAULT_PROFILE` and `getProfile(id)` |
+| `prompt-dev/composer.ts` | dev-only | Slot-based composition engine. Loads `.md` modules relative to its own folder, resolves `${TOKEN}` placeholders via `DYNAMIC_TOKENS`. Uses `fs.readFileSync` + `__dirname`, which works under local `tsx`/`next dev` but fails in the flat Vercel bundle — hence the separate zone. Never import from `src/app/` |
+| `prompt-dev/modules/*.md` | dev-only | Wording source of truth per slot (core-role, framework, elsf-layer, output-format, persona). Edit these, then `npx tsx generate-prompts.ts <profile-id>` from the repo root to re-bake the frozen constant |
 
 ---
 

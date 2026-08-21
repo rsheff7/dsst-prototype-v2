@@ -17,8 +17,10 @@
  */
 import fs from 'fs';
 import path from 'path';
-import { getProfile } from './profiles';
-import { buildElsfReference } from '../elsf';
+// Upward reference into src/ — intentional. This file lives OUTSIDE the
+// Vercel bundle; only the generated production-prompt.ts crosses that line.
+import { getProfile } from '../src/lib/prompts/profiles';
+import { buildElsfReference } from '../src/lib/elsf';
 
 // Resolve the modules directory relative to this file, regardless of how it's invoked.
 const MODULES_DIR = path.join(__dirname, 'modules');
