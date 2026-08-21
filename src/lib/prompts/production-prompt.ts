@@ -9,7 +9,7 @@
  * route imports PRODUCTION_SYSTEM_PROMPT directly.
  *
  * HOW TO CHANGE IT:
- *   1. Edit the wording in ./modules/*.md (the modular source of truth)
+1. Edit wording in prompt-dev/modules/*.md (the modular source of truth)
  *   2. From the repo root:  npx tsx generate-prompts.ts <profile-id>
  *   3. Review:  git diff src/lib/prompts/production-prompt.ts
  *   4. Commit the result, then test the app normally (upload a PDF)
