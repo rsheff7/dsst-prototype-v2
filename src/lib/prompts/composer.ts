@@ -1,3 +1,20 @@
+/**
+ * DEV-ONLY MODULE — Do not import from src/app/ or any server route.
+ *
+ * This composer resolves prompt modules (.md files in ./modules/) into a
+ * single string at local-run time. It is used exclusively by:
+ *   - Local benchmark scripts (benchmarks/)
+ *   - generate-prompts.ts (one-shot regeneration utility)
+ *   - Unit tests validating slot composition
+ *
+ * It relies on fs.readFileSync + __dirname path resolution, which works
+ * under `next dev` / tsx but will FAIL in the Vercel production bundle
+ * (loose .md files are not shipped; only imported JS is available).
+ *
+ * If you need to change the production prompt, edit ./modules/*.md,
+ * run `npx tsx generate-prompts.ts`, then commit the updated
+ * production-prompt.ts constant. Never import this file from src/app/.
+ */
 import fs from 'fs';
 import path from 'path';
 import { getProfile } from './profiles';

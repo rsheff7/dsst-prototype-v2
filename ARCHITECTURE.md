@@ -7,7 +7,7 @@
 
 ## Executive Summary
 
-The DSST Math Teacher Tools v2 is a Next.js 15 web application that analyzes math lesson PDFs using Claude Sonnet 4.6 to generate five integrated teacher-facing views anchored to the eight Mathematical Language Routines (MLRs). The architecture uses an **anchor + parallel passes** pattern to balance generation quality with wall-clock time (~3 minutes per lesson analysis). Prompt engineering has been refactored into a composable five-module system supporting multiple voices and runtime model selection.
+The DSST Math Teacher Tools v2 is a Next.js 15 web application that analyzes math lesson PDFs using Claude Sonnet 5 (default) or configurable model presets to generate five integrated teacher-facing views anchored to the eight Mathematical Language Routines (MLRs). The architecture uses an **anchor + parallel passes** pattern to balance generation quality with wall-clock time (~3 minutes per lesson analysis). The production system prompt is a frozen static constant imported at build time; a separate modular composition system (five markdown slots, profile registry) powers local prompt development and benchmarking without touching the deployed route.
 
 ### Core Design Principles
 
@@ -68,11 +68,34 @@ The DSST Math Teacher Tools v2 is a Next.js 15 web application that analyzes mat
 
 ---
 
-## Composable Prompt Architecture ✅ COMPLETE
+## Prompt Architecture
 
-Implemented August 13–14 during Sprint 5. Replaced monolithic prompt files with a modular five-slot composition system.
+Two distinct layers serve different audiences:
 
-### Composition Pattern
+| Layer | Where It Lives | Who Uses It |
+|-------|---------------|-------------|
+| **Frozen constant** (`production-prompt.ts`) | Imported by `/api/analyze/route.ts` | Production deployment (Vercel) |
+| **Modular composition** (`composer.ts`, `modules/*.md`, `profiles.ts`) | Invoked only by local scripts/tests | Developers iterating on prompt versions |
+
+Nothing in `src/app/` imports from the modular system. The two are fully decoupled.
+
+### Production: Frozen Prompt Constant
+
+`src/lib/prompts/production-prompt.ts` exports a single string (~38 KB):
+
+```typescript
+export const PRODUCTION_SYSTEM_PROMPT = `...`; // Robert Voice profile, fully resolved
+```
+
+The analyze route imports this constant directly. No filesystem reads, no dynamic composition, no environment-dependent branching. When Vercel bundles server code into flat chunks, every referenced module is inlined — the prompt ships as data inside the JS bundle.
+
+**Regeneration workflow:** When local benchmarks finalize a new winning prompt version, the developer runs the composer locally (`npx tsx generate-prompts.ts`) to produce the resolved text, then regenerates `production-prompt.ts` with the new string. This is a deliberate manual gate: no CI step auto-freezes prompts.
+
+### Development: Modular Composition System
+
+Implemented August 13–14 during Sprint 5. Replaced monolithic prompt files with a five-slot composition system for iterative experimentation.
+
+#### Composition Pattern
 
 Every profile specifies exactly one markdown module per slot:
 
@@ -84,9 +107,9 @@ Every profile specifies exactly one markdown module per slot:
 | `output_format` | `output-format.md` | JSON schema definitions, structural constraints |
 | `persona` | `plain-language.md` or `robert-voice.md` | Voice/style variation for A/B testing |
 
-Slots are optional — the composer skips undefined entries gracefully. Adding a future variant requires one `.md` file plus one registry entry; zero changes to routes or composition logic.
+Slots are optional — the composer skips undefined entries gracefully. Adding a future variant requires one `.md` file plus one registry entry in `profiles.ts`; zero changes to routes or composition logic.
 
-### Dynamic Token Resolution
+#### Dynamic Token Resolution
 
 Modules may contain placeholders like `${ELSF_GUIDELINES}`. At composition time, `composer.ts` substitutes these via a `DYNAMIC_TOKENS` lookup map:
 
@@ -97,41 +120,43 @@ const resolved = rawContent.replaceAll(token.name, token.resolver(profileId));
 
 The resolver function calls `buildElsfReference()` from `elsf.ts`, which formats guideline data into structured text. Both `elsf.ts` definitions serve two purposes: prompt injection and runtime validation (response checking verifies returned guideline numbers exist in the canonical list). Single source of truth maintained.
 
-### Profiles Registry
+#### Profiles Registry
 
 Defined in `profiles.ts` as a simple associative array mapping profile ID to module objects. Two shipped profiles:
 
-- `math-lesson-baseline` — core role + plain-language register (default)
-- `math-lesson-analysis` — adds Robert voice persona with specific operational rules
+- `math-lesson-baseline` — core role + plain-language register
+- `math-lesson-analysis` (Robert Voice) — adds specific operational persona rules. **Current production winner.**
 
-Default controlled by shared `DEFAULT_PROFILE` constant. Invalid profile IDs return clean 400 errors with instructions on valid options.
+The default profile is controlled by the `DEFAULT_PROFILE` export. Profile selection is a compile-time choice when regenerating `production-prompt.ts`, not a runtime query parameter.
 
-### Runtime Configuration
+#### Model Presets & Runtime Switching
 
-Both Anthropic and Google Gemini SDKs load at startup. Model selection, model ID, and thinking budget resolve from the unified `MODEL_PRESETS` map in `model-presets.ts`:
+Both Anthropic and Google Gemini SDKs load at startup. Model selection resolves from the unified `MODEL_PRESETS` map:
 
 ```typescript
 // src/lib/model-presets.ts
+const MODELS = {
+  claudeSonnet: 'claude-sonnet-5',
+  claudeOpus:   'claude-opus-5',
+  geminiPro:    'gemini-3.1-pro-preview',
+  geminiFlash:  'gemini-3.7-flash',
+} as const;
+
 const MODEL_PRESETS = {
-  'claude-sonnet': { provider: 'anthropic', model: 'claude-sonnet-5', defaultThinking: 'none' },
-  'claude-opus': { provider: 'anthropic', model: 'claude-opus-4-1', defaultThinking: 'short' },
-  'gemini-flash': { provider: 'gemini', model: 'gemini-2.5-flash-preview-05-20', defaultThinking: 'short' },
-  'gemini-pro': { provider: 'gemini', model: 'gemini-2.5-pro-preview-05-06', defaultThinking: 'long' }
+  'claude-sonnet': { provider: 'anthropic', model: MODELS.claudeSonnet, defaultThinking: 'medium' },
+  'claude-opus':   { provider: 'anthropic', model: MODELS.claudeOpus,   defaultThinking: 'medium' },
+  'gemini-flash':  { provider: 'gemini',    model: MODELS.geminiFlash,  defaultThinking: 'medium' },
+  'gemini-pro':    { provider: 'gemini',    model: MODELS.geminiPro,    defaultThinking: 'medium' }
 } as const;
 ```
 
-Thinking levels normalize across providers: Claude maps to `budget_tokens`, Gemini maps to `thinkingConfig`. This abstraction lets us swap base models without touching route code or prompt templates.
+Model names live only in the `MODELS` constant — consumer files import from there, never hardcode literal IDs. Thinking levels normalize across providers: Claude maps to `budget_tokens`, Gemini maps to `thinkingConfig`.
 
-Developers independently test different models, thinking budgets, and profiles via URL query params (`?preset`, `?thinking`, `?profile`) without sharing `.env.local` edits or restarting servers.
+Developers switch models locally via URL query params (`?preset=gemini-flash&thinking=low`) or the `DSST_MODEL_PRESET` environment variable. No `.env.local` sharing or server restarts needed.
 
-### Verification Results
+#### Local Benchmarking Workflow
 
-Diff analysis against original monolithic prompts confirms functional parity:
-
-- **Baseline diff**: ~9KB size increase due to expanded ELSF reference table (structural improvement); no pedagogical content dropped
-- **Robert voice diff**: ~91 lines added (full ELSF expansion replacing unresolved placeholders); no text dropped or reordered. Original monolithic version contained broken placeholder references
-
-Cross-model impact assessment pending: measure how different LLM providers respond to the same persona modules. Claude tends toward pedagogical depth while Gemini leans conversational — the interaction between model personality and injected persona remains untested.
+Benchmark scripts (in `benchmarks/`) import `buildSystemPrompt(profile)` to generate composed prompt files, run them against candidate models, and write results to `benchmarks/runs/`. The modular system exists solely to support this offline iteration loop. The winning output is then frozen into `production-prompt.ts`.
 
 ---
 
@@ -258,14 +283,24 @@ Each tool implements one view of the same `LessonData`:
 |------|---------|
 | `types.ts` | TypeScript interfaces: `LessonData`, `Activity`, `MlrRef`, `SentenceFrame`, etc. Source of truth for validation |
 | `mlrs.ts` | Canonical MLR definitions (8 routines), lookup table, validation helpers (`isValidMlrNumber`) |
-| `prompts.ts` | Legacy compatibility layer only. Delegates to `buildSystemPrompt(composer)` for composition |
-| `model-presets.ts` | Provider-to-model routing map with preset names (`claude-sonnet`, `gemini-pro`, etc.) and default thinking levels |
-| `llm-client.ts` | Unified client accepting provider string, model name, and thinking level. Handles API key discovery and request construction |
+| `prompts.ts` | Thin compatibility shim. Delegates to `prompts/composer.ts`. **Not imported by any route** — used only by local benchmark scripts |
+| `model-presets.ts` | Single source of truth: `MODELS` constant (canonical model IDs) + `MODEL_PRESETS` routing map with provider, thinking defaults |
+| `llm-client.ts` | Unified client accepting preset name, optional thinking level. Imports model IDs from `MODELS`. Handles API key discovery, request construction, response normalization |
 | `elsf.ts` | Single source of truth for ELSS guidelines. Provides `getByCategory()`, `getAllByGuidelineNumber()`, `buildElsfReference()` |
 | `activityLabel.ts` | Human-readable labels for activity functions (Setup → "Getting Started") |
+| `telemetry.ts` | Optional local run logging (JSONL). Disabled unless `DSST_TELEMETRY_ENABLED=true`. All fs operations wrapped in try/catch that self-disables on failure |
 | `audit.ts` | Post-generation validation: checks all activities covered in each pass, exactly one crux, MLR coverage |
 | `qa.ts` | Demo/testing utilities for development |
 | `demoLesson.ts` | Hardcoded sample lesson data for offline demo mode (no API key required) |
+
+### Prompt Files (`src/lib/prompts/`)
+
+| File | Purpose |
+|------|---------|
+| `production-prompt.ts` | **~38 KB frozen string** exported as `PRODUCTION_SYSTEM_PROMPT`. Imported by `route.ts`. Ships in the Vercel bundle. Regenerated manually when a new prompt version wins benchmarks |
+| `composer.ts` | Slot-based composition engine. Loads `.md` modules, resolves `${PLACEHOLDER}` tokens via `DYNAMIC_TOKENS`. **Dev/benchmark only** — never imported from `src/app/` |
+| `profiles.ts` | Profile registry mapping IDs to slot configurations. Exports `DEFAULT_PROFILE` and `getProfile(id)` |
+| `modules/*.md` | Markdown module files (core-role, framework, elsf-layer, output-format, personas). One file per slot per profile |
 
 ---
 
@@ -286,17 +321,19 @@ Each tool implements one view of the same `LessonData`:
 ANTHROPIC_API_KEY=sk-ant-...           # Scoped to Preview + Production in Vercel dashboard
 GEMINI_API_KEY=your-gemini-key-here     # Enables Gemini model presets
 
-# Optional overrides
-PORT=3000
-LOG_LEVEL=info
-# DSST_PROMPT_FILE=./custom-prompt.md   # Full prompt file override (bypasses modular composition)
+# Optional — model switching
+DSST_MODEL_PRESET=claude-sonnet        # Values: claude-sonnet | claude-opus | gemini-flash | gemini-pro
+                                       # Can also be set per-request via ?preset query param
 
-# Deprecated / Ignored
-# MODEL_PROVIDER, CLAUDE_MODEL, GEMINI_MODEL, GEMINI_THINKING_LEVEL
-# These were replaced by MODEL_PRESETS map + runtime query parameters
+# Optional — local development telemetry
+DSST_TELEMETRY_ENABLED=false           # Set true to log JSONL run data to ./runs/ (never in production)
+
+# Deprecated on feature branch (still read by main branch code paths)
+# CLAUDE_MODEL, GEMINI_MODEL, GEMINI_THINKING_LEVEL, MODEL_PROVIDER
+# These were superseded by MODEL_PRESETS + DSST_MODEL_PRESET + ?preset query params
 ```
 
-Runtime configuration resolves entirely from code and query parameters. Only the two API keys are required to start the server. Environment variables for model selection (`MODEL_PROVIDER`, `CLAUDE_MODEL`, etc.) are read by old logic paths but ignored by the new preset-based system.
+Runtime configuration resolves from `DSST_MODEL_PRESET` env var and `?preset` / `?thinking` query parameters. Only the two API keys are strictly required. The system prompt is always the frozen `PRODUCTION_SYSTEM_PROMPT` constant — no env var or query param alters it. Legacy model-selection variables remain for backward compatibility with the main branch until merge.
 
 ### Build & Deploy Commands
 

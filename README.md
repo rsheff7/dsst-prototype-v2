@@ -37,9 +37,9 @@ The modular architecture is driven by three query parameters you can pass to `/a
 - `?profile` — Prompt profile ID. Selects a pre-configured five-slot template (`coreRole`, `persona`, `framework`, `elsfLayer`, `outputFormat`). Defaults to `math-lesson-baseline`.
 - `?thinking` — Reasoning budget override. Accepts `minimal`, `low`, `medium`, `high`, or `off`. Overrides the default thinking level for the chosen preset.
 
-Example: `POST /api/analyze?preset=claude-sonnet&profile=math-lesson-analysis&thinking=high`
+Example: `POST /api/analyze?preset=claude-sonnet&thinking=high`
 
-See `src/lib/prompts/profiles.ts` for all available profile IDs, and `ARCHITECTURE.md` for how the five slots map to individual prompt modules.
+The system prompt is always the frozen `PRODUCTION_SYSTEM_PROMPT` constant (Robert Voice profile). There is no runtime `?profile` parameter — profile selection happens at freeze time when regenerating `production-prompt.ts`. See `src/lib/prompts/profiles.ts` for available profiles and `ARCHITECTURE.md` § Prompt Architecture for details on how the five slots compose.
 
 ## Telemetry
 
