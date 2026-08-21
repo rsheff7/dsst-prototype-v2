@@ -342,10 +342,10 @@ export async function POST(req: NextRequest) {
   };
 
   try {
-    // Runtime config from query params → env var → hardcoded defaults.
-    const searchParams = req.nextUrl.searchParams;
+    // Model is chosen at deploy time via the DSST_MODEL_PRESET env var
+    // (Vercel dashboard for deploys; .env.local for local runs).
     const profile = 'math-lesson-analysis';
-    const presetId = searchParams.get('preset') ?? process.env.DSST_MODEL_PRESET ?? 'claude-sonnet';
+    const presetId = process.env.DSST_MODEL_PRESET ?? 'claude-sonnet';
 
     // Resolve preset to provider + model + default thinking
     const preset = MODEL_PRESETS[presetId];
@@ -357,9 +357,13 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Thinking: query param overrides preset default
-    const queryThinking = searchParams.get('thinking') as 'minimal' | 'low' | 'medium' | 'high' | 'off' | null;
-    const thinkingLevel: ThinkingLevel = queryThinking ?? preset.defaultThinking;
+    // Thinking comes from DSST_THINKING_LEVEL when set to a valid value;
+    // otherwise the preset's own default applies.
+    const envThinking = process.env.DSST_THINKING_LEVEL;
+    const thinkingLevel: ThinkingLevel =
+      envThinking && ['minimal', 'low', 'medium', 'high', 'off'].includes(envThinking)
+        ? (envThinking as ThinkingLevel)
+        : preset.defaultThinking;
     // Validate API key for the resolved provider
     if (preset.provider === 'anthropic' && !process.env.ANTHROPIC_API_KEY) {
       console.error('[analyze] ANTHROPIC_API_KEY not set on this deployment');

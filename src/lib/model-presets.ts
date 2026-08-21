@@ -11,8 +11,8 @@ export interface ModelPreset {
   defaultThinking: ThinkingLevel;
 }
 
-// Token budget mapping for Claude extended thinking (when ?thinking overrides to non-off).
-// Keys match ThinkingLevel values. Used by AnthropicClient.
+// Token budget mapping for Claude extended thinking (applied when the effective
+// thinking level is non-off). Keys match ThinkingLevel values. Used by AnthropicClient.
 export const CLAUDE_THINKING_TOKENS: Record<Exclude<ThinkingLevel, 'off'>, number> = {
   minimal: 4096,
   low: 8192,

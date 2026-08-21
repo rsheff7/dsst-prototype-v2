@@ -129,7 +129,7 @@ Defined in `profiles.ts` as a simple associative array mapping profile ID to mod
 
 The default profile is controlled by the `DEFAULT_PROFILE` export. Profile selection is a compile-time choice when regenerating `production-prompt.ts`, not a runtime query parameter.
 
-#### Model Presets & Runtime Switching
+#### Model Presets & Deploy-Time Configuration
 
 Both Anthropic and Google Gemini SDKs load at startup. Model selection resolves from the unified `MODEL_PRESETS` map:
 
@@ -152,7 +152,7 @@ const MODEL_PRESETS = {
 
 Model names live only in the `MODELS` constant — consumer files import from there, never hardcode literal IDs. Thinking levels normalize across providers: Claude maps to `budget_tokens`, Gemini maps to `thinkingConfig`.
 
-Developers switch models locally via URL query params (`?preset=gemini-flash&thinking=low`) or the `DSST_MODEL_PRESET` environment variable. No `.env.local` sharing or server restarts needed.
+Model and thinking level resolve from two environment variables: `DSST_MODEL_PRESET` picks the preset, and optional `DSST_THINKING_LEVEL` overrides its default thinking budget. Changing either requires a server restart locally or a redeploy on Vercel — there is no per-request switching.
 
 #### Local Benchmarking Workflow
 
@@ -313,7 +313,7 @@ The prod/dev split is enforced by *location*: shipped prompt code lives in `src/
 - **Language**: TypeScript (ES2017 target, strict mode enabled)
 - **Styling**: Tailwind CSS v4
 - **Hosting**: Vercel Pro plan ($20/month)
-- **AI Providers**: Anthropic Claude Sonnet 4.6 (primary), Google Gemini (experimental)
+- **AI Providers**: Anthropic (Claude Sonnet 5 default, Opus 5 preset), Google Gemini (Pro/Flash presets)
 - **PDF Parsing**: `pdf-parse` library (server-side only)
 
 ### Environment Variables Required
@@ -323,19 +323,19 @@ The prod/dev split is enforced by *location*: shipped prompt code lives in `src/
 ANTHROPIC_API_KEY=sk-ant-...           # Scoped to Preview + Production in Vercel dashboard
 GEMINI_API_KEY=your-gemini-key-here     # Enables Gemini model presets
 
-# Optional — model switching
+# Optional — model selection (deploy-time config; changes require restart/redeploy)
 DSST_MODEL_PRESET=claude-sonnet        # Values: claude-sonnet | claude-opus | gemini-flash | gemini-pro
-                                       # Can also be set per-request via ?preset query param
+DSST_THINKING_LEVEL=high               # Optional: minimal | low | medium | high | off (preset default applies if unset)
 
 # Optional — local development telemetry
 DSST_TELEMETRY_ENABLED=false           # Set true to log JSONL run data to ./runs/ (never in production)
 
-# Deprecated on feature branch (still read by main branch code paths)
+# No longer read on this branch (main branch code paths still reference some)
 # CLAUDE_MODEL, GEMINI_MODEL, GEMINI_THINKING_LEVEL, MODEL_PROVIDER
-# These were superseded by MODEL_PRESETS + DSST_MODEL_PRESET + ?preset query params
+# Superseded by MODEL_PRESETS + DSST_MODEL_PRESET + DSST_THINKING_LEVEL
 ```
 
-Runtime configuration resolves from `DSST_MODEL_PRESET` env var and `?preset` / `?thinking` query parameters. Only the two API keys are strictly required. The system prompt is always the frozen `PRODUCTION_SYSTEM_PROMPT` constant — no env var or query param alters it. Legacy model-selection variables remain for backward compatibility with the main branch until merge.
+Configuration resolves from the `DSST_MODEL_PRESET` and `DSST_THINKING_LEVEL` environment variables only — no query parameters exist. Only the two API keys are strictly required. The system prompt is always the frozen `PRODUCTION_SYSTEM_PROMPT` constant; nothing at request time alters it. Legacy model-selection variables (`CLAUDE_MODEL`, `GEMINI_MODEL`, etc.) are no longer read anywhere on this branch.
 
 ### Build & Deploy Commands
 
@@ -449,7 +449,7 @@ The Composer object pulls data from the current lesson context and makes it avai
 - `{{mlr_context}}` — Contextual metadata regarding the Mathematical Language Routine.
 
 ### Registering a New Profile
-Once your modules are written, they must be registered in `src/lib/prompts/profiles.ts` to become accessible via the query parameters. 
+Once your modules are written, they must be registered in `src/lib/prompts/profiles.ts` so the composer can build a production prompt from them.
 
 Locate the `PROFILES` constant. Each entry maps a unique string ID to the five slots we defined above. 
 
@@ -469,4 +469,4 @@ const PROFILES = {
 } as const;
 ```
 
-After this, you can activate your new configuration instantly at runtime by passing `?profile=math-data-analysis` in the API request.
+After registering, point the composer at `'math-data-analysis'` in your generation command, review the resulting diff, and freeze the output into `production-prompt.ts`. Profile selection is a compile-time choice — the deployed app always ships with exactly one frozen profile, never a user-selectable one.

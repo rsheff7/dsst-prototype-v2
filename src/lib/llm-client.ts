@@ -32,7 +32,7 @@ export class AnthropicClient implements LLMClient {
       timeout: 200_000,
       maxRetries: 0,
     });
-    this.modelName = modelName ?? process.env.CLAUDE_MODEL ?? MODELS.claudeSonnet;
+    this.modelName = modelName ?? MODELS.claudeSonnet;
     this.defaultThinking = defaultThinking ?? 'off';
   }
 
@@ -75,7 +75,7 @@ export class GeminiClient implements LLMClient {
 
   constructor(apiKey?: string, modelName?: string, defaultThinking?: ThinkingLevel) {
     this.apiKey = apiKey ?? (process.env.GEMINI_API_KEY ?? '');
-    this.modelName = modelName ?? process.env.GEMINI_MODEL ?? MODELS.geminiPro;
+    this.modelName = modelName ?? MODELS.geminiPro;
     this.defaultThinking = defaultThinking ?? 'medium';
   }
 

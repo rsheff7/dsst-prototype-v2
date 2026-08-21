@@ -29,17 +29,16 @@ npm run dev
 
 Set `ANTHROPIC_API_KEY` in `.env.local`.
 
-## Runtime Configuration
+## Model Configuration
 
-The modular architecture is driven by three query parameters you can pass to `/api/analyze`:
+Model and thinking settings are chosen at deploy time via environment variables — there are no query parameters on `/api/analyze`. Set them in `.env.local` for local runs, or in the Vercel dashboard for deployments:
 
-- `?preset` — Model backend selection (e.g., `claude-sonnet`, `gemini-pro`). Falls back to your `DSST_MODEL_PRESET` environment variable if omitted.
-- `?profile` — Prompt profile ID. Selects a pre-configured five-slot template (`coreRole`, `persona`, `framework`, `elsfLayer`, `outputFormat`). Defaults to `math-lesson-baseline`.
-- `?thinking` — Reasoning budget override. Accepts `minimal`, `low`, `medium`, `high`, or `off`. Overrides the default thinking level for the chosen preset.
+- `DSST_MODEL_PRESET` — Model backend selection: `claude-sonnet` (default), `claude-opus`, `gemini-flash`, or `gemini-pro`.
+- `DSST_THINKING_LEVEL` — Optional reasoning budget override: `minimal`, `low`, `medium`, `high`, or `off`. If unset, the chosen preset's built-in default thinking level applies.
 
-Example: `POST /api/analyze?preset=claude-sonnet&thinking=high`
+Changing either requires a server restart locally or a redeploy on Vercel. There is no runtime model switching.
 
-The system prompt is always the frozen `PRODUCTION_SYSTEM_PROMPT` constant (Robert Voice profile). There is no runtime `?profile` parameter — profile selection happens at freeze time when regenerating `production-prompt.ts`. See `src/lib/prompts/profiles.ts` for available profiles and `ARCHITECTURE.md` § Prompt Architecture for details on how the five slots compose.
+The system prompt is always the frozen `PRODUCTION_SYSTEM_PROMPT` constant (Robert Voice profile). Profile selection happens at freeze time when regenerating `production-prompt.ts`. See `src/lib/prompts/profiles.ts` for available profiles and `ARCHITECTURE.md` § Prompt Architecture for details on how the five slots compose.
 
 ## Telemetry
 

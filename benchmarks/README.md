@@ -24,7 +24,7 @@ benchmarks/
 ## How to Run
 
 1. Set environment variables in `.env.local`:
-   - `MODEL_PROVIDER=gemini` or `anthropic` (defaults to anthropic)
+   - `DSST_MODEL_PRESET=<preset>` — e.g., `gemini-flash`, `claude-opus` (defaults to `claude-sonnet` if unset)
    - `DSST_RUN_ID=<run-name>` — **always set this**. Tags every telemetry event so you can filter later. Use the same name as your run folder.
    - `DSST_TELEMETRY_ENABLED=true`
    - `DSST_TELEMETRY_DIR=benchmarks/runs/<run-name>/telemetry.jsonl` (optional, defaults to shared log)
