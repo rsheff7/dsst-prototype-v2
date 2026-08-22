@@ -29,15 +29,16 @@ npm run dev
 
 Set `ANTHROPIC_API_KEY` in `.env.local`.
 
-## Telemetry
+## Model Configuration
 
-Structured logging for the PDF inference pipeline. Disabled by default.
+Model and thinking settings are chosen at deploy time via environment variables — there are no query parameters on `/api/analyze`. Set them in `.env.local` for local runs, or in the Vercel dashboard for deployments:
 
-**Enable:** Set `DSST_TELEMETRY_ENABLED=true` in `.env.local` and restart the dev server.
+- `DSST_MODEL_PRESET` — Model backend selection: `claude-sonnet` (default), `claude-opus`, `gemini-flash`, or `gemini-pro`.
+- `DSST_THINKING_LEVEL` — Optional reasoning budget override: `minimal`, `low`, `medium`, `high`, or `off`. If unset, the chosen preset's built-in default thinking level applies.
 
-**Logs:** `~/Library/Logs/DSST/dsst_structured.jsonl` — one JSON object per line.
+Changing either requires a server restart locally or a redeploy on Vercel. There is no runtime model switching.
 
-**Format:** Each entry has `timestamp`, `level`, `category`, `event`, and `metadata`. See `ws-telemetry/README.md` for the full schema, event catalog, and developer guidelines.
+The system prompt is always the frozen `PRODUCTION_SYSTEM_PROMPT` constant (Robert Voice profile). Profile selection happens at freeze time when regenerating `production-prompt.ts`. See `src/lib/prompts/profiles.ts` for available profiles and `ARCHITECTURE.md` § Prompt Architecture for details on how the five slots compose.
 
 ## Telemetry
 

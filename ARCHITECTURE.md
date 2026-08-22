@@ -1,20 +1,19 @@
 # DSST V2 Prototype — Architecture Overview
 
-**Version**: 0.2.0  
-**Last Updated**: June 24, 2026  
-**Status**: Production-ready for partner testing (with known limitations documented below)
+**Version 0.3.0 — Last Updated August 15, 2026**
+*Production-ready for partner testing.*
 
 ---
 
 ## Executive Summary
 
-The DSST Math Teacher Tools v2 is a Next.js 15 web application that analyzes math lesson PDFs using Claude Sonnet 4.6 to generate five integrated teacher-facing views anchored to the eight Mathematical Language Routines (MLRs). The architecture uses an **anchor + parallel passes** pattern to balance generation quality with wall-clock time (~3 minutes per lesson analysis).
+The DSST Math Teacher Tools v2 is a Next.js 15 web application that analyzes math lesson PDFs using Claude Sonnet 5 (default) or configurable model presets to generate five integrated teacher-facing views anchored to the eight Mathematical Language Routines (MLRs). The architecture uses an **anchor + parallel passes** pattern to balance generation quality with wall-clock time (~3 minutes per lesson analysis). The production system prompt is a frozen static constant imported at build time; a separate modular composition system (five markdown slots, profile registry) powers local prompt development and benchmarking without touching the deployed route.
 
 ### Core Design Principles
 
 1. **Mobile-first in-class usability** over print functionality
 2. **Single codebase** for frontend UI and backend API logic (Next.js App Router)
-3. **Explicit MLR anchoring** — every MLL-flagged item must reference one of eight routines
+3. **Explicit MLR anchoring** — every flagged item must reference one of eight routines
 4. **Concise output** — prompts enforce short, concrete language a first-year teacher can read at 9pm
 5. **Graceful degradation** — validation functions snap invalid model outputs to safe defaults rather than crashing
 
@@ -25,7 +24,6 @@ The DSST Math Teacher Tools v2 is a Next.js 15 web application that analyzes mat
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                    Browser (Client)                         │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐     │
 │  │   Upload     │  │    Five      │  │  Edit &      │     │
 │  │   PDF Form   │→ │    Views     │← │  Regenerate  │     │
 │  └──────────────┘  └──────────────┘  └──────────────┘     │
@@ -41,20 +39,15 @@ The DSST Math Teacher Tools v2 is a Next.js 15 web application that analyzes mat
 │  │         (pdf-parse library, max 12K chars)           │   │
 │  │                                                       │   │
 │  │  Step 2: ANCHOR PASS (Pass 0)                        │   │
-│  │         • Claude Sonnet 4.6 call                      │   │
+│  │         • Model-agnostic call (Sonnet default)       │   │
 │  │         • ~30 seconds, cheap pass                     │   │
-│  │         • Returns skeleton: meta, destination,        │   │
-│  │           activity IDs/titles/functions/crux flag     │   │
+│  │         • Returns skeleton: meta, destination,       │   │
+│  │           activity IDs/titles/functions/crux flag    │   │
 │  │                                                       │   │
 │  │  Step 3: FOUR PARALLEL PASSES (A, B, C, D)          │   │
 │  │         • All calls run simultaneously                │   │
 │  │         • Each receives anchor JSON as context        │   │
 │  │         • ~140 seconds max wall time                  │   │
-│  │                                                       │   │
-│  │         Pass A → Lesson Pathway (full activities)    │   │
-│  │         Pass B → MLR Inference                       │   │
-│  │         Pass C → Anticipated Thinking                │   │
-│  │         Pass D → Decision Guide + Wristband          │   │
 │  │                                                       │   │
 │  │  Step 4: Merge results into single LessonData object │   │
 │  │                                                       │   │
@@ -72,6 +65,98 @@ The DSST Math Teacher Tools v2 is a Next.js 15 web application that analyzes mat
 │  Display uses shared Chip/Overlay UI primitives             │
 └─────────────────────────────────────────────────────────────┘
 ```
+
+---
+
+## Prompt Architecture
+
+Two distinct layers serve different audiences:
+
+| Layer | Where It Lives | Who Uses It |
+|-------|---------------|-------------|
+| **Frozen constant** (`production-prompt.ts`) | Imported by `/api/analyze/route.ts` | Production deployment (Vercel) |
+| **Modular composition** (`prompt-dev/composer.ts`, `prompt-dev/modules/*.md`, `profiles.ts`) | Invoked only by local scripts/tests |
+
+Nothing in `src/app/` imports from the modular system — the assembly machinery now lives in top-level `prompt-dev/`, physically outside the deployable tree.
+
+### Production: Frozen Prompt Constant
+
+`src/lib/prompts/production-prompt.ts` exports a single string (~38 KB):
+
+```typescript
+export const PRODUCTION_SYSTEM_PROMPT = `...`; // Robert Voice profile, fully resolved
+```
+
+The analyze route imports this constant directly. No filesystem reads, no dynamic composition, no environment-dependent branching. When Vercel bundles server code into flat chunks, every referenced module is inlined — the prompt ships as data inside the JS bundle.
+
+**Regeneration workflow:** When local benchmarks finalize a new winning prompt version, the developer runs the composer locally (`npx tsx generate-prompts.ts`) to produce the resolved text, then regenerates `production-prompt.ts` with the new string. This is a deliberate manual gate: no CI step auto-freezes prompts.
+
+### Development: Modular Composition System
+
+Implemented August 13–14 during Sprint 5. Replaced monolithic prompt files with a five-slot composition system for iterative experimentation.
+
+#### Composition Pattern
+
+Every profile specifies exactly one markdown module per slot:
+
+| Slot | Module Example | Purpose |
+|------|---------------|---------|
+| `core_role` | `core-role.md` | Base identity, audience framing, core constraints |
+| `framework` | `framework.md` | Pedagogical scaffolding rules, learning progression requirements |
+| `elsf_layer` | `elsf-layer/language-demands.md` | ELSS guideline cross-reference integration |
+| `output_format` | `output-format.md` | JSON schema definitions, structural constraints |
+| `persona` | `plain-language.md` or `robert-voice.md` | Voice/style variation for A/B testing |
+
+Slots are optional — the composer skips undefined entries gracefully. Adding a future variant requires one `.md` file plus one registry entry in `profiles.ts`; zero changes to routes or composition logic.
+
+#### Dynamic Token Resolution
+
+Modules may contain placeholders like `${ELSF_GUIDELINES}`. At composition time, `composer.ts` substitutes these via a `DYNAMIC_TOKENS` lookup map:
+
+```typescript
+// src/lib/prompts/composer.ts
+const resolved = rawContent.replaceAll(token.name, token.resolver(profileId));
+```
+
+The resolver function calls `buildElsfReference()` from `elsf.ts`, which formats guideline data into structured text. Both `elsf.ts` definitions serve two purposes: prompt injection and runtime validation (response checking verifies returned guideline numbers exist in the canonical list). Single source of truth maintained.
+
+#### Profiles Registry
+
+Defined in `profiles.ts` as a simple associative array mapping profile ID to module objects. Two shipped profiles:
+
+- `math-lesson-baseline` — core role + plain-language register
+- `math-lesson-analysis` (Robert Voice) — adds specific operational persona rules. **Current production winner.**
+
+The default profile is controlled by the `DEFAULT_PROFILE` export. Profile selection is a compile-time choice when regenerating `production-prompt.ts`, not a runtime query parameter.
+
+#### Model Presets & Deploy-Time Configuration
+
+Both Anthropic and Google Gemini SDKs load at startup. Model selection resolves from the unified `MODEL_PRESETS` map:
+
+```typescript
+// src/lib/model-presets.ts
+const MODELS = {
+  claudeSonnet: 'claude-sonnet-5',
+  claudeOpus:   'claude-opus-5',
+  geminiPro:    'gemini-3.1-pro-preview',
+  geminiFlash:  'gemini-3.7-flash',
+} as const;
+
+const MODEL_PRESETS = {
+  'claude-sonnet': { provider: 'anthropic', model: MODELS.claudeSonnet, defaultThinking: 'medium' },
+  'claude-opus':   { provider: 'anthropic', model: MODELS.claudeOpus,   defaultThinking: 'medium' },
+  'gemini-flash':  { provider: 'gemini',    model: MODELS.geminiFlash,  defaultThinking: 'medium' },
+  'gemini-pro':    { provider: 'gemini',    model: MODELS.geminiPro,    defaultThinking: 'medium' }
+} as const;
+```
+
+Model names live only in the `MODELS` constant — consumer files import from there, never hardcode literal IDs. Thinking levels normalize across providers: Claude maps to `budget_tokens`, Gemini maps to `thinkingConfig`.
+
+Model and thinking level resolve from two environment variables: `DSST_MODEL_PRESET` picks the preset, and optional `DSST_THINKING_LEVEL` overrides its default thinking budget. Changing either requires a server restart locally or a redeploy on Vercel — there is no per-request switching.
+
+#### Local Benchmarking Workflow
+
+Benchmark scripts (in `benchmarks/`) import `buildSystemPrompt(profile)` to generate composed prompt files, run them against candidate models, and write results to `benchmarks/runs/`. The modular system exists solely to support this offline iteration loop. The winning output is then frozen into `production-prompt.ts`.
 
 ---
 
@@ -122,6 +207,7 @@ Initial single-pass attempts to generate the full `LessonData` schema failed on 
 ## Data Flow & Validation
 
 ### PDF Parsing
+
 ```typescript
 // src/app/api/analyze/route.ts
 const buffer = Buffer.from(await file.arrayBuffer());
@@ -189,38 +275,34 @@ Each tool implements one view of the same `LessonData`:
 
 **MoveWalkthrough.tsx **(33 KB) In-the-moment decision guide: scenario trees with interpretation, moves differentiated by proficiency level, MLR-anchored responses for language moments. Most interactive component.
 
-### Context & Types (`src/lib`)
+---
+
+## TypeScript Module Structure (`src/lib`)
 
 | File | Purpose |
 |------|---------|
 | `types.ts` | TypeScript interfaces: `LessonData`, `Activity`, `MlrRef`, `SentenceFrame`, etc. Source of truth for validation |
 | `mlrs.ts` | Canonical MLR definitions (8 routines), lookup table, validation helpers (`isValidMlrNumber`) |
-| `prompts.ts` | System prompt constants passed to Claude API (lesson analysis instructions, concision rules) |
+| `prompts.ts` | Thin compatibility shim. Delegates to `prompts/composer.ts`. **Not imported by any route** — used only by local benchmark scripts |
+| `model-presets.ts` | Single source of truth: `MODELS` constant (canonical model IDs) + `MODEL_PRESETS` routing map with provider, thinking defaults |
+| `llm-client.ts` | Unified client accepting preset name, optional thinking level. Imports model IDs from `MODELS`. Handles API key discovery, request construction, response normalization |
+| `elsf.ts` | Single source of truth for ELSS guidelines. Provides `getByCategory()`, `getAllByGuidelineNumber()`, `buildElsfReference()` |
 | `activityLabel.ts` | Human-readable labels for activity functions (Setup → "Getting Started") |
+| `telemetry.ts` | Optional local run logging (JSONL). Disabled unless `DSST_TELEMETRY_ENABLED=true`. All fs operations wrapped in try/catch that self-disables on failure |
 | `audit.ts` | Post-generation validation: checks all activities covered in each pass, exactly one crux, MLR coverage |
 | `qa.ts` | Demo/testing utilities for development |
 | `demoLesson.ts` | Hardcoded sample lesson data for offline demo mode (no API key required) |
 
----
+### Prompt Files (two physical zones)
 
-## Technical Debt & Known Limitations
+The prod/dev split is enforced by *location*: shipped prompt code lives in `src/lib/prompts/`; the dev-only assembly machinery lives in top-level `prompt-dev/` (tracked, but unreachable from routes — Next/Vercel only packages things reachable from them).
 
-### Critical (Blocks Partner Testing)
-
-| Issue | Impact | Status | Mitigation |
-|-------|--------|--------|------------|
-| **Vercel payload limits** | Textbook PDFs >4MB rejected on Pro plan | 🔴 Open | Implement presigned S3 uploads (see DSST-V2-Prototype-Review.md) |
-| **No persistence layer** | Refresh = data loss, prevents iteration tracking | 🟡 Partial fix planned | Add localStorage caching for June sprint; Supabase July-August |
-| **Missing authentication** | Cannot track teacher identity or saved work | ⚪ Deferred to Phase 2 | Implement Supabase Auth after partner testing begins |
-
-### Medium Priority (Post-Test Refinement)
-
-| Issue | Impact | Recommendation |
-|-------|--------|----------------|
-| **PDF parsing reliability** | OCR errors in scanned textbooks may break anchor detection | Add preprocessing step + manual entry fallback |
-| **Offline capability** | Classrooms with unreliable WiFi cannot use app | Defer until validated demand (>40% report connectivity issues) |
-| **Model cost optimization** | Using Sonnet exclusively becomes expensive at scale (estimate $18K/month at district rollout) | Implement hybrid routing: Haiku for simple tasks, Sonnet for complex reasoning |
-| **Print stylesheets incomplete** | Four of five views lack print-optimized CSS | Add during June sprint (blocked until critical debt resolved) |
+| File | Zone | Purpose |
+|------|------|---------|
+| `src/lib/prompts/production-prompt.ts` | ships | **~38 KB frozen string** exported as `PRODUCTION_SYSTEM_PROMPT`. Imported by `route.ts`. The live site runs on this constant and nothing else. Regenerated manually when a new prompt version wins benchmarks |
+| `src/lib/prompts/profiles.ts` | ships | Profile registry mapping IDs to slot configurations. Exports `DEFAULT_PROFILE` and `getProfile(id)` |
+| `prompt-dev/composer.ts` | dev-only | Slot-based composition engine. Loads `.md` modules relative to its own folder, resolves `${TOKEN}` placeholders via `DYNAMIC_TOKENS`. Uses `fs.readFileSync` + `__dirname`, which works under local `tsx`/`next dev` but fails in the flat Vercel bundle — hence the separate zone. Never import from `src/app/` |
+| `prompt-dev/modules/*.md` | dev-only | Wording source of truth per slot (core-role, framework, elsf-layer, output-format, persona). Edit these, then `npx tsx generate-prompts.ts <profile-id>` from the repo root to re-bake the frozen constant |
 
 ---
 
@@ -231,15 +313,32 @@ Each tool implements one view of the same `LessonData`:
 - **Language**: TypeScript (ES2017 target, strict mode enabled)
 - **Styling**: Tailwind CSS v4
 - **Hosting**: Vercel Pro plan ($20/month)
-- **AI Provider**: Anthropic Claude Sonnet 4.6
+- **AI Providers**: Anthropic (Claude Sonnet 5 default, Opus 5 preset), Google Gemini (Pro/Flash presets)
 - **PDF Parsing**: `pdf-parse` library (server-side only)
 
 ### Environment Variables Required
+
 ```bash
-ANTHROPIC_API_KEY=<your-key-here>  # Scoped to Preview + Production in Vercel dashboard
+# Required
+ANTHROPIC_API_KEY=sk-ant-...           # Scoped to Preview + Production in Vercel dashboard
+GEMINI_API_KEY=your-gemini-key-here     # Enables Gemini model presets
+
+# Optional — model selection (deploy-time config; changes require restart/redeploy)
+DSST_MODEL_PRESET=claude-sonnet        # Values: claude-sonnet | claude-opus | gemini-flash | gemini-pro
+DSST_THINKING_LEVEL=high               # Optional: minimal | low | medium | high | off (preset default applies if unset)
+
+# Optional — local development telemetry
+DSST_TELEMETRY_ENABLED=false           # Set true to log JSONL run data to ./runs/ (never in production)
+
+# No longer read on this branch (main branch code paths still reference some)
+# CLAUDE_MODEL, GEMINI_MODEL, GEMINI_THINKING_LEVEL, MODEL_PROVIDER
+# Superseded by MODEL_PRESETS + DSST_MODEL_PRESET + DSST_THINKING_LEVEL
 ```
 
+Configuration resolves from the `DSST_MODEL_PRESET` and `DSST_THINKING_LEVEL` environment variables only — no query parameters exist. Only the two API keys are strictly required. The system prompt is always the frozen `PRODUCTION_SYSTEM_PROMPT` constant; nothing at request time alters it. Legacy model-selection variables (`CLAUDE_MODEL`, `GEMINI_MODEL`, etc.) are no longer read anywhere on this branch.
+
 ### Build & Deploy Commands
+
 ```bash
 npm install        # Install dependencies
 npm run dev        # Local development server (localhost:3000)
@@ -255,7 +354,8 @@ npm run start      # Start production server
 ✅ **Anchor + parallel pattern** — Consistently produces aligned, high-quality analyses in ~3 minutes  
 ✅ **Validation layer** — Gracefully handles model output inconsistencies without crashes  
 ✅ **Mobile-first design** — Teachers successfully use app on phones during instruction  
-✅ **MLR anchoring rule** — Every MLL item traces to specific routine with reasoning
+✅ **MLR anchoring rule** — Every flagged item traces to specific routine with reasoning  
+✅ **Composable prompts** — Modular architecture supports multiple voices without duplicating core content
 
 ### What Needs Attention Before District Scale
 🔴 **File upload architecture** — Must implement presigned S3 uploads for textbook-sized PDFs  
@@ -287,12 +387,86 @@ npm run start      # Start production server
 | Date | Decision | Rationale | Alternative Considered |
 |------|----------|-----------|----------------------|
 | May 2026 | Single-pass → Anchor + 4 parallel passes | Single-pass failed on real IM lessons (token limits, inconsistent alignment) | Chunking by activity (more complex orchestration) |
-| May 2026 | Explicit MLR anchoring requirement | Ensures every MLL scaffold traces to specific routine with reasoning | Implicit MLR selection (less transparent, harder to audit) |
-| June 2024 | Next.js 15 App Router over separate backend/frontend monoliths | Single codebase reduces deployment complexity for prototype phase | Separate Express API + React SPA (more ops overhead) |
+| May 2026 | Explicit MLR anchoring requirement | Ensures every scaffold traces to specific routine with reasoning | Implicit MLR selection (less transparent, harder to audit) |
+| June 2026 | Next.js 15 App Router over separate backend/frontend monoliths | Single codebase reduces deployment complexity for prototype phase | Separate Express API + React SPA (more ops overhead) |
 | June 2026 | Stay on Vercel initially, add external storage later | Keeps deployment simple during partner testing; can refactor file handling without touching core logic | Self-hosted from day one (premature optimization) |
+| August 2026 | Monolithic prompts → composable five-module architecture | Reduces maintenance burden when pedagogy changes; enables voice variants without duplicating core content | Static markdown files with templating (harder to validate at runtime) |
+| August 2026 | `elsf.ts` as single source of truth for guidelines | Maintains bidirectional mapping between IDs ↔︎ text for both prompt injection AND response validation | Markdown-only guidelines (decouples from runtime checking logic) |
+| August 2026 | Thinking budgets normalized across providers | Lets us swap Claude ↔ Gemini without rewriting route handlers or prompt templates | Provider-specific thinking configs (duplicates effort) |
 
 ---
 
-*Document Version: 1.0*  
+*Document Version: 2.0*  
 *Maintained by: Sal (Partner AI)*  
 *Related Documents: DIRECTORY-STRUCTURE.md, DSST-V2-Prototype-Review.md (in Premo DSST Docs folder)*
+
+---
+
+## Writing & Registering Prompt Modules
+
+The system architecture relies on a composable five-slot model. Instead of a monolithic prompt, every generated request is stitched together at runtime from individual Markdown files mapped to specific roles. 
+
+### Anatomy of the Five Slots
+Every profile consists of five distinct components that define its personality and output structure:
+
+| Slot | Purpose | File Path Example |
+| :--- | :--- | :--- |
+| `coreRole` | The absolute ground rules for the AI's identity and tone. | `modules/core_role/teacher-math-guide.md` |
+| `persona` | The teaching style or "voice" applied to the conversation. | `modules/persona/professional-noticing.md` |
+| `framework` | The theoretical or pedagogical lens used for analysis. | `modules/framework/mlr-noticing.md` |
+| `elsfLayer` | Specialized support layers (e.g., MLL proficiency adaptations). | `modules/elsf/wida-level-1-support.md` |
+| `outputFormat` | The structural constraints (JSON, Markdown, Wristband format). | `modules/output-format/full-json-wristband.md` |
+
+### Creating a New Module
+Modules are plain Markdown files stored under the `src/lib/prompts/modules` directory. 
+
+**1. Create the file:**
+Pick the appropriate slot folder (or create a new one) and drop in your Markdown file. For example, to create a new analytical voice:
+```bash
+touch src/lib/prompts/modules/persona/data-driven-analyst.md
+```
+
+**2. Write the Content:**
+Write your instructions as natural language or system directives. You can use double-brace syntax to inject dynamic data at runtime.
+
+*Example `data-driven-analyst.md`:*
+```markdown
+# PERSONA INSTRUCTIONS
+You are a data-driven educational analyst reviewing lesson outcomes. 
+Focus heavily on {{student_profile}} metrics.
+
+Analyze the provided scenario through the following three criteria:
+1. Cognitive load assessment.
+2. Framework adherence.
+3. Actionable feedback for the instructor.
+```
+
+**3. Available Variables:**
+The Composer object pulls data from the current lesson context and makes it available for injection. Common variables include:
+- `{{student_profile}}` — Age group, grade level, and demographic specifics.
+- `{{lesson_topic}}` — The primary mathematical concept being taught.
+- `{{proficiency_band}}` — Current estimated performance bracket.
+- `{{mlr_context}}` — Contextual metadata regarding the Mathematical Language Routine.
+
+### Registering a New Profile
+Once your modules are written, they must be registered in `src/lib/prompts/profiles.ts` so the composer can build a production prompt from them.
+
+Locate the `PROFILES` constant. Each entry maps a unique string ID to the five slots we defined above. 
+
+To register our new "data-driven" configuration, you would add this block:
+
+```typescript
+const PROFILES = {
+  // ...existing profiles...
+  
+  'math-data-analysis': {
+    coreRole: 'role/teacher-math-guide',
+    persona: 'persona/data-driven-analyst',
+    framework: 'framework/mlr-noticing',
+    elsfLayer: null, // Or another specific path
+    outputFormat: 'format/wristband'
+  }
+} as const;
+```
+
+After registering, point the composer at `'math-data-analysis'` in your generation command, review the resulting diff, and freeze the output into `production-prompt.ts`. Profile selection is a compile-time choice — the deployed app always ships with exactly one frozen profile, never a user-selectable one.
