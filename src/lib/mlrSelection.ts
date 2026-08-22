@@ -227,7 +227,20 @@ const BY_OUTCOME: Record<
 
 interface PrepRule {
   satisfied: (a: AnchorActivity) => boolean;
+  /** What to prepare when the materials do not supply the precondition. */
   prep: string;
+  /**
+   * Where preparing it is not realistic for a teacher in their first three
+   * years, the routine steps aside instead.
+   *
+   * The distinction is prep COST, not prep existence. "Copy one wrong answer off
+   * a student's page" is a minute's work and MLR 3 keeps its slot. "Author and
+   * cut a card set so the task splits between partners" is not something a
+   * novice does the night before, so MLR 4 yields to the next routine that
+   * serves the same outcome. Recommending a routine nobody can run is worse than
+   * recommending the second-best one.
+   */
+  substitute?: (a: AnchorActivity) => Choice;
 }
 
 const PREP: Partial<Record<MlrNumber, PrepRule>> = {
@@ -238,6 +251,19 @@ const PREP: Partial<Record<MlrNumber, PrepRule>> = {
   4: {
     satisfied: (a) => Boolean(a.splittable_materials),
     prep: 'Split the materials so neither partner can finish alone, and set the rule that partners describe rather than show. If it stalls, let them show each other — it becomes an ordinary matching task.',
+    substitute: (a) =>
+      a.student_products_differ || a.public_share_step
+        ? {
+            lead: 7,
+            second: 1,
+            because:
+              'Students hold different work, so the precision comes from putting two of those pieces side by side and naming what they share — the materials here do not divide between partners.',
+          }
+        : {
+            lead: 1,
+            because:
+              'The wording is what carries the meaning, and a second draft read by someone else is the way to sharpen it without materials that split between partners.',
+          },
   },
   7: {
     satisfied: (a) => Boolean(a.student_products_differ || a.public_share_step),
@@ -276,13 +302,19 @@ export function recommendMlrs(activity: AnchorActivity): MlrRecommendation {
   const choice = (role && table[role]) || table.default;
 
   const rule = PREP[choice.lead];
-  const teacher_prep = rule && !rule.satisfied(activity) ? rule.prep : null;
+  const unmet = rule ? !rule.satisfied(activity) : false;
+
+  // Where the precondition is unmet AND preparing it is unrealistic, take the
+  // substitute rather than recommending something the teacher cannot run.
+  const final = unmet && rule?.substitute ? rule.substitute(activity) : choice;
+  const finalRule = PREP[final.lead];
+  const finalUnmet = finalRule ? !finalRule.satisfied(activity) : false;
 
   return {
-    lead: choice.lead,
-    second: choice.second ?? null,
-    because: choice.because,
-    teacher_prep,
+    lead: final.lead,
+    second: final.second ?? null,
+    because: final.because,
+    teacher_prep: finalUnmet && !finalRule?.substitute ? (finalRule?.prep ?? null) : null,
   };
 }
 

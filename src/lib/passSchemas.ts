@@ -120,7 +120,13 @@ const ANCHOR_ACTIVITY = {
         'generalize_in_writing',
       ],
       description:
-        'The language work that outcome demands. formulate_precisely: say or write a precise formulation. justify_or_evaluate: judge whether something is correct and defend it. connect_representations: relate two or more strategies or representations. interpret_situation: make sense of a situation before solving. communicate_precisely: convey information to a partner who cannot see it. generalize_in_writing: state a generalisation in their own words.',
+        'The language work this outcome demands. Classify by what students must PRODUCE with language, not by the mathematics. ' +
+        'formulate_precisely — students must say or write something in accurate mathematical language: naming categories, describing what they notice, stating a relationship. This is the DEFAULT when the main student product is language about mathematics. ' +
+        'justify_or_evaluate — students must judge whether something is correct, or defend a claim, and say why. ' +
+        'connect_representations — students must relate two or more strategies, representations, or pieces of student work to each other. ' +
+        'interpret_situation — students must get through a CONTEXT or WORD PROBLEM, a paragraph of prose or a real-world scenario, before the mathematics can start. Choose this ONLY when there is substantial text to comprehend. Do NOT choose it because students look at an image, sort objects, or notice things — that is formulate_precisely. ' +
+        'communicate_precisely — students must convey information to a partner who CANNOT SEE what they hold, so wording alone carries the meaning. Choose this ONLY when the materials genuinely divide between partners. If students simply share or present finished work to others, that is connect_representations. ' +
+        'generalize_in_writing — students must state a general rule in their own written words.',
     },
     flawed_sample_provided: {
       type: 'boolean',
