@@ -71,12 +71,20 @@ const ACTIVITY_SKELETON = {
   properties: {
     id: { type: 'string' },
     title: { type: 'string' },
-    function: { type: 'string', enum: ['Setup', 'Crux', 'Application', 'Synthesis'] },
+    function: {
+      type: 'string',
+      enum: ['Setup', 'Crux', 'Application', 'Synthesis'],
+      description:
+        'The activity\'s role in the lesson arc. Must agree with is_crux: exactly the activity marked is_crux carries function "Crux".',
+    },
     duration: { type: 'string' },
     grouping: { type: 'string' },
     language_demand: { type: 'string', enum: ['low', 'medium', 'high'] },
     learning_target: { type: 'string' },
-    is_crux: { type: 'boolean' },
+    is_crux: {
+      type: 'boolean',
+      description: 'The crux is the moment where the lesson succeeds or fails on the teacher\'s facilitation. Identify it from the published learning target and the lesson\'s scaffolding design, in this order: (1) it is where the learning target is first GENUINELY ATTEMPTED — not introduced, not rehearsed, not practised afterwards; (2) the scaffolding is at its thinnest there — students meet the new idea with less support than the earlier activities gave them; (3) what the teacher does in the moment — what they notice, what they ask, what they let pass — decides whether students reach the target. It is never the warm-up. It is NOT simply the longest or hardest activity: an activity students can grind through on their own is not the crux, while a short activity that collapses without the right teacher move is. Exactly ONE activity per lesson.',
+    },
   },
   required: [
     'id',
