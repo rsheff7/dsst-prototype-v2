@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { NextRequest, NextResponse } from 'next/server';
 
 import { createLLMClient, LLMClient, LLMResponse } from '@/lib/llm-client';
@@ -12,6 +13,7 @@ import {
   type AnchorActivity,
 } from '@/lib/mlrSelection';
 import { extractLessonTargets } from '@/lib/learningTargets';
+import { selectionFingerprint } from '@/lib/mlrSelection';
 import {
   PIPELINE_VERSION,
   lessonCacheKey,
@@ -555,7 +557,16 @@ export async function POST(req: NextRequest) {
       explicit: lessonTargets.explicit,
     });
 
-    const cacheKey = lessonCacheKey(truncatedText, preset.model);
+    // Everything that shapes the output goes into the key: the prompt, the pass
+    // schemas, and the selection tables. Edit any of them and stored lessons
+    // stop being served, with no version bump to remember.
+    const logicFingerprint = createHash('sha256')
+      .update(PRODUCTION_SYSTEM_PROMPT)
+      .update(JSON.stringify(PASS_SCHEMAS))
+      .update(selectionFingerprint())
+      .digest('hex')
+      .slice(0, 16);
+    const cacheKey = lessonCacheKey(truncatedText, preset.model, logicFingerprint);
     // ?fresh=1 bypasses the cache entirely — read and write. Needed to measure
     // run-to-run behaviour, which a cache hit would otherwise hide behind a
     // byte-identical copy. Never set by the app itself.
@@ -1014,7 +1025,7 @@ runPass('A (structure)', buildPassAMessage(anchorWithPlan), maxTokensCap, thinki
     const stamped = {
       ...lesson,
       provenance: {
-        pipeline_version: PIPELINE_VERSION,
+        pipeline_version: `${PIPELINE_VERSION}+${logicFingerprint}`,
         cache_key: cacheKey,
         provider: preset.provider,
         model: preset.model,

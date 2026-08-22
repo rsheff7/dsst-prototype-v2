@@ -11,10 +11,13 @@
  * a PLC uploading the same PDF get byte-identical plans; a teacher who reloads
  * sees what they saw yesterday.
  *
- * The version and model are IN the key on purpose. A prompt or schema change
- * must not keep serving artifacts built by the old pipeline, and switching
- * models must not silently serve the previous model's work. Bump
- * PIPELINE_VERSION whenever a change should invalidate what is stored.
+ * The version, the model, AND a digest of the logic that shapes the output are
+ * all IN the key. The digest covers the system prompt, the pass schemas, and the
+ * selection tables, so editing any of them invalidates stored lessons without
+ * anyone remembering to. PIPELINE_VERSION remains for changes those three do not
+ * capture — a normalizer fix, say. Relying on the manual bump alone failed
+ * twice: selection changed three times under one version string and stale
+ * artifacts kept being served.
  *
  * Failure policy: the cache is an optimization, never a dependency. Every
  * operation swallows its errors — a broken or unconfigured store degrades to
@@ -60,10 +63,14 @@ export function isCacheEnabled(): boolean {
  * different PDF exports of the same lesson should land on the same key, so the
  * text is whitespace-normalized before hashing.
  */
-export function lessonCacheKey(lessonText: string, model: string): string {
+export function lessonCacheKey(
+  lessonText: string,
+  model: string,
+  logicFingerprint = '',
+): string {
   const normalized = lessonText.replace(/\s+/g, ' ').trim();
   return createHash('sha256')
-    .update(`${PIPELINE_VERSION}\n${model}\n${normalized}`)
+    .update(`${PIPELINE_VERSION}\n${model}\n${logicFingerprint}\n${normalized}`)
     .digest('hex')
     .slice(0, 32);
 }
