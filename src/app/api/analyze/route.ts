@@ -3,6 +3,15 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createLLMClient, LLMClient, LLMResponse } from '@/lib/llm-client';
 import { PRODUCTION_SYSTEM_PROMPT } from '@/lib/prompts/production-prompt';
 import { MODEL_PRESETS, ThinkingLevel } from '@/lib/model-presets';
+import { PASS_SCHEMAS } from '@/lib/passSchemas';
+import { buildMlrPlan, describeMlrPlan, enforceMlrPlan } from '@/lib/mlrSelection';
+import {
+  PIPELINE_VERSION,
+  lessonCacheKey,
+  readCachedLesson,
+  writeCachedLesson,
+  isCacheEnabled,
+} from '@/lib/lessonCache';
 import { telemetry } from '@/lib/telemetry';
 import {
   LessonData,
@@ -11,6 +20,7 @@ import {
   SentenceFrame,
   DoNotRemoveItem,
   ProficiencyAdaptation,
+  DecisionScenario,
 } from '@/lib/types';
 import { isValidMlrNumber, MLRS, MlrNumber } from '@/lib/mlrs';
 import { isValidELSFGuidelineNumber, ELSFGuidelineNumber } from '@/lib/elsf';
@@ -160,6 +170,57 @@ function normalizeProficiency(raw: unknown): ProficiencyAdaptation {
   return { text: '' };
 }
 
+// Pass D emits decision_guide as a FLAT scenarios[] array, each scenario tagging
+// its own activity_id. That shape exists because the nested
+// activities[] -> scenarios[] form pushed the response schema past the
+// Interactions API's complexity ceiling (see src/lib/passSchemas.ts). We re-nest
+// here so everything downstream — types, components, saved .dsst files — keeps
+// the grouped shape it has always had.
+//
+// Accepts either shape: already-grouped input passes through untouched, so
+// existing lesson files and any unconstrained/Claude output still normalize.
+type RawScenario = Partial<DecisionScenario> & { activity_id?: string };
+type RawDecisionGuide = {
+  activities?: { activity_id?: string; scenarios?: RawScenario[] }[];
+  scenarios?: RawScenario[];
+};
+
+// Gemini writes the activity number into the title ("1.1 What Kind and How
+// Many?"), while the UI composes its own label as `${id} ${slot}` — so the
+// number renders twice: "1.1 1.1 What Kind and How Many?". The label helpers in
+// activityLabel.ts were built for the earlier "Warm-Up:" / "Activity 1:"
+// convention and have no colon to split on here. Normalize the title instead of
+// teaching every render site about the other convention.
+function stripLeadingId(id: string, title: string): string {
+  if (!id || !title) return title;
+  const escaped = id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  // (?![0-9]) so id "1.1" does not eat into a title that starts "1.11".
+  const stripped = title.replace(
+    new RegExp(`^\\s*${escaped}(?![0-9])\\s*[:.)\\-\u2013\u2014]?\\s*`, 'i'),
+    '',
+  );
+  // Never strip the whole title away — a title that is only the id is worse
+  // than a redundant one.
+  return stripped.trim().length ? stripped.trim() : title;
+}
+
+function regroupScenarios(
+  guide: RawDecisionGuide | undefined,
+): { activity_id?: string; scenarios?: RawScenario[] }[] {
+  if (guide?.activities?.length) return guide.activities;
+  if (!guide?.scenarios?.length) return [];
+
+  // Preserve first-seen activity order rather than sorting — the anchor's
+  // ordering is the lesson's ordering.
+  const grouped = new Map<string, RawScenario[]>();
+  for (const scenario of guide.scenarios) {
+    const id = scenario.activity_id ?? '';
+    if (!grouped.has(id)) grouped.set(id, []);
+    grouped.get(id)!.push(scenario);
+  }
+  return [...grouped].map(([activity_id, scenarios]) => ({ activity_id, scenarios }));
+}
+
 function normalizeLesson(raw: Partial<LessonData> & Record<string, unknown>): LessonData {
   const rawProf = (raw.adaptation_guardrails?.by_proficiency ?? {}) as Record<string, unknown>;
   return {
@@ -175,7 +236,7 @@ function normalizeLesson(raw: Partial<LessonData> & Record<string, unknown>): Le
     key_vocabulary: raw.key_vocabulary ?? [],
     activities: (raw.activities ?? []).map((a) => ({
       id: a.id ?? '',
-      title: a.title ?? '',
+      title: stripLeadingId(a.id ?? '', a.title ?? ''),
       function: oneOf(a.function, ACTIVITY_FUNCTIONS, 'Application'),
       duration: a.duration ?? '',
       grouping: a.grouping ?? '',
@@ -228,7 +289,7 @@ function normalizeLesson(raw: Partial<LessonData> & Record<string, unknown>): Le
       })),
     },
     decision_guide: {
-      activities: (raw.decision_guide?.activities ?? []).map((a) => ({
+      activities: regroupScenarios(raw.decision_guide as RawDecisionGuide | undefined).map((a) => ({
         activity_id: a.activity_id ?? '',
         scenarios: (a.scenarios ?? []).map((s) => ({
           scenario_type: oneOf(s.scenario_type, SCENARIO_TYPES, 'common-error'),
@@ -236,7 +297,14 @@ function normalizeLesson(raw: Partial<LessonData> & Record<string, unknown>): Le
           interpretation: s.interpretation ?? '',
           is_mll: s.is_mll ?? false,
           flat_move: s.flat_move ?? null,
-          proficiency_moves: normalizeProficiencyMoves(s.proficiency_moves) as typeof s.proficiency_moves,
+          // Non-MLL scenarios carry flat_move and nothing else. The prompt says
+          // so, but constrained decoding fills every declared property and the
+          // schema cannot express "null" (type unions are rejected on this API
+          // surface), so the model returns proficiency_moves on all scenarios.
+          // Enforce the rule here instead of hoping it is sampled correctly.
+          proficiency_moves: (s.is_mll
+            ? normalizeProficiencyMoves(s.proficiency_moves)
+            : null) as DecisionScenario['proficiency_moves'],
           mll_framework_note: s.mll_framework_note ?? null,
           proficiency_divergence_note:
             (s as { proficiency_divergence_note?: string | null }).proficiency_divergence_note ?? null,
@@ -465,6 +533,24 @@ export async function POST(req: NextRequest) {
     //
     // Per-call client timeout 200s gives margin over typical wall times and
     // stays well under the 600s function maxDuration.
+    // Cache lookup happens before any model call: a hit costs one blob read and
+    // returns the identical plan a previous upload produced. See lessonCache.ts
+    // for why identity-keyed caching is the mechanism rather than an
+    // optimization.
+    const cacheKey = lessonCacheKey(truncatedText, preset.model);
+    if (isCacheEnabled()) {
+      const cached = await readCachedLesson(cacheKey);
+      if (cached) {
+        log('cache hit', { cacheKey });
+        telemetry.logPipelineComplete(Date.now() - pipelineStart, 0);
+        return NextResponse.json({
+          ...cached,
+          provenance: { ...cached.provenance, served_from_cache: true },
+        });
+      }
+      log('cache miss', { cacheKey });
+    }
+
     const llm = createLLMClient(preset.provider, preset.model, preset.defaultThinking);
 
     const concisionRules = `OUTPUT FORMAT — MANDATORY:
@@ -537,7 +623,7 @@ Return a single JSON object with EXACTLY these top-level fields (and no others):
 
 mlr_inference.activities and elsf_inference.activities MUST each cover EVERY activity from the anchor.
 
-For each activity in mlr_inference, produce { activity_id, language_work, mlrs: [{ number, name, why_here }] }. Select 1-2 MLRs per activity. why_here is 1-2 sentences explaining why THIS routine fits THIS activity, referencing the specific student behavior or prompt.
+For each activity in mlr_inference, produce { activity_id, language_work, mlrs: [{ number, name, why_here }] }. Select EXACTLY 2 MLRs per activity — the assignment above tells you which. why_here is 1-2 sentences explaining why THIS routine fits THIS activity, referencing the specific student behavior or prompt.
 
 For each activity in elsf_inference, produce both:
 - language_demands { receptive, productive, interactive, everyday_to_academic_bridge, elsf_guidelines_applied }
@@ -574,33 +660,36 @@ ${concisionRules}
 Lesson text:
 ${truncatedText}`;
 
-    const buildPassDMessage = (anchorJson: string) =>
-      `Analyze this math lesson. This is PASS D (decisions + wristband) of FOUR PARALLEL passes after the anchor. Passes A (structure), B (MLR + ELSF inference), and C (anticipated thinking) are running in parallel.
+    const buildPassD1Message = (anchorJson: string) =>
+      `Analyze this math lesson. This is PASS D1 (decision guide) of FIVE PARALLEL passes after the anchor. Passes A (structure), B (MLR + ELSF inference), C (anticipated thinking), and D2 (wristband) are running in parallel.
 
 Return a single JSON object with EXACTLY these top-level fields (and no others):
-- decision_guide { activities: [{ activity_id, scenarios }] }
-- wristband { arc_one_line, preflight, top_signals, top_frictions, activities: [{ activity_id, tiles, synthesis_short }], mlr_legend, lesson_synthesis_short }
+- decision_guide { scenarios: [{ activity_id, ...scenario fields }] } — a FLAT array. Every scenario names the activity it belongs to via activity_id; do NOT group them under an activities array.
 
-decision_guide.activities and wristband.activities MUST each cover EVERY activity from the anchor.
+The activity_ids across decision_guide.scenarios MUST cover EVERY activity from the anchor.
 
 decision_guide MUST include a mix of scenario types: 1-2 common-error, 1 productive-insight, 1 on-track, 1 productive-struggle or partial-understanding across the lesson. Total ~10-12 scenarios.
 
 For MLL scenarios (is_mll: true), proficiency_moves MUST have emerging/developing/expanding all populated. Emerging.nonverbal MUST be a concrete physical action. For non-MLL scenarios, use flat_move and set proficiency_moves: null.
 
-Every MLL scenario MUST be anchored to a specific MLR. Every wristband tile with friction_type 'language' or 'language-math' MUST anchor to an MLR.
+Every MLL scenario MUST be anchored to a specific MLR.
 
-wristband.activities each get 2-3 tiles MAXIMUM.
-wristband.mlr_legend lists the 2-3 routines this lesson runs on most heavily.
-EXACTLY ONE wristband tile across the whole lesson has is_crux_moment: true, on the activity the anchor marked is_crux: true.
+${anchorJson}
 
-wristband.synthesis_short per activity is the in-class compression of the activity's close — 10-18 words, verb-first, lesson-specific. NEVER generic. Must name a specific student work or question. Tied to the learning_target in the anchor.
-wristband.lesson_synthesis_short is the in-class compression of the lesson close — 12-22 words, verb-first, lesson-specific. NEVER generic. Tied to the destination in the anchor.
+Lesson text:
+${truncatedText}`;
 
-${makeAlignmentBlock(anchorJson)}
+    const buildPassD2Message = (anchorJson: string) =>
+      `Analyze this math lesson. This is PASS D2 (wristband) of FIVE PARALLEL passes after the anchor. Passes A (structure), B (MLR + ELSF inference), C (anticipated thinking), and D1 (decision guide) are running in parallel.
 
-Write in plain language a first-year teacher could read at 9pm the night before teaching. No academic jargon.
+Return a single JSON object with EXACTLY these top-level fields (and no others):
+- wristband { arc_one_line, preflight, top_signals, top_frictions, activities: [{ activity_id, tiles, synthesis_short }], mlr_legend, lesson_synthesis_short }
 
-${concisionRules}
+wristband.activities MUST cover EVERY activity from the anchor.
+
+EVERY wristband tile MUST carry an mlr. The chip at the point of need is the thing this view exists for; a tile without one is incomplete.
+
+${anchorJson}
 
 Lesson text:
 ${truncatedText}`;
@@ -614,12 +703,19 @@ ${truncatedText}`;
       userMessage: string,
       maxTokens: number,
       thinkingLevel?: ThinkingLevel,
+      responseSchema?: unknown,
     ): Promise<PassResult> {
       const passStart = Date.now();
       telemetry.logInferenceStart(passName, passName);
       try {
         log(`calling ${preset.provider} — pass ${passName}`);
-        const resp = await llm.run(PRODUCTION_SYSTEM_PROMPT, userMessage, maxTokens, thinkingLevel);
+        const resp = await llm.run(
+          PRODUCTION_SYSTEM_PROMPT,
+          userMessage,
+          maxTokens,
+          thinkingLevel,
+          responseSchema,
+        );
         const passDuration = Date.now() - passStart;
         log(`Pass ${passName} returned`, {
           stop_reason: resp.stopReason,
@@ -754,25 +850,37 @@ log('starting anchor pass (Pass 0)');
     // Cap all passes at MAX_TOKENS when set — useful for benchmarks.
     const maxTokensCap = process.env.MAX_TOKENS ? Number(process.env.MAX_TOKENS) : 32000;
 
-const resAnchor = await runPass('0 (anchor)', passAnchorMessage, maxTokensCap, thinkingLevel);
+const resAnchor = await runPass('0 (anchor)', passAnchorMessage, maxTokensCap, thinkingLevel, PASS_SCHEMAS.anchor);
     if (!resAnchor.ok) return resAnchor.response;
     const anchorJson = JSON.stringify(resAnchor.parsed, null, 2);
     log('anchor returned', { anchor_size_chars: anchorJson.length });
 
+    // Which MLRs an activity uses is computed, not generated — see
+    // src/lib/mlrSelection.ts. Deriving it from the anchor means every parallel
+    // pass argues for the same routines instead of each picking its own, which
+    // was the largest remaining source of run-to-run difference.
+    const mlrPlan = buildMlrPlan(
+      (resAnchor.parsed.activities ?? []) as { id: string }[],
+    );
+    const anchorWithPlan = `${anchorJson}\n\n${describeMlrPlan(mlrPlan, (n) => MLRS[n].name)}`;
+    log('mlr plan', mlrPlan);
+
     log('starting parallel passes');
-    const [resA, resB, resC, resD] = await Promise.all([
-runPass('A (structure)', buildPassAMessage(anchorJson), maxTokensCap, thinkingLevel),
-      runPass('B (MLR + ELSF inference)', buildPassBMessage(anchorJson), maxTokensCap, thinkingLevel),
-      runPass('C (anticipated thinking)', buildPassCMessage_Thinking(anchorJson), maxTokensCap, thinkingLevel),
-      runPass('D (decisions + wristband)', buildPassDMessage(anchorJson), maxTokensCap, thinkingLevel),
+    const [resA, resB, resC, resD1, resD2] = await Promise.all([
+runPass('A (structure)', buildPassAMessage(anchorWithPlan), maxTokensCap, thinkingLevel, PASS_SCHEMAS.A),
+      runPass('B (MLR + ELSF inference)', buildPassBMessage(anchorWithPlan), maxTokensCap, thinkingLevel, PASS_SCHEMAS.B),
+      runPass('C (anticipated thinking)', buildPassCMessage_Thinking(anchorWithPlan), maxTokensCap, thinkingLevel, PASS_SCHEMAS.C),
+      runPass('D1 (decision guide)', buildPassD1Message(anchorWithPlan), maxTokensCap, thinkingLevel, PASS_SCHEMAS.D1),
+      runPass('D2 (wristband)', buildPassD2Message(anchorWithPlan), maxTokensCap, thinkingLevel, PASS_SCHEMAS.D2),
     ]);
-    log('all 4 passes settled');
+    log('all 5 passes settled');
 
     // First failure wins — return its error message.
     if (!resA.ok) return resA.response;
     if (!resB.ok) return resB.response;
     if (!resC.ok) return resC.response;
-    if (!resD.ok) return resD.response;
+    if (!resD1.ok) return resD1.response;
+    if (!resD2.ok) return resD2.response;
 
     // Merge. Each pass owns a disjoint set of top-level fields.
     // - Anchor produces: meta, destination, activities (skeleton).
@@ -780,13 +888,16 @@ runPass('A (structure)', buildPassAMessage(anchorJson), maxTokensCap, thinkingLe
     //   adaptation_guardrails, lesson_synthesis.
     // - Pass B produces: mlr_inference, elsf_inference.
     // - Pass C produces: anticipated_thinking.
-    // - Pass D produces: decision_guide, wristband.
+    // - Pass D1 produces: decision_guide. Pass D2 produces: wristband.
+    //   D was split in two because the combined response schema exceeded the
+    //   Interactions API's complexity ceiling; see src/lib/passSchemas.ts.
     //
     // On overlap, Pass A's activities (full) beat the anchor's skeleton; the
     // anchor's meta + destination win since they were the alignment source of
     // truth that A built on top of.
     const parsed = {
-      ...resD.parsed,
+      ...resD2.parsed,
+      ...resD1.parsed,
       ...resC.parsed,
       ...resB.parsed,
       ...resA.parsed,
@@ -802,23 +913,39 @@ runPass('A (structure)', buildPassAMessage(anchorJson), maxTokensCap, thinkingLe
 
     const lesson = normalizeLesson(parsed);
     log('normalized lesson');
+
+    // Backstop for a pass that ignored the assignment.
+    const { deviations } = enforceMlrPlan(lesson, mlrPlan);
+    if (deviations > 0) log('mlr plan deviations snapped', { deviations });
+
+    // The raw anchor response used to be attached here for the Gemini-vs-Claude
+    // comparison. It shipped ~20KB of debug text to the browser and was baked
+    // into every exported .dsst. Token counts now live in telemetry, which is
+    // where benchmark data belongs.
     
-    // Persist the raw anchor response for quality evaluation (Gemini vs Claude comparison).
-    if (resAnchor.ok) {
-      (lesson as any).anchor = {
-        text: resAnchor.resp.text,
-        stop_reason: resAnchor.resp.stopReason,
-        input_tokens: resAnchor.resp.inputTokens ?? 0,
-        output_tokens: resAnchor.resp.outputTokens ?? 0,
-      };
-    }
-    
+    // Provenance: until now a generated lesson carried no record of what made
+    // it, so a .dsst file could not be attributed after the fact — and the
+    // provider is switchable by env var.
+    const stamped = {
+      ...lesson,
+      provenance: {
+        pipeline_version: PIPELINE_VERSION,
+        cache_key: cacheKey,
+        provider: preset.provider,
+        model: preset.model,
+        thinking: thinkingLevel,
+        generated_at: new Date().toISOString(),
+        served_from_cache: false,
+      },
+    };
+    await writeCachedLesson(cacheKey, stamped);
+
     const totalDuration = Date.now() - pipelineStart;
     telemetry.logPipelineComplete(totalDuration, 4);
     
     
     
-    return NextResponse.json(lesson);
+    return NextResponse.json(stamped);
   } catch (err) {
     const totalDuration = Date.now() - pipelineStart;
     console.error('[analyze] Unexpected error:', err);

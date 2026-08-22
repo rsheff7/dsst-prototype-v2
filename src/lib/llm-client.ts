@@ -10,7 +10,13 @@ export interface LLMResponse {
 }
 
 export interface LLMClient {
-  run(systemPrompt: string, userMessage: string, maxTokens: number, thinkingLevel?: ThinkingLevel): Promise<LLMResponse>;
+  run(
+    systemPrompt: string,
+    userMessage: string,
+    maxTokens: number,
+    thinkingLevel?: ThinkingLevel,
+    responseSchema?: unknown,
+  ): Promise<LLMResponse>;
 }
 
 // Claude extended thinking token budgets mapped from universal ThinkingLevel values.
@@ -36,7 +42,16 @@ export class AnthropicClient implements LLMClient {
     this.defaultThinking = defaultThinking ?? 'off';
   }
 
-  async run(systemPrompt: string, userMessage: string, maxTokens: number, thinkingLevel?: ThinkingLevel): Promise<LLMResponse> {
+  // _responseSchema is accepted for interface parity. Claude would enforce a
+  // schema through forced tool use, which is a different call shape; not wired
+  // up while Gemini is the launch provider.
+  async run(
+    systemPrompt: string,
+    userMessage: string,
+    maxTokens: number,
+    thinkingLevel?: ThinkingLevel,
+    _responseSchema?: unknown,
+  ): Promise<LLMResponse> {
     const effectiveThinking = thinkingLevel ?? this.defaultThinking;
 
     // Build request body. Add extended_thinking if enabled.
@@ -79,7 +94,13 @@ export class GeminiClient implements LLMClient {
     this.defaultThinking = defaultThinking ?? 'medium';
   }
 
-  async run(systemPrompt: string, userMessage: string, maxTokens: number, thinkingLevel?: ThinkingLevel): Promise<LLMResponse> {
+  async run(
+    systemPrompt: string,
+    userMessage: string,
+    maxTokens: number,
+    thinkingLevel?: ThinkingLevel,
+    responseSchema?: unknown,
+  ): Promise<LLMResponse> {
     const effectiveThinking = thinkingLevel ?? this.defaultThinking;
 
     // Gemini doesn't understand markdown <img> tags. Extract base64 images
@@ -111,15 +132,39 @@ export class GeminiClient implements LLMClient {
       }),
     };
 
+    // Sampling temperature. Nothing set one before, so every call ran at the
+    // provider default (~1.0) and the anchor's learning_target prose came back
+    // 8-9 distinct across 10 runs of the same PDF. That instability propagates:
+    // the MLR assignment is computed from the anchor, so a moving anchor moves
+    // the routines too. Tunable via GEMINI_TEMPERATURE; 0 for maximum
+    // reproducibility, raise it if the prose reads flat.
+    const temperature = process.env.GEMINI_TEMPERATURE
+      ? Number(process.env.GEMINI_TEMPERATURE)
+      : 0;
+
     // Only add thinking_level if not 'off'. Gemini disables thinking when absent.
     if (effectiveThinking !== 'off') {
       body.generation_config = {
         max_output_tokens: maxTokens,
         thinking_level: effectiveThinking.toLowerCase(),
+        temperature,
       };
     } else {
       body.generation_config = {
         max_output_tokens: maxTokens,
+        temperature,
+      };
+    }
+
+    // Constrained decoding. `response_format` sits at the TOP LEVEL of the
+    // Interactions request — not inside generation_config — and takes a JSON
+    // Schema subset supporting required/enum/minItems/maxItems.
+    // https://ai.google.dev/gemini-api/docs/interactions/structured-output
+    if (responseSchema) {
+      body.response_format = {
+        type: 'text',
+        mime_type: 'application/json',
+        schema: responseSchema,
       };
     }
 

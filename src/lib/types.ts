@@ -241,11 +241,18 @@ export interface LessonSynthesis {
   builds_on: string[];
 }
 
-export interface AnchorOutput {
-  text: string;
-  stop_reason: string;
-  input_tokens: number;
-  output_tokens: number;
+// Stamped by the analyze route so a generated lesson can be attributed after
+// the fact — which model made it, under which prompt/schema version, and
+// whether this copy came from the cache. Optional so existing .dsst files and
+// the demo lesson still satisfy the type.
+export interface LessonProvenance {
+  pipeline_version: string;
+  cache_key: string;
+  provider: string;
+  model: string;
+  thinking: string;
+  generated_at: string;
+  served_from_cache: boolean;
 }
 
 export interface LessonData {
@@ -261,7 +268,7 @@ export interface LessonData {
   mlr_inference: MlrInference;
   lesson_synthesis: LessonSynthesis;
   wristband: Wristband;
-  anchor?: AnchorOutput;
+  provenance?: LessonProvenance;
 }
 
 export type ToolId = 'quickread' | 'pathway' | 'adapt' | 'thinking' | 'moves';

@@ -7,10 +7,15 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "check:eld": "node --test --experimental-strip-types src/lib/eld/eld.test.ts"
+    "check:eld": "node --test --experimental-strip-types src/lib/eld/eld.test.ts",
+    "check:mlr": "node --test --experimental-strip-types src/lib/mlrSelection.test.ts",
+    "check": "npm run check:eld && npm run check:mlr",
+    "variance": "node benchmarks/variance/harness.mjs",
+    "pregenerate": "node scripts/pregenerate.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.97.1",
+    "@vercel/blob": "^2.8.0",
     "next": "^15.5.15",
     "pdf-parse": "^1.1.1",
     "react": "19.2.0",
