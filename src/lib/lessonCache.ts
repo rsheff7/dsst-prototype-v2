@@ -29,7 +29,8 @@ import { get, put } from '@vercel/blob';
 import type { LessonData } from './types';
 
 // Bump when a prompt, schema, or normalizer change should invalidate the cache.
-// 2026-08-22.1 — lesson.selection gained resolved_outcome_type.
+// 2026-08-22.2 — cache key now hashes text with export artifacts stripped,
+// so two downloads of the same lesson land on the same entry.
 //
 // BUMP THIS when the SHAPE of the response changes. The automatic digest below
 // covers the system prompt, the pass schemas and the selection tables, so
@@ -38,7 +39,7 @@ import type { LessonData } from './types';
 // or renamed field needs this constant moved by hand. Getting that wrong has
 // bitten three times now; the symptom is a stored lesson missing a field that
 // downstream code expects.
-export const PIPELINE_VERSION = '2026-08-22.1';
+export const PIPELINE_VERSION = '2026-08-22.2';
 
 const PREFIX = 'lessons';
 
@@ -68,12 +69,37 @@ export function isCacheEnabled(): boolean {
  * different PDF exports of the same lesson should land on the same key, so the
  * text is whitespace-normalized before hashing.
  */
+/**
+ * Strip the parts of an export that change between downloads of the same
+ * lesson, so two exports hash alike.
+ *
+ * Open Up prints a timestamp into every PDF footer — "8/22/26, 11:51 AM" — plus
+ * the source URL and page markers. Hashing raw text meant a teacher who
+ * re-exported Lesson 2 a minute later got a different key, missed the reviewed
+ * artifact entirely, and paid for a fresh generation. Observed in production:
+ * the same lesson succeeded in one tab and failed in another, because only one
+ * of them was the file we had pre-generated from.
+ *
+ * Only export chrome is removed. Nothing that carries lesson content is touched.
+ */
+export function normalizeLessonText(lessonText: string): string {
+  return lessonText
+    // Print timestamps: "8/22/26, 11:51 AM"
+    .replace(/\d{1,2}\/\d{1,2}\/\d{2,4},?\s*\d{1,2}:\d{2}(:\d{2})?\s*[AP]\.?M\.?/gi, ' ')
+    // Source URLs printed into the footer
+    .replace(/https?:\/\/\S+/g, ' ')
+    // Footer page markers: "3/6"
+    .replace(/\b\d{1,3}\s*\/\s*\d{1,3}\b/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 export function lessonCacheKey(
   lessonText: string,
   model: string,
   logicFingerprint = '',
 ): string {
-  const normalized = lessonText.replace(/\s+/g, ' ').trim();
+  const normalized = normalizeLessonText(lessonText);
   return createHash('sha256')
     .update(`${PIPELINE_VERSION}\n${model}\n${logicFingerprint}\n${normalized}`)
     .digest('hex')
