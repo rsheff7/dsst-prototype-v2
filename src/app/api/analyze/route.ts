@@ -737,9 +737,39 @@ ${truncatedText}`;
 
     type PassResult =
       | { ok: true; parsed: Partial<LessonData> & Record<string, unknown>; resp: LLMResponse }
-      | { ok: false; response: NextResponse };
+      | { ok: false; response: NextResponse; retryable?: boolean };
 
+    /**
+     * One automatic retry when a pass returns text that will not parse.
+     *
+     * Constrained decoding removed this as a category — 0 failures in ten runs
+     * where the previous build failed 2 in ten — but 0/10 was never the same as
+     * never, and a teacher hit it in production on an uncached lesson. A bad
+     * response is independent of the next one, so retrying once converts a
+     * visible error into an extra ~30s on a rare request.
+     *
+     * Deliberately narrow: only a parse failure retries. An auth error, a rate
+     * limit, or a token-limit truncation will fail again the same way, and
+     * retrying those just doubles the delay before the same message.
+     */
     async function runPass(
+      passName: string,
+      userMessage: string,
+      maxTokens: number,
+      thinkingLevel?: ThinkingLevel,
+      responseSchema?: unknown,
+    ): Promise<PassResult> {
+      const first = await runPassOnce(passName, userMessage, maxTokens, thinkingLevel, responseSchema);
+      if (first.ok || !first.retryable) return first;
+
+      log(`Pass ${passName} returned unparseable JSON — retrying once`);
+      telemetry.logInferenceError(passName, 'invalid_json_retry', 'retrying after parse failure', 0);
+      const second = await runPassOnce(passName, userMessage, maxTokens, thinkingLevel, responseSchema);
+      if (second.ok) log(`Pass ${passName} succeeded on retry`);
+      return second;
+    }
+
+    async function runPassOnce(
       passName: string,
       userMessage: string,
       maxTokens: number,
@@ -815,6 +845,7 @@ ${truncatedText}`;
           console.error(`[analyze] Pass ${passName} extracted length:`, extracted.length);
           return {
             ok: false,
+            retryable: true,
             response: NextResponse.json(
               {
                 error: `Pass ${passName} returned text that was not valid JSON (stop_reason: ${resp.stopReason}). Try uploading again — this is usually transient.`,
