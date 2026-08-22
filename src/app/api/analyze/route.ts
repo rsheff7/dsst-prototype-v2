@@ -559,7 +559,15 @@ export async function POST(req: NextRequest) {
     // ?fresh=1 bypasses the cache entirely — read and write. Needed to measure
     // run-to-run behaviour, which a cache hit would otherwise hide behind a
     // byte-identical copy. Never set by the app itself.
-    const bypassCache = searchParams.get('fresh') === '1';
+    //
+    // Gated behind an env flag: unguarded, anyone could force a full five-pass
+    // regeneration on every request, which is both a cost and a load vector.
+    // Set DSST_ALLOW_CACHE_BYPASS=true on measurement deployments only.
+    const bypassAllowed = process.env.DSST_ALLOW_CACHE_BYPASS === 'true';
+    const bypassCache = bypassAllowed && searchParams.get('fresh') === '1';
+    if (!bypassAllowed && searchParams.get('fresh') === '1') {
+      log('cache bypass requested but not enabled on this deployment');
+    }
     if (isCacheEnabled() && !bypassCache) {
       const cached = await readCachedLesson(cacheKey);
       if (cached) {
