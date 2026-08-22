@@ -21,11 +21,15 @@
  *
  * The pairings below are pedagogy, not code, and are meant to be tuned by
  * someone who runs IM PD rather than by a developer.
+ *
+ * Relative imports carry explicit .ts extensions, matching src/lib/eld/, so this
+ * module can be exercised by `node --test --experimental-strip-types`. Covered
+ * by mlrSelection.test.ts — run `npm run check:mlr`.
  */
 
-import { MlrNumber } from './mlrs';
-import { kluFromElsf } from './eld/kluFromElsf';
-import type { KLU } from './eld/types';
+import type { MlrNumber } from './mlrs.ts';
+import { kluFromElsf } from './eld/kluFromElsf.ts';
+import type { KLU } from './eld/types.ts';
 
 export interface AnchorActivity {
   id: string;
@@ -129,8 +133,8 @@ ${lines.join('\n')}`;
 // because a wrong-but-consistent label beats a different answer every run — and
 // deviations are counted so we can see how often it actually happens.
 
-import type { LessonData, MlrRef } from './types';
-import { MLRS } from './mlrs';
+import type { LessonData, MlrRef } from './types.ts';
+import { MLRS } from './mlrs.ts';
 
 const refFor = (n: MlrNumber): MlrRef => ({ number: n, name: MLRS[n].name });
 
