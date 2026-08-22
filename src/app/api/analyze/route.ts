@@ -20,6 +20,7 @@ import {
   readCachedLesson,
   writeCachedLesson,
   isCacheEnabled,
+  cacheKeyBasis,
 } from '@/lib/lessonCache';
 import { telemetry } from '@/lib/telemetry';
 import {
@@ -589,7 +590,7 @@ export async function POST(req: NextRequest) {
           provenance: { ...cached.provenance, served_from_cache: true },
         });
       }
-      log('cache miss', { cacheKey });
+      log('cache miss', { cacheKey, basis: cacheKeyBasis(pdfText) });
     }
 
     const llm = createLLMClient(preset.provider, preset.model, preset.defaultThinking);
@@ -1066,7 +1067,31 @@ runPass('A (structure)', buildPassAMessage(anchorWithPlan), maxTokensCap, thinki
         served_from_cache: false,
       },
     };
-    if (!bypassCache) await writeCachedLesson(cacheKey, stamped);
+    if (!bypassCache) {
+      await writeCachedLesson(cacheKey, stamped);
+
+      // Read back what is actually stored and return THAT.
+      //
+      // When a lesson is not yet cached, every request arriving during the ~30s
+      // generation is a miss, so each one generates its own copy. Writes are
+      // first-wins, so only one is kept — but without this, the losers would
+      // return the copy they generated and never stored, and three teachers
+      // uploading the same lesson at once would see three different plans. That
+      // happened in testing.
+      //
+      // One extra read converges everyone on the stored artifact. If the read
+      // fails we fall through to our own copy, which is the old behaviour.
+      const stored = await readCachedLesson(cacheKey);
+      if (stored) {
+        const fromOtherRequest = stored.provenance?.generated_at !== stamped.provenance.generated_at;
+        if (fromOtherRequest) log('another request stored this lesson first — returning theirs');
+        telemetry.logPipelineComplete(Date.now() - pipelineStart, 5);
+        return NextResponse.json({
+          ...stored,
+          provenance: { ...stored.provenance, served_from_cache: fromOtherRequest },
+        });
+      }
+    }
 
     const totalDuration = Date.now() - pipelineStart;
     telemetry.logPipelineComplete(totalDuration, 4);

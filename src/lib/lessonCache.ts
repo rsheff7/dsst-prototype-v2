@@ -27,10 +27,11 @@
 import { createHash } from 'node:crypto';
 import { get, put } from '@vercel/blob';
 import type { LessonData } from './types';
+import { lessonIdentity } from './lessonIdentity';
 
 // Bump when a prompt, schema, or normalizer change should invalidate the cache.
-// 2026-08-22.2 — cache key now hashes text with export artifacts stripped,
-// so two downloads of the same lesson land on the same entry.
+// 2026-08-22.3 — cache keys on lesson identity (grade/unit/lesson read from
+// the document) rather than file text, so any export of a lesson matches.
 //
 // BUMP THIS when the SHAPE of the response changes. The automatic digest below
 // covers the system prompt, the pass schemas and the selection tables, so
@@ -39,7 +40,7 @@ import type { LessonData } from './types';
 // or renamed field needs this constant moved by hand. Getting that wrong has
 // bitten three times now; the symptom is a stored lesson missing a field that
 // downstream code expects.
-export const PIPELINE_VERSION = '2026-08-22.2';
+export const PIPELINE_VERSION = '2026-08-22.3';
 
 const PREFIX = 'lessons';
 
@@ -94,16 +95,33 @@ export function normalizeLessonText(lessonText: string): string {
     .trim();
 }
 
+/**
+ * The cache key.
+ *
+ * Prefers the lesson's own identity — "Grade 6 Mathematics, Unit 2.2" — so every
+ * export of a lesson lands on one entry and every teacher sees the same plan.
+ * Falls back to hashing the text when a document does not identify itself, which
+ * still gives same-file consistency; it just cannot recognise a re-export.
+ *
+ * Version, model and logic digest are folded in either way, so a change to any
+ * of them still invalidates.
+ */
 export function lessonCacheKey(
   lessonText: string,
   model: string,
   logicFingerprint = '',
 ): string {
-  const normalized = normalizeLessonText(lessonText);
+  const identity = lessonIdentity(lessonText);
+  const basis = identity ? `id:${identity.key}` : `text:${normalizeLessonText(lessonText)}`;
   return createHash('sha256')
-    .update(`${PIPELINE_VERSION}\n${model}\n${logicFingerprint}\n${normalized}`)
+    .update(`${PIPELINE_VERSION}\n${model}\n${logicFingerprint}\n${basis}`)
     .digest('hex')
     .slice(0, 32);
+}
+
+/** Whether a lesson was recognised by identity rather than by text hash. */
+export function cacheKeyBasis(lessonText: string): 'identity' | 'text-hash' {
+  return lessonIdentity(lessonText) ? 'identity' : 'text-hash';
 }
 
 const pathFor = (key: string) => `${PREFIX}/${key}.json`;
