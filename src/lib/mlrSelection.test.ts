@@ -1,121 +1,192 @@
 /**
- * Determinism gate for MLR assignment.
+ * Gate for outcome-first MLR selection.
  *
  * Run with: npm run check:mlr
  *
- * Architectural rule, same as src/lib/eld/eld.test.ts: what the code decides is
- * owned and verifiable. MLR assignment moved out of the model precisely because
- * a generated answer varied five ways across ten runs of one lesson — so the
- * replacement has to be provably stable, or we traded one kind of drift for
- * another that is harder to see.
+ * Two things are being defended here. First, determinism — the whole reason
+ * selection moved out of the model. Second, and easier to lose: that the table
+ * still *reaches* the full repertoire. The previous version was perfectly
+ * deterministic and quietly emitted four of eight routines, with MLR 8 on 81% of
+ * activities. Stable and wrong is the failure mode these tests exist to catch.
  */
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-// Explicit .ts extensions so Node's ESM resolver finds the files when running
-// via `node --test --experimental-strip-types`.
-import { selectMlrs, buildMlrPlan, describeMlrPlan } from './mlrSelection.ts';
+import {
+  recommendMlrs,
+  buildMlrPlan,
+  routinesUsed,
+  routinesFor,
+  describeMlrPlan,
+  needsStandingSupports,
+  OUTCOME_TYPES,
+  type AnchorActivity,
+} from './mlrSelection.ts';
 import { ALL_MLR_NUMBERS, MLRS } from './mlrs.ts';
 
-const ACTIVITIES = [
-  {
-    id: '1.1',
-    function: 'Setup',
-    language_demand: 'low',
-    learning_target: 'Students sort a set of figures into categories and identify the count in each group.',
-  },
+const ROLES = ['Setup', 'Crux', 'Application', 'Synthesis', ''] as const;
+
+// G6 U2 L1 and G7 U6 L22, characterised from the source PDFs.
+const G6: AnchorActivity[] = [
+  { id: '1.1', function: 'Setup', outcome_type: 'formulate_precisely' },
   {
     id: '1.2',
     function: 'Crux',
-    language_demand: 'high',
-    learning_target: 'Students write ratio statements using to, colon, and for every notation.',
+    outcome_type: 'formulate_precisely',
+    error_harvestable: true,
+    frames_already_printed: true,
   },
   {
     id: '1.3',
     function: 'Application',
-    language_demand: 'medium',
-    learning_target: 'Students justify why two ratios are equivalent.',
-  },
-  {
-    id: '1.4',
-    function: 'Synthesis',
-    language_demand: 'low',
-    learning_target: 'Students compare two representations of the same ratio.',
+    outcome_type: 'connect_representations',
+    student_products_differ: true,
+    public_share_step: true,
   },
 ];
 
-test('same activity always yields the same pair', () => {
-  for (const activity of ACTIVITIES) {
-    const first = selectMlrs(activity);
+const G7: AnchorActivity[] = [
+  { id: '22.1', function: 'Setup', outcome_type: 'justify_or_evaluate', flawed_sample_provided: true },
+  { id: '22.2', function: 'Crux', outcome_type: 'communicate_precisely', splittable_materials: true },
+  { id: '22.3', function: 'Application', outcome_type: 'generalize_in_writing', student_products_differ: true },
+];
+
+test('deterministic — repeated calls never differ', () => {
+  for (const activity of [...G6, ...G7]) {
+    const first = JSON.stringify(recommendMlrs(activity));
     for (let i = 0; i < 50; i++) {
-      assert.deepEqual(selectMlrs(activity), first, `${activity.id} drifted on repeat call`);
+      assert.equal(JSON.stringify(recommendMlrs(activity)), first, `${activity.id} drifted`);
     }
   }
 });
 
-test('a plan is stable across repeated builds', () => {
-  const once = JSON.stringify(buildMlrPlan(ACTIVITIES));
-  for (let i = 0; i < 50; i++) {
-    assert.equal(JSON.stringify(buildMlrPlan(ACTIVITIES)), once);
-  }
-});
-
-test('always exactly two distinct, valid routines', () => {
-  for (const activity of ACTIVITIES) {
-    const pair = selectMlrs(activity);
-    assert.equal(pair.length, 2, `${activity.id} did not get two routines`);
-    assert.notEqual(pair[0], pair[1], `${activity.id} got a duplicate pair`);
-    for (const n of pair) {
-      assert.ok(ALL_MLR_NUMBERS.includes(n), `${activity.id} got MLR ${n}, which is not 1-8`);
+test('total — every combination yields a valid recommendation', () => {
+  for (const outcome_type of OUTCOME_TYPES) {
+    for (const fn of ROLES) {
+      const rec = recommendMlrs({ id: 'x', function: fn, outcome_type });
+      assert.ok(ALL_MLR_NUMBERS.includes(rec.lead), `bad lead for ${outcome_type}/${fn}`);
+      if (rec.second !== null) {
+        assert.ok(ALL_MLR_NUMBERS.includes(rec.second));
+        assert.notEqual(rec.second, rec.lead, `duplicate pair for ${outcome_type}/${fn}`);
+      }
+      assert.ok(rec.because.length > 20, `missing rationale for ${outcome_type}/${fn}`);
     }
   }
 });
 
-test('total on any input — missing fields must not throw', () => {
-  const degenerate = [
-    {},
-    { id: 'x' },
-    { id: 'x', function: 'NotARealFunction' },
-    { id: 'x', language_demand: 'nonsense' },
-    { id: 'x', learning_target: '' },
-    { id: 'x', title: '', learning_target: '' },
-  ];
-  for (const activity of degenerate) {
-    const pair = selectMlrs(activity as { id: string });
-    assert.equal(pair.length, 2);
-    assert.notEqual(pair[0], pair[1]);
+test('degenerate input never throws', () => {
+  for (const activity of [{}, { id: 'x' }, { id: 'x', function: 'Nonsense' }] as AnchorActivity[]) {
+    const rec = recommendMlrs(activity);
+    assert.ok(ALL_MLR_NUMBERS.includes(rec.lead));
   }
 });
 
-test('a high language demand always earns Discussion Supports', () => {
-  // MLR 8 is what makes the other routines survivable for a student still
-  // building English; the table must not lose it to a function override.
-  for (const fn of ['Setup', 'Crux', 'Application', 'Synthesis']) {
-    const pair = selectMlrs({
-      id: 'x',
-      function: fn,
-      language_demand: 'high',
-      learning_target: 'Students explain how the diagram shows the relationship.',
-    });
-    assert.ok(pair.includes(8), `${fn} at high demand dropped MLR 8: got ${pair.join(',')}`);
-  }
-});
-
-test('the KLU signal actually changes the assignment', () => {
-  // If every input produced the same pair the mapping would be stable but
-  // useless — this guards against the table collapsing to a constant.
-  const argue = selectMlrs({ id: 'x', learning_target: 'Students justify why the claim holds.' });
-  const inform = selectMlrs({ id: 'x', learning_target: 'Students list and count the categories.' });
-  assert.notDeepEqual(argue, inform, 'Argue and Inform produced the same routines');
-});
-
-test('the directive names every activity and its routines', () => {
-  const plan = buildMlrPlan(ACTIVITIES);
-  const text = describeMlrPlan(plan, (n) => MLRS[n].name);
-  for (const activity of ACTIVITIES) {
-    assert.ok(text.includes(activity.id), `directive omits ${activity.id}`);
-    for (const n of plan[activity.id]) {
-      assert.ok(text.includes(`MLR ${n}`), `directive omits MLR ${n} for ${activity.id}`);
+test('the repertoire is reachable — routines 1-7 can all be selected', () => {
+  const reachable = new Set<number>();
+  for (const outcome_type of OUTCOME_TYPES) {
+    for (const fn of ROLES) {
+      for (const n of routinesFor(recommendMlrs({ id: 'x', function: fn, outcome_type }))) {
+        reachable.add(n);
+      }
     }
   }
+  for (const n of [1, 2, 3, 4, 5, 6, 7] as const) {
+    assert.ok(reachable.has(n), `MLR ${n} (${MLRS[n].name}) can never be selected`);
+  }
+});
+
+test('MLR 8 never occupies an activity slot', () => {
+  // It is a lesson-level standing support. If it starts appearing as a lead or a
+  // second, the filler problem is back.
+  for (const outcome_type of OUTCOME_TYPES) {
+    for (const fn of ROLES) {
+      const rec = recommendMlrs({ id: 'x', function: fn, outcome_type });
+      assert.ok(!routinesFor(rec).includes(8), `MLR 8 assigned for ${outcome_type}/${fn}`);
+    }
+  }
+});
+
+test('no single routine dominates the input space', () => {
+  // Guards the failure that made the previous table useless: one routine on
+  // nearly every activity.
+  const counts = new Map<number, number>();
+  let total = 0;
+  for (const outcome_type of OUTCOME_TYPES) {
+    for (const fn of ROLES) {
+      for (const n of routinesFor(recommendMlrs({ id: 'x', function: fn, outcome_type }))) {
+        counts.set(n, (counts.get(n) ?? 0) + 1);
+        total++;
+      }
+    }
+  }
+  for (const [routine, count] of counts) {
+    assert.ok(count / total < 0.4, `MLR ${routine} takes ${Math.round((count / total) * 100)}% of all slots`);
+  }
+});
+
+test('outcome changes the routine — the table is not a constant', () => {
+  const seen = new Set(
+    OUTCOME_TYPES.map((outcome_type) => recommendMlrs({ id: 'x', function: 'Crux', outcome_type }).lead),
+  );
+  assert.ok(seen.size >= 4, `only ${seen.size} distinct leads across all outcome types`);
+});
+
+test('an activity may need only one routine', () => {
+  const rec = recommendMlrs({ id: 'x', function: 'Setup', outcome_type: 'formulate_precisely' });
+  assert.equal(rec.second, null, 'a five-minute warm-up should not carry two routines');
+});
+
+test('prep instructions appear exactly when the materials do not supply the precondition', () => {
+  const noSample = recommendMlrs({ id: 'x', function: 'Crux', outcome_type: 'justify_or_evaluate' });
+  assert.ok(noSample.teacher_prep, 'MLR 3 with no printed flawed sample must carry prep');
+
+  const withSample = recommendMlrs({
+    id: 'x',
+    function: 'Crux',
+    outcome_type: 'justify_or_evaluate',
+    flawed_sample_provided: true,
+  });
+  assert.equal(withSample.teacher_prep, null, 'no prep needed when the sample is printed');
+});
+
+test('reproduces the per-activity recommendations made from the source PDFs', () => {
+  // These six were arrived at independently by reading the lesson PDFs, before
+  // any table existed. If a table change breaks one, it is the table that has to
+  // justify itself.
+  const expected: Record<string, [number, number | null]> = {
+    '1.1': [2, null],
+    '1.2': [3, 1],
+    '1.3': [7, 1],
+    '22.1': [3, 2],
+    '22.2': [4, null],
+    '22.3': [1, 7],
+  };
+  const plan = { ...buildMlrPlan(G6), ...buildMlrPlan(G7) };
+  for (const [id, [lead, second]] of Object.entries(expected)) {
+    assert.equal(plan[id].lead, lead, `${id} lead`);
+    assert.equal(plan[id].second, second, `${id} second`);
+  }
+});
+
+test('a lesson uses a range of routines, not one repeated', () => {
+  assert.ok(routinesUsed(buildMlrPlan(G6)).length >= 3);
+  assert.ok(routinesUsed(buildMlrPlan(G7)).length >= 4);
+});
+
+test('standing supports are flagged at the lesson level', () => {
+  assert.equal(needsStandingSupports(G7), true);
+  assert.equal(
+    needsStandingSupports([{ id: 'x', function: 'Setup', outcome_type: 'connect_representations' }]),
+    false,
+  );
+});
+
+test('the directive carries targets, routines, rationale and prep', () => {
+  const plan = buildMlrPlan(G6);
+  const text = describeMlrPlan(plan, (n) => MLRS[n].name, ['I can write or say a sentence that describes a ratio']);
+  assert.ok(text.includes('I can write or say a sentence'), 'published target missing');
+  assert.ok(text.includes('MLR 2'), 'routine missing');
+  assert.ok(text.includes('WHY:'), 'rationale missing');
+  assert.ok(text.includes('PREP:'), 'prep missing');
+  assert.ok(text.includes('one routine, not two'), 'single-routine instruction missing');
 });

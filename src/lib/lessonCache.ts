@@ -26,10 +26,11 @@ import { get, put } from '@vercel/blob';
 import type { LessonData } from './types';
 
 // Bump when a prompt, schema, or normalizer change should invalidate the cache.
-// 2026-08-20.2 — title normalization, anchor blob removal, MLR count alignment.
-// Those changed the shape of the artifact, so entries written by .1 must not be
-// served. Bumping is cheap; serving a stale artifact is not.
-export const PIPELINE_VERSION = '2026-08-20.2';
+// 2026-08-21.1 — outcome-first MLR selection: the anchor now carries each
+// activity's outcome and its classification, routines are chosen from that
+// rather than from a keyword scan, and an activity may carry one routine
+// instead of two. Every stored artifact predates that model.
+export const PIPELINE_VERSION = '2026-08-21.1';
 
 const PREFIX = 'lessons';
 

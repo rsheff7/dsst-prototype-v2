@@ -90,6 +90,81 @@ const ACTIVITY_SKELETON = {
   ],
 } as const;
 
+
+// The anchor carries what outcome-first selection reads. Two of these fields do
+// the deciding — `outcome_type` and `function` — and both are enums on purpose:
+// enum fields have held at one distinct value across ten runs of a PDF while
+// free text came back 8-9 distinct. `activity_outcome` is prose for the teacher
+// to read; it must restate a published learning target and it decides nothing.
+//
+// The booleans describe the PRINTED MATERIALS, not pedagogy. "Is a wrong answer
+// shown on the page" is checkable against the page in seconds, which is what
+// makes them safe to generate — unlike "which routine fits", which is not.
+const ANCHOR_ACTIVITY = {
+  type: 'object',
+  properties: {
+    ...ACTIVITY_SKELETON.properties,
+    activity_outcome: {
+      type: 'string',
+      description:
+        'What students must be able to DO by the end of this activity, restating one of the lesson\'s published learning targets in this activity\'s terms. One sentence, observable.',
+    },
+    outcome_type: {
+      type: 'string',
+      enum: [
+        'formulate_precisely',
+        'justify_or_evaluate',
+        'connect_representations',
+        'interpret_situation',
+        'communicate_precisely',
+        'generalize_in_writing',
+      ],
+      description:
+        'The language work that outcome demands. formulate_precisely: say or write a precise formulation. justify_or_evaluate: judge whether something is correct and defend it. connect_representations: relate two or more strategies or representations. interpret_situation: make sense of a situation before solving. communicate_precisely: convey information to a partner who cannot see it. generalize_in_writing: state a generalisation in their own words.',
+    },
+    flawed_sample_provided: {
+      type: 'boolean',
+      description: 'A wrong answer, incorrect statement, or flawed sample is PRINTED in the student materials.',
+    },
+    error_harvestable: {
+      type: 'boolean',
+      description: 'The activity has a pause, check-in, or circulate step where the teacher could capture a real student error.',
+    },
+    splittable_materials: {
+      type: 'boolean',
+      description: 'The materials divide into parts (e.g. two columns of cards) such that neither partner could complete the task alone.',
+    },
+    student_products_differ: {
+      type: 'boolean',
+      description: 'Students produce visibly different work from one another — different data, objects, or displays.',
+    },
+    public_share_step: {
+      type: 'boolean',
+      description: 'The activity ends with sharing, presenting, or displaying work to others.',
+    },
+    frames_already_printed: {
+      type: 'boolean',
+      description: 'Sentence frames or starters are already printed in the student materials for this activity.',
+    },
+    context_word_count: {
+      type: 'integer',
+      description: 'Approximate number of words of contextual prose a student must read in this activity. Symbolic-only tasks are near zero.',
+    },
+  },
+  required: [
+    ...ACTIVITY_SKELETON.required,
+    'activity_outcome',
+    'outcome_type',
+    'flawed_sample_provided',
+    'error_harvestable',
+    'splittable_materials',
+    'student_products_differ',
+    'public_share_step',
+    'frames_already_printed',
+    'context_word_count',
+  ],
+} as const;
+
 /* ---------------------------- Pass 0: anchor ---------------------------- */
 // meta is all-strings here on purpose. Gemini emitted grade/unit/lesson_number
 // as NUMBERS in half the baseline runs, which renders as "6 · 2 · 1" in the
@@ -113,7 +188,7 @@ export const ANCHOR_SCHEMA = {
       description:
         'MUST begin with the exact words "Students can" followed by an observable verb. Never "Students understand" — the Quick Read card renders this under the eyebrow "By the end of the lesson, students can", so any other opening reads as a stutter.',
     },
-    activities: { type: 'array', items: ACTIVITY_SKELETON, minItems: 3 },
+    activities: { type: 'array', items: ANCHOR_ACTIVITY, minItems: 3 },
   },
   required: ['meta', 'destination', 'activities'],
 } as const;

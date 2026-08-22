@@ -1,120 +1,354 @@
 /**
- * Deterministic MLR assignment.
+ * Outcome-first MLR selection.
  *
- * Which routines an activity uses is a mapping, not a judgement call, and it was
- * the least stable thing the model produced. Across 10 runs of the same lesson
- * on 2026-08-19 the crux activity drew [3,8], [2,8], [7,8], [1,8], and [8] —
- * five different answers to a question with one right answer. For a tool whose
- * premise is that teachers build a recognizable repertoire across lessons, that
- * is the most damaging variance in the pipeline: the same lesson taught by two
- * teachers in the same PLC recommends different routines.
+ * The rule this encodes: *outcome drives the choice of strategy*. You decide
+ * what students must be able to do, and that decides the routine. It is how you
+ * would coach a teacher, and it is backward design — the routine is a means,
+ * never the starting point.
  *
- * So we compute it. Same rule as src/lib/eld/kluFromElsf.ts — do not build a
- * second demand classifier, and never call a model for something a table can
- * answer. This is a pure function of the anchor, and the anchor is the stable
- * part of the pipeline (activity ids and crux marker held at 1 distinct value
- * across 10 runs).
+ * WHAT THIS REPLACES. The first version keyed on a keyword scan of a
+ * model-written learning target. Three things were wrong with it, all measured:
+ * four of the eight routines could never be emitted at all; MLR 8 landed on 81%
+ * of activities because a two-slot type forced a filler; and the scan read model
+ * prose, so the same lesson produced different routines on different runs (G7 U6
+ * L22 activity 22.2 drew [3,1] and [1,8] on two runs of one PDF).
  *
- * Assignment runs BEFORE the parallel passes and is injected into their prompts,
- * so `why_here`, the wristband chips, and the friction-point anchors all argue
- * for the same routines instead of each pass picking its own.
+ * WHAT MAKES THIS STABLE. Selection reads two inputs, both enums:
  *
- * The pairings below are pedagogy, not code, and are meant to be tuned by
- * someone who runs IM PD rather than by a developer.
+ *   outcome_type — the language work the activity's outcome demands
+ *   function     — the activity's role in the lesson arc
  *
- * Relative imports carry explicit .ts extensions, matching src/lib/eld/, so this
- * module can be exercised by `node --test --experimental-strip-types`. Covered
- * by mlrSelection.test.ts — run `npm run check:mlr`.
+ * Neither is prose. The activity's outcome is still written by the model and is
+ * what the teacher reads, but it does not decide anything: the model classifies
+ * it into `outcome_type`, and the classification selects. In this pipeline enum
+ * fields have held at a single distinct value across ten runs of a PDF while
+ * free text came back 8-9 distinct.
+ *
+ * The published lesson target — extracted verbatim by learningTargets.ts, never
+ * paraphrased — is the fixed reference the activity outcome must restate.
+ *
+ * FEASIBILITY IS NOT A VETO. Where the outcome calls for a routine the printed
+ * materials do not supply (MLR 3 needs a flawed sample; MLR 4 needs splittable
+ * materials), the routine still wins and the recommendation carries the one
+ * sentence of prep that makes it runnable. A missing precondition is a prep
+ * instruction, not a reason to recommend something weaker.
+ *
+ * MLR 8 IS NOT A SLOT. Discussion Supports is a bundle of teacher moves with no
+ * student obligation and no artifact — a teacher can believe they ran it while
+ * nothing in the room changed. It is a lesson-level standing support here, and
+ * an activity may return a single routine. One routine run properly beats two
+ * chips a teacher glances past.
+ *
+ * The tables below are pedagogy. They are meant to be argued with by someone who
+ * runs IM PD, and changing a row should not require understanding the code.
  */
 
 import type { MlrNumber } from './mlrs.ts';
-import { kluFromElsf } from './eld/kluFromElsf.ts';
-import type { KLU } from './eld/types.ts';
 
-export interface AnchorActivity {
+/**
+ * The language work an outcome demands. This — not the wording of the outcome —
+ * is what selects a routine. Pass 0 classifies each activity into exactly one.
+ */
+export type OutcomeType =
+  /** Students must say or write a precise formulation of an idea. */
+  | 'formulate_precisely'
+  /** Students must judge whether something is correct and defend the judgement. */
+  | 'justify_or_evaluate'
+  /** Students must relate two or more strategies or representations. */
+  | 'connect_representations'
+  /** Students must make sense of a situation or problem before solving it. */
+  | 'interpret_situation'
+  /** Students must convey information precisely to someone who cannot see it. */
+  | 'communicate_precisely'
+  /** Students must state a generalisation in their own written words. */
+  | 'generalize_in_writing';
+
+export const OUTCOME_TYPES: readonly OutcomeType[] = [
+  'formulate_precisely',
+  'justify_or_evaluate',
+  'connect_representations',
+  'interpret_situation',
+  'communicate_precisely',
+  'generalize_in_writing',
+] as const;
+
+export type ActivityRole = 'Setup' | 'Crux' | 'Application' | 'Synthesis';
+
+/** What the activity's printed materials already provide. */
+export interface ActivityAffordances {
+  /** A wrong answer or flawed sample is printed in the student materials. */
+  flawed_sample_provided?: boolean;
+  /** A pause or circulate step lets the teacher capture a real student error. */
+  error_harvestable?: boolean;
+  /** Materials divide so neither partner can complete the task alone. */
+  splittable_materials?: boolean;
+  /** Students produce visibly different work from one another. */
+  student_products_differ?: boolean;
+  /** The task ends in a public share or display. */
+  public_share_step?: boolean;
+  /** Sentence frames are already printed for the student. */
+  frames_already_printed?: boolean;
+  /** Word count of contextual prose the student must read. */
+  context_word_count?: number;
+}
+
+export interface AnchorActivity extends ActivityAffordances {
   id: string;
   title?: string;
   function?: string;
-  language_demand?: string;
-  learning_target?: string;
+  /** The activity's outcome, in words, restating the published lesson target. */
+  activity_outcome?: string;
+  /** The classification of that outcome. Drives selection. */
+  outcome_type?: OutcomeType;
 }
 
-export type MlrPair = [MlrNumber, MlrNumber];
+export interface MlrRecommendation {
+  /** The routine the outcome calls for. */
+  lead: MlrNumber;
+  /** A second routine only when the outcome genuinely needs two. */
+  second: MlrNumber | null;
+  /** Why this routine serves this outcome, in one line, for the teacher. */
+  because: string;
+  /** The one thing to prepare, when the materials do not already supply it. */
+  teacher_prep: string | null;
+}
 
-// Primary pairing by Key Language Use. First entry is the lead routine — the one
-// that carries the activity's dominant language work; second is the support.
+/* ------------------------------------------------------------------ */
+/*  Outcome -> routine                                                 */
+/* ------------------------------------------------------------------ */
 //
-//   Argue    -> 3 Critique, Correct, and Clarify + 7 Compare and Connect
-//   Explain  -> 1 Stronger and Clearer Each Time + 8 Discussion Supports
-//   Inform   -> 2 Collect and Display            + 8 Discussion Supports
-//   Narrate  -> 6 Three Reads                    + 8 Discussion Supports
-const BY_KLU: Record<KLU, MlrPair> = {
-  Argue: [3, 7],
-  Explain: [1, 8],
-  Inform: [2, 8],
-  Narrate: [6, 8],
+// Read as: given what students must be able to do, and where in the arc they do
+// it, which routine develops that. A second entry appears only where the outcome
+// genuinely needs two routines to be reached.
+
+interface Choice {
+  lead: MlrNumber;
+  second?: MlrNumber;
+  because: string;
+}
+
+const BY_OUTCOME: Record<
+  OutcomeType,
+  Partial<Record<ActivityRole, Choice>> & { default: Choice }
+> = {
+  // Say or write it precisely. Early, the informal wording has to surface before
+  // it can be sharpened; at the crux the precise form is first attempted and the
+  // predictable error is worth making public; later it gets revised.
+  formulate_precisely: {
+    Setup: {
+      lead: 2,
+      because:
+        'Students are producing the informal wording this lesson will make precise — capture it now so the class can refine and reuse it.',
+    },
+    Crux: {
+      lead: 3,
+      second: 1,
+      because:
+        'This is where the precise form is first attempted, so the characteristic error is worth surfacing and correcting together before it sets.',
+    },
+    Application: {
+      lead: 1,
+      because:
+        'Students already hold a formulation; the work now is making it clearer for a reader who cannot see their thinking.',
+    },
+    default: {
+      lead: 1,
+      because:
+        'Students hold an idea worth sharpening, and a second draft is the shortest route to precision.',
+    },
+  },
+
+  // Judge and defend. A flawed sample is the whole routine.
+  justify_or_evaluate: {
+    Setup: {
+      lead: 3,
+      second: 2,
+      because:
+        'Judging what is wrong is the outcome, and the informal reasons students give are worth posting beside the formal ones.',
+    },
+    default: {
+      lead: 3,
+      because:
+        'The outcome is deciding whether something is correct and saying why — improving a flawed sample together is that work.',
+    },
+  },
+
+  // Relate strategies or representations. Needs more than one thing to relate.
+  connect_representations: {
+    default: {
+      lead: 7,
+      second: 1,
+      because:
+        'The outcome is seeing what two approaches share, which only happens when they are put side by side and the connection is named.',
+    },
+  },
+
+  // Make sense of the situation before solving.
+  interpret_situation: {
+    Setup: {
+      lead: 5,
+      because:
+        'Students meet the situation before any question is attached, so the question they generate is one they already understand.',
+    },
+    default: {
+      lead: 6,
+      because:
+        'The demand is getting through the text before the mathematics starts; reading it three times for three purposes separates those.',
+    },
+  },
+
+  // Precision for a partner who cannot see what you hold.
+  communicate_precisely: {
+    default: {
+      lead: 4,
+      because:
+        'Precision is the mathematical point here — a partner who cannot see your card can only act on exactly what you say.',
+    },
+  },
+
+  // State the generalisation in writing.
+  generalize_in_writing: {
+    default: {
+      lead: 1,
+      second: 7,
+      because:
+        'A generalisation gets sharper by being drafted, read by someone else, and rewritten.',
+    },
+  },
 };
 
-// The activity's role in the arc overrides the support routine. A Setup activity
-// is where students' own language first surfaces (Collect and Display); a
-// Synthesis is where representations get lined up against each other (Compare
-// and Connect); an Application is where a first draft gets revised (Stronger and
-// Clearer). Crux keeps whatever the KLU pairing chose — the crux is defined by
-// its mathematics, not by its position.
-const BY_FUNCTION: Record<string, MlrNumber> = {
-  Setup: 2,
-  Application: 1,
-  Synthesis: 7,
+/* ------------------------------------------------------------------ */
+/*  Feasibility -> prep instruction                                    */
+/* ------------------------------------------------------------------ */
+//
+// What each routine needs in front of it, and what to tell the teacher when the
+// materials do not already supply it. The outcome still chooses the routine —
+// this only decides whether a prep line rides along.
+
+interface PrepRule {
+  satisfied: (a: AnchorActivity) => boolean;
+  prep: string;
+}
+
+const PREP: Partial<Record<MlrNumber, PrepRule>> = {
+  3: {
+    satisfied: (a) => Boolean(a.flawed_sample_provided),
+    prep: 'No wrong answer is printed — capture one from the room. While students work, copy a typical error onto the board anonymously and have the class repair it.',
+  },
+  4: {
+    satisfied: (a) => Boolean(a.splittable_materials),
+    prep: 'Split the materials so neither partner can finish alone, and set the rule that partners describe rather than show. If it stalls, let them show each other — it becomes an ordinary matching task.',
+  },
+  7: {
+    satisfied: (a) => Boolean(a.student_products_differ || a.public_share_step),
+    prep: 'Choose which two pieces of student work go up before the share — one of each approach. Comparing unselected work is a gallery walk with no payoff.',
+  },
+  2: {
+    satisfied: (a) => !a.frames_already_printed,
+    prep: 'Frames are already printed for students, so display the language they actually produce rather than the frames themselves.',
+  },
+  6: {
+    satisfied: (a) => (a.context_word_count ?? 0) >= 40,
+    prep: 'There is little text to read here — keep this to a single focused read unless the context is genuinely dense.',
+  },
 };
+
+/* ------------------------------------------------------------------ */
+/*  Selection                                                          */
+/* ------------------------------------------------------------------ */
+
+const isRole = (v: string | undefined): v is ActivityRole =>
+  v === 'Setup' || v === 'Crux' || v === 'Application' || v === 'Synthesis';
 
 /**
- * Assign exactly two distinct MLRs to an activity. Pure and total: the same
- * anchor activity always yields the same pair, and every input yields a pair.
+ * Recommend the routine(s) an activity's outcome calls for.
+ *
+ * Pure and total: same activity in, same recommendation out, and every input
+ * yields something. A missing `outcome_type` falls back to `formulate_precisely`,
+ * the most common demand in a mathematics lesson — callers should log that,
+ * because it means Pass 0 did not classify the activity.
  */
-export function selectMlrs(activity: AnchorActivity): MlrPair {
-  // The KLU bridge scans ELSF's language_functions. At anchor time we do not
-  // have those yet, so we scan the two anchor fields that describe the same
-  // thing in the same vocabulary: what students are asked to do.
-  const signals = [activity.learning_target ?? '', activity.title ?? ''].filter(Boolean);
-  const klu = kluFromElsf(signals);
+export function recommendMlrs(activity: AnchorActivity): MlrRecommendation {
+  const outcome: OutcomeType = activity.outcome_type ?? 'formulate_precisely';
+  const role = isRole(activity.function) ? activity.function : undefined;
 
-  const [lead, support] = BY_KLU[klu];
+  const table = BY_OUTCOME[outcome];
+  const choice = (role && table[role]) || table.default;
 
-  const byFunction = BY_FUNCTION[activity.function ?? ''];
-  let second: MlrNumber = byFunction ?? support;
+  const rule = PREP[choice.lead];
+  const teacher_prep = rule && !rule.satisfied(activity) ? rule.prep : null;
 
-  // A high language demand always earns Discussion Supports — it is the routine
-  // that makes any of the others survivable for a student still building English.
-  if (activity.language_demand === 'high') second = 8;
-
-  // Never return a duplicate pair. Fall back to the KLU's support, then to 8,
-  // then to 7 — a fixed order, so the tie-break is deterministic too.
-  if (second === lead) {
-    second = support !== lead ? support : lead === 8 ? 7 : 8;
-  }
-
-  return [lead, second];
+  return {
+    lead: choice.lead,
+    second: choice.second ?? null,
+    because: choice.because,
+    teacher_prep,
+  };
 }
 
-export type MlrPlan = Record<string, MlrPair>;
+export type MlrPlan = Record<string, MlrRecommendation>;
 
 export function buildMlrPlan(activities: AnchorActivity[]): MlrPlan {
   const plan: MlrPlan = {};
   for (const activity of activities) {
-    if (activity?.id) plan[activity.id] = selectMlrs(activity);
+    if (activity?.id) plan[activity.id] = recommendMlrs(activity);
   }
   return plan;
 }
 
 /**
- * The directive appended to every downstream pass prompt, so each pass argues
- * for the assigned routines rather than choosing its own.
+ * True when the lesson carries enough language load that Discussion Supports
+ * should stand behind all of it. MLR 8 is surfaced this way rather than
+ * consuming an activity's slot.
  */
-export function describeMlrPlan(plan: MlrPlan, nameOf: (n: MlrNumber) => string): string {
-  const lines = Object.entries(plan).map(
-    ([id, [a, b]]) => `- ${id}: MLR ${a} (${nameOf(a)}) and MLR ${b} (${nameOf(b)})`,
+export function needsStandingSupports(activities: AnchorActivity[]): boolean {
+  return activities.some(
+    (a) =>
+      a.outcome_type === 'communicate_precisely' ||
+      a.outcome_type === 'formulate_precisely' ||
+      (a.context_word_count ?? 0) >= 40,
   );
-  return `MLR ASSIGNMENT — FIXED. These routines were assigned for this lesson. Use EXACTLY these, and no others, wherever you reference an MLR for that activity. Do not substitute a routine you would have picked instead; write the reasoning for the one assigned.
+}
+
+/** The routines a plan uses, in order, for the wristband legend. */
+export function routinesUsed(plan: MlrPlan): MlrNumber[] {
+  const used = new Set<MlrNumber>();
+  for (const rec of Object.values(plan)) {
+    used.add(rec.lead);
+    if (rec.second) used.add(rec.second);
+  }
+  return [...used].sort((a, b) => a - b);
+}
+
+/** Every routine assigned to one activity, lead first. */
+export function routinesFor(rec: MlrRecommendation): MlrNumber[] {
+  return rec.second ? [rec.lead, rec.second] : [rec.lead];
+}
+
+/**
+ * The directive injected into every downstream pass, so each pass argues for the
+ * routines the outcome selected rather than choosing its own.
+ */
+export function describeMlrPlan(
+  plan: MlrPlan,
+  nameOf: (n: MlrNumber) => string,
+  lessonTargets: string[] = [],
+): string {
+  const lines = Object.entries(plan).map(([id, rec]) => {
+    const routines = rec.second
+      ? `MLR ${rec.lead} (${nameOf(rec.lead)}) then MLR ${rec.second} (${nameOf(rec.second)})`
+      : `MLR ${rec.lead} (${nameOf(rec.lead)}) — this activity needs one routine, not two`;
+    const prep = rec.teacher_prep ? `\n    PREP: ${rec.teacher_prep}` : '';
+    return `- ${id}: ${routines}\n    WHY: ${rec.because}${prep}`;
+  });
+
+  const targets = lessonTargets.length
+    ? `The lesson's published learning targets, verbatim from the source document:\n${lessonTargets
+        .map((t) => `  - ${t}`)
+        .join('\n')}\n\nEvery activity outcome must restate one of these in that activity's terms.\n\n`
+    : '';
+
+  return `${targets}MLR ASSIGNMENT — FIXED, and selected from each activity's outcome. Use EXACTLY these and no others wherever you reference an MLR for that activity. Do not substitute a routine you would have chosen; write the reasoning for the one assigned and tie it to the outcome. Where an activity has one routine, do not invent a second.
 
 ${lines.join('\n')}`;
 }
@@ -124,14 +358,14 @@ ${lines.join('\n')}`;
 /* ------------------------------------------------------------------ */
 //
 // The prompt directive is the primary mechanism — a pass that knows its
-// assignment writes coherent reasoning for it. This is the backstop for when a
-// pass ignores it, so the guarantee is structural rather than probabilistic.
+// assignment writes coherent reasoning for it. This is the backstop for a pass
+// that ignores it, so the guarantee is structural rather than probabilistic.
 //
 // Where an out-of-plan routine is snapped inside mlr_inference, the surrounding
-// `why_here` prose was written about the routine the model chose, so it can end
-// up arguing for a routine by the wrong name. That is a real cost, accepted
-// because a wrong-but-consistent label beats a different answer every run — and
-// deviations are counted so we can see how often it actually happens.
+// `why_here` prose was written about a different routine and can end up arguing
+// for one by the wrong name. That cost is accepted because a wrong-but-consistent
+// label beats a different answer every run, and deviations are counted so we can
+// see how often it actually happens.
 
 import type { LessonData, MlrRef } from './types.ts';
 import { MLRS } from './mlrs.ts';
@@ -146,13 +380,12 @@ export interface MlrEnforcementResult {
 export function enforceMlrPlan(lesson: LessonData, plan: MlrPlan): MlrEnforcementResult {
   let deviations = 0;
 
-  // Snap a single ref if the activity has a plan and the ref falls outside it.
   const snap = (activityId: string, mlr: MlrRef | undefined): MlrRef | undefined => {
-    const pair = plan[activityId];
-    if (!pair || !mlr) return mlr;
-    if (pair.includes(mlr.number)) return mlr;
+    const rec = plan[activityId];
+    if (!rec || !mlr) return mlr;
+    if (routinesFor(rec).includes(mlr.number)) return mlr;
     deviations++;
-    return refFor(pair[0]);
+    return refFor(rec.lead);
   };
 
   for (const activity of lesson.activities ?? []) {
@@ -165,16 +398,17 @@ export function enforceMlrPlan(lesson: LessonData, plan: MlrPlan): MlrEnforcemen
   }
 
   for (const a of lesson.mlr_inference?.activities ?? []) {
-    const pair = plan[a.activity_id];
-    if (!pair) continue;
+    const rec = plan[a.activity_id];
+    if (!rec) continue;
+    const assigned = routinesFor(rec);
     const returned = (a.mlrs ?? []).map((m) => m.number);
-    if (returned.length !== pair.length || returned.some((n) => !pair.includes(n))) deviations++;
-    a.mlrs = pair.map((n, i) => ({
+    if (returned.length !== assigned.length || returned.some((n) => !assigned.includes(n))) {
+      deviations++;
+    }
+    a.mlrs = assigned.map((n, i) => ({
       number: n,
       name: MLRS[n].name,
-      // Keep the model's reasoning positionally where it already matches;
-      // otherwise carry whatever prose it wrote for that slot.
-      why_here: a.mlrs?.[i]?.why_here ?? a.mlrs?.[0]?.why_here ?? '',
+      why_here: a.mlrs?.[i]?.why_here ?? a.mlrs?.[0]?.why_here ?? rec.because,
     }));
   }
 
@@ -191,8 +425,8 @@ export function enforceMlrPlan(lesson: LessonData, plan: MlrPlan): MlrEnforcemen
     for (const t of a.tiles ?? []) if (t.mlr) t.mlr = snap(a.activity_id, t.mlr)!;
   }
 
-  // The legend should list exactly the routines this lesson actually uses.
-  const used = [...new Set(Object.values(plan).flat())].sort((x, y) => x - y);
+  // The legend lists exactly the routines this lesson uses.
+  const used = routinesUsed(plan);
   const existing = new Map((lesson.wristband?.mlr_legend ?? []).map((e) => [e.mlr.number, e]));
   if (lesson.wristband) {
     lesson.wristband.mlr_legend = used.map(

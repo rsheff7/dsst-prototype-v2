@@ -4,7 +4,14 @@ import { createLLMClient, LLMClient, LLMResponse } from '@/lib/llm-client';
 import { PRODUCTION_SYSTEM_PROMPT } from '@/lib/prompts/production-prompt';
 import { MODEL_PRESETS, ThinkingLevel } from '@/lib/model-presets';
 import { PASS_SCHEMAS } from '@/lib/passSchemas';
-import { buildMlrPlan, describeMlrPlan, enforceMlrPlan } from '@/lib/mlrSelection';
+import {
+  buildMlrPlan,
+  describeMlrPlan,
+  enforceMlrPlan,
+  needsStandingSupports,
+  type AnchorActivity,
+} from '@/lib/mlrSelection';
+import { extractLessonTargets } from '@/lib/learningTargets';
 import {
   PIPELINE_VERSION,
   lessonCacheKey,
@@ -537,6 +544,17 @@ export async function POST(req: NextRequest) {
     // returns the identical plan a previous upload produced. See lessonCache.ts
     // for why identity-keyed caching is the mechanism rather than an
     // optimization.
+    // IM publishes the lesson's learning targets and they are in the student
+    // pages we receive. Read them verbatim rather than asking the model to
+    // restate them: outcome drives routine selection, so the outcome has to be
+    // the most stable thing in the pipeline — and a model paraphrase came back
+    // 8-9 distinct across ten runs of one PDF.
+    const lessonTargets = extractLessonTargets(pdfText);
+    log('published learning targets', {
+      found: lessonTargets.targets.length,
+      explicit: lessonTargets.explicit,
+    });
+
     const cacheKey = lessonCacheKey(truncatedText, preset.model);
     if (isCacheEnabled()) {
       const cached = await readCachedLesson(cacheKey);
@@ -850,7 +868,19 @@ log('starting anchor pass (Pass 0)');
     // Cap all passes at MAX_TOKENS when set — useful for benchmarks.
     const maxTokensCap = process.env.MAX_TOKENS ? Number(process.env.MAX_TOKENS) : 32000;
 
-const resAnchor = await runPass('0 (anchor)', passAnchorMessage, maxTokensCap, thinkingLevel, PASS_SCHEMAS.anchor);
+// The anchor writes each activity's outcome against the PUBLISHED targets
+    // rather than inventing a goal, and classifies it into outcome_type — the
+    // enum that actually selects the routine.
+    const anchorMessage = lessonTargets.targets.length
+      ? `${passAnchorMessage}
+
+The lesson's PUBLISHED learning targets, verbatim from this document:
+${lessonTargets.targets.map((t) => `  - ${t}`).join('\n')}
+
+Every activity_outcome you write MUST restate one of these in that activity's terms. Do not invent a different goal for the lesson.`
+      : passAnchorMessage;
+
+    const resAnchor = await runPass('0 (anchor)', anchorMessage, maxTokensCap, thinkingLevel, PASS_SCHEMAS.anchor);
     if (!resAnchor.ok) return resAnchor.response;
     const anchorJson = JSON.stringify(resAnchor.parsed, null, 2);
     log('anchor returned', { anchor_size_chars: anchorJson.length });
@@ -859,11 +889,27 @@ const resAnchor = await runPass('0 (anchor)', passAnchorMessage, maxTokensCap, t
     // src/lib/mlrSelection.ts. Deriving it from the anchor means every parallel
     // pass argues for the same routines instead of each picking its own, which
     // was the largest remaining source of run-to-run difference.
-    const mlrPlan = buildMlrPlan(
-      (resAnchor.parsed.activities ?? []) as { id: string }[],
-    );
-    const anchorWithPlan = `${anchorJson}\n\n${describeMlrPlan(mlrPlan, (n) => MLRS[n].name)}`;
-    log('mlr plan', mlrPlan);
+    const anchorActivities = (resAnchor.parsed.activities ?? []) as AnchorActivity[];
+    const mlrPlan = buildMlrPlan(anchorActivities);
+    const anchorWithPlan = `${anchorJson}\n\n${describeMlrPlan(
+      mlrPlan,
+      (n) => MLRS[n].name,
+      lessonTargets.targets,
+    )}`;
+
+    // An unclassified activity means Pass 0 skipped the job and the routine is a
+    // fallback guess rather than a selection. Worth seeing in the logs.
+    const unclassified = anchorActivities.filter((a) => !a.outcome_type).map((a) => a.id);
+    if (unclassified.length) {
+      console.warn('[analyze] activities with no outcome_type:', unclassified.join(', '));
+    }
+    log('mlr plan', {
+      plan: Object.fromEntries(
+        Object.entries(mlrPlan).map(([id, r]) => [id, r.second ? [r.lead, r.second] : [r.lead]]),
+      ),
+      standing_supports: needsStandingSupports(anchorActivities),
+      unclassified,
+    });
 
     log('starting parallel passes');
     const [resA, resB, resC, resD1, resD2] = await Promise.all([
