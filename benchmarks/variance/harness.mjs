@@ -90,6 +90,9 @@ function fingerprint(d) {
     outcome_types: bySelection((s) => s.outcome_type),
     activity_roles: bySelection((s) => s.function),
     routines: bySelection((s) => (s.second ? [s.lead, s.second] : [s.lead])),
+    // Affordances describe the printed materials. If a code-side tie-break is
+    // going to lean on them, they have to be steadier than what they replace.
+    affordances: bySelection((s) => s.affordances),
     lesson_targets: d.selection?.lesson_targets ?? [],
     activity_ids: (d.activities ?? []).map((a) => a.id),
     crux: (d.activities ?? []).filter((a) => a.is_crux).map((a) => a.id),
@@ -126,6 +129,7 @@ const CONTENT_CHECKS = [
   ['outcome_types', (f) => f.outcome_types],
   ['activity_roles', (f) => f.activity_roles],
   ['routines', (f) => f.routines],
+  ['affordances', (f) => f.affordances],
   ['lesson_targets (published, extracted)', (f) => f.lesson_targets],
   ['activity_ids', (f) => f.activity_ids],
   ['crux', (f) => f.crux],

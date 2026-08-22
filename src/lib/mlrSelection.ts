@@ -294,8 +294,44 @@ const isRole = (v: string | undefined): v is ActivityRole =>
  * the most common demand in a mathematics lesson — callers should log that,
  * because it means Pass 0 did not classify the activity.
  */
+/**
+ * Where the printed materials give decisive evidence about the language work,
+ * that evidence wins over the model's classification.
+ *
+ * This exists because a published learning target sometimes underdetermines the
+ * answer. IM's "use various strategies to write an equivalent expression" says
+ * what students do with mathematics and nothing about what they do with
+ * language, and the classifier read one such activity three different ways
+ * across eight runs. Adding guidance to the prompt made it worse — it
+ * destabilised decisions it was not aimed at, including which activity is the
+ * crux — so resolution happens here, in code, off inputs that measured
+ * perfectly stable: 8/8 agreement on every affordance on every activity.
+ *
+ * Only two signals override, and both are facts about the page, not pedagogy.
+ */
+function resolveFromMaterials(activity: AnchorActivity, stated: OutcomeType): OutcomeType {
+  // Content that divides between partners means the wording has to carry the
+  // meaning. Corroboration required: if students already hold DIFFERENT work,
+  // the point is comparing it, not bridging an information gap.
+  //
+  // The guard is not decoration. A single boolean is not a safe trigger — on
+  // G6 U2 L1 activity 1.3, splittable_materials came back true once in eight
+  // runs, and a bare override turned that one flip into a different routine.
+  // Requiring two signals to agree absorbs a rare misread instead of amplifying
+  // it, and 1.3 reports student_products_differ 8/8, so the guard holds.
+  if (activity.splittable_materials && !activity.student_products_differ) {
+    return 'communicate_precisely';
+  }
+
+  // Something incorrect is printed for students to find: the work is judging it.
+  if (activity.flawed_sample_provided) return 'justify_or_evaluate';
+
+  return stated;
+}
+
 export function recommendMlrs(activity: AnchorActivity): MlrRecommendation {
-  const outcome: OutcomeType = activity.outcome_type ?? 'formulate_precisely';
+  const stated: OutcomeType = activity.outcome_type ?? 'formulate_precisely';
+  const outcome: OutcomeType = resolveFromMaterials(activity, stated);
   const role = isRole(activity.function) ? activity.function : undefined;
 
   const table = BY_OUTCOME[outcome];

@@ -253,6 +253,8 @@ export interface ActivitySelection {
   activity_outcome: string;
   outcome_type: string;
   function: string;
+  /** What the anchor reported the printed materials provide. Diagnostic. */
+  affordances: Record<string, boolean | number>;
   lead: number;
   second: number | null;
   because: string;

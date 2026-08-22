@@ -138,7 +138,8 @@ const ANCHOR_ACTIVITY = {
     },
     flawed_sample_provided: {
       type: 'boolean',
-      description: 'A wrong answer, incorrect statement, or flawed sample is PRINTED in the student materials.',
+      description:
+        'The student materials PRINT something incorrect that the task asks students to find or evaluate. This includes select-all and multiple-choice items whose wrong options are printed on the page — the distractors ARE the flawed samples, even though nothing labels them wrong. It also covers a worked example containing an error, or a quoted student claim that is untrue. True only when it is on the page, not when the teacher would have to supply it.',
     },
     error_harvestable: {
       type: 'boolean',
@@ -146,7 +147,8 @@ const ANCHOR_ACTIVITY = {
     },
     splittable_materials: {
       type: 'boolean',
-      description: 'The materials divide into parts (e.g. two columns of cards) such that neither partner could complete the task alone.',
+      description:
+        'The task content COULD be divided between two partners so neither sees the other\'s half — two columns to match, a set of cards, paired items. Judge whether the CONTENT divides, not whether the printed page already separates it: a matching task printed as two columns on one page still divides, because a teacher can cut or cover one side. False for a single sequence of problems every student works through identically.',
     },
     student_products_differ: {
       type: 'boolean',
