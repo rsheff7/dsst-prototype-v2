@@ -245,6 +245,27 @@ export interface LessonSynthesis {
 // the fact — which model made it, under which prompt/schema version, and
 // whether this copy came from the cache. Optional so existing .dsst files and
 // the demo lesson still satisfy the type.
+// What the outcome-first selector decided, per activity. Carried on the lesson
+// so the choice is inspectable rather than inferred from the routines that came
+// out the other end — and so the wristband can show the prep line.
+export interface ActivitySelection {
+  activity_id: string;
+  activity_outcome: string;
+  outcome_type: string;
+  function: string;
+  lead: number;
+  second: number | null;
+  because: string;
+  teacher_prep: string | null;
+}
+
+export interface LessonSelection {
+  lesson_targets: string[];
+  targets_published: boolean;
+  standing_supports: boolean;
+  activities: ActivitySelection[];
+}
+
 export interface LessonProvenance {
   pipeline_version: string;
   cache_key: string;
@@ -269,6 +290,7 @@ export interface LessonData {
   lesson_synthesis: LessonSynthesis;
   wristband: Wristband;
   provenance?: LessonProvenance;
+  selection?: LessonSelection;
 }
 
 export type ToolId = 'quickread' | 'pathway' | 'adapt' | 'thinking' | 'moves';

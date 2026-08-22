@@ -556,7 +556,11 @@ export async function POST(req: NextRequest) {
     });
 
     const cacheKey = lessonCacheKey(truncatedText, preset.model);
-    if (isCacheEnabled()) {
+    // ?fresh=1 bypasses the cache entirely — read and write. Needed to measure
+    // run-to-run behaviour, which a cache hit would otherwise hide behind a
+    // byte-identical copy. Never set by the app itself.
+    const bypassCache = searchParams.get('fresh') === '1';
+    if (isCacheEnabled() && !bypassCache) {
       const cached = await readCachedLesson(cacheKey);
       if (cached) {
         log('cache hit', { cacheKey });
@@ -962,6 +966,24 @@ runPass('A (structure)', buildPassAMessage(anchorWithPlan), maxTokensCap, thinki
 
     // Backstop for a pass that ignored the assignment.
     const { deviations } = enforceMlrPlan(lesson, mlrPlan);
+
+    // Record what the selector decided and why, so the choice can be inspected
+    // directly instead of reverse-engineered from the routines downstream.
+    lesson.selection = {
+      lesson_targets: lessonTargets.targets,
+      targets_published: lessonTargets.explicit,
+      standing_supports: needsStandingSupports(anchorActivities),
+      activities: anchorActivities.map((a) => ({
+        activity_id: a.id,
+        activity_outcome: a.activity_outcome ?? '',
+        outcome_type: a.outcome_type ?? '(unclassified)',
+        function: a.function ?? '',
+        lead: mlrPlan[a.id]?.lead ?? 0,
+        second: mlrPlan[a.id]?.second ?? null,
+        because: mlrPlan[a.id]?.because ?? '',
+        teacher_prep: mlrPlan[a.id]?.teacher_prep ?? null,
+      })),
+    };
     if (deviations > 0) log('mlr plan deviations snapped', { deviations });
 
     // The raw anchor response used to be attached here for the Gemini-vs-Claude
@@ -984,7 +1006,7 @@ runPass('A (structure)', buildPassAMessage(anchorWithPlan), maxTokensCap, thinki
         served_from_cache: false,
       },
     };
-    await writeCachedLesson(cacheKey, stamped);
+    if (!bypassCache) await writeCachedLesson(cacheKey, stamped);
 
     const totalDuration = Date.now() - pipelineStart;
     telemetry.logPipelineComplete(totalDuration, 4);

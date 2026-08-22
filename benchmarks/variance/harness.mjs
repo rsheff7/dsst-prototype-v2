@@ -19,6 +19,9 @@
  *   --analyze-only <d>  Re-report an existing run folder without spending tokens.
  *   --max-cv <f>        Exit 1 if any metric's coefficient of variation
  *                       exceeds this. For CI. Off by default.
+ *   --fresh             Bypass the lesson cache. Required when measuring
+ *                       generation behaviour — a cache hit returns a
+ *                       byte-identical copy and every metric reads as perfect.
  *
  * Outputs land in benchmarks/runs/variance-<label>-<n>/ (gitignored):
  *   run-<i>.json    raw response per successful run
@@ -79,7 +82,15 @@ function fingerprint(d) {
       frictionMix[k] = (frictionMix[k] ?? 0) + 1;
     }
   }
+  const selection = d.selection?.activities ?? [];
+  const bySelection = (pick) =>
+    Object.fromEntries(selection.map((s) => [s.activity_id, pick(s)]));
+
   return {
+    outcome_types: bySelection((s) => s.outcome_type),
+    activity_roles: bySelection((s) => s.function),
+    routines: bySelection((s) => (s.second ? [s.lead, s.second] : [s.lead])),
+    lesson_targets: d.selection?.lesson_targets ?? [],
     activity_ids: (d.activities ?? []).map((a) => a.id),
     crux: (d.activities ?? []).filter((a) => a.is_crux).map((a) => a.id),
     mlrs_by_activity: mlrsByActivity,
@@ -110,6 +121,12 @@ const uniq = (vals) => [...new Set(vals.map((v) => JSON.stringify(v)))];
 // The dimensions we check for content drift. Shared by the report and
 // summary.json so a before/after comparison can diff either one.
 const CONTENT_CHECKS = [
+  // The three that now decide the routine. outcome_types and activity_roles are
+  // enums, and the whole design rests on enums being steadier than prose.
+  ['outcome_types', (f) => f.outcome_types],
+  ['activity_roles', (f) => f.activity_roles],
+  ['routines', (f) => f.routines],
+  ['lesson_targets (published, extracted)', (f) => f.lesson_targets],
   ['activity_ids', (f) => f.activity_ids],
   ['crux', (f) => f.crux],
   ['mlrs_by_activity', (f) => f.mlrs_by_activity],
@@ -137,12 +154,13 @@ function contentSummary(datasets) {
 /*  Execution                                                          */
 /* ------------------------------------------------------------------ */
 
-async function runOnce(endpoint, pdfBuffer, pdfName, index) {
+async function runOnce(endpoint, pdfBuffer, pdfName, index, fresh = false) {
   const form = new FormData();
   form.append('pdf', new Blob([pdfBuffer], { type: 'application/pdf' }), pdfName);
   const started = Date.now();
   try {
-    const res = await fetch(`${endpoint.replace(/\/$/, '')}/api/analyze`, {
+    const url = `${endpoint.replace(/\/$/, '')}/api/analyze${fresh ? '?fresh=1' : ''}`;
+    const res = await fetch(url, {
       method: 'POST',
       body: form,
     });
@@ -294,6 +312,7 @@ async function main() {
   const runs = Number(arg('runs', 5));
   const concurrency = Number(arg('concurrency', 1));
   const maxCv = arg('max-cv') ? Number(arg('max-cv')) : null;
+  const fresh = process.argv.includes('--fresh');
 
   let outDir;
   let results = [];
@@ -325,7 +344,7 @@ async function main() {
     const workers = Array.from({ length: Math.max(1, concurrency) }, async () => {
       while (queue.length) {
         const i = queue.shift();
-        const r = await runOnce(endpoint, pdfBuffer, pdfName, i);
+        const r = await runOnce(endpoint, pdfBuffer, pdfName, i, fresh);
         results.push(r);
         console.log(
           `  run ${i}: ${r.ok ? 'OK' : 'FAIL'} ${(r.ms / 1000).toFixed(1)}s${r.ok ? '' : ' — ' + classify(r.error)}`,
