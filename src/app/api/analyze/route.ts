@@ -996,6 +996,7 @@ runPass('A (structure)', buildPassAMessage(anchorWithPlan), maxTokensCap, thinki
         activity_id: a.id,
         activity_outcome: a.activity_outcome ?? '',
         outcome_type: a.outcome_type ?? '(unclassified)',
+        resolved_outcome_type: mlrPlan[a.id]?.resolved_outcome_type ?? '',
         affordances: {
           flawed_sample_provided: a.flawed_sample_provided ?? false,
           error_harvestable: a.error_harvestable ?? false,

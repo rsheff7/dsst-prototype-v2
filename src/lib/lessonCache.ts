@@ -29,11 +29,16 @@ import { get, put } from '@vercel/blob';
 import type { LessonData } from './types';
 
 // Bump when a prompt, schema, or normalizer change should invalidate the cache.
-// 2026-08-21.1 — outcome-first MLR selection: the anchor now carries each
-// activity's outcome and its classification, routines are chosen from that
-// rather than from a keyword scan, and an activity may carry one routine
-// instead of two. Every stored artifact predates that model.
-export const PIPELINE_VERSION = '2026-08-21.1';
+// 2026-08-22.1 — lesson.selection gained resolved_outcome_type.
+//
+// BUMP THIS when the SHAPE of the response changes. The automatic digest below
+// covers the system prompt, the pass schemas and the selection tables, so
+// changing what the model is asked or how a routine is chosen invalidates the
+// cache on its own. It cannot see how the route assembles the response, so a new
+// or renamed field needs this constant moved by hand. Getting that wrong has
+// bitten three times now; the symptom is a stored lesson missing a field that
+// downstream code expects.
+export const PIPELINE_VERSION = '2026-08-22.1';
 
 const PREFIX = 'lessons';
 

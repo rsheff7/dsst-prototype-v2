@@ -252,6 +252,8 @@ export interface ActivitySelection {
   activity_id: string;
   activity_outcome: string;
   outcome_type: string;
+  /** What the routine was chosen from, after any material override. */
+  resolved_outcome_type: string;
   function: string;
   /** What the anchor reported the printed materials provide. Diagnostic. */
   affordances: Record<string, boolean | number>;

@@ -103,6 +103,12 @@ export interface AnchorActivity extends ActivityAffordances {
 }
 
 export interface MlrRecommendation {
+  /**
+   * The outcome type the routine was actually chosen from. Differs from the
+   * model's classification when the printed materials overrode it — reporting
+   * the stated one would make the pairing look wrong to anyone reading it.
+   */
+  resolved_outcome_type: OutcomeType;
   /** The routine the outcome calls for. */
   lead: MlrNumber;
   /** A second routine only when the outcome genuinely needs two. */
@@ -347,6 +353,7 @@ export function recommendMlrs(activity: AnchorActivity): MlrRecommendation {
   const finalUnmet = finalRule ? !finalRule.satisfied(activity) : false;
 
   return {
+    resolved_outcome_type: outcome,
     lead: final.lead,
     second: final.second ?? null,
     because: final.because,
