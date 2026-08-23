@@ -47,3 +47,5 @@ test-outputs/
 
 # Benchmarks
 benchmarks/runs/
+.vercel
+.env*.local
