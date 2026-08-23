@@ -15,7 +15,7 @@
  *   - Provenance is INTERNAL ONLY (used by tests, never surfaced).
  */
 
-import { LessonData } from '@/lib/types';
+import { DecisionScenario, LessonData } from '@/lib/types';
 import { useLesson } from '@/lib/lessonContext';
 import { kluFromElsf, resolve } from '@/lib/eld';
 
@@ -25,6 +25,26 @@ interface Props {
   lesson: LessonData;
   /** Compact mode — for inline use inside a tile or narrow column. */
   compact?: boolean;
+  /**
+   * The scenario being shown, where there is one.
+   *
+   * With it, the move rendered is the lesson-specific one generated for this
+   * scenario at this band — naming the actual objects and student wording.
+   * Without it (the activity-level call sites), the lens move is shown instead,
+   * which is general to the Key Language Use and says nothing about the lesson.
+   */
+  scenario?: DecisionScenario;
+}
+
+/**
+ * The three bands generation produces are WIDA's own labels for levels 2, 3 and
+ * 4. Levels outside that range take the nearest band — a Level 1 learner is
+ * served by the Emerging move, a Level 5 or 6 learner by the Expanding one.
+ */
+function bandForLevel(level: number): 'emerging' | 'developing' | 'expanding' {
+  if (level <= 2) return 'emerging';
+  if (level === 3) return 'developing';
+  return 'expanding';
 }
 
 const WIDA_ACCENT = '#534AB7';
@@ -32,7 +52,7 @@ const WIDA_BG = '#EEEDFE';
 const WIDA_BORDER = '#AFA9EC';
 const WIDA_INK = '#26215C';
 
-export default function EldProficiencyView({ activityId, lesson, compact = false }: Props) {
+export default function EldProficiencyView({ activityId, lesson, compact = false, scenario }: Props) {
   const { selectedWidaLevel, setSelectedWidaLevel } = useLesson();
   const elsfActivity = lesson.elsf_inference?.activities.find(
     (a) => a.activity_id === activityId,
@@ -64,7 +84,15 @@ export default function EldProficiencyView({ activityId, lesson, compact = false
 
   const klu = kluFromElsf(elsfActivity.functional_language.language_functions);
   const state = resolve(klu, selectedWidaLevel);
-  const { surfaceAnchor, embeddedMove, dimensionTargets } = state;
+  const { surfaceAnchor, dimensionTargets } = state;
+
+  // Prefer the move written for THIS scenario at this band. The lens move is
+  // the fallback: it is true of any learner at this level in any lesson, which
+  // is exactly what makes it weak guidance where something specific exists.
+  const banded = scenario?.proficiency_moves?.[bandForLevel(selectedWidaLevel)];
+  const specificMove = banded?.move?.trim() ? banded.move : null;
+  const move = specificMove ?? state.embeddedMove;
+  const avoid = specificMove ? banded?.avoid?.trim() || null : null;
 
   if (compact) {
     return (
@@ -84,7 +112,7 @@ export default function EldProficiencyView({ activityId, lesson, compact = false
           </p>
         </div>
         <p className="text-[0.825rem] font-semibold text-gray-800 leading-tight">
-          {embeddedMove}
+          {move}
         </p>
       </div>
     );
@@ -112,11 +140,17 @@ export default function EldProficiencyView({ activityId, lesson, compact = false
 
       <div className="px-4 py-3">
         <p className="text-[10px] font-semibold uppercase tracking-[0.1em] mb-1.5" style={{ color: WIDA_INK, opacity: 0.7 }}>
-          Embedded move
+          {specificMove ? 'Embedded move — this scenario' : 'Embedded move'}
         </p>
         <p className="text-[0.875rem] leading-relaxed" style={{ color: WIDA_INK }}>
-          {embeddedMove}
+          {move}
         </p>
+        {avoid && (
+          <p className="text-[0.825rem] leading-relaxed mt-2" style={{ color: WIDA_INK }}>
+            <span className="font-semibold">Avoid: </span>
+            <span className="italic">{avoid}</span>
+          </p>
+        )}
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x" style={{ borderColor: WIDA_BORDER }}>

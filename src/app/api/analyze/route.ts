@@ -13,6 +13,7 @@ import {
   type AnchorActivity,
 } from '@/lib/mlrSelection';
 import { extractLessonTargets } from '@/lib/learningTargets';
+import { describeCalibration, calibrationFingerprint } from '@/lib/widaCalibration';
 import { selectionFingerprint } from '@/lib/mlrSelection';
 import {
   PIPELINE_VERSION,
@@ -565,6 +566,7 @@ export async function POST(req: NextRequest) {
       .update(PRODUCTION_SYSTEM_PROMPT)
       .update(JSON.stringify(PASS_SCHEMAS))
       .update(selectionFingerprint())
+      .update(calibrationFingerprint())
       .digest('hex')
       .slice(0, 16);
     const cacheKey = lessonCacheKey(truncatedText, preset.model, logicFingerprint);
@@ -958,6 +960,11 @@ Every activity_outcome you write MUST restate one of these in that activity's te
     if (unclassified.length) {
       console.warn('[analyze] activities with no outcome_type:', unclassified.join(', '));
     }
+    // The WIDA descriptors go INTO generation rather than being rendered as the
+    // output. The model writes the move for this scenario at each band; the
+    // lookup only says what a learner at that band can produce.
+    const widaCalibration = describeCalibration(anchorActivities);
+
     log('mlr plan', {
       plan: Object.fromEntries(
         Object.entries(mlrPlan).map(([id, r]) => [id, r.second ? [r.lead, r.second] : [r.lead]]),
@@ -971,7 +978,13 @@ Every activity_outcome you write MUST restate one of these in that activity's te
 runPass('A (structure)', buildPassAMessage(anchorWithPlan), maxTokensCap, thinkingLevel, PASS_SCHEMAS.A),
       runPass('B (MLR + ELSF inference)', buildPassBMessage(anchorWithPlan), maxTokensCap, thinkingLevel, PASS_SCHEMAS.B),
       runPass('C (anticipated thinking)', buildPassCMessage_Thinking(anchorWithPlan), maxTokensCap, thinkingLevel, PASS_SCHEMAS.C),
-      runPass('D1 (decision guide)', buildPassD1Message(anchorWithPlan), maxTokensCap, thinkingLevel, PASS_SCHEMAS.D1),
+      runPass(
+        'D1 (decision guide)',
+        `${buildPassD1Message(anchorWithPlan)}\n\n${widaCalibration}`,
+        maxTokensCap,
+        thinkingLevel,
+        PASS_SCHEMAS.D1,
+      ),
       runPass('D2 (wristband)', buildPassD2Message(anchorWithPlan), maxTokensCap, thinkingLevel, PASS_SCHEMAS.D2),
     ]);
     log('all 5 passes settled');
