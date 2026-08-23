@@ -89,10 +89,27 @@ export default function EldProficiencyView({ activityId, lesson, compact = false
   // Prefer the move written for THIS scenario at this band. The lens move is
   // the fallback: it is true of any learner at this level in any lesson, which
   // is exactly what makes it weak guidance where something specific exists.
-  const banded = scenario?.proficiency_moves?.[bandForLevel(selectedWidaLevel)];
+  const band = bandForLevel(selectedWidaLevel);
+  const banded = scenario?.proficiency_moves?.[band];
   const specificMove = banded?.move?.trim() ? banded.move : null;
   const move = specificMove ?? state.embeddedMove;
   const avoid = specificMove ? banded?.avoid?.trim() || null : null;
+
+  // The chart prefers the profile generated for THIS activity's language in this
+  // lesson's words. The lens rows remain the fallback for lessons generated
+  // before the profile existed, and read as a category of learner rather than
+  // the student in the room.
+  const profile = lesson.elsf_inference?.activities
+    .find((a) => a.activity_id === activityId)
+    ?.learner_profile?.find((p) => p.band === band);
+
+  const cells = profile
+    ? {
+        discourse: { does: profile.discourse_does, reaching: profile.discourse_reaching },
+        sentence: { does: profile.sentence_does, reaching: profile.sentence_reaching },
+        wordPhrase: { does: profile.word_does, reaching: profile.word_reaching },
+      }
+    : dimensionTargets;
 
   if (compact) {
     return (
@@ -154,9 +171,9 @@ export default function EldProficiencyView({ activityId, lesson, compact = false
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x" style={{ borderColor: WIDA_BORDER }}>
-        <DimensionCell title="Discourse" target={dimensionTargets.discourse} />
-        <DimensionCell title="Sentence" target={dimensionTargets.sentence} />
-        <DimensionCell title="Word / phrase" target={dimensionTargets.wordPhrase} />
+        <DimensionCell title="Discourse" target={cells.discourse} />
+        <DimensionCell title="Sentence" target={cells.sentence} />
+        <DimensionCell title="Word / phrase" target={cells.wordPhrase} />
       </div>
     </div>
   );

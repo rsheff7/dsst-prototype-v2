@@ -395,6 +395,33 @@ export const PASS_B_SCHEMA = {
                   'elsf_guidelines_applied',
                 ],
               },
+              learner_profile: {
+                type: 'array',
+                minItems: 3,
+                description:
+                  'One entry per proficiency band, describing what a learner at that band does with THIS activity\'s language, in this lesson\'s words. Write what the student DOES — never what they lack, fail to do, or cannot yet manage. No coercive verbs: a frame is offered, not forced; a teacher invites and notices, a student produces and reaches. Name the actual categories, numbers or wording from the lesson rather than describing language in the abstract.',
+                items: {
+                  type: 'object',
+                  properties: {
+                    band: { type: 'string', enum: ['emerging', 'developing', 'expanding'] },
+                    discourse_does: { type: 'string' },
+                    discourse_reaching: { type: 'string' },
+                    sentence_does: { type: 'string' },
+                    sentence_reaching: { type: 'string' },
+                    word_does: { type: 'string' },
+                    word_reaching: { type: 'string' },
+                  },
+                  required: [
+                    'band',
+                    'discourse_does',
+                    'discourse_reaching',
+                    'sentence_does',
+                    'sentence_reaching',
+                    'word_does',
+                    'word_reaching',
+                  ],
+                },
+              },
               functional_language: {
                 type: 'object',
                 properties: {
@@ -414,7 +441,7 @@ export const PASS_B_SCHEMA = {
                 required: ['language_functions', 'example_phrases', 'elsf_guidelines_applied'],
               },
             },
-            required: ['activity_id', 'language_demands', 'functional_language'],
+            required: ['activity_id', 'language_demands', 'functional_language', 'learner_profile'],
           },
         },
       },

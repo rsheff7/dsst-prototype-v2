@@ -30,8 +30,15 @@ import type { LessonData } from './types';
 import { lessonIdentity } from './lessonIdentity';
 
 // Bump when a prompt, schema, or normalizer change should invalidate the cache.
-// 2026-08-22.3 — cache keys on lesson identity (grade/unit/lesson read from
-// the document) rather than file text, so any export of a lesson matches.
+// 2026-08-22.4 — MLL floor and shape validation on Pass D1.
+//
+// KNOWN GAP, and the reason this bump is manual. The automatic digest covers the
+// system prompt, the pass schemas, the selection tables and the WIDA
+// calibration. It does NOT cover the per-pass message builders, which are
+// written inside the request handler and defined after the cache key is
+// computed. A change to Pass D1's prompt therefore invalidates nothing on its
+// own. Folding them in means moving the cache lookup below the builders; worth
+// doing, not worth doing mid-session.
 //
 // BUMP THIS when the SHAPE of the response changes. The automatic digest below
 // covers the system prompt, the pass schemas and the selection tables, so
@@ -40,7 +47,7 @@ import { lessonIdentity } from './lessonIdentity';
 // or renamed field needs this constant moved by hand. Getting that wrong has
 // bitten three times now; the symptom is a stored lesson missing a field that
 // downstream code expects.
-export const PIPELINE_VERSION = '2026-08-22.3';
+export const PIPELINE_VERSION = '2026-08-22.4';
 
 const PREFIX = 'lessons';
 

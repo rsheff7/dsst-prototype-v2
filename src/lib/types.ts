@@ -193,8 +193,21 @@ export interface FunctionalLanguageForActivity {
   elsf_guidelines_applied: ELSFGuidelineNumber[];
 }
 
+/** What a learner at one band does with this activity's language, in the lesson's own words. */
+export interface LearnerProfileBand {
+  band: 'emerging' | 'developing' | 'expanding';
+  discourse_does: string;
+  discourse_reaching: string;
+  sentence_does: string;
+  sentence_reaching: string;
+  word_does: string;
+  word_reaching: string;
+}
+
 export interface ELSFInferenceActivity {
   activity_id: string;
+  /** Optional: older lessons predate this and fall back to the lens data. */
+  learner_profile?: LearnerProfileBand[];
   language_demands: LanguageDemandsForActivity;
   functional_language: FunctionalLanguageForActivity;
 }

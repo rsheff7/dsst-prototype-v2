@@ -48,7 +48,7 @@ export const ARGUE_LENS: Lens = [
       reaching: "'greater than', 'equal to', 'because'",
     },
     embeddedMove:
-      "Supply a frame that forces the reason into words: '___ because ___.' Accept the representation as the warrant and name it",
+      "Offer a frame that gives the reason somewhere to go: '___ because ___.' Accept the representation as the warrant and name it",
   },
   {
     level: 3,
