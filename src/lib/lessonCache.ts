@@ -30,7 +30,11 @@ import type { LessonData } from './types';
 import { lessonIdentity } from './lessonIdentity';
 
 // Bump when a prompt, schema, or normalizer change should invalidate the cache.
-// 2026-08-22.4 — MLL floor and shape validation on Pass D1.
+// 2026-08-22.5 — restores the Pass B/D1 work; invalidates entries written by
+// the build that briefly lacked it.
+//
+// This gap has now bitten three times in one day. Bump on ANY change to the
+// per-pass prompt text in route.ts.
 //
 // KNOWN GAP, and the reason this bump is manual. The automatic digest covers the
 // system prompt, the pass schemas, the selection tables and the WIDA
@@ -47,7 +51,7 @@ import { lessonIdentity } from './lessonIdentity';
 // or renamed field needs this constant moved by hand. Getting that wrong has
 // bitten three times now; the symptom is a stored lesson missing a field that
 // downstream code expects.
-export const PIPELINE_VERSION = '2026-08-22.4';
+export const PIPELINE_VERSION = '2026-08-22.5';
 
 const PREFIX = 'lessons';
 
