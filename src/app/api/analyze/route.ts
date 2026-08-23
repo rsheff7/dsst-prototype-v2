@@ -44,18 +44,22 @@ export const maxDuration = 300;
 const MAX_PDF_CHARS = 12000;
 
 /**
- * Register for the learner profile — the Discourse / Sentence / Word-Phrase
- * chart a teacher reads beside the move. The lookup it replaces read like a
- * spec: "states one fact about a mathematical object at a time", sitting
- * directly beneath guidance that named blue cubes.
+ * Register and craft rules for every piece of guidance a teacher reads.
+ *
+ * Applied to the passes that write teacher-facing prose. Each rule below comes
+ * from a defect found by reading real output side by side, not from taste.
  */
-const LEARNER_PROFILE_REGISTER = `LEARNER PROFILE — REGISTER.
+const GUIDANCE_REGISTER = `HOW TO WRITE THE GUIDANCE.
 
-Write each learner_profile entry in the language of THIS lesson. "Names one category ('blue') without pairing it with the count" belongs here; "states one fact about a mathematical object at a time" does not — that would read the same in any lesson.
+1. NO COERCIVE VERBS. Never write that a teacher presses, pushes, forces, drives, makes, gets, drills, elicits, extracts, or requires anything of a student. A frame is offered. A teacher invites, notices, asks, and makes room; a student produces, tries, and reaches. "Pressing students to separate height from capacity" is exactly the register to avoid.
 
-Describe what the student DOES and what they are reaching for next. Never what they lack, fail to do, or cannot manage. A student at an early band is not a student with something missing; they are a student doing real mathematical thinking with the language they currently have.
+2. END AT THE ACTION. Stop the sentence when the teacher knows what to do. Do not append a purpose clause explaining what it accomplishes — "…, thereby surfacing the distinction", "…, pressing them toward precision", "…in order to build understanding". The picturable half is the whole value; the nominalized tail is what makes guidance read like a standards document. "Hold up the salt shaker alongside a ruler" is finished. "Hold up the salt shaker alongside a ruler, contrasting exterior length with interior capacity" is the same move buried.
 
-Use no coercive or mechanical verbs. A frame is offered, not forced. A teacher invites, notices, and makes room; a student produces, tries, and reaches. Do not write that anything is elicited from, extracted from, drilled into, or required of a student.
+3. NEVER NAME THE ROUTINE INSIDE A MOVE. Do not begin with "MLR 2:", "Execute MLR 1", or "Using Collect and Display". The routine is recorded elsewhere. A first-year teacher reading at 9pm skips a line that opens with curriculum jargon.
+
+4. EACH BAND MUST DIFFER IN OBLIGATION, NOT IN ADVERB. Expanding is not Emerging plus "precisely", "in a complete sentence", or "using academic vocabulary". If the Emerging student points and the Developing student says two words, the Expanding student must owe something structurally different — a claim to defend, a comparison to make, a peer's work to critique. Where all three bands describe the same act at three politeness levels, the differentiation is decorative.
+
+5. GO BEYOND FRAMES AND CHARTS. Sentence frames, word banks and anchor charts are the floor, not the plan. Across the three bands of a scenario, at least one must offer something else: rehearsal with a partner before speaking publicly, extra processing time before being called on, permission to think or answer in a first language, or a gesture or demonstration that carries the meaning without English.
 
 The teacher reading this is deciding how to respond to a person. Write it so it honours that.`;
 
@@ -1045,10 +1049,16 @@ Every activity_outcome you write MUST restate one of these in that activity's te
 
     log('starting parallel passes');
     const [resA, resB, resC, resD1, resD2] = await Promise.all([
-runPass('A (structure)', buildPassAMessage(anchorWithPlan), maxTokensCap, thinkingLevel, PASS_SCHEMAS.A),
+runPass(
+        'A (structure)',
+        `${buildPassAMessage(anchorWithPlan)}\n\n${GUIDANCE_REGISTER}`,
+        maxTokensCap,
+        thinkingLevel,
+        PASS_SCHEMAS.A,
+      ),
       runPass(
         'B (MLR + ELSF inference)',
-        `${buildPassBMessage(anchorWithPlan)}\n\n${widaCalibration}\n\n${LEARNER_PROFILE_REGISTER}`,
+        `${buildPassBMessage(anchorWithPlan)}\n\n${widaCalibration}\n\n${GUIDANCE_REGISTER}`,
         maxTokensCap,
         thinkingLevel,
         PASS_SCHEMAS.B,
@@ -1056,7 +1066,7 @@ runPass('A (structure)', buildPassAMessage(anchorWithPlan), maxTokensCap, thinki
       runPass('C (anticipated thinking)', buildPassCMessage_Thinking(anchorWithPlan), maxTokensCap, thinkingLevel, PASS_SCHEMAS.C),
       runPass(
         'D1 (decision guide)',
-        `${buildPassD1Message(anchorWithPlan)}\n\n${widaCalibration}`,
+        `${buildPassD1Message(anchorWithPlan)}\n\n${widaCalibration}\n\n${GUIDANCE_REGISTER}`,
         maxTokensCap,
         thinkingLevel,
         PASS_SCHEMAS.D1,
