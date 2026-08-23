@@ -103,11 +103,28 @@ export default function EldProficiencyView({ activityId, lesson, compact = false
     .find((a) => a.activity_id === activityId)
     ?.learner_profile?.find((p) => p.band === band);
 
+  // Per-cell fallback: a generated string wins where it exists, the lens covers
+  // the rest. A half-filled profile should not blank a column.
+  const pick = (
+    generated: string | undefined,
+    fallback: { does: string; reaching: string },
+    key: 'does' | 'reaching',
+  ) => (generated && generated.trim() ? generated : fallback[key]);
+
   const cells = profile
     ? {
-        discourse: { does: profile.discourse_does, reaching: profile.discourse_reaching },
-        sentence: { does: profile.sentence_does, reaching: profile.sentence_reaching },
-        wordPhrase: { does: profile.word_does, reaching: profile.word_reaching },
+        discourse: {
+          does: pick(profile.discourse_does, dimensionTargets.discourse, 'does'),
+          reaching: pick(profile.discourse_reaching, dimensionTargets.discourse, 'reaching'),
+        },
+        sentence: {
+          does: pick(profile.sentence_does, dimensionTargets.sentence, 'does'),
+          reaching: pick(profile.sentence_reaching, dimensionTargets.sentence, 'reaching'),
+        },
+        wordPhrase: {
+          does: pick(profile.word_does, dimensionTargets.wordPhrase, 'does'),
+          reaching: pick(profile.word_reaching, dimensionTargets.wordPhrase, 'reaching'),
+        },
       }
     : dimensionTargets;
 

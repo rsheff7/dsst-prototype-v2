@@ -43,6 +43,22 @@ export const maxDuration = 300;
 
 const MAX_PDF_CHARS = 12000;
 
+/**
+ * Register for the learner profile — the Discourse / Sentence / Word-Phrase
+ * chart a teacher reads beside the move. The lookup it replaces read like a
+ * spec: "states one fact about a mathematical object at a time", sitting
+ * directly beneath guidance that named blue cubes.
+ */
+const LEARNER_PROFILE_REGISTER = `LEARNER PROFILE — REGISTER.
+
+Write each learner_profile entry in the language of THIS lesson. "Names one category ('blue') without pairing it with the count" belongs here; "states one fact about a mathematical object at a time" does not — that would read the same in any lesson.
+
+Describe what the student DOES and what they are reaching for next. Never what they lack, fail to do, or cannot manage. A student at an early band is not a student with something missing; they are a student doing real mathematical thinking with the language they currently have.
+
+Use no coercive or mechanical verbs. A frame is offered, not forced. A teacher invites, notices, and makes room; a student produces, tries, and reaches. Do not write that anything is elicited from, extracted from, drilled into, or required of a student.
+
+The teacher reading this is deciding how to respond to a person. Write it so it honours that.`;
+
 function extractJSON(text: string): string {
   const fenceMatch = text.match(/```(?:json)?\s*([\s\S]*?)```/);
   if (fenceMatch) return fenceMatch[1].trim();
@@ -331,8 +347,32 @@ function normalizeLesson(raw: Partial<LessonData> & Record<string, unknown>): Le
           const a = rawA as Record<string, unknown>;
           const ld = (a.language_demands ?? {}) as Record<string, unknown>;
           const fl = (a.functional_language ?? {}) as Record<string, unknown>;
+          // normalizeLesson rebuilds elsf_inference field by field, so anything
+          // not copied here is silently dropped — as learner_profile was, and
+          // the anchor blob before it. A band survives on its discourse pair
+          // alone; the UI falls back per cell for anything blank, because
+          // requiring all six discarded whole profiles over one empty string.
+          const rawProfile = Array.isArray(a.learner_profile) ? a.learner_profile : [];
+          const learner_profile = rawProfile
+            .map((rawBand) => {
+              const b = rawBand as Record<string, unknown>;
+              const str = (v: unknown) => (typeof v === 'string' ? v.trim() : '');
+              const entry = {
+                band: oneOf(b.band, ['emerging', 'developing', 'expanding'] as const, 'emerging'),
+                discourse_does: str(b.discourse_does),
+                discourse_reaching: str(b.discourse_reaching),
+                sentence_does: str(b.sentence_does),
+                sentence_reaching: str(b.sentence_reaching),
+                word_does: str(b.word_does),
+                word_reaching: str(b.word_reaching),
+              };
+              return entry.discourse_does && entry.discourse_reaching ? entry : null;
+            })
+            .filter((b): b is NonNullable<typeof b> => b !== null);
+
           return {
             activity_id: typeof a.activity_id === 'string' ? a.activity_id : '',
+            ...(learner_profile.length ? { learner_profile } : {}),
             language_demands: {
               receptive: typeof ld.receptive === 'string' ? ld.receptive : '',
               productive: typeof ld.productive === 'string' ? ld.productive : '',
@@ -714,6 +754,8 @@ The activity_ids across decision_guide.scenarios MUST cover EVERY activity from 
 
 decision_guide MUST include a mix of scenario types: 1-2 common-error, 1 productive-insight, 1 on-track, 1 productive-struggle or partial-understanding across the lesson. Total ~10-12 scenarios.
 
+AT LEAST 3 scenarios across the lesson MUST carry is_mll: true, and the crux activity MUST have at least one of them. This is not a quota to fill with weak entries — a multilingual learner meets a distinct difficulty at nearly every moment of a mathematics lesson, and if fewer than three surfaced you have not looked hard enough. Nothing else in this tool speaks to that teacher: when no scenario is marked, the entire multilingual-learner surface disappears from the lesson.
+
 For MLL scenarios (is_mll: true), proficiency_moves MUST have emerging/developing/expanding all populated. Emerging.nonverbal MUST be a concrete physical action. For non-MLL scenarios, use flat_move and set proficiency_moves: null.
 
 Every MLL scenario MUST be anchored to a specific MLR.
@@ -761,9 +803,37 @@ ${truncatedText}`;
       maxTokens: number,
       thinkingLevel?: ThinkingLevel,
       responseSchema?: unknown,
+      /**
+       * Optional shape check on a successfully parsed pass — a reason string
+       * when the result is structurally wrong, null when fine.
+       *
+       * Schemas cannot express every floor: minItems had to come off
+       * decision_guide.scenarios to get that pass under the Interactions API's
+       * complexity ceiling. Without this, one run in eight returned a decision
+       * guide with a single scenario where the lesson wants eleven.
+       */
+      validate?: (parsed: Partial<LessonData> & Record<string, unknown>) => string | null,
     ): Promise<PassResult> {
       const first = await runPassOnce(passName, userMessage, maxTokens, thinkingLevel, responseSchema);
-      if (first.ok || !first.retryable) return first;
+      const firstShape = first.ok && validate ? validate(first.parsed) : null;
+      if (first.ok && !firstShape) return first;
+      if (!first.ok && !first.retryable) return first;
+
+      if (firstShape) {
+        log(`Pass ${passName} returned a usable but wrong-shaped result — retrying once`, {
+          reason: firstShape,
+        });
+        telemetry.logInferenceError(passName, 'bad_shape_retry', firstShape, 0);
+        const retried = await runPassOnce(passName, userMessage, maxTokens, thinkingLevel, responseSchema);
+        // Keep whichever is better rather than trusting the retry blindly: a
+        // second bad result should not replace a merely imperfect first one.
+        if (retried.ok && !validate?.(retried.parsed)) {
+          log(`Pass ${passName} shape fixed on retry`);
+          return retried;
+        }
+        log(`Pass ${passName} still wrong-shaped after retry — keeping the first`);
+        return first;
+      }
 
       log(`Pass ${passName} returned unparseable JSON — retrying once`);
       telemetry.logInferenceError(passName, 'invalid_json_retry', 'retrying after parse failure', 0);
@@ -976,7 +1046,13 @@ Every activity_outcome you write MUST restate one of these in that activity's te
     log('starting parallel passes');
     const [resA, resB, resC, resD1, resD2] = await Promise.all([
 runPass('A (structure)', buildPassAMessage(anchorWithPlan), maxTokensCap, thinkingLevel, PASS_SCHEMAS.A),
-      runPass('B (MLR + ELSF inference)', buildPassBMessage(anchorWithPlan), maxTokensCap, thinkingLevel, PASS_SCHEMAS.B),
+      runPass(
+        'B (MLR + ELSF inference)',
+        `${buildPassBMessage(anchorWithPlan)}\n\n${widaCalibration}\n\n${LEARNER_PROFILE_REGISTER}`,
+        maxTokensCap,
+        thinkingLevel,
+        PASS_SCHEMAS.B,
+      ),
       runPass('C (anticipated thinking)', buildPassCMessage_Thinking(anchorWithPlan), maxTokensCap, thinkingLevel, PASS_SCHEMAS.C),
       runPass(
         'D1 (decision guide)',
@@ -984,6 +1060,16 @@ runPass('A (structure)', buildPassAMessage(anchorWithPlan), maxTokensCap, thinki
         maxTokensCap,
         thinkingLevel,
         PASS_SCHEMAS.D1,
+        (parsed) => {
+          const scenarios = (parsed as { decision_guide?: { scenarios?: unknown[] } }).decision_guide
+            ?.scenarios;
+          if (!Array.isArray(scenarios)) return 'decision_guide.scenarios missing';
+          if (scenarios.length < 8) return `only ${scenarios.length} scenarios`;
+          const mll = scenarios.filter((x) => (x as { is_mll?: boolean }).is_mll).length;
+          // Below three, the multilingual-learner surface all but vanishes.
+          if (mll < 3) return `only ${mll} MLL scenarios`;
+          return null;
+        },
       ),
       runPass('D2 (wristband)', buildPassD2Message(anchorWithPlan), maxTokensCap, thinkingLevel, PASS_SCHEMAS.D2),
     ]);
