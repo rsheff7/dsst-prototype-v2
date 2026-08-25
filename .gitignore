@@ -49,3 +49,9 @@ test-outputs/
 benchmarks/runs/
 .vercel
 .env*.local
+
+# Session transcripts and working notes. These land in the repo root and have
+# contained live credentials — a Vercel token reached a commit this way and was
+# caught only by GitHub push protection.
+DSST_prototype.md
+REVIEW-PROTOCOL-*.md
