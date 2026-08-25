@@ -25,7 +25,8 @@ export type {
   Lens,
   ResolvedInstructionalState,
 } from './types.ts';
-export { WIDA_LABELS, WIDA_LEVELS } from './types.ts';
+export { WIDA_LABELS, WIDA_LEVELS, BAND_RANGES, bandForLevel, bandLabel } from './types.ts';
+export type { ProficiencyBand, BandRange } from './types.ts';
 
 export { ARGUE_LENS } from './argue.ts';
 export { EXPLAIN_LENS } from './explain.ts';

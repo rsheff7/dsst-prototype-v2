@@ -17,7 +17,7 @@
 
 import { DecisionScenario, LessonData } from '@/lib/types';
 import { useLesson } from '@/lib/lessonContext';
-import { kluFromElsf, resolve } from '@/lib/eld';
+import { kluFromElsf, resolve, bandForLevel, bandLabel } from '@/lib/eld';
 
 interface Props {
   /** The activity id to differentiate. Used to look up ELSF inference. */
@@ -28,23 +28,12 @@ interface Props {
   /**
    * The scenario being shown, where there is one.
    *
-   * With it, the move rendered is the lesson-specific one generated for this
-   * scenario at this band — naming the actual objects and student wording.
-   * Without it (the activity-level call sites), the lens move is shown instead,
-   * which is general to the Key Language Use and says nothing about the lesson.
+   * With it, the move rendered is the one generated for THIS scenario at this
+   * band — naming the actual objects and student wording. Without it (the
+   * activity-level call sites) the lesson-level move is used instead: less
+   * precise, still this lesson. See the fallback chain below.
    */
   scenario?: DecisionScenario;
-}
-
-/**
- * The three bands generation produces are WIDA's own labels for levels 2, 3 and
- * 4. Levels outside that range take the nearest band — a Level 1 learner is
- * served by the Emerging move, a Level 5 or 6 learner by the Expanding one.
- */
-function bandForLevel(level: number): 'emerging' | 'developing' | 'expanding' {
-  if (level <= 2) return 'emerging';
-  if (level === 3) return 'developing';
-  return 'expanding';
 }
 
 const WIDA_ACCENT = '#534AB7';
@@ -86,14 +75,38 @@ export default function EldProficiencyView({ activityId, lesson, compact = false
   const state = resolve(klu, selectedWidaLevel);
   const { surfaceAnchor, dimensionTargets } = state;
 
-  // Prefer the move written for THIS scenario at this band. The lens move is
-  // the fallback: it is true of any learner at this level in any lesson, which
-  // is exactly what makes it weak guidance where something specific exists.
+  // Three tiers, most specific first:
+  //
+  //   1. the move written for THIS scenario at this band  (Moves)
+  //   2. the lesson's own band move from adaptation_guardrails  (everywhere else)
+  //   3. the lens move from the 4x6 lookup  (last resort)
+  //
+  // Tier 3 is generic by construction — "demonstrate the procedure yourself
+  // first, then narrate it with one math term per step" is true of a learner at
+  // this level in any lesson, and about nothing in the one being taught. This
+  // product forbids that everywhere else; the activity-level call sites were the
+  // last place it still surfaced, because they pass no scenario and so fell
+  // straight from tier 1 to tier 3. Tier 2 closes that: it is generated for this
+  // lesson and was already being threaded into Pathway unused.
+  //
+  // Tier 2 is lesson-level, not activity-level, so it reads the same across the
+  // activities of one lesson. That is the known cost of using it, and it is
+  // still strictly better than a string that names no lesson at all.
   const band = bandForLevel(selectedWidaLevel);
   const banded = scenario?.proficiency_moves?.[band];
-  const specificMove = banded?.move?.trim() ? banded.move : null;
-  const move = specificMove ?? state.embeddedMove;
-  const avoid = specificMove ? banded?.avoid?.trim() || null : null;
+  const scenarioMove = banded?.move?.trim() ? banded.move : null;
+  const lessonMove = lesson.adaptation_guardrails?.by_proficiency?.[band]?.text?.trim() || null;
+
+  const move = scenarioMove ?? lessonMove ?? state.embeddedMove;
+  const avoid = scenarioMove ? banded?.avoid?.trim() || null : null;
+
+  // Drives the caption only. A teacher should be able to tell how specific the
+  // guidance in front of them is without being told out loud.
+  const moveScope: 'scenario' | 'lesson' | 'general' = scenarioMove
+    ? 'scenario'
+    : lessonMove
+      ? 'lesson'
+      : 'general';
 
   // The chart prefers the profile generated for THIS activity's language in this
   // lesson's words. The lens rows remain the fallback for lessons generated
@@ -144,6 +157,9 @@ export default function EldProficiencyView({ activityId, lesson, compact = false
           >
             {surfaceAnchor.label}
           </p>
+          <span className="text-[0.7rem]" style={{ color: WIDA_INK, opacity: 0.75 }}>
+            guidance for {bandLabel(band)}
+          </span>
         </div>
         <p className="text-[0.825rem] font-semibold text-gray-800 leading-tight">
           {move}
@@ -170,11 +186,18 @@ export default function EldProficiencyView({ activityId, lesson, compact = false
           >
             {surfaceAnchor.label}
           </p>
+          <span className="text-[0.775rem]" style={{ color: WIDA_INK, opacity: 0.75 }}>
+            guidance for {bandLabel(band)}
+          </span>
         </div>
 
       <div className="px-4 py-3">
         <p className="text-[10px] font-semibold uppercase tracking-[0.1em] mb-1.5" style={{ color: WIDA_INK, opacity: 0.7 }}>
-          {specificMove ? 'Embedded move — this scenario' : 'Embedded move'}
+          {moveScope === 'scenario'
+            ? 'Embedded move — this scenario'
+            : moveScope === 'lesson'
+              ? 'Embedded move — this lesson'
+              : 'Embedded move'}
         </p>
         <p className="text-[0.875rem] leading-relaxed" style={{ color: WIDA_INK }}>
           {move}
