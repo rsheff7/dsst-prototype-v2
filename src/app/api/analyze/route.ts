@@ -465,6 +465,12 @@ export async function POST(req: NextRequest) {
   };
 
   try {
+    // Still needed for ?fresh=1, the measurement-only cache bypass. Neil's
+    // env-only model config removed the ?preset and ?thinking query params, and
+    // this declaration went with them. Restored rather than reworked: the bypass
+    // is gated behind DSST_ALLOW_CACHE_BYPASS and never reads model config.
+    const searchParams = req.nextUrl.searchParams;
+
     // Model is chosen at deploy time via the DSST_MODEL_PRESET env var
     // (Vercel dashboard for deploys; .env.local for local runs).
     const profile = 'math-lesson-analysis';
