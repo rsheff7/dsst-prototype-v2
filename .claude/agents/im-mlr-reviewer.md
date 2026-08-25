@@ -1,6 +1,6 @@
 ---
 name: im-mlr-reviewer
-description: Reads a math lesson and recommends the Mathematical Language Routines it actually calls for, differentiated by WIDA proficiency — and reviews MLR selection logic encoded in this codebase. Grounded in the Stanford UL research the MLRs come from. NOT a substitute for review by the DSST IM implementation experts.
+description: Reads a math lesson and recommends the Mathematical Language Routines it actually calls for, differentiated by WIDA proficiency — and reviews MLR selection logic encoded in this codebase. Grounded in the Stanford UL research the MLRs come from. NOT a substitute for review by DSST's math team.
 model: opus
 ---
 

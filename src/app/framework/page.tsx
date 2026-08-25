@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useLesson } from '@/lib/lessonContext';
 import { demoLesson } from '@/lib/demoLesson';
+import { StepFlow, SettledPanel, Callout } from '@/components/docs/DocElements';
 
 const ACCENT = '#006C57';
 const PATHWAY = '#00876C';
@@ -161,35 +162,66 @@ export default function FrameworkPage() {
             </p>
           </div>
 
-          <div className="mt-6 rounded-xl border bg-card overflow-hidden" style={{ borderColor: '#E6E4DE' }}>
-            <LangLayerRow
-              order="Layer 1"
-              title="ELSF — what kind of language work does this activity demand?"
-              accent={ACCENT}
-              description={
-                <>
-                  The English Learners Success Forum guidelines diagnose the activity itself — the receptive, productive, and interactive demand it carries, and the bridge from everyday to academic register that students will have to cross. This is task-axis reasoning: it describes the activity, not the learner. ELSF&apos;s output also drives the language functions students must use — describe, explain, compare, justify.
-                </>
-              }
-            />
-            <LangLayerRow
-              order="Layer 2"
-              title="ELD Convergence — given that demand, what is the move for THIS learner?"
-              accent={MOVES}
-              description={
-                <>
-                  Once ELSF has named the demand, the convergence layer specializes it per learner. The activity&apos;s language functions map deterministically to one of four Key Language Uses (Argue, Explain, Inform, Narrate), and (KLU + WIDA level) resolves to the embedded move the teacher should make — the language work calibrated to where the learner actually is. This is learner-axis reasoning. Select a WIDA level in the header and the calibrated move appears inline in Pathway and Moves, sitting alongside the teacher moves the lesson already calls for.
-                </>
-              }
-            />
-          </div>
-
+          <StepFlow
+            steps={[
+              {
+                step: '1',
+                title: 'The lesson states the outcome',
+                provenance: 'published',
+                body: (
+                  <>
+                    IM prints the learning targets in the lesson — &ldquo;I can write or say a sentence
+                    that describes a ratio.&rdquo; Premo reads them as written rather than paraphrasing
+                    them, so the destination is the one the curriculum set, not one the tool invented.
+                  </>
+                ),
+              },
+              {
+                step: '2',
+                title: 'Each activity names what students must do with language',
+                provenance: 'generated',
+                body: (
+                  <>
+                    Every activity restates that target in its own terms, and is classified by the
+                    language work it demands — formulating something precisely, judging whether
+                    something is correct, connecting two representations, conveying information a
+                    partner cannot see.
+                  </>
+                ),
+              },
+              {
+                step: '3',
+                title: 'The outcome selects the routine',
+                provenance: 'computed',
+                body: (
+                  <>
+                    Outcome drives strategy. The Mathematical Language Routine is chosen by a rule
+                    from that classification and the activity&apos;s place in the arc — not generated
+                    fresh each time. Where a routine needs something the printed lesson does not
+                    supply, the tool says what to prepare instead of assuming it exists.
+                  </>
+                ),
+              },
+              {
+                step: '4',
+                title: 'The move is written for this moment, this learner',
+                provenance: 'generated',
+                body: (
+                  <>
+                    ELSF names the activity&apos;s language demand; WIDA describes what a learner at
+                    each level can already produce and is reaching for. Both feed the guidance as
+                    constraints, so the move that reaches the teacher names the actual objects,
+                    numbers and student wording in front of them.
+                  </>
+                ),
+              },
+            ]}
+          />
           <div className="mt-5 space-y-3 text-[0.9rem] text-ink-muted leading-[1.7]">
             <p>
-              Two things matter about this design. First, both layers are anchored to <em>actual frameworks</em> — ELSF&apos;s 15 published guidelines and WIDA&apos;s six-level proficiency scale — not invented inside the tool. Second, the convergence layer is <em>deterministic</em>: a fixed lookup keyed by KLU and WIDA level, not a fresh model judgment each time. The model never reconciles WIDA and another framework at runtime. That makes the differentiation auditable, consistent across lessons, and faster to render.
-            </p>
-            <p>
-              The proficiency vocabulary across the tool is WIDA only. Other frameworks may inform the planning logic internally, but they never surface in language a teacher reads.
+              Both frameworks are external — ELSF&apos;s 15 published guidelines and WIDA&apos;s
+              six-level scale. The proficiency vocabulary a teacher reads is WIDA only. Other
+              frameworks may inform the logic internally; they never surface in the language on screen.
             </p>
           </div>
         </section>
@@ -211,60 +243,36 @@ export default function FrameworkPage() {
 
           <div className="space-y-5 text-[0.95rem] leading-[1.7] text-ink">
             <p>
-              Premo&apos;s guidance is produced by a language model — but the model is not improvising. Every analysis runs through a structured guidance layer: a defined set of evidence, a defined set of rules, and an inference step that has to show its work before any guidance is written.
+              A language model writes the guidance. That is worth being precise about rather than
+              reassuring about, so here is what the build actually guarantees and what it does not.
             </p>
           </div>
 
+          <SettledPanel
+            settled={[
+              <>The same lesson always produces the same plan. Two teachers uploading the same lesson read the same guidance, and it does not change between uploads.</>,
+              <>Which routine an activity uses is decided by a rule in code, not by the model — so it cannot drift between runs of the same lesson.</>,
+              <>The learning targets come from the lesson document verbatim. Nothing paraphrases them.</>,
+              <>Every lesson carries at least three moments flagged for multilingual learners, including one at the crux. Enforced in code, not requested in a prompt.</>,
+              <>Every difficulty is tagged math, language, or both, so the response can match the actual barrier.</>,
+              <>No deficit language about students. The guidance names what they bring and what they are reaching toward.</>,
+            ]}
+            provisional={[
+              <>Which two routines pair with which kind of language work. The pairings are our reading of the routines&apos; structure and have not been reviewed by DSST&apos;s math team.</>,
+              <>The descriptions of what a learner at each WIDA level can produce. Drafted against the framework, not transcribed from it.</>,
+              <>The mapping from an activity&apos;s language work to a Key Language Use.</>,
+              <>All three are scheduled for review with DSST&apos;s math team. Until then, treat a routine recommendation as a strong suggestion rather than a settled answer.</>,
+            ]}
+          />
+
+          <Callout label="What the tool reads">
+            The only source is the lesson PDF you upload. Premo does not pull from external
+            curricula, the web, or previous sessions. Note that student-facing IM exports do not
+            carry the teacher edition&apos;s suggested routines, so Premo infers the language work
+            from the student pages rather than reading a label.
+          </Callout>
+
           <div className="mt-8 space-y-5">
-            <TrustBlock
-              label="Evidence"
-              title="What the tool reads"
-            >
-              The single source of evidence is the lesson PDF you upload. Premo does not pull from external curricula, the web, or prior conversations. When a lesson is from a curriculum that labels its language routines in the teacher edition (Illustrative Mathematics, Amplify Desmos), Premo recognizes those labels and uses them. When the labels are not present, Premo infers them from the student-facing content using the rules below.
-            </TrustBlock>
-
-            <TrustBlock
-              label="Rules"
-              title="What the tool applies"
-            >
-              <span className="block mb-2">
-                The guidance layer applies six specific rules to every lesson:
-              </span>
-              <ul className="space-y-1.5 mt-2 pl-1">
-                <li className="flex items-start gap-2">
-                  <span className="mt-1 shrink-0 h-1.5 w-1.5 rounded-full" style={{ backgroundColor: ACCENT }} />
-                  <span><strong>The Mathematical Language Routines</strong> (8 routines from Zwiers and the Stanford Understanding Language team). The tool applies one or more MLRs to every language-rich moment, with criteria for which routine fits which behavior.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-1 shrink-0 h-1.5 w-1.5 rounded-full" style={{ backgroundColor: ACCENT }} />
-                  <span><strong>The ELSF guidelines</strong> (15 published guidelines for math materials for English learners). They diagnose the language demand of each activity — receptive, productive, interactive, and the everyday-to-academic bridge — and surface the language functions students must use.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-1 shrink-0 h-1.5 w-1.5 rounded-full" style={{ backgroundColor: ACCENT }} />
-                  <span><strong>The ELD Convergence layer.</strong> A deterministic lookup keyed by Key Language Use (Argue / Explain / Inform / Narrate) and WIDA level, producing the embedded move per learner. No model judgment at runtime; the lookup is auditable and the same for every lesson.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-1 shrink-0 h-1.5 w-1.5 rounded-full" style={{ backgroundColor: ACCENT }} />
-                  <span><strong>The friction taxonomy.</strong> Every difficulty point is tagged math, language, or language+math — so the response can match the actual barrier rather than treating all confusion as math confusion.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-1 shrink-0 h-1.5 w-1.5 rounded-full" style={{ backgroundColor: ACCENT }} />
-                  <span><strong>Asset-based framing.</strong> No deficit language about students anywhere in the output. The tool describes what students bring and what they are reaching toward — never what they lack.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-1 shrink-0 h-1.5 w-1.5 rounded-full" style={{ backgroundColor: ACCENT }} />
-                  <span><strong>Execution-faithful guidance.</strong> When a move invokes an MLR, the move text must read as that routine running step by step — not generic advice with a routine name attached.</span>
-                </li>
-              </ul>
-            </TrustBlock>
-
-            <TrustBlock
-              label="Inference"
-              title="How the tool reasons"
-            >
-              Every analysis produces an <code>mlr_inference</code> block first. For each activity, this block names the language work happening, which routines apply, and a one-line reason for each routine&apos;s fit. The rest of the guidance — the scenarios, the patterns, the sentence frames, the Quick Read tiles — is produced after this inference and must be consistent with it. The reasoning happens before the guidance, not after.
-            </TrustBlock>
-
             <TrustBlock
               label="Transparency"
               title="How to verify"
