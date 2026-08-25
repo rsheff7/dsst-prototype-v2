@@ -6,7 +6,6 @@ import { useLesson } from '@/lib/lessonContext';
 import { LessonData, ToolId } from '@/lib/types';
 import LessonHeader from '@/components/shared/LessonHeader';
 import ToolNav from '@/components/shared/ToolNav';
-import MobileNav from '@/components/mobile/MobileNav';
 import MobileQuickRead from '@/components/mobile/MobileQuickRead';
 import LessonPathway from '@/components/tools/LessonPathway';
 import AdaptationGuardrails from '@/components/tools/AdaptationGuardrails';
@@ -32,7 +31,7 @@ export default function LessonPage() {
   if (!lesson) return null;
 
   return (
-    <div className="min-h-screen bg-surface flex flex-col pb-16 md:pb-0">
+    <div className="min-h-screen bg-surface flex flex-col">
       {/* Desktop: fixed top bar with header + nav */}
       <div className="hidden md:block fixed top-0 left-0 right-0 z-40 bg-card border-b border-line">
         <div className="mx-auto max-w-3xl px-6">

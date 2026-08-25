@@ -737,7 +737,7 @@ export default function MoveWalkthrough({ lesson }: Props) {
               Select a WIDA level in the header to see the move calibrated to that learner.
             </p>
 
-            <EldProficiencyView activityId={current.activity_id} lesson={lesson} />
+            <EldProficiencyView activityId={current.activity_id} lesson={lesson} scenario={current} />
           </>
         )}
 

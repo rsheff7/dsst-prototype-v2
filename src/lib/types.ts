@@ -193,8 +193,21 @@ export interface FunctionalLanguageForActivity {
   elsf_guidelines_applied: ELSFGuidelineNumber[];
 }
 
+/** What a learner at one band does with this activity's language, in the lesson's own words. */
+export interface LearnerProfileBand {
+  band: 'emerging' | 'developing' | 'expanding';
+  discourse_does: string;
+  discourse_reaching: string;
+  sentence_does: string;
+  sentence_reaching: string;
+  word_does: string;
+  word_reaching: string;
+}
+
 export interface ELSFInferenceActivity {
   activity_id: string;
+  /** Optional: older lessons predate this and fall back to the lens data. */
+  learner_profile?: LearnerProfileBand[];
   language_demands: LanguageDemandsForActivity;
   functional_language: FunctionalLanguageForActivity;
 }
@@ -241,11 +254,43 @@ export interface LessonSynthesis {
   builds_on: string[];
 }
 
-export interface AnchorOutput {
-  text: string;
-  stop_reason: string;
-  input_tokens: number;
-  output_tokens: number;
+// Stamped by the analyze route so a generated lesson can be attributed after
+// the fact — which model made it, under which prompt/schema version, and
+// whether this copy came from the cache. Optional so existing .dsst files and
+// the demo lesson still satisfy the type.
+// What the outcome-first selector decided, per activity. Carried on the lesson
+// so the choice is inspectable rather than inferred from the routines that came
+// out the other end — and so the wristband can show the prep line.
+export interface ActivitySelection {
+  activity_id: string;
+  activity_outcome: string;
+  outcome_type: string;
+  /** What the routine was chosen from, after any material override. */
+  resolved_outcome_type: string;
+  function: string;
+  /** What the anchor reported the printed materials provide. Diagnostic. */
+  affordances: Record<string, boolean | number>;
+  lead: number;
+  second: number | null;
+  because: string;
+  teacher_prep: string | null;
+}
+
+export interface LessonSelection {
+  lesson_targets: string[];
+  targets_published: boolean;
+  standing_supports: boolean;
+  activities: ActivitySelection[];
+}
+
+export interface LessonProvenance {
+  pipeline_version: string;
+  cache_key: string;
+  provider: string;
+  model: string;
+  thinking: string;
+  generated_at: string;
+  served_from_cache: boolean;
 }
 
 export interface LessonData {
@@ -261,7 +306,8 @@ export interface LessonData {
   mlr_inference: MlrInference;
   lesson_synthesis: LessonSynthesis;
   wristband: Wristband;
-  anchor?: AnchorOutput;
+  provenance?: LessonProvenance;
+  selection?: LessonSelection;
 }
 
 export type ToolId = 'quickread' | 'pathway' | 'adapt' | 'thinking' | 'moves';

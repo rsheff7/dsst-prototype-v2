@@ -4,7 +4,9 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useLesson } from '@/lib/lessonContext';
 import { demoLesson } from '@/lib/demoLesson';
+import { Callout } from '@/components/docs/DocElements';
 
+// Shared documentation elements — same vocabulary as the About page.
 const ACCENT = '#006C57';
 const PATHWAY = '#00876C';
 const ADAPT = '#854F0B';
@@ -124,7 +126,7 @@ export default function HowToPage() {
             </li>
             <li className="flex items-start gap-2">
               <span className="mt-1.5 shrink-0 h-1.5 w-1.5 rounded-full" style={{ backgroundColor: ACCENT }} />
-              <span><strong>Move Walkthrough</strong> shows the embedded move for that learner inside each multilingual-learner scenario, with the discourse, sentence, and word/phrase targets they are reaching toward.</span>
+              <span><strong>Move Walkthrough</strong> shows the move for that learner inside each multilingual-learner scenario — written for that moment, naming the objects and student wording from your lesson — alongside what the learner can already produce and what they are reaching for at the discourse, sentence, and word/phrase level.</span>
             </li>
           </ul>
           <p>
@@ -134,6 +136,22 @@ export default function HowToPage() {
             Differentiation is no longer in Adapt. Adapt is for what the task is for, mathematically; the learner side moved per-activity.
           </p>
         </Step>
+
+        <Callout label="The same lesson gives the same plan">
+          Upload a lesson and every teacher who uploads it reads the same guidance — today, next
+          week, in the room next door. Premo recognises the lesson itself rather than the file, so a
+          copy you export tomorrow lands on the same plan as the one your colleague exported today.
+          A second upload returns in about a second because nothing is regenerated.
+        </Callout>
+
+        <Callout label="When a routine needs something the lesson does not print">
+          Some routines need a wrong answer to critique, or materials that split between partners.
+          Where the lesson does not supply that, Premo names the one thing to prepare —
+          &ldquo;during the pause, copy one sentence with the order reversed and display it
+          anonymously&rdquo; — rather than recommending something weaker or assuming you will
+          invent it. If a routine carries a prep line, that line is the difference between it
+          working and stalling.
+        </Callout>
 
         {/* Tool descriptions */}
         <div className="mt-6 space-y-4">
@@ -170,7 +188,7 @@ export default function HowToPage() {
             title="Move Walkthrough"
             tag="What do I do when I see this in class?"
           >
-            Practice-based scenarios for every moment that brings teacher, task, and student together — observation, interpretation, response. For multilingual-learner scenarios, the response is calibrated to the WIDA level you select in the header, with the embedded move plus the discourse, sentence, and word/phrase targets that learner is reaching toward. Use this to rehearse the moves before you teach. A coaching session works well here too.
+            Practice-based scenarios for every moment that brings teacher, task, and student together — observation, interpretation, response. Every lesson carries at least three multilingual-learner moments, one of them at the crux. Pick a WIDA level and the response is written for that learner in this lesson&apos;s terms, alongside what they can already produce and what they are reaching for. Use this to rehearse the moves before you teach. A coaching session works well here too.
           </ToolCard>
         </div>
 

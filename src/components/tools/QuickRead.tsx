@@ -46,8 +46,8 @@ export default function QuickRead({ lesson }: Props) {
       <ToolInfo toolId="quickread" />
       <div className="h-6 qr-print-hide" />
 
-{/* Toolbar (desktop only - mobile uses inclass mode always) */}
-      <div className="hidden md:flex md:justify-between qr-print-hide mb-5 items-center gap-3">
+{/* Toolbar (screen only) */}
+      <div className="qr-print-hide mb-5 flex items-center justify-between gap-3 flex-wrap">
         <ModeToggle mode={mode} onChange={setMode} />
         {mode === 'plan' && (
           <button
@@ -116,38 +116,26 @@ export default function QuickRead({ lesson }: Props) {
       )}
       </header>
 
-{/* Plan view - desktop only */}
-      <div className="hidden md:block">
-        {mode === 'plan' && (
-          <PlanView
-            wb={wb}
-            activityById={activityById}
-            windowById={windowById}
-            lessonSynthesis={lesson.lesson_synthesis}
-            destination={lesson.destination}
-          />
-        )}
-      </div>
-
-      {/* In-class view - mobile default, desktop when mode === 'inclass' */}
-      <div className="md:hidden">
+{/* Mobile renders MobileQuickRead instead of this component (see
+          src/app/lesson/page.tsx and rules.md §3), so the view is chosen purely
+          by the mode toggle here. The breakpoint wrappers this replaces mounted
+          an InClassView that no viewport could ever display. */}
+      {mode === 'plan' ? (
+        <PlanView
+          wb={wb}
+          activityById={activityById}
+          windowById={windowById}
+          lessonSynthesis={lesson.lesson_synthesis}
+          destination={lesson.destination}
+        />
+      ) : (
         <InClassView
           wb={wb}
           activityById={activityById}
           windowById={windowById}
           lessonSynthesis={lesson.lesson_synthesis}
         />
-      </div>
-      <div className="hidden md:block">
-        {mode === 'inclass' && (
-          <InClassView
-            wb={wb}
-            activityById={activityById}
-            windowById={windowById}
-            lessonSynthesis={lesson.lesson_synthesis}
-          />
-        )}
-      </div>
+      )}
 
       <style jsx global>{planPrintStyles}</style>
     </div>
