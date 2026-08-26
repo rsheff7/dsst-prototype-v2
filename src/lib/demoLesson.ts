@@ -4,14 +4,21 @@ import { LessonData } from './types';
 // Demo lesson — IM Grade 6, Unit 2, Lesson 1 "Introducing Ratios and Ratio
 // Language". Loaded by the home page sample, /framework, /how-to, /qa, /audit.
 //
-// PROVENANCE: generated 2026-08-22T18:39:59.833Z on gemini/gemini-3.7-flash
-// (thinking=medium), pipeline 2026-08-22.1+08fb3f478d223abc, from
-// "Grade 6 Mathematics, Unit 2.1 - Open Up Resources.pdf". Cache key 6dbbdc789323b58e4c22cf11d5a03a4e.
+// PROVENANCE: generated 2026-08-25T23:55:20.076Z on gemini/gemini-3.1-pro-preview
+// (thinking=medium), pipeline 2026-08-22.5+76b7bb0788907be7, from
+// "Grade 6 Mathematics, Unit 2.1 - Open Up Resources.pdf". Cache key 945236ff8e353c5547bec5c546241b49.
 //
-// Regenerated on the outcome-first pipeline: routines are now selected from each
-// activity's outcome against IM's published learning targets, so the sample
-// shows what teachers will actually receive. The previous demo predated that and
-// carried MLR assignments from the keyword-scan table.
+// GENERATED ON PRO, NOT THE LAUNCH MODEL. Production runs gemini-3.7-flash; this
+// sample came from gemini-3.1-pro-preview on the preview deployment, generated
+// with ?fresh=1 so it was never written to the cache. It is here to be read and
+// compared. Before launch this should either be regenerated on Flash or the
+// model decision revisited deliberately — a sample that does not match what
+// teachers receive is worse than a stale one.
+//
+// The previous sample was generated on pipeline 2026-08-22.1, three versions
+// back, and predated learner_profile entirely — so its WIDA chart rendered the
+// generic 4x6 lens rows rather than this lesson's language. This one carries a
+// learner_profile on all four activities.
 //
 // To refresh: POST the source PDF to /api/analyze and paste the response here.
 // ---------------------------------------------------------------------------
@@ -22,18 +29,18 @@ export const demoLesson = {
     "unit": "2",
     "lesson_number": "1",
     "lesson_title": "Introducing Ratios and Ratio Language",
-    "total_time": "45-50 min"
+    "total_time": "45 min"
   },
-  "arc_statement": "Students begin by sorting collections of shapes using everyday informal language to describe categories and counts. The lesson pivots to introducing the mathematical concept of a ratio, demanding precise alignment between the sequence of named categories and the sequence of numbers. Students then practice and solidify this syntax by organizing physical collections and constructing visual displays that clearly match their written ratio statements.",
-  "destination": "Students can write and say ratio statements describing associations between two quantities with matching order of words and numbers.",
+  "arc_statement": "Students begin by sorting and counting collections of items informally. They then transition to describing these collections using formal ratio language, focusing heavily on the order of the words and numbers. The lesson culminates with students creating their own visual displays and writing matching ratio sentences, solidifying that the sequence in the sentence must mirror the quantities in the collection.",
+  "destination": "Students can write and say sentences that describe a ratio, matching the order of the numbers to the order of the categories.",
   "key_vocabulary": [
     {
       "term": "ratio",
-      "definition": "An association between two or more quantities."
+      "definition": "An association between two or more quantities, often written as 'a to b' or 'a : b'."
     },
     {
-      "term": "for every",
-      "definition": "A phrase used to describe a ratio relationship comparing amounts in each group."
+      "term": "category",
+      "definition": "A group of items that share a common attribute, such as color or shape."
     }
   ],
   "activities": [
@@ -41,20 +48,20 @@ export const demoLesson = {
       "id": "1.1",
       "title": "What Kind and How Many?",
       "function": "Setup",
-      "duration": "~10 min",
-      "grouping": "Individual then whole group",
+      "duration": "10 min",
+      "grouping": "Whole group",
       "language_demand": "low",
-      "function_summary": "This warm-up activates prior knowledge of sorting objects by various attributes (color, size, shape, area). It gives students opportunities to generate informal category words and counts that will soon become the quantities in ratio statements.",
-      "learning_target": "Students sort a set of figures into categories based on different attributes.",
-      "synthesis_prompt": "Synthesize toward sorting figures into categories based on different attributes by displaying the collected student sorting methods on an anchor chart and highlighting that any set can be grouped in multiple valid ways depending on the chosen attribute.",
+      "function_summary": "This activity activates prior knowledge about sorting and counting. It provides the raw materials (categories and quantities) that students will soon use to build formal ratio sentences.",
+      "learning_target": "Students sort a collection of items into categories and count the number of items in each category.",
+      "synthesis_prompt": "Synthesize toward sorting and counting by asking a student to point to the pile of blue items and state the total count.",
       "is_crux": false,
       "friction_points": [
         {
-          "description": "Students count the total shapes without sorting into distinct attribute groups.",
+          "description": "Students struggle to name a third way to sort the figures.",
           "type": "math"
         },
         {
-          "description": "Students use vague descriptions like 'the big ones' instead of naming specific sorting attributes.",
+          "description": "Students use informal language like 'bunches' or 'piles' instead of categories.",
           "type": "language",
           "mlr": {
             "number": 2,
@@ -63,165 +70,209 @@ export const demoLesson = {
         }
       ],
       "success_signals": [
-        "Students identify at least two distinct sorting attributes (e.g., color, number of sides, area).",
-        "Students accurately count and state the number of figures in each sorted category."
+        "Students clearly identify distinct attributes like color or area.",
+        "Students accurately count the items in each identified group."
       ],
       "teacher_moves": [
         {
-          "text": "Circulate while students sort shapes individually; scribe their informal descriptive words onto a shared visual chart (e.g., 'blue ones', 'four-sided', 'large area').",
+          "text": "Write the words students use to describe their groups on the board, grouping similar terms together.",
           "mlr": {
             "number": 2,
             "name": "Collect and Display"
           }
         },
         {
-          "text": "Display the chart during whole-group discussion and ask students to point out which words describe the category name versus which describe the count."
+          "text": "Ask a student to point to the specific attribute on the figure that determined its group."
         }
       ],
-      "causal_link": "Establishes category sorting and counting needed to form two-quantity comparisons in Activity 1.2.",
-      "extension": "Ask students to find a shape that belongs to two categories at the same time."
+      "causal_link": "Sets up the quantities and categories needed for the ratio sentences in 1.2.",
+      "extension": "Ask students if an item could belong to more than one category at the same time."
     },
     {
       "id": "1.2",
       "title": "The Teacher’s Collection",
       "function": "Crux",
-      "duration": "~15 min",
+      "duration": "15 min",
       "grouping": "Partners",
       "language_demand": "medium",
-      "function_summary": "This activity introduces formal ratio language and notation. It is the crux because students must directly map words to numbers in identical sequence, confronting the common trap of reversing values or defaulting to larger-first ordering.",
-      "learning_target": "Students write ratio sentences describing categories in a collection with words and numbers in the correct order.",
-      "synthesis_prompt": "Synthesize toward writing ratio sentences with matching word and number order by contrasting a reversed statement ('ratio of 3 blue to 2 red is 2 to 3') with the corrected statement on the board and asking students why order matters when communicating quantities.",
+      "function_summary": "This is where students first encounter formal ratio sentence frames. The critical work is mapping the quantities they counted to the specific blanks in the sentences, ensuring the order matches.",
+      "learning_target": "Students write sentences describing the ratio of categories in a collection using correct word and number order.",
+      "synthesis_prompt": "Synthesize toward correct word and number order by writing 'ratio of red to blue is 5 to 3' and asking the class to point to the red items first.",
       "is_crux": true,
       "friction_points": [
         {
-          "description": "Students write the larger count first regardless of the order of words in the sentence (e.g., writing 'ratio of 2 triangles to 5 squares is 5 to 2').",
-          "type": "math"
-        },
-        {
-          "description": "Students struggle to use the structured sentence frames 'The ratio of ___ to ___ is ___:___' and 'For every ___ there are ___'.",
+          "description": "Students write the numbers in the reverse order of the category words.",
           "type": "language-math",
           "mlr": {
             "number": 3,
             "name": "Critique, Correct, and Clarify"
           }
+        },
+        {
+          "description": "Students leave blanks empty because they are unsure which number goes where.",
+          "type": "language",
+          "mlr": {
+            "number": 1,
+            "name": "Stronger and Clearer Each Time"
+          }
         }
       ],
       "success_signals": [
-        "Students write ratio sentences where the order of numbers exactly mirrors the order of category names.",
-        "Students accurately explain why changing the order of category names requires changing the order of the numbers."
+        "Students write '3 to 2' when the words are 'squares to circles'.",
+        "Students self-correct when reading their sentence aloud and noticing a mismatch."
       ],
       "teacher_moves": [
         {
-          "text": "Display an anonymous student work sample with reversed order (e.g., 'The ratio of 4 forks to 6 spoons is 6 to 4') and prompt pairs to critique and rewrite the statement accurately.",
+          "text": "Write a flipped sentence on the board anonymously and ask the class to identify what needs fixing.",
           "mlr": {
             "number": 3,
             "name": "Critique, Correct, and Clarify"
           }
         },
         {
-          "text": "Have students read their written ratio sentences aloud to a partner, listen to partner feedback, and revise their sentences for clearer alignment between words and numbers.",
+          "text": "Have students read their completed sentence to a partner, then revise it if the partner notices an order mismatch.",
           "mlr": {
             "number": 1,
             "name": "Stronger and Clearer Each Time"
           }
         }
       ],
-      "causal_link": "Gives students the syntactic foundation and precision required to produce ratio displays in Activity 1.3.",
-      "extension": "Ask students to write their ratio sentence using the 'for every' structure simplified to lowest terms if possible."
+      "causal_link": "Establishes the strict order rule required for the independent application in 1.3.",
+      "extension": "null"
     },
     {
       "id": "1.3",
       "title": "The Student’s Collection",
       "function": "Application",
-      "duration": "~20 min",
-      "grouping": "Partners",
-      "language_demand": "high",
-      "function_summary": "Students apply the new ratio syntax to tangible collections of items they organize themselves. They bridge concrete physical groupings, visual posters, and written statements using multiple ratio formats.",
-      "learning_target": "Students create visual displays and write ratio statements that represent associations between categories in their own collections.",
-      "synthesis_prompt": "Synthesize toward creating visual displays and writing ratio statements by placing two different group displays side-by-side on the board and asking students how both displays show the exact same ratio comparison despite differing visual arrangements.",
+      "duration": "15 min",
+      "grouping": "Small groups",
+      "language_demand": "medium",
+      "function_summary": "Students apply the order rule to a collection they design themselves. They translate between a visual representation and the formal written ratio.",
+      "learning_target": "Students create a visual display of a collection and write ratio sentences that match their display.",
+      "synthesis_prompt": "Synthesize toward matching visual displays to sentences by holding up a student's drawing and asking the class to read the matching ratio sentence together.",
       "is_crux": false,
       "friction_points": [
         {
-          "description": "Students draw collections without grouping items by attribute, making the ratio association difficult to verify visually.",
+          "description": "The visual display shows 4 stars and 2 moons, but the sentence says '2 to 4'.",
           "type": "math"
         },
         {
-          "description": "Students struggle to explain how their visual poster connects to their written 'for every' ratio statement during partner share.",
+          "description": "Students struggle to articulate how their drawing matches their sentence.",
           "type": "language",
-          "mlr": {
-            "number": 7,
-            "name": "Compare and Connect"
-          }
-        }
-      ],
-      "success_signals": [
-        "Students construct visual displays that group items clearly by category.",
-        "Students write accurate ratio statements in multiple formats corresponding directly to their visual display."
-      ],
-      "teacher_moves": [
-        {
-          "text": "Select two student displays with different visual groupings for the same ratio (e.g., grouped in pairs vs grouped in separate lines) and guide the class to identify where the ratio appears in both representations.",
-          "mlr": {
-            "number": 7,
-            "name": "Compare and Connect"
-          }
-        },
-        {
-          "text": "Guide partners to share their visual displays and practice explaining their ratio sentences, prompting listeners to ask 'How does your picture show that number?' before students write a final caption.",
           "mlr": {
             "number": 1,
             "name": "Stronger and Clearer Each Time"
           }
         }
       ],
-      "causal_link": "Applies ratio notation and language to student-generated contexts, preparing for equivalent ratio explorations in subsequent lessons.",
-      "extension": "Challenge students to arrange their collection into equal groups to write a ratio using smaller whole numbers."
+      "success_signals": [
+        "The visual display clearly groups items by category.",
+        "The written sentence perfectly mirrors the quantities shown in the display."
+      ],
+      "teacher_moves": [
+        {
+          "text": "Have students explain their drawing to a partner, then write a new sentence based on the partner's feedback.",
+          "mlr": {
+            "number": 1,
+            "name": "Stronger and Clearer Each Time"
+          }
+        },
+        {
+          "text": "Point to the first word in the sentence and ask the student to point to that item in their drawing."
+        }
+      ],
+      "causal_link": "null",
+      "extension": "Ask students to write a sentence using the 'for every' frame for their display."
+    },
+    {
+      "id": "summary",
+      "title": "Lesson 1 Summary",
+      "function": "Synthesis",
+      "duration": "5 min",
+      "grouping": "Whole group",
+      "language_demand": "medium",
+      "function_summary": "This section formalizes the definition of a ratio and reviews the correct ways to describe the collections seen during the lesson.",
+      "learning_target": "Students consolidate their understanding of ratio language and the importance of order.",
+      "synthesis_prompt": "Synthesize toward the importance of order by displaying the final squares and circles image and asking a student to trace the connection from the word 'squares' to the number '3'.",
+      "is_crux": false,
+      "friction_points": [
+        {
+          "description": "Students read the summary but cannot explain why '3 to 6' is different from '6 to 3'.",
+          "type": "language-math",
+          "mlr": {
+            "number": 1,
+            "name": "Stronger and Clearer Each Time"
+          }
+        },
+        {
+          "description": "Students confuse the 'for every' structure with the 'ratio of' structure.",
+          "type": "language"
+        }
+      ],
+      "success_signals": [
+        "Students can articulate that swapping the numbers changes which item has more.",
+        "Students correctly identify the quantities in the summary images."
+      ],
+      "teacher_moves": [
+        {
+          "text": "Have students turn to a partner and explain why the order matters, then write down their best explanation.",
+          "mlr": {
+            "number": 1,
+            "name": "Stronger and Clearer Each Time"
+          }
+        },
+        {
+          "text": "Cover the numbers in the summary text and ask students to supply them based on the image."
+        }
+      ],
+      "causal_link": "null",
+      "extension": "null"
     }
   ],
   "adaptation_guardrails": {
-    "mathematical_purpose": "To understand that a ratio is an association between two quantities where the sequence of values must strictly match the sequence of categories being described.",
+    "mathematical_purpose": "Establishing that a ratio describes two quantities and the order of the words must match the order of the numbers.",
     "safe_to_change": [
-      "The physical objects used in the collections (e.g., pattern blocks, colored tiles, counters, or stationery).",
-      "The number of categories students sort into (2 or 3 categories).",
-      "Whether displays are made on paper, whiteboards, or digital drawing slides."
+      "The specific items used in the teacher's collection.",
+      "The colors used in the visual displays.",
+      "The number of categories students sort into initially."
     ],
     "do_not_remove": [
       {
-        "text": "Do not remove the partner verbal reading of ratio sentences; speaking the sentence aloud is essential for hearing whether the order of words matches the numbers.",
+        "text": "The partner share where students read their sentences aloud to check for order.",
         "mlr": {
           "number": 1,
           "name": "Stronger and Clearer Each Time"
         }
       },
       {
-        "text": "Do not remove the critique of reversed word-and-number statements; students must confront the order-dependence of ratio syntax directly.",
+        "text": "The public correction of a flipped sentence.",
         "mlr": {
           "number": 3,
           "name": "Critique, Correct, and Clarify"
         }
       },
       {
-        "text": "Do not remove the requirement to write the ratio using multiple frames ('___ to ___', '___:___', and 'for every ___ there are ___')."
+        "text": "The requirement to create a visual display that matches the written sentence."
       }
     ],
-    "rigor_check": "Are students required to write and say the ratio in the exact order requested rather than rearranging numbers from largest to smallest?",
+    "rigor_check": "Are students relying on the visual order of the items on the table, or are they actively matching the category words to the numbers in the sentence?",
     "by_proficiency": {
       "emerging": {
-        "text": "Provide color-coded sentence frames matching physical object colors (e.g., blue box for blue objects count) and gesture to point to the physical pile as each number is spoken.",
+        "text": "Have the student point to the physical items while saying the corresponding number.",
         "mlr": {
-          "number": 2,
-          "name": "Collect and Display"
+          "number": 1,
+          "name": "Stronger and Clearer Each Time"
         }
       },
       "developing": {
-        "text": "Provide pre-printed sentence strips with blanks for categories and numbers, requiring students to read their completed sentence to a partner before making their poster.",
+        "text": "Provide a sentence frame with the category words already filled in, leaving only the numbers blank.",
         "mlr": {
-          "number": 3,
-          "name": "Critique, Correct, and Clarify"
+          "number": 1,
+          "name": "Stronger and Clearer Each Time"
         }
       },
       "expanding": {
-        "text": "Prompt students to explain the difference in meaning between 'the ratio of A to B' and 'the ratio of B to A' in both written and spoken formats.",
+        "text": "Ask the student to explain to a partner how the meaning of the sentence changes if the numbers are swapped.",
         "mlr": {
           "number": 1,
           "name": "Stronger and Clearer Each Time"
@@ -230,25 +281,25 @@ export const demoLesson = {
     }
   },
   "anticipated_thinking": {
-    "orientation": "Students arrive knowing how to count objects and group them by visible attributes like shape, color, or size. The key shift in this lesson is coordinating two counted amounts simultaneously and preserving the exact order of the category names when writing ratio sentences.",
+    "orientation": "Students will bring an intuitive ability to sort and count items, but they will likely struggle to map the order of the words to the order of the numbers in a formal ratio sentence. The work of this lesson is helping them see that 'the ratio of A to B is 3 to 2' means something fundamentally different than 'the ratio of A to B is 2 to 3.'",
     "activities": [
       {
         "activity_id": "1.1",
         "patterns": [
           {
-            "label": "Sorting by multiple distinct attributes",
+            "label": "Sorting by color",
             "frequency": "most students",
             "type": "on-track",
-            "description": "Students sort the collection by obvious visual traits like color (e.g., blue vs. green), number of sides, or size.",
-            "move": "Record student sorting categories on a public chart. Ask: 'What category names did you use, and how many figures are in each group?'",
+            "description": "Students correctly identify the colors and count the shapes in each group.",
+            "move": "Ask them to describe how they decided which shape goes in which group.",
             "is_mll_specific": false
           },
           {
-            "label": "Overlapping or vague category labels",
+            "label": "Informal comparison language",
             "frequency": "some students",
             "type": "language-math",
-            "description": "Students create ambiguous categories like 'pointy shapes' or 'big ones' where figures could belong to multiple groups or cannot be distinctly counted.",
-            "move": "Use MLR 2 (Collect and Display) by writing their descriptive words on the board. Point to a figure and ask: 'Could this triangle go into both groups? How can we name the categories so every shape belongs in exactly one group?'",
+            "description": "Students use phrases like 'there are more blue ones' or '3 of these and 2 of those' without formal ratio language.",
+            "move": "Listen for and record these informal phrases on the board. Point to them and ask the class how we might make them more precise.",
             "is_mll_specific": true,
             "mlr": {
               "number": 2,
@@ -256,48 +307,40 @@ export const demoLesson = {
             }
           },
           {
-            "label": "Sub-categorizing within a single attribute",
+            "label": "Struggling with 'area' category",
             "frequency": "watch for this",
-            "type": "extension",
-            "description": "Students sort by two attributes at once, such as 'blue triangles' versus 'green quadrilaterals'.",
-            "move": "Acknowledge this detailed sort, then ask: 'If we only look at shape, how many categories do we have? What if we only look at color?'",
+            "type": "partial",
+            "description": "Students are unsure how to sort by area, perhaps confusing it with shape type.",
+            "move": "Ask them to look at the size of the shapes and find the ones that take up the same amount of space.",
             "is_mll_specific": false
           }
         ],
         "sentence_frames": [
           {
-            "frame": "I sorted the figures by _______ into _______ groups.",
+            "frame": "I sorted the shapes by ________."
+          },
+          {
+            "frame": "There are ________ groups because ________.",
             "mlr": {
               "number": 2,
               "name": "Collect and Display"
             }
-          },
-          {
-            "frame": "There are _______ [category name] and _______ [category name]."
           }
         ],
         "questions_to_listen_for": [
-          "How did you decide which group each figure belongs to?",
-          "Can a figure belong to more than one of your categories?"
+          "How did you decide to group these together?",
+          "What do all the items in this group have in common?"
         ]
       },
       {
         "activity_id": "1.2",
         "patterns": [
           {
-            "label": "Correct word and number alignment",
+            "label": "Flipping the order",
             "frequency": "most students",
-            "type": "on-track",
-            "description": "Students match the order of categories to the order of numbers (e.g., 'The ratio of blue tiles to yellow tiles is 4 to 3').",
-            "move": "Have students underline the first category name and point to the first number to verify they match.",
-            "is_mll_specific": false
-          },
-          {
-            "label": "Reversed order of quantities",
-            "frequency": "some students",
             "type": "misconception",
-            "description": "Students write the larger count first regardless of category order (e.g., writing 'The ratio of 3 yellow to 5 red is 5 to 3').",
-            "move": "Use MLR 3 (Critique, Correct, and Clarify). Write an anonymous sentence with flipped numbers on the board. Ask: 'Which category was named first, and which number represents that category? How can we rewrite this so the order matches?'",
+            "description": "Students write the numbers in the opposite order of the words, defaulting to putting the larger number first.",
+            "move": "Write the flawed sentence on the board anonymously. Ask the class: 'Does this sentence match our collection? How can we fix it so the numbers match the words?'",
             "is_mll_specific": true,
             "mlr": {
               "number": 3,
@@ -305,102 +348,127 @@ export const demoLesson = {
             }
           },
           {
-            "label": "Part-to-whole ratio formulation",
-            "frequency": "watch for this",
-            "type": "partial",
-            "description": "Students compare one category to the total count of items rather than comparing two separate categories.",
-            "move": "Validate that comparing a part to the whole is a valid ratio. Ask: 'What does the second number represent—the other category, or all items combined?'",
-            "is_mll_specific": false
-          },
-          {
-            "label": "Partner sentence refinement",
+            "label": "Correct order, informal words",
             "frequency": "some students",
-            "type": "language-math",
-            "description": "Students write an initial ratio sentence with informal phrasing and refine it after reading it aloud to a peer.",
-            "move": "Run MLR 1 (Stronger and Clearer Each Time). Have Partner A read their ratio sentence aloud. Partner B asks: 'Which category comes first in your words, and which number comes first?' Students then revise their sentence for precision.",
+            "type": "partial",
+            "description": "Students match the numbers to the categories but don't use the provided sentence frames.",
+            "move": "Have them share their sentence with a partner. Their partner asks: 'Can you say that using the word ratio?' Then have them write a stronger version.",
             "is_mll_specific": true,
             "mlr": {
               "number": 1,
               "name": "Stronger and Clearer Each Time"
             }
+          },
+          {
+            "label": "Accurate ratio sentences",
+            "frequency": "some students",
+            "type": "on-track",
+            "description": "Students correctly use the frames, matching the order of words and numbers.",
+            "move": "Ask them to write a second sentence using a different frame from the list.",
+            "is_mll_specific": false
           }
         ],
         "sentence_frames": [
           {
-            "frame": "The ratio of [Category A] to [Category B] is _______ to _______.",
-            "mlr": {
-              "number": 3,
-              "name": "Critique, Correct, and Clarify"
-            }
+            "frame": "The ratio of ________ to ________ is ________ to ________."
           },
           {
-            "frame": "For every _______ [Category A], there are _______ [Category B].",
-            "mlr": {
-              "number": 1,
-              "name": "Stronger and Clearer Each Time"
-            }
+            "frame": "I know the order is correct because ________."
           }
         ],
         "questions_to_listen_for": [
-          "Which category did you write first, and what number goes with it?",
-          "How would your ratio sentence change if you swapped the order of the categories?"
+          "Which number goes with which category?",
+          "Does the order of the numbers matter?"
         ]
       },
       {
         "activity_id": "1.3",
         "patterns": [
           {
-            "label": "Grouping items into equivalent visual units",
-            "frequency": "some students",
-            "type": "on-track",
-            "description": "Students physically cluster their items into equal groups (e.g., pairs of 2 paperclips for every 1 eraser) to justify their 'for every' statements.",
-            "move": "Use MLR 7 (Compare and Connect). Place this grouped display next to an ungrouped display and ask: 'How do both displays show the same ratio even though one is grouped?'",
-            "is_mll_specific": true,
-            "mlr": {
-              "number": 7,
-              "name": "Compare and Connect"
-            }
-          },
-          {
-            "label": "Disconnection between visual display and written ratio",
-            "frequency": "some students",
+            "label": "Visual doesn't match sentence",
+            "frequency": "watch for this",
             "type": "misconception",
-            "description": "Students draw a display that shows all items jumbled together without visually distinguishing the two categories named in their ratio statement.",
-            "move": "Ask students to point to where the first number in their ratio sentence appears in the display, then point to the second number.",
+            "description": "The student's visual display shows a different ratio than the one written in their sentence.",
+            "move": "Ask them to point to the part of the visual that represents the first category in their sentence, then the second.",
             "is_mll_specific": false
           },
           {
-            "label": "Describing displays using varied ratio phrasing",
-            "frequency": "most students",
+            "label": "Vague category names",
+            "frequency": "some students",
             "type": "language-math",
-            "description": "Students practice explaining their visual display using colon notation and 'for every' language with different partners.",
-            "move": "Run MLR 1 (Stronger and Clearer Each Time). Students explain their display to a partner using 'for every', get feedback on clarity, and then switch partners to share a refined explanation.",
+            "description": "Students use vague words like 'things' or 'pieces' instead of specific category names in their sentences.",
+            "move": "Have them read their sentence to a partner. The partner asks: 'What exactly are the items?' The student then revises their sentence to be more specific.",
             "is_mll_specific": true,
             "mlr": {
               "number": 1,
               "name": "Stronger and Clearer Each Time"
             }
+          },
+          {
+            "label": "Clear and matching display",
+            "frequency": "most students",
+            "type": "on-track",
+            "description": "Students create a visual that perfectly matches their written ratio sentence.",
+            "move": "Ask them how someone looking at their display would know which number comes first in the ratio.",
+            "is_mll_specific": false
           }
         ],
         "sentence_frames": [
           {
-            "frame": "In my display, the ratio of _______ to _______ is shown by _______.",
-            "mlr": {
-              "number": 7,
-              "name": "Compare and Connect"
-            }
+            "frame": "My visual shows the ratio ________ to ________."
           },
           {
-            "frame": "Both displays show the ratio _______ : _______ because _______.",
-            "mlr": {
-              "number": 7,
-              "name": "Compare and Connect"
-            }
+            "frame": "For every ________, I drew ________."
           }
         ],
         "questions_to_listen_for": [
-          "Where in your visual display do we see the two quantities from your sentence?",
-          "How does grouping your items make the ratio easier to see?"
+          "How does your picture show the ratio?",
+          "What does this part of your drawing represent?"
+        ]
+      },
+      {
+        "activity_id": "summary",
+        "patterns": [
+          {
+            "label": "Explaining order importance",
+            "frequency": "most students",
+            "type": "on-track",
+            "description": "Students can articulate that the first number must match the first word.",
+            "move": "Ask them to give an example of what happens if you flip the numbers.",
+            "is_mll_specific": false
+          },
+          {
+            "label": "Incomplete explanation",
+            "frequency": "some students",
+            "type": "language-math",
+            "description": "Students know order matters but struggle to explain why clearly.",
+            "move": "Have them explain it to a partner first. The partner asks clarifying questions. Then, have them write a stronger, clearer explanation.",
+            "is_mll_specific": true,
+            "mlr": {
+              "number": 1,
+              "name": "Stronger and Clearer Each Time"
+            }
+          },
+          {
+            "label": "Still flipping order",
+            "frequency": "watch for this",
+            "type": "misconception",
+            "description": "Students still mix up the order of numbers and categories when summarizing.",
+            "move": "Point to a visual and ask them to touch the items as they say the sentence.",
+            "is_mll_specific": false
+          }
+        ],
+        "sentence_frames": [
+          {
+            "frame": "When writing a ratio, the order matters because ________."
+          },
+          {
+            "frame": "If I say the ratio of A to B, the first number must be ________."
+          }
+        ],
+        "questions_to_listen_for": [
+          "Why can't we just write the numbers in any order?",
+          "How do we know which number comes first?"
         ]
       }
     ]
@@ -412,58 +480,47 @@ export const demoLesson = {
         "scenarios": [
           {
             "scenario_type": "on-track",
-            "label": "Sorting figures by precise geometric attributes (e.g., number of sides or vertices)",
-            "interpretation": "The student recognizes that figures can be classified by shared mathematical properties beyond surface traits like color. They clearly separate polygons by side count and accurately count the quantity in each group.",
+            "label": "Sorts and counts accurately",
+            "interpretation": "The student has successfully grouped the items by a single attribute and quantified each group, preparing them for ratio comparisons.",
             "is_mll": false,
             "flat_move": {
-              "move": "Ask the student to state their sorting rule and name the groups. Record their attribute terms on the board so the class can reuse the vocabulary.",
-              "avoid": "Over-praising side-counting as 'better' than sorting by color, which invalidates other legitimate sorting rules.",
-              "say": "You grouped all the 4-sided figures together and all the 3-sided figures together. What name can we give to each pile?"
+              "move": "Ask them to write the total number next to each group on their paper.",
+              "avoid": "Moving them immediately to writing ratio sentences before the next activity begins.",
+              "nonverbal": "Point to the sorted groups and hand them a pencil.",
+              "say": "Write the number of items next to each group."
             },
             "proficiency_moves": null,
-            "mll_framework_note": null,
-            "proficiency_divergence_note": null
+            "mll_framework_note": "null",
+            "proficiency_divergence_note": "null"
           },
           {
-            "scenario_type": "common-error",
-            "label": "Counting total shapes instead of sorting into distinct attribute categories",
-            "interpretation": "The student sees the collection as a single aggregate count rather than distinct subgroups. They have not yet established a rule to partition the set.",
-            "is_mll": false,
-            "flat_move": {
-              "move": "Pick up two shapes with an obvious difference, such as color or shape, and ask the student if they belong in the same pile or different piles based on that feature.",
-              "avoid": "Sorting the entire collection for the student.",
-              "say": "Look at this blue triangle and this green square. If our rule is 'same color,' do they go together or apart?"
-            },
-            "proficiency_moves": null,
-            "mll_framework_note": null,
-            "proficiency_divergence_note": null
-          },
-          {
-            "scenario_type": "partial-understanding",
-            "label": "Using everyday descriptive phrasing ('pointy ones', 'flat ones') instead of category names",
-            "interpretation": "The student has identified a valid sorting rule based on visual attributes but lacks the formal geometric vocabulary to name the category. They understand grouping but need an academic language bridge.",
+            "scenario_type": "productive-struggle",
+            "label": "Points to groups without naming categories",
+            "interpretation": "The student can physically sort the items but lacks or is hesitant to use the English vocabulary to name the attribute they sorted by.",
             "is_mll": true,
             "flat_move": null,
             "proficiency_moves": {
               "emerging": {
-                "move": "Point to the student's pile of triangles, say 'triangles,' write the word next to the pile, and have the student chorally repeat.",
-                "avoid": "Telling the student their informal description is wrong.",
-                "nonverbal": "Place a label card with the word 'Triangles' and a small drawing of a triangle directly in front of the pile.",
-                "say": "You sorted the pointy ones together. In math, we call these 3-sided shapes 'triangles.' Say with me: triangles."
+                "move": "Ask what is the same about the items in one group. Listen for any descriptive word, write it on the board, and say it aloud.",
+                "avoid": "Naming the category for them before they offer a word.",
+                "nonverbal": "Point to one specific group of sorted items and gesture a circle around them.",
+                "say": "What is the same about these?"
               },
               "developing": {
-                "move": "Capture the student's phrase on the public display alongside the formal term, then prompt them to restate their sorting rule using the formal term.",
-                "avoid": "Erasing or ignoring the student's informal description.",
-                "say": "I heard you call these 'the pointy shapes.' Let's add that to our chart next to 'triangles.' How would you describe this category using the word 'triangle'?"
+                "move": "Ask them to name the two groups. Write their exact phrases on the board and read them back.",
+                "avoid": "Correcting informal language like 'pointy ones' to 'triangles' immediately.",
+                "nonverbal": "Point back and forth between the two distinct groups.",
+                "say": "What do you call this group, and what do you call that group?"
               },
               "expanding": {
-                "move": "Ask the student to define the mathematical attribute that makes all the shapes in that category fit together.",
-                "avoid": "Accepting just the single noun without pressing for the attribute description.",
-                "say": "What specific attribute do all your 'pointy' shapes share that puts them in the triangle category?"
+                "move": "Ask them to describe their sorting rule to a partner. Listen to their conversation and write the category names they use on the board.",
+                "avoid": "Skipping the partner share and asking them to report directly to you.",
+                "nonverbal": "Gesture between the student and their elbow partner.",
+                "say": "Tell your partner how you decided what goes where."
               }
             },
             "mll_framework_note": null,
-            "proficiency_divergence_note": null,
+            "proficiency_divergence_note": "Emerging relies on teacher-supplied vocabulary based on student pointing; Expanding requires the student to articulate the rule to a peer.",
             "mlr": {
               "number": 2,
               "name": "Collect and Display"
@@ -476,93 +533,66 @@ export const demoLesson = {
         "scenarios": [
           {
             "scenario_type": "common-error",
-            "label": "Reversing number order relative to word order in the ratio statement",
-            "interpretation": "The student writes 'The ratio of blue cubes to yellow cubes is 5 to 3' when there are actually 3 blue and 5 yellow cubes. They default to writing the larger number first rather than preserving the grammatical order of the categories.",
+            "label": "Numbers and words are flipped",
+            "interpretation": "The student understands the quantities but has not yet mapped the syntactic rule that the order of the numbers must match the order of the category words.",
             "is_mll": true,
             "flat_move": null,
             "proficiency_moves": {
               "emerging": {
-                "move": "Point to the word 'blue' in their sentence, then point to the blue pile and count aloud. Then point to the first number in their sentence and ask if they match.",
-                "avoid": "Rewriting the numbers in the sentence yourself.",
-                "nonverbal": "Touch the word 'blue,' touch the 3 blue cubes, then point to the written number '5' with a questioning look.",
-                "say": "Look at the sentence: blue comes first. How many blue cubes do we have? Does this first number say 3?"
+                "move": "Write the flipped sentence on a whiteboard. Ask the student to count the items for the first word written.",
+                "avoid": "Telling them the order is wrong.",
+                "nonverbal": "Point to the first category word in the sentence, then point to the physical collection.",
+                "say": "Let's check. Count these for me."
               },
               "developing": {
-                "move": "Have the student read the sentence aloud while tracing their finger from each category word to its corresponding number in the blank.",
-                "avoid": "Telling them immediately that the numbers are reversed.",
-                "say": "Read your sentence out loud. Point to the word for the first group, then point to the number that matches it."
+                "move": "Write the flipped sentence on a whiteboard anonymously. Ask pairs to read it and check the collection to see if the numbers match the objects.",
+                "avoid": "Pointing out the mismatch yourself.",
+                "nonverbal": "Hand the whiteboard to the pair and gesture to the collection.",
+                "say": "Read this sentence. Does it match what is on the table?"
               },
               "expanding": {
-                "move": "Write an anonymous sample showing the reversed numbers on a whiteboard and ask the student to critique why the order changes the mathematical meaning.",
-                "avoid": "Treating the reversed order as a minor formatting slip rather than a mathematical mismatch.",
-                "say": "Someone wrote 'the ratio of blue to yellow is 5 to 3.' Looking at our collection of 3 blue and 5 yellow, what is misleading about this statement?"
+                "move": "Write the flipped sentence on a whiteboard. Ask pairs to discuss why a reader might get confused by this sentence, then write a corrected version together.",
+                "avoid": "Providing the corrected version for them to copy.",
+                "nonverbal": "Tap the numbers and the words in the sentence.",
+                "say": "Tell your partner why this sentence might confuse someone who can't see the table. Then fix it."
               }
             },
             "mll_framework_note": null,
-            "proficiency_divergence_note": null,
+            "proficiency_divergence_note": "Emerging focuses on physically verifying the count against the written word; Expanding focuses on analyzing why the sentence is confusing to a reader.",
             "mlr": {
               "number": 3,
               "name": "Critique, Correct, and Clarify"
             }
           },
           {
+            "scenario_type": "partial-understanding",
+            "label": "Writes numbers without category names",
+            "interpretation": "The student recognizes the ratio relationship but is treating it as a bare number operation rather than a description of a specific context.",
+            "is_mll": false,
+            "flat_move": {
+              "move": "Ask them what objects the numbers represent in the collection.",
+              "avoid": "Accepting the bare numbers or filling in the words for them.",
+              "nonverbal": "Point to the numbers on their paper.",
+              "say": "What does the 5 mean, and what does the 2 mean?"
+            },
+            "proficiency_moves": null,
+            "mll_framework_note": "null",
+            "proficiency_divergence_note": "null"
+          },
+          {
             "scenario_type": "productive-insight",
-            "label": "Simplifying counts into unit ratio language ('for every 1 of these, there are 2 of those')",
-            "interpretation": "The student notices a multiplicative relationship within the collection (e.g., 3 circles and 6 squares) and partitions the objects into equal paired groups rather than simply stating the raw totals.",
+            "label": "Uses a scaled-down equivalent ratio",
+            "interpretation": "The student notices the multiplicative structure and groups the items, writing '1 to 2' for a collection of 3 and 6.",
             "is_mll": false,
             "flat_move": {
-              "move": "Ask the student to physically arrange the physical objects into small identical groups to show the class how the 'for every 1... there are 2...' structure works.",
-              "avoid": "Forcing the student to revert back to raw totals (6 to 3) before acknowledging the simplified form.",
-              "say": "Show me how you grouped your objects to see that for every 1 circle, there are 2 squares. Can we make another group just like that?"
+              "move": "Ask them to show you where that smaller group lives inside their larger collection.",
+              "avoid": "Telling them they must use the total counts of 3 and 6.",
+              "nonverbal": "Hand them a pencil and gesture to the collection.",
+              "say": "Show me where that 1 and 2 is in your pile."
             },
             "proficiency_moves": null,
-            "mll_framework_note": null,
-            "proficiency_divergence_note": null
-          },
-          {
-            "scenario_type": "productive-struggle",
-            "label": "Freezing or struggling to articulate the relational meaning of 'for every'",
-            "interpretation": "The student can state 'the ratio of A to B is X to Y' because it mirrors a standard fill-in-the-blank format, but struggles with the syntax and conceptual meaning of the 'for every' frame.",
-            "is_mll": true,
-            "flat_move": null,
-            "proficiency_moves": {
-              "emerging": {
-                "move": "Set out 1 paper clip and 2 erasers. Gesture to the pair and say the phrase, then push another pair forward and prompt the student to repeat.",
-                "avoid": "Demanding a written explanation before physical demonstration.",
-                "nonverbal": "Slide 1 blue tile and 2 yellow tiles together as a unit, tapping each piece while saying the count.",
-                "say": "Look: for every 1 blue, there are 2 yellow. Now you take 1 blue... how many yellow must go with it?"
-              },
-              "developing": {
-                "move": "Provide a paired-matching template and have the student practice saying their 'for every' draft with a partner before writing.",
-                "avoid": "Letting the student abandon the 'for every' prompt to only use 'ratio of... is...'.",
-                "say": "Tell your partner your sentence starting with 'For every...'. Ask your partner: does my number match my group?"
-              },
-              "expanding": {
-                "move": "Have the student write their first draft of the 'for every' sentence, share with a partner to verify word-number match, and revise for clarity.",
-                "avoid": "Accepting sentences where the items are listed without quantities (e.g., 'for every blue there is yellow').",
-                "say": "Draft your 'for every' sentence. Read it to your partner, then revise it so anyone reading it knows the exact number in each group."
-              }
-            },
-            "mll_framework_note": null,
-            "proficiency_divergence_note": null,
-            "mlr": {
-              "number": 1,
-              "name": "Stronger and Clearer Each Time"
-            }
-          },
-          {
-            "scenario_type": "on-track",
-            "label": "Consistently matching category words and quantities across multiple sentence structures",
-            "interpretation": "The student understands that ratio statements are ordered pairs describing an association. They comfortably use 'X to Y', 'X : Y', and 'for every X there are Y' while keeping terms properly aligned.",
-            "is_mll": false,
-            "flat_move": {
-              "move": "Challenge the student to write a ratio comparing one category to the total number of items in the entire collection.",
-              "avoid": "Telling them part-to-whole comparisons are not allowed; ratios can describe part-to-part or part-to-whole.",
-              "say": "You compared blue to yellow. How could you write a ratio sentence comparing the blue cubes to ALL the cubes in the collection?"
-            },
-            "proficiency_moves": null,
-            "mll_framework_note": null,
-            "proficiency_divergence_note": null
+            "mll_framework_note": "null",
+            "proficiency_divergence_note": "null"
           }
         ]
       },
@@ -571,75 +601,47 @@ export const demoLesson = {
         "scenarios": [
           {
             "scenario_type": "common-error",
-            "label": "Displaying items in an unorganized pile that obscures the stated ratio",
-            "interpretation": "The student writes a correct ratio sentence but creates a visual display with scattered items. The display does not visually communicate the relationship or grouping described in their sentence.",
+            "label": "Drawing does not match written sentence",
+            "interpretation": "The student has lost track of the correspondence between their visual representation and their written statement.",
             "is_mll": false,
             "flat_move": {
-              "move": "Ask the student to look at their display from two feet away and determine whether someone walking by could see the ratio without counting every item one by one.",
-              "avoid": "Reorganizing the student's display for them.",
-              "say": "Your sentence says 'for every 2 red counters there are 3 yellow counters.' How could you line up or group your counters so a visitor sees those groups of 2 and 3 instantly?"
+              "move": "Ask them to read their sentence aloud while pointing to the corresponding shapes in their drawing.",
+              "avoid": "Pointing out the discrepancy yourself.",
+              "nonverbal": "Point to the first word in their sentence, then gesture to the drawing.",
+              "say": "Read this out loud, and point to the shapes as you say them."
             },
             "proficiency_moves": null,
-            "mll_framework_note": null,
-            "proficiency_divergence_note": null
+            "mll_framework_note": "null",
+            "proficiency_divergence_note": "null"
           },
           {
-            "scenario_type": "productive-insight",
-            "label": "Arranging items in paired arrays or batches that visually prove the ratio statement",
-            "interpretation": "The student connects the verbal/symbolic ratio statement directly to spatial organization. They arrange their collection into distinct, identical sub-groups (e.g., columns of 2 blue alongside columns of 3 red).",
+            "scenario_type": "productive-struggle",
+            "label": "Draws correctly but leaves sentence frame blank",
+            "interpretation": "The student understands the ratio visually but needs support bridging from the visual representation to the formal academic sentence structure.",
             "is_mll": true,
             "flat_move": null,
             "proficiency_moves": {
               "emerging": {
-                "move": "Pair this student's display with a standard total-count display. Point to one grouped row and ask both students to count the items in that single group.",
-                "avoid": "Explaining the visual connection yourself without letting students observe.",
-                "nonverbal": "Place the two displays side by side, circle one structured row with a finger, and point to the corresponding numbers in the written ratio.",
-                "say": "Look at this group: 2 blue, 3 red. Where do you see those same numbers in the written sentence?"
+                "move": "Have them point to their drawing while a partner says what they see. Then they swap roles.",
+                "avoid": "Forcing them to write the sentence before they have heard it spoken.",
+                "nonverbal": "Guide the student's finger to point at the first group of shapes in their drawing.",
+                "say": "Point to your shapes. Partner, what do you see?"
               },
               "developing": {
-                "move": "Prompt the student to explain to their partner how their visual grouping makes it easy to check the 'for every' statement.",
-                "avoid": "Interrupting to provide formal terms like 'unit rate' or 'scale factor.'",
-                "say": "Tell your partner how your columns show the 'for every' part of your sentence. What does each column represent?"
+                "move": "Have them tell a partner what they drew. The partner asks 'How many?' for each category before they write anything in the frame.",
+                "avoid": "Letting them write in silence without oral rehearsal.",
+                "nonverbal": "Cover the sentence frame with your hand temporarily.",
+                "say": "Tell your partner what is in your drawing first."
               },
               "expanding": {
-                "move": "Have the student present their visual display during whole-class synthesis, explaining how the visual structure supports multiple equivalent ratio statements.",
-                "avoid": "Limiting the student's presentation to just reading their written sentence.",
-                "say": "Show the class your display. How does your arrangement show both the total ratio and the 'for every' relationship at the same time?"
+                "move": "Have them draft a sentence, read it to a partner, and ask the partner if the order of the words matches the drawing. They revise based on the answer.",
+                "avoid": "Checking the sentence for them.",
+                "nonverbal": "Gesture between the written sentence and the drawing.",
+                "say": "Write a draft. Ask your partner: does my word order match my picture?"
               }
             },
             "mll_framework_note": null,
-            "proficiency_divergence_note": null,
-            "mlr": {
-              "number": 7,
-              "name": "Compare and Connect"
-            }
-          },
-          {
-            "scenario_type": "partial-understanding",
-            "label": "Writing sentences that list category names and amounts without relational ratio language",
-            "interpretation": "The student writes observational statements like 'There are 6 buttons and 4 paperclips' or 'Buttons have 6, clips have 4' instead of framing the relationship as an association between two quantities.",
-            "is_mll": true,
-            "flat_move": null,
-            "proficiency_moves": {
-              "emerging": {
-                "move": "Provide a sentence strip with pre-printed blanks: 'The ratio of _____ to _____ is ___ : ___.' Point to their data table and help them transfer words and numbers in order.",
-                "avoid": "Accepting the descriptive count list as a ratio statement.",
-                "nonverbal": "Tap the first category in their table, tap the first blank on the sentence strip, tap the second category, tap the second blank.",
-                "say": "You counted 6 buttons and 4 clips. Let's write them as a ratio. Put 'buttons' here and 'clips' here. What numbers go in the blanks?"
-              },
-              "developing": {
-                "move": "Have the student read their statement to a partner, then use a provided sentence frame to convert their two separate count statements into one comparative ratio sentence.",
-                "avoid": "Writing the converted sentence for them.",
-                "say": "You listed the counts. Now turn those two facts into one sentence using the frame: 'The ratio of ___ to ___ is ___ to ___.'"
-              },
-              "expanding": {
-                "move": "Ask the student to compare their draft with the required sentence frames and revise it so that it explicitly describes the association between the two quantities.",
-                "avoid": "Telling them directly what words are missing.",
-                "say": "How can you rewrite your draft so it uses ratio language to describe the relationship between these two categories?"
-              }
-            },
-            "mll_framework_note": null,
-            "proficiency_divergence_note": null,
+            "proficiency_divergence_note": "Emerging relies on partner observation; Developing rehearses orally before writing; Expanding drafts and revises based on peer feedback regarding order.",
             "mlr": {
               "number": 1,
               "name": "Stronger and Clearer Each Time"
@@ -647,17 +649,71 @@ export const demoLesson = {
           },
           {
             "scenario_type": "on-track",
-            "label": "Accurately representing 3 categories and creating multiple pairwise ratio statements",
-            "interpretation": "The student sorts their collection into three distinct categories (e.g., red, green, blue counters) and writes multiple valid ratio statements comparing different pairs of categories with exact word-number alignment.",
+            "label": "Writes multiple correct sentences for a 3-category collection",
+            "interpretation": "The student is fluent with the ratio language and can flexibly describe different pairs within a larger set.",
             "is_mll": false,
             "flat_move": {
-              "move": "Challenge the student to write a three-way ratio statement (e.g., 'The ratio of A to B to C is 2 : 3 : 5') and verify whether the order still holds true.",
-              "avoid": "Discouraging three-quantity ratios; they are mathematically valid extensions of ratio language.",
-              "say": "You wrote ratios comparing two categories at a time. How might you write a single ratio statement that compares all three categories at once?"
+              "move": "Ask them to choose their favorite sentence and practice reading it aloud to prepare for the class share.",
+              "avoid": "Asking them to write even more sentences.",
+              "nonverbal": "Tap the paper where the sentences are written.",
+              "say": "Pick the one you want to share with the class and practice saying it."
             },
             "proficiency_moves": null,
+            "mll_framework_note": "null",
+            "proficiency_divergence_note": "null"
+          }
+        ]
+      },
+      {
+        "activity_id": "summary",
+        "scenarios": [
+          {
+            "scenario_type": "partial-understanding",
+            "label": "Drops connecting words when reading ratio",
+            "interpretation": "The student is focusing heavily on the nouns and numbers, omitting the functional language ('ratio of', 'to', 'for every') that makes the mathematical relationship precise.",
+            "is_mll": true,
+            "flat_move": null,
+            "proficiency_moves": {
+              "emerging": {
+                "move": "Say the full sentence slowly, emphasizing the connecting words. Ask them to repeat it with you.",
+                "avoid": "Accepting the telegraphic speech without modeling the full structure.",
+                "nonverbal": "Point to the squares, then point to the circles in the image as you say the words.",
+                "say": "The ratio of squares to circles. Say it with me."
+              },
+              "developing": {
+                "move": "Provide the written frame 'The ratio of ___ to ___ is ___ to ___.' Ask them to read their numbers into the frame with a partner.",
+                "avoid": "Correcting them verbally without providing a visual anchor for the missing words.",
+                "nonverbal": "Point to the blank spaces in the sentence frame as they speak.",
+                "say": "Read this frame to your partner, and fill in your words."
+              },
+              "expanding": {
+                "move": "Ask them to listen to a partner say the sentence, notice which small connecting words the partner used, and try saying it again.",
+                "avoid": "Telling them exactly which words they missed.",
+                "nonverbal": "Cup your ear to signal listening.",
+                "say": "Listen to how your partner says it. What small words did they use? Try it again."
+              }
+            },
             "mll_framework_note": null,
-            "proficiency_divergence_note": null
+            "proficiency_divergence_note": "Emerging uses choral repetition; Developing uses a visual frame with a partner; Expanding analyzes a partner's syntax to improve their own.",
+            "mlr": {
+              "number": 1,
+              "name": "Stronger and Clearer Each Time"
+            }
+          },
+          {
+            "scenario_type": "on-track",
+            "label": "Uses 'for every' correctly with grouped quantities",
+            "interpretation": "The student has internalized both the ratio language and the concept of equivalent ratios through grouping.",
+            "is_mll": false,
+            "flat_move": {
+              "move": "Ask them how they know that statement is true when the picture shows a larger total number of items.",
+              "avoid": "Simply saying 'good job' and moving on.",
+              "nonverbal": "Gesture to the entire collection on the board.",
+              "say": "How do you know there are 2 for every 1, when I see 6 and 3 up here?"
+            },
+            "proficiency_moves": null,
+            "mll_framework_note": "null",
+            "proficiency_divergence_note": "null"
           }
         ]
       }
@@ -667,11 +723,40 @@ export const demoLesson = {
     "activities": [
       {
         "activity_id": "1.1",
+        "learner_profile": [
+          {
+            "band": "emerging",
+            "discourse_does": "Names a single category like 'color' or 'blue'.",
+            "discourse_reaching": "Connecting the category name to the count of items.",
+            "sentence_does": "Says 'five blue'.",
+            "sentence_reaching": "Using a complete statement like 'There are five blue shapes.'",
+            "word_does": "Uses everyday color or shape words.",
+            "word_reaching": "Adopting the agreed-upon class category names."
+          },
+          {
+            "band": "developing",
+            "discourse_does": "Reports the category and the count together.",
+            "discourse_reaching": "Describing the entire sorting rule for the collection.",
+            "sentence_does": "Says 'I have five blue and three red.'",
+            "sentence_reaching": "Using 'sorted by' to explain the grouping.",
+            "word_does": "Uses 'group' and 'category'.",
+            "word_reaching": "Using 'amount' or 'quantity'."
+          },
+          {
+            "band": "expanding",
+            "discourse_does": "Explains the sorting rule and lists the resulting groups and counts.",
+            "discourse_reaching": "Comparing different ways to sort the same collection.",
+            "sentence_does": "Says 'If we sort by color, there are three groups.'",
+            "sentence_reaching": "Using conditional structures to propose alternative sorts.",
+            "word_does": "Uses 'category', 'amount', and specific shape names.",
+            "word_reaching": "Using 'ratio' informally."
+          }
+        ],
         "language_demands": {
-          "receptive": "Read task prompts asking to sort by color, area, and custom rules; listen to peers describe distinct grouping criteria.",
-          "productive": "Verbally name attribute categories (e.g., 'number of sides', 'dark vs. light') and state the count of figures in each group.",
-          "interactive": "Compare sorting rules in whole-group discussion to justify why a single shape belongs in a specific category.",
-          "everyday_to_academic_bridge": "Connects informal descriptions like 'shapes with 4 corners' or 'tilted boxes' to formal terms like 'quadrilaterals' and defined attribute categories.",
+          "receptive": "Listen to peer descriptions of how they sorted the collection.",
+          "productive": "Name the categories used to sort the items and state the count for each.",
+          "interactive": "Discuss different possible ways to sort the same collection.",
+          "everyday_to_academic_bridge": "Moving from everyday descriptions of objects (like 'the blue ones') to formal category names.",
           "elsf_guidelines_applied": [
             1,
             2,
@@ -680,46 +765,77 @@ export const demoLesson = {
         },
         "functional_language": {
           "language_functions": [
-            "classify objects by attribute",
-            "describe categories and counts"
+            "describe categories",
+            "quantify items"
           ],
           "example_phrases": [
-            "I sorted the figures into ___ groups based on ___.",
-            "There are ___ shapes with an area of ___ square units."
+            "I sorted by...",
+            "There are [number] in this group."
           ],
-          "l1_bridge": "Many attribute words (e.g., 'color/color', 'figure/figura', 'category/categoría') have direct Spanish cognates that can anchor sorting rules.",
+          "l1_bridge": "Students can use everyday language or L1 to name the categories before translating to English shape or color names.",
           "elsf_guidelines_applied": [
             1,
             3,
-            7
+            7,
+            12
           ]
         }
       },
       {
         "activity_id": "1.2",
+        "learner_profile": [
+          {
+            "band": "emerging",
+            "discourse_does": "Points to the two groups and says their numbers.",
+            "discourse_reaching": "Placing the numbers into the provided sentence frame.",
+            "sentence_does": "Says 'three squares, two circles'.",
+            "sentence_reaching": "Using the 'is ___ to ___' structure.",
+            "word_does": "Uses number words and shape names.",
+            "word_reaching": "Using the word 'ratio'."
+          },
+          {
+            "band": "developing",
+            "discourse_does": "Reads a completed sentence frame aloud.",
+            "discourse_reaching": "Self-correcting if the word order doesn't match the number order.",
+            "sentence_does": "Says 'The ratio of squares to circles is 3 to 2.'",
+            "sentence_reaching": "Explaining why the 3 comes first.",
+            "word_does": "Uses 'ratio' and 'to'.",
+            "word_reaching": "Using 'for every'."
+          },
+          {
+            "band": "expanding",
+            "discourse_does": "Writes multiple ratio sentences for the same collection.",
+            "discourse_reaching": "Explaining how the two sentences describe the same picture differently.",
+            "sentence_does": "Says 'For every 3 squares, there are 2 circles.'",
+            "sentence_reaching": "Using parallel structure to flip the ratio: 'and for every 2 circles, there are 3 squares.'",
+            "word_does": "Uses 'ratio', 'category', and 'for every'.",
+            "word_reaching": "Using 'association' or 'relationship'."
+          }
+        ],
         "language_demands": {
-          "receptive": "Read structured ratio sentence frames containing relational prepositions ('to', 'for every') and colon notation.",
-          "productive": "Write complete sentences expressing two-quantity comparisons while maintaining strict alignment between word order and number order.",
-          "interactive": "Orally compare recorded category counts with a partner to check whether the written numbers match the named categories in sequence.",
-          "everyday_to_academic_bridge": "Transitions from everyday additive comparisons ('there are 3 more red blocks than blue') to multiplicative relational framing ('3 red for every 2 blue').",
+          "receptive": "Read the provided ratio sentence frames.",
+          "productive": "Write sentences matching the frames, ensuring the order of words matches the order of numbers.",
+          "interactive": "Discuss the order of words and numbers with a partner to check for accuracy.",
+          "everyday_to_academic_bridge": "Bridging from '3 squares and 2 circles' to 'The ratio of squares to circles is 3 to 2.'",
           "elsf_guidelines_applied": [
             1,
-            6,
-            8
+            2,
+            6
           ]
         },
         "functional_language": {
           "language_functions": [
-            "describe a ratio relationship",
-            "compare two quantities sequentially"
+            "describe a ratio",
+            "sequence quantities"
           ],
           "example_phrases": [
-            "The ratio of ___ to ___ is ___ to ___.",
-            "There are ___ [category A] for every ___ [category B]."
+            "The ratio of [category 1] to [category 2] is [number 1] to [number 2].",
+            "For every [number 1] [category 1], there are [number 2] [category 2]."
           ],
-          "l1_bridge": "The phrasing 'for every' translates directly to 'por cada' in Spanish, reinforcing the paired association between the two quantities.",
+          "l1_bridge": "The concept of 'for every' can be mapped to L1 phrases indicating rate or correspondence.",
           "elsf_guidelines_applied": [
             1,
+            3,
             7,
             12
           ]
@@ -727,31 +843,121 @@ export const demoLesson = {
       },
       {
         "activity_id": "1.3",
+        "learner_profile": [
+          {
+            "band": "emerging",
+            "discourse_does": "Shows their physical sort and points to the groups.",
+            "discourse_reaching": "Matching their physical groups to a written ratio sentence.",
+            "sentence_does": "Says 'four here, two here'.",
+            "sentence_reaching": "Using the '___ : ___' format verbally.",
+            "word_does": "Uses basic nouns for their items.",
+            "word_reaching": "Using 'category' to describe their groups."
+          },
+          {
+            "band": "developing",
+            "discourse_does": "Reads their ratio sentence while pointing to the corresponding parts of their display.",
+            "discourse_reaching": "Explaining how the display proves the sentence.",
+            "sentence_does": "Says 'The ratio of red to blue is 4 to 2.'",
+            "sentence_reaching": "Adding 'because' to link the sentence to the visual.",
+            "word_does": "Uses 'ratio' and the category names.",
+            "word_reaching": "Using 'visual display' or 'represent'."
+          },
+          {
+            "band": "expanding",
+            "discourse_does": "Presents their display and reads multiple corresponding sentences.",
+            "discourse_reaching": "Critiquing whether a peer's sentence matches their display.",
+            "sentence_does": "Says 'My display shows that for every 4 red items, there are 2 blue items.'",
+            "sentence_reaching": "Using comparative language to discuss different displays.",
+            "word_does": "Uses 'ratio', 'for every', and specific category names.",
+            "word_reaching": "Using 'equivalent' informally if they grouped items."
+          }
+        ],
         "language_demands": {
-          "receptive": "Interpret peers' visual representations, charts, and ratio sentences during display sharing.",
-          "productive": "Write ratio statements from self-selected collections and create an annotated poster showing grouped items.",
-          "interactive": "Discuss with a peer how visual groupings (e.g., 2 circles grouped with 1 square) justify the written ratio sentence.",
-          "everyday_to_academic_bridge": "Bridges physical grouping and spatial arrangements to symbolic ratio notation (A:B) and formal 'for every' sentences.",
+          "receptive": "Interpret a peer's visual display of a sorted collection.",
+          "productive": "Write ratio sentences for their own collection and explain how the display matches the sentence.",
+          "interactive": "Share the display and sentences with the class or group.",
+          "everyday_to_academic_bridge": "Translating a physical arrangement of items into a formal written ratio sentence.",
           "elsf_guidelines_applied": [
+            1,
             2,
-            4,
-            9
+            6
           ]
         },
         "functional_language": {
           "language_functions": [
-            "justify a statement using a representation",
-            "translate between visual and written forms"
+            "represent a ratio visually",
+            "describe a ratio"
           ],
           "example_phrases": [
-            "My display shows that for every ___ of ___, there are ___ of ___.",
-            "The ratio of ___ : ___ matches the visual grouping of ___."
+            "My display shows...",
+            "The ratio of [category 1] to [category 2] is [number 1] : [number 2]."
           ],
-          "l1_bridge": "Allow students to initially label their visual display categories in their home language before writing the formal English ratio sentences.",
+          "l1_bridge": "Students can arrange items physically to show the ratio before attaching English words.",
           "elsf_guidelines_applied": [
+            1,
             3,
-            4,
-            7
+            7,
+            12
+          ]
+        }
+      },
+      {
+        "activity_id": "summary",
+        "learner_profile": [
+          {
+            "band": "emerging",
+            "discourse_does": "Repeats a modeled ratio sentence.",
+            "discourse_reaching": "Generating a new ratio sentence for a familiar picture.",
+            "sentence_does": "Says 'Ratio is 3 to 2.'",
+            "sentence_reaching": "Including the category names in the sentence.",
+            "word_does": "Uses 'ratio' and numbers.",
+            "word_reaching": "Using 'association' or 'quantities'."
+          },
+          {
+            "band": "developing",
+            "discourse_does": "Reads a complete ratio sentence from the summary.",
+            "discourse_reaching": "Explaining the importance of the order of the words and numbers.",
+            "sentence_does": "Says 'The ratio of squares to circles is 3 to 2.'",
+            "sentence_reaching": "Using 'because' to justify the order.",
+            "word_does": "Uses 'ratio', 'category', and 'order'.",
+            "word_reaching": "Using 'association'."
+          },
+          {
+            "band": "expanding",
+            "discourse_does": "Explains what a ratio is using an example from the lesson.",
+            "discourse_reaching": "Creating a new context for a ratio.",
+            "sentence_does": "Says 'A ratio is an association between two quantities, like 3 squares for every 2 circles.'",
+            "sentence_reaching": "Using abstract terms like 'quantities' and 'association' confidently.",
+            "word_does": "Uses 'ratio', 'association', and 'quantities'.",
+            "word_reaching": "Using 'represent' or 'describe'."
+          }
+        ],
+        "language_demands": {
+          "receptive": "Read the summary text and the formal definition of a ratio.",
+          "productive": "State a ratio sentence accurately, maintaining the correct order.",
+          "interactive": "Refine a ratio sentence with a partner to ensure precision.",
+          "everyday_to_academic_bridge": "Solidifying the formal definition of 'ratio' as an association between quantities.",
+          "elsf_guidelines_applied": [
+            1,
+            2,
+            6
+          ]
+        },
+        "functional_language": {
+          "language_functions": [
+            "define a ratio",
+            "describe an association"
+          ],
+          "example_phrases": [
+            "A ratio is...",
+            "The ratio of [category 1] to [category 2] is [number 1] to [number 2]."
+          ],
+          "l1_bridge": "Discussing the concept of 'association' using familiar L1 examples like ingredients in a recipe.",
+          "elsf_guidelines_applied": [
+            1,
+            3,
+            7,
+            12
           ]
         }
       }
@@ -761,160 +967,187 @@ export const demoLesson = {
     "activities": [
       {
         "activity_id": "1.1",
-        "language_work": "Students generate informal descriptions and vocabulary to classify geometric figures by multiple attributes before transitioning to formal ratio language.",
+        "language_work": "Students use informal language to describe how they sort a collection of items.",
         "mlrs": [
           {
             "number": 2,
             "name": "Collect and Display",
-            "why_here": "Students use everyday sorting terms like 'pointy,' 'sides,' or 'shading' that the teacher captures visually to bridge toward precise mathematical categories and quantities."
+            "why_here": "Students are producing the informal wording this lesson will make precise — capture it now so the class can refine and reuse it."
           }
         ]
       },
       {
         "activity_id": "1.2",
-        "language_work": "Students interpret structured sentence frames to express ratios, matching the sequential order of category names with their corresponding numerical counts.",
+        "language_work": "Students write their first formal ratio sentences, focusing on matching the order of words to the order of numbers.",
         "mlrs": [
           {
             "number": 3,
             "name": "Critique, Correct, and Clarify",
-            "why_here": "A student inevitably writes the numbers reversed relative to the words, so analyzing an anonymous flawed sentence on the board helps the class identify and repair the order mismatch."
+            "why_here": "This is where the precise form is first attempted, so the characteristic error is worth surfacing and correcting together before it sets."
           },
           {
             "number": 1,
             "name": "Stronger and Clearer Each Time",
-            "why_here": "Students read their initial ratio sentences to a partner, verify that the order of nouns matches the order of quantities, and revise their statements for precision."
+            "why_here": "After analyzing a flawed sentence, students need an immediate opportunity to revise their own drafts to ensure the order matches."
           }
         ]
       },
       {
         "activity_id": "1.3",
-        "language_work": "Students construct visual displays of their own sorted collections and explain the ratio relationships using multiple linguistic and symbolic forms.",
+        "language_work": "Students connect a physical or visual display to a written ratio sentence and explain the connection to peers.",
         "mlrs": [
-          {
-            "number": 7,
-            "name": "Compare and Connect",
-            "why_here": "Pairing different student displays side by side reveals that different visual arrangements can represent the exact same ratio statement and category comparison."
-          },
           {
             "number": 1,
             "name": "Stronger and Clearer Each Time",
-            "why_here": "During the gallery walk, students explain their display to consecutive peers, refining their explanation of which category corresponds to each number."
+            "why_here": "Students already hold a formulation; the work now is making it clearer for a reader who cannot see their thinking."
+          }
+        ]
+      },
+      {
+        "activity_id": "summary",
+        "language_work": "Students consolidate the formal definition of a ratio and practice saying ratio sentences accurately.",
+        "mlrs": [
+          {
+            "number": 1,
+            "name": "Stronger and Clearer Each Time",
+            "why_here": "Students hold an idea worth sharpening, and a second draft is the shortest route to precision."
           }
         ]
       }
     ]
   },
   "wristband": {
-    "arc_one_line": "Sort objects into categories, then write precise ratio statements matching order.",
+    "arc_one_line": "Sort items, count categories, and write precise ratio sentences matching order.",
     "preflight": [
-      "Set up visual chart for sorting terms before opening 1.1.",
-      "Prepare display collection with distinct countable categories for 1.2 demonstration.",
-      "Distribute physical object bags with three distinct categories to partner pairs."
+      "Prep a physical collection of items to sort.",
+      "Write the three ratio sentence frames on the board.",
+      "Identify a student error in order to use for MLR 3."
     ],
     "top_signals": [
-      "Matching number order to category name order consistently.",
-      "Using 'for every' phrasing correctly with grouped items.",
-      "Aligning visual groupings directly to written ratio statements."
+      "Matches number order to category word order.",
+      "Uses the provided sentence frames accurately.",
+      "Groups items visually to match the ratio."
     ],
     "top_frictions": [
-      "Reversing number order when naming smaller category first.",
-      "Counting total collection instead of comparing two categories.",
-      "Mixing up colon notation meaning with fraction division."
+      "Flips the numbers relative to the words.",
+      "Writes fractions instead of ratio notation.",
+      "Struggles to name clear, distinct categories."
     ],
     "activities": [
       {
         "activity_id": "1.1",
         "tiles": [
           {
-            "observation_short": "Vague category descriptions like 'these look big' instead of measurable area or side length.",
+            "observation_short": "Naming categories informally — using everyday words instead of math attributes.",
             "friction_type": "language",
-            "move_short": "Record informal category words on a public chart. MLR 2 lets students reference and refine geometric attributes during discussion.",
-            "avoid_short": "Correcting informal category words immediately yourself.",
-            "has_proficiency_variants": true,
-            "glyph_observation": "VAGUE CATEGORY WORDS",
+            "move_short": "Record their category names on the board. MLR 2 Collect and Display validates their language while setting up the shift to precise ratio terms.",
+            "avoid_short": "Correcting their informal words.",
+            "glyph_observation": "INFORMAL CATEGORIES",
             "mlr": {
               "number": 2,
               "name": "Collect and Display"
             }
           },
           {
-            "observation_short": "Counting total shapes instead of sorting into distinct attribute groups across the set.",
+            "observation_short": "Struggling to see a third way to sort the shapes.",
             "friction_type": "math",
-            "move_short": "Chart different student sorting rules side-by-side. MLR 2 highlights that attributes create distinct sub-groups before counting quantities.",
-            "avoid_short": "Telling students which rule to sort by.",
-            "glyph_observation": "TOTAL INSTEAD SORT",
-            "glyph_move": "CHART RULES · COMPARE GROUPS",
+            "move_short": "Ask what else is different about the shapes. MLR 8 wait time gives them space to notice attributes like number of sides or shading.",
+            "avoid_short": "Telling them the third way.",
+            "glyph_observation": "STUCK ON SORTING",
             "mlr": {
               "number": 2,
               "name": "Collect and Display"
             }
           }
         ],
-        "synthesis_short": "Highlight the charted sorting rules. Ask: how does changing the category change the group counts?"
+        "synthesis_short": "Point to the displayed categories. Ask: how do these groups help us compare amounts?"
       },
       {
         "activity_id": "1.2",
         "tiles": [
           {
-            "observation_short": "Numbers reversed in sentence — wrote '4 to 7' when naming 7 circles to 4 squares.",
+            "observation_short": "Numbers flipped — defaulted to bigger-first; missed the word order.",
             "friction_type": "language-math",
-            "move_short": "Display the anonymous reversed statement. MLR 3 prompts partners to critique which category name matches the first number written.",
-            "avoid_short": "Erasing and writing correct numbers yourself.",
+            "move_short": "Display the flipped sentence anonymously. MLR 3 Critique, Correct, and Clarify lets the class spot the mismatch and fix the order together.",
+            "avoid_short": "Fixing the order yourself.",
             "is_crux_moment": true,
             "has_proficiency_variants": true,
-            "glyph_observation": "REVERSED RATIO ORDER",
-            "glyph_move": "DISPLAY ERROR · PARTNERS CRITIQUE",
+            "glyph_observation": "NUMBERS FLIPPED",
             "mlr": {
               "number": 3,
               "name": "Critique, Correct, and Clarify"
             }
           },
           {
-            "observation_short": "Struggling to use 'for every' frame to describe the teacher collection categories.",
+            "observation_short": "Wrote a correct sentence but didn't use the provided frames.",
             "friction_type": "language",
-            "move_short": "Have partners share sentences aloud and refine phrasing. MLR 1 helps students clarify how category amounts pair together.",
-            "avoid_short": "Filling in sentence blanks for students.",
-            "has_proficiency_variants": true,
-            "glyph_observation": "STRUGGLING WITH FRAME",
-            "glyph_move": "PARTNER SHARE · REFINE SENTENCE",
+            "move_short": "Have them read it to a partner. MLR 1 Stronger and Clearer prompts them to rewrite it using the formal frame structure.",
+            "avoid_short": "Accepting the informal draft.",
+            "glyph_observation": "IGNORED FRAMES",
             "mlr": {
               "number": 1,
               "name": "Stronger and Clearer Each Time"
             }
           }
         ],
-        "synthesis_short": "Display circle and square counts. Ask: why must number order match the word order exactly?"
+        "synthesis_short": "Surface the corrected sentence. Ask: why does the order of the numbers have to match the words?"
       },
       {
         "activity_id": "1.3",
         "tiles": [
           {
-            "observation_short": "Display arranges items randomly, obscuring the paired comparison described in their written ratio.",
+            "observation_short": "Visual display doesn't clearly match the written ratio sentence.",
             "friction_type": "math",
-            "move_short": "Place grouped and ungrouped displays side-by-side. MLR 7 reveals how physical equal groupings make the written ratio visible.",
-            "avoid_short": "Rearranging physical items for the student.",
-            "glyph_observation": "RANDOM DISPLAY ARRANGEMENT",
-            "glyph_move": "COMPARE DISPLAYS · CONNECT GROUPINGS",
+            "move_short": "Partner swap displays. MLR 1 Stronger and Clearer lets the partner say what they see, prompting a revision to make the grouping obvious.",
+            "avoid_short": "Pointing out the mismatch.",
+            "glyph_observation": "UNCLEAR DISPLAY",
             "mlr": {
-              "number": 7,
-              "name": "Compare and Connect"
+              "number": 1,
+              "name": "Stronger and Clearer Each Time"
             }
           },
           {
-            "observation_short": "Describing collection ratios using everyday words instead of colon or 'for every' syntax.",
-            "friction_type": "language",
-            "move_short": "Have students read displays to peers and revise statements. MLR 1 builds precision using formal ratio colon notation.",
-            "avoid_short": "Accepting incomplete verbal descriptions without revision.",
+            "observation_short": "Using 'out of' language instead of 'to' or 'for every'.",
+            "friction_type": "language-math",
+            "move_short": "Revoice using the frame. MLR 8 revoicing shifts them from part-whole fraction language to part-part ratio language.",
+            "avoid_short": "Saying 'out of' is wrong.",
             "has_proficiency_variants": true,
-            "glyph_observation": "INFORMAL RATIO SYNTAX",
-            "glyph_move": "PEER REVIEW · REVISE NOTATION",
+            "glyph_observation": "OUT OF LANGUAGE",
             "mlr": {
               "number": 1,
               "name": "Stronger and Clearer Each Time"
             }
           }
         ],
-        "synthesis_short": "Show two different displays for the same collection. Ask: how do both represent the same ratio?"
+        "synthesis_short": "Show two contrasting visual displays. Ask: how do both of these show a 3 to 2 ratio?"
+      },
+      {
+        "activity_id": "summary",
+        "tiles": [
+          {
+            "observation_short": "Can say the ratio but struggles to explain what it means.",
+            "friction_type": "language",
+            "move_short": "Draft an explanation, share with a partner. MLR 1 Stronger and Clearer builds their confidence to articulate the association between quantities.",
+            "avoid_short": "Skipping the partner share.",
+            "glyph_observation": "CANNOT EXPLAIN",
+            "mlr": {
+              "number": 1,
+              "name": "Stronger and Clearer Each Time"
+            }
+          },
+          {
+            "observation_short": "Confuses the colon notation with division or fractions.",
+            "friction_type": "math",
+            "move_short": "Read the colon aloud as 'to'. MLR 8 choral response reinforces that the colon is just another way to write the word 'to'.",
+            "avoid_short": "Explaining fractions.",
+            "glyph_observation": "COLON CONFUSION",
+            "mlr": {
+              "number": 1,
+              "name": "Stronger and Clearer Each Time"
+            }
+          }
+        ],
+        "synthesis_short": "Display the 3 to 6 and 1 to 2 sentences. Ask: how do both describe the same collection?"
       }
     ],
     "mlr_legend": [
@@ -923,38 +1156,31 @@ export const demoLesson = {
           "number": 1,
           "name": "Stronger and Clearer Each Time"
         },
-        "one_line_cue": "Share draft with peer, gather feedback, write stronger."
+        "one_line_cue": "Draft, partner share, revise for precision."
       },
       {
         "mlr": {
           "number": 2,
           "name": "Collect and Display"
         },
-        "one_line_cue": "Capture student language publicly to refine and reuse."
+        "one_line_cue": "Record student words, display, refine together."
       },
       {
         "mlr": {
           "number": 3,
           "name": "Critique, Correct, and Clarify"
         },
-        "one_line_cue": "Display flawed anonymous work for partner revision."
-      },
-      {
-        "mlr": {
-          "number": 7,
-          "name": "Compare and Connect"
-        },
-        "one_line_cue": "Examine two representations side-by-side to find connections."
+        "one_line_cue": "Display error, ask what's wrong, fix together."
       }
     ],
-    "lesson_synthesis_short": "Surface student displays showing circles to squares. Ask: how does changing the written word order change the ratio's meaning?"
+    "lesson_synthesis_short": "Surface the 'for every' frame. Ask: how does the order of words tell us the order of numbers?"
   },
   "lesson_synthesis": {
-    "prompt": "Consolidate the lesson by displaying an image of 4 squares and 6 circles. Ask: 'If I say the ratio of circles to squares is 4 to 6, what is wrong with my statement and how do we fix it?' Guide students to state that the order of the numbers must match the order of the categories (6 to 4), and have students chorally read the corrected sentence frames: 'The ratio of circles to squares is 6 to 4' and 'For every 3 circles there are 2 squares.'",
+    "prompt": "Display the image of 3 squares and 2 circles. Ask a student to read the sentence 'The ratio of squares to circles is 3 to 2.' Ask the class what the picture would look like if the sentence said '2 to 3'.",
     "builds_on": [
-      "Activity 1.1: Students established that items can be sorted into distinct category counts.",
-      "Activity 1.2: Students learned that ratio statements require matching word and number order.",
-      "Activity 1.3: Students connected concrete visual groupings directly to written ratio sentences."
+      "1.1: students named the categories",
+      "1.2: students matched number order to word order",
+      "1.3: students connected sentences to visual displays"
     ]
   },
   "selection": {
@@ -967,17 +1193,17 @@ export const demoLesson = {
     "activities": [
       {
         "activity_id": "1.1",
-        "activity_outcome": "Students describe different ways to sort a set of geometric figures by category.",
+        "activity_outcome": "Students can sort items into categories and count them to prepare for describing ratios.",
         "outcome_type": "formulate_precisely",
         "resolved_outcome_type": "formulate_precisely",
         "affordances": {
           "flawed_sample_provided": false,
-          "error_harvestable": true,
+          "error_harvestable": false,
           "splittable_materials": false,
-          "student_products_differ": true,
-          "public_share_step": true,
+          "student_products_differ": false,
+          "public_share_step": false,
           "frames_already_printed": false,
-          "context_word_count": 38
+          "context_word_count": 35
         },
         "function": "Setup",
         "lead": 2,
@@ -987,17 +1213,17 @@ export const demoLesson = {
       },
       {
         "activity_id": "1.2",
-        "activity_outcome": "Students write sentences describing ratios in a shared collection using precise word and number order.",
+        "activity_outcome": "Students can write a sentence that describes a ratio, ensuring words and numbers are in the correct order.",
         "outcome_type": "formulate_precisely",
         "resolved_outcome_type": "formulate_precisely",
         "affordances": {
           "flawed_sample_provided": false,
           "error_harvestable": true,
           "splittable_materials": false,
-          "student_products_differ": true,
+          "student_products_differ": false,
           "public_share_step": false,
           "frames_already_printed": true,
-          "context_word_count": 82
+          "context_word_count": 55
         },
         "function": "Crux",
         "lead": 3,
@@ -1007,9 +1233,9 @@ export const demoLesson = {
       },
       {
         "activity_id": "1.3",
-        "activity_outcome": "Students write ratio sentences and make visual displays representing relationships in their own collections.",
-        "outcome_type": "connect_representations",
-        "resolved_outcome_type": "connect_representations",
+        "activity_outcome": "Students can write and say a sentence that describes a ratio based on their own sorted collection.",
+        "outcome_type": "formulate_precisely",
+        "resolved_outcome_type": "formulate_precisely",
         "affordances": {
           "flawed_sample_provided": false,
           "error_harvestable": true,
@@ -1017,23 +1243,43 @@ export const demoLesson = {
           "student_products_differ": true,
           "public_share_step": true,
           "frames_already_printed": true,
-          "context_word_count": 95
+          "context_word_count": 65
         },
         "function": "Application",
-        "lead": 7,
-        "second": 1,
-        "because": "The outcome is seeing what two approaches share, which only happens when they are put side by side and the connection is named.",
+        "lead": 1,
+        "second": null,
+        "because": "Students already hold a formulation; the work now is making it clearer for a reader who cannot see their thinking.",
+        "teacher_prep": null
+      },
+      {
+        "activity_id": "summary",
+        "activity_outcome": "Students can say words and numbers in the correct order to accurately describe a ratio.",
+        "outcome_type": "formulate_precisely",
+        "resolved_outcome_type": "formulate_precisely",
+        "affordances": {
+          "flawed_sample_provided": false,
+          "error_harvestable": false,
+          "splittable_materials": false,
+          "student_products_differ": false,
+          "public_share_step": false,
+          "frames_already_printed": false,
+          "context_word_count": 85
+        },
+        "function": "Synthesis",
+        "lead": 1,
+        "second": null,
+        "because": "Students hold an idea worth sharpening, and a second draft is the shortest route to precision.",
         "teacher_prep": null
       }
     ]
   },
   "provenance": {
-    "pipeline_version": "2026-08-22.1+08fb3f478d223abc",
-    "cache_key": "6dbbdc789323b58e4c22cf11d5a03a4e",
+    "pipeline_version": "2026-08-22.5+76b7bb0788907be7",
+    "cache_key": "945236ff8e353c5547bec5c546241b49",
     "provider": "gemini",
-    "model": "gemini-3.7-flash",
+    "model": "gemini-3.1-pro-preview",
     "thinking": "medium",
-    "generated_at": "2026-08-22T18:39:59.833Z",
+    "generated_at": "2026-08-25T23:55:20.076Z",
     "served_from_cache": false
   }
 } as unknown as LessonData;
