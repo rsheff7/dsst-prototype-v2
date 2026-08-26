@@ -66,11 +66,13 @@ function ProficiencyRow({
 
 function ActivityCard({
   activity,
-  proficiency,
   lesson,
 }: {
   activity: Activity;
-  proficiency: LessonData['adaptation_guardrails']['by_proficiency'];
+  // by_proficiency used to be threaded in here and rendered as three cards. The
+  // ELD surface superseded that view, and the prop was left behind unread while
+  // the component below showed the generic lens move instead. EldProficiencyView
+  // now reads the lesson's band move itself.
   lesson: LessonData;
 }) {
   const [open, setOpen] = useState(false);
@@ -454,12 +456,7 @@ export default function LessonPathway({ lesson, onNavigate }: Props) {
 
         <div className="space-y-0">
           {lesson.activities.map((activity) => (
-            <ActivityCard
-              key={activity.id}
-              activity={activity}
-              proficiency={lesson.adaptation_guardrails.by_proficiency}
-              lesson={lesson}
-            />
+            <ActivityCard key={activity.id} activity={activity} lesson={lesson} />
           ))}
         </div>
       </div>

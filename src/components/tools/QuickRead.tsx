@@ -394,7 +394,7 @@ function PlanTile({ tile }: { tile: WristbandTile }) {
               <span
                 className="rounded-full px-2 py-0.5 text-[10px] font-semibold"
                 style={{ backgroundColor: '#EEEDFE', color: '#26215C' }}
-                title="Response differs across Entering / Developing / Bridging — see Moves"
+                title="Response differs across Entering–Emerging / Developing–Expanding / Bridging–Reaching — see Moves"
               >
                 3 levels
               </span>
