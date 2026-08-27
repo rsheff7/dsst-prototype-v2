@@ -391,9 +391,9 @@ export default function AuditPage() {
                     const src = lesson.activities.find((x) => x.id === entry.activity_id);
                     return src ? ` ${activitySlot(src.title)}` : '';
                   })()}</p>
-                  {entry.language_work && (
+                  {entry.lesson_outcome && (
                     <p className="text-[0.8rem] text-ink-muted mt-1 leading-relaxed italic">
-                      {entry.language_work}
+                      {entry.lesson_outcome}
                     </p>
                   )}
                 </div>

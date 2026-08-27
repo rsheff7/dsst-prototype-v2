@@ -128,6 +128,6 @@ export const ARGUE_LENS: Lens = [
       reaching: '—',
     },
     embeddedMove:
-      'Treat as a full participant; language work is now indistinguishable from the mathematical work',
+      'Treat as a full participant; language use is now indistinguishable from the mathematical work',
   },
 ];

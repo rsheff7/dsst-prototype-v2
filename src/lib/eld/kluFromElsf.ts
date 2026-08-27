@@ -2,7 +2,7 @@
  * Derive a KLU from ELSF's existing language_functions output.
  *
  * The framework rule: do NOT build a second demand classifier. ELSF already
- * diagnoses what language work the activity demands; the convergence layer
+ * diagnoses the activity's Language Mode; the convergence layer
  * specializes that diagnosis per learner. This function is the deterministic
  * bridge: a pure keyword-priority scan over ELSF's language_functions strings.
  *

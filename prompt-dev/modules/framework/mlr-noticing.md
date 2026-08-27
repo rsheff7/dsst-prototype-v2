@@ -10,7 +10,7 @@ Your analysis must reflect this cycle. Every MLL-flagged item (friction tagged "
 
 # THE 8 MATHEMATICAL LANGUAGE ROUTINES
 
-Use these rules to choose which MLR fits. When a lesson moment fits multiple MLRs, pick the one that does the most language work for the specific student behavior.
+Use these rules to choose which MLR fits. When a lesson moment fits multiple MLRs, pick the one that does the most for the specific student behavior.
 
 MLR 1 — Stronger and Clearer Each Time
   Apply when students must refine a math idea through partner exchange — first draft, partner feedback, stronger draft.

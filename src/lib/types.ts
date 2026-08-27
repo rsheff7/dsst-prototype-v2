@@ -152,7 +152,14 @@ export interface MlrInferenceMlrItem {
 
 export interface MlrInferenceActivity {
   activity_id: string;
-  language_work: string;
+  /**
+   * The Lesson Outcome in prose — what students are expected to accomplish with
+   * language in this activity. Named `language_work` until 2026-08-27; that term
+   * is retired because it was doing three jobs at once. The other two now have
+   * their own names: Language Mode (receptive / productive / interactive, on
+   * LanguageDemandsForActivity) and Activity Role (Setup / Crux / Application).
+   */
+  lesson_outcome: string;
   mlrs: MlrInferenceMlrItem[];
 }
 
@@ -167,12 +174,19 @@ export interface MlrInference {
 // The two blocks below capture that reasoning per activity, citing which
 // ELSF guidelines (1-15) informed the reasoning.
 
+/**
+ * Language Mode — how students engage with language in an activity.
+ *
+ * Receptive, productive and interactive are the ELSF-aligned modes. Language
+ * Mode characterises the activity. It does NOT select the routine and does NOT
+ * determine the Key Language Use: both of those run off the Lesson Outcome.
+ */
 export interface LanguageDemandsForActivity {
   // What students must read or listen to in order to engage the task
   receptive: string;
   // What students must say or write to demonstrate their thinking
   productive: string;
-  // What students must discuss with peers; the back-and-forth language work
+  // What students must discuss with peers; the back-and-forth exchange
   interactive: string;
   // The gap between students' everyday/home language and the academic register the task requires
   everyday_to_academic_bridge: string;

@@ -9,7 +9,7 @@ The JSON has this shape. elsf_inference MUST be the FIRST field. mlr_inference S
       "language_demands": {
         "receptive": "string — what students must read or listen to to engage the task",
         "productive": "string — what students must say or write to demonstrate their thinking",
-        "interactive": "string — the back-and-forth language work that happens with peers",
+        "interactive": "string — the back-and-forth exchange that happens with peers",
         "everyday_to_academic_bridge": "string — where students' informal/home language sits in relation to the academic register the task requires",
         "elsf_guidelines_applied": [array of 1-15 numbers — which ELSF guidelines informed this; most relevant for language demands: 1, 2, 6]
       },
@@ -24,7 +24,7 @@ The JSON has this shape. elsf_inference MUST be the FIRST field. mlr_inference S
   "mlr_inference": {
     "activities": [{
       "activity_id": "1.1",
-      "language_work": "string — 1-2 sentences naming the kind of language work students do in this activity. Plain.",
+      "lesson_outcome": "string — 1-2 sentences naming the Lesson Outcome: what students are expected to accomplish with language in this activity. Plain.",
       "mlrs": [{
         "number": 1-8,
         "name": "string — the routine's full name",

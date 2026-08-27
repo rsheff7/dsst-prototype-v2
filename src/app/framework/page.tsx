@@ -182,10 +182,10 @@ export default function FrameworkPage() {
                 provenance: 'generated',
                 body: (
                   <>
-                    Every activity restates that target in its own terms, and is classified by the
-                    language work it demands — formulating something precisely, judging whether
-                    something is correct, connecting two representations, conveying information a
-                    partner cannot see.
+                    Every activity restates that target in its own terms, and is classified by its
+                    Lesson Outcome — what students are expected to accomplish: formulating
+                    something precisely, judging whether something is correct, connecting two
+                    representations, conveying information a partner cannot see.
                   </>
                 ),
               },
@@ -258,9 +258,9 @@ export default function FrameworkPage() {
               <>No deficit language about students. The guidance names what they bring and what they are reaching toward.</>,
             ]}
             provisional={[
-              <>Which two routines pair with which kind of language work. The pairings are our reading of the routines&apos; structure and have not been reviewed by DSST&apos;s math team.</>,
+              <>Which two routines pair with which Lesson Outcome and Activity Role. The pairings are our reading of the routines&apos; structure and have not been reviewed by DSST&apos;s math team.</>,
               <>The descriptions of what a learner at each WIDA level can produce. Drafted against the framework, not transcribed from it.</>,
-              <>The mapping from an activity&apos;s language work to a Key Language Use.</>,
+              <>The mapping from an activity&apos;s Lesson Outcome to a Key Language Use.</>,
               <>All three are scheduled for review with DSST&apos;s math team. Until then, treat a routine recommendation as a strong suggestion rather than a settled answer.</>,
             ]}
           />
@@ -268,8 +268,8 @@ export default function FrameworkPage() {
           <Callout label="What the tool reads">
             The only source is the lesson PDF you upload. Premo does not pull from external
             curricula, the web, or previous sessions. Note that student-facing IM exports do not
-            carry the teacher edition&apos;s suggested routines, so Premo infers the language work
-            from the student pages rather than reading a label.
+            carry the teacher edition&apos;s suggested routines, so Premo infers the Lesson
+            Outcome from the student pages rather than reading a label.
           </Callout>
 
           <div className="mt-8 space-y-5">
