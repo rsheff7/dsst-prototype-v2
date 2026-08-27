@@ -17,7 +17,7 @@
 
 import { DecisionScenario, LessonData } from '@/lib/types';
 import { useLesson } from '@/lib/lessonContext';
-import { kluFromElsf, resolve, bandForLevel, bandLevels } from '@/lib/eld';
+import { kluFromElsf, resolve, bandForLevel } from '@/lib/eld';
 
 interface Props {
   /** The activity id to differentiate. Used to look up ELSF inference. */
@@ -108,11 +108,6 @@ export default function EldProficiencyView({ activityId, lesson, compact = false
       ? 'lesson'
       : 'general';
 
-  // Names the band by the WIDA levels it covers. Never coin a name for it: a
-  // compound built from WIDA words reads as a WIDA term, and WIDA has none.
-  const levels = bandLevels(band);
-  const bandCoverage = `Levels ${levels[0]}–${levels[levels.length - 1]}`;
-
   // The chart prefers the profile generated for THIS activity's language in this
   // lesson's words. The lens rows remain the fallback for lessons generated
   // before the profile existed, and read as a category of learner rather than
@@ -162,9 +157,6 @@ export default function EldProficiencyView({ activityId, lesson, compact = false
           >
             {surfaceAnchor.label}
           </p>
-          <span className="text-[0.7rem]" style={{ color: WIDA_INK, opacity: 0.75 }}>
-            guidance for {bandCoverage}
-          </span>
         </div>
         <p className="text-[0.825rem] font-semibold text-gray-800 leading-tight">
           {move}
@@ -191,9 +183,6 @@ export default function EldProficiencyView({ activityId, lesson, compact = false
           >
             {surfaceAnchor.label}
           </p>
-          <span className="text-[0.775rem]" style={{ color: WIDA_INK, opacity: 0.75 }}>
-            guidance for {bandCoverage}
-          </span>
         </div>
 
       <div className="px-4 py-3">
