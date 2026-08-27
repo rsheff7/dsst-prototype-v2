@@ -102,22 +102,32 @@ export const WIDA_LEVELS: readonly WidaLevel[] = [1, 2, 3, 4, 5, 6] as const;
  *
  * The keys stay `emerging` / `developing` / `expanding` because they are the
  * schema's property names and renaming them would invalidate every stored
- * lesson. They are band keys, NOT WIDA level names — the `expanding` band
- * serves Bridging and Reaching. Read `label` for anything a teacher sees.
+ * lesson. They are band keys, NOT WIDA level names — the band keyed `expanding`
+ * serves Bridging and Reaching. Never surface a key to a teacher.
+ *
+ * Nor invent a name for a band. Compound labels ("Developing-Expanding") were
+ * tried and removed: built out of real WIDA words, they read as WIDA
+ * terminology, and WIDA has no such term. A reader fluent in the framework —
+ * an ELD specialist, a district MLL director — would take an invented compound
+ * for a real construct. That is a worse error than the point-label imprecision
+ * it was introduced to fix. The rule at the top of this file cuts both ways:
+ * WIDA vocabulary only, and only WIDA's own.
+ *
+ * So a band is named by the levels it covers. `bandLevels` returns them; the UI
+ * renders "Levels 3-4", which is a statement of coverage and cannot be mistaken
+ * for a framework term.
  */
 export type ProficiencyBand = 'emerging' | 'developing' | 'expanding';
 
 export interface BandRange {
   band: ProficiencyBand;
   levels: readonly WidaLevel[];
-  /** What a teacher sees. Names the range, never a single level. */
-  label: string;
 }
 
 export const BAND_RANGES: readonly BandRange[] = [
-  { band: 'emerging', levels: [1, 2], label: 'Entering–Emerging' },
-  { band: 'developing', levels: [3, 4], label: 'Developing–Expanding' },
-  { band: 'expanding', levels: [5, 6], label: 'Bridging–Reaching' },
+  { band: 'emerging', levels: [1, 2] },
+  { band: 'developing', levels: [3, 4] },
+  { band: 'expanding', levels: [5, 6] },
 ] as const;
 
 export function bandForLevel(level: WidaLevel): ProficiencyBand {
@@ -126,6 +136,7 @@ export function bandForLevel(level: WidaLevel): ProficiencyBand {
   return 'expanding';
 }
 
-export function bandLabel(band: ProficiencyBand): string {
-  return BAND_RANGES.find((b) => b.band === band)!.label;
+/** The WIDA levels a band covers. The only honest way to name one. */
+export function bandLevels(band: ProficiencyBand): readonly WidaLevel[] {
+  return BAND_RANGES.find((b) => b.band === band)!.levels;
 }
