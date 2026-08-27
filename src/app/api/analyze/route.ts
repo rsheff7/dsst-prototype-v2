@@ -401,7 +401,13 @@ function normalizeLesson(raw: Partial<LessonData> & Record<string, unknown>): Le
     mlr_inference: {
       activities: (raw.mlr_inference?.activities ?? []).map((a) => ({
         activity_id: a.activity_id ?? '',
-        language_work: a.language_work ?? '',
+        // `language_work` is the pre-2026-08-27 name for this field. Read it as
+        // a fallback so a lesson stored under the old schema still renders its
+        // outcome instead of an empty row in the audit view. The cast is needed
+        // because the field is gone from the type — which is the point; only
+        // this one boundary is allowed to know the old name.
+        lesson_outcome:
+          a.lesson_outcome ?? (a as { language_work?: string }).language_work ?? '',
         mlrs: (a.mlrs ?? [])
           .filter((m) => isValidMlrNumber(m.number))
           .map((m) => ({
@@ -717,7 +723,7 @@ Return a single JSON object with EXACTLY these top-level fields (and no others):
 
 mlr_inference.activities and elsf_inference.activities MUST each cover EVERY activity from the anchor.
 
-For each activity in mlr_inference, produce { activity_id, language_work, mlrs: [{ number, name, why_here }] }. Select EXACTLY 2 MLRs per activity — the assignment above tells you which. why_here is 1-2 sentences explaining why THIS routine fits THIS activity, referencing the specific student behavior or prompt.
+For each activity in mlr_inference, produce { activity_id, lesson_outcome, mlrs: [{ number, name, why_here }] }. Select EXACTLY 2 MLRs per activity — the assignment above tells you which. why_here is 1-2 sentences explaining why THIS routine fits THIS activity, referencing the specific student behavior or prompt.
 
 For each activity in elsf_inference, produce both:
 - language_demands { receptive, productive, interactive, everyday_to_academic_bridge, elsf_guidelines_applied }
@@ -1007,7 +1013,11 @@ log('starting anchor pass (Pass 0)');
 
 // The anchor writes each activity's outcome against the PUBLISHED targets
     // rather than inventing a goal, and classifies it into outcome_type — the
-    // enum that actually selects the routine.
+    // Lesson Outcome enum that drives both deterministic mappings:
+    //   Lesson Outcome + Activity Role -> Mathematical Language Routine
+    //   Lesson Outcome                 -> Key Language Use
+    // Language Mode (receptive / productive / interactive) drives neither; it
+    // characterises the activity and is produced by the ELSF pass.
     const anchorMessage = lessonTargets.targets.length
       ? `${passAnchorMessage}
 

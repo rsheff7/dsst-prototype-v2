@@ -15,7 +15,7 @@
  *
  * WHAT MAKES THIS STABLE. Selection reads two inputs, both enums:
  *
- *   outcome_type — the language work the activity's outcome demands
+ *   outcome_type — the Lesson Outcome: what students must accomplish
  *   function     — the activity's role in the lesson arc
  *
  * Neither is prose. The activity's outcome is still written by the model and is
@@ -46,7 +46,8 @@
 import type { MlrNumber } from './mlrs.ts';
 
 /**
- * The language work an outcome demands. This — not the wording of the outcome —
+ * The Lesson Outcome: what students are expected to accomplish in the activity.
+ * This — not the wording of the outcome —
  * is what selects a routine. Pass 0 classifies each activity into exactly one.
  */
 export type OutcomeType =
@@ -301,7 +302,7 @@ const isRole = (v: string | undefined): v is ActivityRole =>
  * because it means Pass 0 did not classify the activity.
  */
 /**
- * Where the printed materials give decisive evidence about the language work,
+ * Where the printed materials give decisive evidence about the Lesson Outcome,
  * that evidence wins over the model's classification.
  *
  * This exists because a published learning target sometimes underdetermines the

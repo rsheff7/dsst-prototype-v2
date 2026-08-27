@@ -211,7 +211,7 @@ export const ELSF_GUIDELINES: ELSFGuideline[] = [
  * The two lenses the ELSF reasoning layer must sharpen in Premo's guidance:
  *
  * LANGUAGE_DEMAND_GUIDELINES are the guidelines whose specs most directly address
- * identifying what kind of language work an activity requires (anticipating the
+ * identifying the Language Mode an activity requires (anticipating the
  * receptive / productive / interactive demand and the everyday-to-academic bridge).
  *
  * FUNCTIONAL_LANGUAGE_GUIDELINES are the guidelines whose specs most directly

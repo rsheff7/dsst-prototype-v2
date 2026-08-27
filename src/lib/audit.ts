@@ -111,7 +111,7 @@ export function activityDensity(lesson: LessonData): ActivityDensity[] {
 // to inspect whether the inference matches what teachers will see.
 export interface MlrCoherenceEntry {
   activity_id: string;
-  language_work: string;
+  lesson_outcome: string;
   inferred: { number: number; name: string; why_here: string }[];
   appearances: { number: number; name: string; locations: string[] }[];
 }
@@ -155,7 +155,7 @@ export function mlrCoherenceMap(lesson: LessonData): MlrCoherenceEntry[] {
 
     return {
       activity_id: a.id,
-      language_work: inf?.language_work ?? '',
+      lesson_outcome: inf?.lesson_outcome ?? '',
       inferred: inf?.mlrs ?? [],
       appearances: Array.from(appearancesByMlr.entries())
         .map(([number, v]) => ({ number, ...v }))

@@ -128,7 +128,7 @@ const ANCHOR_ACTIVITY = {
         'generalize_in_writing',
       ],
       description:
-        'The language work this outcome demands. Classify by what students must PRODUCE with language, not by the mathematics. ' +
+        'The Lesson Outcome: what students are expected to accomplish in this activity. Classify by what students must PRODUCE with language, not by the mathematics. ' +
         'formulate_precisely — students must say or write something in accurate mathematical language: naming categories, describing what they notice, stating a relationship. This is the DEFAULT when the main student product is language about mathematics. ' +
         'justify_or_evaluate — students must judge whether something is correct, or defend a claim, and say why. ' +
         'connect_representations — students must relate two or more strategies, representations, or pieces of student work to each other. ' +
@@ -347,7 +347,11 @@ export const PASS_B_SCHEMA = {
             type: 'object',
             properties: {
               activity_id: { type: 'string' },
-              language_work: { type: 'string' },
+              lesson_outcome: {
+                type: 'string',
+                description:
+                  'The Lesson Outcome in prose: what students are expected to accomplish with language in this activity. One sentence.',
+              },
               mlrs: {
                 type: 'array',
                 minItems: 2,
@@ -362,7 +366,7 @@ export const PASS_B_SCHEMA = {
                 },
               },
             },
-            required: ['activity_id', 'language_work', 'mlrs'],
+            required: ['activity_id', 'lesson_outcome', 'mlrs'],
           },
         },
       },
@@ -380,6 +384,8 @@ export const PASS_B_SCHEMA = {
               activity_id: { type: 'string' },
               language_demands: {
                 type: 'object',
+                description:
+                  'Language Mode: how students engage with language in this activity. Receptive, productive and interactive are the ELSF-aligned modes. Language Mode characterises the activity — it does not select the routine and does not determine the Key Language Use.',
                 properties: {
                   receptive: { type: 'string' },
                   productive: { type: 'string' },
