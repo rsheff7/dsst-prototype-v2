@@ -390,15 +390,6 @@ function PlanTile({ tile }: { tile: WristbandTile }) {
             >
               {pill.label}
             </span>
-            {tile.has_proficiency_variants && (
-              <span
-                className="rounded-full px-2 py-0.5 text-[10px] font-semibold"
-                style={{ backgroundColor: '#EEEDFE', color: '#26215C' }}
-                title="Response differs across WIDA Levels 1–2, 3–4 and 5–6 — see Moves"
-              >
-                3 levels
-              </span>
-            )}
           </div>
         </div>
 
@@ -570,8 +561,6 @@ function InClassTile({ tile }: { tile: WristbandTile }) {
       <div className="shrink-0 w-8 flex items-center justify-center" style={{ borderRight: '1px solid #F1EFE8' }}>
         {isCrux ? (
           <span className="text-[14px]" style={{ color: CRUX_ACCENT }}>★</span>
-        ) : tile.has_proficiency_variants ? (
-          <span className="text-[10px] font-bold" style={{ color: '#534AB7' }}>3↕</span>
         ) : (
           <span className="text-[12px] text-ink-faint">·</span>
         )}
