@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { useLesson } from '@/lib/lessonContext';
 import { LessonData, ToolId } from '@/lib/types';
 import LessonHeader from '@/components/shared/LessonHeader';
@@ -45,6 +46,13 @@ export default function LessonPage() {
         <div className="px-4">
           <LessonHeader lesson={lesson} activeTool={activeTool} compact={true} onSavePlan={handleSavePlan} />
         </div>
+        <Link
+          href="/prep"
+          className="flex items-center justify-between px-4 py-2.5 border-t border-line bg-surface-accent text-[0.8rem] font-semibold text-[#006C57]"
+        >
+          <span>Prep tonight on your phone</span>
+          <span aria-hidden="true">→</span>
+        </Link>
       </div>
 
 <main className="flex-1 mx-auto w-full max-w-3xl px-4 md:px-6 pb-28 md:pb-12 pt-4 md:pt-20">
