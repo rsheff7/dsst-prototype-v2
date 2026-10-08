@@ -7,6 +7,7 @@ import { useLesson } from '@/lib/lessonContext';
 import { bandForLevel, type ProficiencyBand } from '@/lib/eld';
 import { BANDS, PREP_BUDGET_MINUTES, activityName, bandLabel, buildPrepModel, quoted } from '@/lib/prep/prepModel';
 import MobileQuickRead from '@/components/mobile/MobileQuickRead';
+import WidaMobileSelector from '@/components/mobile/WidaMobileSelector';
 import LessonPathway from '@/components/tools/LessonPathway';
 import AnticipatedThinking from '@/components/tools/AnticipatedThinking';
 import MoveWalkthrough from '@/components/tools/MoveWalkthrough';
@@ -15,6 +16,8 @@ import { usePrepState, elapsedSeconds, mmss, type PrepState } from './usePrepSta
 import { STEP_VIEWS, coachText, stepDone, type StepCtx } from './steps';
 import { ActivityDetail, Icon, MlrPill, Sheet, SheetTop, cx } from './parts';
 import s from './prep.module.css';
+
+const CLOCK_TICK_MS = 1000;
 
 const LIB_TABS: [PrepState['lib'], string][] = [
   ['quickread', 'Quick Read'],
@@ -31,19 +34,31 @@ export default function PrepApp({ lesson }: { lesson: LessonData }) {
     [selectedWidaLevel],
   );
   const m0 = useMemo(() => buildPrepModel(lesson), [lesson]);
-  const { st, update, reset } = usePrepState(`${m0.code}:${m0.heading}`, initialBands);
+  // Everything progress is stored against by position.
+  const sig = useMemo(
+    () => JSON.stringify([m0.scenarios.map((x) => [x.id, x.notice]), m0.proof.lookFors, m0.cuts, m0.setup.checklist]),
+    [m0],
+  );
+  const { st, update, reset } = usePrepState(`${m0.code}:${m0.heading}`, sig, initialBands);
   const m = useMemo(() => buildPrepModel(lesson, st.bands), [lesson, st.bands]);
 
-  const [now, setNow] = useState(() => Date.now());
   const [sheet, setSheet] = useState<string | null>(null);
   const [toast, setToast] = useState<string | null>(null);
 
-  // Prep clock: one tick a second while prep is running.
+  // Prep clock: counts time with the page open. A hidden or closed page stops
+  // the timer, and the gap it leaves is longer than a tick, so it isn't counted;
+  // stopping tonight and resuming tomorrow doesn't read as fourteen hours.
   useEffect(() => {
     if (!st.started || st.stopped) return;
-    const t = setInterval(() => setNow(Date.now()), 1000);
+    let last = Date.now();
+    const t = setInterval(() => {
+      const now = Date.now();
+      const add = now - last;
+      last = now;
+      if (add < 2 * CLOCK_TICK_MS) update((p) => ({ spent: p.spent + add }));
+    }, CLOCK_TICK_MS);
     return () => clearInterval(t);
-  }, [st.started, st.stopped]);
+  }, [st.started, st.stopped, update]);
 
   useEffect(() => {
     if (!sheet) return;
@@ -84,7 +99,7 @@ export default function PrepApp({ lesson }: { lesson: LessonData }) {
   const backToStep = () => update({ view: 'step', ret: 'home' });
 
   const copyForCoach = () => {
-    const txt = coachText(m, st, Date.now());
+    const txt = coachText(m, st);
     const fallback = () => {
       const box = document.getElementById('prep-coachbox') as HTMLDetailsElement | null;
       if (box) box.open = true;
@@ -102,8 +117,8 @@ export default function PrepApp({ lesson }: { lesson: LessonData }) {
   };
 
   const clockEl = st.started ? (
-    <span className={cx(s.clock, elapsedSeconds(st, now) > PREP_BUDGET_MINUTES * 60 && s.clockOver)} aria-label="Prep time">
-      {mmss(elapsedSeconds(st, now))} <span className={s.muted}>/ {PREP_BUDGET_MINUTES}</span>
+    <span className={cx(s.clock, elapsedSeconds(st) > PREP_BUDGET_MINUTES * 60 && s.clockOver)} aria-label="Prep time">
+      {mmss(elapsedSeconds(st))} <span className={s.muted}>/ {PREP_BUDGET_MINUTES}</span>
     </span>
   ) : (
     <span />
@@ -133,7 +148,6 @@ export default function PrepApp({ lesson }: { lesson: LessonData }) {
       if (st.done) return go(m.steps.length - 1);
       if (started) return go(st.step);
       update({ started: Date.now(), stopped: null });
-      setNow(Date.now());
       go(0);
     };
     return (
@@ -231,7 +245,6 @@ export default function PrepApp({ lesson }: { lesson: LessonData }) {
       m,
       st,
       update,
-      now,
       next: () => i < m.steps.length - 1 && go(i + 1),
       openActivity: (id) => setSheet(`act:${id}`),
       openLibrary,
@@ -304,7 +317,7 @@ export default function PrepApp({ lesson }: { lesson: LessonData }) {
               </span>
               {m.inClass.ask && (
                 <>
-                  <span style={{ fontSize: 13, opacity: 0.9, fontWeight: 700 }}>ASK EVERY PAIR</span>
+                  <span style={{ fontSize: 13, opacity: 0.9, fontWeight: 700 }}>ASK FIRST</span>
                   <p className={s.nowSay}>{quoted(m.inClass.ask)}</p>
                 </>
               )}
@@ -399,11 +412,17 @@ export default function PrepApp({ lesson }: { lesson: LessonData }) {
               </button>
             ))}
           </div>
-          {t === 'quickread' && <MobileQuickRead lesson={lesson} />}
-          {t === 'pathway' && <LessonPathway lesson={lesson} onNavigate={(tool: ToolId) => update({ lib: tool })} />}
-          {t === 'thinking' && <AnticipatedThinking lesson={lesson} />}
-          {t === 'moves' && <MoveWalkthrough lesson={lesson} />}
-          {t === 'adapt' && <AdaptationGuardrails lesson={lesson} />}
+          {/* .tools keeps the prep's own type and reset rules off the five tools. */}
+          <div className={s.tools}>
+            {/* The tools read the lesson view's WIDA level. Quick Read carries its
+                own selector; the others expect one above them. */}
+            {t !== 'quickread' && <WidaMobileSelector />}
+            {t === 'quickread' && <MobileQuickRead lesson={lesson} />}
+            {t === 'pathway' && <LessonPathway lesson={lesson} onNavigate={(tool: ToolId) => update({ lib: tool })} />}
+            {t === 'thinking' && <AnticipatedThinking lesson={lesson} />}
+            {t === 'moves' && <MoveWalkthrough lesson={lesson} />}
+            {t === 'adapt' && <AdaptationGuardrails lesson={lesson} />}
+          </div>
         </main>
         {inFlow ? null : tabsbar('library')}
       </>

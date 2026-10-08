@@ -351,7 +351,7 @@ export function focusRoles(activities: Activity[]): (FocusRole | null)[] {
 export function criteriaFor(s: DecisionScenario, bands: readonly ProficiencyBand[]): string[] {
   const out: string[] = [];
   if (FAILURE_TYPES.includes(s.scenario_type)) {
-    out.push('Sent them back to the evidence (the objects, the counts, the words) with a question');
+    out.push('Sent them back to the work in front of them with a question');
     out.push(
       s.scenario_type === 'productive-struggle'
         ? 'Kept the struggle: offered a support, not the answer'

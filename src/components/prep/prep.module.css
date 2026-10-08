@@ -39,14 +39,17 @@
   line-height: 1.5;
 }
 .app * { box-sizing: border-box; }
+/* The Library renders the five tools inside .app. These element rules are
+   unlayered, so they would beat the tools' Tailwind classes whatever their
+   specificity; :where(:not(.tools *)) keeps them off the tools and adds none. */
 /* :where keeps the reset at zero specificity so .pri, .chip etc. win. */
-.app :where(button) { font: inherit; color: inherit; cursor: pointer; }
-.app :focus-visible { outline: 3px solid var(--act); outline-offset: 2px; border-radius: 8px; }
-.app h1, .app h2, .app h3 { font-family: var(--display); font-weight: 400; text-wrap: balance; margin: 0; letter-spacing: -0.005em; }
-.app h1 { font-size: 30px; line-height: 1.1; }
-.app h2 { font-size: 25px; line-height: 1.2; }
-.app h3 { font-size: 19px; line-height: 1.3; }
-.app p { margin: 0; }
+.app :where(button:not(.tools *)) { font: inherit; color: inherit; cursor: pointer; }
+.app :focus-visible:where(:not(.tools *)) { outline: 3px solid var(--act); outline-offset: 2px; border-radius: 8px; }
+.app h1:where(:not(.tools *)), .app h2:where(:not(.tools *)), .app h3:where(:not(.tools *)) { font-family: var(--display); font-weight: 400; text-wrap: balance; margin: 0; letter-spacing: -0.005em; }
+.app h1:where(:not(.tools *)) { font-size: 30px; line-height: 1.1; }
+.app h2:where(:not(.tools *)) { font-size: 25px; line-height: 1.2; }
+.app h3:where(:not(.tools *)) { font-size: 19px; line-height: 1.3; }
+.app p:where(:not(.tools *)) { margin: 0; }
 
 .mono { font-variant-numeric: tabular-nums; font-weight: 600; }
 .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
@@ -144,8 +147,8 @@
 .tlFeeder .tlBtn { border-color: var(--crux); border-style: dashed; }
 
 /* Inputs */
-.app textarea { width: 100%; min-height: 132px; resize: vertical; border: 1.5px solid var(--line); border-radius: var(--r); background: var(--surface); color: var(--ink); padding: 14px; font: inherit; font-size: 16px; line-height: 1.5; }
-.app textarea:focus { border-color: var(--act); outline: none; box-shadow: 0 0 0 3px var(--act-soft); }
+.app textarea:where(:not(.tools *)) { width: 100%; min-height: 132px; resize: vertical; border: 1.5px solid var(--line); border-radius: var(--r); background: var(--surface); color: var(--ink); padding: 14px; font: inherit; font-size: 16px; line-height: 1.5; }
+.app textarea:focus:where(:not(.tools *)) { border-color: var(--act); outline: none; box-shadow: 0 0 0 3px var(--act-soft); }
 .count { font-size: 12.5px; color: var(--muted); text-align: right; }
 .prompt { font-family: var(--display); font-size: 22px; line-height: 1.3; }
 .bubbleMe { border-radius: 18px 18px 6px 18px; padding: 12px 14px; background: var(--act-soft); justify-self: end; max-width: 92%; font-size: 15px; }
@@ -247,7 +250,7 @@
 .foot button, .foot a { border: 0; background: none; color: var(--act-ink); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; padding: 0; }
 
 @media (max-width: 380px) {
-  .app h1 { font-size: 26px; }
+  .app h1:where(:not(.tools *)) { font-size: 26px; }
   .notice { font-size: 21px; }
   .ministeps span { font-size: 10px; }
 }

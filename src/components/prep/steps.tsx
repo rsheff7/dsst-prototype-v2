@@ -17,7 +17,6 @@ export interface StepCtx {
   openLibrary: (tab: PrepState['lib']) => void;
   openInClass: () => void;
   copyForCoach: () => void;
-  now: number;
 }
 
 export type StepOut = { inner: ReactNode; action: ReactNode };
@@ -128,7 +127,7 @@ export function student(c: StepCtx): StepOut {
           id="prep-answer"
           value={st.answer}
           readOnly={st.answerChecked}
-          placeholder="Both are correct because…"
+          placeholder="Write it the way a strong student would…"
           onChange={(e) => update({ answer: e.target.value })}
         />
         {!st.answerChecked && (
@@ -583,13 +582,13 @@ export function adjust(c: StepCtx): StepOut {
 // 6 Carry it
 // ---------------------------------------------------------------------------
 
-export function coachText(m: PrepModel, st: PrepState, now: number): string {
+export function coachText(m: PrepModel, st: PrepState): string {
   const flagged = m.scenarios.filter((x) => st.flags[x.id]).map((x) => `- ${x.notice}`).join('\n') || '- None flagged';
   const cuts = m.cuts.filter((x) => st.cuts[x.id]).map((x) => `- ${x.text}`).join('\n') || '- None. Teaching as written.';
   const lf = m.proof.lookFors.filter((_, i) => st.lookFors[i]).length;
   const said = m.scenarios.filter((x) => st.said[x.id]).length;
-  return `DSST prep · Lesson ${m.code} ${m.heading} · ${new Date(now).toLocaleDateString()}
-Prep time: ${mmss(elapsedSeconds(st, now))}
+  return `DSST prep · Lesson ${m.code} ${m.heading} · ${new Date().toLocaleDateString()}
+Prep time: ${mmss(elapsedSeconds(st))}
 
 The lesson's proof, done as a student (${lf}/${m.proof.lookFors.length} look-fors):
 ${st.answer || '(not answered)'}
@@ -610,7 +609,7 @@ Where I'd like help: start with the flagged scenarios.`;
 
 export function carry(c: StepCtx): StepOut {
   const { m, st } = c;
-  const secs = elapsedSeconds(st, c.now);
+  const secs = elapsedSeconds(st);
   const within = secs <= PREP_BUDGET_MINUTES * 60;
   const flagged = m.scenarios.filter((x) => st.flags[x.id]);
   const lf = m.proof.lookFors.filter((_, i) => st.lookFors[i]).length;
@@ -697,7 +696,7 @@ export function carry(c: StepCtx): StepOut {
           <span className={cx(s.muted, s.small)}>Plain text your coach can read in a minute</span>
         </summary>
         <div className={s.accIn}>
-          <textarea id="prep-coachtxt" className={s.copybox} readOnly value={coachText(m, st, c.now)} />
+          <textarea id="prep-coachtxt" className={s.copybox} readOnly value={coachText(m, st)} />
         </div>
       </details>
     </div>
