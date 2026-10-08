@@ -100,16 +100,27 @@ export function student(c: StepCtx): StepOut {
     <div className={s.stackLg}>
       <section className={cx(s.card, s.stack)}>
         <span className={s.eyebrow}>How the lesson closes</span>
-        {m.proof.closing ? (
-          <p className={s.prompt} style={{ fontSize: 19 }}>
-            {m.proof.closing}
-          </p>
+        {m.proof.parts ? (
+          <>
+            {m.proof.parts.setup && <p className={cx(s.muted, s.small)}>{m.proof.parts.setup}</p>}
+            <p className={s.prompt} style={{ fontSize: 19 }}>
+              {quoted(m.proof.parts.question)}
+            </p>
+            <p className={cx(s.muted, s.small)}>
+              Answer it in writing, the way a strong student would. Then say it out loud.
+            </p>
+          </>
         ) : (
-          <p className={s.prompt}>{m.destination}</p>
+          <>
+            <p className={s.prompt} style={{ fontSize: 19 }}>
+              {m.proof.closing ?? m.destination}
+            </p>
+            <p className={cx(s.muted, s.small)}>
+              {m.proof.closing ? 'This is written for you, not for students. ' : ''}
+              Write what a strong student would say or write at this point. Then say it out loud.
+            </p>
+          </>
         )}
-        <p className={cx(s.muted, s.small)}>
-          Answer the question it puts to students, in writing, the way a strong student would. Then say it out loud.
-        </p>
         <div className={s.row}>
           <span className={cx(s.muted, s.small)}>Open an activity:</span>
           {m.activities.map((a) => (
@@ -136,7 +147,13 @@ export function student(c: StepCtx): StepOut {
       </div>
       {st.answerChecked && (
         <section className={cx(s.stack, s.reveal)}>
-          <h3>Check yours against the look-fors</h3>
+          {m.proof.parts?.after && (
+            <div className={s.flat}>
+              <span className={s.lab}>Where the lesson takes it</span>
+              {m.proof.parts.after}
+            </div>
+          )}
+          <h3>Would your answer show these?</h3>
           <div className={s.checks}>
             {m.proof.lookFors.map((t, i) => (
               <Check
@@ -152,7 +169,7 @@ export function student(c: StepCtx): StepOut {
             </Check>
           </div>
           <p className={cx(s.muted, s.small)}>
-            From the lesson’s top signals and the crux. Where your answer got hard is where theirs will.
+            What strong student work shows in this lesson. Where your answer got hard is where theirs will.
           </p>
         </section>
       )}
@@ -182,6 +199,8 @@ export function predict(c: StepCtx): StepOut {
   const feeder = m.activities.find((a) => a.focus === 'feeder');
   const ready = st.prediction.trim().length >= MIN_PREDICTION && !!st.predictionHowMany;
   const nameOf = (id: string) => m.activities.find((a) => a.id === id);
+  // Answers the Most/Some/Few the teacher just committed to.
+  const mainError = m.patterns.find((p) => p.activityId === m.crux?.id && p.kind === 'error');
   // Context names the task, not the trouble: the function summary states the
   // misconception, which would give the prediction away.
   const inner = (
@@ -239,6 +258,18 @@ export function predict(c: StepCtx): StepOut {
             <span className={cx(s.muted, s.small)}>{st.predictionHowMany} will make the main error.</span>
           </div>
           <h3>What Premo expects</h3>
+          {m.crux && (
+            <p className={s.small}>
+              {mainError ? (
+                <>
+                  <b>Main error at the crux:</b> {mainError.label}. Premo expects it from{' '}
+                  <b>{mainError.frequencyLabel.toLowerCase()}</b>.
+                </>
+              ) : (
+                'Premo lists no outright error at the crux. The patterns below are unfinished or on-track thinking.'
+              )}
+            </p>
+          )}
           {m.patterns.map((p, i) => {
             const a = nameOf(p.activityId);
             return (
@@ -259,7 +290,7 @@ export function predict(c: StepCtx): StepOut {
           {m.patterns.length === 0 && <p className={s.muted}>The lesson has no anticipated thinking for the crux.</p>}
           {m.listenFor.length > 0 && (
             <div className={s.flat}>
-              <span className={s.lab}>Listen for at the crux</span>
+              <span className={s.lab}>Questions to ask at the crux, once students have an answer</span>
               <ul className={s.clean}>
                 {m.listenFor.map((q, i) => (
                   <li key={i}>{quoted(q)}</li>
@@ -487,7 +518,7 @@ export function adjust(c: StepCtx): StepOut {
         <p style={{ fontWeight: 600, fontSize: 17 }}>{m.idea || m.destination}</p>
         {m.rigorCheck && (
           <p className={s.small}>
-            <b>Rigor check from the lesson:</b> {m.rigorCheck}
+            <b>Rigor check:</b> {m.rigorCheck}
           </p>
         )}
       </section>

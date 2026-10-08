@@ -155,7 +155,7 @@ export default function PrepApp({ lesson }: { lesson: LessonData }) {
         <div className={cx(s.bar, s.barPlain)}>
           <div className={s.ttl}>
             <b>
-              Grade {lesson.meta.grade} · Unit {lesson.meta.unit}
+              {m.gradeUnit}
             </b>
             <span>DSST Math · Lesson {m.code}</span>
           </div>
@@ -227,7 +227,12 @@ export default function PrepApp({ lesson }: { lesson: LessonData }) {
 
           <div className={s.foot}>
             <Link href="/lesson">Open the full lesson view</Link>
-            <button type="button" onClick={reset}>
+            <button
+              type="button"
+              onClick={() => {
+                if (!st.started || window.confirm('Clear your answers and start this prep again?')) reset();
+              }}
+            >
               Reset prep
             </button>
           </div>
@@ -317,7 +322,7 @@ export default function PrepApp({ lesson }: { lesson: LessonData }) {
               </span>
               {m.inClass.ask && (
                 <>
-                  <span style={{ fontSize: 13, opacity: 0.9, fontWeight: 700 }}>ASK FIRST</span>
+                  <span style={{ fontSize: 13, opacity: 0.9, fontWeight: 700 }}>ASK ONCE THEY HAVE AN ANSWER</span>
                   <p className={s.nowSay}>{quoted(m.inClass.ask)}</p>
                 </>
               )}
@@ -327,6 +332,11 @@ export default function PrepApp({ lesson }: { lesson: LessonData }) {
           {m.inClass.lines.length > 0 && (
             <>
               <span className={s.lab}>If you see · say (as you rehearsed)</span>
+              {st.bands.length === 0 && m.inClass.lines.some((x) => x.say.length > 1) && (
+                <span className={cx(s.muted, s.small)}>
+                  Showing every WIDA level. Set your class’s levels on Tonight to shorten this card.
+                </span>
+              )}
               {m.inClass.lines.map((x, i) => (
                 <div key={i} className={s.mv}>
                   <span className={s.mvIf}>{x.see}</span>
@@ -351,19 +361,27 @@ export default function PrepApp({ lesson }: { lesson: LessonData }) {
               </ul>
             </div>
           )}
-          <div className={cx(s.card, s.stack)}>
-            <span className={s.lab}>Never cut</span>
-            <ul className={s.locked}>
-              {m.neverCut.slice(0, 3).map((x, i) => (
-                <li key={i}>
-                  {Icon.lock}
-                  <span>
-                    {x.text} {x.mlr && <MlrPill mlr={x.mlr} />}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* A glance card: the lines to say stay open, the rest folds away. */}
+          {m.neverCut.length > 0 && (
+            <details className={s.acc}>
+              <summary>
+                <b>Never cut</b>
+                <span className={cx(s.muted, s.small)}>What has to stay if you run short of time</span>
+              </summary>
+              <div className={s.accIn}>
+                <ul className={s.locked}>
+                  {m.neverCut.slice(0, 3).map((x, i) => (
+                    <li key={i}>
+                      {Icon.lock}
+                      <span>
+                        {x.text} {x.mlr && <MlrPill mlr={x.mlr} />}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </details>
+          )}
           {cuts.length > 0 && (
             <div className={s.flat}>
               <span className={s.lab}>Your changes</span>

@@ -57,6 +57,17 @@ export interface PrepStep {
 /** Prep budget the clock is measured against. */
 export const PREP_BUDGET_MINUTES = 20;
 
+/**
+ * Step minutes are worked out from what the step actually shows, so a lesson
+ * with more scenarios or a class with more WIDA levels says so. Reading speed
+ * is a tired adult on a phone; the extra is the writing or speaking the step
+ * asks for. These are reading-load estimates, not timings of a real teacher.
+ */
+const READ_WPM = 180;
+const DOING_MINUTES: Record<StepKey, number> = { orient: 0, student: 2, predict: 1, rehearse: 0, adjust: 0, carry: 0.5 };
+/** Saying a move aloud and checking it, per scenario. */
+const SAY_MINUTES = 0.5;
+
 /** Most scenarios rehearsed aloud in one sitting. Premo's design settles on six. */
 export const MAX_REHEARSAL = 6;
 
@@ -159,6 +170,8 @@ export interface PrepModel {
   heading: string;
   /** "6.2.1" style code for the app bar. */
   code: string;
+  /** "Grade 6 · Unit 2". */
+  gradeUnit: string;
   totalTime: string;
   destination: string;
   /** The mathematical idea the lesson exists for. Correct where the rigor check may not be. */
@@ -171,6 +184,8 @@ export interface PrepModel {
   proof: {
     /** How the lesson closes, verbatim. Written to the teacher; the student question is inside it. */
     closing: string | null;
+    /** The close split around its question, when it has one. See splitClosing. */
+    parts: { setup: string; question: string; after: string } | null;
     /** Lesson-level look-fors a written or spoken answer can actually show. */
     lookFors: string[];
   };
@@ -288,8 +303,40 @@ function firstSentence(text: string): string {
   return (m ? m[1] : t).trim();
 }
 
+// Generation sometimes fills a field it has nothing for with a placeholder.
+// Shown to a teacher, "n/a" reads as content: a move to make, a line to avoid.
+const PLACEHOLDER = /^(n\/?a|none|null|tbd|-+|—)\.?$/i;
+
 function present(s: string | null | undefined): s is string {
-  return typeof s === 'string' && s.trim().length > 0;
+  return typeof s === 'string' && s.trim().length > 0 && !PLACEHOLDER.test(s.trim());
+}
+
+/** "Grade 7" / "Unit 6" / "Lesson 22" → "7" / "6" / "22". Analyses write either form. */
+export function metaNumber(s: string | number | null | undefined): string {
+  return String(s ?? '').replace(/^\s*(grade|unit|lesson)\s*/i, '').trim();
+}
+
+function words(...parts: (string | null | undefined)[]): number {
+  return parts.filter(present).join(' ').split(/\s+/).filter(Boolean).length;
+}
+
+/**
+ * The lesson's close is written to the teacher: what to display, the question
+ * to ask, then what to draw out — which is usually the answer. "Do it as a
+ * student" needs only the question, and the rest must wait until the teacher
+ * has answered. Null when the close has no question to lift out; the step then
+ * shows it whole and says who it was written for.
+ */
+export function splitClosing(prompt: string | null | undefined): { setup: string; question: string; after: string } | null {
+  if (!present(prompt)) return null;
+  const m = /\b[Aa]sk(?:ing)?\b[^:?.]{0,40}:\s*['"‘“]?([^?]+\?)['"’”]?\s*/.exec(prompt);
+  if (!m) return null;
+  const setup = prompt
+    .slice(0, m.index)
+    .trim()
+    .replace(/[\s,;:]*\b(and|then)?\s*$/i, '')
+    .replace(/[.]$/, '');
+  return { setup: setup ? `${setup}.` : '', question: m[1].trim(), after: prompt.slice(m.index + m[0].length).trim() };
 }
 
 function dedupe(items: string[]): string[] {
@@ -459,6 +506,7 @@ export function buildPrepModel(lesson: LessonData, bands: readonly ProficiencyBa
   const g = lesson.adaptation_guardrails;
   const proof = {
     closing: lesson.lesson_synthesis?.prompt || null,
+    parts: splitClosing(lesson.lesson_synthesis?.prompt),
     lookFors: dedupe([...(lesson.wristband?.top_signals ?? []), ...(crux?.source.success_signals ?? [])])
       .filter((s) => !NOT_SHOWABLE_IN_AN_ANSWER.test(s))
       .slice(0, 4),
@@ -596,21 +644,55 @@ export function buildPrepModel(lesson: LessonData, bands: readonly ProficiencyBa
     orient: 'The destination, the idea underneath it, and one thing to watch for in each activity. Tap any activity for detail.',
     student:
       'Answer the question the lesson closes on, the way a strong student would. Where it gets hard for you is where it gets hard for them.',
-    predict: `${cruxName} is the crux${feeder ? `, and ${activityName(feeder)} sets it up` : ''}. Predict what your students will do before Premo shows its patterns.`,
-    rehearse: `${scenarios.length} moments: ${atCrux} at the crux${scenarios.length > atCrux ? ', the rest where it can go wrong before or after' : ''}. Read the moment, say your move out loud, then check it.`,
+    predict: crux
+      ? `${cruxName} is the crux${feeder ? `, and ${activityName(feeder)} sets it up` : ''}. Predict what your students will do before Premo shows its patterns.`
+      : 'Predict what your students will do at the hardest point of the lesson.',
+    rehearse: scenarios.length
+      ? `${scenarios.length} moments: ${atCrux} at the crux${scenarios.length > atCrux ? ', the rest where it can go wrong before or after' : ''}. Read the moment, say your move out loud, then check it.`
+      : 'Read the moment, say your move out loud, then check it.',
     adjust: 'Only if you need it. Pick what to change for this class. The idea the lesson exists for stays pinned.',
     carry: 'Your prep, packaged for tomorrow and for your coach.',
   };
+  // What each step puts in front of the teacher, in words. Folded detail (the
+  // activity sheets, "The full move") is not counted: it is optional reading.
+  const shown: Record<StepKey, number> = {
+    orient: words(lesson.destination, g?.mathematical_purpose, ...activities.flatMap((a) => [a.title, a.watchFor])),
+    student: words(proof.closing, ...proof.lookFors),
+    predict: words(crux?.source.learning_target, setup.crux, ...patterns.flatMap((p) => [p.label, p.description]), ...listenFor),
+    rehearse: scenarios.reduce(
+      (n, sc) =>
+        n +
+        words(sc.notice, sc.scene, ...sc.criteria, sc.flat?.say, sc.flat?.avoid) +
+        (sc.byBand ?? [])
+          .filter((b) => useBands.includes(b.band))
+          .reduce((k, b) => k + words(b.say, b.nonverbal, b.avoid), 0),
+      0,
+    ),
+    adjust: words(
+      g?.mathematical_purpose,
+      g?.rigor_check,
+      ...cuts.map((c) => c.text),
+      ...neverCut.map((c) => c.text),
+      ...language.frames.map((f) => f.frame),
+      ...useBands.flatMap((b) => [supports[b].text, profile[b]?.does, profile[b]?.reaching]),
+      ...language.vocabulary.flatMap((v) => [v.term, v.definition]),
+    ),
+    carry: words(setup.crux, ...setup.checklist),
+  };
   const steps = STEP_BASE.map((s) => ({
     ...s,
-    minutes: s.key === 'rehearse' ? Math.max(2, scenarios.length) : s.minutes,
+    minutes: Math.max(
+      1,
+      Math.round(shown[s.key] / READ_WPM + DOING_MINUTES[s.key] + (s.key === 'rehearse' ? scenarios.length * SAY_MINUTES : 0)),
+    ),
     lede: ledes[s.key],
   }));
 
   const m = lesson.meta;
   return {
     heading: m.lesson_title,
-    code: [m.grade, m.unit, m.lesson_number].filter(present).join('.'),
+    code: [m.grade, m.unit, m.lesson_number].map(metaNumber).filter(present).join('.'),
+    gradeUnit: `Grade ${metaNumber(m.grade)} · Unit ${metaNumber(m.unit)}`,
     totalTime: m.total_time,
     destination: lesson.destination,
     idea: g?.mathematical_purpose ?? '',

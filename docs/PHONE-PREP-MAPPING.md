@@ -1,5 +1,11 @@
 # Phone prep view — applying the Premo Social Studies design to DSST
 
+> **Ownership, corrected 2026-10-07.** This was written on 2026-10-03 and assigned generation
+> work to Neil. On 2026-10-05 the split was agreed the other way: Robert owns the generation
+> layer (prompts, what the schema means, content, pedagogical validation rules); Neil owns the
+> infrastructure layer (prompt versioning, runtime loading, technical schema structure, API
+> surfaces, validation mechanics). The lines below have been updated to match.
+
 Branch: `phone-prep-view`. Source design: `premo-prep-v2.html` (Premo Prep 7.7.9, Social Studies).
 Status: first working cut on this branch (`/prep`). The only change to `/lesson` is a link to it on phone widths.
 
@@ -59,11 +65,12 @@ DSST's `LessonData` already carries almost everything the design needs. Field-le
    (already phrased as an independent end-of-lesson test), explains it aloud as the
    synthesis prompt asks, and self-checks against the lesson-level top signals plus the
    final activity's success signals. No exemplar response. Real fix, later: retain the
-   cool-down from the PDF, which is a pipeline change and needs Neil (Rule 4).
+   cool-down from the PDF. That is a new field: Robert defines it and its prompt, Neil carries
+   it through the pipeline.
 2. **No authored rehearsal criteria.** Premo's checklists per scenario are written by hand.
    Plan: derive two or three checks from each scenario's `move`, `say` and `avoid`. A later
    option is a small schema addition, which would touch the generation side and therefore
-   needs Neil (Rule 4).
+   is Robert's to define, with Neil adding it to the technical schema.
 3. **No routine history or unit path.** Premo's "routines fade after 2 rehearsals" and the
    unit path need prep history across lessons. DSST analyzes one lesson at a time. Plan:
    leave both off the home screen for this test.
@@ -89,7 +96,7 @@ sentence it tests was never written. DSST's Steps 3 and 4 follow the same rule.
   displaying…"), so "Now say it" reads as a teacher direction, not a student question.
 - **Derived rehearsal checks are thin.** The first one is often just the move's first
   sentence ("Place two separate paper plates…"), so checking it restates the model.
-  Authored criteria would need a schema field, which is generation work for Neil.
+  Authored criteria would need a schema field, which is generation work: Robert's to define, Neil's to add to the schema.
 
 ## Build plan (isolated, per COLLABORATION.md Rule 1)
 

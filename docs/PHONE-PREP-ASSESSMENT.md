@@ -1,5 +1,11 @@
 # Phone prep: what is true in the SSA version that is not true in DSST
 
+> **Ownership, corrected 2026-10-07.** This was written on 2026-10-03 and assigned generation
+> work to Neil. On 2026-10-05 the split was agreed the other way: Robert owns the generation
+> layer (prompts, what the schema means, content, pedagogical validation rules); Neil owns the
+> infrastructure layer (prompt versioning, runtime loading, technical schema structure, API
+> surfaces, validation mechanics). The lines below have been updated to match.
+
 Assessed 2026-10-03 on branch `phone-prep-view`, sample lesson IM 6.2.1 ("Introducing Ratios
 and Ratio Language"), against `premo-prep-v2.html` (SSA, lesson 7.7.9). Five reviewers:
 a DSST 6th-grade math teacher, a math instructional coach, an IM curriculum specialist, a
@@ -19,7 +25,7 @@ the lesson's own materials. DSST's sample has neither. Its central claim contrad
 and the prep took fields written *about* the lesson and showed them as if written *to* the
 teacher. About half the gap is **B** and can be fixed on this branch. The part that matters
 most, correctness and coherence of the generated lesson, is **A/C** and needs generation work
-(Neil, Rule 4).
+(Robert).
 
 ## What SSA has that DSST doesn't (ranked; all five reviewers converged on 1–3)
 
@@ -112,7 +118,7 @@ most, correctness and coherence of the generated lesson, is **A/C** and needs ge
   Pick rehearsal by link to the crux. Reuse rehearsed say lines on the In-class card. Show
   `teacher_prep`/`preflight`, real frames and the language fields. Replace derived criteria
   with fixed, demand-protecting checks. Fix the frequency labels.
-- **Needs generation (A/C, Neil).** A consistency gate across rigor check, friction, patterns
+- **Needs generation (A/C, Robert; Neil for the mechanics of any gate).** A consistency gate across rigor check, friction, patterns
   and scenarios. The cool-down/exit ticket. Authored criteria, a "tell" and a crux launch line.
   Time-based cuts. Non-student scenario types. Whole-class moves for errors most students make.
 - **The prep should not paper over A.** If the generated lesson contradicts itself, the
@@ -134,6 +140,6 @@ The **B** items, all in `src/lib/prep` and `src/components/prep`; generation unt
 | 6 | Crux setup (`selection…teacher_prep`) appears in Predict, the activity sheet and the In-class card; `wristband.preflight` is a "Before class tomorrow" checklist in Carry. |
 | 7 | Adjust shows crux frames, each level's "already does / reaching for" (`learner_profile`), and key words. The activity sheet shows the three language modes, the everyday-to-math bridge, the home-language bridge and `causal_link`. |
 
-Still open, all **A/C** (generation, Neil): the self-contradicting crux error ("smaller number first" in the 1.2
+Still open, all **A/C** (generation, Robert): the self-contradicting crux error ("smaller number first" in the 1.2
 scenario) and the wrong rigor check are still in the data and still visible; the "most students" crux error
 still has no whole-class move; no cool-down, authored criteria, tell, time cuts, or non-student scenario types.

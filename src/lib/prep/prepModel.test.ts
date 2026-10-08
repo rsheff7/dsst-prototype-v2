@@ -19,6 +19,8 @@ import {
   findCruxIndex,
   focusRoles,
   parseMinutes,
+  metaNumber,
+  splitClosing,
   MAX_REHEARSAL,
 } from './prepModel.ts';
 import type { Activity, DecisionScenario, LessonData } from '../types.ts';
@@ -209,4 +211,49 @@ test('over the cap, the crux keeps its places', () => {
   );
   // Within an activity, the moments most likely to derail come first.
   assert.equal(m.scenarios.find((s) => s.activityId === '2')?.type, 'common-error');
+});
+
+test('lesson codes read the same whichever form the analysis wrote', () => {
+  assert.equal(metaNumber('Grade 7'), '7');
+  assert.equal(metaNumber('Lesson 22'), '22');
+  assert.equal(metaNumber('6'), '6');
+  const lesson = loadDemo();
+  lesson.meta = { ...lesson.meta, grade: 'Grade 7', unit: 'Unit 6', lesson_number: 'Lesson 22' };
+  const m = buildPrepModel(lesson);
+  assert.equal(m.code, '7.6.22');
+  assert.equal(m.gradeUnit, 'Grade 7 · Unit 6');
+});
+
+test('a placeholder move is not something to rehearse', () => {
+  const lesson = loadDemo();
+  for (const a of lesson.decision_guide.activities)
+    for (const s of a.scenarios) {
+      s.flat_move = { move: 'n/a', say: 'n/a', avoid: 'n/a' } as DecisionScenario['flat_move'];
+      s.proficiency_moves = null;
+    }
+  const m = buildPrepModel(lesson);
+  assert.equal(m.scenarios.length, 0);
+  assert.equal(m.inClass.lines.length, 0);
+});
+
+test('the close gives up its question and holds the rest back', () => {
+  const p = splitClosing(
+    "Synthesize the lesson by displaying 6(2x - 1) + 4(2x - 1) on the board and asking: 'How do we rewrite this with fewer terms?' Guide students to 10(2x - 1).",
+  );
+  assert.ok(p);
+  assert.equal(p.question, 'How do we rewrite this with fewer terms?');
+  assert.equal(p.setup, 'Synthesize the lesson by displaying 6(2x - 1) + 4(2x - 1) on the board.');
+  assert.equal(p.after, 'Guide students to 10(2x - 1).');
+  assert.ok(!p.setup.includes('10(2x - 1)') && !p.question.includes('10(2x - 1)'));
+  // Unquoted questions too; and no question means no split.
+  assert.equal(splitClosing('Display both mixtures. Ask: Why does doubling keep the shade?')?.question, 'Why does doubling keep the shade?');
+  assert.equal(splitClosing('Ask students to name the multiplier, and emphasize the definition.'), null);
+});
+
+test('the time a prep claims follows what it shows', () => {
+  const lesson = loadDemo();
+  const all = buildPrepModel(lesson, []);
+  const one = buildPrepModel(lesson, ['emerging']);
+  assert.equal(all.estimateMinutes, all.steps.reduce((n, s) => n + s.minutes, 0));
+  assert.ok(one.estimateMinutes <= all.estimateMinutes, 'one level is no longer than three');
 });
