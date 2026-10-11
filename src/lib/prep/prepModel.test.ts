@@ -24,6 +24,7 @@ import {
   MAX_REHEARSAL,
 } from './prepModel.ts';
 import type { Activity, DecisionScenario, LessonData } from '../types.ts';
+import { DRAFT_COOL_DOWNS } from './draftCoolDowns.ts';
 
 // demoLesson.ts is a JSON object literal with a type cast on the end. Parsing
 // it as data keeps this test off the app's module graph.
@@ -256,4 +257,26 @@ test('the time a prep claims follows what it shows', () => {
   const one = buildPrepModel(lesson, ['emerging']);
   assert.equal(all.estimateMinutes, all.steps.reduce((n, s) => n + s.minutes, 0));
   assert.ok(one.estimateMinutes <= all.estimateMinutes, 'one level is no longer than three');
+});
+
+test('a lesson with a cool-down does it as the student task; one without falls back to the close', () => {
+  const lesson = loadDemo();
+  const m = buildPrepModel(lesson);
+  assert.equal(m.code, '6.2.1');
+  assert.equal(m.proof.coolDown, DRAFT_COOL_DOWNS['6.2.1']);
+  assert.deepEqual(m.proof.lookFors, DRAFT_COOL_DOWNS['6.2.1'].lookFors);
+
+  lesson.meta = { ...lesson.meta, lesson_number: '99' };
+  const none = buildPrepModel(lesson);
+  assert.equal(none.proof.coolDown, null);
+  assert.ok(none.proof.lookFors.length > 0, 'falls back to the lesson-wide look-fors');
+});
+
+test('every draft cool-down is complete, marked as a draft, and keeps its answer out of the task', () => {
+  for (const [code, cd] of Object.entries(DRAFT_COOL_DOWNS)) {
+    assert.match(code, /^\d+\.\d+\.\d+$/, code);
+    assert.ok(cd.draft, `${code} is a placeholder until DSST supplies its own`);
+    assert.ok(cd.task.length >= 2 && cd.strongAnswer.length >= 2 && cd.lookFors.length >= 3, code);
+    for (const line of cd.strongAnswer) assert.ok(!cd.task.includes(line), `${code}: an answer line appears in the task`);
+  }
 });

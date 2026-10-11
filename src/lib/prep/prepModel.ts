@@ -34,6 +34,7 @@ import type {
   ThinkingPattern,
 } from '../types.ts';
 import { bandLevels, type ProficiencyBand } from '../eld/types.ts';
+import { DRAFT_COOL_DOWNS, type CoolDown } from './draftCoolDowns.ts';
 
 // ---------------------------------------------------------------------------
 // Steps
@@ -186,7 +187,12 @@ export interface PrepModel {
     closing: string | null;
     /** The close split around its question, when it has one. See splitClosing. */
     parts: { setup: string; question: string; after: string } | null;
-    /** Lesson-level look-fors a written or spoken answer can actually show. */
+    /**
+     * A cool-down for this lesson, when there is one. A student task with a
+     * checkable answer; the step uses it in place of the close.
+     */
+    coolDown: CoolDown | null;
+    /** Look-fors a written or spoken answer can actually show: the cool-down's when there is one. */
     lookFors: string[];
   };
   patterns: PrepPattern[];
@@ -442,7 +448,7 @@ function eligible(s: DecisionScenario, focus: FocusRole): boolean {
 
 const STEP_BASE: Omit<PrepStep, 'lede'>[] = [
   { key: 'orient', name: 'Orient', minutes: 2, tool: 'Quick Read', verb: 'Read', crux: false },
-  { key: 'student', name: 'Do it as a student', minutes: 3, tool: 'Pathway · Synthesis', verb: 'Write', crux: false },
+  { key: 'student', name: 'Do it as a student', minutes: 3, tool: 'Cool-down', verb: 'Write', crux: false },
   { key: 'predict', name: 'Predict the crux', minutes: 3, tool: 'Thinking', verb: 'Write', crux: true },
   { key: 'rehearse', name: 'Rehearse', minutes: 6, tool: 'Moves', verb: 'Say aloud', crux: true },
   { key: 'adjust', name: 'Adjust', minutes: 2, tool: 'Adapt', verb: 'Pick', crux: false },
@@ -504,13 +510,19 @@ export function buildPrepModel(lesson: LessonData, bands: readonly ProficiencyBa
 
   // --- Step 2: a student task from the lesson's close ---
   const g = lesson.adaptation_guardrails;
+  const code = [lesson.meta.grade, lesson.meta.unit, lesson.meta.lesson_number].map(metaNumber).filter(present).join('.');
+  const coolDown = DRAFT_COOL_DOWNS[code] ?? null;
   const proof = {
     closing: lesson.lesson_synthesis?.prompt || null,
     parts: splitClosing(lesson.lesson_synthesis?.prompt),
-    lookFors: dedupe([...(lesson.wristband?.top_signals ?? []), ...(crux?.source.success_signals ?? [])])
-      .filter((s) => !NOT_SHOWABLE_IN_AN_ANSWER.test(s))
-      .slice(0, 4),
+    coolDown,
+    lookFors: coolDown
+      ? coolDown.lookFors
+      : dedupe([...(lesson.wristband?.top_signals ?? []), ...(crux?.source.success_signals ?? [])])
+          .filter((s) => !NOT_SHOWABLE_IN_AN_ANSWER.test(s))
+          .slice(0, 4),
   };
+
 
   // --- Step 3: patterns at the crux and the activity that feeds it ---
   // MLL-specific patterns stay IN. DSST's generation tags patterns MLL-specific
@@ -643,7 +655,9 @@ export function buildPrepModel(lesson: LessonData, bands: readonly ProficiencyBa
   const ledes: Record<StepKey, string> = {
     orient: 'The destination, the idea underneath it, and one thing to watch for in each activity. Tap any activity for detail.',
     student:
-      'Answer the question the lesson closes on, the way a strong student would. Where it gets hard for you is where it gets hard for them.',
+      coolDown
+        ? 'Do the cool-down the way a strong student would. Where it gets hard for you is where it gets hard for them.'
+        : 'Answer the question the lesson closes on, the way a strong student would. Where it gets hard for you is where it gets hard for them.',
     predict: crux
       ? `${cruxName} is the crux${feeder ? `, and ${activityName(feeder)} sets it up` : ''}. Predict what your students will do before Premo shows its patterns.`
       : 'Predict what your students will do at the hardest point of the lesson.',
@@ -657,7 +671,9 @@ export function buildPrepModel(lesson: LessonData, bands: readonly ProficiencyBa
   // activity sheets, "The full move") is not counted: it is optional reading.
   const shown: Record<StepKey, number> = {
     orient: words(lesson.destination, g?.mathematical_purpose, ...activities.flatMap((a) => [a.title, a.watchFor])),
-    student: words(proof.closing, ...proof.lookFors),
+    student: coolDown
+      ? words(...coolDown.task, ...coolDown.strongAnswer, ...coolDown.lookFors)
+      : words(proof.closing, ...proof.lookFors),
     predict: words(crux?.source.learning_target, setup.crux, ...patterns.flatMap((p) => [p.label, p.description]), ...listenFor),
     rehearse: scenarios.reduce(
       (n, sc) =>
@@ -691,7 +707,7 @@ export function buildPrepModel(lesson: LessonData, bands: readonly ProficiencyBa
   const m = lesson.meta;
   return {
     heading: m.lesson_title,
-    code: [m.grade, m.unit, m.lesson_number].map(metaNumber).filter(present).join('.'),
+    code,
     gradeUnit: `Grade ${metaNumber(m.grade)} · Unit ${metaNumber(m.unit)}`,
     totalTime: m.total_time,
     destination: lesson.destination,

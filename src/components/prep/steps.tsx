@@ -96,29 +96,52 @@ export function student(c: StepCtx): StepOut {
   const { m, st, update } = c;
   const n = st.answer.trim().length;
   const ready = n >= MIN_ANSWER;
+  const cd = m.proof.coolDown;
   const inner = (
     <div className={s.stackLg}>
       <section className={cx(s.card, s.stack)}>
-        <span className={s.eyebrow}>How the lesson closes</span>
-        {m.proof.parts ? (
+        {cd ? (
           <>
-            {m.proof.parts.setup && <p className={cx(s.muted, s.small)}>{m.proof.parts.setup}</p>}
-            <p className={s.prompt} style={{ fontSize: 19 }}>
-              {quoted(m.proof.parts.question)}
-            </p>
+            <span className={s.eyebrow}>
+              Cool-down · {cd.title}
+              {cd.draft && ' · draft'}
+            </span>
+            <div className={s.stack} style={{ gap: 8 }}>
+              {cd.task.map((line, i) => (
+                <p key={i} style={i === 0 ? { fontWeight: 600 } : undefined}>
+                  {line}
+                </p>
+              ))}
+            </div>
             <p className={cx(s.muted, s.small)}>
-              Answer it in writing, the way a strong student would. Then say it out loud.
+              Answer in writing, the way a strong student would. Then say it out loud.
+              {cd.draft && ' This cool-down is a Premo draft, not the curriculum’s own.'}
             </p>
           </>
         ) : (
           <>
-            <p className={s.prompt} style={{ fontSize: 19 }}>
-              {m.proof.closing ?? m.destination}
-            </p>
-            <p className={cx(s.muted, s.small)}>
-              {m.proof.closing ? 'This is written for you, not for students. ' : ''}
-              Write what a strong student would say or write at this point. Then say it out loud.
-            </p>
+            <span className={s.eyebrow}>How the lesson closes</span>
+            {m.proof.parts ? (
+              <>
+                {m.proof.parts.setup && <p className={cx(s.muted, s.small)}>{m.proof.parts.setup}</p>}
+                <p className={s.prompt} style={{ fontSize: 19 }}>
+                  {quoted(m.proof.parts.question)}
+                </p>
+                <p className={cx(s.muted, s.small)}>
+                  Answer it in writing, the way a strong student would. Then say it out loud.
+                </p>
+              </>
+            ) : (
+              <>
+                <p className={s.prompt} style={{ fontSize: 19 }}>
+                  {m.proof.closing ?? m.destination}
+                </p>
+                <p className={cx(s.muted, s.small)}>
+                  {m.proof.closing ? 'This is written for you, not for students. ' : ''}
+                  Write what a strong student would say or write at this point. Then say it out loud.
+                </p>
+              </>
+            )}
           </>
         )}
         <div className={s.row}>
@@ -147,7 +170,17 @@ export function student(c: StepCtx): StepOut {
       </div>
       {st.answerChecked && (
         <section className={cx(s.stack, s.reveal)}>
-          {m.proof.parts?.after && (
+          {cd && (
+            <div className={s.flat}>
+              <span className={s.lab}>A strong answer</span>
+              <div className={s.stack} style={{ gap: 6 }}>
+                {cd.strongAnswer.map((line, i) => (
+                  <p key={i}>{line}</p>
+                ))}
+              </div>
+            </div>
+          )}
+          {!cd && m.proof.parts?.after && (
             <div className={s.flat}>
               <span className={s.lab}>Where the lesson takes it</span>
               {m.proof.parts.after}
@@ -169,7 +202,8 @@ export function student(c: StepCtx): StepOut {
             </Check>
           </div>
           <p className={cx(s.muted, s.small)}>
-            What strong student work shows in this lesson. Where your answer got hard is where theirs will.
+            {cd ? 'What a strong answer to this cool-down shows. ' : 'What strong student work shows in this lesson. '}
+            Where your answer got hard is where theirs will.
           </p>
         </section>
       )}
@@ -621,7 +655,7 @@ export function coachText(m: PrepModel, st: PrepState): string {
   return `DSST prep · Lesson ${m.code} ${m.heading} · ${new Date().toLocaleDateString()}
 Prep time: ${mmss(elapsedSeconds(st))}
 
-The lesson's proof, done as a student (${lf}/${m.proof.lookFors.length} look-fors):
+${m.proof.coolDown ? 'The cool-down' : "The lesson's proof"}, done as a student (${lf}/${m.proof.lookFors.length} look-fors):
 ${st.answer || '(not answered)'}
 
 My crux prediction:
@@ -660,7 +694,7 @@ export function carry(c: StepCtx): StepOut {
       <section className={s.sum} aria-label="Readiness summary">
         <div>
           <span className={s.lab}>
-            The lesson’s proof · {lf}/{m.proof.lookFors.length} look-fors
+            {m.proof.coolDown ? 'The cool-down' : 'The lesson’s proof'} · {lf}/{m.proof.lookFors.length} look-fors
           </span>
           <p>{st.answer || <span className={s.muted}>Not answered</span>}</p>
         </div>
