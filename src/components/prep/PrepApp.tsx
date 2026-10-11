@@ -170,14 +170,6 @@ export default function PrepApp({ lesson }: { lesson: PrepLesson }) {
               <span>{m.steps.length} steps</span>
               {m.totalTime && <span>{m.totalTime} class</span>}
             </div>
-            {m.authored && (
-              <div className={s.meta} style={{ fontSize: 12.5 }}>
-                <span>
-                  Written by hand to the prep standard ·{' '}
-                  {m.authored.status === 'reviewed' ? 'reviewed' : 'draft, not yet checked by a person'}
-                </span>
-              </div>
-            )}
             <div className={s.ministeps}>
               {m.steps.map((x, i) => (
                 <span key={x.key} className={i < n ? undefined : s.todo}>
