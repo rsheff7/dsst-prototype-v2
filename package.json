@@ -9,7 +9,8 @@
     "lint": "eslint",
     "check:eld": "node --test --experimental-strip-types src/lib/eld/eld.test.ts",
     "check:mlr": "node --test --experimental-strip-types src/lib/mlrSelection.test.ts",
-    "check": "npm run check:eld && npm run check:mlr",
+    "check:prep": "node --test --experimental-strip-types src/lib/prep/prepModel.test.ts",
+    "check": "npm run check:eld && npm run check:mlr && npm run check:prep",
     "variance": "node benchmarks/variance/harness.mjs",
     "pregenerate": "node scripts/pregenerate.mjs"
   },

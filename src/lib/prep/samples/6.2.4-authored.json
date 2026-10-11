@@ -1,0 +1,1005 @@
+{
+ "meta": {
+  "grade": "6",
+  "unit": "2",
+  "lesson_number": "4",
+  "lesson_title": "Color Mixtures",
+  "total_time": "50 min, 60 with the optional activity"
+ },
+ "destination": "Students can tell when two color mixtures are the same shade and explain it with the numbers: both amounts were multiplied by the same number, so the ratios are equivalent.",
+ "arc_statement": "Students start by seeing what doubling one factor does to a product. Then they double and triple your green recipe, write each ratio on a cup, predict, and mix to see. A third cup, a bluer green, shows what a ratio that is not equivalent looks like. The lesson lands when a group can say why the cups match using the numbers, not the color.",
+ "key_vocabulary": [
+  {
+   "term": "batch",
+   "definition": "One full recipe. Here, 5 ml of blue water with 15 ml of yellow water."
+  },
+  {
+   "term": "equivalent ratios",
+   "definition": "Ratios that describe different numbers of batches of the same recipe. 5 : 15, 10 : 30 and 15 : 45 are equivalent."
+  }
+ ],
+ "activities": [
+  {
+   "id": "4.1",
+   "title": "Number Talk: Adjusting a Factor",
+   "function": "Setup",
+   "duration": "10 min",
+   "grouping": "Whole group",
+   "language_demand": "low",
+   "function_summary": "Four products to find in their heads: 6 · 15, 12 · 15, 6 · 45, 13 · 45. Each one changes a factor from the one before.",
+   "learning_target": "Students use one product to find another when a factor is doubled or tripled.",
+   "synthesis_prompt": "Ask how the factors changed the way they solved each one. Record two or three strategies for all to see.",
+   "is_crux": false,
+   "friction_points": [
+    {
+     "description": "A student works out 12 · 15 from scratch and never looks back at 6 · 15.",
+     "type": "math"
+    }
+   ],
+   "success_signals": [
+    "“12 · 15 is double 6 · 15, so it’s 180.”",
+    "Uses 6 · 45 to get to 13 · 45."
+   ],
+   "teacher_moves": [
+    {
+     "text": "Show one problem at a time. One minute of quiet thinking, then a signal."
+    },
+    {
+     "text": "“Who can restate ___’s reasoning in a different way?”",
+     "mlr": {
+      "number": 8,
+      "name": "Discussion Supports"
+     }
+    }
+   ],
+   "causal_link": "Doubling one factor doubles the product. Turning Green asks what happens when both amounts are doubled.",
+   "extension": null
+  },
+  {
+   "id": "4.2",
+   "title": "Turning Green",
+   "function": "Crux",
+   "duration": "35 min",
+   "grouping": "Small groups",
+   "language_demand": "high",
+   "function_summary": "Groups draw a double batch of your 5 : 15 green, write its ratio on a cup, predict the shade, then mix it and hold it next to yours. They do the same for a triple batch. Then they invent a bluer green.",
+   "learning_target": "Students explain that multiplying both amounts by the same number makes the same shade, and call those ratios equivalent.",
+   "synthesis_prompt": "Groups walk round each other’s cups and diagrams. Ask: “Are the ratios representing the double batch, the triple batch, and your new mixture all equivalent to each other? How do you know?”",
+   "is_crux": true,
+   "friction_points": [
+    {
+     "description": "A cup comes out a different green from yours.",
+     "type": "math"
+    },
+    {
+     "description": "“They’re equivalent because they’re the same color,” with nothing about the numbers.",
+     "type": "language-math",
+     "mlr": {
+      "number": 8,
+      "name": "Discussion Supports"
+     }
+    }
+   ],
+   "success_signals": [
+    "A cup labeled 10 : 30 before anything is poured.",
+    "“We multiplied both by 2, so it’s two batches of the same recipe.”",
+    "A bluer recipe, with a reason it is not equivalent to 5 : 15."
+   ],
+   "teacher_moves": [
+    {
+     "text": "Show how to read the graduated cylinder: on a level surface, at eye level."
+    },
+    {
+     "text": "If a group’s recipe is wrong, let them mix it. Keep the cup for the discussion."
+    },
+    {
+     "text": "One student from each group stays at the table to answer visitors’ questions.",
+     "mlr": {
+      "number": 8,
+      "name": "Discussion Supports"
+     }
+    }
+   ],
+   "causal_link": "The rest of the unit leans on this: same shade, both amounts multiplied by the same number.",
+   "extension": "Are you ready for more? Someone made a green with 17 ml of blue and 13 ml of yellow. Can adding more blue or yellow ever turn it into the original green?"
+  },
+  {
+   "id": "4.3",
+   "title": "Perfect Purple Water",
+   "function": "Application",
+   "duration": "10 min",
+   "grouping": "Partners",
+   "language_demand": "medium",
+   "function_summary": "No mixing this time. The recipe is 8 ml of blue water with 3 ml of red. Students decide whether Jada’s 24 and 9 or Andre’s 16 and 9 makes the same purple, then find another mixture that does.",
+   "learning_target": "Students decide whether two mixtures are the same shade by checking whether both amounts were multiplied by the same number.",
+   "synthesis_prompt": "List every ratio students found for the second question. Ask how each one differs from 8 : 3.",
+   "is_crux": false,
+   "friction_points": [
+    {
+     "description": "“Andre’s works. 16 is a multiple of 8 and 9 is a multiple of 3.”",
+     "type": "math"
+    }
+   ],
+   "success_signals": [
+    "“Jada tripled both. Andre doubled the blue but tripled the red.”"
+   ],
+   "teacher_moves": [
+    {
+     "text": "Before students share, show this: “Mixing 18 ml of blue water with 13 ml of red water would result in the same shade of purple because I added 10 ml of each color.” They find the error and write a correct explanation.",
+     "mlr": {
+      "number": 3,
+      "name": "Critique, Correct, and Clarify"
+     }
+    }
+   ],
+   "causal_link": "Uses what the cups showed in Turning Green, without the cups.",
+   "extension": null
+  },
+  {
+   "id": "4.4",
+   "title": "Cool-down: Orange Water",
+   "function": "Synthesis",
+   "duration": "5 min",
+   "grouping": "Individual",
+   "language_demand": "medium",
+   "function_summary": "Students answer one task on their own to show what they took from the cups.",
+   "learning_target": "Students show on their own that they can tell when two ratios are equivalent.",
+   "synthesis_prompt": "Before the cool-down, ask: “How did we know that 5 : 15, 10 : 30, and 15 : 45 were equivalent?”",
+   "is_crux": false,
+   "friction_points": [
+    {
+     "description": "An answer that says “same color” and stops.",
+     "type": "math"
+    }
+   ],
+   "success_signals": [
+    "An answer that names the number both amounts were multiplied by."
+   ],
+   "teacher_moves": [
+    {
+     "text": "Collect them. Before tomorrow, sort into “multiplied both” and “something else.”"
+    }
+   ],
+   "causal_link": null,
+   "extension": null
+  }
+ ],
+ "adaptation_guardrails": {
+  "mathematical_purpose": "Multiplying each amount in a mixture by the same number makes more of the same shade. Ratios related this way are equivalent.",
+  "safe_to_change": [
+   "Group size. The lesson says 2 to 4; smaller is better if you have the equipment.",
+   "Colored water or the digital mixer. The lesson offers the applet if you have enough devices.",
+   "Color or dough. For students who do not see color, the lesson swaps in flour-and-water dough and compares stiffness.",
+   "Perfect Purple Water. It is optional. Skip it if Turning Green runs long."
+  ],
+  "do_not_remove": [
+   {
+    "text": "The ratio goes on the cup, and the prediction is made, before anyone pours."
+   },
+   {
+    "text": "The bluer cup: the one ratio that is not equivalent."
+   },
+   {
+    "text": "A wrong recipe gets mixed, not corrected."
+   },
+   {
+    "text": "The walk round other groups’ cups.",
+    "mlr": {
+     "number": 8,
+     "name": "Discussion Supports"
+    }
+   }
+  ],
+  "rigor_check": "Does every group still write a ratio on a cup, predict, and then mix to test it?",
+  "by_proficiency": {
+   "emerging": {
+    "text": "They show it on the diagram. “Show me one batch. Now show me two.” Then they finish “both times ___” with a number."
+   },
+   "developing": {
+    "text": "Post “___ : ___ is equivalent to 5 : 15 because ___.” They say it to a partner before they write it.",
+    "mlr": {
+     "number": 8,
+     "name": "Discussion Supports"
+    }
+   },
+   "expanding": {
+    "text": "They explain to a visitor why the bluer cup is not equivalent, then make the sentence clearer once."
+   }
+  }
+ },
+ "anticipated_thinking": {
+  "orientation": "Most groups will double and triple the recipe correctly and see the greens match. The work is getting them to say why with the numbers, and to notice what the bluer cup shows.",
+  "activities": [
+   {
+    "activity_id": "4.1",
+    "patterns": [
+     {
+      "label": "“12 · 15 is double 6 · 15.”",
+      "frequency": "some students",
+      "type": "on-track",
+      "description": "They see one factor double and double the product.",
+      "move": "Ask what doubling the 6 did to the answer.",
+      "is_mll_specific": false
+     },
+     {
+      "label": "Works out 12 · 15 from scratch.",
+      "frequency": "some students",
+      "type": "partial",
+      "description": "A correct answer the long way. They have not yet used the problem before it.",
+      "move": "“How could 6 · 15 help you here?”",
+      "is_mll_specific": false
+     },
+     {
+      "label": "“13 · 45 is 12 · 45 and one more 45.”",
+      "frequency": "watch for this",
+      "type": "extension",
+      "description": "They doubled 6 · 45, then added one more 45.",
+      "move": "Have them say where the 12 · 45 came from.",
+      "is_mll_specific": false
+     }
+    ],
+    "sentence_frames": [
+     {
+      "frame": "First, I ___ because ___.",
+      "mlr": {
+       "number": 8,
+       "name": "Discussion Supports"
+      }
+     },
+     {
+      "frame": "I noticed ___ so I ___.",
+      "mlr": {
+       "number": 8,
+       "name": "Discussion Supports"
+      }
+     }
+    ],
+    "questions_to_listen_for": [
+     "Who can restate ___’s reasoning in a different way?",
+     "Did anyone solve the problem in a different way?"
+    ]
+   },
+   {
+    "activity_id": "4.2",
+    "patterns": [
+     {
+      "label": "The double-batch cup says 10 : 15.",
+      "frequency": "some students",
+      "type": "misconception",
+      "description": "They doubled the blue and left the yellow. The cup will come out bluer than yours.",
+      "move": "Let them mix it. Then: “What did you do to each amount?”",
+      "is_mll_specific": false
+     },
+     {
+      "label": "The “bluer” cup says 10 : 30. “More blue.”",
+      "frequency": "some students",
+      "type": "misconception",
+      "description": "More blue water, but it is the same recipe twice. It will match your green.",
+      "move": "Let them mix it. “Is it bluer? What would make it bluer?”",
+      "is_mll_specific": false
+     },
+     {
+      "label": "“It’s equivalent because it’s the same color.”",
+      "frequency": "most students",
+      "type": "partial",
+      "description": "True, and it is what the cup shows. They have not yet tied it to the numbers.",
+      "move": "“How could you tell from the numbers, before mixing?”",
+      "is_mll_specific": false
+     },
+     {
+      "label": "Holds up two fingers and points at both rows of the diagram.",
+      "frequency": "some students",
+      "type": "language-math",
+      "description": "They have the idea: both amounts doubled. They do not yet have the English for it.",
+      "move": "Say it with them: “both times 2.” Then they say it to a partner.",
+      "is_mll_specific": true,
+      "mlr": {
+       "number": 8,
+       "name": "Discussion Supports"
+      }
+     },
+     {
+      "label": "“5 : 10 is bluer. Same blue, less yellow.”",
+      "frequency": "watch for this",
+      "type": "extension",
+      "description": "They changed the ratio on purpose and can say which way the shade moved.",
+      "move": "Ask whether 5 : 10 is equivalent to 5 : 15, and why not.",
+      "is_mll_specific": false
+     },
+     {
+      "label": "The cup says 10 : 30. “It’ll be the same green.”",
+      "frequency": "most students",
+      "type": "on-track",
+      "description": "They doubled both amounts and expect the same shade.",
+      "move": "Ask how they know, before they pour.",
+      "is_mll_specific": false
+     }
+    ],
+    "sentence_frames": [
+     {
+      "frame": "___ : ___ is equivalent to 5 : 15 because ___.",
+      "mlr": {
+       "number": 8,
+       "name": "Discussion Supports"
+      }
+     },
+     {
+      "frame": "We multiplied both amounts by ___."
+     }
+    ],
+    "questions_to_listen_for": [
+     "Are the ratios representing the double batch, the triple batch, and your new mixture all equivalent to each other? How do you know?",
+     "Are each group’s results for the first two mixtures the same shade of green?"
+    ]
+   },
+   {
+    "activity_id": "4.3",
+    "patterns": [
+     {
+      "label": "“Andre’s works. 16 is a multiple of 8 and 9 is a multiple of 3.”",
+      "frequency": "some students",
+      "type": "misconception",
+      "description": "They checked each number alone, not whether both were multiplied by the same number.",
+      "move": "“What was the 8 multiplied by? What was the 3 multiplied by?”",
+      "is_mll_specific": false
+     },
+     {
+      "label": "“18 and 13 works. I added 10 to each.”",
+      "frequency": "watch for this",
+      "type": "misconception",
+      "description": "Adding the same amount to each is not multiplying each by the same number. 18 : 13 has much more red for its blue.",
+      "move": "“Draw it. Can you circle whole batches of 8 and 3?”",
+      "is_mll_specific": false
+     },
+     {
+      "label": "“Jada tripled both.”",
+      "frequency": "most students",
+      "type": "on-track",
+      "description": "24 is 8 · 3 and 9 is 3 · 3: three batches.",
+      "move": "Ask for another mixture that works, and what they multiplied by.",
+      "is_mll_specific": false
+     }
+    ],
+    "sentence_frames": [
+     {
+      "frame": "___ will be the same shade because both amounts were multiplied by ___."
+     }
+    ],
+    "questions_to_listen_for": [
+     "What was each amount multiplied by?"
+    ]
+   },
+   {
+    "activity_id": "4.4",
+    "patterns": [
+     {
+      "label": "“Same color,” and nothing else.",
+      "frequency": "some students",
+      "type": "partial",
+      "description": "They remember the cups, not yet the reason.",
+      "move": "Hand it back tomorrow: “Add the numbers that show it.”",
+      "is_mll_specific": false
+     }
+    ],
+    "sentence_frames": [],
+    "questions_to_listen_for": []
+   }
+  ]
+ },
+ "decision_guide": {
+  "activities": [
+   {
+    "activity_id": "4.1",
+    "scenarios": [
+     {
+      "scenario_type": "partial-understanding",
+      "label": "A student writes out 12 · 15 the long way and never looks at 6 · 15.",
+      "interpretation": "They can compute. They are not yet using what changed between the problems, which is the point of the string.",
+      "is_mll": false,
+      "flat_move": {
+       "move": "Point back to the first problem, still on the board.",
+       "say": "How could 6 · 15 help you with 12 · 15?",
+       "nonverbal": null,
+       "avoid": "Show the doubling yourself."
+      },
+      "proficiency_moves": null,
+      "mll_framework_note": null
+     },
+     {
+      "scenario_type": "productive-insight",
+      "label": "“12 · 15 is just double the last one.”",
+      "interpretation": "They saw one factor double and doubled the product. The cups stretch this idea to two amounts at once.",
+      "is_mll": false,
+      "flat_move": {
+       "move": "Record it for all to see.",
+       "say": "What did doubling the 6 do to the answer?",
+       "nonverbal": null,
+       "avoid": "Say “good” and move on."
+      },
+      "proficiency_moves": null,
+      "mll_framework_note": null
+     }
+    ]
+   },
+   {
+    "activity_id": "4.2",
+    "scenarios": [
+     {
+      "scenario_type": "productive-struggle",
+      "label": "A group is pouring. The cup has no ratio on it and nobody has predicted.",
+      "interpretation": "With no label and no prediction, the mixing tests nothing. It is just green water.",
+      "is_mll": false,
+      "flat_move": {
+       "move": "Hand them the marker.",
+       "say": "Stop pouring. What goes on the cup first?",
+       "nonverbal": null,
+       "avoid": "Write the ratio on the cup for them."
+      },
+      "proficiency_moves": null,
+      "mll_framework_note": null
+     },
+     {
+      "scenario_type": "productive-struggle",
+      "label": "One student measures and pours. The other two watch.",
+      "interpretation": "The group has one person’s recipe and one person’s prediction.",
+      "is_mll": false,
+      "flat_move": {
+       "move": "Pass the cylinder to someone who has not poured yet.",
+       "say": "Everyone says a prediction before anyone pours.",
+       "nonverbal": null,
+       "avoid": "Let the pourer explain for the group."
+      },
+      "proficiency_moves": null,
+      "mll_framework_note": null
+     },
+     {
+      "scenario_type": "common-error",
+      "label": "A group’s double-batch cup says 10 : 15.",
+      "interpretation": "They doubled the blue and left the yellow. The cup will come out bluer than yours, and that is the evidence they need.",
+      "is_mll": false,
+      "flat_move": {
+       "move": "Keep the cup for the discussion.",
+       "say": "Mix it. Then hold it next to mine.",
+       "nonverbal": null,
+       "avoid": "Tell them to fix the 15 before they pour."
+      },
+      "proficiency_moves": null,
+      "mll_framework_note": null
+     },
+     {
+      "scenario_type": "partial-understanding",
+      "label": "The cup says 10 : 30, but the green doesn’t match yours.",
+      "interpretation": "The ratio is right. The measuring was off, and they may now doubt a correct recipe.",
+      "is_mll": false,
+      "flat_move": {
+       "move": "Set the cylinder on the table and crouch down to it.",
+       "say": "Read the cylinder at eye level. Measure again.",
+       "nonverbal": null,
+       "avoid": "Let them decide that doubling changes the shade."
+      },
+      "proficiency_moves": null,
+      "mll_framework_note": null
+     },
+     {
+      "scenario_type": "partial-understanding",
+      "label": "“They’re equivalent because they’re the same color.”",
+      "interpretation": "True, and it is what the cups show. They have not said what was done to the numbers.",
+      "is_mll": false,
+      "flat_move": {
+       "move": "Put a hand over the cups and point to the labels.",
+       "say": "Cover the cups. How could the numbers tell you?",
+       "nonverbal": null,
+       "avoid": "Say “you multiplied both by 2” for them."
+      },
+      "proficiency_moves": null,
+      "mll_framework_note": null
+     },
+     {
+      "scenario_type": "common-error",
+      "label": "A group’s “bluer” cup says 10 : 30.",
+      "interpretation": "More blue water, but it is the same recipe twice. It will match your green.",
+      "is_mll": false,
+      "flat_move": {
+       "move": "Then ask what they could change to make it bluer.",
+       "say": "Mix it. Is it bluer than mine?",
+       "nonverbal": null,
+       "avoid": "Tell them 10 : 30 is just a double batch."
+      },
+      "proficiency_moves": null,
+      "mll_framework_note": null
+     },
+     {
+      "scenario_type": "productive-struggle",
+      "label": "A student holds up two fingers and points at both rows of the diagram. Nothing is written.",
+      "interpretation": "They have the idea: both amounts doubled. They do not yet have the English to put it in.",
+      "is_mll": true,
+      "flat_move": null,
+      "proficiency_moves": {
+       "emerging": {
+        "move": "They circle the batches in their diagram. Then they finish “both times ___” with a number.",
+        "say": "Show me one batch. Now show me two.",
+        "nonverbal": "Trace one batch in their diagram with your finger, then hand them the marker.",
+        "avoid": "Write the sentence for them."
+       },
+       "developing": {
+        "move": "Point to the frame: “___ : ___ is equivalent to 5 : 15 because ___.” They say it, then write it.",
+        "say": "Say it to your partner first.",
+        "nonverbal": null,
+        "avoid": "Fill in the blanks yourself."
+       },
+       "expanding": {
+        "move": "They write the reason. A partner asks “How do you know?” They rewrite it once.",
+        "say": "Tell your partner why. Then make it clearer once.",
+        "nonverbal": null,
+        "avoid": "Accept the first sentence as finished."
+       }
+      },
+      "mll_framework_note": "The question is the same at every level: why are these ratios equivalent? Only the way in changes.",
+      "mlr": {
+       "number": 8,
+       "name": "Discussion Supports"
+      }
+     },
+     {
+      "scenario_type": "partial-understanding",
+      "label": "A student reads “Label an empty cup with the ratio” and writes “green” on the cup.",
+      "interpretation": "“Label” made sense. “With the ratio” did not carry, so they named the cup instead of writing two numbers.",
+      "is_mll": true,
+      "flat_move": null,
+      "proficiency_moves": {
+       "emerging": {
+        "move": "They write their two numbers on the cup, blue first.",
+        "say": "This is my ratio. What is yours?",
+        "nonverbal": "Point to “5 : 15” in the first line of the task, then to their cup.",
+        "avoid": "Write 10 : 30 on the cup yourself."
+       },
+       "developing": {
+        "move": "They say the two numbers, then write them on the cup.",
+        "say": "What two numbers describe your mixture? Blue first.",
+        "nonverbal": null,
+        "avoid": "Write 10 : 30 on the cup yourself."
+       },
+       "expanding": {
+        "move": "They reread the direction and fix the label themselves.",
+        "say": "Read that line again. What does “the ratio” ask you to write?",
+        "nonverbal": null,
+        "avoid": "Tell them what the ratio is."
+       }
+      },
+      "mll_framework_note": "The question is the same at every level: why are these ratios equivalent? Only the way in changes.",
+      "mlr": {
+       "number": 8,
+       "name": "Discussion Supports"
+      }
+     },
+     {
+      "scenario_type": "productive-insight",
+      "label": "“5 : 10 is bluer. Same blue, less yellow.”",
+      "interpretation": "They changed the ratio on purpose and can say which way the shade moves. This is what “not equivalent” looks like.",
+      "is_mll": false,
+      "flat_move": {
+       "move": "Have them explain it to the next group that visits.",
+       "say": "Is 5 : 10 equivalent to 5 : 15? How do you know?",
+       "nonverbal": null,
+       "avoid": "Say “great” and move on."
+      },
+      "proficiency_moves": null,
+      "mll_framework_note": null
+     },
+     {
+      "scenario_type": "on-track",
+      "label": "The cups read 10 : 30 and 15 : 45. Both match your green.",
+      "interpretation": "Correct, and the group may think it is finished. The explanation is still owed.",
+      "is_mll": false,
+      "flat_move": {
+       "move": "Point to the two numbers on one cup.",
+       "say": "What did you do to each amount?",
+       "nonverbal": null,
+       "avoid": "Tick it and walk away."
+      },
+      "proficiency_moves": null,
+      "mll_framework_note": null
+     }
+    ]
+   },
+   {
+    "activity_id": "4.3",
+    "scenarios": [
+     {
+      "scenario_type": "common-error",
+      "label": "“Andre’s works. 16 is a multiple of 8 and 9 is a multiple of 3.”",
+      "interpretation": "They checked each number on its own. Andre doubled the blue but tripled the red.",
+      "is_mll": false,
+      "flat_move": {
+       "move": "Or have them draw the batches.",
+       "say": "What was the 8 multiplied by? And the 3?",
+       "nonverbal": null,
+       "avoid": "Tell them Andre’s is wrong."
+      },
+      "proficiency_moves": null,
+      "mll_framework_note": null
+     },
+     {
+      "scenario_type": "common-error",
+      "label": "“18 and 13 will work. I added 10 to each.”",
+      "interpretation": "Adding the same amount to each is not multiplying each by the same number. 18 : 13 has much more red for its blue.",
+      "is_mll": false,
+      "flat_move": {
+       "move": "They draw 18 blue and 13 red and try to circle groups of 8 and 3.",
+       "say": "Draw it. Can you circle whole batches?",
+       "nonverbal": null,
+       "avoid": "Say “you have to multiply, not add.”"
+      },
+      "proficiency_moves": null,
+      "mll_framework_note": null
+     }
+    ]
+   },
+   {
+    "activity_id": "4.4",
+    "scenarios": [
+     {
+      "scenario_type": "partial-understanding",
+      "label": "A cool-down says “same color” and stops.",
+      "interpretation": "They hold the result, not the reason.",
+      "is_mll": false,
+      "flat_move": {
+       "move": "Hand it back at the start of the next lesson.",
+       "say": "Add the numbers that show it.",
+       "nonverbal": null,
+       "avoid": "Mark it wrong."
+      },
+      "proficiency_moves": null,
+      "mll_framework_note": null
+     }
+    ]
+   }
+  ]
+ },
+ "elsf_inference": {
+  "activities": [
+   {
+    "activity_id": "4.1",
+    "language_demands": {
+     "receptive": "Four products shown one at a time, and classmates’ strategies said aloud.",
+     "productive": "A strategy, said so others can follow it.",
+     "interactive": "Restating or adding to a classmate’s reasoning.",
+     "everyday_to_academic_bridge": "“I doubled it” is the everyday form of “the factor doubled, so the product doubled.”",
+     "elsf_guidelines_applied": [
+      1,
+      6
+     ]
+    },
+    "functional_language": {
+     "language_functions": [
+      "explain a strategy",
+      "restate someone’s reasoning"
+     ],
+     "example_phrases": [
+      "First, I ___ because ___.",
+      "I noticed ___ so I ___."
+     ],
+     "l1_bridge": "Students can work the product in the language they count in, then explain in English.",
+     "elsf_guidelines_applied": [
+      1,
+      12
+     ]
+    }
+   },
+   {
+    "activity_id": "4.2",
+    "language_demands": {
+     "receptive": "A long set of written directions in three parts: double, triple, bluer.",
+     "productive": "A ratio on a cup, a prediction, and a written reason each time.",
+     "interactive": "Agreeing a prediction as a group, and answering visitors’ questions about the cups.",
+     "everyday_to_academic_bridge": "“Same color” and “two times as much” are the everyday forms of “equivalent ratios” and “both amounts multiplied by 2.”",
+     "elsf_guidelines_applied": [
+      1,
+      6,
+      8
+     ]
+    },
+    "functional_language": {
+     "language_functions": [
+      "predict",
+      "explain why two ratios are equivalent",
+      "compare two mixtures"
+     ],
+     "example_phrases": [
+      "___ : ___ is equivalent to 5 : 15 because ___.",
+      "We multiplied both amounts by ___.",
+      "This one is bluer because ___."
+     ],
+     "l1_bridge": "Groups can predict and argue in any language they share. The cup label and the written reason are in English.",
+     "elsf_guidelines_applied": [
+      1,
+      3,
+      7,
+      12
+     ]
+    }
+   },
+   {
+    "activity_id": "4.3",
+    "language_demands": {
+     "receptive": "A short recipe and two people’s mixtures to compare.",
+     "productive": "A choice between Jada and Andre, with a reason.",
+     "interactive": "Think alone, then share with a partner. Critique a flawed explanation.",
+     "everyday_to_academic_bridge": "“He did different things to each one” becomes “the amounts were not multiplied by the same number.”",
+     "elsf_guidelines_applied": [
+      1,
+      7
+     ]
+    },
+    "functional_language": {
+     "language_functions": [
+      "justify a choice",
+      "critique an explanation"
+     ],
+     "example_phrases": [
+      "___ will be the same shade because ___.",
+      "___ is not equivalent because ___."
+     ],
+     "l1_bridge": null,
+     "elsf_guidelines_applied": [
+      7
+     ]
+    }
+   },
+   {
+    "activity_id": "4.4",
+    "language_demands": {
+     "receptive": "One written task.",
+     "productive": "A written reason, done alone.",
+     "interactive": "None.",
+     "everyday_to_academic_bridge": "The same step as in Turning Green: from “same color” to the numbers.",
+     "elsf_guidelines_applied": [
+      14
+     ]
+    },
+    "functional_language": {
+     "language_functions": [
+      "explain in writing"
+     ],
+     "example_phrases": [
+      "They are equivalent because ___."
+     ],
+     "l1_bridge": null,
+     "elsf_guidelines_applied": [
+      14
+     ]
+    }
+   }
+  ]
+ },
+ "mlr_inference": {
+  "activities": [
+   {
+    "activity_id": "4.1",
+    "lesson_outcome": "Students explain a mental strategy so that others can follow it.",
+    "mlrs": [
+     {
+      "number": 8,
+      "name": "Discussion Supports",
+      "why_here": "The lesson assigns it here: frames such as “First, I ___ because . . .” and a chance to rehearse with a partner before sharing."
+     }
+    ]
+   },
+   {
+    "activity_id": "4.2",
+    "lesson_outcome": "Students explain, aloud and in writing, why two ratios are equivalent.",
+    "mlrs": [
+     {
+      "number": 8,
+      "name": "Discussion Supports",
+      "why_here": "The lesson assigns it here: one student stays at the table to answer visitors, who are given questions to ask."
+     }
+    ]
+   },
+   {
+    "activity_id": "4.3",
+    "lesson_outcome": "Students critique a flawed explanation and write a correct one.",
+    "mlrs": [
+     {
+      "number": 3,
+      "name": "Critique, Correct, and Clarify",
+      "why_here": "The lesson assigns it here, with the flawed answer about adding 10 ml of each color."
+     }
+    ]
+   },
+   {
+    "activity_id": "4.4",
+    "lesson_outcome": "Students write a reason on their own.",
+    "mlrs": []
+   }
+  ]
+ },
+ "wristband": {
+  "arc_one_line": "Label a cup, predict, mix: same shade means equivalent ratios.",
+  "preflight": [
+   "Mix blue water and yellow water: 1 teaspoon of food coloring per cup of water. One cup of each per pair.",
+   "Per group: a graduated cylinder, a marker, a craft stick and 3 white cups.",
+   "Mix your own 5 : 15 green where every group can see it.",
+   "Post: “___ : ___ is equivalent to 5 : 15 because ___.”"
+  ],
+  "top_signals": [
+   "A ratio on the cup before pouring.",
+   "“We multiplied both by 2.”",
+   "A bluer recipe they can explain."
+  ],
+  "top_frictions": [
+   "“Same color,” with no numbers.",
+   "Right ratio, careless measuring.",
+   "One student does all the pouring."
+  ],
+  "activities": [
+   {
+    "activity_id": "4.1",
+    "tiles": [
+     {
+      "observation_short": "Works out 12 · 15 from scratch.",
+      "friction_type": "math",
+      "move_short": "Ask how 6 · 15 could help.",
+      "avoid_short": "Showing the doubling yourself."
+     }
+    ],
+    "synthesis_short": "Ask how the factors changed their strategy."
+   },
+   {
+    "activity_id": "4.2",
+    "tiles": [
+     {
+      "observation_short": "Pouring before the cup has a ratio on it.",
+      "friction_type": "math",
+      "move_short": "Stop the pouring. Ratio on the cup, then a prediction.",
+      "avoid_short": "Writing the ratio for them.",
+      "is_crux_moment": true
+     },
+     {
+      "observation_short": "“Equivalent because it’s the same color.”",
+      "friction_type": "language-math",
+      "mlr": {
+       "number": 8,
+       "name": "Discussion Supports"
+      },
+      "move_short": "Cover the cups. Ask how the numbers could tell them.",
+      "avoid_short": "Saying “you multiplied both by 2.”",
+      "has_proficiency_variants": true
+     }
+    ],
+    "synthesis_short": "Walk the cups. Ask: are all three ratios equivalent? How do you know?"
+   },
+   {
+    "activity_id": "4.3",
+    "tiles": [
+     {
+      "observation_short": "“Andre’s works: multiples of 8 and 3.”",
+      "friction_type": "math",
+      "move_short": "Ask what the 8 and the 3 were each multiplied by.",
+      "avoid_short": "Telling them Andre is wrong."
+     }
+    ],
+    "synthesis_short": "List every ratio found. Ask how each differs from 8 : 3."
+   },
+   {
+    "activity_id": "4.4",
+    "tiles": [
+     {
+      "observation_short": "“Same color,” and nothing else.",
+      "friction_type": "math",
+      "move_short": "Hand it back tomorrow: add the numbers.",
+      "avoid_short": "Marking it wrong."
+     }
+    ],
+    "synthesis_short": "Ask how we knew 5 : 15, 10 : 30 and 15 : 45 were equivalent."
+   }
+  ],
+  "mlr_legend": [
+   {
+    "mlr": {
+     "number": 8,
+     "name": "Discussion Supports"
+    },
+    "one_line_cue": "Frames posted; one student stays to answer visitors."
+   },
+   {
+    "mlr": {
+     "number": 3,
+     "name": "Critique, Correct, and Clarify"
+    },
+    "one_line_cue": "Show the flawed 18 and 13 answer; students fix it."
+   }
+  ],
+  "lesson_synthesis_short": "Ask how we knew 5 : 15, 10 : 30 and 15 : 45 were equivalent."
+ },
+ "lesson_synthesis": {
+  "prompt": "Ask: “How did we know that 5 : 15, 10 : 30, and 15 : 45 were equivalent?” Listen for both answers: they made the same shade of green, and both amounts of the original recipe were multiplied by the same number.",
+  "builds_on": [
+   "4.1: doubling one factor doubled the product.",
+   "4.2: the double and triple cups matched your green.",
+   "4.3: Jada tripled both amounts; Andre did not."
+  ]
+ },
+ "prep": {
+  "status": "draft",
+  "source": "IM 6–8 Math (CC BY), teacher edition, Grade 6 Unit 2 Lesson 4, print version",
+  "object": "the ratio on the cup",
+  "optional": [
+   "4.3"
+  ],
+  "setup": "Mix your own 5 : 15 green first, where every group can see it.",
+  "predict": {
+   "context": "After your demonstration, every group draws a double batch of your 5 : 15 green, writes its ratio on a cup, and predicts the shade. Then they mix it and hold it next to yours. Each time, the task asks: is this ratio equivalent to the teacher’s? Explain your reasoning.",
+   "question": "What will most groups write when they explain why the ratios are equivalent?",
+   "countQuestion": "How many groups will give a reason from the numbers, not only the color?",
+   "countUnit": "groups will give a reason from the numbers.",
+   "tell": "If few do, the cups did the convincing and the numbers never got said. That is the fifth moment you will rehearse."
+  },
+  "rehearse": [
+   "4.2:0",
+   "4.2:1",
+   "4.2:2",
+   "4.2:3",
+   "4.2:4",
+   "4.2:6"
+  ],
+  "criteria": {
+   "4.2:0": [
+    "Stopped the pouring",
+    "Sent them to the cup label and the prediction",
+    "Didn’t write the ratio for them"
+   ],
+   "4.2:1": [
+    "Got a prediction from every student",
+    "Changed who is measuring",
+    "Didn’t let one student speak for the group"
+   ],
+   "4.2:2": [
+    "Let them mix the wrong recipe",
+    "Had them compare the cup with yours",
+    "Didn’t correct the label first"
+   ],
+   "4.2:3": [
+    "Sent them back to measure, at eye level",
+    "Kept the 10 : 30 recipe in play",
+    "Didn’t leave them thinking doubling changed the shade"
+   ],
+   "4.2:4": [
+    "Accepted the color as evidence",
+    "Asked for a reason from the numbers",
+    "Didn’t say the multiplying for them"
+   ],
+   "4.2:6": [
+    "Kept the question the same: why are they equivalent?",
+    "Matched the support to the student’s level",
+    "Didn’t write the sentence or swap the task"
+   ]
+  },
+  "sources": {
+   "4.2:2": "lesson",
+   "4.2:3": "lesson",
+   "4.3:0": "lesson",
+   "4.3:1": "lesson"
+  },
+  "inClass": {
+   "launch": "Write the ratio on the cup. Predict. Then pour.",
+   "launchSource": "premo",
+   "scenarioIds": [
+    "4.2:2",
+    "4.2:3",
+    "4.2:4"
+   ]
+  },
+  "reviewNotes": [
+   "No person has reviewed this file.",
+   "Written from the print version of the lesson. The digital version of Turning Green is a different task (five options, including adding 20 ml of each color). None of it is used here.",
+   "The lesson’s notes for Turning Green name one misconception: an incorrect recipe, which it says to let play out. The specific 10 : 15 double batch is Premo’s example of one. The 10 : 30 “bluer” cup, the unlabeled cup, the one-student-pours moment and both language moments are Premo’s, not the lesson’s.",
+   "The measuring moment comes from the lesson’s note to make sure students measure accurately.",
+   "The cool-down shown in step 2 is a Premo draft (Teal Paint). The lesson’s own, Orange Water, is behind a sign-in and was not seen, so the 4.4 entry describes it only in general terms.",
+   "The lesson’s student responses were not available. Every answer here was worked, not copied.",
+   "Activity times are the lesson’s. It gives no time for the lesson synthesis; it is shown with the cool-down.",
+   "The launch line on the In-class card is Premo’s. The lesson’s launch is a demonstration with no line to quote.",
+   "Routines are only the ones the lesson assigns: MLR 8 in 4.1 and 4.2, MLR 3 in 4.3."
+  ]
+ }
+}
