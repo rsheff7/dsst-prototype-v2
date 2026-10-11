@@ -103,6 +103,8 @@ export interface PrepActivity {
   demand: Activity['language_demand'];
   /** One observation to watch for, for the Orient timeline. */
   watchFor: string | null;
+  /** The lesson marks it optional. Known only for a hand-written lesson. */
+  optional: boolean;
   /** What the teacher has to prepare for this activity, from the routine selector. */
   prep: string | null;
   /** How the language works in this activity, from the ELSF layer. */
@@ -115,6 +117,41 @@ export interface PrepActivity {
   } | null;
   source: Activity;
 }
+
+/**
+ * What a hand-written lesson carries beyond LessonData, as `lesson.prep`.
+ *
+ * LessonData was shaped for the five reference tools. A prep written to the
+ * Social Studies standard (premo-ssa/docs/GENERATION-PROMPT.md) needs a few
+ * things those tools never did: which six moments to rehearse and in what
+ * order, what a good move protects in each, what the teacher predicts and what
+ * it means when the count goes the wrong way, and the line that opens the crux.
+ * A generated lesson has no `prep`; everything then falls back to the rules in
+ * this file.
+ */
+export interface AuthoredPrep {
+  /** `draft` until a person has checked the file against the lesson. */
+  status: 'draft' | 'reviewed';
+  source?: string;
+  /** The thing students make that the crux then tests, named once and reused. */
+  object?: string;
+  /** Activity ids the lesson marks optional. */
+  optional?: string[];
+  /** What to have ready at the crux. */
+  setup?: string;
+  predict?: { context: string; question: string; countQuestion: string; countUnit: string; tell: string };
+  /** Scenario ids ("4.2:0"), in the order the lesson runs. */
+  rehearse?: string[];
+  /** Per scenario id: what a good response protects. Never the model wording. */
+  criteria?: Record<string, string[]>;
+  /** Per scenario id: did the lesson anticipate this moment, or did Premo? Unlisted = Premo. */
+  sources?: Record<string, 'lesson' | 'premo'>;
+  inClass?: { launch: string; launchSource?: 'lesson' | 'premo'; scenarioIds: string[] };
+  /** For the reviewer. A teacher never sees these. */
+  reviewNotes?: string[];
+}
+
+export type PrepLesson = LessonData & { prep?: AuthoredPrep };
 
 export type PatternKind = 'error' | 'almost' | 'build' | 'stretch' | 'lang';
 
@@ -148,8 +185,15 @@ export interface PrepScenario {
   typeLabel: string;
   /** The category, as a heading. */
   notice: string;
-  /** The concrete moment. Shown BEFORE the teacher speaks — it is what they are responding to. */
+  /**
+   * The concrete moment. Shown BEFORE the teacher speaks — it is what they are responding to.
+   * Empty for a hand-written lesson, where `notice` already is the moment.
+   */
   scene: string;
+  /** What is going on underneath. Hand-written lessons only; shown after the teacher has spoken. */
+  means: string | null;
+  /** Whether the lesson anticipated this moment. Null for a generated lesson, which cannot say. */
+  source: 'lesson' | 'premo' | null;
   mll: boolean;
   /** Present for whole-class scenarios. */
   flat: (TeacherMove & { say: string | null }) | null;
@@ -169,6 +213,10 @@ export interface InClassLine {
 
 export interface PrepModel {
   heading: string;
+  /** Hand-written to the prep standard, and whether a person has checked it. Null when generated. */
+  authored: { status: 'draft' | 'reviewed'; source: string | null } | null;
+  /** The teacher's prediction, when the lesson supplies one. */
+  predict: AuthoredPrep['predict'] | null;
   /** "6.2.1" style code for the app bar. */
   code: string;
   /** "Grade 6 · Unit 2". */
@@ -214,7 +262,9 @@ export interface PrepModel {
     checklist: string[];
   };
   inClass: {
-    /** The first thing to ask at the crux, verbatim. */
+    /** The line that opens the crux. Hand-written lessons only. */
+    launch: string | null;
+    /** A question for pairs who already have an answer, verbatim. */
     ask: string | null;
     setup: string | null;
     lines: InClassLine[];
@@ -459,8 +509,9 @@ const STEP_BASE: Omit<PrepStep, 'lede'>[] = [
  * @param bands the class ELD profile. Shapes the criteria and the In-class
  *              lines; the components filter supports by band themselves.
  */
-export function buildPrepModel(lesson: LessonData, bands: readonly ProficiencyBand[] = []): PrepModel {
+export function buildPrepModel(lesson: PrepLesson, bands: readonly ProficiencyBand[] = []): PrepModel {
   const acts = lesson.activities ?? [];
+  const authored = lesson.prep ?? null;
   const roles = focusRoles(acts);
   const cruxIdx = findCruxIndex(acts);
   const useBands = bands.length ? BANDS.filter((b) => bands.includes(b)) : BANDS;
@@ -491,7 +542,8 @@ export function buildPrepModel(lesson: LessonData, bands: readonly ProficiencyBa
       focus: roles[i],
       demand: a.language_demand,
       watchFor: tile?.observation_short ?? a.friction_points?.[0]?.description ?? null,
-      prep: selById.get(a.id)?.teacher_prep ?? null,
+      optional: !!authored?.optional?.includes(a.id),
+      prep: selById.get(a.id)?.teacher_prep ?? (i === cruxIdx ? authored?.setup ?? null : null),
       language: e
         ? {
             receptive: e.language_demands.receptive,
@@ -558,60 +610,79 @@ export function buildPrepModel(lesson: LessonData, bands: readonly ProficiencyBa
   const listenFor = crux ? thinkById.get(crux.id)?.questions_to_listen_for ?? [] : [];
 
   // --- Step 4: scenarios to rehearse ---
-  const candidates: PrepScenario[] = [];
-  for (const da of lesson.decision_guide?.activities ?? []) {
-    const f = focusOf(da.activity_id);
-    if (!f) continue;
-    const ranked = (da.scenarios ?? [])
-      .map((s, idx) => ({ s, idx }))
-      .filter(({ s }) => eligible(s, f))
+  const toScenario = (activityId: string, idx: number, sc: DecisionScenario, f: FocusRole): PrepScenario => {
+    const id = `${activityId}:${idx}`;
+    const flatOk = !!sc.flat_move && present(sc.flat_move.move);
+    return {
+      id,
+      activityId,
+      focus: f,
+      type: sc.scenario_type,
+      typeLabel: SCENARIO_LABEL[sc.scenario_type] ?? 'Common error',
+      notice: sc.label,
+      // A hand-written label is the moment itself; the interpretation waits.
+      scene: authored ? '' : sc.interpretation,
+      means: authored ? sc.interpretation : null,
+      source: authored ? authored.sources?.[id] ?? 'premo' : null,
+      mll: sc.is_mll,
+      flat: flatOk ? { ...sc.flat_move!, say: quoted(sc.flat_move!.say) } : null,
+      byBand:
+        !flatOk && sc.proficiency_moves
+          ? BANDS.map((b) => {
+              const m = sc.proficiency_moves![b];
+              return {
+                band: b,
+                say: quoted(m?.say),
+                move: m?.move ?? '',
+                nonverbal: present(m?.nonverbal) ? m!.nonverbal : null,
+                avoid: present(m?.avoid) ? m!.avoid : null,
+              };
+            })
+          : null,
+      criteria: authored?.criteria?.[id] ?? criteriaFor(sc, bands),
+      mlr: sc.mlr,
+    };
+  };
+  const scenarioById = (id: string): PrepScenario | null => {
+    const cut = id.lastIndexOf(':');
+    const activityId = id.slice(0, cut);
+    const idx = Number(id.slice(cut + 1));
+    const sc = lesson.decision_guide?.activities.find((d) => d.activity_id === activityId)?.scenarios?.[idx];
+    return sc && hasUsableMove(sc) ? toScenario(activityId, idx, sc, focusOf(activityId) ?? 'crux') : null;
+  };
+
+  let scenarios: PrepScenario[];
+  if (authored?.rehearse) {
+    // The author chose the moments and their order. No quotas, no cap.
+    scenarios = authored.rehearse.map(scenarioById).filter((x): x is PrepScenario => x !== null);
+  } else {
+    const candidates: PrepScenario[] = [];
+    for (const da of lesson.decision_guide?.activities ?? []) {
+      const f = focusOf(da.activity_id);
+      if (!f) continue;
+      const ranked = (da.scenarios ?? [])
+        .map((sc, idx) => ({ sc, idx }))
+        .filter(({ sc }) => eligible(sc, f))
+        .sort(
+          (a, b) =>
+            // After the crux, the place goes to a language scenario first.
+            (f === 'after' ? Number(b.sc.is_mll) - Number(a.sc.is_mll) : 0) ||
+            SCENARIO_PRIORITY.indexOf(a.sc.scenario_type) - SCENARIO_PRIORITY.indexOf(b.sc.scenario_type),
+        )
+        .slice(0, REHEARSAL_QUOTA[f]);
+      for (const { sc, idx } of ranked) candidates.push(toScenario(da.activity_id, idx, sc, f));
+    }
+    // Over the cap, the crux keeps its places first, then the feeder.
+    const rank: Record<FocusRole, number> = { crux: 0, feeder: 1, after: 2 };
+    scenarios = [...candidates]
+      .sort((a, b) => rank[a.focus] - rank[b.focus])
+      .slice(0, MAX_REHEARSAL)
       .sort(
         (a, b) =>
-          // After the crux, the place goes to a language scenario first.
-          (f === 'after' ? Number(b.s.is_mll) - Number(a.s.is_mll) : 0) ||
-          SCENARIO_PRIORITY.indexOf(a.s.scenario_type) - SCENARIO_PRIORITY.indexOf(b.s.scenario_type),
-      )
-      .slice(0, REHEARSAL_QUOTA[f]);
-    for (const { s, idx } of ranked) {
-      const flatOk = !!s.flat_move && present(s.flat_move.move);
-      candidates.push({
-        id: `${da.activity_id}:${idx}`,
-        activityId: da.activity_id,
-        focus: f,
-        type: s.scenario_type,
-        typeLabel: SCENARIO_LABEL[s.scenario_type] ?? 'Common error',
-        notice: s.label,
-        scene: s.interpretation,
-        mll: s.is_mll,
-        flat: flatOk ? { ...s.flat_move!, say: quoted(s.flat_move!.say) } : null,
-        byBand:
-          !flatOk && s.proficiency_moves
-            ? BANDS.map((b) => {
-                const m = s.proficiency_moves![b];
-                return {
-                  band: b,
-                  say: quoted(m?.say),
-                  move: m?.move ?? '',
-                  nonverbal: present(m?.nonverbal) ? m!.nonverbal : null,
-                  avoid: present(m?.avoid) ? m!.avoid : null,
-                };
-              })
-            : null,
-        criteria: criteriaFor(s, bands),
-        mlr: s.mlr,
-      });
-    }
+          order(a.activityId) - order(b.activityId) ||
+          SCENARIO_PRIORITY.indexOf(a.type) - SCENARIO_PRIORITY.indexOf(b.type),
+      );
   }
-  // Over the cap, the crux keeps its places first, then the feeder.
-  const rank: Record<FocusRole, number> = { crux: 0, feeder: 1, after: 2 };
-  const scenarios = [...candidates]
-    .sort((a, b) => rank[a.focus] - rank[b.focus])
-    .slice(0, MAX_REHEARSAL)
-    .sort(
-      (a, b) =>
-        order(a.activityId) - order(b.activityId) ||
-        SCENARIO_PRIORITY.indexOf(a.type) - SCENARIO_PRIORITY.indexOf(b.type),
-    );
 
   // --- Step 5 ---
   const cuts = (g?.safe_to_change ?? []).map((text, i) => ({ id: `cut-${i}`, text }));
@@ -633,9 +704,11 @@ export function buildPrepModel(lesson: LessonData, bands: readonly ProficiencyBa
 
   // --- Setup and the In-class card ---
   const setup = { crux: crux?.prep ?? null, checklist: lesson.wristband?.preflight ?? [] };
-  const lines: InClassLine[] = scenarios
-    .filter((s) => s.focus === 'crux')
-    .slice(0, 3)
+  // What is rehearsed is what goes to class: an author names three of the six.
+  const forClass = authored?.inClass
+    ? authored.inClass.scenarioIds.map((id) => scenarios.find((x) => x.id === id)).filter((x): x is PrepScenario => !!x)
+    : scenarios.filter((x) => x.focus === 'crux').slice(0, 3);
+  const lines: InClassLine[] = forClass
     .map((s) => {
       if (s.flat) return { see: s.notice, say: s.flat.say ? [{ label: null, text: s.flat.say }] : [], avoid: s.flat.avoid || null };
       const shown = (s.byBand ?? []).filter((m) => useBands.includes(m.band) && m.say);
@@ -646,7 +719,7 @@ export function buildPrepModel(lesson: LessonData, bands: readonly ProficiencyBa
       };
     })
     .filter((l) => l.say.length > 0);
-  const inClass = { ask: listenFor[0] ?? null, setup: setup.crux, lines };
+  const inClass = { launch: quoted(authored?.inClass?.launch), ask: listenFor[0] ?? null, setup: setup.crux, lines };
 
   // --- Steps, with ledes that name this lesson's crux ---
   const cruxName = crux ? activityName(crux) : 'the crux';
@@ -674,11 +747,16 @@ export function buildPrepModel(lesson: LessonData, bands: readonly ProficiencyBa
     student: coolDown
       ? words(...coolDown.task, ...coolDown.strongAnswer, ...coolDown.lookFors)
       : words(proof.closing, ...proof.lookFors),
-    predict: words(crux?.source.learning_target, setup.crux, ...patterns.flatMap((p) => [p.label, p.description]), ...listenFor),
+    predict: words(
+      authored?.predict ? authored.predict.context : crux?.source.learning_target,
+      setup.crux,
+      ...patterns.flatMap((p) => [p.label, p.description]),
+      ...listenFor,
+    ),
     rehearse: scenarios.reduce(
       (n, sc) =>
         n +
-        words(sc.notice, sc.scene, ...sc.criteria, sc.flat?.say, sc.flat?.avoid) +
+        words(sc.notice, sc.scene, sc.means, ...sc.criteria, sc.flat?.say, sc.flat?.avoid) +
         (sc.byBand ?? [])
           .filter((b) => useBands.includes(b.band))
           .reduce((k, b) => k + words(b.say, b.nonverbal, b.avoid), 0),
@@ -707,6 +785,8 @@ export function buildPrepModel(lesson: LessonData, bands: readonly ProficiencyBa
   const m = lesson.meta;
   return {
     heading: m.lesson_title,
+    authored: authored ? { status: authored.status, source: authored.source ?? null } : null,
+    predict: authored?.predict ?? null,
     code,
     gradeUnit: `Grade ${metaNumber(m.grade)} · Unit ${metaNumber(m.unit)}`,
     totalTime: m.total_time,

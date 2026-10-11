@@ -280,3 +280,55 @@ test('every draft cool-down is complete, marked as a draft, and keeps its answer
     for (const line of cd.strongAnswer) assert.ok(!cd.task.includes(line), `${code}: an answer line appears in the task`);
   }
 });
+
+// The hand-written 6.2.4, held to the Social Studies prep standard
+// (premo-ssa/docs/GENERATION-PROMPT.md). These are that standard's rules that
+// a machine can check; whether the lines are right is a person's call.
+function loadAuthored() {
+  return JSON.parse(readFileSync(fileURLToPath(new URL('./samples/6.2.4-authored.json', import.meta.url)), 'utf8'));
+}
+const wordCount = (s: string) => s.split(/\s+/).filter(Boolean).length;
+
+test('authored lesson: six rehearsal moments in the author’s order, three checks each', () => {
+  const lesson = loadAuthored();
+  const m = buildPrepModel(lesson);
+  assert.deepEqual(m.scenarios.map((s) => s.id), lesson.prep.rehearse);
+  assert.equal(m.scenarios.length, 6);
+  for (const s of m.scenarios) {
+    assert.equal(s.criteria.length, 3, s.id);
+    assert.equal(s.scene, '', 'the label is the moment; the interpretation waits');
+    assert.ok(s.means, s.id);
+    // Criteria describe the move, never its wording.
+    const says = [s.flat?.say, ...(s.byBand ?? []).map((b) => b.say)].filter(Boolean) as string[];
+    for (const c of s.criteria) for (const say of says) assert.ok(!c.includes(say.replace(/[“”]/g, '')), `${s.id}: a check repeats the model wording`);
+  }
+});
+
+test('authored lesson: say lines are short enough to say, and every level gets one', () => {
+  const lesson = loadAuthored();
+  const all: string[] = [];
+  for (const a of lesson.decision_guide.activities)
+    for (const s of a.scenarios as DecisionScenario[]) {
+      if (s.proficiency_moves) {
+        for (const b of ['emerging', 'developing', 'expanding'] as const) {
+          assert.ok(s.proficiency_moves[b].say, `${s.label}: ${b} has no say line`);
+          all.push(s.proficiency_moves[b].say!);
+        }
+      } else all.push(s.flat_move!.say!);
+    }
+  const lengths = all.map(wordCount).sort((x, y) => x - y);
+  assert.ok(lengths[Math.floor(lengths.length / 2)] <= 10, 'about ten words');
+  assert.ok(lengths[lengths.length - 1] <= 14, `longest say line is ${lengths[lengths.length - 1]} words`);
+});
+
+test('authored lesson: the card carries what was rehearsed, the lesson’s own times, and its draft status', () => {
+  const lesson = loadAuthored();
+  const m = buildPrepModel(lesson);
+  assert.equal(m.authored?.status, 'draft');
+  assert.ok(m.inClass.launch);
+  const rehearsed = m.scenarios.flatMap((s) => [s.flat?.say, ...(s.byBand ?? []).map((b) => b.say)]);
+  for (const l of m.inClass.lines) for (const y of l.say) assert.ok(rehearsed.includes(y.text));
+  assert.deepEqual(m.activities.map((a) => a.start), ['0:00', '0:10', '0:45', '0:55']);
+  assert.deepEqual(m.activities.filter((a) => a.optional).map((a) => a.id), ['4.3']);
+  assert.equal(m.predict?.countUnit.endsWith('.'), true);
+});

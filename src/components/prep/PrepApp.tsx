@@ -2,10 +2,10 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
-import type { LessonData, ToolId } from '@/lib/types';
+import type { ToolId } from '@/lib/types';
 import { useLesson } from '@/lib/lessonContext';
 import { bandForLevel, type ProficiencyBand } from '@/lib/eld';
-import { BANDS, PREP_BUDGET_MINUTES, activityName, bandLabel, buildPrepModel, quoted } from '@/lib/prep/prepModel';
+import { BANDS, PREP_BUDGET_MINUTES, activityName, bandLabel, buildPrepModel, quoted, type PrepLesson } from '@/lib/prep/prepModel';
 import MobileQuickRead from '@/components/mobile/MobileQuickRead';
 import WidaMobileSelector from '@/components/mobile/WidaMobileSelector';
 import LessonPathway from '@/components/tools/LessonPathway';
@@ -27,7 +27,7 @@ const LIB_TABS: [PrepState['lib'], string][] = [
   ['adapt', 'Adapt'],
 ];
 
-export default function PrepApp({ lesson }: { lesson: LessonData }) {
+export default function PrepApp({ lesson }: { lesson: PrepLesson }) {
   const { selectedWidaLevel } = useLesson();
   const initialBands = useMemo<ProficiencyBand[]>(
     () => (selectedWidaLevel ? [bandForLevel(selectedWidaLevel)] : []),
@@ -39,7 +39,7 @@ export default function PrepApp({ lesson }: { lesson: LessonData }) {
     () => JSON.stringify([m0.scenarios.map((x) => [x.id, x.notice]), m0.proof.lookFors, m0.cuts, m0.setup.checklist]),
     [m0],
   );
-  const { st, update, reset } = usePrepState(`${m0.code}:${m0.heading}`, sig, initialBands);
+  const { st, update, reset } = usePrepState(`${m0.code}:${m0.heading}${m0.authored ? ':authored' : ''}`, sig, initialBands);
   const m = useMemo(() => buildPrepModel(lesson, st.bands), [lesson, st.bands]);
 
   const [sheet, setSheet] = useState<string | null>(null);
@@ -170,6 +170,14 @@ export default function PrepApp({ lesson }: { lesson: LessonData }) {
               <span>{m.steps.length} steps</span>
               {m.totalTime && <span>{m.totalTime} class</span>}
             </div>
+            {m.authored && (
+              <div className={s.meta} style={{ fontSize: 12.5 }}>
+                <span>
+                  Written by hand to the prep standard ·{' '}
+                  {m.authored.status === 'reviewed' ? 'reviewed' : 'draft, not yet checked by a person'}
+                </span>
+              </div>
+            )}
             <div className={s.ministeps}>
               {m.steps.map((x, i) => (
                 <span key={x.key} className={i < n ? undefined : s.todo}>
@@ -314,16 +322,24 @@ export default function PrepApp({ lesson }: { lesson: LessonData }) {
           </div>
         </div>
         <main className={cx(s.main, s.incl)}>
-          {crux && (m.inClass.ask || m.inClass.setup) && (
+          {crux && (m.inClass.launch || m.inClass.ask || m.inClass.setup) && (
             <section className={s.now}>
               <span className={s.eyebrow}>
                 {crux.start ? `${crux.start} · ` : ''}
                 {activityName(crux)} · Crux
               </span>
+              {m.inClass.launch && (
+                <>
+                  <span style={{ fontSize: 13, opacity: 0.9, fontWeight: 700 }}>SAY TO START</span>
+                  <p className={s.nowSay}>{m.inClass.launch}</p>
+                </>
+              )}
               {m.inClass.ask && (
                 <>
                   <span style={{ fontSize: 13, opacity: 0.9, fontWeight: 700 }}>ASK ONCE THEY HAVE AN ANSWER</span>
-                  <p className={s.nowSay}>{quoted(m.inClass.ask)}</p>
+                  <p className={m.inClass.launch ? undefined : s.nowSay} style={m.inClass.launch ? { fontSize: 16 } : undefined}>
+                    {quoted(m.inClass.ask)}
+                  </p>
                 </>
               )}
               {m.inClass.setup && <span style={{ fontSize: 14, opacity: 0.92 }}>{m.inClass.setup}</span>}

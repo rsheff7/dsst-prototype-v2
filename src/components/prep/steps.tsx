@@ -24,6 +24,12 @@ export type StepOut = { inner: ReactNode; action: ReactNode };
 const MIN_ANSWER = 20;
 const MIN_PREDICTION = 12;
 
+/** The teacher's Most/Some/Few, said back in the words of the question they answered. */
+function countLine(m: PrepModel, st: PrepState): string | null {
+  if (!st.predictionHowMany) return null;
+  return m.predict ? `${st.predictionHowMany} ${m.predict.countUnit}` : `${st.predictionHowMany} will make the main error.`;
+}
+
 function NextBtn({ c, label }: { c: StepCtx; label?: string }) {
   const nxt = c.m.steps[c.st.step + 1];
   return (
@@ -70,6 +76,7 @@ export function orient(c: StepCtx): StepOut {
                   {a.label !== a.id ? `${a.label} · ` : `${a.id} · `}
                   {a.label !== a.id ? a.id : a.title}
                   {a.isCrux && <span className={cx(s.pill, s.pillCrux)}>Crux</span>}
+                  {a.optional && <span className={s.pill}>Optional</span>}
                   {a.focus === 'feeder' && <span className={cx(s.pill, s.pillCrux)}>Sets up the crux</span>}
                   {!a.isCrux && <span className={s.pill}>{a.role}</span>}
                 </span>
@@ -245,17 +252,23 @@ export function predict(c: StepCtx): StepOut {
             {feeder ? `${feeder.start ?? ''} ${feeder.id}, then ` : ''}
             {m.crux.start ?? ''} {m.crux.id} · Crux
           </span>
-          <p>
-            <b>What students do:</b> {m.crux.source.learning_target}
-          </p>
-          {m.setup.crux && <p className={cx(s.muted, s.small)}>{m.setup.crux}</p>}
+          {m.predict ? (
+            <p>{m.predict.context}</p>
+          ) : (
+            <>
+              <p>
+                <b>What students do:</b> {m.crux.source.learning_target}
+              </p>
+              {m.setup.crux && <p className={cx(s.muted, s.small)}>{m.setup.crux}</p>}
+            </>
+          )}
         </section>
       ) : (
         <section className={s.flat}>This lesson has no activity marked as the crux.</section>
       )}
       <div className={s.stack}>
         <label htmlFor="prep-pred" className={s.prompt} style={{ fontSize: 20 }}>
-          What will most students write at the crux?
+          {m.predict?.question ?? 'What will most students write at the crux?'}
         </label>
         <textarea
           id="prep-pred"
@@ -266,9 +279,9 @@ export function predict(c: StepCtx): StepOut {
           onChange={(e) => update({ prediction: e.target.value })}
         />
         <span className={s.lab} style={{ marginTop: 4 }}>
-          How many will make the main error?
+          {m.predict?.countQuestion ?? 'How many will make the main error?'}
         </span>
-        <div className={s.chips} role="group" aria-label="How many will make the main error">
+        <div className={s.chips} role="group" aria-label={m.predict?.countQuestion ?? 'How many will make the main error'}>
           {(['Most', 'Some', 'Few'] as const).map((x) => (
             <button
               key={x}
@@ -289,10 +302,11 @@ export function predict(c: StepCtx): StepOut {
             <span className={s.lab}>You predicted</span>
             {st.prediction}
             <br />
-            <span className={cx(s.muted, s.small)}>{st.predictionHowMany} will make the main error.</span>
+            <span className={cx(s.muted, s.small)}>{countLine(m, st)}</span>
           </div>
           <h3>What Premo expects</h3>
-          {m.crux && (
+          {m.predict && <p className={s.small}>{m.predict.tell}</p>}
+          {m.crux && !m.predict && (
             <p className={s.small}>
               {mainError ? (
                 <>
@@ -397,13 +411,21 @@ export function rehearse(c: StepCtx): StepOut {
           {sc.focus === 'crux' && <span className={cx(s.pill, s.pillCrux)}>Crux</span>}
           {sc.focus === 'feeder' && <span className={cx(s.pill, s.pillCrux)}>Sets up the crux</span>}
           {sc.mll && <span className={cx(s.pill, s.pillMll)}>MLL</span>}
+          {sc.source && <span className={s.pill}>{sc.source === 'lesson' ? 'From the lesson' : 'Premo'}</span>}
         </div>
-        <div className={s.stack} style={{ gap: 8 }}>
-          <span className={s.lab}>Notice · {sc.notice}</span>
-          <p className={s.notice} style={{ fontSize: 19 }}>
-            {sc.scene}
-          </p>
-        </div>
+        {sc.scene ? (
+          <div className={s.stack} style={{ gap: 8 }}>
+            <span className={s.lab}>Notice · {sc.notice}</span>
+            <p className={s.notice} style={{ fontSize: 19 }}>
+              {sc.scene}
+            </p>
+          </div>
+        ) : (
+          <div className={s.stack} style={{ gap: 8 }}>
+            <span className={s.lab}>You see</span>
+            <p className={s.notice}>{sc.notice}</p>
+          </div>
+        )}
         {!said ? (
           <div className={s.sayit}>
             {Icon.mic}
@@ -426,6 +448,12 @@ export function rehearse(c: StepCtx): StepOut {
             </div>
             {st.model[sc.id] ? (
               <div className={cx(s.stack, s.reveal)}>
+                {sc.means && (
+                  <div className={s.flat}>
+                    <span className={s.lab}>What’s going on</span>
+                    {sc.means}
+                  </div>
+                )}
                 {sc.byBand ? (
                   <>
                     <span className={s.lab}>Respond · by WIDA level</span>
@@ -660,7 +688,7 @@ ${st.answer || '(not answered)'}
 
 My crux prediction:
 ${st.prediction || '(not answered)'}
-Students I expect to make the main error: ${st.predictionHowMany ?? '-'}
+${countLine(m, st) ?? 'How many: -'}
 
 Rehearsal: ${said}/${m.scenarios.length}
 Flagged as hard:
@@ -701,9 +729,7 @@ export function carry(c: StepCtx): StepOut {
         <div>
           <span className={s.lab}>Your crux prediction</span>
           <p>{st.prediction || <span className={s.muted}>Not answered</span>}</p>
-          {st.predictionHowMany && (
-            <span className={cx(s.muted, s.small)}>{st.predictionHowMany} will make the main error.</span>
-          )}
+          {st.predictionHowMany && <span className={cx(s.muted, s.small)}>{countLine(m, st)}</span>}
         </div>
         <div>
           <span className={s.lab}>

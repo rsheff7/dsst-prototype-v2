@@ -1,0 +1,944 @@
+{
+  "meta": {
+    "grade": "6",
+    "unit": "2",
+    "lesson_number": "4",
+    "lesson_title": "Color Mixtures",
+    "total_time": "45 min"
+  },
+  "arc_statement": "Students begin by mentally scaling factors in a Number Talk, noticing how multiplying one factor scales the entire product. They then move into the crux activity, mixing blue and yellow liquid to discover that doubling or tripling both ingredients keeps the shade of green identical, while adding equal amounts of each color changes the shade. Finally, students apply this multiplicative rule to purple water mixtures to evaluate whether different batch sizes produce equivalent ratios.",
+  "destination": "Students can explain the meaning of equivalent ratios by demonstrating how multiplying both ingredients in a color mixture by the same factor preserves the shade.",
+  "key_vocabulary": [
+    {
+      "term": "equivalent ratios",
+      "definition": "Two ratios are equivalent if each quantity in the first ratio is multiplied by the same number to get the quantities in the second ratio."
+    },
+    {
+      "term": "batch",
+      "definition": "A specific amount of a mixture made by combining set quantities of each ingredient according to a recipe."
+    }
+  ],
+  "activities": [
+    {
+      "id": "4.1",
+      "title": "Number Talk: Adjusting a Factor",
+      "function": "Setup",
+      "duration": "~10 min",
+      "grouping": "Whole group",
+      "language_demand": "low",
+      "function_summary": "This Number Talk encourages students to use multiplicative relationships between factors to calculate products mentally. It primes students to recognize how scaling one value changes the total amount, setting up the concept of scaling recipe quantities.",
+      "learning_target": "Students mentally calculate products by noticing how adjusting one factor scales the product.",
+      "synthesis_prompt": "Synthesize toward noticing how adjusting one factor scales the product by displaying two student strategies side by side and asking: How does doubling one factor change the product compared to the previous equation?",
+      "is_crux": false,
+      "friction_points": [
+        {
+          "description": "A student attempts to use the standard vertical multiplication algorithm in their head rather than looking for relationships across the equations.",
+          "type": "math"
+        },
+        {
+          "description": "A student describes scaling using additive words like 'it went up by 10' instead of 'it was multiplied by 2.'",
+          "type": "language",
+          "mlr": {
+            "number": 2,
+            "name": "Collect and Display"
+          }
+        }
+      ],
+      "success_signals": [
+        "Students reference the previous line's product to find the next product without calculating from scratch.",
+        "Students use words like 'doubled,' 'halved,' or 'multiplied by' to justify their mental steps."
+      ],
+      "teacher_moves": [
+        {
+          "text": "Record student descriptions of factor relationships on the board, visually linking words like 'times 2' or 'doubled' directly to the numbers in the equations.",
+          "mlr": {
+            "number": 2,
+            "name": "Collect and Display"
+          }
+        },
+        {
+          "text": "Ask students to show with quiet thumbs when they have found a pattern connecting the first equation to the second equation."
+        }
+      ],
+      "causal_link": "Establishes mental scaling by whole-number factors, which students immediately use in 4.2 to scale milliliters of paint.",
+      "extension": "Ask students to predict what happens to the product if one factor is multiplied by 3 and the other factor is divided by 3."
+    },
+    {
+      "id": "4.2",
+      "title": "Turning Green",
+      "function": "Crux",
+      "duration": "~20 min",
+      "grouping": "Partners",
+      "language_demand": "medium",
+      "function_summary": "Students test combinations of blue and yellow liquid to determine which changes preserve the shade of green. This is the crux because students directly confront the additive misconception (adding 20 ml to each) and establish that only multiplying both ingredients by the same number keeps the shade the same.",
+      "learning_target": "Students determine that doubling or tripling both ingredients produces the same shade of color, while adding equal amounts changes the shade.",
+      "synthesis_prompt": "Synthesize toward determining that doubling or tripling both ingredients produces the same shade while adding equal amounts changes the shade by displaying the 5:15 single batch next to the +20 additive mix and asking: Why did adding 20 ml of each make the green look different, but doubling both kept it exactly the same?",
+      "is_crux": true,
+      "friction_points": [
+        {
+          "description": "A student claims that adding 20 ml of blue and 20 ml of yellow makes the same shade because 'you added the same amount to both.'",
+          "type": "math"
+        },
+        {
+          "description": "A student struggles to explain in words why adding 20 ml to each makes the liquid bluer, confusing the total amount with the comparison between parts.",
+          "type": "language-math",
+          "mlr": {
+            "number": 3,
+            "name": "Critique, Correct, and Clarify"
+          }
+        }
+      ],
+      "success_signals": [
+        "Students point to their diagrams to show that 2 batches means two groups of (5 ml blue + 15 ml yellow).",
+        "Students state that adding 20 ml of blue quadruples the blue while adding 20 ml of yellow only slightly more than doubles the yellow."
+      ],
+      "teacher_moves": [
+        {
+          "text": "Display a flawed statement: 'Adding 20 ml of blue and 20 ml of yellow makes the same green because it is fair to both.' Have partners critique why this additive change alters the shade.",
+          "mlr": {
+            "number": 3,
+            "name": "Critique, Correct, and Clarify"
+          }
+        },
+        {
+          "text": "Prompt students to draw each single batch as a separate circle containing 5 blue and 15 yellow to visualize multiple batches."
+        }
+      ],
+      "causal_link": "Builds the concrete batch model of equivalent ratios that students use abstractly to evaluate Jada and Andre's purple water in 4.3.",
+      "extension": "Ask students to determine how many milliliters of yellow must be added to 25 ml of blue to restore the original shade of green."
+    },
+    {
+      "id": "4.3",
+      "title": "Perfect Purple Water",
+      "function": "Application",
+      "duration": "~15 min",
+      "grouping": "Partners",
+      "language_demand": "medium",
+      "function_summary": "Students apply the batch reasoning developed in 4.2 to evaluate two proposed recipes for purple water (8 ml blue to 3 ml red). They verify whether Jada or Andre multiplied both ingredients by the same number to maintain the shade.",
+      "learning_target": "Students evaluate whether different color mixtures have the same shade by checking if both quantities scale by the same factor.",
+      "synthesis_prompt": "Synthesize toward checking if both quantities scale by the same factor by contrasting Jada's mixture (8x3=24, 3x3=9) with Andre's mixture (8x2=16, 3x3=9) and asking: What multiplier did Jada use on both ingredients, and why did Andre's recipe change the shade of purple?",
+      "is_crux": false,
+      "friction_points": [
+        {
+          "description": "A student thinks Andre is correct because 16 is double 8 and 9 is a multiple of 3, failing to check that the scale factor must be the same for both colors.",
+          "type": "math"
+        },
+        {
+          "description": "A student cannot clearly articulate why Jada has 3 batches and Andre has a mismatched mixture.",
+          "type": "language-math",
+          "mlr": {
+            "number": 3,
+            "name": "Critique, Correct, and Clarify"
+          }
+        }
+      ],
+      "success_signals": [
+        "Students identify that Jada multiplied both 8 and 3 by 3 (triple batch), so the shade is identical.",
+        "Students explain that Andre doubled the blue (8x2=16) but tripled the red (3x3=9), making his mixture redder."
+      ],
+      "teacher_moves": [
+        {
+          "text": "Present Andre's written claim: '16 ml blue and 9 ml red works because 16 is twice 8 and 9 is three times 3.' Have students rewrite this explanation to clarify why the shade is ruined.",
+          "mlr": {
+            "number": 3,
+            "name": "Critique, Correct, and Clarify"
+          }
+        },
+        {
+          "text": "Direct students to set up a table or diagram listing the blue and red milliliters for 1 batch, 2 batches, and 3 batches."
+        }
+      ],
+      "causal_link": "Consolidates the lesson target, preparing students for formal ratio tables and double number lines in upcoming lessons.",
+      "extension": "Ask students to find the amount of red water needed if someone mixes 80 ml of blue water, and name how many batches that represents."
+    }
+  ],
+  "adaptation_guardrails": {
+    "mathematical_purpose": "Equivalent ratios represent the exact same recipe or shade because both quantities scale by the same multiplicative factor, whereas adding equal amounts disrupts the ratio.",
+    "safe_to_change": [
+      "The physical mixing tool used (digital applet, test tubes, colored water, or drawn diagrams).",
+      "The specific color theme (e.g., mixing orange paint or flavored drink mix instead of green/purple water).",
+      "The starting unit of measurement (using cups or drops instead of milliliters)."
+    ],
+    "do_not_remove": [
+      {
+        "text": "Do not remove the prompt testing what happens when equal amounts are added (+20 ml blue and +20 ml yellow), as it surfaces the core additive misconception."
+      },
+      {
+        "text": "Do not remove the partner critique of flawed explanations, which allows students to practice using 'multiplier' and 'batches' precisely.",
+        "mlr": {
+          "number": 3,
+          "name": "Critique, Correct, and Clarify"
+        }
+      },
+      {
+        "text": "Do not remove the requirement for students to draw batch diagrams showing both ingredients grouped together."
+      }
+    ],
+    "rigor_check": "Are students justifying equivalence by identifying the same multiplier for both quantities rather than simply checking if the numbers increased?",
+    "by_proficiency": {
+      "emerging": {
+        "text": "Provide pre-drawn batch templates with color-coded boxes (blue and yellow) so students can stamp or color circles to represent 5 ml blue and 15 ml yellow per batch.",
+        "mlr": {
+          "number": 2,
+          "name": "Collect and Display"
+        }
+      },
+      "developing": {
+        "text": "Provide a sentence frame for partner talk: 'Jada multiplied blue by ___ and red by ___, which makes ___ batches of the same shade.'",
+        "mlr": {
+          "number": 3,
+          "name": "Critique, Correct, and Clarify"
+        }
+      },
+      "expanding": {
+        "text": "Prompt students to explain in writing why Andre's purple mixture turned out redder by comparing his blue scale factor to his red scale factor.",
+        "mlr": {
+          "number": 3,
+          "name": "Critique, Correct, and Clarify"
+        }
+      }
+    }
+  },
+  "anticipated_thinking": {
+    "orientation": "Students intuitively understand that doubling or tripling a recipe means making more of the same tasting or looking mixture by repeating the whole batch. However, when working with numerical recipes, many will default to additive thinking—believing adding equal amounts of each color preserves the shade—which requires visual diagrams and batch reasoning to untangle.",
+    "activities": [
+      {
+        "activity_id": "4.1",
+        "patterns": [
+          {
+            "label": "Scaling one factor scales the product",
+            "frequency": "most students",
+            "type": "on-track",
+            "description": "Students notice that doubling one factor doubles the total product without calculating from scratch.",
+            "move": "Ask students to articulate how they knew the product doubled without multiplying the whole multi-digit value out.",
+            "is_mll_specific": false
+          },
+          {
+            "label": "Calculating each product from scratch",
+            "frequency": "some students",
+            "type": "partial",
+            "description": "Students use standard multiplication algorithms mentally for each line rather than looking for relationships between equations.",
+            "move": "Record both calculations side by side on the board and ask what changed between the two factor pairs.",
+            "is_mll_specific": false
+          },
+          {
+            "label": "Everyday scaling language",
+            "frequency": "watch for this",
+            "type": "language-math",
+            "description": "Students use informal words like 'times two,' 'twice as big,' or 'split in half' to describe the relationships between expressions.",
+            "move": "Execute MLR 2 (Collect and Display): Listen for students using informal descriptions like 'twice as big' or 'times 2.' Write these student phrases on a visible anchor chart next to formal terms like 'doubled,' 'factor,' and 'product,' and refer back to this chart during whole-class discussion.",
+            "is_mll_specific": true,
+            "mlr": {
+              "number": 2,
+              "name": "Collect and Display"
+            }
+          }
+        ],
+        "sentence_frames": [
+          {
+            "frame": "When I multiply one factor by ___, the product is multiplied by ___.",
+            "mlr": {
+              "number": 2,
+              "name": "Collect and Display"
+            }
+          },
+          {
+            "frame": "I noticed that ___ is double ___, so the answer will be ___.",
+            "mlr": {
+              "number": 2,
+              "name": "Collect and Display"
+            }
+          }
+        ],
+        "questions_to_listen_for": [
+          "How did knowing the first product help you find the second product?",
+          "What happened to the factor, and what happened to the product?"
+        ]
+      },
+      {
+        "activity_id": "4.2",
+        "patterns": [
+          {
+            "label": "Batch reasoning with multiplication",
+            "frequency": "most students",
+            "type": "on-track",
+            "description": "Students identify that doubling (10 ml blue, 30 ml yellow) or tripling (15 ml blue, 45 ml yellow) creates identical batches and preserves the shade.",
+            "move": "Have students draw discrete groups representing each single batch of 5 ml blue and 15 ml yellow to visually demonstrate why the shade stays identical.",
+            "is_mll_specific": false
+          },
+          {
+            "label": "Equal addition misconception",
+            "frequency": "some students",
+            "type": "misconception",
+            "description": "Students select option A (adding 20 ml blue and 20 ml yellow), thinking that adding the same amount of each color maintains the original color balance.",
+            "move": "Execute MLR 3 (Critique, Correct, and Clarify): Display the statement 'Adding 20 ml blue and 20 ml yellow keeps the shade the same because both got +20.' Ask students to critique why the new mixture (25 ml blue, 35 ml yellow) is bluer, then have partners write a corrected rule for preserving shade.",
+            "is_mll_specific": true,
+            "mlr": {
+              "number": 3,
+              "name": "Critique, Correct, and Clarify"
+            }
+          },
+          {
+            "label": "Unequal scaling of ingredients",
+            "frequency": "watch for this",
+            "type": "partial",
+            "description": "Students think doubling the blue and tripling the yellow (option E) produces more of the same shade because both amounts increased.",
+            "move": "Ask students how many batches of blue were made compared to how many batches of yellow were made, pointing out that different batch counts change the shade.",
+            "is_mll_specific": false
+          },
+          {
+            "label": "Combining whole batches",
+            "frequency": "watch for this",
+            "type": "extension",
+            "description": "Students recognize that mixing 1 batch with 2 batches (option D) makes 3 full batches, which must have the same shade.",
+            "move": "Ask the student to show how combining a 1-batch cylinder with a 2-batch cylinder creates a 3-batch cylinder with 15 ml blue and 45 ml yellow.",
+            "is_mll_specific": false
+          }
+        ],
+        "sentence_frames": [
+          {
+            "frame": "This mixture makes the same shade because both ingredients are multiplied by ___ batches.",
+            "mlr": {
+              "number": 3,
+              "name": "Critique, Correct, and Clarify"
+            }
+          },
+          {
+            "frame": "Adding ___ ml of each color changes the shade because the ratio between blue and yellow is now ___ instead of 1 to 3.",
+            "mlr": {
+              "number": 3,
+              "name": "Critique, Correct, and Clarify"
+            }
+          }
+        ],
+        "questions_to_listen_for": [
+          "Why does multiplying both ingredients by the same number keep the shade identical?",
+          "What happens to the shade if you add the same amount to both colors instead of multiplying?"
+        ]
+      },
+      {
+        "activity_id": "4.3",
+        "patterns": [
+          {
+            "label": "Recognizing scale factor across ingredients",
+            "frequency": "most students",
+            "type": "on-track",
+            "description": "Students identify that Jada multiplied both 8 ml blue and 3 ml red by 3 (making 24 ml and 9 ml), so her mixture is the same shade.",
+            "move": "Ask students to state the number of batches Jada made and show how each ingredient was multiplied by 3.",
+            "is_mll_specific": false
+          },
+          {
+            "label": "Confusing partial doubling with equivalent ratios",
+            "frequency": "some students",
+            "type": "misconception",
+            "description": "Students think Andre's mixture (16 ml blue, 9 ml red) works because 16 is double 8 and 9 is 3 times 3, mixing up independent multipliers.",
+            "move": "Execute MLR 3 (Critique, Correct, and Clarify): Present Andre's claim that doubling blue (16 ml) and tripling red (9 ml) preserves purple. Have partners identify the mathematical flaw (different scale factors) and rewrite Andre's recipe so red matches the double batch of blue.",
+            "is_mll_specific": true,
+            "mlr": {
+              "number": 3,
+              "name": "Critique, Correct, and Clarify"
+            }
+          },
+          {
+            "label": "Generating fractional or larger batches",
+            "frequency": "watch for this",
+            "type": "extension",
+            "description": "Students generate non-integer or large batch amounts (e.g., 4 ml blue and 1.5 ml red for half a batch, or 80 ml blue and 30 ml red for 10 batches).",
+            "move": "Highlight the student's representation during synthesis to demonstrate that any positive multiplier produces an equivalent ratio.",
+            "is_mll_specific": false
+          }
+        ],
+        "sentence_frames": [
+          {
+            "frame": "___ will get the same shade because both 8 ml blue and 3 ml red were multiplied by ___.",
+            "mlr": {
+              "number": 3,
+              "name": "Critique, Correct, and Clarify"
+            }
+          },
+          {
+            "frame": "Andre's mixture will be more ___ because he multiplied blue by ___ but red by ___.",
+            "mlr": {
+              "number": 3,
+              "name": "Critique, Correct, and Clarify"
+            }
+          }
+        ],
+        "questions_to_listen_for": [
+          "How can you check if both ingredients scaled by the exact same multiplier?",
+          "How many batches did Jada make compared to Andre?"
+        ]
+      }
+    ]
+  },
+  "decision_guide": {
+    "activities": [
+      {
+        "activity_id": "4.1",
+        "scenarios": [
+          {
+            "scenario_type": "productive-insight",
+            "label": "Student notices factor doubling scales product without calculating",
+            "interpretation": "The student recognizes the multiplicative structure across problems in the number talk rather than calculating each product from scratch. This structural insight directly prepares them for understanding batch scaling in color mixtures.",
+            "is_mll": false,
+            "flat_move": {
+              "move": "Highlight the student's comparison on the board by drawing arrows between the factors and products across the two equations.",
+              "avoid": "Re-calculating the full multi-digit multiplication on the board, which pulls focus away from the structural relationship.",
+              "nonverbal": "Draw an arrow from the first factor to the second with '× 2' above it.",
+              "say": "Look at how the second number doubled while the first stayed the same. How did that change the total product?"
+            },
+            "proficiency_moves": null,
+            "mll_framework_note": null,
+            "proficiency_divergence_note": null
+          },
+          {
+            "scenario_type": "partial-understanding",
+            "label": "Student uses additive thinking to predict how product changes",
+            "interpretation": "The student notices that a factor increased by a certain amount (e.g., increased by 2) and expects the product to increase by that same additive amount rather than scaling multiplicatively.",
+            "is_mll": false,
+            "flat_move": {
+              "move": "Display the visual representation of equal groups to show that increasing a factor adds entire groups of the other number, not just single units.",
+              "avoid": "Telling the student 'you cannot add' without illustrating what adding 1 or 2 to a factor physically represents in groups.",
+              "nonverbal": "Sketch equal group boxes to show 4 groups of 5 versus 5 groups of 5.",
+              "say": "When we make 5 into 6, are we adding 1 single dot, or are we adding another whole group of the other number?"
+            },
+            "proficiency_moves": null,
+            "mll_framework_note": null,
+            "proficiency_divergence_note": null
+          },
+          {
+            "scenario_type": "on-track",
+            "label": "Student uses informal language to describe factor scaling",
+            "interpretation": "The student understands that multiplying a factor scales the product, but describes it using everyday phrases like 'it got two times bigger' or 'the top one doubled up'.",
+            "is_mll": true,
+            "flat_move": null,
+            "proficiency_moves": {
+              "emerging": {
+                "move": "Record the student's exact phrase 'two times bigger' on the board next to '× 2'. Point back and forth between the phrase and the numbers to connect their spoken words to the symbols.",
+                "avoid": "Correcting the student's grammar or replacing their words before writing them down.",
+                "nonverbal": "Point to the factor on the board, draw a curved arrow to the new factor, and write 'x 2'.",
+                "say": "You said it got 'two times bigger.' Here is where we see that: the 5 times 2 is 10."
+              },
+              "developing": {
+                "move": "Write the student's informal description on the Collect and Display chart, then prompt them to restate it using the academic term 'multiplied by' or 'scaled by'.",
+                "avoid": "Accepting 'it got bigger' without pressing for the specific factor or operation.",
+                "nonverbal": "Underline the words 'two times bigger' on the chart and gesture toward the product.",
+                "say": "You noticed it is two times bigger. Can you say that as: 'The factor was multiplied by...'?"
+              },
+              "expanding": {
+                "move": "Capture the student's wording and ask them to compare their phrase with the formal statement: 'The product scaled by a factor of 2.'",
+                "avoid": "Allowing informal language to remain the only displayed representation during synthesis.",
+                "nonverbal": "Add 'scaled by a factor of 2' directly beside the student's phrase on the anchor chart.",
+                "say": "How does saying 'scaled by a factor of 2' describe the exact same thing you just explained?"
+              }
+            },
+            "mll_framework_note": null,
+            "proficiency_divergence_note": "Emerging learners focus on matching verbal everyday descriptions to visual arrows; Developing learners convert informal descriptions to complete relational statements; Expanding learners refine vocabulary to formal mathematical terms like 'scaled by a factor of 2'.",
+            "mlr": {
+              "number": 2,
+              "name": "Collect and Display"
+            }
+          }
+        ]
+      },
+      {
+        "activity_id": "4.2",
+        "scenarios": [
+          {
+            "scenario_type": "common-error",
+            "label": "Student selects option A (+20 ml blue and +20 ml yellow) assuming equal addition preserves shade",
+            "interpretation": "The student applies additive reasoning, assuming that because the same numerical quantity is added to both blue and yellow, the relationship between the colors remains unchanged. They do not yet see that ratio equivalence requires proportional scaling.",
+            "is_mll": false,
+            "flat_move": {
+              "move": "Direct the student to calculate the ratio of yellow to blue in the new mixture (35 to 25) and compare it to the original ratio (15 to 5, which is 3 times as much yellow as blue).",
+              "avoid": "Simply telling the student 'addition changes the color' without testing or examining the ratios.",
+              "nonverbal": "Point to the original numbers 5 ml and 15 ml, then write 25 ml and 35 ml below them.",
+              "say": "In the original batch, there is 3 times as much yellow as blue. In 25 ml blue and 35 ml yellow, is there still 3 times as much yellow?"
+            },
+            "proficiency_moves": null,
+            "mll_framework_note": null,
+            "proficiency_divergence_note": null
+          },
+          {
+            "scenario_type": "productive-insight",
+            "label": "Student recognizes that mixing 1 batch with a 2-batch makes 3 batches of the same shade",
+            "interpretation": "The student uses additive composition of equivalent batches (1 batch + 2 batches = 3 batches), realizing that combining two mixtures of the exact same shade results in another mixture of that identical shade.",
+            "is_mll": false,
+            "flat_move": {
+              "move": "Ask the student to represent this combination using batch notation or diagrams to show that (5 + 10) ml blue and (15 + 30) ml yellow equals 15 ml blue and 45 ml yellow (a triple batch).",
+              "avoid": "Dismissing their additive combination of batches because 'ratios must be multiplied.'",
+              "nonverbal": "Draw two separate batch boxes (1 batch and 2 batches) and merge them with a large bracket labeled '3 batches'.",
+              "say": "You combined 1 batch and 2 batches. How many total batches of the recipe do you have now?"
+            },
+            "proficiency_moves": null,
+            "mll_framework_note": null,
+            "proficiency_divergence_note": null
+          },
+          {
+            "scenario_type": "partial-understanding",
+            "label": "Student critiques the 20 ml error in question 5 but cannot fix the mixture",
+            "interpretation": "The student knows that adding 20 ml of each color ruined the 1:3 ratio (yielding 25 ml blue and 35 ml yellow), but struggles to calculate how much additional yellow is needed to restore the original shade.",
+            "is_mll": true,
+            "flat_move": null,
+            "proficiency_moves": {
+              "emerging": {
+                "move": "Point to the 25 ml of blue. Draw 5 separate 5 ml batch boxes for blue. Ask: 'If there are 5 boxes of blue, how many boxes of 15 ml yellow do we need?'",
+                "avoid": "Giving the formula 25 * 3 = 75 without drawing the 5 batches.",
+                "nonverbal": "Draw 5 blue squares and point to them one by one, then point to the yellow space.",
+                "say": "We have 25 ml blue. That is 5 batches of 5 ml. How many milliliters of yellow are in 5 batches?"
+              },
+              "developing": {
+                "move": "Provide the critique frame: 'The mixture has 25 ml of blue, which is ___ batches. To make the same shade, we need ___ batches of 15 ml yellow, which is ___ ml.'",
+                "avoid": "Calculating the missing 40 ml of yellow for them.",
+                "nonverbal": "Write '25 ml blue = 5 batches' on a sticky note and place it next to their work.",
+                "say": "How many batches of blue are in 25 ml? Use that number of batches to find the total yellow needed."
+              },
+              "expanding": {
+                "move": "Ask the student to write a 2-step correction: first determine the total yellow required for 5 batches, then calculate the difference between that amount and the 35 ml already present.",
+                "avoid": "Allowing the student to state only the final total (75 ml) without stating how much more yellow must be added (40 ml).",
+                "nonverbal": "Write 'Need: 75 ml' and 'Have: 35 ml' side by side with a subtraction sign.",
+                "say": "How much more yellow must be added to get from the 35 ml they already have to the 75 ml needed?"
+              }
+            },
+            "mll_framework_note": null,
+            "proficiency_divergence_note": "Emerging students use concrete visual batch counters to reach the required yellow amount; Developing students use structured sentence frames with multiplicative prompts; Expanding students write a multi-step written correction of the flawed method.",
+            "mlr": {
+              "number": 3,
+              "name": "Critique, Correct, and Clarify"
+            }
+          },
+          {
+            "scenario_type": "productive-struggle",
+            "label": "Student struggles to draw a diagram showing both milliliters and batch count",
+            "interpretation": "The student can calculate that a double batch has 10 ml blue and 30 ml yellow, but struggles to represent both the discrete batch units and the continuous milliliter quantities in a single visual model.",
+            "is_mll": false,
+            "flat_move": {
+              "move": "Prompt the student to draw one container representing 1 batch (5 ml blue, 15 ml yellow), and then draw an identical container next to it for the second batch.",
+              "avoid": "Drawing the diagram for the student or prescribing one rigid drawing format.",
+              "nonverbal": "Draw one rectangle divided into a small top section (5 ml) and a large bottom section (15 ml).",
+              "say": "Draw one batch first and label the milliliters. What would two identical batches look like right next to it?"
+            },
+            "proficiency_moves": null,
+            "mll_framework_note": null,
+            "proficiency_divergence_note": null
+          }
+        ]
+      },
+      {
+        "activity_id": "4.3",
+        "scenarios": [
+          {
+            "scenario_type": "common-error",
+            "label": "Student claims Andre makes the same shade because 16 is double 8 and 9 is triple 3",
+            "interpretation": "The student checks for multiplicative relationships between the numbers, but fails to realize that both ingredients must scale by the SAME factor. They see that 16 is 8×2 and 9 is 3×3 and assume that having multiples means the shade is preserved.",
+            "is_mll": false,
+            "flat_move": {
+              "move": "Ask the student to calculate what happens to the recipe if they double it (8×2, 3×2) versus if they triple it (8×3, 3×3), showing Andre used 2 batches of blue but 3 batches of red.",
+              "avoid": "Telling the student Andre is wrong without unpacking the mismatch in batch numbers.",
+              "nonverbal": "Write 'Blue: 2 batches (16 ml)' and 'Red: 3 batches (9 ml)' directly aligned on the board.",
+              "say": "How many batches of blue did Andre use? How many batches of red? Can a recipe have 2 batches of one ingredient and 3 batches of another and still be balanced?"
+            },
+            "proficiency_moves": null,
+            "mll_framework_note": null,
+            "proficiency_divergence_note": null
+          },
+          {
+            "scenario_type": "on-track",
+            "label": "Student evaluates Jada and Andre by verifying equal scaling of both ingredients",
+            "interpretation": "The student tests each mixture against the base recipe (8 ml blue to 3 ml red), identifying that Jada multiplied both quantities by 3 (a triple batch), while Andre scaled blue by 2 and red by 3.",
+            "is_mll": true,
+            "flat_move": null,
+            "proficiency_moves": {
+              "emerging": {
+                "move": "Have the student point to Jada's numbers on the page. Ask: '8 times what is 24? 3 times what is 9?' Have them verify both are 'times 3' by showing 3 fingers.",
+                "avoid": "Requiring a full written paragraph before they have verbalized the shared multiplier of 3.",
+                "nonverbal": "Point to 8 -> 24 and write 'x 3'; point to 3 -> 9 and write 'x 3'.",
+                "say": "Both ingredients were multiplied by 3. That means Jada made 3 full batches."
+              },
+              "developing": {
+                "move": "Prompt the student to use the justification frame: 'Jada gets the same shade because 8 × 3 = 24 and 3 × 3 = 9, so both colors were multiplied by the same number.'",
+                "avoid": "Accepting 'Jada multiplied by 3' without specifying that BOTH ingredients scaled by 3.",
+                "nonverbal": "Circle the 'x 3' above both the blue and red calculations in their notebook.",
+                "say": "Why is it important that BOTH the blue and the red were multiplied by 3?"
+              },
+              "expanding": {
+                "move": "Ask the student to write a comparative critique contrasting Jada's triple batch with Andre's mismatched 2 batches of blue and 3 batches of red.",
+                "avoid": "Letting the student evaluate Jada alone without critiquing Andre's mathematical error.",
+                "nonverbal": "Draw a checkmark next to Jada's work and an 'X' next to Andre's unequal multipliers.",
+                "say": "How can you explain to Andre why his mixture is not the same shade using the idea of batches?"
+              }
+            },
+            "mll_framework_note": null,
+            "proficiency_divergence_note": "Emerging students state the batch multiplier with visual gestures; Developing students write compound sentences linking both ingredient multiplications; Expanding students contrast Jada's valid scaling with Andre's inconsistent scaling in a formal argument.",
+            "mlr": {
+              "number": 3,
+              "name": "Critique, Correct, and Clarify"
+            }
+          },
+          {
+            "scenario_type": "partial-understanding",
+            "label": "Student creates a new mixture by multiplying but cannot explain why the shade is preserved",
+            "interpretation": "The student successfully finds a new equivalent mixture (e.g., 16 ml blue and 6 ml red or 32 ml blue and 12 ml red) using multiplication, but when asked why it creates the same shade, they repeat the arithmetic rule rather than connecting it to equivalent batches.",
+            "is_mll": false,
+            "flat_move": {
+              "move": "Ask the student to interpret their new quantities in terms of physical batches (e.g., 'If 8 ml blue and 3 ml red is 1 cup of paint, how many cups of paint are in your 16 ml blue and 6 ml red mixture?').",
+              "avoid": "Accepting 'because I multiplied by 2' as a complete physical explanation for why the color does not change.",
+              "nonverbal": "Hold up two fingers to represent 2 physical batches of the recipe.",
+              "say": "You multiplied by 2 to get 16 and 6. If each batch has the exact same shade of purple, what happens when you pour 2 of those identical batches together?"
+            },
+            "proficiency_moves": null,
+            "mll_framework_note": null,
+            "proficiency_divergence_note": null
+          }
+        ]
+      }
+    ]
+  },
+  "elsf_inference": {
+    "activities": [
+      {
+        "activity_id": "4.1",
+        "language_demands": {
+          "receptive": "Listen to peer descriptions of mental multiplication steps and interpret numerical patterns written on the board.",
+          "productive": "Orally explain mental computation strategies using scaling and factor-product relationships.",
+          "interactive": "Build on peer calculation strategies during whole-class discussion by repeating or expanding on a shared method.",
+          "everyday_to_academic_bridge": "Connect informal phrases like 'make it twice as big' to academic phrases such as 'multiplying a factor by 2 doubles the product.'",
+          "elsf_guidelines_applied": [
+            1,
+            2,
+            6
+          ]
+        },
+        "functional_language": {
+          "language_functions": [
+            "describe a calculation strategy",
+            "explain a mathematical relationship"
+          ],
+          "example_phrases": [
+            "I multiplied the first factor by 2, so the product also doubles.",
+            "Since 6 is half of 12, the answer is half of the previous product."
+          ],
+          "l1_bridge": "Cognates such as factor/factor and product/producto provide an immediate foundation for discussing multiplication relationships across languages.",
+          "elsf_guidelines_applied": [
+            1,
+            3,
+            7
+          ]
+        }
+      },
+      {
+        "activity_id": "4.2",
+        "language_demands": {
+          "receptive": "Read multi-step prompts comparing paint mixture options and interpret visual cylinder diagrams showing milliliters of paint.",
+          "productive": "Write explanations justifying why doubling or tripling ingredients keeps the shade the same, and label batch diagrams clearly.",
+          "interactive": "Debate with a partner whether adding equal amounts of blue and yellow creates the same shade or a different shade of green.",
+          "everyday_to_academic_bridge": "Bridge everyday sensory descriptions like 'lighter green' or 'more blue' to mathematical statements like 'the ratio of blue to yellow is 5 to 15.'",
+          "elsf_guidelines_applied": [
+            1,
+            4,
+            6
+          ]
+        },
+        "functional_language": {
+          "language_functions": [
+            "justify a conjecture",
+            "compare quantities across representations",
+            "critique a flawed method"
+          ],
+          "example_phrases": [
+            "Adding 20 ml to each color changes the shade because the ratio is no longer 1 to 3.",
+            "Doubling both ingredients gives 2 batches of the exact same mixture."
+          ],
+          "l1_bridge": "Terms like 'batch' (lote/tanda) can be grounded in familiar cooking or baking contexts to help students conceptualize repeating a fixed set of ingredients.",
+          "elsf_guidelines_applied": [
+            3,
+            7,
+            12
+          ]
+        }
+      },
+      {
+        "activity_id": "4.3",
+        "language_demands": {
+          "receptive": "Read word problem statements comparing two student recipes (Jada's vs. Andre's) against a target ratio.",
+          "productive": "Write a structured justification identifying which person created an equivalent shade and generate a new equivalent ratio.",
+          "interactive": "Exchange written explanations with a partner to check if scale factors were applied consistently to both ingredients.",
+          "everyday_to_academic_bridge": "Transition from saying 'she multiplied both numbers' to formal ratio language: 'multiplying both quantities by 3 creates an equivalent ratio.'",
+          "elsf_guidelines_applied": [
+            2,
+            6,
+            9
+          ]
+        },
+        "functional_language": {
+          "language_functions": [
+            "evaluate mathematical validity",
+            "explain equivalence",
+            "generate equivalent values"
+          ],
+          "example_phrases": [
+            "Jada's mixture is the same shade because both 8 and 3 are multiplied by 3.",
+            "Andre's mixture is bluer because he doubled the blue but tripled the red."
+          ],
+          "l1_bridge": "The word 'recipe' (receta) and 'shade' (tono/sombra) connect directly to home culinary and artistic experiences, supporting students in verifying proportional relationships.",
+          "elsf_guidelines_applied": [
+            1,
+            7,
+            14
+          ]
+        }
+      }
+    ]
+  },
+  "mlr_inference": {
+    "activities": [
+      {
+        "activity_id": "4.1",
+        "language_work": "Students orally describe mental multiplication strategies, explaining how changing one factor scales the resulting product.",
+        "mlrs": [
+          {
+            "number": 2,
+            "name": "Collect and Display",
+            "why_here": "Students use informal words like 'times 2' or 'doubled' during mental math. Capturing these phrases on an anchor chart establishes the scaling vocabulary needed for color mixtures."
+          }
+        ]
+      },
+      {
+        "activity_id": "4.2",
+        "language_work": "Students evaluate different additive and multiplicative mixing rules, arguing why multiplying quantities preserves shade while adding changes it.",
+        "mlrs": [
+          {
+            "number": 3,
+            "name": "Critique, Correct, and Clarify",
+            "why_here": "Students examine the flawed proposal of adding 20 ml of each color (option a) and clarify why equal addition alters the ratio and ruins the shade."
+          }
+        ]
+      },
+      {
+        "activity_id": "4.3",
+        "language_work": "Students critique two student claims about purple paint recipes and justify which mixture creates an equivalent shade using scale factors.",
+        "mlrs": [
+          {
+            "number": 3,
+            "name": "Critique, Correct, and Clarify",
+            "why_here": "Students analyze Andre's incorrect method (doubling blue while tripling red) alongside Jada's correct scaling to pinpoint why both parts must scale by the same factor."
+          }
+        ]
+      }
+    ]
+  },
+  "wristband": {
+    "arc_one_line": "Scaling both colors by equal factors preserves mixture shade.",
+    "preflight": [
+      "Display batch diagram templates showing single, double, and triple groupings.",
+      "Pair students strategically for partner critique and explanation sharing.",
+      "Prepare chart titled Recipe Language to record informal scaling terms.",
+      "Ensure color-mixing cylinders or digital applets are ready for testing."
+    ],
+    "top_signals": [
+      "Multiplies both color quantities by same factor.",
+      "Draws grouped batches showing equal repeated ratios.",
+      "Explains equal addition changes color ratio balance."
+    ],
+    "top_frictions": [
+      "Adds equal amounts instead of multiplying batches.",
+      "Multiplies one ingredient by different scaling factor.",
+      "Confuses total liquid amount with recipe shade."
+    ],
+    "activities": [
+      {
+        "activity_id": "4.1",
+        "tiles": [
+          {
+            "observation_short": "Calculates each product in isolation; misses scaling relationship between factor and result.",
+            "friction_type": "math",
+            "move_short": "Record student phrases on the board. MLR 2 Collect and Display surfaces patterns so students see how doubling one factor doubles the total product.",
+            "avoid_short": "Explaining the factor pattern yourself immediately.",
+            "glyph_observation": "ISOLATED FACTOR CALCULATION",
+            "mlr": {
+              "number": 2,
+              "name": "Collect and Display"
+            }
+          },
+          {
+            "observation_short": "Uses vague informal words like bigger or changed instead of factor language.",
+            "friction_type": "language",
+            "move_short": "Display phrases like doubled or times two. MLR 2 captures informal descriptions and connects them directly to academic multiplication terms during share out.",
+            "avoid_short": "Rejecting informal words without writing them.",
+            "has_proficiency_variants": true,
+            "glyph_observation": "VAGUE SCALING WORDS",
+            "mlr": {
+              "number": 2,
+              "name": "Collect and Display"
+            }
+          }
+        ],
+        "synthesis_short": "Highlight recorded scaling terms. Ask: how does changing one factor predict the new product?"
+      },
+      {
+        "activity_id": "4.2",
+        "tiles": [
+          {
+            "observation_short": "Claims adding 20 ml of each color keeps the original green shade.",
+            "friction_type": "math",
+            "move_short": "Display the claim. MLR 3 Critique, Correct, and Clarify prompts partners to test amounts and explain why adding changes the original 5-to-15 proportion.",
+            "avoid_short": "Telling students additive mixing is incorrect.",
+            "has_proficiency_variants": true,
+            "glyph_observation": "EQUAL ADDITION MISCONCEPTION",
+            "mlr": {
+              "number": 3,
+              "name": "Critique, Correct, and Clarify"
+            }
+          },
+          {
+            "observation_short": "Identifies doubling and tripling both colors as making identical green shades.",
+            "friction_type": "math",
+            "move_short": "Have students present grouped batch diagrams. MLR 3 refines explanations so peers justify why multiplying both ingredients preserves identical batch proportions.",
+            "avoid_short": "Moving on after getting correct numbers.",
+            "is_crux_moment": true,
+            "glyph_observation": "MULTIPLICATIVE BATCH SCALING",
+            "mlr": {
+              "number": 3,
+              "name": "Critique, Correct, and Clarify"
+            }
+          }
+        ],
+        "synthesis_short": "Display grouped batch diagrams. Ask: why does multiplying preserve shade while adding alters it?"
+      },
+      {
+        "activity_id": "4.3",
+        "tiles": [
+          {
+            "observation_short": "Selects Andre because 16 ml is double 8 ml without checking red.",
+            "friction_type": "math",
+            "move_short": "Display Andre's mixture. MLR 3 Critique, Correct, and Clarify asks partners to analyze whether red scaled by the same factor as blue.",
+            "avoid_short": "Pointing directly to the red discrepancy.",
+            "glyph_observation": "ONE QUANTITY CHECKED",
+            "mlr": {
+              "number": 3,
+              "name": "Critique, Correct, and Clarify"
+            }
+          },
+          {
+            "observation_short": "Hesitates explaining why Jada's mixture is correct using equivalent ratio vocabulary.",
+            "friction_type": "language-math",
+            "move_short": "Provide draft sentence frames. MLR 3 helps students revise written justifications using equivalent ratios to prove both colors tripled together.",
+            "avoid_short": "Accepting just Jada without written reasoning.",
+            "has_proficiency_variants": true,
+            "glyph_observation": "STRUGGLING TO JUSTIFY",
+            "mlr": {
+              "number": 3,
+              "name": "Critique, Correct, and Clarify"
+            }
+          }
+        ],
+        "synthesis_short": "Compare Jada and Andre's ratios. Ask: what multiplier proves two color mixtures are equivalent?"
+      }
+    ],
+    "mlr_legend": [
+      {
+        "mlr": {
+          "number": 2,
+          "name": "Collect and Display"
+        },
+        "one_line_cue": "Capture student words; display and refine publicly."
+      },
+      {
+        "mlr": {
+          "number": 3,
+          "name": "Critique, Correct, and Clarify"
+        },
+        "one_line_cue": "Analyze flawed sample; partner improve and explain."
+      }
+    ],
+    "lesson_synthesis_short": "Display orange paint diagrams. Ask: how does multiplying both colors by the same number prove ratios are equivalent?"
+  },
+  "lesson_synthesis": {
+    "prompt": "Synthesize the lesson destination by displaying 1 batch of green (5 ml blue : 15 ml yellow) alongside 2 batches (10 ml blue : 30 ml yellow) and an additive mixture (25 ml blue : 35 ml yellow). Ask: Why does multiplying both quantities by 2 keep the green shade identical, while adding 20 ml to each color changes the shade entirely?",
+    "builds_on": [
+      "Activity 4.1: students saw that multiplying a factor scales the product predictably.",
+      "Activity 4.2: students proved that scaling both ingredients by 2 or 3 preserves the color shade.",
+      "Activity 4.3: students evaluated equivalent ratios by testing if both quantities shared the same scale factor."
+    ]
+  },
+  "selection": {
+    "lesson_targets": [
+      "I can explain the meaning of equivalent ratios using a color mixture as an example",
+      "I can use a diagram to represent a single batch, a double batch, and a triple batch of a color mixture",
+      "I know what it means to double or triple a color mixture"
+    ],
+    "targets_published": true,
+    "standing_supports": true,
+    "activities": [
+      {
+        "activity_id": "4.1",
+        "activity_outcome": "Students can explain what it means to scale factors mentally to prepare for doubling and tripling recipe amounts.",
+        "outcome_type": "formulate_precisely",
+        "resolved_outcome_type": "formulate_precisely",
+        "affordances": {
+          "flawed_sample_provided": false,
+          "error_harvestable": true,
+          "splittable_materials": false,
+          "student_products_differ": false,
+          "public_share_step": true,
+          "frames_already_printed": false,
+          "context_word_count": 12
+        },
+        "function": "Setup",
+        "lead": 2,
+        "second": null,
+        "because": "Students are producing the informal wording this lesson will make precise — capture it now so the class can refine and reuse it.",
+        "teacher_prep": null
+      },
+      {
+        "activity_id": "4.2",
+        "activity_outcome": "Students can use a diagram to represent a single batch, a double batch, and a triple batch of a color mixture.",
+        "outcome_type": "justify_or_evaluate",
+        "resolved_outcome_type": "justify_or_evaluate",
+        "affordances": {
+          "flawed_sample_provided": true,
+          "error_harvestable": true,
+          "splittable_materials": false,
+          "student_products_differ": true,
+          "public_share_step": true,
+          "frames_already_printed": false,
+          "context_word_count": 165
+        },
+        "function": "Crux",
+        "lead": 3,
+        "second": null,
+        "because": "The outcome is deciding whether something is correct and saying why — improving a flawed sample together is that work.",
+        "teacher_prep": null
+      },
+      {
+        "activity_id": "4.3",
+        "activity_outcome": "Students can explain the meaning of equivalent ratios using a color mixture as an example.",
+        "outcome_type": "justify_or_evaluate",
+        "resolved_outcome_type": "justify_or_evaluate",
+        "affordances": {
+          "flawed_sample_provided": true,
+          "error_harvestable": true,
+          "splittable_materials": false,
+          "student_products_differ": true,
+          "public_share_step": true,
+          "frames_already_printed": false,
+          "context_word_count": 68
+        },
+        "function": "Application",
+        "lead": 3,
+        "second": null,
+        "because": "The outcome is deciding whether something is correct and saying why — improving a flawed sample together is that work.",
+        "teacher_prep": null
+      }
+    ]
+  },
+  "provenance": {
+    "pipeline_version": "2026-08-22.3+976bfb4d85eb4e2a",
+    "cache_key": "d91a57abba2e01ad2a3a58e6fc3ca411",
+    "provider": "gemini",
+    "model": "gemini-3.7-flash",
+    "thinking": "medium",
+    "generated_at": "2026-08-23T00:35:15.342Z",
+    "served_from_cache": false
+  }
+}
