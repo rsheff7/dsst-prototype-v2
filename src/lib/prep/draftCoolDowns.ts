@@ -4,8 +4,8 @@
  * PLACEHOLDERS. These were written for the prototype on 2026-10-11 and are not
  * Illustrative Mathematics' cool-downs. IM's own are behind an educator sign-in
  * and DSST will supply the real ones after reviewing the app; when they do,
- * replace the entry and drop `draft`. Until then the prep labels each one a
- * draft so nobody mistakes it for the curriculum's.
+ * replace the entry and drop `draft`. The app does not show the draft status to
+ * teachers; it is recorded here for whoever reviews the content.
  *
  * Why the step wants a cool-down at all: the lesson's close as generated is a
  * teacher direction, sometimes with the answer in it, and three of eleven

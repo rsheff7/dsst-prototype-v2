@@ -111,7 +111,6 @@ export function student(c: StepCtx): StepOut {
           <>
             <span className={s.eyebrow}>
               Cool-down · {cd.title}
-              {cd.draft && ' · draft'}
             </span>
             <div className={s.stack} style={{ gap: 8 }}>
               {cd.task.map((line, i) => (
@@ -122,7 +121,6 @@ export function student(c: StepCtx): StepOut {
             </div>
             <p className={cx(s.muted, s.small)}>
               Answer in writing, the way a strong student would. Then say it out loud.
-              {cd.draft && ' This cool-down is a Premo draft, not the curriculum’s own.'}
             </p>
           </>
         ) : (
@@ -411,7 +409,6 @@ export function rehearse(c: StepCtx): StepOut {
           {sc.focus === 'crux' && <span className={cx(s.pill, s.pillCrux)}>Crux</span>}
           {sc.focus === 'feeder' && <span className={cx(s.pill, s.pillCrux)}>Sets up the crux</span>}
           {sc.mll && <span className={cx(s.pill, s.pillMll)}>MLL</span>}
-          {sc.source && <span className={s.pill}>{sc.source === 'lesson' ? 'From the lesson' : 'Premo'}</span>}
         </div>
         {sc.scene ? (
           <div className={s.stack} style={{ gap: 8 }}>
