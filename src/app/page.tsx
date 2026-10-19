@@ -195,7 +195,7 @@ export default function HomePage() {
           </h1>
           <p
             className="mt-2 text-[0.85rem] uppercase tracking-[0.18em] font-semibold"
-            style={{ color: '#00876C' }}
+            style={{ color: 'var(--color-pathway)' }}
           >
             Math Teacher Tools
           </p>
@@ -223,9 +223,9 @@ export default function HomePage() {
           />
           <div
             className="mx-auto mb-4 flex h-10 w-10 items-center justify-center rounded-xl"
-            style={{ backgroundColor: '#E5EEEB' }}
+            style={{ backgroundColor: 'var(--color-surface-accent)' }}
           >
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style={{ color: '#00876C' }}>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style={{ color: 'var(--color-pathway)' }}>
               <path d="M10 2L10 13M10 2L7 5M10 2L13 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               <path d="M3 14v1a2 2 0 002 2h10a2 2 0 002-2v-1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
             </svg>

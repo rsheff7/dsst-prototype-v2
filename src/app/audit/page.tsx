@@ -48,7 +48,7 @@ export default function AuditPage() {
           <button
             onClick={() => setLesson(demoLesson)}
             className="rounded-xl text-card px-5 py-3 text-[0.875rem] font-semibold hover:opacity-90 transition-opacity cursor-pointer"
-            style={{ backgroundColor: '#00876C' }}
+            style={{ backgroundColor: 'var(--color-pathway)' }}
           >
             Load the demo lesson
           </button>
@@ -166,7 +166,7 @@ export default function AuditPage() {
                     {appearances.length === 0 ? (
                       <div
                         className="px-5 py-3 text-[0.8rem]"
-                        style={{ backgroundColor: '#FAECE7', color: '#712B13' }}
+                        style={{ backgroundColor: 'var(--color-demand-high-bg)', color: 'var(--color-demand-high-text)' }}
                       >
                         ⚠ Term does not appear anywhere outside the vocabulary block. Either weave it into the lesson or remove it from vocabulary.
                       </div>
@@ -229,7 +229,7 @@ export default function AuditPage() {
                       {d.is_crux ? (
                         <span
                           className="text-[9px] font-bold uppercase tracking-[0.1em] text-white px-2 py-0.5 rounded-full"
-                          style={{ backgroundColor: '#00876C' }}
+                          style={{ backgroundColor: 'var(--color-pathway)' }}
                         >
                           Crux
                         </span>
@@ -270,7 +270,7 @@ export default function AuditPage() {
                       {a.is_crux && (
                         <span
                           className="ml-2 text-[9px] font-bold uppercase tracking-[0.1em] text-white px-2 py-0.5 rounded-full"
-                          style={{ backgroundColor: '#00876C' }}
+                          style={{ backgroundColor: 'var(--color-pathway)' }}
                         >
                           Crux
                         </span>
@@ -352,8 +352,8 @@ export default function AuditPage() {
           <div className="space-y-4">
             {lesson.adaptation_guardrails.do_not_remove.map((item, i) => (
               <div key={i} className="rounded-xl border border-line bg-card overflow-hidden">
-                <div className="px-5 py-3 border-b border-line-subtle" style={{ backgroundColor: '#FAECE7' }}>
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.08em]" style={{ color: '#712B13' }}>
+                <div className="px-5 py-3 border-b border-line-subtle" style={{ backgroundColor: 'var(--color-demand-high-bg)' }}>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.08em]" style={{ color: 'var(--color-demand-high-text)' }}>
                     Do not remove #{i + 1}
                   </p>
                   <p className="text-[0.875rem] text-ink mt-1 leading-relaxed">{item.text}</p>
@@ -591,10 +591,10 @@ export default function AuditPage() {
 
             <div
               className="rounded-xl border shadow-sm overflow-hidden border-l-[3px]"
-              style={{ backgroundColor: '#FBF3EA', borderColor: '#E6CFB5', borderLeftColor: '#7A3E1C' }}
+              style={{ backgroundColor: 'var(--color-synth-bg)', borderColor: 'var(--color-synth-border)', borderLeftColor: 'var(--color-synth-accent)' }}
             >
-              <div className="px-5 py-3 border-b" style={{ borderColor: '#E6CFB5', backgroundColor: '#F6E7D2' }}>
-                <p className="text-[10px] font-bold uppercase tracking-[0.12em]" style={{ color: '#7A3E1C' }}>
+              <div className="px-5 py-3 border-b" style={{ borderColor: 'var(--color-synth-border)', backgroundColor: 'var(--color-synth-bg-tint)' }}>
+                <p className="text-[10px] font-bold uppercase tracking-[0.12em]" style={{ color: 'var(--color-synth-accent)' }}>
                   Lesson close
                 </p>
               </div>
@@ -660,13 +660,13 @@ function EvidenceCard({ label, text, highlight }: { label: string; text: string;
     <div
       className="rounded-xl border px-5 py-3"
       style={{
-        backgroundColor: highlight ? '#E5EEEB' : '#FFFFFF',
-        borderColor: highlight ? '#B5D3CB' : '#E6E4DE',
+        backgroundColor: highlight ? 'var(--color-surface-accent)' : 'var(--color-card)',
+        borderColor: highlight ? 'var(--color-line)' : 'var(--color-line)',
       }}
     >
       <p
         className="text-[10px] font-semibold uppercase tracking-[0.08em] mb-1.5"
-        style={{ color: highlight ? '#005A48' : '#A3A39E' }}
+        style={{ color: highlight ? 'var(--color-entering-text)' : 'var(--color-ink-faint)' }}
       >
         {label}
       </p>

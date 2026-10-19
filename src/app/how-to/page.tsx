@@ -8,10 +8,10 @@ import { Callout } from '@/components/docs/DocElements';
 
 // Shared documentation elements — same vocabulary as the About page.
 const ACCENT = 'var(--color-brand-primary)';
-const PATHWAY = '#00876C';
-const ADAPT = '#854F0B';
-const THINKING = '#534AB7';
-const MOVES = '#185FA5';
+const PATHWAY = 'var(--color-pathway)';
+const ADAPT = 'var(--color-adapt)';
+const THINKING = 'var(--color-thinking)';
+const MOVES = 'var(--color-moves)';
 
 export default function HowToPage() {
   const { setLesson } = useLesson();
@@ -203,7 +203,7 @@ export default function HowToPage() {
           <button
             onClick={openDemo}
             className="rounded-xl text-card px-5 py-3 text-[0.875rem] font-semibold hover:opacity-90 transition-opacity cursor-pointer focus-visible:outline-none"
-            style={{ backgroundColor: ACCENT, color: '#FFFFFF' }}
+            style={{ backgroundColor: ACCENT, color: 'var(--color-card)' }}
           >
             Open the demo lesson →
           </button>
@@ -270,7 +270,7 @@ function ToolCard({
   return (
     <div
       className="rounded-xl border bg-card overflow-hidden border-l-[3px]"
-      style={{ borderLeftColor: accent, borderColor: '#E6E4DE' }}
+      style={{ borderLeftColor: accent, borderColor: 'var(--color-line)' }}
     >
       <div className="px-5 py-4">
         <div className="flex items-baseline gap-3 mb-1.5 flex-wrap">
