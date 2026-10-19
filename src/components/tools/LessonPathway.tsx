@@ -8,21 +8,21 @@ import { useLesson } from '@/lib/lessonContext';
 import { kluFromElsf, resolve } from '@/lib/eld';
 import EldProficiencyView from '@/components/shared/EldProficiencyView';
 
-const ACCENT = '#00876C';
-const SYNTH_ACCENT = '#7A3E1C';
-const SYNTH_BG = '#FBF3EA';
-const SYNTH_BG_TINT = '#F6E7D2';
+const ACCENT = 'var(--color-pathway)';
+const SYNTH_ACCENT = 'var(--color-synth-accent)';
+const SYNTH_BG = 'var(--color-synth-bg)';
+const SYNTH_BG_TINT = 'var(--color-synth-bg-tint)';
 
 const DEMAND_STYLES: Record<string, { bg: string; text: string; label: string }> = {
-  low: { bg: '#EAF3DE', text: '#27500A', label: 'Low' },
-  medium: { bg: '#FAEEDA', text: '#633806', label: 'Medium' },
-  high: { bg: '#FAECE7', text: '#712B13', label: 'High' },
+  low: { bg: 'var(--color-demand-low-bg)', text: 'var(--color-demand-low-text)', label: 'Low' },
+  medium: { bg: 'var(--color-demand-medium-bg)', text: 'var(--color-demand-medium-text)', label: 'Medium' },
+  high: { bg: 'var(--color-demand-high-bg)', text: 'var(--color-demand-high-text)', label: 'High' },
 };
 
 const FRICTION_TYPE_LABEL: Record<FrictionPoint['type'], { label: string; bg: string; text: string }> = {
-  math: { label: 'Math', bg: '#F1EFE8', text: '#444441' },
-  language: { label: 'Language', bg: '#E1F5EE', text: '#085041' },
-  'language-math': { label: 'Language + math', bg: '#EEEDFE', text: '#26215C' },
+  math: { label: 'Math', bg: 'var(--color-bridging-bg)', text: 'var(--color-bridging-text)' },
+  language: { label: 'Language', bg: 'var(--color-entering-bg)', text: 'var(--color-entering-text)' },
+  'language-math': { label: 'Language + math', bg: 'var(--color-developing-bg)', text: 'var(--color-developing-text)' },
 };
 
 interface Props {
@@ -53,7 +53,7 @@ function ProficiencyRow({
         {level.mlr && (
           <span
             className="text-[9px] font-semibold rounded-full px-1.5 py-0.5"
-            style={{ backgroundColor: '#EEEDFE', color: '#26215C' }}
+            style={{ backgroundColor: 'var(--color-developing-bg)', color: 'var(--color-developing-text)' }}
           >
             MLR {level.mlr.number}
           </span>
@@ -187,7 +187,7 @@ function ActivityCard({
               </span>
               <span
                 className="rounded-full border px-2 py-0.5 text-[10px] font-semibold inline-flex items-center gap-1 select-none"
-                style={{ borderColor: ACCENT, color: ACCENT, backgroundColor: '#FFFFFF' }}
+                style={{ borderColor: ACCENT, color: ACCENT, backgroundColor: 'var(--color-card)' }}
                 aria-hidden="true"
               >
                 Activity Guidance
@@ -213,7 +213,7 @@ function ActivityCard({
                     const typeStyle = FRICTION_TYPE_LABEL[fp.type];
                     return (
                       <div key={i} className="flex items-start gap-2.5">
-                        <span className="mt-[3px] shrink-0 text-[#854F0B] text-[12px]">▲</span>
+                        <span className="mt-[3px] shrink-0 text-adapt text-[12px]">▲</span>
                         <div className="flex-1 min-w-0">
                           <p className="text-[0.825rem] text-ink-muted leading-relaxed">{fp.description}</p>
                           <div className="mt-1.5 flex items-center gap-1.5 flex-wrap">
@@ -249,7 +249,7 @@ function ActivityCard({
             {activity.learning_target && (
               <div
                 className="border-t border-line-subtle px-5 py-4"
-                style={{ backgroundColor: '#F4FAF7' }}
+                style={{ backgroundColor: 'var(--color-surface)' }}
               >
                 <p
                   className="text-[10px] font-bold uppercase tracking-[0.14em] mb-1.5"
@@ -268,7 +268,7 @@ function ActivityCard({
             {activity.causal_link && (
               <div
                 className="border-t border-line-subtle px-5 py-4"
-                style={{ backgroundColor: '#FAFAF7' }}
+                style={{ backgroundColor: 'var(--color-surface)' }}
               >
                 <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-1.5">
                   Why this activity matters
@@ -305,7 +305,7 @@ function ActivityCard({
                     const typeStyle = FRICTION_TYPE_LABEL[fp.type];
                     return (
                       <div key={i} className="flex items-start gap-2.5">
-                        <span className="mt-[3px] shrink-0 text-[#854F0B] text-[12px]">▲</span>
+                        <span className="mt-[3px] shrink-0 text-adapt text-[12px]">▲</span>
                         <div className="flex-1 min-w-0">
                           <p className="text-[0.825rem] text-ink-muted leading-relaxed">{fp.description}</p>
                           <div className="mt-1.5 flex items-center gap-1.5 flex-wrap">
@@ -348,7 +348,7 @@ function ActivityCard({
                     <li className="flex items-start gap-2.5">
                       <span
                         className="mt-[0.4rem] h-1.5 w-1.5 shrink-0 rounded-full"
-                        style={{ backgroundColor: '#534AB7' }}
+                        style={{ backgroundColor: 'var(--color-thinking)' }}
                       />
                       <div className="flex-1 min-w-0">
                         <span className="text-[0.825rem] text-ink leading-relaxed">
@@ -357,7 +357,7 @@ function ActivityCard({
                         <div className="mt-1">
                           <span
                             className="inline-block rounded-full px-2 py-0.5 text-[10px] font-semibold"
-                            style={{ backgroundColor: '#EEEDFE', color: '#26215C' }}
+                            style={{ backgroundColor: 'var(--color-developing-bg)', color: 'var(--color-developing-text)' }}
                             title={`Differentiated for a learner at WIDA ${eldResolved.surfaceAnchor.level}: ${eldResolved.surfaceAnchor.label}`}
                           >
                             For {eldResolved.surfaceAnchor.label} ·{' '}
@@ -451,7 +451,7 @@ export default function LessonPathway({ lesson, onNavigate }: Props) {
       <div className="mt-10 relative">
         <div
           className="absolute left-[19px] top-6 bottom-6 w-px"
-          style={{ backgroundColor: '#E6E4DE' }}
+          style={{ backgroundColor: 'var(--color-line)' }}
         />
 
         <div className="space-y-0">
@@ -473,11 +473,11 @@ export default function LessonPathway({ lesson, onNavigate }: Props) {
 
           <div
             className="rounded-xl border shadow-sm overflow-hidden border-l-[3px]"
-            style={{ backgroundColor: SYNTH_BG, borderColor: '#E6CFB5', borderLeftColor: SYNTH_ACCENT }}
+            style={{ backgroundColor: SYNTH_BG, borderColor: 'var(--color-synth-border)', borderLeftColor: SYNTH_ACCENT }}
           >
             <div
               className="px-5 py-3 border-b"
-              style={{ borderColor: '#E6CFB5', backgroundColor: SYNTH_BG_TINT }}
+              style={{ borderColor: 'var(--color-synth-border)', backgroundColor: SYNTH_BG_TINT }}
             >
               <p
                 className="text-[10px] font-bold uppercase tracking-[0.14em]"
@@ -488,7 +488,7 @@ export default function LessonPathway({ lesson, onNavigate }: Props) {
             </div>
 
             {lesson.destination && (
-              <div className="px-6 py-4 border-b" style={{ borderColor: '#E6CFB5' }}>
+              <div className="px-6 py-4 border-b" style={{ borderColor: 'var(--color-synth-border)' }}>
                 <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-1.5">
                   Land here
                 </p>
@@ -513,7 +513,7 @@ export default function LessonPathway({ lesson, onNavigate }: Props) {
             )}
 
             {lesson.lesson_synthesis.builds_on.length > 0 && (
-              <div className="px-6 py-4 border-t" style={{ borderColor: '#E6CFB5' }}>
+              <div className="px-6 py-4 border-t" style={{ borderColor: 'var(--color-synth-border)' }}>
                 <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-2">
                   This close builds on
                 </p>
@@ -533,19 +533,19 @@ export default function LessonPathway({ lesson, onNavigate }: Props) {
 
       {/* Key vocabulary if present */}
       {lesson.key_vocabulary.length > 0 && (
-        <div className="mt-2 mb-8 rounded-xl overflow-hidden" style={{ backgroundColor: '#E5EEEB' }}>
-          <div className="px-5 py-3 border-b" style={{ borderColor: '#B5D3CB' }}>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: '#005A48' }}>
+        <div className="mt-2 mb-8 rounded-xl overflow-hidden" style={{ backgroundColor: 'var(--color-surface-accent)' }}>
+          <div className="px-5 py-3 border-b" style={{ borderColor: 'var(--color-line)' }}>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: 'var(--color-entering-text)' }}>
               Pre-teach before the lesson
             </p>
           </div>
-          <div className="divide-y" style={{ borderColor: '#B5D3CB' }}>
+          <div className="divide-y" style={{ borderColor: 'var(--color-line)' }}>
             {lesson.key_vocabulary.map((v) => (
               <div key={v.term} className="px-5 py-3">
-                <span className="text-[0.85rem] font-semibold" style={{ color: '#005A48' }}>
+                <span className="text-[0.85rem] font-semibold" style={{ color: 'var(--color-entering-text)' }}>
                   {v.term}
                 </span>
-                <span className="text-[0.82rem] ml-1" style={{ color: '#005A48', opacity: 0.85 }}>
+                <span className="text-[0.82rem] ml-1" style={{ color: 'var(--color-entering-text)', opacity: 0.85 }}>
                   {' — '}
                   {v.definition}
                 </span>

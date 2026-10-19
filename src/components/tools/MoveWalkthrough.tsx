@@ -23,15 +23,15 @@ function whyHereFor(lesson: LessonData, activityId: string, mlr: MlrRef): string
   return a?.mlrs.find((m) => m.number === mlr.number)?.why_here;
 }
 
-const ACCENT = '#185FA5';
-const MLL_ACCENT = '#534AB7';
+const ACCENT = 'var(--color-moves)';
+const MLL_ACCENT = 'var(--color-thinking)';
 
 const SCENARIO_TYPE_META: Record<ScenarioType, { label: string; color: string }> = {
-  'common-error': { label: 'Common error', color: '#712B13' },
-  'productive-insight': { label: 'Productive insight', color: '#00876C' },
-  'on-track': { label: 'On track', color: '#185FA5' },
-  'partial-understanding': { label: 'Partial understanding', color: '#706E69' },
-  'productive-struggle': { label: 'Productive struggle', color: '#854F0B' },
+  'common-error': { label: 'Common error', color: 'var(--color-demand-high-text)' },
+  'productive-insight': { label: 'Productive insight', color: 'var(--color-pathway)' },
+  'on-track': { label: 'On track', color: 'var(--color-moves)' },
+  'partial-understanding': { label: 'Partial understanding', color: 'var(--color-ink-muted)' },
+  'productive-struggle': { label: 'Productive struggle', color: 'var(--color-adapt)' },
 };
 
 // Defensive lookup: if the model emitted a scenario_type that slipped past
@@ -61,7 +61,7 @@ function MoveCard({ move }: { move: TeacherMove }) {
         style={{
           borderColor: ACCENT,
           borderLeftColor: ACCENT,
-          backgroundColor: '#EBF3FD',
+          backgroundColor: 'var(--color-ontrack-bg)',
           borderTopWidth: 1,
           borderRightWidth: 1,
           borderBottomWidth: 1,
@@ -72,7 +72,7 @@ function MoveCard({ move }: { move: TeacherMove }) {
         </p>
         <p
           className="text-[1.025rem] leading-[1.5]"
-          style={{ color: '#0E3A69', fontFamily: 'var(--font-dm-serif), serif' }}
+          style={{ color: 'var(--color-ontrack-text)', fontFamily: 'var(--font-dm-serif), serif' }}
         >
           {move.move}
         </p>
@@ -90,12 +90,12 @@ function MoveCard({ move }: { move: TeacherMove }) {
       {move.nonverbal && (
         <div
           className="rounded-xl border px-5 py-4"
-          style={{ backgroundColor: '#E1F5EE', borderColor: '#9FE1CB' }}
+          style={{ backgroundColor: 'var(--color-entering-bg)', borderColor: 'var(--color-entering-border)' }}
         >
-          <p className="text-[10px] font-semibold uppercase tracking-[0.1em] mb-2" style={{ color: '#085041' }}>
+          <p className="text-[10px] font-semibold uppercase tracking-[0.1em] mb-2" style={{ color: 'var(--color-entering-text)' }}>
             Non-verbal move
           </p>
-          <p className="text-[0.875rem] leading-[1.6]" style={{ color: '#085041' }}>
+          <p className="text-[0.875rem] leading-[1.6]" style={{ color: 'var(--color-entering-text)' }}>
             {move.nonverbal}
           </p>
         </div>
@@ -123,7 +123,7 @@ function ProficiencyColumn({
   color: string;
 }) {
   return (
-    <div className="rounded-xl border px-4 py-4" style={{ borderColor: color, backgroundColor: '#FFFFFF' }}>
+    <div className="rounded-xl border px-4 py-4" style={{ borderColor: color, backgroundColor: 'var(--color-card)' }}>
       <div className="flex items-center gap-2 mb-3 pb-2 border-b border-line-subtle">
         <span
           className="h-7 w-7 rounded-full flex items-center justify-center text-[0.75rem] font-bold text-white shrink-0"
@@ -146,10 +146,10 @@ function ProficiencyColumn({
         )}
         {move.nonverbal && (
           <div>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.1em] mb-1" style={{ color: '#085041' }}>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.1em] mb-1" style={{ color: 'var(--color-entering-text)' }}>
               Non-verbal
             </p>
-            <p className="text-[0.825rem] leading-relaxed" style={{ color: '#085041' }}>
+            <p className="text-[0.825rem] leading-relaxed" style={{ color: 'var(--color-entering-text)' }}>
               {move.nonverbal}
             </p>
           </div>
@@ -179,7 +179,7 @@ function ScenarioCard({
     <button
       onClick={onOpen}
       className="w-full text-left rounded-xl border bg-card hover:bg-surface-accent transition-colors cursor-pointer focus-visible:outline-none px-5 py-4 group"
-      style={{ borderColor: '#E6E4DE' }}
+      style={{ borderColor: 'var(--color-line)' }}
     >
       <div className="flex items-center gap-2 mb-2 flex-wrap">
         <span
@@ -304,7 +304,7 @@ export default function MoveWalkthrough({ lesson }: Props) {
         <div className="mt-6 mb-4">
           <p
             className="text-[0.825rem] leading-relaxed rounded-lg px-3 py-2"
-            style={{ backgroundColor: '#F4F2FE', color: '#26215C' }}
+            style={{ backgroundColor: 'var(--color-developing-bg)', color: 'var(--color-developing-text)' }}
           >
             <span className="font-semibold">
               {mllCount} of {scenarios.length} moments involve multilingual learners.
@@ -316,14 +316,14 @@ export default function MoveWalkthrough({ lesson }: Props) {
         {mlrNumbersInLesson.length > 0 && (
           <div className="mb-5 flex items-center gap-2 flex-wrap">
             <span className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint">View:</span>
-            <div className="inline-flex rounded-full border" style={{ borderColor: '#E6E4DE' }}>
+            <div className="inline-flex rounded-full border" style={{ borderColor: 'var(--color-line)' }}>
               <button
                 onClick={() => setGrouping('activity')}
                 className="px-3 py-1 text-[11px] font-semibold rounded-full cursor-pointer transition-colors focus-visible:outline-none"
                 style={
                   grouping === 'activity'
                     ? { backgroundColor: ACCENT, color: 'white' }
-                    : { color: '#706E69' }
+                    : { color: 'var(--color-ink-muted)' }
                 }
               >
                 By activity
@@ -334,7 +334,7 @@ export default function MoveWalkthrough({ lesson }: Props) {
                 style={
                   grouping === 'mlr'
                     ? { backgroundColor: ACCENT, color: 'white' }
-                    : { color: '#706E69' }
+                    : { color: 'var(--color-ink-muted)' }
                 }
               >
                 By MLR
@@ -458,7 +458,7 @@ export default function MoveWalkthrough({ lesson }: Props) {
               <section
                 key={aid}
                 className={`rounded-xl border bg-card overflow-hidden ${isCrux ? 'border-l-[3px]' : 'border-line'}`}
-                style={isCrux ? { borderLeftColor: ACCENT, borderColor: '#E6E4DE' } : {}}
+                style={isCrux ? { borderLeftColor: ACCENT, borderColor: 'var(--color-line)' } : {}}
               >
                 <div className="px-6 pt-5 pb-4 border-b border-line-subtle">
                   <div className="flex items-center gap-3 mb-1.5">
@@ -545,9 +545,9 @@ export default function MoveWalkthrough({ lesson }: Props) {
                         {s.is_mll && (
                           <div
                             className="rounded-md border px-2.5 py-1.5"
-                            style={{ backgroundColor: '#EEEDFE', borderColor: '#AFA9EC' }}
+                            style={{ backgroundColor: 'var(--color-developing-bg)', borderColor: 'var(--color-developing-border)' }}
                           >
-                            <p className="text-[0.78rem] leading-snug" style={{ color: '#26215C' }}>
+                            <p className="text-[0.78rem] leading-snug" style={{ color: 'var(--color-developing-text)' }}>
                               Response is calibrated to the learner&apos;s WIDA level — open this scenario to see the move.
                             </p>
                           </div>
@@ -669,7 +669,7 @@ export default function MoveWalkthrough({ lesson }: Props) {
         style={{
           borderColor: ACCENT,
           borderLeftColor: ACCENT,
-          backgroundColor: '#FFFFFF',
+          backgroundColor: 'var(--color-card)',
           borderTopWidth: 1,
           borderRightWidth: 1,
           borderBottomWidth: 1,
@@ -699,7 +699,7 @@ export default function MoveWalkthrough({ lesson }: Props) {
           style={{
             borderColor: ACCENT,
             borderLeftColor: ACCENT,
-            backgroundColor: '#EBF3FD',
+            backgroundColor: 'var(--color-ontrack-bg)',
             borderTopWidth: 1,
             borderRightWidth: 1,
             borderBottomWidth: 1,
@@ -707,7 +707,7 @@ export default function MoveWalkthrough({ lesson }: Props) {
         >
           <p
             className="text-[1.025rem] leading-[1.6]"
-            style={{ color: '#0E3A69', fontFamily: 'var(--font-dm-serif), serif' }}
+            style={{ color: 'var(--color-ontrack-text)', fontFamily: 'var(--font-dm-serif), serif' }}
           >
             {current.interpretation}
           </p>

@@ -13,24 +13,24 @@ function whyHereFor(lesson: LessonData, activityId: string, mlr: MlrRef): string
 
 const PATTERN_STYLES: Record<ThinkingPattern['type'], { bg: string; border: string; text: string; badge: string; badgeBg: string; badgeText: string }> = {
   'on-track': {
-    bg: '#EEEDFE', border: '#AFA9EC', text: '#26215C',
-    badge: 'Build on this', badgeBg: '#534AB7', badgeText: '#fff',
+    bg: 'var(--color-developing-bg)', border: 'var(--color-developing-border)', text: 'var(--color-developing-text)',
+    badge: 'Build on this', badgeBg: 'var(--color-thinking)', badgeText: 'var(--color-card)',
   },
   'misconception': {
-    bg: '#FAECE7', border: '#F5C4B3', text: '#712B13',
-    badge: 'Common error', badgeBg: '#712B13', badgeText: '#fff',
+    bg: 'var(--color-demand-high-bg)', border: 'var(--color-demand-high-border)', text: 'var(--color-demand-high-text)',
+    badge: 'Common error', badgeBg: 'var(--color-demand-high-text)', badgeText: 'var(--color-card)',
   },
   'partial': {
-    bg: '#F1EFE8', border: '#D3D1C7', text: '#444441',
-    badge: 'Almost there', badgeBg: '#A8A59E', badgeText: '#fff',
+    bg: 'var(--color-bridging-bg)', border: 'var(--color-bridging-border)', text: 'var(--color-bridging-text)',
+    badge: 'Almost there', badgeBg: 'var(--color-ink-faint)', badgeText: 'var(--color-card)',
   },
   'extension': {
-    bg: '#EAF3DE', border: '#C0DD97', text: '#27500A',
-    badge: 'Ready to stretch', badgeBg: '#27500A', badgeText: '#fff',
+    bg: 'var(--color-demand-low-bg)', border: 'var(--color-demand-low-border)', text: 'var(--color-demand-low-text)',
+    badge: 'Ready to stretch', badgeBg: 'var(--color-demand-low-text)', badgeText: 'var(--color-card)',
   },
   'language-math': {
-    bg: '#EEEDFE', border: '#AFA9EC', text: '#26215C',
-    badge: 'Language barrier', badgeBg: '#534AB7', badgeText: '#fff',
+    bg: 'var(--color-developing-bg)', border: 'var(--color-developing-border)', text: 'var(--color-developing-text)',
+    badge: 'Language barrier', badgeBg: 'var(--color-thinking)', badgeText: 'var(--color-card)',
   },
 };
 
@@ -70,12 +70,12 @@ export default function AnticipatedThinking({ lesson }: Props) {
       {lesson.anticipated_thinking.orientation && (
         <div
           className="rounded-xl border border-line bg-card shadow-sm overflow-hidden border-l-[3px] mb-8"
-          style={{ borderLeftColor: '#534AB7' }}
+          style={{ borderLeftColor: 'var(--color-thinking)' }}
         >
           <div className="px-6 py-5">
             <p
               className="text-[10px] font-semibold uppercase tracking-[0.12em] mb-2"
-              style={{ color: '#534AB7' }}
+              style={{ color: 'var(--color-thinking)' }}
             >
               What student thinking to expect
             </p>
@@ -108,7 +108,7 @@ export default function AnticipatedThinking({ lesson }: Props) {
                     ? 'text-ink border-b-2'
                     : 'text-ink-faint hover:text-ink-muted border-transparent'
                 }`}
-                style={isActive ? { borderBottomColor: '#534AB7', color: '#534AB7' } : {}}
+                style={isActive ? { borderBottomColor: 'var(--color-thinking)', color: 'var(--color-thinking)' } : {}}
               >
                 {label}
               </button>
@@ -144,7 +144,7 @@ export default function AnticipatedThinking({ lesson }: Props) {
                     {pattern.is_mll_specific && (
                       <span
                         className="rounded-full px-2 py-0.5 text-[10px] font-semibold"
-                        style={{ backgroundColor: '#534AB7', color: '#fff' }}
+                        style={{ backgroundColor: 'var(--color-thinking)', color: 'var(--color-card)' }}
                       >
                         MLL
                       </span>
@@ -227,21 +227,21 @@ export default function AnticipatedThinking({ lesson }: Props) {
       {sourceActivity?.synthesis_prompt && (
         <div
           className="mt-8 rounded-xl border shadow-sm overflow-hidden border-l-[3px]"
-          style={{ backgroundColor: '#FBF3EA', borderColor: '#E6CFB5', borderLeftColor: '#7A3E1C' }}
+          style={{ backgroundColor: 'var(--color-synth-bg)', borderColor: 'var(--color-synth-border)', borderLeftColor: 'var(--color-synth-accent)' }}
         >
           <div
             className="px-5 py-3 border-b"
-            style={{ borderColor: '#E6CFB5', backgroundColor: '#F6E7D2' }}
+            style={{ borderColor: 'var(--color-synth-border)', backgroundColor: 'var(--color-synth-bg-tint)' }}
           >
             <p
               className="text-[10px] font-bold uppercase tracking-[0.14em]"
-              style={{ color: '#7A3E1C' }}
+              style={{ color: 'var(--color-synth-accent)' }}
             >
               Close this activity — synthesize what their thinking surfaced
             </p>
           </div>
           {sourceActivity.learning_target && (
-            <div className="px-5 py-3 border-b" style={{ borderColor: '#E6CFB5' }}>
+            <div className="px-5 py-3 border-b" style={{ borderColor: 'var(--color-synth-border)' }}>
               <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-1">
                 Drive them toward
               </p>
@@ -261,19 +261,19 @@ export default function AnticipatedThinking({ lesson }: Props) {
         (lesson.lesson_synthesis.prompt || lesson.lesson_synthesis.builds_on.length > 0) && (
           <div
             className="mt-4 rounded-xl border shadow-sm overflow-hidden border-l-[3px]"
-            style={{ backgroundColor: '#3A2614', borderColor: '#7A3E1C', borderLeftColor: '#FBF3EA' }}
+            style={{ backgroundColor: 'var(--color-synth-bg-dark)', borderColor: 'var(--color-synth-accent)', borderLeftColor: 'var(--color-synth-bg)' }}
           >
-            <div className="px-5 py-3 border-b" style={{ borderColor: '#7A3E1C' }}>
+            <div className="px-5 py-3 border-b" style={{ borderColor: 'var(--color-synth-accent)' }}>
               <p
                 className="text-[10px] font-bold uppercase tracking-[0.14em]"
-                style={{ color: '#FBF3EA' }}
+                style={{ color: 'var(--color-synth-bg)' }}
               >
                 Then — lesson close
               </p>
             </div>
             {lesson.lesson_synthesis.prompt && (
               <div className="px-5 py-4">
-                <p className="text-[0.9rem] leading-[1.65]" style={{ color: '#FBF3EA' }}>
+                <p className="text-[0.9rem] leading-[1.65]" style={{ color: 'var(--color-synth-bg)' }}>
                   {lesson.lesson_synthesis.prompt}
                 </p>
               </div>

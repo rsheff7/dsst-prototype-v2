@@ -8,22 +8,22 @@ import ToolInfo from '@/components/shared/ToolInfo';
 import { activitySlot, activityHeading, activityShortLabel } from '@/lib/activityLabel';
 
 const FRICTION_PILL: Record<WristbandTile['friction_type'], { bg: string; text: string; label: string }> = {
-  math: { bg: '#F1EFE8', text: '#444441', label: 'Math' },
-  language: { bg: '#E1F5EE', text: '#085041', label: 'Language' },
-  'language-math': { bg: '#EEEDFE', text: '#26215C', label: 'Lang + math' },
+  math: { bg: 'var(--color-bridging-bg)', text: 'var(--color-bridging-text)', label: 'Math' },
+  language: { bg: 'var(--color-entering-bg)', text: 'var(--color-entering-text)', label: 'Language' },
+  'language-math': { bg: 'var(--color-developing-bg)', text: 'var(--color-developing-text)', label: 'Lang + math' },
 };
 
 const FRICTION_BAR: Record<WristbandTile['friction_type'], string> = {
-  math: '#854F0B',
-  language: '#085041',
-  'language-math': '#534AB7',
+  math: 'var(--color-adapt)',
+  language: 'var(--color-entering-text)',
+  'language-math': 'var(--color-thinking)',
 };
 
 const QR_ACCENT = 'var(--color-brand-primary)';
-const CRUX_ACCENT = '#9F2F1A';
-const SYNTH_ACCENT = '#7A3E1C';
-const SYNTH_BG = '#FBF3EA';
-const SYNTH_BG_DARK = '#3A2614';
+const CRUX_ACCENT = 'var(--color-crux-accent)';
+const SYNTH_ACCENT = 'var(--color-synth-accent)';
+const SYNTH_BG = 'var(--color-synth-bg)';
+const SYNTH_BG_DARK = 'var(--color-synth-bg-dark)';
 
 interface Props {
   lesson: LessonData;
@@ -54,7 +54,7 @@ export default function QuickRead({ lesson }: Props) {
             type="button"
             onClick={() => window.print()}
             className="rounded-full px-3 py-1 text-[11px] font-semibold cursor-pointer hover:opacity-85 transition-opacity"
-            style={{ backgroundColor: QR_ACCENT, color: '#FFFFFF' }}
+            style={{ backgroundColor: QR_ACCENT, color: 'var(--color-card)' }}
           >
             Print
           </button>
@@ -75,13 +75,13 @@ export default function QuickRead({ lesson }: Props) {
       {/* Lesson context card — destination is the headline; arc supports it */}
       <header
         className="rounded-xl border border-line shadow-sm overflow-hidden border-l-[3px] mb-8"
-        style={{ borderLeftColor: QR_ACCENT, backgroundColor: '#FFFFFF' }}
+        style={{ borderLeftColor: QR_ACCENT, backgroundColor: 'var(--color-card)' }}
       >
         {/* Destination section - progressive disclosure */}
 {lesson.destination && (
             <>
               {destinationExpanded && (
-                <div className="px-7 py-7" style={{ backgroundColor: '#F4FAF7' }}>
+                <div className="px-7 py-7" style={{ backgroundColor: 'var(--color-surface)' }}>
                   <p
                     className="text-[11px] font-bold uppercase tracking-[0.14em] mb-3"
                     style={{ color: QR_ACCENT }}
@@ -144,12 +144,12 @@ export default function QuickRead({ lesson }: Props) {
 
 function ModeToggle({ mode, onChange }: { mode: Mode; onChange: (m: Mode) => void }) {
   return (
-    <div className="inline-flex rounded-full border" style={{ borderColor: '#E6E4DE' }}>
+    <div className="inline-flex rounded-full border" style={{ borderColor: 'var(--color-line)' }}>
       <button
         type="button"
         onClick={() => onChange('plan')}
         className="px-3 py-1 text-[11px] font-semibold rounded-full cursor-pointer transition-colors focus-visible:outline-none"
-        style={mode === 'plan' ? { backgroundColor: QR_ACCENT, color: 'white' } : { color: '#706E69' }}
+        style={mode === 'plan' ? { backgroundColor: QR_ACCENT, color: 'var(--color-card)' } : { color: 'var(--color-ink-muted)' }}
       >
         Plan view
       </button>
@@ -157,7 +157,7 @@ function ModeToggle({ mode, onChange }: { mode: Mode; onChange: (m: Mode) => voi
         type="button"
         onClick={() => onChange('inclass')}
         className="px-3 py-1 text-[11px] font-semibold rounded-full cursor-pointer transition-colors focus-visible:outline-none"
-        style={mode === 'inclass' ? { backgroundColor: QR_ACCENT, color: 'white' } : { color: '#706E69' }}
+        style={mode === 'inclass' ? { backgroundColor: QR_ACCENT, color: 'var(--color-card)' } : { color: 'var(--color-ink-muted)' }}
       >
         In class
       </button>
@@ -212,11 +212,11 @@ function PlanView({
       {(wb.lesson_synthesis_short || lessonSynthesis?.prompt) && (
         <section
           className="qr-lesson-close rounded-xl border shadow-sm overflow-hidden mb-6 border-l-[3px]"
-          style={{ backgroundColor: SYNTH_BG, borderColor: '#E6CFB5', borderLeftColor: SYNTH_ACCENT }}
+          style={{ backgroundColor: SYNTH_BG, borderColor: 'var(--color-synth-border)', borderLeftColor: SYNTH_ACCENT }}
         >
           <div
             className="px-5 py-3 border-b"
-            style={{ borderColor: '#E6CFB5', backgroundColor: '#F6E7D2' }}
+            style={{ borderColor: 'var(--color-synth-border)', backgroundColor: 'var(--color-synth-bg-tint)' }}
           >
             <p
               className="text-[10px] font-bold uppercase tracking-[0.14em]"
@@ -356,7 +356,7 @@ function PlanTile({ tile }: { tile: WristbandTile }) {
   return (
     <div
       className={`qr-tile flex-1 min-w-[200px] rounded-xl border bg-card shadow-sm overflow-hidden ${isCrux ? 'border-l-[3px]' : 'border-line'}`}
-      style={isCrux ? { borderLeftColor: CRUX_ACCENT, backgroundColor: '#FFF8F4' } : {}}
+      style={isCrux ? { borderLeftColor: CRUX_ACCENT, backgroundColor: 'var(--color-crux-bg)' } : {}}
     >
       {isCrux && (
         <div
@@ -407,7 +407,7 @@ function PlanTile({ tile }: { tile: WristbandTile }) {
           {tile.avoid_short && (
             <p
               className="qr-tile-avoid mt-2 text-[0.75rem] leading-relaxed italic"
-              style={{ color: '#712B13' }}
+              style={{ color: 'var(--color-demand-high-text)' }}
             >
               <span className="font-semibold not-italic">Avoid:</span> {tile.avoid_short}
             </p>
@@ -493,7 +493,7 @@ function InClassActivityBlock({
 }) {
   if (!activity) return null;
   return (
-    <section className="rounded-xl overflow-hidden" style={{ backgroundColor: '#1A1916' }}>
+    <section className="rounded-xl overflow-hidden" style={{ backgroundColor: 'var(--color-ink)' }}>
       <div className="px-4 py-2 flex items-baseline justify-between gap-3">
         <div className="flex items-baseline gap-2 flex-wrap min-w-0">
           <span className="text-[11px] font-bold uppercase tracking-[0.12em] text-white">
@@ -506,7 +506,7 @@ function InClassActivityBlock({
         {activity.is_crux && (
           <span
             className="text-[9px] font-bold uppercase tracking-[0.1em] px-2 py-0.5 rounded-full"
-            style={{ backgroundColor: '#FFFFFF', color: '#1A1916' }}
+            style={{ backgroundColor: 'var(--color-card)', color: 'var(--color-ink)' }}
           >
             Crux
           </span>
@@ -526,12 +526,12 @@ function InClassSynthRow({ text }: { text: string }) {
   return (
     <div
       className="flex items-stretch border-t"
-      style={{ borderColor: '#E6E4DE', backgroundColor: SYNTH_BG }}
+      style={{ borderColor: 'var(--color-line)', backgroundColor: SYNTH_BG }}
     >
       <div className="shrink-0 w-1.5" style={{ backgroundColor: SYNTH_ACCENT }} />
       <div
         className="shrink-0 w-8 flex items-center justify-center"
-        style={{ borderRight: '1px solid #F1EFE8' }}
+        style={{ borderRight: '1px solid var(--color-bridging-bg)' }}
       >
         <span className="text-[10px] font-bold" style={{ color: SYNTH_ACCENT }}>↳</span>
       </div>
@@ -552,13 +552,13 @@ function InClassTile({ tile }: { tile: WristbandTile }) {
   return (
     <div
       className="flex items-stretch border-t"
-      style={{ borderColor: '#E6E4DE', backgroundColor: isCrux ? '#FFF8F4' : undefined }}
+      style={{ borderColor: 'var(--color-line)', backgroundColor: isCrux ? 'var(--color-crux-bg)' : undefined }}
     >
       {/* Left friction-color bar */}
       <div className="shrink-0 w-1.5" style={{ backgroundColor: FRICTION_BAR[tile.friction_type] }} />
 
       {/* Star for crux moment */}
-      <div className="shrink-0 w-8 flex items-center justify-center" style={{ borderRight: '1px solid #F1EFE8' }}>
+      <div className="shrink-0 w-8 flex items-center justify-center" style={{ borderRight: '1px solid var(--color-bridging-bg)' }}>
         {isCrux ? (
           <span className="text-[14px]" style={{ color: CRUX_ACCENT }}>★</span>
         ) : (
@@ -576,9 +576,9 @@ function InClassTile({ tile }: { tile: WristbandTile }) {
       {tile.mlr && (
         <div
           className="shrink-0 px-2 flex items-center"
-          style={{ backgroundColor: '#EEEDFE', borderLeft: '1px solid #AFA9EC' }}
+          style={{ backgroundColor: 'var(--color-developing-bg)', borderLeft: '1px solid var(--color-developing-border)' }}
         >
-          <span className="text-[10px] font-bold" style={{ color: '#26215C' }}>
+          <span className="text-[10px] font-bold" style={{ color: 'var(--color-developing-text)' }}>
             MLR {tile.mlr.number}
           </span>
         </div>
@@ -589,18 +589,18 @@ function InClassTile({ tile }: { tile: WristbandTile }) {
 
 function InClassLegend({ entries }: { entries: WristbandLegendEntry[] }) {
   return (
-    <section className="rounded-xl bg-white border" style={{ borderColor: '#E6E4DE' }}>
-      <div className="px-3 py-2 border-b" style={{ backgroundColor: '#EEEDFE', borderColor: '#AFA9EC' }}>
-        <p className="text-[10px] font-bold uppercase tracking-[0.12em]" style={{ color: '#26215C' }}>
+    <section className="rounded-xl bg-white border" style={{ borderColor: 'var(--color-line)' }}>
+      <div className="px-3 py-2 border-b" style={{ backgroundColor: 'var(--color-developing-bg)', borderColor: 'var(--color-developing-border)' }}>
+        <p className="text-[10px] font-bold uppercase tracking-[0.12em]" style={{ color: 'var(--color-developing-text)' }}>
           MLR Quick Cues
         </p>
       </div>
-      <ul className="divide-y" style={{ borderColor: '#E6E4DE' }}>
+      <ul className="divide-y" style={{ borderColor: 'var(--color-line)' }}>
         {entries.map((entry, i) => (
           <li key={i} className="px-3 py-2 flex items-baseline gap-2">
             <span
               className="text-[10px] font-bold shrink-0 inline-flex items-center justify-center rounded-full px-1.5 py-0.5"
-              style={{ backgroundColor: '#EEEDFE', color: '#26215C' }}
+              style={{ backgroundColor: 'var(--color-developing-bg)', color: 'var(--color-developing-text)' }}
             >
               MLR {entry.mlr.number}
             </span>
@@ -608,7 +608,7 @@ function InClassLegend({ entries }: { entries: WristbandLegendEntry[] }) {
           </li>
         ))}
       </ul>
-      <p className="text-center text-[9px] text-ink-faint italic py-1.5 border-t" style={{ borderColor: '#E6E4DE' }}>
+      <p className="text-center text-[9px] text-ink-faint italic py-1.5 border-t" style={{ borderColor: 'var(--color-line)' }}>
         {MLRS[1].name.length > 0 ? 'Tap a chip in Plan view for the full routine.' : ''}
       </p>
     </section>
@@ -685,7 +685,7 @@ const planPrintStyles = `
     .qr-activity-header > div:first-child > span:last-child { font-size: 6.5pt !important; padding: 1pt 4pt !important; }
     .qr-activity-header h2 { font-size: 9.5pt !important; line-height: 1.2 !important; margin: 0 !important; }
     .qr-activity-header > div:last-child > span { font-size: 6.5pt !important; }
-    .qr-activity-target { padding: 3pt 8pt !important; border-bottom: 1px solid #E6E4DE !important; }
+    .qr-activity-target { padding: 3pt 8pt !important; border-bottom: 1px solid var(--color-line) !important; }
     .qr-activity-target p:first-child { font-size: 6.5pt !important; line-height: 1.1 !important; margin: 0 !important; }
     .qr-activity-target p:last-child { font-size: 7.5pt !important; line-height: 1.25 !important; margin: 1pt 0 0 !important; }
     .qr-activity-tilegrid { padding: 4pt 5pt !important; gap: 4pt !important; flex-direction: row !important; }
@@ -702,7 +702,7 @@ const planPrintStyles = `
     .qr-legend > div:first-child { padding: 3pt 8pt !important; }
     .qr-legend > div:first-child p { font-size: 7pt !important; margin: 0 !important; }
     .qr-legend ul { display: flex !important; flex-direction: row !important; border-top: none !important; }
-    .qr-legend ul li { flex: 1 !important; padding: 4pt 8pt !important; border-right: 1px solid #E6E4DE !important; font-size: 8pt !important; line-height: 1.3 !important; align-items: flex-start !important; flex-direction: column !important; gap: 2pt !important; }
+    .qr-legend ul li { flex: 1 !important; padding: 4pt 8pt !important; border-right: 1px solid var(--color-line) !important; font-size: 8pt !important; line-height: 1.3 !important; align-items: flex-start !important; flex-direction: column !important; gap: 2pt !important; }
     .qr-legend ul li:last-child { border-right: none !important; }
     .qr-activities button[aria-label*="About MLR"] span:last-child,
     .qr-legend button[aria-label*="About MLR"] span:last-child { display: none !important; }
