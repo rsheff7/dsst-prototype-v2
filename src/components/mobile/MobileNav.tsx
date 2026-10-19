@@ -20,7 +20,7 @@ export default function MobileNav({ activeTab, onTabChange }: MobileNavProps) {
           type="button"
           onClick={() => onTabChange('quickread')}
           className={`flex flex-col items-center justify-center flex-1 h-full px-2 ${
-            activeTab === 'quickread' ? 'text-[#006C57]' : 'text-gray-500'
+            activeTab === 'quickread' ? 'text-brand-primary' : 'text-gray-500'
           }`}
         >
           <span className="text-lg">📖</span>
@@ -32,7 +32,7 @@ export default function MobileNav({ activeTab, onTabChange }: MobileNavProps) {
           type="button"
           onClick={() => onTabChange('pathway')}
           className={`flex flex-col items-center justify-center flex-1 h-full px-2 ${
-            activeTab === 'pathway' ? 'text-[#006C57]' : 'text-gray-500'
+            activeTab === 'pathway' ? 'text-brand-primary' : 'text-gray-500'
           }`}
         >
           <span className="text-lg">🗺️</span>
@@ -44,7 +44,7 @@ export default function MobileNav({ activeTab, onTabChange }: MobileNavProps) {
           type="button"
           onClick={() => onTabChange('adapt')}
           className={`flex flex-col items-center justify-center flex-1 h-full px-2 ${
-            activeTab === 'adapt' ? 'text-[#006C57]' : 'text-gray-500'
+            activeTab === 'adapt' ? 'text-brand-primary' : 'text-gray-500'
           }`}
         >
           <span className="text-lg">⚙️</span>

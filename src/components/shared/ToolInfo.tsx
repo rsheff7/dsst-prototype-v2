@@ -15,7 +15,7 @@ const TOOL_CONTENT: Record<ToolId, {
   quickread: {
     title: 'Quick Read',
     subtitle: 'The single sheet to carry into class',
-    accent: '#006C57',
+    accent: 'var(--color-brand-primary)',
     purpose:
       'See the lesson the way you will need to see it during class — the moments you will notice, the routines to run, the moves to make. Scan once before class, glance during.',
     whenToUse: 'Before class — read once. During class — glance at it. Print and keep it nearby.',

@@ -195,7 +195,7 @@ function ActivityCard({
       <button
         type="button"
         onClick={() => setExpanded(!expanded)}
-        className="w-full flex items-center justify-between px-4 py-3 bg-[#006C57] text-white"
+        className="w-full flex items-center justify-between px-4 py-3 bg-brand-primary text-white"
         aria-expanded={expanded}
       >
         <div className="flex items-center gap-2 min-w-0">

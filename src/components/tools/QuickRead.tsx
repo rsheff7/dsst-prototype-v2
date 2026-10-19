@@ -19,7 +19,7 @@ const FRICTION_BAR: Record<WristbandTile['friction_type'], string> = {
   'language-math': '#534AB7',
 };
 
-const QR_ACCENT = '#006C57';
+const QR_ACCENT = 'var(--color-brand-primary)';
 const CRUX_ACCENT = '#9F2F1A';
 const SYNTH_ACCENT = '#7A3E1C';
 const SYNTH_BG = '#FBF3EA';

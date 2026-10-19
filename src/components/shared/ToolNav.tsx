@@ -2,12 +2,12 @@
 
 import { ToolId } from '@/lib/types';
 
-const TABS: { id: ToolId; label: string; accent: string }[] = [
-  { id: 'quickread', label: 'Quick Read', accent: '#006C57' },
-  { id: 'pathway', label: 'Pathway', accent: '#00876C' },
-  { id: 'adapt', label: 'Adapt', accent: '#854F0B' },
-  { id: 'thinking', label: 'Thinking', accent: '#534AB7' },
-  { id: 'moves', label: 'Moves', accent: '#185FA5' },
+const TABS: { id: ToolId; label: string }[] = [
+  { id: 'quickread', label: 'Quick Read' },
+  { id: 'pathway', label: 'Pathway' },
+  { id: 'adapt', label: 'Adapt' },
+  { id: 'thinking', label: 'Thinking' },
+  { id: 'moves', label: 'Moves' },
 ];
 
 interface ToolNavProps {
@@ -20,23 +20,23 @@ export default function ToolNav({ activeTool, onSelect, mobile }: ToolNavProps) 
   if (mobile) {
     return (
       <div className="flex">
-        {TABS.map(({ id, label, accent }) => {
+        {TABS.map(({ id, label }) => {
           const isActive = activeTool === id;
           return (
             <button
               key={id}
               onClick={() => onSelect(id)}
-              className="flex-1 flex flex-col items-center py-3 gap-1 cursor-pointer focus-visible:outline-none min-h-[56px] transition-colors"
-              style={{ color: isActive ? accent : undefined }}
+              className={`flex-1 flex flex-col items-center py-3 gap-1 cursor-pointer focus-visible:outline-none min-h-[56px] transition-colors ${
+                isActive ? 'text-brand-primary' : ''
+              }`}
             >
               <span
-                className={`text-[11px] font-semibold ${isActive ? '' : 'text-ink-faint'}`}
-                style={isActive ? { color: accent } : {}}
+                className={`text-[11px] font-semibold ${isActive ? 'text-brand-primary' : 'text-ink-faint'}`}
               >
                 {label}
               </span>
               {isActive && (
-                <span className="h-0.5 w-5 rounded-full" style={{ backgroundColor: accent }} />
+                <span className="h-0.5 w-5 rounded-full bg-brand-primary" />
               )}
             </button>
           );
@@ -47,16 +47,17 @@ export default function ToolNav({ activeTool, onSelect, mobile }: ToolNavProps) 
 
   return (
     <div className="flex gap-0 -mb-px">
-      {TABS.map(({ id, label, accent }) => {
+      {TABS.map(({ id, label }) => {
         const isActive = activeTool === id;
         return (
           <button
             key={id}
             onClick={() => onSelect(id)}
             className={`px-4 py-2.5 text-[11px] font-semibold cursor-pointer transition-colors border-b-2 focus-visible:outline-none -mb-px ${
-              isActive ? 'text-ink' : 'text-ink-faint hover:text-ink-muted border-b-2 border-transparent'
+              isActive
+                ? 'text-brand-primary border-brand-primary'
+                : 'text-ink-faint hover:text-ink-muted border-transparent'
             }`}
-            style={isActive ? { borderBottomColor: accent, color: accent } : {}}
           >
             {label}
           </button>

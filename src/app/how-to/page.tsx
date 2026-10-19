@@ -7,7 +7,7 @@ import { demoLesson } from '@/lib/demoLesson';
 import { Callout } from '@/components/docs/DocElements';
 
 // Shared documentation elements — same vocabulary as the About page.
-const ACCENT = '#006C57';
+const ACCENT = 'var(--color-brand-primary)';
 const PATHWAY = '#00876C';
 const ADAPT = '#854F0B';
 const THINKING = '#534AB7';

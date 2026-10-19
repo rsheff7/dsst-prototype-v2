@@ -13,7 +13,7 @@
 
 import React from 'react';
 
-export const DOC_ACCENT = '#006C57';
+export const DOC_ACCENT = 'var(--color-brand-primary)';
 
 /* ------------------------------------------------------------------ */
 /*  Section heading                                                    */
