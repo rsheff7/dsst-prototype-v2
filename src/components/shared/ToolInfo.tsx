@@ -25,7 +25,7 @@ const TOOL_CONTENT: Record<ToolId, {
   pathway: {
     title: 'Lesson Pathway',
     subtitle: 'Plan the lesson',
-    accent: '#00876C',
+    accent: 'var(--color-pathway)',
     purpose: 'Get oriented before you teach. See the story of the lesson — where students start, where they shift, where the math has to land.',
     whenToUse: 'The night before or morning of the lesson.',
     whatItGives: 'A narrative arc, an activity-by-activity breakdown with language demand, signals of strong thinking, and the friction points to watch for.',
@@ -33,7 +33,7 @@ const TOOL_CONTENT: Record<ToolId, {
   adapt: {
     title: 'Adaptation Guardrails',
     subtitle: 'Adapt without losing the math',
-    accent: '#854F0B',
+    accent: 'var(--color-adapt)',
     purpose: 'Modify a task without accidentally removing what makes it worth teaching.',
     whenToUse: 'Pre-lesson, when planning a change for a class, small group, or individual student.',
     whatItGives: 'What is safe to change, what cannot be removed, proficiency-specific adaptations, and a single rigor check question to ask before you finalize.',
@@ -41,7 +41,7 @@ const TOOL_CONTENT: Record<ToolId, {
   thinking: {
     title: 'Anticipated Student Thinking',
     subtitle: 'Predict what students will do',
-    accent: '#534AB7',
+    accent: 'var(--color-thinking)',
     purpose: 'See the patterns of student thinking you are likely to encounter — including the productive ones, not just the errors.',
     whenToUse: 'While planning the lesson.',
     whatItGives: 'Pattern cards per activity (misconceptions, on-track responses, MLL-specific friction), sentence frames you can hand to students, and questions worth listening for.',
@@ -49,7 +49,7 @@ const TOOL_CONTENT: Record<ToolId, {
   moves: {
     title: 'Move Walkthrough',
     subtitle: 'Walk through what you might see',
-    accent: '#185FA5',
+    accent: 'var(--color-moves)',
     purpose: 'Before you teach, practice noticing the moments that will show up. For each scenario, pause to think about what you would do — then see how the framework reads it.',
     whenToUse: 'After you have read the Pathway. A coaching session works well here too.',
     whatItGives: 'A scenario-by-scenario walkthrough that builds noticing capacity — what to attend to, what it means, how to respond. Ends with a printable summary of moments to watch for.',
@@ -127,7 +127,7 @@ export default function ToolInfo({ toolId }: ToolInfoProps) {
               </p>
               <h3
                 className="text-[1.25rem] leading-tight"
-                style={{ fontFamily: 'var(--font-dm-serif), serif', color: '#1A1916' }}
+                style={{ fontFamily: 'var(--font-dm-serif), serif', color: 'var(--color-ink)' }}
               >
                 {content.title}
               </h3>

@@ -6,7 +6,7 @@ export default function ExportIcon({ className }: { className?: string }) {
       viewBox="0 0 20 20"
       fill="none"
       className={className}
-      style={{ color: '#00876C' }}
+      style={{ color: 'var(--color-pathway)' }}
     >
       <path
         d="M10 13L10 4M10 13L7 10M10 13L13 10"

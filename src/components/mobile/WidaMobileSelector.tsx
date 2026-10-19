@@ -3,10 +3,10 @@
 import { useLesson } from '@/lib/lessonContext';
 import { WidaLevel, WIDA_LABELS, WIDA_LEVELS } from '@/lib/eld/types';
 
-const WIDA_ACCENT = '#534AB7';
-const WIDA_BG = '#EEEDFE';
-const WIDA_BORDER = '#AFA9EC';
-const WIDA_INK = '#26215C';
+const WIDA_ACCENT = 'var(--color-thinking)';
+const WIDA_BG = 'var(--color-developing-bg)';
+const WIDA_BORDER = 'var(--color-developing-border)';
+const WIDA_INK = 'var(--color-developing-text)';
 
 export default function WidaMobileSelector() {
   const { lesson, selectedWidaLevel, setSelectedWidaLevel } = useLesson();
