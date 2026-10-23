@@ -1,0 +1,316 @@
+{
+ "status": "draft",
+ "reviewNotes": [
+  "No person has reviewed this file.",
+  "Crux is 7.3, not 7.2. IM's lesson narrative calls the across-the-columns idea the lesson's new insight, and goal 3 and learning target 2 are about it. 7.2 sets it up (equivalent ratios have the same unit rate); 7.4 is optional practice.",
+  "Testable object: the strategy sentence 7.3 asks for (“explain the strategy you used”). Question 2 of 7.3 tests it by asking pairs to reuse the strategy on the burrito table.",
+  "IM's own moments used: the “14 per 2” misconception in 7.2, the student for whom the table's structure “may not be apparent” in 7.3, the 1-hour-row strategy and the share order in 7.3's narrative and synthesis.",
+  "Premo's moments: the hands-up breakdown of Think Pair Share (from IM's routine definition), the 16 r 4 remainder, the language moment and its by-level moves, the warm-up and applesauce moments.",
+  "IM's English-learner support for 7.2 quotes the question as “buy \\(b\\) burritos for 4 dollars”; the task says “\\(c\\) dollars”. Looks like a typo in IM. Not repeated here.",
+  "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person."
+ ],
+ "crux": "7.3",
+ "cruxWhy": "7.3 is where the lesson's new idea is first used: the unit rate is the factor that takes you from one column to the other. IM's lesson narrative calls this the lesson's new insight, and its goals and second learning target are about it. IM's language support for the lesson sits in 7.3's synthesis.",
+ "object": {
+  "name": "the strategy sentence",
+  "what": "The sentence each pair writes under the bracelet table saying how they filled it. Question 2 tests it: use the same strategy on the burrito table."
+ },
+ "goal": "Students use the unit rate to move across a table, multiplying or dividing by it, and say why equivalent ratios share one unit rate.",
+ "rigorCheck": "Does every pair still fill the bracelet table, write the strategy sentence, and hear the strategies in IM's order?",
+ "watchFor": {
+  "7.1": "A group stops at one reason and calls it the answer.",
+  "7.2": "The unit price column says “14 per 2”, not 7.",
+  "7.3": "A pair builds a 1-hour row before filling anything else.",
+  "7.4": "Doubling 4 pounds to 8, then stuck at 7."
+ },
+ "moments": [
+  {
+   "id": "m1",
+   "activityId": "7.2",
+   "kind": "im-misconception",
+   "see": "The unit price column reads “14 per 2” and “28 per 4.”",
+   "means": "They kept the ratio. The column asks what one burrito costs.",
+   "say": "“Per burrito” means per 1 burrito. What does one cost?",
+   "dont": "Write the 7 in for them.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Students may not realize that the third column asks for dollars per 1 burrito and instead write 14 dollars per 2 burritos or 28 dollars per 8 burritos.",
+   "rehearse": true,
+   "criteria": [
+    "Said what “per burrito” means",
+    "Asked for the price of one",
+    "Didn’t write the 7 in for them"
+   ]
+  },
+  {
+   "id": "m2",
+   "activityId": "7.2",
+   "kind": "routine-breakdown",
+   "routine": "Think Pair Share",
+   "see": "Hands go up before anyone has filled a row.",
+   "means": "With no quiet think time, the first answer becomes everyone’s.",
+   "say": "Pencils first. Fill two rows on your own.",
+   "dont": "Take the first hand.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Students have quiet time to think about a problem and work on it individually",
+   "rehearse": true,
+   "criteria": [
+    "Protected the quiet think time",
+    "Asked for work on paper before talk",
+    "Didn’t take the first hand"
+   ]
+  },
+  {
+   "id": "m3",
+   "activityId": "7.3",
+   "kind": "student-thinking",
+   "see": "A pair adds a 1-hour row before filling anything else.",
+   "means": "A real strategy, and where IM starts the share. They found the unit rate the long way, though it was given.",
+   "say": "The 6 is already there. What could it do for you?",
+   "dont": "Tell them their way is wrong.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Other students may be inclined to create a different table—such as the ones below—as an intermediate step for completing the given table.",
+   "rehearse": true,
+   "criteria": [
+    "Treated the 1-hour row as a real strategy",
+    "Pointed them to the unit rate already given",
+    "Didn’t call their way wrong"
+   ]
+  },
+  {
+   "id": "m4",
+   "activityId": "7.3",
+   "kind": "im-misconception",
+   "see": "A student stares at the table: hours and 6s filled, bracelets blank.",
+   "means": "The structure of the table isn’t visible to them yet.",
+   "say": "Look back at the burrito table. What did the 7 do?",
+   "dont": "Fill the first row for them.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "For some students, the structure of the information in the table may not be apparent. Encourage them to refer to the tables in the preceding activity and think about the relationship between the ratios and unit rates there.",
+   "rehearse": true,
+   "criteria": [
+    "Sent them back to the burrito table",
+    "Asked what the unit rate did there",
+    "Didn’t fill a row for them"
+   ]
+  },
+  {
+   "id": "m5",
+   "activityId": "7.3",
+   "kind": "which-work-first",
+   "see": "On desks: 1-hour rows, row-to-row doubling, and “times 6 across.”",
+   "means": "IM’s order runs from the 1-hour row to using the 6 across the columns, so the short way grows out of the long one.",
+   "say": "Start us off. How did you get your first row?",
+   "dont": "Let the fastest pair go first.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Start with students using less efficient strategies, such as those that worked out the 1 rows. Progress toward using the given unit rate to navigate from column to column in efficient ways",
+   "rehearse": true,
+   "criteria": [
+    "Called the 1-hour row first",
+    "Ended on multiplying and dividing by 6 across",
+    "Didn’t let the fastest pair go first"
+   ]
+  },
+  {
+   "id": "m6",
+   "activityId": "7.3",
+   "kind": "language",
+   "routine": "MLR7: Compare and Connect",
+   "see": "A student points from one column to the other: “You just do 6.”",
+   "means": "The idea is there. The words for it, times 6 and unit rate, aren’t yet.",
+   "byBand": {
+    "emerging": {
+     "say": "Show me. This column to this one. Times what?",
+     "move": "They point from hours to bracelets and say or write the number.",
+     "nonverbal": "Draw an arrow from the hours column to the bracelets column and write × above it."
+    },
+    "developing": {
+     "say": "Finish it: “I multiplied the ___ by ___.”",
+     "move": "They say it to their partner, then write it on their display."
+    },
+    "expanding": {
+     "say": "How do you get across? Then say why it works.",
+     "move": "They explain it on their display, hear a classmate’s version, and make theirs clearer once."
+    }
+   },
+   "dont": "Say the sentence for them.",
+   "from": "premo",
+   "sayFrom": "premo",
+   "rehearse": true,
+   "criteria": [
+    "Kept the question the same: how do you get across?",
+    "Matched the support to the student’s level",
+    "Didn’t say the sentence for them"
+   ]
+  },
+  {
+   "id": "m7",
+   "activityId": "7.3",
+   "kind": "student-thinking",
+   "see": "For 100 bracelets a student writes “16 r 4 hours.”",
+   "means": "100 ÷ 6 leaves 4 bracelets. As time, that is 4 of the 6 bracelets in an hour: two thirds of an hour.",
+   "say": "4 bracelets left over. What part of an hour is that?",
+   "dont": "Accept “about 17.”",
+   "from": "premo",
+   "sayFrom": "premo"
+  },
+  {
+   "id": "m8",
+   "activityId": "7.1",
+   "kind": "routine-breakdown",
+   "routine": "Which One Doesn’t Belong?",
+   "see": "A group argues over which one is the right answer.",
+   "means": "Each rate doesn’t belong for a different reason. There is no single answer.",
+   "say": "Find a reason for each one.",
+   "dont": "Name the one you had in mind.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Typically, each of the four options “doesn’t belong” for a different reason"
+  },
+  {
+   "id": "m9",
+   "activityId": "7.4",
+   "kind": "student-thinking",
+   "see": "A student doubles 4 pounds to 8, then is stuck at 7.",
+   "means": "Row-to-row multiplying runs out when 7 isn’t a multiple of 4. IM chose the numbers for that.",
+   "say": "What does 1 pound make?",
+   "dont": "Show them 7 ÷ 4.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "None of the given numbers are multiples of each other from row to row (for example, 7 isn't a multiple of 4), so this problem lends itself to reasoning about unit rates."
+  }
+ ],
+ "patterns": [
+  {
+   "activityId": "7.2",
+   "type": "error",
+   "says": "“14 per 2” in the unit price column.",
+   "why": "“Per burrito” is read as per order.",
+   "shows": "They can keep a ratio together. Per 1 is the new step.",
+   "from": "im",
+   "evidence": "Students may not realize that the third column asks for dollars per 1 burrito"
+  },
+  {
+   "activityId": "7.2",
+   "type": "build",
+   "says": "“It’s always $7 a burrito.”",
+   "why": "They see the third column never changes.",
+   "shows": "The idea of 7.2: equivalent ratios share one unit rate.",
+   "from": "im",
+   "evidence": "No matter how many burritos you buy, it costs $7 per burrito."
+  },
+  {
+   "activityId": "7.3",
+   "type": "almost",
+   "says": "A 1-hour row, then the rest from it.",
+   "why": "Row-to-row reasoning is what they know.",
+   "shows": "They know a unit rate means per 1.",
+   "from": "im",
+   "evidence": "This intermediate strategy makes good use of the “1” rows in the table"
+  },
+  {
+   "activityId": "7.3",
+   "type": "build",
+   "says": "“Times 6 across, divide by 6 back.”",
+   "why": "They use the given rate as the factor between columns.",
+   "shows": "The lesson’s new idea, in their words.",
+   "from": "im",
+   "evidence": "multiplying the time in hours by 6 to find number of bracelets"
+  },
+  {
+   "activityId": "7.3",
+   "type": "error",
+   "says": "“16 r 4 hours” for 100 bracelets.",
+   "why": "Division with a remainder, not yet as a fraction of an hour.",
+   "shows": "They divided by the rate, which is the right move.",
+   "from": "premo"
+  },
+  {
+   "activityId": "7.3",
+   "type": "stretch",
+   "says": "“Each bracelet takes 1/6 of an hour.”",
+   "why": "They found the other unit rate.",
+   "shows": "Both unit rates, and when each is useful.",
+   "from": "im",
+   "evidence": "multiplying the number of bracelets by \\(\\frac16\\) to find time in hours"
+  },
+  {
+   "activityId": "7.3",
+   "type": "language",
+   "says": "“You just do 6.”",
+   "why": "The idea is ahead of the words.",
+   "shows": "They see the factor across the columns.",
+   "from": "premo"
+  }
+ ],
+ "predict": {
+  "context": "After the burrito table, pairs get a bracelet table with the speed already filled in: 6 bracelets per hour in every row. They complete it, write how they did it, then use the same strategy on a half-empty burrito table.",
+  "question": "How will most pairs fill the bracelet table?",
+  "countQuestion": "How many pairs will use the 6 directly, without building a 1-hour row?",
+  "countUnit": "pairs will use the 6 directly.",
+  "tell": "If few do, the 6 in the table didn’t read as a tool. That is why the share starts with the 1-hour row and builds to it: the fifth moment you’ll rehearse.",
+  "activityIds": [
+   "7.2",
+   "7.3"
+  ]
+ },
+ "cruxLanguage": {
+  "routine": "MLR7: Compare and Connect",
+  "phase": "synthesis",
+  "produceToday": [
+   "unit rate"
+  ],
+  "byBand": {
+   "emerging": {
+    "entry": "On the display tour, they point to where each display uses the 6, and say or write “times 6.”",
+    "frame": "___ × 6 = ___"
+   },
+   "developing": {
+    "entry": "They tell a visitor how their display gets across the table.",
+    "frame": "We multiplied the ___ by the unit rate, ___."
+   },
+   "expanding": {
+    "entry": "They compare two displays aloud: which one uses the unit rate, and is the outcome the same?",
+    "frame": "This display uses ___ and that one doesn’t, but both get ___ because ___."
+   }
+  }
+ },
+ "cuts": [
+  {
+   "activityId": "7.4",
+   "note": "Optional, with no new mathematics. Cut it first."
+  },
+  {
+   "activityId": "7.1",
+   "note": "Keep it short: one reason for each rate, then move on."
+  }
+ ],
+ "neverCut": [
+  "Quiet think time before partners talk, in 7.2 and 7.3",
+  "The strategy sentence under the bracelet table",
+  "Using the strategy again on the burrito table",
+  "The share in IM’s order, 1-hour row first"
+ ],
+ "inClass": {
+  "launch": "“Fill the table, then write how you did it.”",
+  "launchFrom": "premo",
+  "momentIds": [
+   "m3",
+   "m4",
+   "m6"
+  ],
+  "sequence": [
+   "A pair who built a 1-hour row first",
+   "A pair who went row to row",
+   "A pair who multiplied by 6 across and divided 66 by 6"
+  ]
+ },
+ "beforeClass": [
+  "Draw the bracelet table on the board with the 6s filled in, for the share.",
+  "Chart paper for each pair’s display (IM’s Compare and Connect)."
+ ]
+}

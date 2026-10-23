@@ -105,7 +105,12 @@ for (const f of premoFiles) {
   const crux = acts.get(p.crux);
   if (!crux) err(at, `crux ${p.crux} is not an activity`);
   else if (crux.slot !== 'activity') err(at, `crux ${p.crux} is a ${crux.slot}; the crux is never a warm-up, optional activity or cool-down`);
-  else if (crux.purpose === 'mastery' || crux.purpose === 'practice-language') err(at, `crux ${p.crux} has purpose ${crux.purpose}`);
+  else if (
+    (crux.purpose === 'mastery' || crux.purpose === 'practice-language') &&
+    im.activities.some((a) => a.slot === 'activity' && a.purpose !== 'mastery' && a.purpose !== 'practice-language')
+  )
+    // A fluency lesson can be all mastery work; otherwise the crux is where the new idea is.
+    err(at, `crux ${p.crux} has purpose ${crux.purpose} while the lesson has an activity with new mathematics`);
   if (!p.cruxWhy) err(at, 'cruxWhy is missing');
   if (!p.object?.name) err(at, 'no testable object');
 
