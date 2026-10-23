@@ -9,6 +9,7 @@ import { BANDS, PREP_BUDGET_MINUTES, activityName, bandLabel, buildPrepModel, qu
 import MobileQuickRead from '@/components/mobile/MobileQuickRead';
 import WidaMobileSelector from '@/components/mobile/WidaMobileSelector';
 import { U3Library } from '@/components/u3/U3ActivityNotes';
+import { ImCredit } from '@/components/u3/U3Notice';
 import { u3ToPrepModel } from '@/lib/u3/toPrepModel';
 import type { U3Lesson } from '@/lib/u3/types';
 import LessonPathway from '@/components/tools/LessonPathway';
@@ -243,6 +244,7 @@ export default function PrepApp({ lesson, u3 }: { lesson?: PrepLesson; u3?: U3Le
 
           <div className={s.foot}>
             {u3 ? <Link href="/u3">Back to Unit 3</Link> : <Link href="/lesson">Open the full lesson view</Link>}
+            {u3 && <ImCredit />}
             <button
               type="button"
               onClick={() => {
@@ -452,7 +454,10 @@ export default function PrepApp({ lesson, u3 }: { lesson?: PrepLesson; u3?: U3Le
         </div>
         <main className={s.main}>
           {u3 ? (
-            <U3Library lesson={u3.im} />
+            <>
+              <U3Library lesson={u3.im} />
+              <ImCredit />
+            </>
           ) : (
           <>
           <div className={s.ltabs} role="tablist">

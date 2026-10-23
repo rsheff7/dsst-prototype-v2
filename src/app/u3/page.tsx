@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { BUILT, UNIT } from '@/lib/u3/content';
 import { MathText } from '@/components/u3/MathText';
 import s from '@/components/u3/u3.module.css';
+import { ImCredit, PilotBanner } from '@/components/u3/U3Notice';
 
 const USE_LABEL: Record<string, string> = { interpret: 'Interpret', explain: 'Explain', justify: 'Justify' };
 
@@ -14,6 +15,7 @@ export default function U3UnitPage() {
   const builtTerms = BUILT.map((c) => [c, UNIT.terminology[c]] as const).filter(([, t]) => t);
   return (
     <main className={s.unit}>
+      <PilotBanner />
       <header style={{ display: 'grid', gap: 6 }}>
         <span className={s.eyebrow}>Grade 6 · Unit 3 · IM 6–8 Math</span>
         <h1>{UNIT.title}</h1>
@@ -121,6 +123,7 @@ export default function U3UnitPage() {
           </p>
         ))}
       </details>
+      <ImCredit />
     </main>
   );
 }

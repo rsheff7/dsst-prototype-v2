@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import PrepApp from '@/components/prep/PrepApp';
 import { getLesson } from '@/lib/u3/content';
+import { PilotBanner } from '@/components/u3/U3Notice';
 
 // One Unit 3 lesson's phone prep, built ahead of time from IM's teacher
 // materials. Nothing is analysed at upload; the lesson files ship with the app.
@@ -30,5 +31,10 @@ export default function U3LessonPage() {
       </main>
     );
   }
-  return <PrepApp key={code} u3={lesson} />;
+  return (
+    <>
+      <PilotBanner />
+      <PrepApp key={code} u3={lesson} />
+    </>
+  );
 }
