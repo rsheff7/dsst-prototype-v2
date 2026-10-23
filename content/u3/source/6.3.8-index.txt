@@ -1,10 +1,10 @@
 Source: https://im.kendallhunt.com/MS/teachers/1/3/8/index.html
 
 ## Lesson 8
- More about Constant Speed
+## More about Constant Speed
  View Student Lesson
 ## 8.1: Back on the Treadmill Again (10 minutes)
- CCSS Standards
+## CCSS Standards
  Addressing
  6.RP.A.3
  Routines and Materials
@@ -14,31 +14,28 @@ Source: https://im.kendallhunt.com/MS/teachers/1/3/8/index.html
 ## Warm-up
  Students have had experience determining speed given a ratio of time and distance. This task prompts students to use more than one strategy to solve speed-related problems (minutes passed and miles traveled) and practice reasoning in multiple ways, enabling them to see the connections across strategies.
  There are several ways students can calculate how many miles Andre’s dad could run in 30 minutes if traveling at a speed of 12 miles in 75 minutes. A few strategies:
- Using the speed. The ratio \(12:75\) has an associated unit rate of \(\frac{12}{75}\) or 0.16 miles per minute. To find the distance traveled in 30 minutes, multiply 0.16 miles per minute by 30. (\(0.16) \boldcdot 30= 4.8\), so he can run 4.8 miles in 30 minutes. Note that the rate per 1 associated with this unit rate is called speed.
+ Using the speed. The ratio \(12:75\) has an associated unit rate of \(\frac{12}{75}\) or 0.16 miles per minute. To find the distance traveled in 30 minutes, multiply 0.16 miles per minute by 30. (\(0.16) \boldcdot 30= 4.8\), so he can run 4.8 miles in 30 minutes. Note that the rate per 1 associated with this unit rate is called speed.
  Using the pace. \(\frac{75}{12}\) or 6.25 minutes per mile is also a unit rate for the ratio. To find the distance traveled in 30 minutes, divide 30 by 6.25. \(30 \div 6.25= 4.8\). Note that the rate per 1 associated with this unit rate is called pace.
  Using a scale factor: Noticing that in the “time” column of a table, 75 multiplied by \(\frac{30}{75}\) is 30, and \(\frac{30}{75}=0.4\). The unknown number of miles is 4.8, because \(12 \boldcdot (0.4) = 4.8\).
  | 
- | distance (miles)
- | time (minutes)
- | 12
- | 75
- | ?
- | 30
+ distance (miles) | time (minutes) 
+ | 12 | 75 
+ | ? | 30 
  Scaling up: Noticing that, going up in the “time” column, 75 is \(30 \boldcdot (2.5)\). The unknown number of miles is then \(12 \div 2.5 = 4.8\). As students work, notice different strategies being used so that they can be represented during discussion later.
 ## Launch
- Arrange students in groups of 2 and give them 3 minutes of quiet think time, followed by sharing with a partner and whole-class discussion. Ask students to be mindful of how they are thinking about the questions and be prepared to share their reasoning. 
- Student Facing
+ Arrange students in groups of 2 and give them 3 minutes of quiet think time, followed by sharing with a partner and whole-class discussion. Ask students to be mindful of how they are thinking about the questions and be prepared to share their reasoning. 
+## Student Facing
  While training for a race, Andre’s dad ran 12 miles in 75 minutes on a treadmill. If he runs at that rate:
- How long would it take him to run 8 miles?
- How far could he run in 30 minutes?
+ How long would it take him to run 8 miles? 
+ How far could he run in 30 minutes? 
 ## Student Response
- Teachers with a valid work email address can click here to register or sign in for free access to Student Response.
+ Teachers with a valid work email address can click here to register or sign in for free access to Student Response.
 ## Activity Synthesis
- Invite students to share with their partner: their solution ideas and their explanations of how unit rates and scaling can be helpful. Then, give each student a new partner to repeat the process. Ask students to practice using mathematical language to be as clear as possible when sharing with the class, when and if they are called upon [see MLR 1 (Stronger and Clearer Each Time)].
+ Invite students to share with their partner: their solution ideas and their explanations of how unit rates and scaling can be helpful. Then, give each student a new partner to repeat the process. Ask students to practice using mathematical language to be as clear as possible when sharing with the class, when and if they are called upon [see MLR 1 (Stronger and Clearer Each Time)].
  Select students with different strategies to share with the class. Record their methods and display them for all to see. If any relevant strategies are missing, demonstrate them and add them to the display. Help students notice how unit rates and scaling can be helpful in solving similar problems.
  Tell students when we find how the number of miles per minute or meters per second an object is moving, we are finding the speed of the object. When we find the number of minutes per mile of seconds per meter, we are finding the pace of the object.
 ## 8.2: Picnics on the Rail Trail (30 minutes)
- CCSS Standards
+## CCSS Standards
  Addressing
  6.RP.A.3
  Routines and Materials
@@ -50,35 +47,34 @@ Source: https://im.kendallhunt.com/MS/teachers/1/3/8/index.html
  Tools for creating a visual display
 ## Activity
  This task asks students to answer questions in the context of constant speed. If you wish to have students engage in more aspects of mathematical modeling (MP4), have students keep their books or devices closed and only display the stem that establishes the scenario. Ask students what they notice and wonder, and select questions to answer that are established through class discussion.
- In this activity, students reason about the distances between the two friends, elapsed time, and speed. Students reason both quantitatively and abstractly (MP2); students can estimate some of the solutions or check that they make sense in the given context (e.g., an earlier meeting time of the two friends would mean that one or both of them are traveling faster). As students work in groups, monitor the strategies they use to solve the last three problems, such as detailed diagrams of the path with marked-off distances, different ways of using tables, and so on.
+ In this activity, students reason about the distances between the two friends, elapsed time, and speed. Students reason both quantitatively and abstractly (MP2); students can estimate some of the solutions or check that they make sense in the given context (e.g., an earlier meeting time of the two friends would mean that one or both of them are traveling faster). As students work in groups, monitor the strategies they use to solve the last three problems, such as detailed diagrams of the path with marked-off distances, different ways of using tables, and so on.
 ## Launch
  Share some information about the system of Rail Trails in the United States, as some students may be unfamiliar with non-motorized trails. Explain to students that, since they are built on old railway lines, these trails have very little gain or loss in elevation—making it reasonable to maintain a constant speed while walking, running, or cycling. Tell students about a Rail Trail near the school, if there is one.
- If you (optionally) decide to take a less structured approach and compel students to engage in more aspects of mathematical modeling, have students keep their books or devices closed and only display the stem that establishes the scenario. Ask students, “What do you notice? What do you wonder?” Record the things they notice and wonder for all to see. Select questions that students posed for the class to explore that are similar to the questions in the task.
+ If you (optionally) decide to take a less structured approach and compel students to engage in more aspects of mathematical modeling, have students keep their books or devices closed and only display the stem that establishes the scenario. Ask students, “What do you notice? What do you wonder?” Record the things they notice and wonder for all to see. Select questions that students posed for the class to explore that are similar to the questions in the task.
  Arrange students in groups of 3–4. Give students a few minutes of quiet think time to complete the first two questions, and then time to discuss their responses with a partner. Encourage students to look at their partner’s approach and choices (e.g., how they work out the values in the table or sets up the table, how calculations are done, etc.). Ask students to pause for a brief whole-class discussion afterwards.
  To make sure students are on the right track, display at least one student solution for each of the first two problems for all to see before they move on to complete the activity. Give students 8–10 minutes to work and discuss in groups, and tell them that each group will be assigned a problem to explain to the class. Provide each group with tools for creating a visual display.
  Representation: Internalize Comprehension. Represent the same information through different modalities by using drawings or diagrams. If students are unsure where to begin, suggest that they draw a picture or diagram that represents the situation.
- Supports accessibility for: Conceptual processing; Visual-spatial processing
+ Supports accessibility for: Conceptual processing; Visual-spatial processing 
  Reading: MLR6 Three Reads. Use this routine to support reading comprehension of this word problem, without solving it for students. Use the first read to orient students to the situation by asking students to describe the situation without using numbers (e.g., Two friends live alongside different parts of a trail, one day they walk towards each other for a picnic). Use the second read to identify the important quantities by asking students what can be counted or measured (e.g., The distance between then is 24 miles to start, Kiran walks at a speed of 3 miles per hour, etc.). For the third read, reveal the first three questions and provide students with independent work time. Once students are ready, brainstorm possible solution strategies to respond to Kiran’s suggestion: “If I walk 3 miles per hour toward you, and you walk 3.4 miles per hour toward me, it’s the same as if you stay put and I jog 6.4 miles per hour.” This will help students connect the language in the word problem about important quantities and rates with the reasoning needed to solve the problem.
- Design Principle(s): Support sense-making; Maximize meta-awareness
- Student Facing
- [image: photo of a trail] 
- [image: photo of a trail] 
- Attribution: Danvers Rail Trail, by massmatt. CC BY 2.0. Flickr. Source.
+ Design Principle(s): Support sense-making; Maximize meta-awareness 
+## Student Facing
+ [image: photo of a trail] [image: Expand image] 
+ [image: photo of a trail] Attribution: Danvers Rail Trail, by massmatt. CC BY 2.0. Flickr. Source.
  Kiran and Clare live 24 miles away from each other along a rail trail. One Saturday, the two friends started walking toward each other along the trail at 8:00 a.m. with a plan to have a picnic when they meet.
  Kiran walks at a speed of 3 miles per hour while Clare walks 3.4 miles per hour.
- After one hour, how far apart will they be?
- Make a table showing how far apart the two friends are after 0 hours, 1 hour, 2 hours, and 3 hours.
- At what time will the two friends meet and have their picnic?
- Kiran says “If I walk 3 miles per hour toward you, and you walk 3.4 miles per hour toward me, it’s the same as if you stay put and I jog 6.4 miles per hour.” What do you think Kiran means by this? Is he correct?
- Several months later, they both set out at 8:00 a.m. again, this time with Kiran jogging and Clare still walking at 3.4 miles per hour. This time, they meet at 10:30 a.m. How fast was Kiran jogging?
+ After one hour, how far apart will they be? 
+ Make a table showing how far apart the two friends are after 0 hours, 1 hour, 2 hours, and 3 hours. 
+ At what time will the two friends meet and have their picnic? 
+ Kiran says “If I walk 3 miles per hour toward you, and you walk 3.4 miles per hour toward me, it’s the same as if you stay put and I jog 6.4 miles per hour.” What do you think Kiran means by this? Is he correct? 
+ Several months later, they both set out at 8:00 a.m. again, this time with Kiran jogging and Clare still walking at 3.4 miles per hour. This time, they meet at 10:30 a.m. How fast was Kiran jogging? 
 ## Student Response
- Teachers with a valid work email address can click here to register or sign in for free access to Student Response.
- Student Facing
+ Teachers with a valid work email address can click here to register or sign in for free access to Student Response.
+## Student Facing
 ## Are you ready for more?
- On his trip to meet Clare, Kiran brought his dog with him. At the same time Kiran and Clare started walking, the dog started running 6 miles per hour. When it got to Clare it turned around and ran back to Kiran. When it got to Kiran, it turned around and ran back to Clare, and continued running in this fashion until Kiran and Clare met. How far did the dog run?
- The next Saturday, the two friends leave at the same time again, and Kiran jogs twice as fast as Clare walks. Where on the rail trail do Kiran and Clare meet?
+## On his trip to meet Clare, Kiran brought his dog with him. At the same time Kiran and Clare started walking, the dog started running 6 miles per hour. When it got to Clare it turned around and ran back to Kiran. When it got to Kiran, it turned around and ran back to Clare, and continued running in this fashion until Kiran and Clare met. How far did the dog run? 
+ The next Saturday, the two friends leave at the same time again, and Kiran jogs twice as fast as Clare walks. Where on the rail trail do Kiran and Clare meet? 
 ## Student Response
- Teachers with a valid work email address can click here to register or sign in for free access to Extension Student Response.
+ Teachers with a valid work email address can click here to register or sign in for free access to Extension Student Response.
 ## Anticipated Misconceptions
  Encourage students who are struggling to make sense of the mathematics to make a picture of the path and mark off distances after certain time periods.
  Look for students misinterpreting expressions of time. For example, 2.5 hours after 8 a.m. is 10:30 a.m., not 10:50 a.m.
@@ -86,7 +82,7 @@ Source: https://im.kendallhunt.com/MS/teachers/1/3/8/index.html
 ## Activity Synthesis
  Invite selected groups to present the solutions to their assigned problems. If possible, start from the most common strategies and move to the least common. Highlight effective uses of unit rates, equivalent ratios, scaling, and table representations in students’ work.
 ## 8.3: Swimming and Biking (10 minutes)
- CCSS Standards
+## CCSS Standards
  Addressing
  6.RP.A.3
  Routines and Materials
@@ -105,15 +101,15 @@ Source: https://im.kendallhunt.com/MS/teachers/1/3/8/index.html
 ## Launch
  Give students a few minutes of quiet think time to complete the two questions, then pause for a brief whole-class discussion afterwards.
  Writing, Speaking: MLR8 Discussion Supports. Provide sentence frames to students to support their explanations of their process for determining who was moving faster and by how much. For example, “First, I _____. Then, I _____.” or “I know that _____ is moving faster because _____.”
- Design Principle(s): Support sense-making, Optimize output (for explanation)
- Student Facing
+ Design Principle(s): Support sense-making, Optimize output (for explanation) 
+## Student Facing
  Jada bikes 2 miles in 12 minutes. Jada’s cousin swims 1 mile in 24 minutes.
  Who is moving faster? How much faster?
  One day Jada and her cousin line up on the end of a swimming pier on the edge of a lake. At the same time, they start swimming and biking in opposite directions.
- How far apart will they be after 15 minutes?
- How long will it take them to be 5 miles apart?
+ How far apart will they be after 15 minutes? 
+ How long will it take them to be 5 miles apart? 
 ## Student Response
- Teachers with a valid work email address can click here to register or sign in for free access to Student Response.
+ Teachers with a valid work email address can click here to register or sign in for free access to Student Response.
 ## Anticipated Misconceptions
  Some students may confuse the meaning of the speed and pace, thinking that 24 minutes per mile is faster than 6 minutes per mile. Make sure they have labeled the units on their rates, and prompt them to consider what the words “per mile” tell us about the situation.
 ## Activity Synthesis
@@ -129,7 +125,7 @@ Source: https://im.kendallhunt.com/MS/teachers/1/3/8/index.html
  “Which unit rate was most helpful for answering how long it will take them to be 5 miles apart?” (their pace)
  “How did the fact that they were traveling away from each other affect the problem?” (The total distance between them at any point was the sum of the distance each person had traveled. The rate at which they were moving away from each other was the sum of their individual rates of travel.)
  Engagement: Develop Effort and Persistence. Break the class into small discussion groups and then invite a representative from each group to report back to the whole class.
- Supports accessibility for: Language; Social-emotional skills; Attention
+ Supports accessibility for: Language; Social-emotional skills; Attention 
 ## Lesson Synthesis
 ## Lesson Synthesis
  In this lesson we dealt with people traveling certain distances in a certain amount of time (at a constant speed). Let’s think about how Jada was traveling 2 miles in 12 minutes.
@@ -139,37 +135,31 @@ Source: https://im.kendallhunt.com/MS/teachers/1/3/8/index.html
  “What does it mean?” (It takes her 6 minutes to travel 1 mile. This is her pace.)
  “What are your favorite tools for making sense of and solving constant speed problems?” (Possible responses: double number lines, tables of equivalent ratios, dividing and multiplying.)
 ## 8.4: Cool-down - Penguin Speed (5 minutes)
- CCSS Standards
+## CCSS Standards
  Addressing
  6.RP.A.3.b
 ## Cool-Down
- Teachers with a valid work email address can click here to register or sign in for free access to Cool-Downs.
+ Teachers with a valid work email address can click here to register or sign in for free access to Cool-Downs.
 ## Student Lesson Summary
-## 
- Student Facing
+## Student Facing
  When two objects are each moving at a constant speed and their distance-to-time ratios are equivalent, we say that they are moving at the same speed. If their time-distance ratios are not equivalent, they are not moving at the same speed.
- We describe speed in units of distance per unit of time, like miles per hour or meters per second. 
+ We describe speed in units of distance per unit of time, like miles per hour or meters per second. 
  A snail that crawls 5 centimeters in 2 minutes is traveling at a rate of 2.5 centimeters per minute.
  A toddler that walks 9 feet in 6 seconds is traveling at a rate of 1.5 feet per second.
  A cyclist who bikes 20 kilometers in 2 hours is traveling at a rate of 10 kilometers per hour.
- We can also use pace to describe distance and time. We measure pace in units such as hours per mile or seconds per meter. 
+ We can also use pace to describe distance and time. We measure pace in units such as hours per mile or seconds per meter. 
  A snail that crawls 5 centimeters in 2 minutes has a pace of 0.4 minutes per centimeter.
  A toddler walking 9 feet in 6 seconds has a pace of \(\frac23\) seconds per foot.
  A cyclist who bikes 20 kilometers in 2 hours has a pace of 0.1 hours per kilometer.
  Speed and pace are reciprocals. Both can be used to compare whether one object is moving faster or slower than another object.
  An object with the higher speed is faster than one with a lower speed because the former travels a greater distance in the same amount of time.
- An object with the greater pace is slower than one with a smaller pace because the former takes more time to travel the same distance.
- Because speed is a rate per 1 unit of time for ratios that relate distance and time, we can multiply the amount of time traveled by the speed to find the distance traveled.
+ An object with the greater pace is slower than one with a smaller pace because the former takes more time to travel the same distance.
+ Because speed is a rate per 1 unit of time for ratios that relate distance and time, we can multiply the amount of time traveled by the speed to find the distance traveled.
  | 
- | time (minutes)
- | distance (centimeters)
- | 2
- | 5
- | 1
- | 2.5
- | 4
- | \(4 \boldcdot (2.5)\)
+ time (minutes) | distance (centimeters) 
+ | 2 | 5 
+ | 1 | 2.5 
+ | 4 | \(4 \boldcdot (2.5)\) 
 ## Video Summary
-## 
- Student Facing
+## Student Facing
  Video VLS G6U3V2 Unit Rates (Lessons 5–8) available at https://player.vimeo.com/video/470623725.

@@ -113,7 +113,10 @@ export interface Unit {
   languageProgression: { use: LanguageUse; items: { text: Verbatim; lessons: string[] }[] }[];
   /** IM's terminology table. */
   terminology: Record<string, { receptive: string[]; productive: string[] }>;
-  readinessCheck: { item: number; firstIn: string; note: Verbatim; move?: Verbatim }[];
+  /** The unit's last sentence on language, not tied to one lesson. */
+  languageAlso: Verbatim[];
+  lessonTitles: Record<string, string>;
+  readinessCheck: { item: number; firstIn: string; note: Verbatim[]; move: Verbatim; task: Verbatim[]; answers: Verbatim }[];
   materials: string[];
   sources: string[];
 }
@@ -146,8 +149,9 @@ export interface ImActivity {
   slot: Slot;
   title: string;
   minutes: number;
-  purpose: TaskPurpose;
-  purposeEvidence: Verbatim;
+  /** Null for warm-ups and cool-downs: IM's eight purposes describe classroom activities. */
+  purpose: TaskPurpose | null;
+  purposeEvidence: Verbatim | null;
   /** Routines as IM lists them for this activity. Names from the catalog. */
   routines: string[];
   /** True when IM lists Anticipate, Monitor, Select, Sequence, Connect. */

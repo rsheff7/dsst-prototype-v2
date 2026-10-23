@@ -1,24 +1,23 @@
 Source: https://im.kendallhunt.com/MS/teachers/1/3/7/preparation.html
 
 ## Lesson 7
- Equivalent Ratios Have the Same Unit Rates
+## Equivalent Ratios Have the Same Unit Rates
  View Student Lesson
 ## Lesson Narrative
  The purpose of this lesson is to make it explicit to students that equivalent ratios have the same unit rates. For instance, students can see that the ratios \(10:4\), \(15:6\), and \(20:8\) all have unit rates of \(\frac25\) and \(\frac52\). Interpreted in a context, this might mean, for example, that no matter how many ounces of raisins are purchased in bulk and how much is paid, the price per ounce will always match the \$0.40 per ounce rate marked on the price label.
- [image: A table. A. B. ] 
- [image: A table. A. B. ] 
+ [image: A table. A. B. ] [image: Expand image] 
+ [image: A table. A. B. ] 
  This understanding gives new insights as students reason with tables. Up to this point, students have often been reasoning about the relationship from row to row, understanding that the rows contain equivalent ratios and the values in any row can be found by multiplying both quantities in another row by a scale factor. Here students see that they can also reason across columns, because the unit rate is the factor that relates the values in one column to those in the other (MP8). In grade 7, students will call the unit rate the constant of proportionality and write equations of the form \(y=kx\) to characterize these relationships.
  Later in the lesson, students practice using unit rates and tables of equivalent ratios to find unknown quantities and compare rates in context.
 ## Learning Goals
- Teacher Facing
+## Teacher Facing
  Apply reasoning about unit rates to complete a table of equivalent ratios, and explain (orally and in writing) the solution method.
  Explain (orally) that if two ratios are equivalent, they have the same rate per 1.
  Generalize that the unit rate is the factor that takes you from one column to the other column in a table of equivalent ratios.
- Student Facing
+## Student Facing
  Let’s revisit equivalent ratios.
 ## Learning Targets
-## 
- Student Facing
+## Student Facing
  I can give an example of two equivalent ratios and show that they have the same unit rates.
  I can multiply or divide by the unit rate to calculate missing values in a table of equivalent ratios.
 ## CCSS Standards
@@ -27,26 +26,12 @@ Source: https://im.kendallhunt.com/MS/teachers/1/3/7/preparation.html
  6.RP.A.3
  6.RP.A.3.b
 ## Print Formatted Materials
- Teachers with a valid work email address can click here to register or sign in for free access to Cool Down, Teacher Guide, and PowerPoint materials.
- | Student Task Statements
- | pdf
- | docx
- | Cumulative Practice Problem Set
- | pdf
- | docx
- | Cool Down
- | 
- | Log In
- | Teacher Guide
- | 
- | Log In
- | Teacher Presentation Materials
- | pdf
- | docx
+ Teachers with a valid work email address can click here to register or sign in for free access to Cool Down, Teacher Guide, and PowerPoint materials.
+ | Student Task Statements | pdf | docx 
+ | Cumulative Practice Problem Set | pdf | docx 
+ | Cool Down | | Log In 
+ | Teacher Guide | | Log In 
+ | Teacher Presentation Materials | pdf | docx 
 ## Additional Resources
- | Google Slides
- | 
- | Log In
- | PowerPoint Slides
- | 
- | Log In
+ | Google Slides | | Log In 
+ | PowerPoint Slides | | Log In

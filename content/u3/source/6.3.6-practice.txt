@@ -1,65 +1,55 @@
 Source: https://im.kendallhunt.com/MS/teachers/1/3/6/practice.html
 
 ## Lesson 6
- Interpreting Rates
+## Interpreting Rates
  View Student Lesson
 ## Problem 1
  A pink paint mixture uses 4 cups of white paint for every 3 cups of red paint. The table shows different quantities of red and white paint for the same shade of pink. Complete the table.
  | 
- | white paint (cups)
- | red paint (cups)
- | 4
- | 3
- | 
- | 1
- | 1
- | 
- | 
- | 4
- | 5
- | 
+ white paint (cups) | red paint (cups) 
+ | 4 | 3 
+ | | 1 
+ | 1 | 
+ | | 4 
+ | 5 | 
 ## Solution
- Teachers with a valid work email address can click here to register or sign in for free access to Formatted Solution.
+ Teachers with a valid work email address can click here to register or sign in for free access to Formatted Solution.
 ## Problem 2
  A farm lets you pick 3 pints of raspberries for $12.00.
  What is the cost per pint?
  How many pints do you get per dollar?
- At this rate, how many pints can you afford for $20.00?
- At this rate, how much will 8 pints of raspberries cost?
+ At this rate, how many pints can you afford for $20.00? 
+ At this rate, how much will 8 pints of raspberries cost? 
 ## Solution
- Teachers with a valid work email address can click here to register or sign in for free access to Formatted Solution.
+ Teachers with a valid work email address can click here to register or sign in for free access to Formatted Solution.
 ## Problem 3
  Han and Tyler are following a polenta recipe that uses 5 cups of water for every 2 cups of cornmeal.
  Han says, “I am using 3 cups of water. I will need \(1\frac15\) cups of cornmeal.”
  Tyler says, “I am using 3 cups of cornmeal. I will need \(7\frac12\) cups of water.”
- Do you agree with either of them? Explain your reasoning.
+ Do you agree with either of them? Explain your reasoning.
 ## Solution
- Teachers with a valid work email address can click here to register or sign in for free access to Formatted Solution.
+ Teachers with a valid work email address can click here to register or sign in for free access to Formatted Solution.
 ## Problem 4
  A large art project requires enough paint to cover 1,750 square feet. Each gallon of paint can cover 350 square feet. Each square foot requires \(\frac{1}{350}\) of a gallon of paint.
  Andre thinks he should use the rate \(\frac{1}{350}\) gallons of paint per square foot to find how much paint they need. Do you agree with Andre? Explain or show your reasoning.
 ## Solution
- Teachers with a valid work email address can click here to register or sign in for free access to Formatted Solution.
+ Teachers with a valid work email address can click here to register or sign in for free access to Formatted Solution.
 ## Problem 5
- Andre types 208 words in 4 minutes. Noah types 342 words in 6 minutes. Who types faster? Explain your reasoning.
+ Andre types 208 words in 4 minutes. Noah types 342 words in 6 minutes. Who types faster? Explain your reasoning.
 ## Solution
- Teachers with a valid work email address can click here to register or sign in for free access to Formatted Solution.
- (From Unit 3, Lesson 5.)
+ Teachers with a valid work email address can click here to register or sign in for free access to Formatted Solution.
+ (From Unit 3, Lesson 5.) 
 ## Problem 6
- A corn vendor at a farmer's market was selling a bag of 8 ears of corn for $2.56. Another vendor was selling a bag of 12 for $4.32. Which bag is the better deal? Explain or show your reasoning.
+ A corn vendor at a farmer's market was selling a bag of 8 ears of corn for $2.56. Another vendor was selling a bag of 12 for $4.32. Which bag is the better deal? Explain or show your reasoning.
 ## Solution
- Teachers with a valid work email address can click here to register or sign in for free access to Formatted Solution.
- (From Unit 3, Lesson 5.)
+ Teachers with a valid work email address can click here to register or sign in for free access to Formatted Solution.
+ (From Unit 3, Lesson 5.) 
 ## Problem 7
  A soccer field is 100 meters long. What could be its length in yards?
- A: 
- 33.3
- B: 
- 91
- C: 
- 100
- D: 
- 109
+ A: 33.3
+ B: 91
+ C: 100
+ D: 109
 ## Solution
- Teachers with a valid work email address can click here to register or sign in for free access to Formatted Solution.
+ Teachers with a valid work email address can click here to register or sign in for free access to Formatted Solution.
  (From Unit 3, Lesson 3.)

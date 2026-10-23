@@ -1,0 +1,14 @@
+{
+  "_about": "Premo's reading of each activity's task purpose (IM course guide, Design Principles). IM does not label activities; `evidence` is the IM text the reading rests on, verbatim. Warm-ups carry no task purpose: IM's eight purposes describe classroom activities.",
+  "5.2": { "purpose": "new-concept", "evidence": "The purpose of this activity is to remind students how speed contexts work and to start to nudge them toward more efficient ways to compare speeds." },
+  "5.3": { "purpose": "new-concept", "evidence": "The purpose of this activity is to remind students how unit price contexts work and to start to nudge them toward more efficient ways to compare unit prices." },
+  "6.2": { "purpose": "new-concept", "evidence": "In this activity, students explore two unit rates associated with the ratio, think about their meanings, and use both to solve problems." },
+  "6.3": { "purpose": "formalize-definition", "evidence": "The term unit rate is introduced so that students have a general name for a “how many per 1” quantity." },
+  "7.2": { "purpose": "new-concept", "evidence": "they see that when two ratios are equivalent, they have the same unit rate" },
+  "7.3": { "purpose": "new-concept", "evidence": "students learn how a unit rate is a factor that takes you from one column to another column in a table of equivalent ratios." },
+  "7.4": { "purpose": "mastery", "evidence": "This optional activity is a chance to apply more sophisticated, newly-learned techniques to a familiar-looking problem about equivalent ratios." },
+  "8.2": { "purpose": "application", "evidence": "If you wish to have students engage in more aspects of mathematical modeling (MP4)" },
+  "8.3": { "purpose": "mastery", "evidence": "This optional activity is more opportunity to practice working with rates, in a new situation that involves constant speed of multiple people moving at the same time." },
+  "9.2": { "purpose": "mastery", "evidence": "In this lesson, students gain fluency working with unit rates without scaffolding (MP1)." },
+  "9.3": { "purpose": "mastery", "evidence": "In this lesson, students gain fluency working with unit rates without scaffolding (MP1)." }
+}

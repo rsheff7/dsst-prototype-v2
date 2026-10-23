@@ -1,0 +1,91 @@
+{
+ "section": "Rates",
+ "activities": {
+  "8.1": {
+   "response": [
+    "1. It will take 50 minutes to run 8 miles. Possible strategies:",
+    "| distance (miles) | time (minutes)",
+    "| 12 | 75",
+    "| 1 | 6.25",
+    "| 8 | 50",
+    "[image: curved arrows beside the table on both sides: from the 12 row to the 1 row labelled \\(\\boldcdot \\frac{1}{12}\\), and from the 1 row to the 8 row labelled \\(\\boldcdot 8\\)]",
+    "or",
+    "| distance (miles) | time (minutes)",
+    "| 12 | 75",
+    "|  | ",
+    "| 8 | 50",
+    "|  | ",
+    "[image: curved arrows inside the table from the distance value to the time value in each row, from 12 to 75 and from 8 to 50, each labelled \\(\\boldcdot 6.25\\) in the empty row below]",
+    "2. He can run 4.8 miles in 30 minutes. Possible strategies:",
+    "| distance (miles) | time (minutes)",
+    "| 12 | 75",
+    "| 0.16 | 1",
+    "| 4.8 | 30",
+    "[image: curved arrows beside the table on both sides: from the 12/75 row to the 0.16/1 row labelled \\(\\boldcdot \\frac{1}{75}\\), and from the 0.16/1 row to the 4.8/30 row labelled \\(\\boldcdot 30\\)]",
+    "or",
+    "| distance (miles) | time (minutes)",
+    "| 12 | 75",
+    "|  | ",
+    "| 4.8 | 30",
+    "[image: curved arrows from the time value to the distance value in each row, from 75 to 12 and from 30 to 4.8, each labelled \\(\\boldcdot 0.16\\)]"
+   ],
+   "extensionResponse": null
+  },
+  "8.2": {
+   "response": [
+    "1. After one hour Kiran has walked 3 miles and Clare has walked 3.4 miles, reducing their total distance apart to \\(24-3-3.4=17.6\\) miles.",
+    "2. Here is the table:",
+    "| elapsed time (hours) | distance apart (miles)",
+    "| 0 | 24",
+    "| 1 | 17.6",
+    "| 2 | 11.2",
+    "| 3 | 4.8",
+    "3. Since the distance between them is decreasing by 6.4 miles each hour, they will meet after 3.75 hours, which will be at 11:45am.",
+    "4. What Kiran means is that each hour the total distance between them is decreasing by 6.4 miles, so the amount of time it will take them to meet is the same as if one person stays put and the other travels at 6.4 miles per hour. However, the location of their meeting would change to Clare's house instead of somewhere in between the houses on the Rail Trail.",
+    "5. In 2.5 hours Clare traveled \\((3.4) \\boldcdot (2.5) = 8.5\\) miles. \\(24-8.5=15.5\\). This means Kiran jogged the remaining 15.5 miles in 2.5 hours. 15.5 miles in 2.5 hours means Kiran jogged 6.2 miles per hour. Alternative solution: If they meet on the trail after 2.5 hours (8 am to 10:30 am), then their combined speed is 9.6 miles per hour, since \\(\\frac{24}{2.5}=9.6\\). From the problem, Clare is walking 3.4 miles per hour, so Kiran must be jogging 6.2 miles per hour, since \\(9.6-3.4=6.2\\)."
+   ],
+   "extensionResponse": [
+    "1. We know that they meet after 3.75 hours. So the dog was running 6 miles per hour for 3.75 hours. Therefore, the dog ran 22.5 miles.",
+    "2. They meet 8 miles from Clare's starting point. It may appear this problem doesn’t have enough information, but since Kiran will always travel twice as far as Clare, he must travel 16 miles and Clare must travel 8 miles."
+   ]
+  },
+  "8.3": {
+   "response": [
+    "1. Jada bikes faster than her cousin swims, by 7.5 miles per hour (or equivalent).",
+    "2.",
+    "a. \\(3\\frac{1}{8}\\) miles. Possible strategy: Jada bikes 1 mile in 6 minutes. There are \\(2\\frac{1}{2}\\) groups of 6 minutes in 15 minutes. This means Jada bikes 2.5 miles in 15 minutes. Jada’s cousin swims \\(\\frac{5}{8}\\) mile in 15 minutes, because \\(15 \\div 24 = \\frac{15}{24}\\), which is equivalent to \\(\\frac{5}{8}\\). The total distance between them is \\(2\\frac{4}{8} + \\frac{5}{8}\\), or \\(3\\frac{1}{8}\\) miles.",
+    "b. 24 minutes. Possible strategy: Jada and her cousin are moving away from each other at a rate of 12.5 miles per hour. \\(5 \\div 12.5 = 0.4\\), so it will take them 0.4 hours to be 5 miles apart. This is equivalent to 24 minutes, because \\(0.4 \\boldcdot 60 = 24\\)."
+   ],
+   "extensionResponse": null
+  }
+ },
+ "coolDown": {
+  "task": [
+   "A penguin walks 10 feet in 6 seconds. At this speed:",
+   "1. How far does the penguin walk in 45 seconds?",
+   "2. How long does it take the penguin to walk 45 feet?",
+   "Explain or show your reasoning."
+  ],
+  "response": [
+   "1. 75 feet. Possible strategy: The penguin's speed is \\(10 \\div 6\\), or \\(\\frac{5}{3}\\) feet per second. In 45 seconds, the penguin walks \\(45 \\boldcdot \\frac{5}{3}\\), or 75 feet.",
+   "2. 27 seconds. Possible strategy: The penguin's pace is \\(6 \\div 10\\), or 0.6 seconds per foot. To walk 45 feet, it takes the penguin \\(45 \\boldcdot 0.6\\), or 27 seconds."
+  ]
+ },
+ "pages": [
+  145,
+  146,
+  149,
+  150,
+  151,
+  152,
+  153,
+  154
+ ],
+ "notes": [
+  "8.1 response tables carry green multiplication arrows; the arrow labels are given in the [image: ...] lines after each table rather than in cells. In the two 'or' tables the empty rows hold only the arrow labels.",
+  "8.1 item 1's second 'or' table has an empty row after 12|75 and after 8|50; item 2's second 'or' table has an empty row only between 12|75 and 4.8|30, with the second \\(\\boldcdot 0.16\\) label printed below the table.",
+  "8.2 item 4 runs across printed pages 149-150; joined into one entry.",
+  "8.3 item 2 prints '2.' and 'a.' on the same line; split into separate entries '2.' and 'a. ...'.",
+  "Printed pages 147-148 (8.2 narrative/launch) were not among the images and were not needed."
+ ]
+}

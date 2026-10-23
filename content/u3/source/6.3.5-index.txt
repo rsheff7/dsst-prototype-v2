@@ -1,36 +1,36 @@
 Source: https://im.kendallhunt.com/MS/teachers/1/3/5/index.html
 
 ## Lesson 5
- Comparing Speeds and Prices
+## Comparing Speeds and Prices
  View Student Lesson
 ## 5.1: Closest Quotient (5 minutes)
- CCSS Standards
+## CCSS Standards
  Building On
  5.NF.B.3
  Routines and Materials
  Instructional Routines
  MLR8: Discussion Supports
 ## Warm-up
- This warm-up prompts students to reason about the meaning of division by looking closely at the dividend and divisor. The expressions were purposely chosen to encourage more precise reasoning than roughly estimating. While some students may mentally solve each, encourage them to also think about the numbers in the problem without calculating. Ask them what would happen if the dividend or divisor increased or decreased. Expect students to think of fractions both as division and as numbers. Encourage connections between these two ideas.
+ This warm-up prompts students to reason about the meaning of division by looking closely at the dividend and divisor. The expressions were purposely chosen to encourage more precise reasoning than roughly estimating. While some students may mentally solve each, encourage them to also think about the numbers in the problem without calculating. Ask them what would happen if the dividend or divisor increased or decreased. Expect students to think of fractions both as division and as numbers. Encourage connections between these two ideas.
 ## Launch
  Display one problem at a time. Give students 1 minute of quiet think time per problem and ask them to give a signal when they have an answer and a strategy. Follow with a whole-class discussion.
  Representation: Internalize Comprehension. To support working memory, provide students with sticky notes or mini whiteboards.
- Supports accessibility for: Memory; Organization
+ Supports accessibility for: Memory; Organization 
  Speaking, Reading Representing: MLR8 Discussion Supports. Display a table that shows different representations and language used for \(\frac12\), 1, and 1\(\frac12\). Highlight differences between similar-looking or similar-sounding language like “one”, “one half”, “a half”, “one and a half”, etc.
- Design Principle(s): Support sense-making; Maximize meta-awareness
- Student Facing
- Is the value of each expression closer to \(\frac12\), 1, or \(1\frac12\)?
+ Design Principle(s): Support sense-making; Maximize meta-awareness 
+## Student Facing
+ Is the value of each expression closer to \(\frac12\), 1, or \(1\frac12\)?
  \(20\div 18\)
  \(9\div 20\)
- \(7\div 5\)
+ \(7\div 5\) 
 ## Student Response
- Teachers with a valid work email address can click here to register or sign in for free access to Student Response.
+ Teachers with a valid work email address can click here to register or sign in for free access to Student Response.
 ## Activity Synthesis
  Discuss each problem one at a time with this structure:
- Ask students to indicate whether they think the expression is closer to \(\frac12\), 1, or \(1\frac12\).
+ Ask students to indicate whether they think the expression is closer to \(\frac12\), 1, or \(1\frac12\).
  If everyone agrees on one answer, ask a few students to share their reasoning, recording it for all to see. If there is disagreement on an answer, ask students with opposing answers to explain their reasoning to come to an agreement on an answer.
 ## 5.2: More Treadmills (15 minutes)
- CCSS Standards
+## CCSS Standards
  Addressing
  6.RP.A.2
  Routines and Materials
@@ -45,35 +45,35 @@ Source: https://im.kendallhunt.com/MS/teachers/1/3/5/index.html
  Arrange students in groups of 3. Give students 2–3 minutes of quiet think time to complete the first three questions. Then, ask them to share their responses and complete the last three questions in their groups.
  Specify that, when discussing the first three questions (comparisons of pairs of runners), each student in the group should take the lead on analyzing one sub-problem (i.e., sharing how the workouts of the two given runners are similar or different).
  Representation: Access for Perception. Read the problem aloud. Students who both listen to and read the information will benefit from extra processing time. Check for understanding by asking 1-2 students to restate the problem in their own words.
- Supports accessibility for: Language
+ Supports accessibility for: Language 
  Speaking, Writing: MLR5 Co-Craft Questions. Display the constant speed of Tyler, Kiran, and Mai and ask pairs of students to write possible mathematical questions about the situation. They can also ask questions about information that might be missing, or even about assumptions that they think are important. Then, invite select pairs to share their questions with the class. Look for questions that require students to make comparisons about different speeds. Finally, reveal the actual questions students are expected to work on, and students are set to work. This routine creates space for students to produce the language of mathematical questions as well as develop the language used to talk about constant speed.
- Design Principle(s): Optimize output (for questioning); Cultivate conversation
- Student Facing
- Some students did treadmill workouts, each one running at a constant speed. Answer the questions about their workouts. Explain or show your reasoning.
+ Design Principle(s): Optimize output (for questioning); Cultivate conversation 
+## Student Facing
+ Some students did treadmill workouts, each one running at a constant speed. Answer the questions about their workouts. Explain or show your reasoning.
  Tyler ran 4,200 meters in 30 minutes.
  Kiran ran 6,300 meters in \(\frac12\) hour.
- Mai ran 6.3 kilometers in 45 minutes.
+ Mai ran 6.3 kilometers in 45 minutes.
  What is the same about the workouts done by:
- Tyler and Kiran?
- Kiran and Mai?
- Mai and Tyler?
- At what rate did each of them run?
- How far did Mai run in her first 30 minutes on the treadmill?
+ Tyler and Kiran? 
+ Kiran and Mai? 
+ Mai and Tyler? 
+ At what rate did each of them run? 
+ How far did Mai run in her first 30 minutes on the treadmill? 
 ## Student Response
- Teachers with a valid work email address can click here to register or sign in for free access to Student Response.
- Student Facing
+ Teachers with a valid work email address can click here to register or sign in for free access to Student Response.
+## Student Facing
 ## Are you ready for more?
- Tyler and Kiran each started running at a constant speed at the same time. Tyler ran 4,200 meters in 30 minutes and Kiran ran 6,300 meters in \(\frac12\) hour. Eventually, Kiran ran 1 kilometer more than Tyler. How much time did it take for this to happen?
+## Tyler and Kiran each started running at a constant speed at the same time. Tyler ran 4,200 meters in 30 minutes and Kiran ran 6,300 meters in \(\frac12\) hour. Eventually, Kiran ran 1 kilometer more than Tyler. How much time did it take for this to happen?
 ## Student Response
- Teachers with a valid work email address can click here to register or sign in for free access to Extension Student Response.
+ Teachers with a valid work email address can click here to register or sign in for free access to Extension Student Response.
 ## Anticipated Misconceptions
  If students are not sure how to begin, suggest that they try using a table or a double number line that associates meters and minutes.
 ## Activity Synthesis
  Focus the conversation on the questions in the second half of the activity, the idea of “same speed,” and the clues that two objects are moving equally fast or slow. To begin the conversation, ask: “How can you tell when things are going the same speed?” Give a moment of quiet think time before soliciting responses. Students may say: “They keep up with one another running on a track,” “same distance in the same time,” or “same miles per hour in a car,” etc.
- Invite a few students to share their analyses of how the runners compare, starting with how Tyler's workout compares to Kiran's, and how Kiran's compares to Mai's. Descriptions such as “slower,” “faster,” or “higher or lower speed” should begin to emerge. After students share their analyses of Mai and Tyler's workouts, make sure to highlight that even though they ran different distances in different amounts of time, they each ran 140 meters per minute so we can say “they ran at the same speed.” This also means that Mai and Tyler's original ratios—\(4,\!200 : 30\) and \(6,\!300 : 45\)—are equivalent ratios. 
+ Invite a few students to share their analyses of how the runners compare, starting with how Tyler's workout compares to Kiran's, and how Kiran's compares to Mai's. Descriptions such as “slower,” “faster,” or “higher or lower speed” should begin to emerge. After students share their analyses of Mai and Tyler's workouts, make sure to highlight that even though they ran different distances in different amounts of time, they each ran 140 meters per minute so we can say “they ran at the same speed.” This also means that Mai and Tyler's original ratios—\(4,\!200 : 30\) and \(6,\!300 : 45\)—are equivalent ratios. 
  In the last problem, students need to understand that since Mai and Tyler ran at the same speed they traveled the same distance for the first 30 minutes on the treadmill. This may be difficult for students to articulate with precision, so allowing multiple students to share their thinking may be beneficial.
 ## 5.3: The Best Deal on Beans (15 minutes)
- CCSS Standards
+## CCSS Standards
  Addressing
  6.RP.A.2
  6.RP.A.3.b
@@ -83,85 +83,68 @@ Source: https://im.kendallhunt.com/MS/teachers/1/3/5/index.html
  MLR1: Stronger and Clearer Each Time
 ## Activity
  Students use and compare rates per 1 in a shopping context as they look for “the best deal.” The purpose of this activity is to remind students how unit price contexts work and to start to nudge them toward more efficient ways to compare unit prices.
- While this task considers “the best deal” to mean having the lowest cost per unit, the phrase may have different meanings to students and should be discussed. For instance, students may bring up other considerations such as distance to store, store preference (e.g., some stores offer loyalty points), what else they need to purchase, and not wanting to buy in bulk when only a small quantity is needed. Discussing these real-life considerations, and choosing which to prioritize and which to disregard, is an important part of modeling with mathematics (MP4), but it is also appropriate to clarify that, for the purposes of this problem, we are looking for “the best deal” in the sense of the lowest cost per can.
+ While this task considers “the best deal” to mean having the lowest cost per unit, the phrase may have different meanings to students and should be discussed. For instance, students may bring up other considerations such as distance to store, store preference (e.g., some stores offer loyalty points), what else they need to purchase, and not wanting to buy in bulk when only a small quantity is needed. Discussing these real-life considerations, and choosing which to prioritize and which to disregard, is an important part of modeling with mathematics (MP4), but it is also appropriate to clarify that, for the purposes of this problem, we are looking for “the best deal” in the sense of the lowest cost per can.
  As students work, monitor for students who use representations like double number lines or tables of equivalent ratios. These are useful for making sense of a strategy that divides the price by the number of cans to find the price per 1. Also monitor for students using more efficient strategies.
 ## Launch
  While some students may help with grocery shopping at home, it is likely many have not and will need extra information to understand what “the best deal” means.
  Before students begin, ask if anyone is familiar with the weekly fliers that many stores send out to advertise special deals. Show students some advertisements from local stores, if available.
- Ask students to share what “a good deal” and “the best deal” mean to them. Many students are likely to interpret these in terms of low prices (per item or otherwise) or “getting more for less money,” but some may have other practical or personal considerations. (Examples: it is not a good deal if you buy more than you can use before it goes bad. It is not a good deal if you have to travel a long distance to the store.) Acknowledge students’ perspectives and how “messy” such seemingly simple terms can be. Clarify that in this task, we are looking for “the best deal” in the sense of lowest cost per can.
- 5–10 minutes of quiet work time followed by whole-class discussion.
+ Ask students to share what “a good deal” and “the best deal” mean to them. Many students are likely to interpret these in terms of low prices (per item or otherwise) or “getting more for less money,” but some may have other practical or personal considerations. (Examples: it is not a good deal if you buy more than you can use before it goes bad. It is not a good deal if you have to travel a long distance to the store.) Acknowledge students’ perspectives and how “messy” such seemingly simple terms can be. Clarify that in this task, we are looking for “the best deal” in the sense of lowest cost per can.
+ 5–10 minutes of quiet work time followed by whole-class discussion.
  Action and Expression: Internalize Executive Functions. Provide students with a graphic organizer to organize their problem-solving strategy. The graphic organizer should ask students to identify what they need to find out, what information is provided, how they solved the problem, and why their answer is correct.
- Supports accessibility for: Language; Organization
+ Supports accessibility for: Language; Organization 
  Writing, Listening, Conversing: MLR1 Stronger and Clearer Each Time. Display the ads about the special sales on 15-oz cans of baked beans. Ask students to write a brief explanation to answer the prompt, “Which store is offering the best deal? Explain your reasoning.” Ask each student to share their written explanation with 2–3 partners who will provide constructive feedback. Students can use ideas and language from each partner to refine and clarify the response through conversation, and then finally revise their original written response. Throughout this process, students should be pressed for details, and encouraged to press each other for details. This helps students to compare rates per 1 in a shopping context as they look for “the best deal.”
- Design Principle(s): Optimize output (for explanation); Cultivate conversation
- Student Facing
+ Design Principle(s): Optimize output (for explanation); Cultivate conversation 
+## Student Facing
  Four different stores posted ads about special sales on 15-oz cans of baked beans.
  Which store is offering the best deal? Explain your reasoning.
+ [image: Four different images of ads for baked beans.] [image: Expand image] 
+ Description: <p>Four different images of ads for baked beans. The first ad has 8 cans of beans and is labeled 8 for 6 dollars. The second ad shows 10 cans of beans and is labeled 10 for 10 dollars. The third ad shows 2 cans of beans and is labeled 2 for 3 dollars. The fourth ad shows 1 can of beans and is labeled 80 cents each.</p> 
  [image: Four different images of ads for baked beans.] 
- Description: <p>Four different images of ads for baked beans. The first ad has 8 cans of beans and is labeled 8 for 6 dollars. The second ad shows 10 cans of beans and is labeled 10 for 10 dollars. The third ad shows 2 cans of beans and is labeled 2 for 3 dollars. The fourth ad shows 1 can of beans and is labeled 80 cents each.</p>
- [image: Four different images of ads for baked beans.] 
- The last store listed is also selling 28-oz cans of baked beans for $1.40 each. How does that price compare to the other prices?
+ The last store listed is also selling 28-oz cans of baked beans for $1.40 each. How does that price compare to the other prices? 
 ## Student Response
- Teachers with a valid work email address can click here to register or sign in for free access to Student Response.
+ Teachers with a valid work email address can click here to register or sign in for free access to Student Response.
 ## Anticipated Misconceptions
  At first glance, students may look only at the number of cans in each offer or only at the price. Let students know that they need to consider the price per one can.
 ## Activity Synthesis
- If any students used a representation like a double number line or table to support their reasoning, select these students to share their strategy first. Keep these representations visible. Follow with explanations from students who used more efficient strategies, and use the representations to make connections to more efficient strategies. Highlight the use of division to compute the price per can and the use of “per 1” language. The purpose of this activity and this discussion is help students see that computing and comparing the price per 1 is an efficient way to compare rates in a unit price context.
+ If any students used a representation like a double number line or table to support their reasoning, select these students to share their strategy first. Keep these representations visible. Follow with explanations from students who used more efficient strategies, and use the representations to make connections to more efficient strategies. Highlight the use of division to compute the price per can and the use of “per 1” language. The purpose of this activity and this discussion is help students see that computing and comparing the price per 1 is an efficient way to compare rates in a unit price context.
 ## Lesson Synthesis
 ## Lesson Synthesis
  Previously, students compared rates of different ratios by showing that they are or are not equivalent, and by using diagrams and scale factors. In prior lessons students found rates per 1 as a way to determine equivalent ratios. Here rates per 1, in the form of speed and unit price, are deliberately calculated so that they can be compared.
  To help students summarize their thinking, display a list of the stated ratios in each activity and how they would be written in “per 1” rate language, as shown here:
  | 
- | rate as given
- | rate per 1
- | 4,200 meters in 30 minutes
- | 140 meters per minute
- | 6,300 meters in 30 minutes
- | 210 meters per minute
- | 6,300 meters in 45 minutes
- | 140 meters per minute
- | –
- | –
- | 8 cans for \$6
- | \$0.75 per can
- | 10 cans for \$10
- | \$1.00 per can
- | 2 cans for \$3
- | \$1.50 per can
- | 80 cents per can
- | \$0.80 per can
+ rate as given | rate per 1 
+ | 4,200 meters in 30 minutes | 140 meters per minute 
+ | 6,300 meters in 30 minutes | 210 meters per minute 
+ | 6,300 meters in 45 minutes | 140 meters per minute 
+ | – | – 
+ | 8 cans for \$6 | \$0.75 per can 
+ | 10 cans for \$10 | \$1.00 per can 
+ | 2 cans for \$3 | \$1.50 per can 
+ | 80 cents per can | \$0.80 per can 
  Give students some quiet time to read through the list. Then, ask 2–3 students to share which rate they prefer for comparing and why (“I prefer the rates per 1 because I can just compare two numbers, since the 1 is the same.”).
 ## 5.4: Cool-down - A Sale on Sparkling Water (5 minutes)
- CCSS Standards
+## CCSS Standards
  Addressing
  6.RP.A.2
  6.RP.A.3.b
 ## Cool-Down
- Teachers with a valid work email address can click here to register or sign in for free access to Cool-Downs.
+ Teachers with a valid work email address can click here to register or sign in for free access to Cool-Downs.
 ## Student Lesson Summary
-## 
- Student Facing
- Diego ran 3 kilometers in 20 minutes. Andre ran 2,550 meters in 17 minutes. Who ran faster? Since neither their distances nor their times are the same, we have two possible strategies:
+## Student Facing
+ Diego ran 3 kilometers in 20 minutes. Andre ran 2,550 meters in 17 minutes. Who ran faster? Since neither their distances nor their times are the same, we have two possible strategies:
  Find the time each person took to travel the same distance. The person who traveled that distance in less time is faster.
- Find the distance each person traveled in the same time. The person who traveled a longer distance in the same amount of time is faster.
- It is often helpful to compare distances traveled in 1 unit of time (1 minute, for example), which means finding the speed such as meters per minute. 
+ Find the distance each person traveled in the same time. The person who traveled a longer distance in the same amount of time is faster.
+ It is often helpful to compare distances traveled in 1 unit of time (1 minute, for example), which means finding the speed such as meters per minute. 
  Let’s compare Diego and Andre’s speeds in meters per minute.
  | 
- | distance (meters)
- | time (minutes)
- | 3,000
- | 20
- | 1,500
- | 10
- | 150
- | 1
+ distance (meters) | time (minutes) 
+ | 3,000 | 20 
+ | 1,500 | 10 
+ | 150 | 1 
  | 
- | distance (meters)
- | time (minutes)
- | 2,550
- | 17
- | 150
- | 1
+ distance (meters) | time (minutes) 
+ | 2,550 | 17 
+ | 150 | 1 
  Both Diego and Andre ran 150 meters per minute, so they ran at the same speed.
  Finding ratios that tell us how much of quantity \(A\) per 1 unit of quantity \(B\) is an efficient way to compare rates in different situations. Here are some familiar examples:
  Car speeds in miles per hour.

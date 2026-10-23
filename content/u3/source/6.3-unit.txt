@@ -1,8 +1,8 @@
 Source: https://im.kendallhunt.com/MS/teachers/1/3/index.html
 
 ## 6.3 Unit Rates and Percentages
- In this unit, students learn to understand and use the terms “unit rate,” “speed,” “pace,” “percent,” and “percentage,” and recognize that equivalent ratios have equal unit rates. They represent percentages with tables, tape diagrams, and double number line diagrams, and as expressions. They use these terms and representations in reasoning about situations involving unit price, constant speed, and measurement conversion.
- Read More
+## In this unit, students learn to understand and use the terms “unit rate,” “speed,” “pace,” “percent,” and “percentage,” and recognize that equivalent ratios have equal unit rates. They represent percentages with tables, tape diagrams, and double number line diagrams, and as expressions. They use these terms and representations in reasoning about situations involving unit price, constant speed, and measurement conversion.
+ Read More 
 ## Lessons
 ## Units of Measurement
  1The Burj Khalifa

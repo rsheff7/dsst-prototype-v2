@@ -1,0 +1,102 @@
+{
+ "section": "Rates",
+ "activities": {
+  "6.1": {
+   "response": [
+    "Answers vary. Sample responses:",
+    "40 miles per gallon",
+    "$2 per gallon",
+    "30 miles per hour",
+    "$1 per granola bar",
+    "Note that responses may lack quantities, such as “miles per hour” or “dollars per pound.”"
+   ],
+   "extensionResponse": null
+  },
+  "6.2": {
+   "response": [
+    "The tables below include fractions and their decimal equivalents. These are included for the convenience of the teacher. The task statements do not require that students write both.",
+    "1. Priya and Han are both correct as shown by the table:",
+    "| water (cups) | oats (cups)",
+    "| 15 | 6",
+    "| 1 | \\(\\frac{6}{15}\\) or 0.4",
+    "| \\(\\frac{15}{6}\\) or 2.5 | 1",
+    "2. The next weekend",
+    "a. 12.5. Multiply Han's rate 2.5 by 5 to find the amount of water needed for 5 cups of oats:",
+    "| water (cups) | oats (cups)",
+    "| 2.5 | 1",
+    "| 12.5 | 5",
+    "b. Multiply Priya's rate 0.4 by 10 to find the amount of oats needed for 10 cups of water:",
+    "| water (cups) | oats (cups)",
+    "| 1 | 0.4",
+    "| 10 | 4",
+    "3. Answers vary. We can efficiently find how much water for 5 cups of oats using Han's rate and scaling up by 5. We can efficiently find how much oats for 10 cups of water using Priya's rate and scaling up by 10."
+   ],
+   "extensionResponse": null
+  },
+  "6.3": {
+   "response": [
+    "1. a. Lin’s recipe calls for \\(\\frac{4}{5}\\) or 0.8 ounce of cream cheese per ounce of sugar.",
+    "b. The recipe calls for \\(\\frac{5}{4}\\) or 1.25 ounces of sugar per ounce of cream cheese. Possible strategy:",
+    "| cream cheese (oz) | sugar (oz)",
+    "| 12 | 15",
+    "| 4 | 5",
+    "| 1 | 1.25",
+    "| 0.8 | 1",
+    "2. a. Mai’s family drinks \\(\\frac{10}{6} = \\frac{5}{3} = 1\\frac{2}{3}\\) gallons of milk per week.",
+    "b. It takes the family 0.6 weeks (or a little more than half a week) to drink one gallon of milk.",
+    "3. a. Tyler paid $4 per ticket, because \\(16 \\div 4 = 4\\).",
+    "b. 0.25, or \\(\\frac{1}{4}\\), of a ticket costs a dollar.",
+    "4. a. Lin needs 28 ounces of cream cheese. You can multiply \\(\\frac{4}{5}\\) ounces of cream cheese per ounce of sugar times 35 ounces of sugar.",
+    "| cream cheese (oz) | sugar (oz)",
+    "| 12 | 15",
+    "| 4 | 5",
+    "| 1 | 1.25",
+    "| 0.8 | 1",
+    "| 25 | 35",
+    "[image: curved arrows on the left and right of the table, each going from the row 0.8 | 1 to the row 25 | 35, each labelled \\(\\boldcdot 35\\)]",
+    "b. It will take 1.8 weeks. You can multiply 0.6 weeks per gallon times 3 gallons.",
+    "c. It would cost $4,000. You can multiply $4 per ticket times 1,000 tickets."
+   ],
+   "extensionResponse": [
+    "Answers vary. One bad deal is 6 for $25, when 6 tickets normally cost $24."
+   ]
+  }
+ },
+ "coolDown": {
+  "task": [
+   "Two pounds of grapes cost $6.",
+   "1. Complete the table showing the price of different amounts of grapes at this rate.",
+   "| grapes (pounds) | price (dollars)",
+   "| 2 | 6",
+   "| | 1",
+   "| 1 |",
+   "2. Explain the meaning of each of the numbers you found."
+  ],
+  "response": [
+   "1. Here is the completed table:",
+   "| grapes (pounds) | price (dollars)",
+   "| 2 | 6",
+   "| \\(\\frac{1}{3}\\) | 1",
+   "| 1 | 3",
+   "2. The price of \\(\\frac{1}{3}\\) pound of grapes is $1. 1 pound of grapes costs $3."
+  ]
+ },
+ "pages": [
+  108,
+  109,
+  111,
+  112,
+  115,
+  116,
+  117,
+  118
+ ],
+ "notes": [
+  "Image files map to printed pages: p110=108, p111=109, p113=111, p114=112, p117=115, p118=116, p119=117, p120=118, p121=119. Printed pages 110, 113 and 114 were not among the images; on the pages provided, no Student Response section appears to be missing (each response begins on a page that was provided).",
+  "6.3 item 4a: the text says “Lin needs 28 ounces of cream cheese”, but the last row of the printed table shows 25 in the cream cheese column (0.8 × 35 = 28). Transcribed as printed; this looks like an error in the source.",
+  "6.3 item 1a reads “Lin’s recipe” as printed, although the task describes it as a cheesecake recipe without naming Lin.",
+  "6.3 item 4a table: the arrow labels are printed as a raised dot followed by 35, rendered as \\(\\boldcdot 35\\) inside the image description.",
+  "6.1 sample responses are bullet points in the print; they are given without bullet markers.",
+  "6.1 and 6.2 have no “Are You Ready for More?” extension. 6.3's extension response is on printed page 116."
+ ]
+}

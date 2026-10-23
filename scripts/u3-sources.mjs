@@ -38,11 +38,14 @@ const decode = (s) =>
 export function htmlToText(html) {
   let s = (/<main[\s\S]*?<\/main>/.exec(html) ?? /<body[\s\S]*?<\/body>/.exec(html) ?? [html])[0];
   s = s.replace(/<(script|style|nav|svg|footer|header)\b[\s\S]*?<\/\1>/g, '');
+  // Whitespace in HTML source is not layout; only tags make lines.
+  s = s.replace(/\s+/g, ' ');
   s = s.replace(/<math[\s\S]*?<annotation[^>]*>([\s\S]*?)<\/annotation>[\s\S]*?<\/math>/g, ' \\($1\\) ');
   s = s.replace(/<img[^>]*alt="([^"]*)"[^>]*>/g, ' [image: $1] ');
   s = s.replace(/<\/?h[1-6][^>]*>/g, '\n## ');
-  s = s.replace(/<(br|\/p|\/li|\/div|\/tr|\/td|\/th)[^>]*>/g, '\n');
-  s = s.replace(/<(td|th)[^>]*>/g, ' | ');
+  // Tables: one row per line, cells joined by " | ". Line breaks inside a cell become spaces.
+  s = s.replace(/<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/g, (_, cell) => ' | ' + cell.replace(/<(br|\/p|\/div)[^>]*>/g, ' ') + ' ');
+  s = s.replace(/<(br|\/p|\/li|\/div|\/tr|table|tr)\b[^>]*>/g, '\n');
   s = s.replace(/<[^>]+>/g, '');
   s = decode(s);
   s = s.replace(/[ \t]+/g, ' ').replace(/\n\s*\n+/g, '\n').replace(/\n## \n/g, '\n');

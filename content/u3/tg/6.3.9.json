@@ -1,0 +1,73 @@
+{
+  "section": "Rates",
+  "activities": {
+    "9.1": {
+      "response": [
+        "A: \\(\\frac{25}{100}\\), 0.25, \\(\\frac{1}{4}\\)",
+        "B: \\(\\frac{1}{10}\\), \\(\\frac{10}{100}\\), 0.1, 0.10",
+        "C: \\(\\frac{75}{100}\\), 0.75, \\(\\frac{3}{4}\\)"
+      ],
+      "extensionResponse": null
+    },
+    "9.2": {
+      "response": [
+        "Card A: Deal! The price per bottle is $0.79 so a 3 pack should be $2.37.",
+        "Card B: No Deal! The price per juice box is $0.35 so 6 juice boxes should be $2.10.",
+        "Card C: Deal! The price per bar is $0.88 so 4 bars should be $3.52.",
+        "Card D: Deal! The price per hummus container is $0.90 so the cost for 10 should be $9.00.",
+        "Card E: No Deal! The price per yogurt container is $0.85 so containers should cost $5.10."
+      ],
+      "extensionResponse": [
+        "Answers vary. A fair deal for F would be $6.84 for 9 packs."
+      ]
+    },
+    "9.3": {
+      "response": [
+        "1. Antelope wins first place.",
+        "2. Antelope, Cougar, Hare, Coyote, Ostrich, Kangaroo. Possible strategies:",
+        "Converting all measurements to feet:",
+        "Antelope sprinted 5,280 feet, because \\(1 \\boldcdot 1,\\!760 \\boldcdot 3 = 5,\\!280\\).",
+        "Cougar sprinted 4,224 feet, because \\((1,\\!408) \\boldcdot 3 = 4,\\!224\\).",
+        "Hare sprinted 4,136 feet, because \\(49,\\!632 \\div 12 = 4,\\!136\\).",
+        "Coyote sprinted 3,773 feet.",
+        "Ostrich sprinted almost 3,773 feet, because \\((1.15) \\boldcdot (1,\\!000) \\boldcdot 100 \\div 2.54 \\div 12 = 3,\\!772.97\\).",
+        "Kangaroo sprinted 3,520 feet, because \\((1,\\!073) \\boldcdot 100 \\div 2.54 \\div 12 = 3,\\!520.34\\).",
+        "Converting all measurements to yards:",
+        "Antelope sprinted 1,760 yards, because 1 mile = 1,760 yards.",
+        "Cougar sprinted 1,408 yards.",
+        "Hare sprinted \\(1,\\!378\\frac{2}{3}\\) yards, because \\(49,\\!632 \\div 12 \\div 3 = 1,\\!378\\frac{2}{3}\\).",
+        "Coyote sprinted \\(1,\\!257\\frac{2}{3}\\) yards, because \\(3,\\!773 \\div 3 = 1,\\!257\\frac{2}{3}\\).",
+        "Ostrich sprinted almost \\(1,\\!257\\frac{2}{3}\\) yards, because \\((1.15) \\boldcdot (1,\\!000) \\boldcdot 100 \\div 2.54 \\div 12 \\div 3 = 1,\\!257.66\\).",
+        "Kangaroo sprinted \\(1,\\!173\\frac{1}{3}\\) yards, because \\((1,\\!073) \\boldcdot 100 \\div 2.54 \\div 12 \\div 3 \\approx 1,\\!173\\frac{1}{3}\\).",
+        "Converting all measurements to meters:",
+        "Antelope sprinted 1,609.34 meters, because \\(1 \\boldcdot (1,\\!760) \\boldcdot 3 \\boldcdot 12 \\boldcdot (2.54) \\div 100 = 1,\\!609.34\\).",
+        "Cougar sprinted 1,287.48 meters, because \\((1,\\!408) \\boldcdot 3 \\boldcdot 12 \\boldcdot 2.54 \\div 100 = 1,\\!287.48\\).",
+        "Hare sprinted 1,260.65 meters, because \\((49,\\!632) \\boldcdot (2.54) \\div 100 = 1,\\!260.65\\).",
+        "Coyote sprinted just over 1,150 meters, because \\(3,\\!773 \\boldcdot 12 \\boldcdot 2.54 \\div 100 = 1,\\!150.01\\).",
+        "Ostrich sprinted 1,150 meters, because \\((1.15) \\boldcdot 1,\\!000 = 1,\\!150\\).",
+        "Kangaroo sprinted 1,073 meters."
+      ],
+      "extensionResponse": null
+    }
+  },
+  "coolDown": {
+    "task": [
+      "A restaurant sells 10 tacos for $8.49, or 6 of the same kind of taco for $5.40.",
+      "Which is the better deal? Explain how you know."
+    ],
+    "response": [
+      "The 10-taco offer is a better deal.",
+      "Based on the price per taco: The 10-taco offer is about $0.85 per taco because \\(8.49 \\div 10 = 0.849\\). The 6-taco offer is $0.90 per taco because \\(5.40 \\div 6 = 0.90\\).",
+      "Or, look at the cost of a common multiple number of tacos. The least common multiple is 30. Using the 10-taco offer, 30 tacos cost $25.47. Using the 6-taco offer, 30 tacos cost $27.00. The 10-taco offer is better.",
+      "Based on how much you get for a dollar (the calculations are more difficult with this approach): With the 10-taco offer, you get around 1.2 tacos per dollar because \\(10 \\div 8.49 \\approx 1.2\\). With the 6-taco offer, you get around 1.1 tacos per dollar because \\(6 \\div 5.40 \\approx 1.1\\)."
+    ]
+  },
+  "pages": [161, 164, 167, 168, 169],
+  "notes": [
+    "Printed page numbers are 2 less than the image filenames (p163.png = printed 161, p172.png = printed 170). Printed page 166 (p168.png) was not among the images; the 9.3 Student Task Statement is not needed from it, and the 9.3 Student Response starts at the top of printed page 167, so nothing appears to be missing.",
+    "9.3 response: the strategy lines \"Converting all measurements to feet:\" / \"to yards:\" / \"to meters:\" are bullet points in the print; the lines under each are indented paragraphs. The bullets are not reproduced as characters.",
+    "9.3 response: the print typesets a few thousands separators inconsistently (\"(1, 000)\" in the ostrich-feet line, \"49, 632\" in the hare-yards line, with a space after the comma). These are written uniformly as 1,\\!000 and 49,\\!632 in LaTeX; the numbers themselves are unchanged.",
+    "9.2 Card E response reads \"so containers should cost $5.10\" as printed (no count of containers given); transcribed as is.",
+    "Dollar signs in prose are written as plain $ (not \\$) inside the JSON text."
+  ]
+}

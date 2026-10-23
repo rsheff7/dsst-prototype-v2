@@ -1,0 +1,379 @@
+{
+ "code": "6.3.5",
+ "title": "Comparing Speeds and Prices",
+ "section": "Rates",
+ "goals": [
+  {
+   "text": "Explain (orally and in writing) that if two ratios have the same rate per 1, they are equivalent ratios.",
+   "modes": [
+    "orally",
+    "in writing"
+   ]
+  },
+  {
+   "text": "Justify (orally and in writing) comparisons of speeds or prices.",
+   "modes": [
+    "orally",
+    "in writing"
+   ]
+  },
+  {
+   "text": "Recognize that calculating how much for 1 of the same unit is a useful strategy for comparing rates. Express these rates (in spoken and written language) using the word “per” and specifying the unit.",
+   "modes": []
+  }
+ ],
+ "targets": [
+  "I understand that if two ratios have the same rate per 1, they are equivalent ratios.",
+  "When measurements are expressed in different units, I can decide who is traveling faster or which item is the better deal by comparing “how much for 1” of the same unit."
+ ],
+ "narrative": [
+  "Previously, students found and used rates per 1 to solve problems in a context. This lesson is still about contexts, but it's more deliberately working toward the general understanding that when two ratios are associated with the same rate per 1, then they are equivalent ratios. Therefore, to determine whether two ratios are equivalent, it is useful to find and compare their associated rates per 1. In this lesson, we also want students to start to notice that dividing one of the quantities in a ratio by the other is an efficient way to find a rate per 1, while attending to the meaning of that number in the context (MP2).",
+  "Calculating rates per 1 is also a common way to compare rates in different situations. For example, suppose we find that one car is traveling 30 miles per hour and another car is traveling 40 miles per hour. The different rates tell us not only that the cars are traveling at different speeds, but which one is traveling faster. Similarly, knowing that one grocery store charges \\$1.50 per item while another charges \\$1.25 for the same item allows us to select the better deal even when the stores express the costs with rates such as “2 for \\$3” or “4 for \\$5.”"
+ ],
+ "materials": [],
+ "preparation": [
+  "For the activity The Best Deal on Beans, consider gathering some examples of grocery store advertisements from newspapers or weekly fliers for deals like “3 for \\$5.”"
+ ],
+ "standards": {
+  "buildingOn": [
+   "5.NF.B.3"
+  ],
+  "addressing": [
+   "6.RP.A.2",
+   "6.RP.A.3.b"
+  ],
+  "buildingTowards": []
+ },
+ "activities": [
+  {
+   "id": "5.1",
+   "slot": "warm-up",
+   "title": "Closest Quotient",
+   "minutes": 5,
+   "purpose": null,
+   "purposeEvidence": null,
+   "routines": [
+    "MLR8: Discussion Supports"
+   ],
+   "fivePractices": false,
+   "alignment": {
+    "buildingOn": [
+     "5.NF.B.3"
+    ],
+    "addressing": [],
+    "buildingTowards": []
+   },
+   "narrative": [
+    "This warm-up prompts students to reason about the meaning of division by looking closely at the dividend and divisor. The expressions were purposely chosen to encourage more precise reasoning than roughly estimating. While some students may mentally solve each, encourage them to also think about the numbers in the problem without calculating. Ask them what would happen if the dividend or divisor increased or decreased. Expect students to think of fractions both as division and as numbers. Encourage connections between these two ideas."
+   ],
+   "launch": [
+    "Display one problem at a time. Give students 1 minute of quiet think time per problem and ask them to give a signal when they have an answer and a strategy. Follow with a whole-class discussion."
+   ],
+   "task": [
+    "Is the value of each expression closer to \\(\\frac12\\), 1, or \\(1\\frac12\\)?",
+    "\\(20\\div 18\\)",
+    "\\(9\\div 20\\)",
+    "\\(7\\div 5\\)"
+   ],
+   "response": [
+    "1. Closer to 1. Possible strategy: \\(20 \\div 20 = 1\\) and since 18 is less than 20, the quotient is more than 1 and since \\(27 \\div 18 = 1.5\\) and 20 is less than 27, the quotient is less than 1.5. The distance from 1 and 1.5 could be reasoned about thinking about the size of the leftovers, \\(\\frac{2}{18}\\) versus \\(\\frac{7}{18}\\)",
+    "2. Closer to \\(\\frac{1}{2}\\). Possible strategy: since \\(\\frac{10}{20} = \\frac{1}{2}\\) and since 9 is less than 10, the quotient is less than \\(\\frac{1}{2}\\), but only a small \\(\\frac{1}{20}\\) away.",
+    "3. Closer to \\(1\\frac{1}{2}\\). Possible strategy: \\(\\frac{5}{5} = 1\\), the quotient is \\(\\frac{2}{5}\\) over 1. \\(\\frac{2}{5} = 0.4\\) which is closer to 1.5 than 1."
+   ],
+   "misconceptions": [],
+   "synthesis": [
+    "Discuss each problem one at a time with this structure:",
+    "Ask students to indicate whether they think the expression is closer to \\(\\frac12\\), 1, or \\(1\\frac12\\).",
+    "If everyone agrees on one answer, ask a few students to share their reasoning, recording it for all to see. If there is disagreement on an answer, ask students with opposing answers to explain their reasoning to come to an agreement on an answer."
+   ],
+   "extension": null,
+   "ell": [
+    {
+     "routine": "MLR8: Discussion Supports",
+     "phase": "launch",
+     "domains": [
+      "speaking",
+      "reading",
+      "representing"
+     ],
+     "principles": [
+      "support-sense-making",
+      "maximize-meta-awareness"
+     ],
+     "text": "Speaking, Reading Representing: MLR8 Discussion Supports. Display a table that shows different representations and language used for \\(\\frac12\\), 1, and 1\\(\\frac12\\). Highlight differences between similar-looking or similar-sounding language like “one”, “one half”, “a half”, “one and a half”, etc.",
+     "principleLine": "Design Principle(s): Support sense-making; Maximize meta-awareness"
+    }
+   ],
+   "access": [
+    {
+     "area": "Representation",
+     "title": "Internalize Comprehension",
+     "text": "Representation: Internalize Comprehension. To support working memory, provide students with sticky notes or mini whiteboards.",
+     "supports": [
+      "Memory",
+      "Organization"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "5.2",
+   "slot": "activity",
+   "title": "More Treadmills",
+   "minutes": 15,
+   "purpose": "new-concept",
+   "purposeEvidence": "The purpose of this activity is to remind students how speed contexts work and to start to nudge them toward more efficient ways to compare speeds.",
+   "routines": [
+    "MLR5: Co-Craft Questions"
+   ],
+   "fivePractices": false,
+   "alignment": {
+    "buildingOn": [],
+    "addressing": [
+     "6.RP.A.2"
+    ],
+    "buildingTowards": []
+   },
+   "narrative": [
+    "In this activity, students analyze the workouts of several people on a treadmill given time-distance ratios. The purpose of this activity is to remind students how speed contexts work and to start to nudge them toward more efficient ways to compare speeds. Students see that when such ratios can be expressed with the same number of meters per minute, the ratios are equivalent and the moving objects (people, cars, etc.) have the same speed.",
+    "Speed is typically expressed as a distance per 1 unit of time, so the task provides a familiar context for computing and using rates per 1. The numbers have been chosen such that any two workouts being compared has the same time, same distance, or same speed.",
+    "Encourage students to use “per 1” and “for each” language throughout, as this language supports the development of the concept of unit rate.",
+    "As students discuss the problems, listen closely for those who use these terms as well as descriptions of speed (e.g., “same speed,” “faster,” “slower”). Also notice students who make the connections between the rates per 1 they calculated in the first half of the task and use them to answer questions in the second half. Invite some of these students or groups to share later."
+   ],
+   "launch": [
+    "Arrange students in groups of 3. Give students 2–3 minutes of quiet think time to complete the first three questions. Then, ask them to share their responses and complete the last three questions in their groups.",
+    "Specify that, when discussing the first three questions (comparisons of pairs of runners), each student in the group should take the lead on analyzing one sub-problem (i.e., sharing how the workouts of the two given runners are similar or different)."
+   ],
+   "task": [
+    "Some students did treadmill workouts, each one running at a constant speed. Answer the questions about their workouts. Explain or show your reasoning.",
+    "Tyler ran 4,200 meters in 30 minutes.",
+    "Kiran ran 6,300 meters in \\(\\frac12\\) hour.",
+    "Mai ran 6.3 kilometers in 45 minutes.",
+    "What is the same about the workouts done by:",
+    "Tyler and Kiran?",
+    "Kiran and Mai?",
+    "Mai and Tyler?",
+    "At what rate did each of them run?",
+    "How far did Mai run in her first 30 minutes on the treadmill?"
+   ],
+   "response": [
+    "1. a. Tyler and Kiran both ran for the same amount of time: 30 minutes. Kiran ran a greater distance in 30 minutes, so Kiran was running faster than Tyler.",
+    "b. Kiran and Mai ran the same distance, 6,300 meters, but Mai took more time than Kiran to run 6,300 meters, so Mai was running slower than Kiran.",
+    "c. Mai and Tyler both ran 140 meters per minute, so Mai and Tyler were running at the same speed. However they ran different distances and took different amounts of time to do so.",
+    "2. The tables show one possible strategy. Some students may reason with double number lines while others may simply calculate \\(\\frac{b}{a}\\) for the given ratio \\(a : b\\).",
+    "Tyler ran 140 meters per minute.",
+    "| distance (meters) | time (minutes)",
+    "| 4,200 | 30",
+    "| 1,400 | 10",
+    "| 140 | 1",
+    "Kiran ran 210 meters per minute.",
+    "| distance (meters) | time (minutes)",
+    "| 6,300 | 30",
+    "| 2,100 | 10",
+    "| 1,050 | 5",
+    "| 210 | 1",
+    "Mai ran 140 meters per minute.",
+    "| distance (meters) | time (minutes)",
+    "| 6,300 | 45",
+    "| 140 | 1",
+    "3. Mai ran 4,200 meters in 30 minutes, because she is going the same speed as Tyler and that is how far Tyler ran in 30 minutes."
+   ],
+   "misconceptions": [
+    "If students are not sure how to begin, suggest that they try using a table or a double number line that associates meters and minutes."
+   ],
+   "synthesis": [
+    "Focus the conversation on the questions in the second half of the activity, the idea of “same speed,” and the clues that two objects are moving equally fast or slow. To begin the conversation, ask: “How can you tell when things are going the same speed?” Give a moment of quiet think time before soliciting responses. Students may say: “They keep up with one another running on a track,” “same distance in the same time,” or “same miles per hour in a car,” etc.",
+    "Invite a few students to share their analyses of how the runners compare, starting with how Tyler's workout compares to Kiran's, and how Kiran's compares to Mai's. Descriptions such as “slower,” “faster,” or “higher or lower speed” should begin to emerge. After students share their analyses of Mai and Tyler's workouts, make sure to highlight that even though they ran different distances in different amounts of time, they each ran 140 meters per minute so we can say “they ran at the same speed.” This also means that Mai and Tyler's original ratios—\\(4,\\!200 : 30\\) and \\(6,\\!300 : 45\\)—are equivalent ratios.",
+    "In the last problem, students need to understand that since Mai and Tyler ran at the same speed they traveled the same distance for the first 30 minutes on the treadmill. This may be difficult for students to articulate with precision, so allowing multiple students to share their thinking may be beneficial."
+   ],
+   "extension": {
+    "task": [
+     "Tyler and Kiran each started running at a constant speed at the same time. Tyler ran 4,200 meters in 30 minutes and Kiran ran 6,300 meters in \\(\\frac12\\) hour. Eventually, Kiran ran 1 kilometer more than Tyler. How much time did it take for this to happen?"
+    ],
+    "response": [
+     "Just over 14 minutes. Kiran runs 2100 meters more than Tyler in 30 minutes. Each minute he runs 70 meters more, so it will take \\(\\frac{1,000}{70} = 14\\frac{2}{7}\\) minutes for him to run 1 kilometer more.",
+     "| difference (meters) | time (minutes)",
+     "| 2,100 | 30",
+     "| 70 | 1",
+     "| 1,000 | \\(\\frac{1,000}{70}\\)"
+    ]
+   },
+   "ell": [
+    {
+     "routine": "MLR5: Co-Craft Questions",
+     "phase": "launch",
+     "domains": [
+      "speaking",
+      "writing"
+     ],
+     "principles": [
+      "optimize-output",
+      "cultivate-conversation"
+     ],
+     "text": "Speaking, Writing: MLR5 Co-Craft Questions. Display the constant speed of Tyler, Kiran, and Mai and ask pairs of students to write possible mathematical questions about the situation. They can also ask questions about information that might be missing, or even about assumptions that they think are important. Then, invite select pairs to share their questions with the class. Look for questions that require students to make comparisons about different speeds. Finally, reveal the actual questions students are expected to work on, and students are set to work. This routine creates space for students to produce the language of mathematical questions as well as develop the language used to talk about constant speed.",
+     "principleLine": "Design Principle(s): Optimize output (for questioning); Cultivate conversation"
+    }
+   ],
+   "access": [
+    {
+     "area": "Representation",
+     "title": "Access for Perception",
+     "text": "Representation: Access for Perception. Read the problem aloud. Students who both listen to and read the information will benefit from extra processing time. Check for understanding by asking 1-2 students to restate the problem in their own words.",
+     "supports": [
+      "Language"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "5.3",
+   "slot": "activity",
+   "title": "The Best Deal on Beans",
+   "minutes": 15,
+   "purpose": "new-concept",
+   "purposeEvidence": "The purpose of this activity is to remind students how unit price contexts work and to start to nudge them toward more efficient ways to compare unit prices.",
+   "routines": [
+    "Anticipate, Monitor, Select, Sequence, Connect",
+    "MLR1: Stronger and Clearer Each Time"
+   ],
+   "fivePractices": true,
+   "alignment": {
+    "buildingOn": [],
+    "addressing": [
+     "6.RP.A.2",
+     "6.RP.A.3.b"
+    ],
+    "buildingTowards": []
+   },
+   "narrative": [
+    "Students use and compare rates per 1 in a shopping context as they look for “the best deal.” The purpose of this activity is to remind students how unit price contexts work and to start to nudge them toward more efficient ways to compare unit prices.",
+    "While this task considers “the best deal” to mean having the lowest cost per unit, the phrase may have different meanings to students and should be discussed. For instance, students may bring up other considerations such as distance to store, store preference (e.g., some stores offer loyalty points), what else they need to purchase, and not wanting to buy in bulk when only a small quantity is needed. Discussing these real-life considerations, and choosing which to prioritize and which to disregard, is an important part of modeling with mathematics (MP4), but it is also appropriate to clarify that, for the purposes of this problem, we are looking for “the best deal” in the sense of the lowest cost per can.",
+    "As students work, monitor for students who use representations like double number lines or tables of equivalent ratios. These are useful for making sense of a strategy that divides the price by the number of cans to find the price per 1. Also monitor for students using more efficient strategies."
+   ],
+   "launch": [
+    "While some students may help with grocery shopping at home, it is likely many have not and will need extra information to understand what “the best deal” means.",
+    "Before students begin, ask if anyone is familiar with the weekly fliers that many stores send out to advertise special deals. Show students some advertisements from local stores, if available.",
+    "Ask students to share what “a good deal” and “the best deal” mean to them. Many students are likely to interpret these in terms of low prices (per item or otherwise) or “getting more for less money,” but some may have other practical or personal considerations. (Examples: it is not a good deal if you buy more than you can use before it goes bad. It is not a good deal if you have to travel a long distance to the store.) Acknowledge students’ perspectives and how “messy” such seemingly simple terms can be. Clarify that in this task, we are looking for “the best deal” in the sense of lowest cost per can.",
+    "5–10 minutes of quiet work time followed by whole-class discussion."
+   ],
+   "task": [
+    "Four different stores posted ads about special sales on 15-oz cans of baked beans.",
+    "Which store is offering the best deal? Explain your reasoning.",
+    "[image: Four different images of ads for baked beans.] [image: Expand image]",
+    "Description: <p>Four different images of ads for baked beans. The first ad has 8 cans of beans and is labeled 8 for 6 dollars. The second ad shows 10 cans of beans and is labeled 10 for 10 dollars. The third ad shows 2 cans of beans and is labeled 2 for 3 dollars. The fourth ad shows 1 can of beans and is labeled 80 cents each.</p>",
+    "[image: Four different images of ads for baked beans.]",
+    "The last store listed is also selling 28-oz cans of baked beans for $1.40 each. How does that price compare to the other prices?"
+   ],
+   "response": [
+    "1. 8 for $6 is the best deal at $0.75 per can. 2 for $3 is the worst deal at $1.50 per can. Possible strategies:",
+    "8 for $6",
+    "| price (dollars) | cans",
+    "| 6 | 8",
+    "| 3 | 4",
+    "| 0.75 | 1",
+    "$10 for 10 cans means $1 per can.",
+    "2 for $3:",
+    "| price (dollars) | cans",
+    "| 3 | 2",
+    "| 1.50 | 1",
+    "80 cents per can is the same as $0.80 per can.",
+    "2. The last store's 28 oz can for $1.40 is the same price per ounce as the first store's 15 oz can for $0.75, because \\(0.75 \\div 15 = 0.05\\) and \\(1.40 \\div 28 = 0.05\\)."
+   ],
+   "misconceptions": [
+    "At first glance, students may look only at the number of cans in each offer or only at the price. Let students know that they need to consider the price per one can."
+   ],
+   "synthesis": [
+    "If any students used a representation like a double number line or table to support their reasoning, select these students to share their strategy first. Keep these representations visible. Follow with explanations from students who used more efficient strategies, and use the representations to make connections to more efficient strategies. Highlight the use of division to compute the price per can and the use of “per 1” language. The purpose of this activity and this discussion is help students see that computing and comparing the price per 1 is an efficient way to compare rates in a unit price context."
+   ],
+   "extension": null,
+   "ell": [
+    {
+     "routine": "MLR1: Stronger and Clearer Each Time",
+     "phase": "launch",
+     "domains": [
+      "listening",
+      "writing",
+      "conversing"
+     ],
+     "principles": [
+      "optimize-output",
+      "cultivate-conversation"
+     ],
+     "text": "Writing, Listening, Conversing: MLR1 Stronger and Clearer Each Time. Display the ads about the special sales on 15-oz cans of baked beans. Ask students to write a brief explanation to answer the prompt, “Which store is offering the best deal? Explain your reasoning.” Ask each student to share their written explanation with 2–3 partners who will provide constructive feedback. Students can use ideas and language from each partner to refine and clarify the response through conversation, and then finally revise their original written response. Throughout this process, students should be pressed for details, and encouraged to press each other for details. This helps students to compare rates per 1 in a shopping context as they look for “the best deal.”",
+     "principleLine": "Design Principle(s): Optimize output (for explanation); Cultivate conversation"
+    }
+   ],
+   "access": [
+    {
+     "area": "Action and Expression",
+     "title": "Internalize Executive Functions",
+     "text": "Action and Expression: Internalize Executive Functions. Provide students with a graphic organizer to organize their problem-solving strategy. The graphic organizer should ask students to identify what they need to find out, what information is provided, how they solved the problem, and why their answer is correct.",
+     "supports": [
+      "Language",
+      "Organization"
+     ]
+    }
+   ]
+  }
+ ],
+ "lessonSynthesis": [
+  "Previously, students compared rates of different ratios by showing that they are or are not equivalent, and by using diagrams and scale factors. In prior lessons students found rates per 1 as a way to determine equivalent ratios. Here rates per 1, in the form of speed and unit price, are deliberately calculated so that they can be compared.",
+  "To help students summarize their thinking, display a list of the stated ratios in each activity and how they would be written in “per 1” rate language, as shown here:",
+  "rate as given | rate per 1",
+  "| 4,200 meters in 30 minutes | 140 meters per minute",
+  "| 6,300 meters in 30 minutes | 210 meters per minute",
+  "| 6,300 meters in 45 minutes | 140 meters per minute",
+  "| – | –",
+  "| 8 cans for \\$6 | \\$0.75 per can",
+  "| 10 cans for \\$10 | \\$1.00 per can",
+  "| 2 cans for \\$3 | \\$1.50 per can",
+  "| 80 cents per can | \\$0.80 per can",
+  "Give students some quiet time to read through the list. Then, ask 2–3 students to share which rate they prefer for comparing and why (“I prefer the rates per 1 because I can just compare two numbers, since the 1 is the same.”)."
+ ],
+ "coolDown": {
+  "id": "5.4",
+  "title": "A Sale on Sparkling Water",
+  "minutes": 5,
+  "task": [
+   "Bottles of sparkling water usually cost $1.69 each. This week they are on sale for 4 bottles for $5. You bought one last week and one this week. Did you pay more or less for the bottle this week? How much more or less?",
+   "[image: advertisement showing four green bottles with a ribbon banner across them; printed text: \"SPARKLING WATER\", \"Select Varieties (25.3 fl oz)\", \"4 for $5\", \"Regular $1.69 each\"]"
+  ],
+  "response": [
+   "I paid $0.44 less this week. Possible strategy: Since 4 bottles cost $5, each bottle costs \\(\\$5 \\div 4\\), or $1.25 this week. The difference is $0.44, because \\(1.69 - 1.25 = 0.44\\)."
+  ]
+ },
+ "summary": [
+  "Diego ran 3 kilometers in 20 minutes. Andre ran 2,550 meters in 17 minutes. Who ran faster? Since neither their distances nor their times are the same, we have two possible strategies:",
+  "Find the time each person took to travel the same distance. The person who traveled that distance in less time is faster.",
+  "Find the distance each person traveled in the same time. The person who traveled a longer distance in the same amount of time is faster.",
+  "It is often helpful to compare distances traveled in 1 unit of time (1 minute, for example), which means finding the speed such as meters per minute.",
+  "Let’s compare Diego and Andre’s speeds in meters per minute.",
+  "distance (meters) | time (minutes)",
+  "| 3,000 | 20",
+  "| 1,500 | 10",
+  "| 150 | 1",
+  "distance (meters) | time (minutes)",
+  "| 2,550 | 17",
+  "| 150 | 1",
+  "Both Diego and Andre ran 150 meters per minute, so they ran at the same speed.",
+  "Finding ratios that tell us how much of quantity \\(A\\) per 1 unit of quantity \\(B\\) is an efficient way to compare rates in different situations. Here are some familiar examples:",
+  "Car speeds in miles per hour.",
+  "Fruit and vegetable prices in dollars per pound."
+ ],
+ "vocabulary": {
+  "receptive": [
+   "(good / better / best) deal",
+   "rate per 1"
+  ],
+  "productive": [
+   "unit price",
+   "same speed"
+  ]
+ },
+ "languageUses": [],
+ "sources": [
+  "https://im.kendallhunt.com/MS/teachers/1/3/5/index.html",
+  "https://im.kendallhunt.com/MS/teachers/1/3/5/preparation.html",
+  "IM 6–8 Math Teacher Guide, Grade 6 Unit 3 (CC BY), transcribed from page images"
+ ]
+}

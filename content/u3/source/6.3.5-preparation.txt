@@ -1,23 +1,22 @@
 Source: https://im.kendallhunt.com/MS/teachers/1/3/5/preparation.html
 
 ## Lesson 5
- Comparing Speeds and Prices
+## Comparing Speeds and Prices
  View Student Lesson
 ## Lesson Narrative
- Previously, students found and used rates per 1 to solve problems in a context. This lesson is still about contexts, but it's more deliberately working toward the general understanding that when two ratios are associated with the same rate per 1, then they are equivalent ratios. Therefore, to determine whether two ratios are equivalent, it is useful to find and compare their associated rates per 1. In this lesson, we also want students to start to notice that dividing one of the quantities in a ratio by the other is an efficient way to find a rate per 1, while attending to the meaning of that number in the context (MP2).
+ Previously, students found and used rates per 1 to solve problems in a context. This lesson is still about contexts, but it's more deliberately working toward the general understanding that when two ratios are associated with the same rate per 1, then they are equivalent ratios. Therefore, to determine whether two ratios are equivalent, it is useful to find and compare their associated rates per 1. In this lesson, we also want students to start to notice that dividing one of the quantities in a ratio by the other is an efficient way to find a rate per 1, while attending to the meaning of that number in the context (MP2).
  Calculating rates per 1 is also a common way to compare rates in different situations. For example, suppose we find that one car is traveling 30 miles per hour and another car is traveling 40 miles per hour. The different rates tell us not only that the cars are traveling at different speeds, but which one is traveling faster. Similarly, knowing that one grocery store charges \$1.50 per item while another charges \$1.25 for the same item allows us to select the better deal even when the stores express the costs with rates such as “2 for \$3” or “4 for \$5.”
 ## Learning Goals
- Teacher Facing
+## Teacher Facing
  Explain (orally and in writing) that if two ratios have the same rate per 1, they are equivalent ratios.
  Justify (orally and in writing) comparisons of speeds or prices.
  Recognize that calculating how much for 1 of the same unit is a useful strategy for comparing rates. Express these rates (in spoken and written language) using the word “per” and specifying the unit.
- Student Facing
+## Student Facing
  Let’s compare some speeds and some prices.
 ## Required Preparation
  For the activity The Best Deal on Beans, consider gathering some examples of grocery store advertisements from newspapers or weekly fliers for deals like “3 for \$5.”
 ## Learning Targets
-## 
- Student Facing
+## Student Facing
  I understand that if two ratios have the same rate per 1, they are equivalent ratios.
  When measurements are expressed in different units, I can decide who is traveling faster or which item is the better deal by comparing “how much for 1” of the same unit.
 ## CCSS Standards
@@ -27,29 +26,14 @@ Source: https://im.kendallhunt.com/MS/teachers/1/3/5/preparation.html
  6.RP.A.2
  6.RP.A.3.b
 ## Glossary Entries
- unit price
- The unit price is the cost for one item or for one unit of measure. For example, if 10 feet of chain link fencing cost $150, then the unit price is \(150 \div 10\), or $15 per foot.
+ unit price The unit price is the cost for one item or for one unit of measure. For example, if 10 feet of chain link fencing cost $150, then the unit price is \(150 \div 10\), or $15 per foot.
 ## Print Formatted Materials
- Teachers with a valid work email address can click here to register or sign in for free access to Cool Down, Teacher Guide, and PowerPoint materials.
- | Student Task Statements
- | pdf
- | docx
- | Cumulative Practice Problem Set
- | pdf
- | docx
- | Cool Down
- | 
- | Log In
- | Teacher Guide
- | 
- | Log In
- | Teacher Presentation Materials
- | pdf
- | docx
+ Teachers with a valid work email address can click here to register or sign in for free access to Cool Down, Teacher Guide, and PowerPoint materials.
+ | Student Task Statements | pdf | docx 
+ | Cumulative Practice Problem Set | pdf | docx 
+ | Cool Down | | Log In 
+ | Teacher Guide | | Log In 
+ | Teacher Presentation Materials | pdf | docx 
 ## Additional Resources
- | Google Slides
- | 
- | Log In
- | PowerPoint Slides
- | 
- | Log In
+ | Google Slides | | Log In 
+ | PowerPoint Slides | | Log In

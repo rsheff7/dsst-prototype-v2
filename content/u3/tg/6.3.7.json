@@ -1,0 +1,92 @@
+{
+  "section": "Rates",
+  "activities": {
+    "7.1": {
+      "response": [
+        "5 miles in 15 minutes is the only rate not expressed as a unit rate.",
+        "3 minutes per mile is the only rate expressed as a pace instead of a speed.",
+        "20 miles per hour is the only one that sounds like we are used to talking about speeds or the only one that would be on a road sign in the United States.",
+        "32 kilometers per hour is the only one using metric units of length and is not exactly the same speed as the other 3 (32 km = 19.8839 miles)."
+      ],
+      "extensionResponse": null
+    },
+    "7.2": {
+      "response": [
+        "1.",
+        "| number of burritos | cost in dollars | unit price (dollars per burrito)",
+        "| 2 | 14 | 7",
+        "| 4 | 28 | 7",
+        "| 5 | 35 | 7",
+        "| 10 | 70 | 7",
+        "| \\(b\\) | \\(b \\boldcdot (7)\\) | 7",
+        "2. Answers vary. Sample responses: The ratios are equivalent. No matter how many burritos you buy, it costs $7 per burrito.",
+        "3.",
+        "|  | number of burritos | cost in dollars | unit price (dollars per burrito)",
+        "| Noah | \\(b\\) | \\(c\\) | \\(\\frac{c}{b}\\)",
+        "| Lin | \\(2 \\boldcdot b\\) | \\(2 \\boldcdot c\\) | \\(\\frac{c}{b}\\)",
+        "4. If you have \\(b\\) items for \\(c\\) dollars, then the unit rate is \\(\\frac{c}{b}\\) dollars per burrito. If you have \\(2b\\) items for \\(2c\\) dollars, then the unit rate is \\(\\frac{2c}{2b}\\) dollars per burrito. But \\(\\frac{c}{b}\\) and \\(\\frac{2c}{2b}\\) are equivalent fractions, so Noah and Lin each paid $\\(\\frac{c}{b}\\) per burrito."
+      ],
+      "extensionResponse": null
+    },
+    "7.3": {
+      "response": [
+        "1.",
+        "| time in hours | number of bracelets | speed (bracelets per hour)",
+        "| 2 | 12 | 6",
+        "| 5 | 30 | 6",
+        "| 7 | 42 | 6",
+        "| 11 | 66 | 6",
+        "| \\(16\\frac{2}{3}\\) | 100 | 6",
+        "Since the number of bracelets divided by the time in hours is 6 bracelets per hour, then the time in hours multiplied by 6 should give the number of bracelets. Using similar thinking, the number of bracelets divided by 6 gives the time in hours.",
+        "2.",
+        "| number of burritos | cost in dollars | unit price (dollars per burrito)",
+        "| 2 | 14 | 7",
+        "| 4 | 28 | 7",
+        "| 5 | 35 | 7",
+        "| 10 | 70 | 7",
+        "3. Answers vary. Sample response: Yes, the strategy works and my table matches. To figure out cost in dollars from number of burritos and dollars per burrito, I can multiply 7 times the number of burritos. For example, 5 burritos cost $35. To find values in the first column using the second two columns, I can divide cost in dollars by dollars per burrito. For example, 14 divided by 7 is 2, so I can buy 2 burritos for $14."
+      ],
+      "extensionResponse": null
+    },
+    "7.4": {
+      "response": [
+        "To find the cups of applesauce, multiply the pounds of apples by 1.5.",
+        "To find the pounds of apples, divide the cups of applesauce by 1.5, or multiply by \\(\\frac{2}{3}\\).",
+        "| pounds of apples | cups of applesauce",
+        "| 4 | 6",
+        "| 7 | 10.5",
+        "| 10 | 15",
+        "| 6 | 9",
+        "| \\(13\\frac{1}{3}\\) | 20"
+      ],
+      "extensionResponse": [
+        "1. 1 minute. Jada eats \\(\\frac{2}{5}\\) scoop in 1 minute and Noah eats \\(\\frac{3}{5}\\) scoop in 1 minute. So together, they eat 1 scoop in 1 minute.",
+        "2. 200 minutes or 3 hours and 20 minutes. The rate for Andre's hose is 2.5 gallons per minute, and the rate for his neighbor's hose is 1.25 gallons per minute. If they use the hoses at the same time, the pool will fill at a rate of 3.75 gallons per minute. \\(750 \\div 3.75 = 200\\), so it will take 200 minutes for the hoses to emit 750 gallons of water."
+      ]
+    }
+  },
+  "coolDown": {
+    "task": [
+      "A cheetah can run at its top speed for about 25 seconds. Complete the table to represent a cheetah running at a constant speed. Explain or show your reasoning.",
+      "| time (seconds) | distance (meters) | speed (meters per second)",
+      "| 4 | 120 | ",
+      "| 25 |  | ",
+      "|  | 270 | "
+    ],
+    "response": [
+      "| time (seconds) | distance (meters) | speed (meters per second)",
+      "| 4 | 120 | 30",
+      "| 25 | 750 | 30",
+      "| 9 | 270 | 30",
+      "Sample reasoning: Since the cheetah runs 120 meters in 4 seconds, this is 30 meters per second because \\(120 \\div 4 = 30\\). Since it says the cheetah runs at a constant speed, the speed in each row is 30 meters per second. To find the distance run in 25 seconds, multiply 25 by 30. To find the time it takes to run 270 meters, divide 270 by 30."
+    ]
+  },
+  "pages": [126, 129, 132, 133, 134, 135, 136, 137],
+  "notes": [
+    "Image filenames are offset from printed page numbers: p128.png is printed page 126, p131.png is 129, p134.png is 132, p135.png is 133, p136.png is 134, p137.png is 135, p138.png is 136, p139.png is 137. Printed page 128 (p130.png) and 131 (p133.png) were not among the rendered images; neither was needed, since the 7.2 and 7.3 Student Responses are complete on printed pages 129 and 132–133.",
+    "7.1 response items are printed as unnumbered bullets; 'exactly' is italicised in the fourth bullet.",
+    "In the 7.2 and 7.3 responses, the item numbers '1.', '2.' and '3.' are printed beside tables with no other text, so they are given as their own entries before the table rows.",
+    "In the 7.2 response item 3 table, the first header cell is empty in print and is kept as an empty cell.",
+    "No 'Are You Ready for More?' appears for 7.1, 7.2 or 7.3 in the pages provided; only 7.4 has an extension."
+  ]
+}

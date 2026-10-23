@@ -1,0 +1,309 @@
+{
+ "schemaVersion": 1,
+ "code": "6.3",
+ "title": "Unit Rates and Percentages",
+ "sections": [
+  {
+   "title": "Units of Measurement",
+   "lessons": [
+    "6.3.1"
+   ]
+  },
+  {
+   "title": "Unit Conversion",
+   "lessons": [
+    "6.3.2",
+    "6.3.3",
+    "6.3.4"
+   ]
+  },
+  {
+   "title": "Rates",
+   "lessons": [
+    "6.3.5",
+    "6.3.6",
+    "6.3.7",
+    "6.3.8",
+    "6.3.9"
+   ]
+  },
+  {
+   "title": "Percentages",
+   "lessons": [
+    "6.3.10",
+    "6.3.11",
+    "6.3.12",
+    "6.3.13",
+    "6.3.14",
+    "6.3.15",
+    "6.3.16"
+   ]
+  },
+  {
+   "title": "Let’s Put it to Work",
+   "lessons": [
+    "6.3.17"
+   ]
+  }
+ ],
+ "lessonTitles": {
+  "6.3.1": "The Burj Khalifa",
+  "6.3.2": "Anchoring Units of Measurement",
+  "6.3.3": "Measuring with Different-Sized Units",
+  "6.3.4": "Converting Units",
+  "6.3.5": "Comparing Speeds and Prices",
+  "6.3.6": "Interpreting Rates",
+  "6.3.7": "Equivalent Ratios Have the Same Unit Rates",
+  "6.3.8": "More about Constant Speed",
+  "6.3.9": "Solving Rate Problems",
+  "6.3.10": "What Are Percentages?",
+  "6.3.11": "Percentages and Double Number Lines",
+  "6.3.12": "Percentages and Tape Diagrams",
+  "6.3.13": "Benchmark Percentages",
+  "6.3.14": "Solving Percentage Problems",
+  "6.3.15": "Finding This Percent of That",
+  "6.3.16": "Finding the Percentage",
+  "6.3.17": "Painting a Room"
+ },
+ "built": [
+  "6.3.5",
+  "6.3.6",
+  "6.3.7",
+  "6.3.8",
+  "6.3.9"
+ ],
+ "narrative": [
+  "In the previous unit, students began to develop an understanding of ratios and rates. They started to describe situations using terms such as “ratio,” “rate,” “equivalent ratios,” “per,” “constant speed,” and “constant rate” (MP6). They understood specific instances of the idea that \\(a : b\\) is equivalent to every other ratio of the form \\(sa : sb\\), where \\(s\\) is a positive number. They learned that “at this rate” or “at the same rate” signals a situation that is characterized by equivalent ratios. Although the usefulness of ratios of the form \\(\\frac{a}{b} : 1\\) and \\(1 : \\frac{b}{a}\\) was highlighted, the term “unit rate” was not introduced.",
+  "In this unit, students find the two values \\(\\frac{a}{b}\\) and \\(\\frac{b}{a}\\) that are associated with the ratio \\(a : b\\), and interpret them as rates per 1. For example, if a person walks 13 meters in 10 seconds at a constant rate, that means they walked at a speed of \\(\\frac{13}{10}\\) meters per 1 second and a pace of \\(\\frac{10}{13}\\) seconds per 1 meter.",
+  "Students learn that one of the two values (\\(\\frac{a}{b}\\) or \\(\\frac{b}{a}\\)) may be more useful than the other in reasoning about a given situation. They find and use rates per 1 to solve problems set in contexts (MP2), attending to units and specifying units in their answers. For example, given item amounts and their costs, which is the better deal? Or given distances and times, which object is moving faster? Measurement conversions provide other opportunities to use rates.",
+  "Students observe that if two ratios \\(a : b\\) and \\(c : d\\) are equivalent, then \\(\\frac{a}{b} = \\frac{c}{d}\\). The values \\(\\frac{a}{b}\\) and \\(\\frac{c}{d}\\) are called unit rates because they can be interpreted in the context from which they arose as rates per unit. Students note that in a table of equivalent ratios, the entries in one column are produced by multiplying a unit rate by the corresponding entries in the other column. Students learn that “percent” means “per 100” and indicates a rate. Just as a unit rate can be interpreted in context as a rate per 1, a percentage can be interpreted in the context from which it arose as a rate per 100. For example, suppose a beverage is made by mixing 1 cup of juice with 9 cups of water. The percentage of juice in 20 cups of the beverage is 2 cups and 10 percent of the beverage is juice. Interpreting the 10 as a rate: “there are 10 cups of juice per 100 cups of beverage” or, more generally, “there are 10 units of juice per 100 units of beverage.” The percentage—and the rate—indicate equivalent ratios of juice to beverage, e.g., 2 cups to 20 cups and 10 cups to 100 cups.",
+  "In this unit, tables and double number line diagrams are intended to help students connect percentages with equivalent ratios, and reinforce an understanding of percentages as rates per 100. Students should internalize the meaning of important benchmark percentages, for example, they should connect “75% of a number” with “\\(\\frac{3}{4}\\) times a number” and “0.75 times a number.” Note that 75% (“seventy-five per hundred”) does not represent a fraction or decimal (which are numbers), but that “75% of a number” is calculated as a fraction of or a decimal times the number.",
+  "Work done in grades 4 and 5 supports learning about the concept of a percentage. In grade 5, students understand why multiplying a given number by a fraction less than 1 results in a product that is less than the original number, and why multiplying a given number by a fraction greater than 1 results in a product that is greater than the original number. This understanding of multiplication as scaling comes into play as students interpret, for example,",
+  "35% of 2 cups of juice as \\(\\frac{35}{100} \\boldcdot 2\\) cups of juice.",
+  "250% of 2 cups of juice as \\(\\frac{250}{100} \\boldcdot 2\\) cups of juice."
+ ],
+ "languageProgression": [
+  {
+   "use": "interpret",
+   "items": [
+    {
+     "text": "a context in which a identifying a unit rate is helpful (Lesson 1)",
+     "lessons": [
+      "6.3.1"
+     ]
+    },
+    {
+     "text": "unit rates in different contexts (Lesson 6)",
+     "lessons": [
+      "6.3.6"
+     ]
+    },
+    {
+     "text": "situations involving constant speed (Lesson 8)",
+     "lessons": [
+      "6.3.8"
+     ]
+    },
+    {
+     "text": "tape diagrams used to represent percentages (Lesson 12)",
+     "lessons": [
+      "6.3.12"
+     ]
+    },
+    {
+     "text": "situations involving measurement, rates, and cost (Lesson 17)",
+     "lessons": [
+      "6.3.17"
+     ]
+    }
+   ]
+  },
+  {
+   "use": "explain",
+   "items": [
+    {
+     "text": "reasoning for estimating and sorting measurements (Lesson 2)",
+     "lessons": [
+      "6.3.2"
+     ]
+    },
+    {
+     "text": "reasoning about relative sizes of units of measurement (Lesson 3)",
+     "lessons": [
+      "6.3.3"
+     ]
+    },
+    {
+     "text": "how to make decisions using rates (Lesson 9)",
+     "lessons": [
+      "6.3.9"
+     ]
+    },
+    {
+     "text": "reasoning about percentages (Lesson 11)",
+     "lessons": [
+      "6.3.11"
+     ]
+    },
+    {
+     "text": "strategies for finding missing information involving percentages (Lesson 14)",
+     "lessons": [
+      "6.3.14"
+     ]
+    }
+   ]
+  },
+  {
+   "use": "justify",
+   "items": [
+    {
+     "text": "reasoning about equivalent ratios and unit rates (Lesson 7)",
+     "lessons": [
+      "6.3.7"
+     ]
+    },
+    {
+     "text": "reasoning about finding percentages (Lessons 15 and 16)",
+     "lessons": [
+      "6.3.15",
+      "6.3.16"
+     ]
+    },
+    {
+     "text": "reasoning about costs and time (Lesson 17)",
+     "lessons": [
+      "6.3.17"
+     ]
+    }
+   ]
+  }
+ ],
+ "languageAlso": [
+  "In addition, students have opportunities to generalize about unit ratios, unit rates, and percentages from multiple contexts and with reference to benchmark percentages, tape diagrams, and other mathematical representations. Students can also be expected to describe measurements and observations, describe and compare situations involving percentages, compare speeds, compare prices, and critique reasoning about costs and time."
+ ],
+ "terminology": {
+  "6.3.1": {
+   "receptive": [],
+   "productive": [
+    "at this rate"
+   ]
+  },
+  "6.3.3": {
+   "receptive": [
+    "order"
+   ],
+   "productive": []
+  },
+  "6.3.5": {
+   "receptive": [
+    "(good / better / best) deal",
+    "rate per 1"
+   ],
+   "productive": [
+    "unit price",
+    "same speed"
+   ]
+  },
+  "6.3.6": {
+   "receptive": [
+    "unit rate"
+   ],
+   "productive": [
+    "gallon"
+   ]
+  },
+  "6.3.7": {
+   "receptive": [
+    "result"
+   ],
+   "productive": [
+    "unit rate"
+   ]
+  },
+  "6.3.8": {
+   "receptive": [
+    "pace"
+   ],
+   "productive": [
+    "speed"
+   ]
+  },
+  "6.3.9": {
+   "receptive": [],
+   "productive": [
+    "meters per second",
+    "(good / better / best) deal"
+   ]
+  },
+  "6.3.10": {
+   "receptive": [
+    "percentage",
+    "___% of"
+   ],
+   "productive": []
+  },
+  "6.3.11": {
+   "receptive": [],
+   "productive": [
+    "tick marks"
+   ]
+  },
+  "6.3.12": {
+   "receptive": [
+    "___% as much"
+   ],
+   "productive": [
+    "tape diagram",
+    "___% of"
+   ]
+  },
+  "6.3.14": {
+   "receptive": [
+    "___% of"
+   ],
+   "productive": []
+  },
+  "6.3.15": {
+   "receptive": [
+    "regular price",
+    "sale price"
+   ],
+   "productive": [
+    "percentage"
+   ]
+  }
+ },
+ "readinessCheck": [
+  {
+   "item": 4,
+   "firstIn": "6.3.5",
+   "note": [
+    "Students will need to perform division when calculating unit rates and percentages. Keep an eye out for students who reverse the order of division or who misplace the decimal point."
+   ],
+   "move": "If most students struggle with this item, plan to use items from the Practice Problems in Lessons 1, 2, and 3 to review division with decimal solutions before doing Lesson 5. In this Lesson, Activity 3 will offer more practice using a shopping context. Estimation warm-ups such as the warm-up in Lesson 5, Activity 1 can also be used to help students check the reasonableness of their answers.",
+   "task": [
+    "Divide. Express each answer as a decimal.",
+    "\\(5 \\div 4\\) | \\(30 \\div 12\\) | \\(4 \\div 5\\) | \\(12 \\div 30\\)"
+   ],
+   "answers": "1. 1.25 2. 0.8 3. 2.5 4. 0.4"
+  },
+  {
+   "item": 6,
+   "firstIn": "6.3.8",
+   "note": [
+    "The fractions in this problem are all multiples of the “benchmark” fractions \\(\\frac{1}{100}\\), \\(\\frac{1}{2}\\), and \\(\\frac{1}{4}\\). Check if students can recognize that some of the fractions are numbers that are greater than one. For incorrect answers, note whether students are still using multiples of \\(\\frac{1}{100}\\), \\(\\frac{1}{2}\\), or \\(\\frac{1}{4}\\).",
+    "Some students may write the number 0.9 as 0.90. While this is technically correct, it is worth checking whether these students understand that 0.9 and 0.90 represent the same number."
+   ],
+   "move": "If most students struggle with this item, plan to attend to the relationship between fractions and decimals in Lesson 8 Activity 1. For this task students will need to be fluent in their use of fractions and decimals to make sense of unit rates and scaling.",
+   "task": [
+    "Write each fraction as a decimal.",
+    "\\(\\frac{65}{100}\\) | \\(\\frac{90}{100}\\) | \\(\\frac{140}{100}\\) | \\(\\frac{1}{2}\\) | \\(\\frac{1}{4}\\) | \\(\\frac{3}{4}\\) | \\(\\frac{5}{4}\\) | \\(\\frac{3}{2}\\)"
+   ],
+   "answers": "1. 0.65 2. 0.9 3. 1.4 4. 0.5 5. 0.25 6. 0.75 7. 1.25 8. 1.5"
+  }
+ ],
+ "materials": [],
+ "sources": [
+  "IM 6–8 Math Teacher Guide, Grade 6 Unit 3 (CC BY), printed pages 3–5 and 9–11, transcribed in content/u3/source/tg-unit.txt"
+ ]
+}

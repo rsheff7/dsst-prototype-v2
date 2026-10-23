@@ -1,20 +1,19 @@
 Source: https://im.kendallhunt.com/MS/teachers/1/3/6/preparation.html
 
 ## Lesson 6
- Interpreting Rates
+## Interpreting Rates
  View Student Lesson
 ## Lesson Narrative
- In previous lessons students have calculated and worked with rates per 1. The purpose of this lesson is to introduce the two unit rates, \(\frac{a}{b}\) and \(\frac{b}{a}\), associated with a ratio \(a:b\). Each unit rate tells us how many of one quantity in the ratio there is per unit of the other quantity. An important goal is to give students the opportunity to see that both unit rates describe the same situation, but that one or the other might be preferable for answering a given question about the situation. Another goal is for students to recognize that they can just divide one number in a ratio by another to find a unit rate, rather than using a table or another representation as an intermediate step. The development of such fluency begins in this section and continues over time. In the Cooking Oatmeal activity, students have explicit opportunities to justify their reasoning and critique the reasoning of others (MP3).
+ In previous lessons students have calculated and worked with rates per 1. The purpose of this lesson is to introduce the two unit rates, \(\frac{a}{b}\) and \(\frac{b}{a}\), associated with a ratio \(a:b\). Each unit rate tells us how many of one quantity in the ratio there is per unit of the other quantity. An important goal is to give students the opportunity to see that both unit rates describe the same situation, but that one or the other might be preferable for answering a given question about the situation. Another goal is for students to recognize that they can just divide one number in a ratio by another to find a unit rate, rather than using a table or another representation as an intermediate step. The development of such fluency begins in this section and continues over time. In the Cooking Oatmeal activity, students have explicit opportunities to justify their reasoning and critique the reasoning of others (MP3).
 ## Learning Goals
- Teacher Facing
+## Teacher Facing
  Calculate and interpret the two unit rates associated with a ratio, i.e., $\frac{a}{b}$ and $\frac{b}{a}$ for the ratio $a:b$.
  Choose which unit rate to use to solve a given problem and explain the choice (orally and in writing).
  Comprehend the term “unit rate” (in spoken and written language) refers to a rate per 1.
- Student Facing
+## Student Facing
  Let’s explore unit rates.
 ## Learning Targets
-## 
- Student Facing
+## Student Facing
  I can choose which unit rate to use based on how I plan to solve the problem.
  When I have a ratio, I can calculate its two unit rates and explain what each of them means in the situation.
 ## CCSS Standards
@@ -24,30 +23,15 @@ Source: https://im.kendallhunt.com/MS/teachers/1/3/6/preparation.html
  Building Towards
  6.RP.A.2
 ## Glossary Entries
- unit rate
- A unit rate is a rate per 1.
- For example, 12 people share 2 pies equally. One unit rate is 6 people per pie, because \(12 \div 2 = 6\). The other unit rate is \(\frac16\) of a pie per person, because \(2 \div 12 = \frac16\).
+ unit rate A unit rate is a rate per 1.
+ For example, 12 people share 2 pies equally. One unit rate is 6 people per pie, because \(12 \div 2 = 6\). The other unit rate is \(\frac16\) of a pie per person, because \(2 \div 12 = \frac16\).
 ## Print Formatted Materials
- Teachers with a valid work email address can click here to register or sign in for free access to Cool Down, Teacher Guide, and PowerPoint materials.
- | Student Task Statements
- | pdf
- | docx
- | Cumulative Practice Problem Set
- | pdf
- | docx
- | Cool Down
- | 
- | Log In
- | Teacher Guide
- | 
- | Log In
- | Teacher Presentation Materials
- | pdf
- | docx
+ Teachers with a valid work email address can click here to register or sign in for free access to Cool Down, Teacher Guide, and PowerPoint materials.
+ | Student Task Statements | pdf | docx 
+ | Cumulative Practice Problem Set | pdf | docx 
+ | Cool Down | | Log In 
+ | Teacher Guide | | Log In 
+ | Teacher Presentation Materials | pdf | docx 
 ## Additional Resources
- | Google Slides
- | 
- | Log In
- | PowerPoint Slides
- | 
- | Log In
+ | Google Slides | | Log In 
+ | PowerPoint Slides | | Log In

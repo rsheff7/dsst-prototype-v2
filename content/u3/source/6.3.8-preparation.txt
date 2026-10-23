@@ -1,55 +1,38 @@
 Source: https://im.kendallhunt.com/MS/teachers/1/3/8/preparation.html
 
 ## Lesson 8
- More about Constant Speed
+## More about Constant Speed
  View Student Lesson
 ## Lesson Narrative
  This lesson allows students to practice working with equivalent ratios, tables that represent them, and associated unit rates in the familiar context of speed, time, and distance. Students use unit rates (speed or pace) and ratios (of time and distance) to find unknown quantities (e.g., given distances and times, find a constant speed or pace; and given a speed or pace, solve problems about distance and time).
 ## Learning Goals
- Teacher Facing
+## Teacher Facing
  Calculate unit rates that represent speed or pace, use them to determine unknown distances or elapsed times, and explain (orally) the solution method.
  Interpret a verbal (written) description of a situation involving two objects moving at constant speeds, and create a diagram or table to represent the situation.
- Student Facing
+## Student Facing
  Let’s investigate constant speed some more.
 ## Required Materials
  Tools for creating a visual display
 ## Required Preparation
  Consider checking in advance whether there is a rail trail in your community, about which you could tell students during the Picnics on A Rail Trail activity.
 ## Learning Targets
-## 
- Student Facing
+## Student Facing
  I can solve more complicated problems about constant speed situations.
 ## CCSS Standards
  Addressing
  6.RP.A.3
 ## Glossary Entries
- pace
- Pace is one way to describe how fast something is moving. Pace tells how much time it takes the object to travel a certain distance.
+ pace Pace is one way to describe how fast something is moving. Pace tells how much time it takes the object to travel a certain distance.
  For example, Diego walks at a pace of 10 minutes per mile. Elena walks at a pace of 11 minutes per mile. Elena walks slower than Diego, because it takes her more time to travel the same distance.
- speed
- Speed is one way to describe how fast something is moving. Speed tells how much distance the object travels in a certain amount of time.
- For example, Tyler walks at a speed of 4 miles per hour. Priya walks at a speed of 5 miles per hour. Priya walks faster than Tyler, because she travels more distance in the same amount of time.
+ speed Speed is one way to describe how fast something is moving. Speed tells how much distance the object travels in a certain amount of time.
+ For example, Tyler walks at a speed of 4 miles per hour. Priya walks at a speed of 5 miles per hour. Priya walks faster than Tyler, because she travels more distance in the same amount of time.
 ## Print Formatted Materials
- Teachers with a valid work email address can click here to register or sign in for free access to Cool Down, Teacher Guide, and PowerPoint materials.
- | Student Task Statements
- | pdf
- | docx
- | Cumulative Practice Problem Set
- | pdf
- | docx
- | Cool Down
- | 
- | Log In
- | Teacher Guide
- | 
- | Log In
- | Teacher Presentation Materials
- | pdf
- | docx
+ Teachers with a valid work email address can click here to register or sign in for free access to Cool Down, Teacher Guide, and PowerPoint materials.
+ | Student Task Statements | pdf | docx 
+ | Cumulative Practice Problem Set | pdf | docx 
+ | Cool Down | | Log In 
+ | Teacher Guide | | Log In 
+ | Teacher Presentation Materials | pdf | docx 
 ## Additional Resources
- | Google Slides
- | 
- | Log In
- | PowerPoint Slides
- | 
- | Log In
+ | Google Slides | | Log In 
+ | PowerPoint Slides | | Log In
