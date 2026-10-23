@@ -1,0 +1,187 @@
+Source: https://im.kendallhunt.com/MS/teachers/1/3/6/index.html
+
+## Lesson 6
+ Interpreting Rates
+ View Student Lesson
+## 6.1: Something per Something (5 minutes)
+ CCSS Standards
+ Building Towards
+ 6.RP.A.2
+## Warm-up
+ This warm-up activates students’ prior knowledge around “something per something” language. It gives them a chance to both recall and hear examples and contexts in which such language was used, either in past lessons or outside of the classroom, in preparation for the work ahead.
+## Launch
+ Arrange students in groups of 3–4. Give students a minute of quiet think time to complete the first question, and then 2 minutes to share their ideas in groups and compile a list. Consider asking one or two volunteers to share an example or sharing one of your own. Challenge students to come up with something that is not an example of either unit price or speed, since these have already been studied.
+ If students are stuck, encourage them to think back to past lessons and see if they could remember any class activities in which the language of “per” was used or could be used.
+ Student Facing
+ Think of two things you have heard described in terms of “something per something.”
+ Share your ideas with your group, and listen to everyone else’s idea. Make a group list of all unique ideas. Be prepared to share these with the class.
+## Student Response
+ Teachers with a valid work email address can click here to register or sign in for free access to Student Response.
+## Activity Synthesis
+ Ask each group to share 1–2 of their examples and record unique responses for all to see.
+ After each group has shared, select one response (or more than one if time allows) that is familiar to students. For example, if one of the groups proposed 30 miles per hour, ask “What are some things we know for sure about an object moving 30 miles per hour?” (The object is traveling a distance of 30 miles every 1 hour.)
+ It is not necessary to emphasize “per 1” language at this point. The following activities in the lesson focus on the usefulness of “per 1” in the contexts of comparing multiple ratios.
+## 6.2: Cooking Oatmeal (15 minutes)
+ CCSS Standards
+ Addressing
+ 6.RP.A.3.b
+ Routines and Materials
+ Instructional Routines
+ MLR3: Clarify, Critique, Correct
+ Think Pair Share
+## Activity
+ In this activity, students explore two unit rates associated with the ratio, think about their meanings, and use both to solve problems. The goals are to:
+ Help students see that for every context that can be represented with a ratio \(a:b\) and an associated unit rate \(\frac{b}{a}\), there is another unit rate \(\frac{a}{b}\) that also has meaning and purpose within the context.
+ Encourage students to choose a unit rate flexibly depending on the question at hand. Students begin by reasoning whether the two rates per 1 (cups of oats per 1 cup of water, or cups of water per 1 cup of oats) accurately convey a given oatmeal recipe. As students work and discuss, notice those who use different representations (a table or a double number line diagram) or different arguments to make their case (MP3). Once students conclude that both Priya and Han's rates are valid, they use the rates to determine unknown amounts of oats or water.
+## Launch
+ Some students may not be familiar with oatmeal; others may only have experience making instant oatmeal, which comes in pre-measured packets. Explain that oatmeal is made by mixing a specific ratio of oats to boiling water.
+ Arrange students in groups of 2. Give students 2–3 minutes of quiet think time for the first question. Ask them to pause and share their response with their partner afterwards. Encourage partners to reach a consensus and to be prepared to justify their thinking. See MLR 3 (Clarify, Critique, Correct).
+ After partners have conferred, select several students to explain their reasoning and display their work for all to see. When the class is convinced that both Priya and Han are correct, ask students to complete the rest of the activity.
+ Action and Expression: Develop Expression and Communication. Invite students to talk about their ideas with their partner before writing them down. Display sentence frames to support students when they explain their ideas. For example, “I noticed _____ so I . . .”, “Both _____ and _____ are alike because . . .”, and “How do you know . . . ?”
+ Supports accessibility for: Language; Organization
+ Student Facing
+ Priya, Han, Lin, and Diego are all on a camping trip with their families. The first morning, Priya and Han make oatmeal for the group. The instructions for a large batch say, “Bring 15 cups of water to a boil, and then add 6 cups of oats.”
+ Priya says, “The ratio of the cups of oats to the cups of water is \(6:15\). That’s 0.4 cups of oats per cup of water.”
+ Han says, “The ratio of the cups of water to the cups of oats is \(15:6\). That’s 2.5 cups of water per cup of oats.”
+ Who is correct? Explain your reasoning. If you get stuck, consider using the table.
+ | 
+ | water (cups)
+ | oats (cups)
+ | 15
+ | 6
+ | 1
+ | 
+ | 
+ | 1
+ The next weekend after the camping trip, Lin and Diego each decide to cook a large batch of oatmeal to have breakfasts ready for the whole week.
+ Lin decides to cook 5 cups of oats. How many cups of water should she boil? 
+ Diego boils 10 cups of water. How many cups of oats should he add into the water? 
+ Did you use Priya’s rate (0.4 cups of oats per cup of water) or Han’s rate (2.5 cups of water per cup of oats) to help you answer each of the previous two questions? Why? 
+## Student Response
+ Teachers with a valid work email address can click here to register or sign in for free access to Student Response.
+## Anticipated Misconceptions
+ Some students may think that Priya and Han cannot both be right because they came up with different numbers. Ask them to explain what each number means, so that they have a chance to notice that the numbers mean different things. Point out that the positioning of the number 1 appears in different columns within the table. 
+## Activity Synthesis
+ Focus the discussion on students’ responses to the last question and how they knew which rate to use to solve for unknown amounts of oats and water. If not uncovered in students’ explanations, highlight that when the amount of oats is known but the amount of water is not, it helps to use the “per 1 cup of oats” rate; a simple multiplication will tell us the missing quantity. Conversely, if the amount of water is known, it helps to use the “per 1 cup of water” rate. Since tables of equivalent ratios are familiar, use the completed table to support reasoning about how to use particular numbers to solve particular problems.
+ Consider connecting this idea to students’ previous work. For example, when finding out how much time it would take to wash all the windows on the Burj Khalifa, it was simpler to use the “minutes per window” rate than the other way around, since the number of windows is known.
+ Leave the table for this activity displayed and to serve as a reference in the next activity.
+ Writing, Listening, Conversing: MLR3 Clarify, Critique, and Correct. Before discussing students’ approaches to the final question. Present the following explanation: “I did not use either Priya’s rate (0.4 cups of oats per cup of water) or Han’s rate (2.5 cups of water per cup of oats) because they are not equal.” Ask students to critique the reasoning and identify the error(s), as they work in pairs to propose an improved response that details how either rate can be used to answer the question. If students can’t make the connections between these two rates, consider asking them what each number means. This will help students reflect on efficiently using a unit rate associated with the ratio, cups of water to the cups of oats.
+ Design Principle(s): Optimize output (for explanation); Cultivate conversation; Maximize meta-awareness
+## 6.3: Cheesecake, Milk, and Raffle Tickets (20 minutes)
+ CCSS Standards
+ Addressing
+ 6.RP.A.2
+ 6.RP.A.3.b
+ Routines and Materials
+ Instructional Routines
+ MLR6: Three Reads
+## Activity
+ In this task, students calculate and interpret both \(\frac{a}{b}\) and \(\frac{b}{a}\) from a ratio \(a:b\) presented in a context. They work with less-familiar units. The term unit rate is introduced so that students have a general name for a “how many per 1” quantity.
+ In the first half of the task, students practice computing unit rates from ratios. In the second half they practice selecting the better unit rate to use (\(\frac{a}{b}\) or \(\frac{b}{a}\)) based on the question posed.
+ As students work on the second half of the task, identify 1–2 students per question to share their choice of unit rate and how it was used to answer the question.
+## Launch
+ Recap that in the previous activity the ratio of 15 cups water for every 6 cups oats can be expressed as two rates “per 1”. These rates are 0.4 cups of oats per cup of water or 2.5 cups of water per cup of oats. Emphasize that, in a table, each of these rates reflects a value paired with a “1” in a row, and that both can be useful depending on the problem at hand. Tell students that we call 0.4 and 2.5 “unit rates” and that a unit rate means “the amount of one quantity for 1 of another quantity.”
+ Arrange students in groups of 2. Tell students that they will now solve some problems using unit rates. Give students 3–4 minutes to complete the first half of the task (the first three problems). Ask them to share their responses with their partner and come to an agreement before moving on to the second half. Clarify that “oz” is an abbreviation for “ounce.”
+ Representation: Develop Language and Symbols. Create a display of important terms and vocabulary. Invite students to suggest language or diagrams to include that will support their understanding of these terms. Include the following term and maintain the display for reference throughout the unit: unit rate.
+ Supports accessibility for: Conceptual processing; Language
+ Writing, Listening: MLR6 Three Reads. Use this routine to set students up to comprehend each situation, without solving the questions for them. In the first read, students read the situation with the goal of comprehending the situation (e.g., a cheesecake recipe contains cream cheese and sugar, Mai’s family drinks milk regularly, Tyler has raffle tickets). In the second read, ask students to identify the important quantities by asking them what can be counted or measured (e.g., 12 oz of cream cheese with 15 oz of sugar, 10 gallons of milk every 6 weeks, $16 for 4 raffle tickets). In the third read, ask students to brainstorm possible mathematical solution strategies to answer the question. This helps students connect the ratio language used in the problem to identify a strategy for finding a unit rate.
+ Design Principle(s): Support sense-making
+ Student Facing
+ For each situation, find the unit rates.
+ A cheesecake recipe says, “Mix 12 oz of cream cheese with 15 oz of sugar.”
+ How many ounces of cream cheese are there for every ounce of sugar?
+ How many ounces of sugar is that for every ounce of cream cheese?
+ Mai’s family drinks a total of 10 gallons of milk every 6 weeks.
+ How many gallons of milk does the family drink per week?
+ How many weeks does it take the family to consume 1 gallon of milk?
+ Tyler paid $16 for 4 raffle tickets.
+ What is the price per ticket?
+ How many tickets is that per dollar?
+ For each problem, decide which unit rate from the previous situations you prefer to use. Next, solve the problem, and show your thinking.
+ If Lin wants to make extra cheesecake filling, how much cream cheese will she need to mix with 35 ounces of sugar?
+ How many weeks will it take Mai’s family to finish 3 gallons of milk?
+ How much would all 1,000 raffle tickets cost?
+## Student Response
+ Teachers with a valid work email address can click here to register or sign in for free access to Student Response.
+ Student Facing
+## Are you ready for more?
+ Write a “deal” on tickets for Tyler’s raffle that sounds good, but is actually a little worse than just buying tickets at the normal price.
+## Student Response
+ Teachers with a valid work email address can click here to register or sign in for free access to Extension Student Response.
+## Anticipated Misconceptions
+ If students are not sure how to use the unit rates they found for each situation to answer the second half of the task, remind them of how the oatmeal problem was solved. Suggest that this problem is similar because they can scale up from a unit rate to answer the questions.
+## Activity Synthesis
+ Invite previously identified students to share their work on the second half (the last three questions) of the task.
+ Though the task prompts students to think in terms of unit rate, some students may still reason in ways that feel safer. For example, to find out how much cream cheese Lin would mix with 35 oz of sugar, they may double the 12 oz of cream cheese to 15 oz of sugar ratio to obtain 24 oz of cream cheese for 30 oz of sugar, and then add 4 oz more of cream cheese for the additional 5 oz of sugar. Such lines of reasoning show depth of understanding and should be celebrated. Guide students to also see, however, that some problems (such as the milk problem) can be more efficiently solved using unit rates.
+ For the ticket problem, students may comment that \(\frac14\) of a ticket costing a dollar does not make sense, since it is not possible to purchase \(\frac14\) of a ticket. Take this opportunity to applaud the student(s) for reasoning about the interpretation of the number in the context, which is an example of engaging in MP2. If students do not raise this concern, ask: “How can \(\frac14\) of a ticket costing a dollar make sense?” Students may argue that the quantity, on its own, does not make sense. Challenge them to figure out how the rate could be used in the context of the problem. For example, ask, “If I had $80, how many tickets could I buy? What if I had $75? Can the ‘\(\frac14\) of a ticket per dollar’ rate help answer these questions?”
+## Lesson Synthesis
+## Lesson Synthesis
+ The important takeaways from this lesson are:
+ Any ratio has two associated unit rates.
+ Unit rates can often be calculated efficiently with a single operation (division or multiplication).
+ Depending on the problem you want to solve, one unit rate might be more useful than the other.
+ Consider displaying this table from earlier in the lesson:
+ | 
+ | water (cups)
+ | oats (cups)
+ | 15
+ | 6
+ | 1
+ | 
+ | 
+ | 1
+ | 
+ | 
+ | 
+ | 
+ Ask students and fill in the table as you go:
+ What is a quick way to compute the number of cups of oats for 1 cup of water? (\(6 \div 15 = \frac{6}{15}\))
+ What is a quick way to compute the number of cups of water for 1 cup of oats? (\(15\div 6 = \frac{15}{6}\))
+ For what types of problems is \(\frac{15}{6}\) easier to use? (Finding how many cups of water when we know the number of cups of oats.)
+ For what types of problems is \(\frac{6}{15}\) easier to use? (Finding how many cups of oats when we know the number of cups of water.)
+## 6.4: Cool-down - Buying Grapes by the Pound (5 minutes)
+ CCSS Standards
+ Addressing
+ 6.RP.A.3
+## Cool-Down
+ Teachers with a valid work email address can click here to register or sign in for free access to Cool-Downs.
+## Student Lesson Summary
+## 
+ Student Facing
+ Suppose a farm lets us pick 2 pounds of blueberries for 5 dollars. We can say:
+ | 
+ | blueberries
+ (pounds)
+ | price
+ (dollars)
+ | 2
+ | 5
+ | 1
+ | \(\frac52\)
+ | \(\frac25\)
+ | 1
+ We get \(\frac25\) pound of blueberries per dollar.
+ The blueberries cost \(\frac52\) dollars per pound.
+ The “cost per pound” and the “number of pounds per dollar” are the two unit rates for this situation.
+ A unit rate tells us how much of one quantity for 1 of the other quantity. Each of these numbers is useful in the right situation.
+ If we want to find out how much 8 pounds of blueberries will cost, it helps to know how much 1 pound of blueberries will cost.
+ | 
+ | blueberries
+ (pounds)
+ | price
+ (dollars)
+ | 1
+ | \(\frac52\)
+ | 8
+ | \(8 \boldcdot \frac52\)
+ If we want to find out how many pounds we can buy for 10 dollars, it helps to know how many pounds we can buy for 1 dollar.
+ | 
+ | blueberries
+ (pounds)
+ | price
+ (dollars)
+ | \(\frac25\)
+ | 1
+ | \(10 \boldcdot \frac25\)
+ | 10
+ Which unit rate is most useful depends on what question we want to answer, so be ready to find either one!
