@@ -24,11 +24,12 @@ const SLOT_LABEL: Record<ImActivity['slot'], string> = {
   'cool-down': 'Cool-down',
 };
 
+// Plain words: a teacher reading at 9 pm doesn't need IM's or Premo's category names.
 const KIND_LABEL: Record<MomentKind, string> = {
   'student-thinking': 'Student thinking',
-  'im-misconception': 'Anticipated misconception',
-  'routine-breakdown': 'The routine breaks down',
-  'which-work-first': 'Which work first',
+  'im-misconception': 'A common mistake',
+  'routine-breakdown': 'When the routine slips',
+  'which-work-first': 'Who shares first',
   'teacher-move': 'Your move',
   language: 'Language',
 };
@@ -72,7 +73,8 @@ export function u3ToPrepModel(lesson: U3Lesson, bands: readonly ProficiencyBand[
       start: clock(t),
       minutes: a.minutes,
       isCrux: a.id === premo.crux,
-      focus: a.id === premo.crux ? 'crux' : i === cruxIdx - 1 ? 'feeder' : null,
+      // Only a real activity "sets up the crux"; a warm-up just comes first.
+      focus: a.id === premo.crux ? 'crux' : i === cruxIdx - 1 && a.slot === 'activity' ? 'feeder' : null,
       demand: 'medium',
       watchFor: premo.watchFor[a.id] ?? null,
       optional: a.slot === 'optional',
@@ -173,9 +175,12 @@ export function u3ToPrepModel(lesson: U3Lesson, bands: readonly ProficiencyBand[
       return [b, { text: s.frame ? `${s.entry} Frame: “${s.frame}”` : s.entry }];
     }),
   ) as PrepModel['supports'];
+  // The words to produce are the lesson's own choice (cruxLanguage.produceToday); the unit
+  // table lists words for the whole lesson, some of which the crux never uses.
+  const produce = premo.cruxLanguage.produceToday;
   const vocabulary = [
-    ...im.vocabulary.productive.map((term) => ({ term, definition: 'students say or write it today' })),
-    ...im.vocabulary.receptive.map((term) => ({ term, definition: 'students need to understand it today' })),
+    ...produce.map((term) => ({ term, definition: 'students say or write it today' })),
+    ...im.vocabulary.receptive.filter((t) => !produce.includes(t)).map((term) => ({ term, definition: 'students need to understand it today' })),
   ];
 
   const coolDown = im.coolDown.task
@@ -223,12 +228,14 @@ export function u3ToPrepModel(lesson: U3Lesson, bands: readonly ProficiencyBand[
     heading: im.title,
     authored: { status: premo.status, source: im.sources[0] ?? null },
     predict: premo.predict,
+    predictTask: cruxIm?.task ?? [],
     code: im.code,
     gradeUnit: 'Grade 6 · Unit 3',
     totalTime: optionalMin ? `${required}–${required + optionalMin} min` : `${required} min`,
     destination: premo.goal,
     idea: premo.goal,
-    arc: im.narrative[0] ?? '',
+    // IM's narrative, without the practice-standard tags (MP2, MP7) a teacher can't use at 9 pm.
+    arc: (im.narrative[0] ?? '').replace(/\s*\(MP\d(?:,\s*MP\d)*\)/g, ''),
     activities,
     crux,
     steps,
@@ -245,9 +252,12 @@ export function u3ToPrepModel(lesson: U3Lesson, bands: readonly ProficiencyBand[
       frames: [],
       vocabulary,
       profile: {},
-      routineNote: `Inside IM’s ${premo.cruxLanguage.routine}, ${premo.cruxLanguage.phase === 'launch' ? 'at the launch' : premo.cruxLanguage.phase === 'synthesis' ? 'in the synthesis' : 'while students work'}.`,
+      routineNote: `These sit inside the lesson’s own ${premo.cruxLanguage.routine.replace(/^MLR ?\d:\s*/, '')} routine, ${
+        premo.cruxLanguage.phase === 'launch' ? 'at the start of the activity' : premo.cruxLanguage.phase === 'synthesis' ? 'in the class discussion at the end' : 'while students work'
+      }.`,
     },
-    setup: { crux: null, checklist: [...im.preparation, ...premo.beforeClass] },
+    // Premo's list already covers IM's preparation in plain words; showing both repeated items.
+    setup: { crux: null, checklist: premo.beforeClass.length ? premo.beforeClass : im.preparation },
     inClass: { launch: quoted(premo.inClass.launch), ask: null, setup: null, lines, sequence: premo.inClass.sequence },
   };
 }

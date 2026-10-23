@@ -16,7 +16,10 @@ export default function U3LessonPage() {
   // then disagree with it.
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
-  if (!mounted) return null;
+  if (!mounted)
+    return (
+      <main style={{ maxWidth: 560, margin: '0 auto', padding: 24, color: '#6b6a64' }}>Loading tonight’s prep…</main>
+    );
   if (!lesson) {
     return (
       <main style={{ maxWidth: 560, margin: '0 auto', padding: 24 }}>

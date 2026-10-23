@@ -2,6 +2,11 @@
 
 import type { ReactNode } from 'react';
 import s from './u3.module.css';
+import corrections from '../../../content/u3/corrections.json';
+
+// IM's own slips, noted under the line rather than changed in it.
+const NOTES = (corrections as { notes: { line?: string; prefix?: string; note: string }[] }).notes;
+const noteFor = (l: string) => NOTES.find((n) => (n.line ? n.line === l : !!n.prefix && l.startsWith(n.prefix)))?.note ?? null;
 
 /**
  * IM's text carries mathematics as \( … \), the way IM's web pages write it.
@@ -82,21 +87,25 @@ const cells = (l: string) => l.trim().replace(/^\|\s?/, '').split(/\s*\|\s*/);
  */
 export function IMLines({ lines, className }: { lines: string[] | null | undefined; className?: string }) {
   if (!lines?.length) return null;
-  const blocks: ({ kind: 'p'; text: string } | { kind: 't'; rows: string[][] })[] = [];
+  const blocks: ({ kind: 'p'; text: string; note: string | null } | { kind: 't'; rows: string[][]; notes: string[] })[] = [];
   const clean = lines.filter((l) => !/^\[image: Expand image\]$/.test(l.trim()));
   for (let i = 0; i < clean.length; i++) {
     const l = clean[i];
     if (isRow(l, clean[i + 1])) {
       const last = blocks[blocks.length - 1];
-      if (last?.kind === 't') last.rows.push(cells(l));
-      else blocks.push({ kind: 't', rows: [cells(l)] });
-    } else blocks.push({ kind: 'p', text: l.replace(/\s*\[image: Expand image\]/g, '') });
+      const note = noteFor(l);
+      if (last?.kind === 't') {
+        last.rows.push(cells(l));
+        if (note) last.notes.push(note);
+      } else blocks.push({ kind: 't', rows: [cells(l)], notes: note ? [note] : [] });
+    } else blocks.push({ kind: 'p', text: l.replace(/\s*\[image: Expand image\]/g, ''), note: noteFor(l) });
   }
   return (
     <div className={className ?? s.lines}>
       {blocks.map((b, i) =>
         b.kind === 'p' ? (
-          /^\[image:/.test(b.text) ? (
+          <div key={i} className={s.lines}>
+          {/^\[image:/.test(b.text) ? (
             <p key={i} className={s.image}>
               <MathText>{b.text.replace(/^\[image:\s*|\]$/g, '')}</MathText>
             </p>
@@ -104,15 +113,17 @@ export function IMLines({ lines, className }: { lines: string[] | null | undefin
             <p key={i}>
               <MathText>{b.text}</MathText>
             </p>
-          )
+          )}
+          {b.note && <p className={s.correction}>Note: {b.note}</p>}
+          </div>
         ) : (
           <div key={i} className={s.tableWrap}>
             <table className={s.table}>
               <thead>
                 <tr>
-                  {b.rows[0].map((c, j) => (
+                  {Array.from({ length: Math.max(...b.rows.map((x) => x.length)) }, (_, j) => (
                     <th key={j}>
-                      <MathText>{c}</MathText>
+                      <MathText>{b.rows[0][j] ?? ''}</MathText>
                     </th>
                   ))}
                 </tr>
@@ -120,7 +131,7 @@ export function IMLines({ lines, className }: { lines: string[] | null | undefin
               <tbody>
                 {b.rows.slice(1).map((r, j) => (
                   <tr key={j}>
-                    {b.rows[0].map((_, c) => (
+                    {Array.from({ length: Math.max(...b.rows.map((x) => x.length)) }, (_, c) => (
                       <td key={c}>
                         <MathText>{r[c] ?? ''}</MathText>
                       </td>
@@ -129,6 +140,11 @@ export function IMLines({ lines, className }: { lines: string[] | null | undefin
                 ))}
               </tbody>
             </table>
+            {b.notes.map((n, j) => (
+              <p key={j} className={s.correction}>
+                Note: {n}
+              </p>
+            ))}
           </div>
         ),
       )}

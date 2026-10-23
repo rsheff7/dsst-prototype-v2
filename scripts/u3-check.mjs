@@ -169,6 +169,20 @@ for (const f of premoFiles) {
   }
 }
 
+// ---------------------------------------------------------------------------
+// Correction notes: each must still point at an IM line, or it silently stops showing.
+// ---------------------------------------------------------------------------
+const corr = path.join(ROOT, 'corrections.json');
+if (fs.existsSync(corr)) {
+  for (const n of json(corr).notes) {
+    const im = imByCode.get(n.code);
+    const lines = im ? flat(im) : [];
+    const hit = lines.some((l) => (n.line ? l === n.line : n.prefix && l.startsWith(n.prefix)));
+    if (!hit) err('corrections.json', `${n.code}: no IM line matches "${(n.line ?? n.prefix ?? '').slice(0, 50)}…"`);
+    if (!n.note) err('corrections.json', `${n.code}: empty note`);
+  }
+}
+
 for (const w of warnings) console.log('warn ', w);
 for (const e of errors) console.log('ERROR', e);
 console.log(`u3 content: ${imFiles.length} IM lessons, ${premoFiles.length} Premo layers, ${errors.length} errors, ${warnings.length} warnings`);

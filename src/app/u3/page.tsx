@@ -47,7 +47,10 @@ export default function U3UnitPage() {
 
       <section className={s.card}>
         <h2>Before the unit</h2>
-        <p className={s.muted}>From IM’s readiness check: items that point to the lessons built here.</p>
+        <p className={s.muted}>
+          IM’s Check Your Readiness is a short pre-test to give before the unit starts. These are its items that point to the
+          lessons built here, with what IM says to do if most students struggle.
+        </p>
         {UNIT.readinessCheck.map((r) => (
           <details key={r.item}>
             <summary>
@@ -74,7 +77,10 @@ export default function U3UnitPage() {
 
       <section className={s.card}>
         <h2>How the language grows</h2>
-        <p className={s.muted}>What IM expects students to do with language, and the new words in each built lesson.</p>
+        <p className={s.muted}>
+          What IM expects students to do with language across the unit (the lessons not built yet are greyed), and the new
+          words in each built lesson: words students should say or write, and words they only need to understand.
+        </p>
         {UNIT.languageProgression.map((u) => (
           <div key={u.use}>
             <b>{USE_LABEL[u.use] ?? u.use}</b>
@@ -91,6 +97,7 @@ export default function U3UnitPage() {
           <div key={c} style={{ display: 'grid', gap: 4 }}>
             <span className={s.code}>{c}</span>
             <div className={s.chips}>
+              {t.productive.length + t.receptive.length === 0 && <span className={s.muted}>No new words.</span>}
               {t.productive.map((w) => (
                 <span key={w} className={`${s.chip} ${s.chipProduce}`}>
                   say it: {w}

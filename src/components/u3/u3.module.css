@@ -33,3 +33,4 @@
 .noteAct > summary { cursor: pointer; font-weight: 700; padding: 10px 0; }
 .lab { font-size: 11.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted, #6b6a64); display: block; margin: 8px 0 4px; }
 .support { border-left: 3px solid var(--mll, #534ab7); padding-left: 10px; }
+.correction { font-size: 13.5px; background: #faeeda; border-left: 3px solid #854f0b; padding: 6px 10px; border-radius: 6px; }

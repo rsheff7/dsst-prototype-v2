@@ -219,6 +219,8 @@ export interface PrepModel {
   heading: string;
   /** Hand-written to the prep standard, and whether a person has checked it. Null when generated. */
   authored: { status: 'draft' | 'reviewed'; source: string | null } | null;
+  /** The crux activity's student task, as IM prints it (Unit 3 lessons). */
+  predictTask?: string[];
   /** The teacher's prediction, when the lesson supplies one. */
   predict: AuthoredPrep['predict'] | null;
   /** "6.2.1" style code for the app bar. */

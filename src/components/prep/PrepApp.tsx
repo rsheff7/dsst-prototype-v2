@@ -222,7 +222,7 @@ export default function PrepApp({ lesson, u3 }: { lesson?: PrepLesson; u3?: U3Le
               ))}
             </div>
             <p className={cx(s.muted, s.small)}>
-              The WIDA levels in this class. Supports for other levels stay in the Library.
+              The WIDA levels in this class: Levels 1–2 means the students on your list at WIDA 1 or 2, and so on. Supports for other levels stay in the Library.
               {st.bands.length === 0 && ' None set, so every level shows.'}
             </p>
           </section>
@@ -235,7 +235,7 @@ export default function PrepApp({ lesson, u3 }: { lesson?: PrepLesson; u3?: U3Le
               <p>{m.destination}</p>
               {m.crux && (
                 <p className={cx(s.muted, s.small)}>
-                  <b>Crux:</b> {activityName(m.crux)}
+                  <b>Crux</b>, the moment the lesson turns on: {activityName(m.crux)}
                 </p>
               )}
             </div>

@@ -1,0 +1,35 @@
+{
+ "_about": "Places where IM's own text looks wrong or unclear. The IM line stays as IM wrote it; the app shows the note under it. Premo's reading, for a reviewer to confirm. `line` must match the IM line exactly.",
+ "notes": [
+  {
+   "code": "6.3.6",
+   "line": "| 25 | 35",
+   "note": "IM prints 25 in this row; the answer above says 28, which is right: 0.8 × 35 = 28."
+  },
+  {
+   "code": "6.3.5",
+   "line": "3. Closer to \\(1\\frac{1}{2}\\). Possible strategy: \\(\\frac{5}{5} = 1\\), the quotient is \\(\\frac{2}{5}\\) over 1. \\(\\frac{2}{5} = 0.4\\) which is closer to 1.5 than 1.",
+   "note": "Read the last sentence as: 7 ÷ 5 = 1.4, which is closer to 1.5 than to 1."
+  },
+  {
+   "code": "6.3.8",
+   "note": "The calculation reads 0.16 · 30 = 4.8; IM's brackets are misplaced.",
+   "prefix": "Using the speed. The ratio \\(12:75\\) has an associated unit rate"
+  },
+  {
+   "code": "6.3.9",
+   "prefix": "Description: <p>A table for number of juice boxes: 10, 1, 6, and cost in dollars: 3.50, 0.35, 2.10.",
+   "note": "IM's caption says 1 juice box costs $3.50; it costs $0.35."
+  },
+  {
+   "code": "6.3.9",
+   "line": "[image: A table for number of juice boxes: 10, 6, and cost in dollars: 3.49, unknown. Multiply 10 juice boxes and $3.50 by \\(\\frac{6}{10}\\) to find 6 juice boxes cost $.]",
+   "note": "The card says $3.50, not 3.49; at the original rate 6 juice boxes would cost $2.10."
+  },
+  {
+   "code": "6.3.9",
+   "line": "Card E: No Deal! The price per yogurt container is $0.85 so containers should cost $5.10.",
+   "note": "IM doesn't say how many containers; $5.10 at $0.85 each is 6 containers. Check card E in the printed cards."
+  }
+ ]
+}

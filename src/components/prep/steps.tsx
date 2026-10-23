@@ -248,7 +248,15 @@ export function predict(c: StepCtx): StepOut {
             {m.crux.start ?? ''} {m.crux.id} · Crux
           </span>
           {m.predict ? (
-            <p>{m.predict.context}</p>
+            <>
+              <p>{m.predict.context}</p>
+              {m.predictTask && m.predictTask.length > 0 && (
+                <details className={s.more} open>
+                  <summary>The task students get</summary>
+                  <IMLines lines={m.predictTask} />
+                </details>
+              )}
+            </>
           ) : (
             <>
               <p>
@@ -578,7 +586,7 @@ export function adjust(c: StepCtx): StepOut {
         <p style={{ fontWeight: 600, fontSize: 17 }}>{m.idea || m.destination}</p>
         {m.rigorCheck && (
           <p className={s.small}>
-            <b>Rigor check:</b> {m.rigorCheck}
+            <b>Ask of any change:</b> {m.rigorCheck}
           </p>
         )}
       </section>
@@ -774,7 +782,7 @@ export function carry(c: StepCtx): StepOut {
                   on={!!st.setupDone[i]}
                   onClick={() => c.update((p) => ({ setupDone: { ...p.setupDone, [i]: !p.setupDone[i] } }))}
                 >
-                  {t}
+                  <MathText>{t}</MathText>
                 </Check>
               ))}
             </div>

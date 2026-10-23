@@ -7,21 +7,23 @@
   "“Two rehearsed moments upstream of the crux” is met loosely. The only activity before 9.2 is the warm-up, so one upstream moment is the warm-up and the other is the Poll the Class breakdown in 9.2's launch, before any card is worked. The warm-up's link to the crux (hundredths of a whole, the same hundredths as cents in the prices) is Premo's reading; IM's warm-up is building towards percent (6.RP.A.3.c), not the card sort.",
   "IM's own moments: the warm-up's “How did you see the shaded portion?” (IM's line, used verbatim), the Poll the Class and Take Turns breakdowns (from IM's routine definitions), the grade 5 computation misconception in 9.2, the select-2–3-strategies synthesis in 9.2, the intermediate-steps misconception in 9.3, the Compare and Connect breakdown in 9.3, and the ostrich and coyote near-tie (from IM's student response).",
   "Premo's moments: “$2.25 is less than $3.16, so deal”, the language moment and its by-level moves, and the hare's 49,632 inches read as the biggest distance. The 316-cents way into 3.16 ÷ 4 is Premo's, not IM's.",
-  "The share order in inClass.sequence is Premo's. IM's synthesis says to pick 2–3 different strategies and highlight whether a unit rate was used; it gives no order. The order follows the three paths in IM's activity narrative.",
+  "The share order in inClass.sequence is Premo’s suggestion, not IM’s. IM’s synthesis says to pick 2–3 different strategies and highlight whether a unit rate was used; it gives no order. The suggested order follows the three paths in IM’s activity narrative, and each item names a kind of work, not numbers, so it fits whichever card the pair is on.",
   "Only cards A and B have their prices in the IM layer (A from the launch story, B from the narrative). Cards C–E appear only as IM's answers, so this file uses no numbers from them. A reviewer should check C–E against the blackline master.",
-  "IM's answer for card E reads “containers should cost $5.10” without saying how many. At $0.85 a container that is 6 containers (6 × 0.85 = 5.10), but the card itself was not available to check. Flagged in beforeClass so the teacher works card E before class.",
+  "IM's answer for card E reads “containers should cost $5.10” without saying how many. At $0.85 a container that is 6 containers (6 × 0.85 = 5.10), but the card itself was not available to check. beforeClass asks the teacher to work all five cards first.",
   "IM's narrative image text for card B has two slips: one caption says dividing by 10 shows “1 juice box costs $3.50” (it is $0.35), and another table caption shows “3.49” where the card says $3.50. The worked numbers elsewhere (0.35, 2.10) are right. Not repeated here.",
   "IM's lesson synthesis calls the juice box unit rates “the price per bottle”; on card B they are per juice box. This file says “per box”.",
   "The unit terminology table lists “meters per second” as a word to produce in Lesson 9, but nothing in this lesson uses it (9.3's distances are per minute, with no speeds named). It is left out of produceToday; “(good / better / best) deal” is kept.",
   "9.3's narrative has a typo (“so that they can partnered or grouped together”). Not repeated.",
   "In 9.3 the ostrich and coyote differ by about 0.03 feet (3,772.97 against 3,773), under half an inch. IM ranks the coyote ahead; a class that rounds early will call it a tie. The moment for it is Premo's handling.",
-  "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person."
+  "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person.",
+  "Calculators: IM’s preparation says calculators are optional and all calculations can be done with grade 5 techniques, but IM lists four-function calculators as required materials for 9.3. This file no longer says it can all be done by hand; materials and printing are left to IM’s preparation list rather than repeated in beforeClass.",
+  "Revised 2026-10-23 after persona review (maths-and-multilingual-learner expert, novice teacher): every band’s sentence frame now asks for the decision and a reason from the price of one item; the language moment asks every band the same question (deal or no deal, and why?) and offers home language at every band; the “3.16 ÷ 4, then stopped” pattern is re-typed almost (unfinished, not wrong) and matches moment 4; the “79 cents… so no deal” pattern is re-typed error, since its conclusion is wrong (card A is a deal: 75 cents against 79); the 9.3 cut no longer says “practice, no new mathematics” and says what is lost if shortened; cards B–E are described by what IM’s text shows (card B’s prices; C–E only by item); the share order is worded as a suggestion of kinds of work; beforeClass trimmed to plain tasks with no duplicates of IM’s preparation and no reviewer notes; jargon (launch, synthesis, poll, routine names) replaced with plain words in teacher-facing text."
  ],
  "crux": "9.2",
- "cruxWhy": "IM says this lesson builds fluency with unit rates “without scaffolding”, so both activities are practice and neither brings new mathematics. 9.2 is the one the lesson comes back to: goal 2 is its goal (justify orally whether a price is a good deal), the lesson synthesis returns to its juice boxes, and the cool-down asks the same deal question about tacos. It is also where students choose a unit rate for themselves, which is the learning target.",
+ "cruxWhy": "IM says this lesson builds fluency with unit rates “without scaffolding”, so both activities are practice and neither brings new mathematics. 9.2 is the one the lesson comes back to: goal 2 is its goal (justify orally whether a price is a good deal), the closing discussion returns to its juice boxes (card B), and the cool-down asks the same deal question about tacos. It is also where students choose a unit rate for themselves, which is the learning target.",
  "object": {
   "name": "the card A reason",
-  "what": "The deal-or-no-deal decision each pair writes together for card A (a 4-pack for $3.16; the 3 bottles left offered for $2.25), with the numbers that back it. Each partner then uses the same kind of reason on their own two cards from B–E and explains it to the other."
+  "what": "The deal-or-no-deal decision each pair writes together for card A (a 4-pack for $3.16; the 3 bottles left offered for $2.25), with the numbers that back it. Each partner then uses the same kind of reason on their own two of the other four cards (B juice boxes, C bars, D hummus, E yogurt) and explains it to the other."
  },
  "goal": "Students choose a unit rate and use it to decide whether a price is a good deal, and say why out loud. Then they convert distances into one unit so they can compare them.",
  "rigorCheck": "Does every pair still write the card A reason together, decide their own two cards alone, and explain them to each other before sorting?",
@@ -72,7 +74,7 @@
    "id": "m3",
    "activityId": "9.2",
    "kind": "student-thinking",
-   "see": "In the launch share: “Deal. $2.25 is less than $3.16.”",
+   "see": "When pairs share card A ideas, before the sort: “Deal. $2.25 is less than $3.16.”",
    "means": "True, but $2.25 buys 3 bottles and $3.16 buys 4. A fair check compares the same number of bottles, or one bottle.",
    "say": "Less money, but for how many bottles?",
    "dont": "Tell them to find the price of one bottle.",
@@ -108,7 +110,7 @@
    "activityId": "9.2",
    "kind": "routine-breakdown",
    "routine": "Take Turns",
-   "see": "One partner works all four cards from B–E aloud. The other copies the answers.",
+   "see": "One partner works all four other cards (juice boxes, bars, hummus, yogurt) aloud. The other copies the answers.",
    "means": "The partner copying never uses the card A reason alone, so there is nothing of theirs to explain or defend.",
    "say": "Your two cards are yours. Who explains first?",
    "dont": "Let the faster partner do all four.",
@@ -127,21 +129,21 @@
    "activityId": "9.2",
    "kind": "language",
    "routine": "MLR2: Collect and Display",
-   "see": "Explaining card B, a student taps the card: “It’s more. The new one is more.”",
-   "means": "The decision is right: 40 cents a box against 35. What is “more”, and for how many boxes, isn’t in words yet.",
+   "see": "Explaining card B (juice boxes: 10 for $3.50 before, 6 for $2.40 now), a student taps it: “It’s more. The new one is more.”",
+   "means": "The decision is right, no deal: 40 cents a box now against 35 before. What is “more”, and for how many boxes, isn’t in words yet.",
    "byBand": {
     "emerging": {
-     "say": "Why deal or no deal? Point to your numbers.",
-     "move": "They point to the numbers on their card that decide it. You write their words beside those numbers on the class display.",
+     "say": "Deal or no deal, and why? Point to your numbers.",
+     "move": "They point to the numbers that decide it and give the reason in English or their home language. You write their words beside those numbers on the class display.",
      "nonverbal": "They point from their numbers to a word already on the display, such as “the same” or “unit rate”."
     },
     "developing": {
-     "say": "Why deal or no deal? Use a word from our display.",
-     "move": "They tell their partner, using one phrase from the display. You add any new phrase they use."
+     "say": "Deal or no deal, and why? Use a display word.",
+     "move": "They tell their partner, in their home language first if they like, then with one phrase from the display. You add any new phrase they use."
     },
     "expanding": {
-     "say": "Why deal or no deal? Say it so your partner can check.",
-     "move": "They explain with a number for the same number of boxes; the partner checks it. You scribe the clearest phrase to the display."
+     "say": "Deal or no deal, and why? Prove it to your partner.",
+     "move": "They give the price of one box in each offer, working it out in their home language if they like, and the partner checks it. You write the clearest phrase on the display."
     }
    },
    "dont": "Say the reason for them.",
@@ -149,8 +151,8 @@
    "sayFrom": "premo",
    "rehearse": true,
    "criteria": [
-    "Kept the same question at every level: why deal or no deal?",
-    "Matched the way in to the student and recorded their words",
+    "Asked every level the same question: deal or no deal, and why?",
+    "Matched the way in to the student, home language welcome, and recorded their words",
     "Didn’t say the reason for them"
    ]
   },
@@ -159,7 +161,7 @@
    "activityId": "9.2",
    "kind": "which-work-first",
    "see": "On desks for card A: 79 cents against 75 cents a bottle, “3 bottles should be $2.37”, and 3.16 × 3/4.",
-   "means": "IM asks for 2–3 different strategies and to highlight whether a unit rate was used. The multiplier way skips the unit rate, so it lands best last.",
+   "means": "IM asks for 2–3 different ways and to point out whether a unit rate was used; it gives no order. One order that works: the price of one bottle first, the 3/4 way last, since it skips the unit rate.",
    "say": "Start us off. How did you decide on card A?",
    "dont": "Show only the fastest way.",
    "from": "im",
@@ -235,19 +237,19 @@
   },
   {
    "activityId": "9.2",
-   "type": "error",
-   "says": "3.16 ÷ 4 on paper, then stopped.",
-   "why": "Decimal division from grade 5 isn’t fluent yet.",
-   "shows": "They chose the right unit rate to find.",
+   "type": "almost",
+   "says": "3.16 ÷ 4 written for card A, then stopped: “4 doesn’t go into 3.”",
+   "why": "Dividing a decimal, grade 5 work, isn’t fluent yet.",
+   "shows": "They chose the right unit rate: the price of one bottle.",
    "from": "im",
    "evidence": "Students who are not fluent in multiplication and division computation work from grade 5 may need some review"
   },
   {
    "activityId": "9.2",
-   "type": "almost",
+   "type": "error",
    "says": "“79 cents a bottle, and $2.25 is more than that, so no deal.”",
-   "why": "They found the unit rate, then set it against a price for 3 bottles.",
-   "shows": "They know a unit rate is the price of one.",
+   "why": "They found the price of one bottle, then set it against $2.25, the price of 3.",
+   "shows": "They can find a unit rate. Comparing one bottle with one bottle (75 cents) is next.",
    "from": "premo"
   },
   {
@@ -255,7 +257,7 @@
    "type": "build",
    "says": "“35 cents a box before, 40 cents now. No deal.”",
    "why": "They find and compare the unit rate for both offers.",
-   "shows": "The comparison IM’s lesson synthesis ends on.",
+   "shows": "The comparison the closing discussion ends on.",
    "from": "im",
    "evidence": "Find and compare the unit rates for both the original pack and the new pack."
   },
@@ -278,7 +280,7 @@
   }
  ],
  "predict": {
-  "context": "After a story about a drink pack with one bottle missing, pairs work card A together: a 4-pack costs $3.16, and the clerk offers the 3 bottles left for $2.25. They decide deal or no deal and write why, then each partner takes two of cards B–E.",
+  "context": "After a story about a drink pack with one bottle missing, pairs work card A together: a 4-pack costs $3.16, and the clerk offers the 3 bottles left for $2.25. They decide deal or no deal and write why, then each partner takes two of the other four cards (juice boxes, bars, hummus, yogurt).",
   "question": "What will most pairs write as their card A reason?",
   "countQuestion": "How many pairs will compare the same number of bottles, or one bottle, before deciding?",
   "countUnit": "pairs will compare the same number of bottles before deciding.",
@@ -296,27 +298,27 @@
   ],
   "byBand": {
    "emerging": {
-    "entry": "While pairs explain their cards, they point to the numbers that decide a card and to a word on the class display; you write their words beside the numbers.",
-    "frame": "Card ___ is a good deal / not a good deal."
+    "entry": "While pairs explain their cards, they point to the numbers that decide a card and to a word on the class display, saying it in their home language first if they like; you write their words beside the numbers.",
+    "frame": "Card ___ is a deal / no deal because one ___ costs ___, not ___."
    },
    "developing": {
-    "entry": "They tell their partner why a card is a deal or not, using one phrase from the display, and you add any new phrase they use.",
-    "frame": "Card ___ is a good deal because ___."
+    "entry": "They tell their partner why a card is a deal or not, in their home language first if they like, then with one phrase from the display; you add any new phrase they use.",
+    "frame": "Card ___ is a deal / no deal because one ___ costs ___ in the new deal and ___ in the original."
    },
    "expanding": {
-    "entry": "In the discussion they explain a card with a price for the same number of items, then say how a classmate’s way on the display differs from theirs.",
-    "frame": "For the same number of ___, the new deal costs ___, so it is ___."
+    "entry": "In the closing discussion they explain a card with the price of one item in each offer, then say how a classmate’s way on the display differs from theirs. They can work it out in their home language first.",
+    "frame": "One ___ costs ___ in the new deal and ___ in the original, so card ___ is a deal / no deal; another way to check is ___."
    }
   }
  },
  "cuts": [
   {
    "activityId": "9.2",
-   "note": "Card F is IM’s extension. Leave it out unless pairs finish B–E early."
+   "note": "Card F is IM’s extension: pairs set their own price for another pair to judge. Leave it out unless pairs finish the other cards early."
   },
   {
    "activityId": "9.3",
-   "note": "Practice, no new mathematics. If short, keep the ranking but hear just two students in the share: one in feet or yards, one in meters."
+   "note": "This is where IM’s first goal is met: converting distances into one unit and comparing them in writing. Protect the work time. If short, keep the ranking and hear just two students, one in feet or yards and one in meters. What is lost: time to settle a disputed ranking and to ask why both units give the same order."
   },
   {
    "activityId": "9.1",
@@ -324,10 +326,10 @@
   }
  ],
  "neverCut": [
-  "Every student’s vote in the launch poll",
+  "Every student’s vote on whether to take the card A deal",
   "The card A reason, written by both partners",
   "Each partner explaining their own two cards",
-  "The lesson synthesis on 35 and 40 cents a box"
+  "The closing discussion on 35 and 40 cents a juice box"
  ],
  "inClass": {
   "launch": "“First, write your card A reason together. Then split the rest.”",
@@ -338,17 +340,15 @@
    "m6"
   ],
   "sequence": [
-   "A pair who found the price of one bottle for both offers (79 and 75 cents)",
-   "A pair who priced 3 bottles at the 4-pack rate ($2.37)",
-   "A pair who multiplied $3.16 by 3/4 without finding a unit rate"
+   "A pair who found the price of one item in both offers, then compared",
+   "A pair who used the price of one item to work out what the new number should cost",
+   "A pair who scaled the original price to the new number of items, with no price for one"
   ]
  },
  "beforeClass": [
-  "Print and cut cards A–E for each pair (A–F if you plan the extension). Optionally bring a 4-pack of drinks with one bottle missing.",
-  "Decide on calculators. IM says all of it can be done by hand; offer them if the arithmetic would block the deal decisions.",
-  "Work cards A–E yourself. IM’s answer for E (“containers should cost $5.10”) doesn’t say how many: at $0.85 each, that is 6.",
-  "Plan a 30-second demonstration of Take Turns with a student: one card each, explain, partner agrees or disagrees.",
-  "Chart paper for the Collect and Display list of students’ phrases (“the same”, “unit rate”, “cost for the same number of items”).",
+  "Work all five cards (A–E) yourself first. IM’s answer for card E doesn’t say how many yogurt containers.",
+  "Plan to show the class once, with one student, how partners share cards: one explains, the other agrees or disagrees, then swap.",
+  "Put up chart paper for a class list of students’ phrases (“the same”, “unit rate”, “cost for the same number of items”).",
   "Have IM’s conversion facts ready to post for 9.3 when asked (1 mile = 1,760 yards = 5,280 feet; 1 yard = 3 feet; 1 foot = 12 inches; 1 kilometer = 1,000 meters; 1 meter = 100 centimeters)."
  ]
 }
