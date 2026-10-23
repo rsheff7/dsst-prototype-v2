@@ -1,0 +1,362 @@
+{
+ "status": "draft",
+ "reviewNotes": [
+  "No person has reviewed this file.",
+  "Crux is 8.2, the lesson's only full activity (30 minutes). Both of IM's goals land there: using speed to find unknown distances and times, and interpreting a story about two objects moving at constant speeds and making a diagram or table for it. 8.1 is the warm-up and 8.3 is optional practice (IM: “more opportunity to practice”).",
+  "Testable object: the distance-apart table (question 2 of 8.2: how far apart after 0, 1, 2 and 3 hours). The meeting time, Kiran's 6.4 miles per hour claim and the jogging question all rest on seeing that the gap shrinks by 6.4 miles each hour. IM's launch protects it too: display a solution to the first two problems before groups move on.",
+  "IM's own moments used: the distance-apart misconception (IM's four-column table), the time-reading misconception, the Three Reads support at the 8.2 launch, the Group Presentations restate line from IM's routine definition, MLR1's press-for-details, the Three Reads breakdown from the routine catalog, the share order in 8.2's synthesis, and the speed/pace mix-up in 8.3. The 12 ÷ 75 moment in 8.1 rests on the unit readiness check, item 6, whose move points at “Lesson 8 Activity 1”; I read that as the warm-up 8.1, where 12/75 = 0.16 is needed.",
+  "Premo's moments: the reading of Kiran's claim as his real speed, and the 9.6 miles per hour answer to the jogging question. The by-level moves in the language moment and in cruxLanguage are all Premo's; IM gives one support for everyone.",
+  "Example values that are mine, not IM's: “21” in the 1-hour row (24 − 3, one walker only) illustrates IM's distance-apart misconception; “11:75, so 12:15” applies IM's time misconception (its example is 2.5 hours after 8 a.m. is 10:30, not 10:50) to question 3, because in question 5 the clock time is given and the hours are what students work out.",
+  "IM's synthesis says to start “from the most common strategies” and move to the least common, but each group presents a different assigned problem. It is not clear whether the order is by problem or by strategy within a problem. The sequence in inClass is written as an order to apply to what the teacher sees, not a claim about which way is most common.",
+  "IM's English-learner support says to “reveal the first three questions” on the third read; the launch says quiet think time on “the first two questions” and then a display of solutions to those two. I followed the launch.",
+  "Small things in IM that look wrong: 8.1's narrative has a misplaced parenthesis in the LaTeX for 0.16 · 30 = 4.8, and its synthesis says “minutes per mile of seconds per meter” (should be “or”); the support text says “distance between then”; 8.3's synthesis says “discusion”; the preparation calls the activity “Picnics on A Rail Trail”, the title is “Picnics on the Rail Trail”. None repeated here.",
+  "8.2's purpose is recorded in the IM layer as application, read from the optional modeling sentence (MP4). Its first sentence (“answer questions in the context of constant speed”) could also read as practice. That does not change the crux, since 8.3 is the optional one.",
+  "All numbers checked: 12/75 = 0.16, 75/12 = 6.25, 0.16 · 30 = 4.8, 6.25 · 8 = 50; 24 − 3 − 3.4 = 17.6, then 11.2 and 4.8; 24 ÷ 6.4 = 3.75 hours = 3 hours 45 minutes, so 11:45; 24 ÷ 2.5 = 9.6, 9.6 − 3.4 = 6.2; 3.4 · 2.5 = 8.5, 24 − 8.5 = 15.5, 15.5 ÷ 2.5 = 6.2; Jada 10 miles per hour, cousin 2.5.",
+  "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person."
+ ],
+ "crux": "8.2",
+ "cruxWhy": "8.2 is where both of IM's goals are met: students use speeds to find unknown distances and times, and interpret a written story of two friends moving at constant speeds by making a table. IM gives it 30 minutes, its English-learner support (Three Reads) and the group presentations. 8.1 warms up the speed and pace ideas; 8.3 is optional practice.",
+ "object": {
+  "name": "the distance-apart table",
+  "what": "The table each student makes of how far apart Kiran and Clare are after 0, 1, 2 and 3 hours. The next questions test it: when do they meet, and what does Kiran mean by 6.4 miles per hour?"
+ },
+ "goal": "Students use speed to find unknown distances and times, explain how, and turn a story about two friends walking toward each other into a table they can reason from.",
+ "rigorCheck": "Does every student still make the distance-apart table, use it to find when the friends meet, and test Kiran's claim?",
+ "watchFor": {
+  "8.1": "A student writes “12 ÷ 75” and stops there.",
+  "8.2": "The 1-hour row of the distance-apart table says 21: only Kiran's 3 miles taken off.",
+  "8.3": "“The cousin is faster, 24 is more than 6.”"
+ },
+ "moments": [
+  {
+   "id": "m1",
+   "activityId": "8.1",
+   "kind": "student-thinking",
+   "see": "For the 30 minutes question, a student writes “12 ÷ 75” and stops: “That doesn’t come out even.”",
+   "means": "12/75 is 0.16 miles a minute, but only once they see it as hundredths. The readiness check flags this fraction-to-decimal step for today.",
+   "say": "Twelve out of 75. What would that be out of 100?",
+   "dont": "Do the division on the board for them.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "plan to attend to the relationship between fractions and decimals in Lesson 8 Activity 1",
+   "rehearse": true,
+   "criteria": [
+    "Kept the decimal step with the student",
+    "Linked 12/75 to a fraction they can already write as a decimal",
+    "Didn’t do the division for them"
+   ]
+  },
+  {
+   "id": "m2",
+   "activityId": "8.1",
+   "kind": "routine-breakdown",
+   "routine": "MLR1: Stronger and Clearer Each Time",
+   "see": "New partners compare: “4.8.” “Same.” “Cool.” They turn around.",
+   "means": "Matching answers end the talk. MLR1 is for pressing each other on how, so the explanation gets clearer before the share.",
+   "say": "Same answer. Now ask how they got it.",
+   "dont": "Move on because the answers match.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "students should be pressed for details, and encouraged to press each other for details.",
+   "rehearse": true,
+   "criteria": [
+    "Sent partners to each other’s reasoning, not the answer",
+    "Asked for a detail: a step, a unit or a rate",
+    "Didn’t move on because the answers matched"
+   ]
+  },
+  {
+   "id": "m3",
+   "activityId": "8.2",
+   "kind": "routine-breakdown",
+   "routine": "MLR6: Three Reads",
+   "see": "On the first read of the story, pencils are already working 24 ÷ 3.",
+   "means": "The first read is for the story only. Calculating now skips knowing what is going on and what is asked.",
+   "say": "No numbers yet. What is happening in this story?",
+   "dont": "Let the fastest calculators set the pace.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "To ensure that students know what they are being asked to do"
+  },
+  {
+   "id": "m4",
+   "activityId": "8.2",
+   "kind": "language",
+   "routine": "MLR6: Three Reads",
+   "see": "On the second read, a student points at “3.4” and says nothing.",
+   "means": "They have found a quantity. Saying what it measures, and whose it is, is the reading work this read asks for.",
+   "byBand": {
+    "emerging": {
+     "say": "What can you count or measure here? Point to one.",
+     "move": "They point to a number in the story, then to the trail photo, and name what it measures with a word, a gesture or their home language.",
+     "nonverbal": "Point to the number, then to Kiran or Clare in the story, then to the photo of the trail."
+    },
+    "developing": {
+     "say": "What can be counted or measured? Tell your partner one.",
+     "move": "They name one quantity with its unit to a partner; the partner names another."
+    },
+    "expanding": {
+     "say": "What can be measured here? Which of those change as they walk?",
+     "move": "They name the quantities, then say which ones change each hour and which stay the same."
+    }
+   },
+   "dont": "Tell them what the number means.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Use the second read to identify the important quantities by asking students what can be counted or measured",
+   "rehearse": true,
+   "criteria": [
+    "Kept the same question at every level: what can be counted or measured",
+    "Matched the way in to the student’s level",
+    "Didn’t tell them what the number means"
+   ]
+  },
+  {
+   "id": "m5",
+   "activityId": "8.2",
+   "kind": "im-misconception",
+   "see": "The 1-hour row of the distance-apart table says 21. “Kiran walked 3, so 24 take away 3.”",
+   "means": "They tracked one walker. Both friends close the gap each hour, so it shrinks by 3 and by 3.4.",
+   "say": "Where is Clare after one hour? Show both of them.",
+   "dont": "Write 17.6 in for them.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Students who are unsure about how to calculate distance apart in the table may benefit from creating a table with 4 columns: time in hours, how far Kiran has traveled, how far Clare has traveled, and the distance between them.",
+   "rehearse": true,
+   "criteria": [
+    "Asked about both friends, not just one",
+    "Offered a sketch of the trail or a column for each walker",
+    "Didn’t fix the 1-hour row for them"
+   ]
+  },
+  {
+   "id": "m6",
+   "activityId": "8.2",
+   "kind": "im-misconception",
+   "see": "“3.75 hours after 8:00. They meet at 11:75, so 12:15.”",
+   "means": "They read 3.75 hours as 3 hours 75 minutes. 0.75 of an hour is 45 minutes, so the picnic is at 11:45.",
+   "say": "0.75 of an hour. How many minutes is that?",
+   "dont": "Tell them 0.75 hours is 45 minutes.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Look for students misinterpreting expressions of time. For example, 2.5 hours after 8 a.m. is 10:30 a.m., not 10:50 a.m.",
+   "rehearse": true,
+   "criteria": [
+    "Sent them to what the decimal part of an hour means",
+    "Left the change to minutes with them",
+    "Didn’t give them the 45 minutes"
+   ]
+  },
+  {
+   "id": "m7",
+   "activityId": "8.2",
+   "kind": "student-thinking",
+   "see": "“Kiran’s wrong. He walks 3, not 6.4.”",
+   "means": "They read 6.4 as Kiran’s real speed. His claim is about how fast the gap closes, which their table already shows.",
+   "say": "Look at your table. How much does the gap shrink each hour?",
+   "dont": "Say “He means both of them together.”",
+   "from": "premo",
+   "sayFrom": "premo"
+  },
+  {
+   "id": "m8",
+   "activityId": "8.2",
+   "kind": "student-thinking",
+   "see": "For the jogging question: “24 ÷ 2.5 = 9.6. Kiran jogged 9.6 miles per hour.”",
+   "means": "9.6 is how fast the gap closed, both friends together. Clare’s 3.4 is still inside it.",
+   "say": "Is 9.6 Kiran alone, or both of them?",
+   "dont": "Subtract 3.4 for them.",
+   "from": "premo",
+   "sayFrom": "premo"
+  },
+  {
+   "id": "m9",
+   "activityId": "8.2",
+   "kind": "which-work-first",
+   "see": "On the displays: a trail sketch with miles marked off, two-column tables, a four-column table, one “9.6 − 3.4.”",
+   "means": "IM starts the share from the most common way and moves to the least common, pointing out unit rates, scaling and tables as they come.",
+   "say": "Start us off. How did your group set up the table?",
+   "dont": "Start with the slickest solution.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "If possible, start from the most common strategies and move to the least common."
+  },
+  {
+   "id": "m10",
+   "activityId": "8.2",
+   "kind": "routine-breakdown",
+   "routine": "Group Presentations",
+   "see": "A group finishes explaining Kiran’s claim. You ask, “Any questions?” Silence.",
+   "means": "“Any questions?” lets everyone off. Putting the group’s finding in their own words is how the rest of the class takes it in.",
+   "say": "Who can say what this group found, in your words?",
+   "dont": "Fill the silence by explaining it again yourself.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "instead of asking if anyone has any questions for the group, it is often more productive to ask a member of the class to restate their understanding of the group’s findings in their own words.",
+   "rehearse": true,
+   "criteria": [
+    "Asked a classmate, not the group, to restate the finding",
+    "Let the restating student use their own words",
+    "Didn’t explain it again yourself"
+   ]
+  },
+  {
+   "id": "m11",
+   "activityId": "8.3",
+   "kind": "im-misconception",
+   "see": "“The cousin is faster. 24 is more than 6.”",
+   "means": "They compared paces as if they were speeds. More minutes for each mile is slower.",
+   "say": "Label the units. What does 24 minutes per mile mean?",
+   "dont": "Tell them pace works backwards.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Some students may confuse the meaning of the speed and pace, thinking that 24 minutes per mile is faster than 6 minutes per mile."
+  }
+ ],
+ "patterns": [
+  {
+   "activityId": "8.1",
+   "type": "almost",
+   "says": "“12 ÷ 75” written down, then stuck.",
+   "why": "The rate is right; writing 12/75 as a decimal is the step in the way.",
+   "shows": "They know speed means miles for each minute.",
+   "from": "im",
+   "evidence": "For this task students will need to be fluent in their use of fractions and decimals to make sense of unit rates and scaling."
+  },
+  {
+   "activityId": "8.1",
+   "type": "build",
+   "says": "“30 is 75 times 0.4, so 12 times 0.4 is 4.8.”",
+   "why": "They scale down the time column and do the same to the miles.",
+   "shows": "Equivalent ratios without a unit rate at all.",
+   "from": "im",
+   "evidence": "Using a scale factor"
+  },
+  {
+   "activityId": "8.1",
+   "type": "stretch",
+   "says": "“6.25 minutes a mile, so 30 ÷ 6.25 = 4.8.”",
+   "why": "They used the pace, the other unit rate, to find a distance.",
+   "shows": "Both unit rates, and that dividing by the pace works too.",
+   "from": "im",
+   "evidence": "Using the pace."
+  },
+  {
+   "activityId": "8.2",
+   "type": "error",
+   "says": "21, then 18, then 15 in the distance-apart table.",
+   "why": "Only Kiran’s 3 miles an hour is taken off.",
+   "shows": "They can use a speed to step the table hour by hour.",
+   "from": "im",
+   "evidence": "Students who are unsure about how to calculate distance apart in the table"
+  },
+  {
+   "activityId": "8.2",
+   "type": "build",
+   "says": "“They get 6.4 miles closer every hour.”",
+   "why": "They see the same drop in each row of the distance-apart table.",
+   "shows": "The idea behind the meeting time and Kiran’s claim.",
+   "from": "im",
+   "evidence": "the distance between them is decreasing by 6.4 miles each hour"
+  },
+  {
+   "activityId": "8.2",
+   "type": "error",
+   "says": "“3.75 hours, so 11:75, which is 12:15.”",
+   "why": "The decimal part of an hour is read as minutes.",
+   "shows": "They found 3.75 hours, which is right.",
+   "from": "im",
+   "evidence": "Look for students misinterpreting expressions of time."
+  },
+  {
+   "activityId": "8.2",
+   "type": "stretch",
+   "says": "“24 ÷ 2.5 is 9.6 together, take away Clare’s 3.4: 6.2.”",
+   "why": "They use the combined speed directly.",
+   "shows": "Kiran’s claim, used to answer a new question.",
+   "from": "im",
+   "evidence": "then their combined speed is 9.6 miles per hour"
+  },
+  {
+   "activityId": "8.2",
+   "type": "language",
+   "says": "“The far between them gets small.”",
+   "why": "Everyday words for distance apart.",
+   "shows": "They see the gap closing, which is the idea of the table.",
+   "from": "premo"
+  }
+ ],
+ "predict": {
+  "context": "Kiran and Clare live 24 miles apart on a rail trail and start walking toward each other at 8:00 a.m., Kiran at 3 miles per hour and Clare at 3.4. After quiet think time, students find how far apart they are after one hour, then make a table of how far apart they are after 0, 1, 2 and 3 hours.",
+  "question": "What will most students’ distance-apart tables look like?",
+  "countQuestion": "How many students will have 17.6 miles in the 1-hour row?",
+  "countUnit": "students will have 17.6 miles in the 1-hour row.",
+  "tell": "If few do, the distance-apart table is following one walker, and the meeting time and Kiran’s claim have nothing to stand on. That is the fourth moment you’ll rehearse.",
+  "activityIds": [
+   "8.1",
+   "8.2"
+  ]
+ },
+ "cruxLanguage": {
+  "routine": "MLR6: Three Reads",
+  "phase": "launch",
+  "produceToday": [
+   "speed"
+  ],
+  "byBand": {
+   "emerging": {
+    "entry": "On the first read, they tell the story with gestures, a quick sketch or their home language. On the second, they point to each number and show what it measures.",
+    "frame": "This is ___ miles."
+   },
+   "developing": {
+    "entry": "On the second read, they name each quantity with its unit to a partner, using speed for the miles per hour.",
+    "frame": "Clare’s speed is ___ miles per hour."
+   },
+   "expanding": {
+    "entry": "On the third read, they say how the distance between the friends changes each hour, and why, using speed.",
+    "frame": "Each hour, the distance apart ___ because ___."
+   }
+  }
+ },
+ "cuts": [
+  {
+   "activityId": "8.3",
+   "note": "Optional, more practice with no new mathematics. Cut it first."
+  },
+  {
+   "activityId": "8.1",
+   "note": "Keep it short: two questions, one partner swap, then name speed and pace."
+  },
+  {
+   "activityId": "8.2",
+   "note": "Skip the extension and the Notice and Wonder opening. Keep the quiet think time, the check on the first two problems and the presentations."
+  }
+ ],
+ "neverCut": [
+  "Quiet think time on the first two questions",
+  "Showing a distance-apart table before groups move on",
+  "Kiran’s 6.4 miles per hour claim",
+  "Each group explaining its problem to the class"
+ ],
+ "inClass": {
+  "launch": "“How far apart after one hour? Then make the distance-apart table.”",
+  "launchFrom": "premo",
+  "momentIds": [
+   "m4",
+   "m5",
+   "m10"
+  ],
+  "sequence": [
+   "The way most groups used, as you saw it while walking around",
+   "Less common ways: a sketch of the trail with miles marked off, a four-column table",
+   "The least common: the combined speed, 6.4 or 9.6 miles per hour, used directly"
+  ]
+ },
+ "beforeClass": [
+  "Check whether there is a rail trail near school, to tell students about it (IM’s preparation).",
+  "Be ready to show the story about Kiran and Clare with the questions hidden, for Three Reads.",
+  "Tools for a visual display, one set per group of 3–4.",
+  "Decide which group explains which of the last three problems.",
+  "Pick one student’s answer to each of the first two problems to display before groups move on."
+ ]
+}

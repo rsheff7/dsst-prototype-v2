@@ -5,6 +5,8 @@ import type { PrepActivity } from '@/lib/prep/prepModel';
 import { activityName } from '@/lib/prep/prepModel';
 import type { MlrRef } from '@/lib/types';
 import s from './prep.module.css';
+import U3ActivityNotes from '@/components/u3/U3ActivityNotes';
+import type { ImActivity } from '@/lib/u3/types';
 
 export const cx = (...c: (string | false | null | undefined)[]) => c.filter(Boolean).join(' ');
 
@@ -96,7 +98,10 @@ const DEMAND: Record<string, string> = { low: 'Low', medium: 'Medium', high: 'Hi
 
 /** Everything the lesson says about one activity, for the Orient bottom sheet. */
 export function ActivityDetail({ a }: { a: PrepActivity }) {
+  // A Unit 3 lesson shows IM's own notes for the activity.
+  if (a.im) return <U3ActivityNotes a={a.im as ImActivity} heading={activityName(a)} />;
   const x = a.source;
+  if (!x) return null;
   return (
     <div className={s.stack} style={{ fontSize: 15 }}>
       <h2>{activityName(a)}</h2>

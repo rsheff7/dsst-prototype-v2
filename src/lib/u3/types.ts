@@ -181,7 +181,10 @@ export interface ImLesson {
   preparation: Verbatim[];
   activities: ImActivity[];
   lessonSynthesis: Verbatim[];
-  coolDown: { title: string; minutes: number; task: Verbatim[]; response: Verbatim[] };
+  /** Task and response come from the Teacher Guide; null until transcribed. */
+  coolDown: { id: string | null; title: string | null; minutes: number | null; task: Verbatim[] | null; response: Verbatim[] | null };
+  /** IM's standards for the lesson as a whole. */
+  standards: { buildingOn: string[]; addressing: string[]; buildingTowards: string[] };
   summary: Verbatim[];
   /** From the unit's terminology table, for this lesson. */
   vocabulary: { receptive: string[]; productive: string[] };

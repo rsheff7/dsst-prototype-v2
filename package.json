@@ -10,7 +10,8 @@
     "check:eld": "node --test --experimental-strip-types src/lib/eld/eld.test.ts",
     "check:mlr": "node --test --experimental-strip-types src/lib/mlrSelection.test.ts",
     "check:prep": "node --test --experimental-strip-types src/lib/prep/prepModel.test.ts",
-    "check": "npm run check:eld && npm run check:mlr && npm run check:prep",
+    "check:u3": "node scripts/u3-check.mjs",
+    "check": "npm run check:eld && npm run check:mlr && npm run check:prep && npm run check:u3",
     "variance": "node benchmarks/variance/harness.mjs",
     "pregenerate": "node scripts/pregenerate.mjs"
   },

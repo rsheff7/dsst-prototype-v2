@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import type { ToolId } from '@/lib/types';
 import { useLesson } from '@/lib/lessonContext';
@@ -8,6 +8,9 @@ import { bandForLevel, type ProficiencyBand } from '@/lib/eld';
 import { BANDS, PREP_BUDGET_MINUTES, activityName, bandLabel, buildPrepModel, quoted, type PrepLesson } from '@/lib/prep/prepModel';
 import MobileQuickRead from '@/components/mobile/MobileQuickRead';
 import WidaMobileSelector from '@/components/mobile/WidaMobileSelector';
+import { U3Library } from '@/components/u3/U3ActivityNotes';
+import { u3ToPrepModel } from '@/lib/u3/toPrepModel';
+import type { U3Lesson } from '@/lib/u3/types';
 import LessonPathway from '@/components/tools/LessonPathway';
 import AnticipatedThinking from '@/components/tools/AnticipatedThinking';
 import MoveWalkthrough from '@/components/tools/MoveWalkthrough';
@@ -27,20 +30,33 @@ const LIB_TABS: [PrepState['lib'], string][] = [
   ['adapt', 'Adapt'],
 ];
 
-export default function PrepApp({ lesson }: { lesson: PrepLesson }) {
+/**
+ * The phone prep. Give it a generated or authored lesson (`lesson`), or a
+ * Unit 3 lesson built from IM's teacher materials (`u3`). The screens are the
+ * same; a Unit 3 lesson's Library is IM's own notes instead of the five tools.
+ */
+export default function PrepApp({ lesson, u3 }: { lesson?: PrepLesson; u3?: U3Lesson }) {
   const { selectedWidaLevel } = useLesson();
   const initialBands = useMemo<ProficiencyBand[]>(
     () => (selectedWidaLevel ? [bandForLevel(selectedWidaLevel)] : []),
     [selectedWidaLevel],
   );
-  const m0 = useMemo(() => buildPrepModel(lesson), [lesson]);
+  const build = useCallback(
+    (bands: ProficiencyBand[] = []) => (u3 ? u3ToPrepModel(u3, bands) : buildPrepModel(lesson!, bands)),
+    [lesson, u3],
+  );
+  const m0 = useMemo(() => build(), [build]);
   // Everything progress is stored against by position.
   const sig = useMemo(
     () => JSON.stringify([m0.scenarios.map((x) => [x.id, x.notice]), m0.proof.lookFors, m0.cuts, m0.setup.checklist]),
     [m0],
   );
-  const { st, update, reset } = usePrepState(`${m0.code}:${m0.heading}${m0.authored ? ':authored' : ''}`, sig, initialBands);
-  const m = useMemo(() => buildPrepModel(lesson, st.bands), [lesson, st.bands]);
+  const { st, update, reset } = usePrepState(
+    `${u3 ? 'u3:' : ''}${m0.code}:${m0.heading}${m0.authored && !u3 ? ':authored' : ''}`,
+    sig,
+    initialBands,
+  );
+  const m = useMemo(() => build(st.bands), [build, st.bands]);
 
   const [sheet, setSheet] = useState<string | null>(null);
   const [toast, setToast] = useState<string | null>(null);
@@ -226,7 +242,7 @@ export default function PrepApp({ lesson }: { lesson: PrepLesson }) {
           </section>
 
           <div className={s.foot}>
-            <Link href="/lesson">Open the full lesson view</Link>
+            {u3 ? <Link href="/u3">Back to Unit 3</Link> : <Link href="/lesson">Open the full lesson view</Link>}
             <button
               type="button"
               onClick={() => {
@@ -337,6 +353,16 @@ export default function PrepApp({ lesson }: { lesson: PrepLesson }) {
               {m.inClass.setup && <span style={{ fontSize: 14, opacity: 0.92 }}>{m.inClass.setup}</span>}
             </section>
           )}
+          {m.inClass.sequence && m.inClass.sequence.length > 0 && (
+            <div className={s.flat}>
+              <span className={s.lab}>Share in this order</span>
+              <ol className={s.clean} style={{ listStyle: 'decimal' }}>
+                {m.inClass.sequence.map((x, i) => (
+                  <li key={i}>{x}</li>
+                ))}
+              </ol>
+            </div>
+          )}
           {m.inClass.lines.length > 0 && (
             <>
               <span className={s.lab}>If you see · say (as you rehearsed)</span>
@@ -419,10 +445,16 @@ export default function PrepApp({ lesson }: { lesson: PrepLesson }) {
           </button>
           <div className={s.ttl}>
             <b>Library</b>
-            <span>{inFlow ? `Back to step ${st.step + 1}: ${m.steps[st.step].name}` : 'All five tools, for reference'}</span>
+            <span>
+              {inFlow ? `Back to step ${st.step + 1}: ${m.steps[st.step].name}` : u3 ? 'IM’s teacher notes' : 'All five tools, for reference'}
+            </span>
           </div>
         </div>
         <main className={s.main}>
+          {u3 ? (
+            <U3Library lesson={u3.im} />
+          ) : (
+          <>
           <div className={s.ltabs} role="tablist">
             {LIB_TABS.map(([k, l]) => (
               <button
@@ -443,12 +475,14 @@ export default function PrepApp({ lesson }: { lesson: PrepLesson }) {
             {/* The tools read the lesson view's WIDA level. Quick Read carries its
                 own selector; the others expect one above them. */}
             {t !== 'quickread' && <WidaMobileSelector />}
-            {t === 'quickread' && <MobileQuickRead lesson={lesson} />}
-            {t === 'pathway' && <LessonPathway lesson={lesson} onNavigate={(tool: ToolId) => update({ lib: tool })} />}
-            {t === 'thinking' && <AnticipatedThinking lesson={lesson} />}
-            {t === 'moves' && <MoveWalkthrough lesson={lesson} />}
-            {t === 'adapt' && <AdaptationGuardrails lesson={lesson} />}
+            {t === 'quickread' && <MobileQuickRead lesson={lesson!} />}
+            {t === 'pathway' && <LessonPathway lesson={lesson!} onNavigate={(tool: ToolId) => update({ lib: tool })} />}
+            {t === 'thinking' && <AnticipatedThinking lesson={lesson!} />}
+            {t === 'moves' && <MoveWalkthrough lesson={lesson!} />}
+            {t === 'adapt' && <AdaptationGuardrails lesson={lesson!} />}
           </div>
+          </>
+          )}
         </main>
         {inFlow ? null : tabsbar('library')}
       </>
@@ -466,7 +500,7 @@ export default function PrepApp({ lesson }: { lesson: PrepLesson }) {
       {sheetAct && (
         <Sheet onClose={() => setSheet(null)}>
           <SheetTop
-            eyebrow={[sheetAct.start, sheetAct.source.duration, sheetAct.role].filter(Boolean).join(' · ')}
+            eyebrow={[sheetAct.start, sheetAct.minutes ? `${sheetAct.minutes} min` : null, sheetAct.role].filter(Boolean).join(' · ')}
             onClose={() => setSheet(null)}
           />
           <ActivityDetail a={sheetAct} />

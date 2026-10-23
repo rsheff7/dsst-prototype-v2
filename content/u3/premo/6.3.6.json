@@ -1,0 +1,352 @@
+{
+ "status": "draft",
+ "reviewNotes": [
+  "No person has reviewed this file.",
+  "Crux is 6.2 (Cooking Oatmeal), not 6.3. IM's lesson narrative says the purpose is to introduce the two unit rates and to let students see that both describe the same situation while one may be better for a given question. 6.2 is where that happens (its narrative: “students explore two unit rates associated with the ratio”), the lesson names MP3 in Cooking Oatmeal, and IM's lesson synthesis goes back to the oatmeal table. 6.3 names the idea (“unit rate”) and practises it. 6.3 is a plausible crux too: it holds goal 3 and the term, and it would let both upstream rehearsals sit in 6.2. A reviewer may prefer that.",
+  "Because the crux is the first activity, the two upstream rehearsed moments are in the warm-up (6.1). Both rest on IM's text: responses that lack quantities, and IM's own “30 miles per hour” question. The link to the crux is that students need to hear “per” as an amount for 1 before “0.4 cups of oats per cup of water” makes sense.",
+  "Testable object: the Priya-and-Han verdict, each pair's agreed answer to “Who is correct?”. Lin's and Diego's questions and the “which rate did you use?” question test it.",
+  "IM's own moments used: the warm-up note that responses may lack quantities; IM's 30 miles per hour question (say line verbatim); the Think Pair Share and MLR3 breakdowns from the routine catalog, for routines IM lists for 6.2; the “cannot both be right” misconception in 6.2; the “not sure how to use the unit rates” misconception, the celebrated doubling strategy, and the 1/4-of-a-ticket discussion in 6.3 (say line verbatim from IM); the Three Reads breakdown for 6.3.",
+  "Premo's moments: the language moment and its by-level moves (built on IM's MLR3 support for 6.2), and the “5 × 0.4 = 2 cups of water” wrong-rate moment in 6.2. Patterns “15 ÷ 6 = 2 r 3”, the wrong-rate answer, “Priya's is the oats one” and “each rate is 1 divided by the other” are Premo's.",
+  "IM's 6.3 student response for item 4a says 28 ounces of cream cheese, which is right (0.8 × 35 = 28), but the table under it ends with the row 25 | 35; it should read 28 | 35. Nothing here repeats the 25. The transcriber also flagged it.",
+  "IM's 6.3 response 1a says “Lin’s recipe”; the task says “A cheesecake recipe”. Lin only appears in question 4a. Minor, not repeated here.",
+  "IM names the 6.2 routine “MLR3: Clarify, Critique, Correct” in the routine list and “MLR3: Clarify, Critique, and Correct” in the English-learner support. cruxLanguage.routine uses the support's spelling, as required; the routine-breakdown moment uses the list's.",
+  "produceToday is “gallon”, the only productive term the unit table gives for 6.3.6. It belongs to the milk problem in 6.3, not to the crux; “unit rate” is receptive for this lesson.",
+  "IM's 6.2 synthesis orders ideas (which rate when, then the Burj Khalifa link), not student work, so there is no which-work-first moment and no inClass.sequence. IM's narrative does say to notice pairs who use a table or a double number line; a reviewer could turn that into a share order.",
+  "Unsure: whether students at this point can divide 15 by 6 to get 2.5. IM teaches decimal division later in grade 6, so I expect table reasoning or fractions, and a “2 r 3” answer from some. That pattern is my guess, not IM's.",
+  "No optional activity in this lesson, so the cuts are shortenings only.",
+  "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person."
+ ],
+ "crux": "6.2",
+ "cruxWhy": "6.2 is where the lesson's new idea first appears: one ratio, 15 cups of water to 6 cups of oats, has two unit rates, 0.4 and 2.5, and both are right. IM's lesson narrative says the purpose is to introduce the two unit rates and to show that both describe the same situation while one may suit a question better, and goals 1 and 2 are both worked here. IM's lesson synthesis returns to the oatmeal table, and its language support for the activity sits in 6.2's synthesis.",
+ "object": {
+  "name": "the Priya-and-Han verdict",
+  "what": "Each pair's agreed answer to “Who is correct?”, with what each number means. Lin's and Diego's questions test it: a pair who believes both rates uses Han's 2.5 for Lin's 5 cups of oats and Priya's 0.4 for Diego's 10 cups of water."
+ },
+ "goal": "Students find both unit rates for a ratio, say what each one means in the situation, and choose the one that answers the question with a single multiplication.",
+ "rigorCheck": "Does every pair still reach the Priya-and-Han verdict on their own first, say what each number means, and use both rates for Lin and Diego?",
+ "watchFor": {
+  "6.1": "A list of “miles per hour” and “dollars per pound” with no numbers.",
+  "6.2": "A pair decides only one of Priya and Han can be right.",
+  "6.3": "Doubling 12 to 15 to reach 35 ounces of sugar, not using 0.8."
+ },
+ "moments": [
+  {
+   "id": "m1",
+   "activityId": "6.1",
+   "kind": "student-thinking",
+   "see": "A group's list reads “miles per hour, dollars per pound,” with no numbers.",
+   "means": "They know “per” joins two quantities. A number for each makes it a rate they can use.",
+   "say": "How many miles in one hour? Put a number on it.",
+   "dont": "Write the numbers in for them.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Note that responses may lack quantities, such as “miles per hour” or “dollars per pound.”",
+   "rehearse": true,
+   "criteria": [
+    "Kept the group's own example",
+    "Asked for a number with each quantity",
+    "Didn't write the numbers in for them"
+   ]
+  },
+  {
+   "id": "m2",
+   "activityId": "6.1",
+   "kind": "teacher-move",
+   "see": "A group shares “30 miles per hour,” and the class nods and waits for the next group.",
+   "means": "The rate is familiar but not yet unpacked into 30 miles every 1 hour. IM uses one familiar example for that, and leaves “per 1” for later.",
+   "say": "What are some things we know for sure about an object moving 30 miles per hour?",
+   "dont": "Explain “per 1” to the class yourself.",
+   "from": "im",
+   "sayFrom": "im",
+   "evidence": "It is not necessary to emphasize “per 1” language at this point.",
+   "rehearse": true,
+   "criteria": [
+    "Picked one familiar rate from the class list",
+    "Asked students what they know for sure about it",
+    "Didn't explain “per 1” for them"
+   ]
+  },
+  {
+   "id": "m3",
+   "activityId": "6.2",
+   "kind": "routine-breakdown",
+   "routine": "Think Pair Share",
+   "see": "As soon as you read “Who is correct?”, partners turn and start talking.",
+   "means": "Without quiet think time, the first quick answer becomes the pair's verdict.",
+   "say": "On your own first. Two minutes, and use the table.",
+   "dont": "Let a quick “Han!” settle it for the pair.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Students have quiet time to think about a problem and work on it individually",
+   "rehearse": true,
+   "criteria": [
+    "Protected the quiet think time before partners talk",
+    "Pointed to the table as a way in",
+    "Didn't let partner talk start early"
+   ]
+  },
+  {
+   "id": "m4",
+   "activityId": "6.2",
+   "kind": "im-misconception",
+   "see": "“They got different numbers, so one of them is wrong.”",
+   "means": "Different numbers look like a contradiction until each is tied to its own 1: 1 cup of water, or 1 cup of oats.",
+   "say": "What does Priya's 0.4 count? And Han's 2.5?",
+   "dont": "Announce that both are right.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Some students may think that Priya and Han cannot both be right because they came up with different numbers.",
+   "rehearse": true,
+   "criteria": [
+    "Asked what each number means in the recipe",
+    "Pointed them to where the 1 sits in each row",
+    "Left the Priya-and-Han verdict to the pair"
+   ]
+  },
+  {
+   "id": "m5",
+   "activityId": "6.2",
+   "kind": "student-thinking",
+   "see": "For Lin's 5 cups of oats, a student writes “5 × 0.4 = 2 cups of water.”",
+   "means": "Multiplying by a unit rate is the right kind of move; 0.4 is the rate for 1 cup of water, not for 1 cup of oats.",
+   "say": "In the recipe, is there more water or more oats?",
+   "dont": "Tell them to use 2.5.",
+   "from": "premo",
+   "sayFrom": "premo"
+  },
+  {
+   "id": "m6",
+   "activityId": "6.2",
+   "kind": "routine-breakdown",
+   "routine": "MLR3: Clarify, Critique, Correct",
+   "see": "Pairs go quiet after reading “because they are not equal,” and you start rewriting it on the board.",
+   "means": "The flawed explanation is there for students to improve. If you fix it, they only copy.",
+   "say": "What would you change? Fix it with your partner first.",
+   "dont": "Correct the explanation for the class.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "for students to improve upon the written work by correcting errors and clarifying meaning."
+  },
+  {
+   "id": "m7",
+   "activityId": "6.2",
+   "kind": "language",
+   "routine": "MLR3: Clarify, Critique, and Correct",
+   "see": "A student points at 0.4, then at 2.5: “This one… and this one is… the other way?”",
+   "means": "They see the two rates are linked. The words for what each one counts aren't there yet.",
+   "byBand": {
+    "emerging": {
+     "say": "Point to the 1 here. What does 0.4 tell us?",
+     "move": "They point to the 1-cup-of-water row and label 0.4 in a word, a sketch, or their home language.",
+     "nonverbal": "Put a finger on the 1 in each row of the table and wait."
+    },
+    "developing": {
+     "say": "What does 0.4 tell us? What does 2.5 tell us?",
+     "move": "They tell their partner with “0.4 cups of ___ for every 1 cup of ___,” then fix the explanation together."
+    },
+    "expanding": {
+     "say": "What does each number tell us? Then fix the explanation.",
+     "move": "They rewrite the explanation to show how either rate answers the question, then make it clearer once after hearing another pair."
+    }
+   },
+   "dont": "Say what the numbers mean for them.",
+   "from": "premo",
+   "sayFrom": "premo",
+   "rehearse": true,
+   "criteria": [
+    "Kept one question at every level: what each number means",
+    "Matched the way in to the student's level",
+    "Didn't say what the numbers mean for them"
+   ]
+  },
+  {
+   "id": "m8",
+   "activityId": "6.3",
+   "kind": "routine-breakdown",
+   "routine": "MLR6: Three Reads",
+   "see": "On the first read of the milk situation, a student is already dividing 10 by 6.",
+   "means": "The first read is for what is happening. Jumping to numbers skips knowing what is asked.",
+   "say": "First read: what is happening here? Numbers come next.",
+   "dont": "Let the first read turn into solving.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "To ensure that students know what they are being asked to do"
+  },
+  {
+   "id": "m9",
+   "activityId": "6.3",
+   "kind": "im-misconception",
+   "see": "A student has 0.8 and 1.25 for the cheesecake, then stops at “35 ounces of sugar.”",
+   "means": "They found the unit rates but don't yet see them as something to scale up, as they did with the oatmeal.",
+   "say": "Look at the oatmeal table. How did you get Lin's water?",
+   "dont": "Multiply 35 by 0.8 for them.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "If students are not sure how to use the unit rates they found for each situation to answer the second half of the task, remind them of how the oatmeal problem was solved."
+  },
+  {
+   "id": "m10",
+   "activityId": "6.3",
+   "kind": "teacher-move",
+   "see": "A pair doubles 12 and 15 to 24 and 30, then adds 4 and 5: 28 ounces of cream cheese for 35 of sugar.",
+   "means": "Correct, careful reasoning that IM says to celebrate. The milk problem is where the unit rate is clearly quicker.",
+   "say": "That works. Would it work as fast for the milk?",
+   "dont": "Tell them to use the unit rate instead.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Such lines of reasoning show depth of understanding and should be celebrated."
+  },
+  {
+   "id": "m11",
+   "activityId": "6.3",
+   "kind": "student-thinking",
+   "see": "“A quarter of a ticket per dollar? You can't buy a quarter of a ticket.”",
+   "means": "They are checking the number against the situation, which IM says to applaud. The rate still answers questions about money: $80 buys 20 tickets.",
+   "say": "If I had $80, how many tickets could I buy?",
+   "dont": "Agree it makes no sense and move on.",
+   "from": "im",
+   "sayFrom": "im",
+   "evidence": "Take this opportunity to applaud the student(s) for reasoning about the interpretation of the number in the context",
+   "rehearse": true,
+   "criteria": [
+    "Credited the objection as thinking about the situation",
+    "Asked them to use the rate with an amount of money",
+    "Didn't drop the rate as useless"
+   ]
+  }
+ ],
+ "patterns": [
+  {
+   "activityId": "6.1",
+   "type": "build",
+   "says": "“Miles per hour, dollars per pound.”",
+   "why": "They remember the words of a rate without the amounts.",
+   "shows": "They know “per” pairs two quantities.",
+   "from": "im",
+   "evidence": "Note that responses may lack quantities, such as “miles per hour” or “dollars per pound.”"
+  },
+  {
+   "activityId": "6.1",
+   "type": "stretch",
+   "says": "“40 miles per gallon.”",
+   "why": "A rate that is neither a price nor a speed, which is IM's challenge.",
+   "shows": "They see “per” beyond the contexts studied so far.",
+   "from": "im",
+   "evidence": "40 miles per gallon"
+  },
+  {
+   "activityId": "6.2",
+   "type": "error",
+   "says": "“They can't both be right. The numbers are different.”",
+   "why": "One question, one right number, from years of school maths.",
+   "shows": "They checked the two claims against each other. Each number's “per 1” is the new step.",
+   "from": "im",
+   "evidence": "Some students may think that Priya and Han cannot both be right because they came up with different numbers."
+  },
+  {
+   "activityId": "6.2",
+   "type": "almost",
+   "says": "“15 ÷ 6 = 2 r 3.”",
+   "why": "Division with a remainder, not yet as 2 and 3/6 cups, which is 2.5.",
+   "shows": "They know dividing water by oats gives water per cup of oats.",
+   "from": "premo"
+  },
+  {
+   "activityId": "6.2",
+   "type": "error",
+   "says": "For Lin: “5 × 0.4 = 2 cups of water.”",
+   "why": "They used the rate for 1 cup of water when they knew the cups of oats.",
+   "shows": "They know to scale a unit rate up by multiplying.",
+   "from": "premo"
+  },
+  {
+   "activityId": "6.2",
+   "type": "build",
+   "says": "“Both. 0.4 is oats for 1 cup of water, 2.5 is water for 1 cup of oats.”",
+   "why": "They tied each rate to the 1 in its row of the table.",
+   "shows": "The lesson's idea: one ratio, two unit rates.",
+   "from": "im",
+   "evidence": "Priya and Han are both correct as shown by the table"
+  },
+  {
+   "activityId": "6.2",
+   "type": "language",
+   "says": "“Priya's is the oats one.”",
+   "why": "Everyday words for “cups of oats per cup of water”.",
+   "shows": "They know which quantity each rate counts.",
+   "from": "premo"
+  },
+  {
+   "activityId": "6.2",
+   "type": "stretch",
+   "says": "“I used Han's for Lin because I knew the oats.”",
+   "why": "They chose the rate by what the question gives them.",
+   "shows": "Goal 2 already: choosing a unit rate and saying why.",
+   "from": "im",
+   "evidence": "We can efficiently find how much water for 5 cups of oats using Han's rate and scaling up by 5."
+  }
+ ],
+ "predict": {
+  "context": "Pairs read the oatmeal recipe, 15 cups of water to 6 cups of oats. Priya says it is 0.4 cups of oats per cup of water; Han says 2.5 cups of water per cup of oats. Each student thinks alone for 2–3 minutes, then partners agree on who is correct, with a table to help.",
+  "question": "What will most pairs' Priya-and-Han verdict say before the class discussion?",
+  "countQuestion": "How many pairs will say both Priya and Han are correct before the class discussion?",
+  "countUnit": "pairs will say both are correct.",
+  "tell": "If few do, two different numbers read as one right and one wrong. That is why you ask what each number counts: the fourth moment you'll rehearse.",
+  "activityIds": [
+   "6.1",
+   "6.2"
+  ]
+ },
+ "cruxLanguage": {
+  "routine": "MLR3: Clarify, Critique, and Correct",
+  "phase": "synthesis",
+  "produceToday": [
+   "gallon"
+  ],
+  "byBand": {
+   "emerging": {
+    "entry": "With a partner, they circle 0.4 and 2.5 in the oatmeal table and mark which cup each is for, in words, a sketch or their home language, before critiquing the explanation.",
+    "frame": "0.4 cups of ___ for 1 cup of ___"
+   },
+   "developing": {
+    "entry": "They tell their partner what is wrong with “they are not equal,” then write an improved explanation together.",
+    "frame": "I used ___’s rate because I knew the cups of ___."
+   },
+   "expanding": {
+    "entry": "They rewrite the explanation to say how either rate answers the question, read it to another pair, and make it clearer once.",
+    "frame": "The two rates are not equal, but ___ because ___."
+   }
+  }
+ },
+ "cuts": [
+  {
+   "activityId": "6.1",
+   "note": "No optional activity in this lesson. Keep the warm-up to 5 minutes: one familiar example in the share, then move on."
+  },
+  {
+   "activityId": "6.3",
+   "note": "Skip the raffle “deal” extension, and take one student per question in the share instead of two."
+  }
+ ],
+ "neverCut": [
+  "Quiet think time before partners agree in 6.2",
+  "Each pair's Priya-and-Han verdict, with a reason",
+  "The question: which rate did you use, and why?",
+  "IM's lesson synthesis on the oatmeal table"
+ ],
+ "inClass": {
+  "launch": "“On your own first: who is correct? Then agree with your partner.”",
+  "launchFrom": "premo",
+  "momentIds": [
+   "m3",
+   "m4",
+   "m7"
+  ]
+ },
+ "beforeClass": [
+  "Draw the oatmeal table on the board (water | oats: 15 | 6, then 1 | blank, then blank | 1). Fill it during the share and leave it up for 6.3 and the lesson synthesis, as IM says.",
+  "Write IM's flawed explanation for the MLR3 critique on the board or a chart: “I did not use either Priya’s rate (0.4 cups of oats per cup of water) or Han’s rate (2.5 cups of water per cup of oats) because they are not equal.”",
+  "Post IM's sentence frames for 6.2: “I noticed _____ so I . . .”, “Both _____ and _____ are alike because . . .”, “How do you know . . . ?”",
+  "Start a term display with “unit rate” for 6.3, as IM's support suggests, and keep it up for the unit."
+ ]
+}

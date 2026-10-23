@@ -6,6 +6,7 @@ import type { PrepState } from './usePrepState';
 import { elapsedSeconds, mmss } from './usePrepState';
 import { PREP_BUDGET_MINUTES } from '@/lib/prep/prepModel';
 import { Check, Icon, MlrPill, cx } from './parts';
+import { IMLines, MathText } from '@/components/u3/MathText';
 import s from './prep.module.css';
 
 export interface StepCtx {
@@ -54,12 +55,18 @@ export function orient(c: StepCtx): StepOut {
     <div className={s.stackLg}>
       <section className={cx(s.card, s.stack)}>
         <span className={s.eyebrow}>Destination</span>
-        <p className={s.goal}>{m.destination}</p>
+        <p className={s.goal}>
+          <MathText>{m.destination}</MathText>
+        </p>
         <dl className={s.kv}>
           <dt>Arc</dt>
-          <dd>{m.arc}</dd>
+          <dd>
+            <MathText>{m.arc}</MathText>
+          </dd>
           <dt>Idea</dt>
-          <dd>{m.idea}</dd>
+          <dd>
+            <MathText>{m.idea}</MathText>
+          </dd>
         </dl>
       </section>
       <section className={s.stack}>
@@ -78,11 +85,11 @@ export function orient(c: StepCtx): StepOut {
                   {a.isCrux && <span className={cx(s.pill, s.pillCrux)}>Crux</span>}
                   {a.optional && <span className={s.pill}>Optional</span>}
                   {a.focus === 'feeder' && <span className={cx(s.pill, s.pillCrux)}>Sets up the crux</span>}
-                  {!a.isCrux && <span className={s.pill}>{a.role}</span>}
+                  {!a.isCrux && a.role && <span className={s.pill}>{a.role}</span>}
                 </span>
                 {a.watchFor && (
                   <span className={s.tlWatch}>
-                    <b>Watch for:</b> {a.watchFor}
+                    <b>Watch for:</b> <MathText>{a.watchFor}</MathText>
                   </span>
                 )}
               </button>
@@ -112,13 +119,7 @@ export function student(c: StepCtx): StepOut {
             <span className={s.eyebrow}>
               Cool-down · {cd.title}
             </span>
-            <div className={s.stack} style={{ gap: 8 }}>
-              {cd.task.map((line, i) => (
-                <p key={i} style={i === 0 ? { fontWeight: 600 } : undefined}>
-                  {line}
-                </p>
-              ))}
-            </div>
+            <IMLines lines={cd.task} />
             <p className={cx(s.muted, s.small)}>
               Answer in writing, the way a strong student would. Then say it out loud.
             </p>
@@ -178,11 +179,7 @@ export function student(c: StepCtx): StepOut {
           {cd && (
             <div className={s.flat}>
               <span className={s.lab}>A strong answer</span>
-              <div className={s.stack} style={{ gap: 6 }}>
-                {cd.strongAnswer.map((line, i) => (
-                  <p key={i}>{line}</p>
-                ))}
-              </div>
+              <IMLines lines={cd.strongAnswer} />
             </div>
           )}
           {!cd && m.proof.parts?.after && (
@@ -255,7 +252,7 @@ export function predict(c: StepCtx): StepOut {
           ) : (
             <>
               <p>
-                <b>What students do:</b> {m.crux.source.learning_target}
+                <b>What students do:</b> {m.crux.source?.learning_target}
               </p>
               {m.setup.crux && <p className={cx(s.muted, s.small)}>{m.setup.crux}</p>}
             </>
@@ -321,10 +318,10 @@ export function predict(c: StepCtx): StepOut {
             return (
               <div key={i} className={s.pat}>
                 <span className={cx(s.eyebrow, s[`k-${p.kind}`])}>
-                  {p.kindLabel} · {p.frequencyLabel} · {a?.isCrux ? 'Crux' : 'Sets it up'} ({p.activityId})
+                  {[p.kindLabel, p.frequencyLabel, `${a?.isCrux ? 'Crux' : 'Sets it up'} (${p.activityId})`].filter(Boolean).join(' · ')}
                 </span>
-                <span className={s.patSays}>{p.label}</span>
-                <span className={s.patWhy}>{p.description}</span>
+                <span className={s.patSays}><MathText>{p.label}</MathText></span>
+                <span className={s.patWhy}><MathText>{p.description}</MathText></span>
                 {p.mll && p.kind !== 'lang' && (
                   <span className={s.row}>
                     <span className={cx(s.pill, s.pillMll)}>Language is part of it</span>
@@ -412,7 +409,7 @@ export function rehearse(c: StepCtx): StepOut {
         </div>
         {sc.scene ? (
           <div className={s.stack} style={{ gap: 8 }}>
-            <span className={s.lab}>Notice · {sc.notice}</span>
+            <span className={s.lab}>Notice · <MathText>{sc.notice}</MathText></span>
             <p className={s.notice} style={{ fontSize: 19 }}>
               {sc.scene}
             </p>
@@ -420,7 +417,7 @@ export function rehearse(c: StepCtx): StepOut {
         ) : (
           <div className={s.stack} style={{ gap: 8 }}>
             <span className={s.lab}>You see</span>
-            <p className={s.notice}>{sc.notice}</p>
+            <p className={s.notice}><MathText>{sc.notice}</MathText></p>
           </div>
         )}
         {!said ? (
@@ -448,7 +445,7 @@ export function rehearse(c: StepCtx): StepOut {
                 {sc.means && (
                   <div className={s.flat}>
                     <span className={s.lab}>What’s going on</span>
-                    {sc.means}
+                    <MathText>{sc.means}</MathText>
                   </div>
                 )}
                 {sc.byBand ? (
@@ -458,12 +455,14 @@ export function rehearse(c: StepCtx): StepOut {
                       {shownBands.map((mv) => (
                         <div key={mv.band} className={s.pc}>
                           <span className={s.lv}>{bandLabel(mv.band)}</span>
-                          {mv.say && <b>{mv.say}</b>}
+                          {mv.say && <b><MathText>{mv.say}</MathText></b>}
                           {mv.nonverbal && <span className={cx(s.muted, s.small)}>Without words: {mv.nonverbal}</span>}
-                          <details className={s.more}>
-                            <summary>The full move</summary>
-                            <span className={s.small}>{mv.move}</span>
-                          </details>
+                          {mv.move && (
+                            <details className={s.more}>
+                              <summary>The full move</summary>
+                              <span className={s.small}>{mv.move}</span>
+                            </details>
+                          )}
                           {mv.avoid && (
                             <span className={cx(s.avoid, s.small)}>
                               <b>Avoid:</b> {mv.avoid}
@@ -478,11 +477,13 @@ export function rehearse(c: StepCtx): StepOut {
                     <>
                       <div className={s.respond}>
                         <span className={s.lab}>Respond</span>
-                        {sc.flat.say && <p style={{ fontWeight: 600 }}>{sc.flat.say}</p>}
-                        <details className={s.more}>
-                          <summary>The full move</summary>
-                          <span className={s.small}>{sc.flat.move}</span>
-                        </details>
+                        {sc.flat.say && <p style={{ fontWeight: 600 }}><MathText>{sc.flat.say}</MathText></p>}
+                        {sc.flat.move && (
+                          <details className={s.more}>
+                            <summary>The full move</summary>
+                            <span className={s.small}>{sc.flat.move}</span>
+                          </details>
+                        )}
                       </div>
                       {sc.flat.avoid && (
                         <div className={s.avoid}>
@@ -617,7 +618,9 @@ export function adjust(c: StepCtx): StepOut {
           <h3>MLL supports at the crux</h3>
           <span className={cx(s.muted, s.small)}>{st.bands.length ? bands.map(bandLabel).join(' · ') : 'All levels'}</span>
         </div>
-        <p className={cx(s.muted, s.small)}>Same mathematical demand, different language support. Filtered to your class.</p>
+        <p className={cx(s.muted, s.small)}>
+          {m.language.routineNote ? `${m.language.routineNote} ` : ''}Same mathematical demand, different language support. Filtered to your class.
+        </p>
         {m.language.frames.length > 0 && (
           <div className={cx(s.card, s.stack)} style={{ gap: 8 }}>
             <span className={s.lab}>Frames to post at the crux</span>

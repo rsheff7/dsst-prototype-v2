@@ -94,7 +94,8 @@ export interface PrepActivity {
   /** "Warm-Up", "Activity 1"... or the id when the title carries no slot. */
   label: string;
   title: string;
-  role: Activity['function'];
+  /** The activity's role or slot, as a short label. */
+  role: string;
   /** Start offset from the top of class, "0:10". Null when durations can't be read. */
   start: string | null;
   minutes: number | null;
@@ -115,7 +116,10 @@ export interface PrepActivity {
     bridge: string;
     homeLanguage: string | null;
   } | null;
-  source: Activity;
+  /** The generated activity, for the detail sheet. Null for a Unit 3 lesson, which carries `im`. */
+  source: Activity | null;
+  /** IM's own notes for the activity (Unit 3 lessons). Typed loosely to keep this module free of the u3 model. */
+  im?: unknown;
 }
 
 /**
@@ -256,6 +260,8 @@ export interface PrepModel {
     frames: SentenceFrame[];
     vocabulary: KeyVocabularyTerm[];
     profile: Partial<Record<ProficiencyBand, { does: string; reaching: string }>>;
+    /** Where the crux's language support sits in IM's lesson, for a Unit 3 lesson. */
+    routineNote?: string;
   };
   setup: {
     crux: string | null;
@@ -264,6 +270,8 @@ export interface PrepModel {
   inClass: {
     /** The line that opens the crux. Hand-written lessons only. */
     launch: string | null;
+    /** For a Five Practices crux: the order to share work in. */
+    sequence?: string[];
     /** A question for pairs who already have an answer, verbatim. */
     ask: string | null;
     setup: string | null;
@@ -570,7 +578,7 @@ export function buildPrepModel(lesson: PrepLesson, bands: readonly ProficiencyBa
     coolDown,
     lookFors: coolDown
       ? coolDown.lookFors
-      : dedupe([...(lesson.wristband?.top_signals ?? []), ...(crux?.source.success_signals ?? [])])
+      : dedupe([...(lesson.wristband?.top_signals ?? []), ...(crux?.source?.success_signals ?? [])])
           .filter((s) => !NOT_SHOWABLE_IN_AN_ANSWER.test(s))
           .slice(0, 4),
   };
@@ -748,7 +756,7 @@ export function buildPrepModel(lesson: PrepLesson, bands: readonly ProficiencyBa
       ? words(...coolDown.task, ...coolDown.strongAnswer, ...coolDown.lookFors)
       : words(proof.closing, ...proof.lookFors),
     predict: words(
-      authored?.predict ? authored.predict.context : crux?.source.learning_target,
+      authored?.predict ? authored.predict.context : crux?.source?.learning_target,
       setup.crux,
       ...patterns.flatMap((p) => [p.label, p.description]),
       ...listenFor,

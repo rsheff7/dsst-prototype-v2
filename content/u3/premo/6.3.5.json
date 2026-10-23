@@ -1,0 +1,372 @@
+{
+ "status": "draft",
+ "reviewNotes": [
+  "No person has reviewed this file.",
+  "Crux is 5.3, not 5.2. Both have the same stated purpose (remind students how the context works, nudge them toward more efficient comparisons). 5.3 was chosen because its synthesis states the lesson's point outright (“computing and comparing the price per 1 is an efficient way to compare rates”), it highlights division, which the lesson narrative names as the efficient strategy, it is the lesson's Five Practices activity, and the cool-down is a shopping problem of the same kind. 5.2 is a fair alternative: goal 1 (same rate per 1 means equivalent ratios) lives in 5.2's Mai and Tyler share, which is why that share is one of the two upstream rehearsed moments.",
+  "Testable object: the best-deal explanation, the written answer IM's English-learner support (MLR1) has each student draft, take to 2–3 partners, and revise. The 28-oz question in 5.3 tests it: does “per can” still work when the cans are different sizes?",
+  "IM's own moments used: the 5.1 disagreement structure, the MLR5 breakdown (from the routine catalog), the “not sure how to begin” move in 5.2, the Mai and Tyler highlight in 5.2's synthesis, the “best deal” meanings from 5.3's narrative, the “only the number of cans or only the price” misconception, the MLR1 breakdown, and 5.3's share order. The reversed-division moment rests on the unit readiness check (item 4, first used in Lesson 5), not on the lesson itself.",
+  "Premo's moments: the 6.3 kilometers vs 6,300 meters slip in 5.2, the 28-oz can moment, and the language moment with its by-level moves. All say lines are Premo's. The by-level entries, frames and the home-language option are Premo's; IM gives one support for every learner.",
+  "IM places 5.3's MLR1 support at the launch, but what it describes (write, share with 2–3 partners, revise) runs through the work time. cruxLanguage.phase follows IM's label.",
+  "5.2's English-learner support says “Display the constant speed of Tyler, Kiran, and Mai.” Read literally, showing the speeds would give away question 2. It probably means display the runners' information without the questions. Not repeated here; worth checking against the guide.",
+  "5.2's launch says to do “the first three questions” alone and “the last three questions” in groups, but the task as extracted is question 1 (three comparisons), question 2 (the rates) and question 3 (Mai's first 30 minutes). The split is clear in intent, not in numbering.",
+  "5.1's response for 7 ÷ 5 says “0.4 which is closer to 1.5 than 1”; it is the quotient, 1.4, that is closer to 1½. Loose wording in IM; m1 states it correctly.",
+  "Unit readiness item 4 lists answers “1. 1.25 2. 0.8 3. 2.5 4. 0.4” while the task row reads 5 ÷ 4, 30 ÷ 12, 4 ÷ 5, 12 ÷ 30 (1.25, 2.5, 0.8, 0.4). Probably a 2×2 grid read down the columns. Not used here.",
+  "28-oz can: IM compares it with the first store's $0.75 can ($0.05 an ounce each). The same store's own 15-oz cans at $0.80 are about $0.053 an ounce, so the big can is slightly cheaper per ounce than that store's small one. IM doesn't raise this; it is left out of the say lines.",
+  "This lesson has no optional activity, so the cuts are all shortenings.",
+  "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person. All numbers here were rechecked: 4,200 ÷ 30 = 140, 6,300 ÷ 30 = 210, 6,300 ÷ 45 = 140, 6 ÷ 8 = 0.75, 10 ÷ 10 = 1, 3 ÷ 2 = 1.50, 8 ÷ 6 ≈ 1.33, 0.75 ÷ 15 = 0.05, 1.40 ÷ 28 = 0.05, 7 ÷ 5 = 1.4."
+ ],
+ "crux": "5.3",
+ "cruxWhy": "5.3 is where the lesson's goal of comparing by “how much for 1” becomes the whole task: four ads written four different ways, and the fair way to compare them is the price per can. IM's synthesis says its purpose is to help students see “that computing and comparing the price per 1 is an efficient way to compare rates in a unit price context,” and to highlight division, the efficient strategy the lesson narrative names. The cool-down is the same kind of shopping problem. 5.2 sets it up with speeds.",
+ "object": {
+  "name": "the best-deal explanation",
+  "what": "Each student's written answer to “Which store is offering the best deal? Explain your reasoning,” drafted alone, then made stronger with 2–3 partners (IM's Stronger and Clearer Each Time). The 28-oz question tests it: does the reasoning still work when the cans are different sizes?"
+ },
+ "goal": "Students compare speeds and prices by finding how much for 1 of the same unit, and explain that two ratios with the same rate per 1 are equivalent.",
+ "rigorCheck": "Does every student still write the best-deal explanation, revise it after partner rounds, and hear the share in IM's order?",
+ "watchFor": {
+  "5.1": "Answers with no reason, or long division instead of comparing to ½, 1 and 1½.",
+  "5.2": "Mai's 6.3 kilometers read as less than Kiran's 6,300 meters.",
+  "5.3": "“10 for $10” picked as the best deal because it has the most cans."
+ },
+ "moments": [
+  {
+   "id": "m1",
+   "activityId": "5.1",
+   "kind": "student-thinking",
+   "see": "Hands split on 7 ÷ 5: some say closer to 1, some say closer to 1½.",
+   "means": "7 ÷ 5 is 1 and 2 fifths, or 1.4: 0.1 from 1½ and 0.4 from 1.",
+   "say": "Closer-to-1 side, tell the others how you decided.",
+   "dont": "Say “it's 1.4” and move on.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "If there is disagreement on an answer, ask students with opposing answers to explain their reasoning to come to an agreement on an answer."
+  },
+  {
+   "id": "m2",
+   "activityId": "5.2",
+   "kind": "routine-breakdown",
+   "routine": "MLR5: Co-Craft Questions",
+   "see": "A pair's “question” about the runners is “Kiran is the fastest.”",
+   "means": "They jumped to an answer. The routine gives time inside the runners' story before anyone answers.",
+   "say": "Good thought. What question would that be the answer to?",
+   "dont": "Tell them whether Kiran is fastest.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "To allow students to get inside of a context before feeling pressure to produce answers"
+  },
+  {
+   "id": "m3",
+   "activityId": "5.2",
+   "kind": "im-misconception",
+   "see": "A student has copied Tyler's, Kiran's and Mai's numbers and written nothing else.",
+   "means": "They have the numbers but no way yet to set meters and minutes side by side.",
+   "say": "Could a table of meters and minutes help you start?",
+   "dont": "Fill in Tyler's first row for them.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "If students are not sure how to begin, suggest that they try using a table or a double number line that associates meters and minutes.",
+   "rehearse": true,
+   "criteria": [
+    "Offered a table or double number line as a way in",
+    "Left the numbers for the student to fill in",
+    "Didn't fill a row for them"
+   ]
+  },
+  {
+   "id": "m4",
+   "activityId": "5.2",
+   "kind": "student-thinking",
+   "see": "A student writes “Mai ran 6.3 and Kiran ran 6,300, so Kiran ran way more.”",
+   "means": "Different units. 6.3 kilometers is 6,300 meters, the same distance as Kiran.",
+   "say": "How many meters is 6.3 kilometers?",
+   "dont": "Convert it for them.",
+   "from": "premo",
+   "sayFrom": "premo"
+  },
+  {
+   "id": "m5",
+   "activityId": "5.2",
+   "kind": "student-thinking",
+   "see": "“Mai and Tyler aren't the same. She ran farther and longer.”",
+   "means": "True about distance and time. But both ran 140 meters per minute, the same speed, so 4,200 : 30 and 6,300 : 45 are equivalent ratios.",
+   "say": "True. Now how far did each go in one minute?",
+   "dont": "Announce that they ran the same speed.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "make sure to highlight that even though they ran different distances in different amounts of time, they each ran 140 meters per minute so we can say “they ran at the same speed.”",
+   "rehearse": true,
+   "criteria": [
+    "Agreed with what the student noticed",
+    "Sent them to meters in one minute for each runner",
+    "Didn't announce “same speed” for them"
+   ]
+  },
+  {
+   "id": "m6",
+   "activityId": "5.3",
+   "kind": "student-thinking",
+   "see": "“The 80-cent store is the best deal. I only need one can.”",
+   "means": "A real reason, and IM expects it. For this task, best deal means lowest price per can.",
+   "say": "Fair. For today, which store charges least per can?",
+   "dont": "Tell them that reason doesn't count.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "not wanting to buy in bulk when only a small quantity is needed"
+  },
+  {
+   "id": "m7",
+   "activityId": "5.3",
+   "kind": "im-misconception",
+   "see": "“10 for $10 is the best. You get the most cans.”",
+   "means": "They're reading one number on the ad. The ads only compare fairly as the price of one can.",
+   "say": "What does one can cost at that store?",
+   "dont": "Point to “8 for $6” as the answer.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "At first glance, students may look only at the number of cans in each offer or only at the price. Let students know that they need to consider the price per one can.",
+   "rehearse": true,
+   "criteria": [
+    "Made one can the thing to compare",
+    "Asked about that store's price, not which store wins",
+    "Didn't name the best store"
+   ]
+  },
+  {
+   "id": "m8",
+   "activityId": "5.3",
+   "kind": "student-thinking",
+   "see": "“8 ÷ 6 = 1.33, so $1.33 a can.”",
+   "means": "They divided cans by dollars: about 1.33 cans for each dollar. Dollars per can is 6 ÷ 8 = 0.75.",
+   "say": "What does the 1.33 count here: dollars or cans?",
+   "dont": "Tell them to flip the division.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Keep an eye out for students who reverse the order of division or who misplace the decimal point."
+  },
+  {
+   "id": "m9",
+   "activityId": "5.3",
+   "kind": "language",
+   "routine": "MLR1: Stronger and Clearer Each Time",
+   "see": "A first draft of the best-deal explanation reads “8 for 6 is good.”",
+   "means": "The choice is there. The price per can, and why it beats the others, aren't in words yet.",
+   "byBand": {
+    "emerging": {
+     "say": "Which store is best? Show me one can's price there.",
+     "move": "They point to the ad, write its price for one can under it, then point to the other ads to compare.",
+     "nonverbal": "Draw an empty “1 can: $___” box under each ad on the board."
+    },
+    "developing": {
+     "say": "Which store is best? Tell me using “per can.”",
+     "move": "They tell a partner with the frame, then add the price per can to their draft."
+    },
+    "expanding": {
+     "say": "Which store is best, and how do you know it wins?",
+     "move": "They add a comparison with another store's price per can, then sharpen it after a partner round."
+    }
+   },
+   "dont": "Write the price per can or the sentence for them.",
+   "from": "premo",
+   "sayFrom": "premo",
+   "rehearse": true,
+   "criteria": [
+    "Kept the same question at every level: which store, and how do you know?",
+    "Matched the way in to the student's level",
+    "Didn't write the price or the sentence for them"
+   ]
+  },
+  {
+   "id": "m10",
+   "activityId": "5.3",
+   "kind": "routine-breakdown",
+   "routine": "MLR1: Stronger and Clearer Each Time",
+   "see": "A partner reads “8 for $6 is best because it's cheapest” and says “looks good.”",
+   "means": "“Cheapest” is the claim; $0.75 per can is the detail that proves it. With no press, the second draft matches the first.",
+   "say": "Ask your partner one question: how much per can?",
+   "dont": "Let “looks good” count as a round.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "students should be pressed for details, and encouraged to press each other for details.",
+   "rehearse": true,
+   "criteria": [
+    "Gave the listener a detail to press for",
+    "Kept the revising with the writer",
+    "Didn't let “looks good” end the round"
+   ]
+  },
+  {
+   "id": "m11",
+   "activityId": "5.3",
+   "kind": "student-thinking",
+   "see": "“$1.40 is more than 80 cents, so the big can is worse.”",
+   "means": "The cans aren't the same size, so per can isn't the same unit any more. Per ounce, $1.40 ÷ 28 = $0.05, the same as $0.75 ÷ 15.",
+   "say": "What could you compare when the cans aren't the same size?",
+   "dont": "Tell them to divide by the ounces.",
+   "from": "premo",
+   "sayFrom": "premo"
+  },
+  {
+   "id": "m12",
+   "activityId": "5.3",
+   "kind": "which-work-first",
+   "see": "On desks: a table from 6 dollars for 8 cans down to 1 can, and “6 ÷ 8 = 0.75.”",
+   "means": "IM's order: tables and double number lines first, then division, so 6 ÷ 8 is seen as a shortcut to the same 1-can row.",
+   "say": "Start us off. How did your table get to one can?",
+   "dont": "Start with the student who divided.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "If any students used a representation like a double number line or table to support their reasoning, select these students to share their strategy first.",
+   "rehearse": true,
+   "criteria": [
+    "Called a table or double number line first",
+    "Connected the division to the 1-can row",
+    "Didn't start with the fastest strategy"
+   ]
+  }
+ ],
+ "patterns": [
+  {
+   "activityId": "5.2",
+   "type": "error",
+   "says": "“Mai ran 6.3, Kiran ran 6,300.”",
+   "why": "Kilometers and meters read as the same unit.",
+   "shows": "They're comparing distances, which is the right first move.",
+   "from": "premo"
+  },
+  {
+   "activityId": "5.2",
+   "type": "build",
+   "says": "“Mai and Tyler both ran 140 meters per minute.”",
+   "why": "They found meters in one minute for each runner.",
+   "shows": "Same rate per 1, same speed: the idea the lesson is working toward.",
+   "from": "im",
+   "evidence": "they each ran 140 meters per minute"
+  },
+  {
+   "activityId": "5.3",
+   "type": "error",
+   "says": "“10 for $10. You get the most cans.”",
+   "why": "One number on the ad is read as the deal.",
+   "shows": "They know more for your money matters. Per can is the new step.",
+   "from": "im",
+   "evidence": "students may look only at the number of cans in each offer or only at the price"
+  },
+  {
+   "activityId": "5.3",
+   "type": "error",
+   "says": "“8 ÷ 6 = 1.33, so $1.33 a can.”",
+   "why": "The division is in the reverse order: cans per dollar.",
+   "shows": "They know dividing gets them to 1. Which number is the 1 is the next step.",
+   "from": "im",
+   "evidence": "reverse the order of division"
+  },
+  {
+   "activityId": "5.3",
+   "type": "almost",
+   "says": "“80 cents each is cheapest.”",
+   "why": "$0.80 is the smallest price on the ads.",
+   "shows": "That ad is already per can. They're ready to find the others' price per can and compare.",
+   "from": "im",
+   "evidence": "or only at the price"
+  },
+  {
+   "activityId": "5.3",
+   "type": "build",
+   "says": "“6 ÷ 8 = 0.75. $0.75 a can is the lowest.”",
+   "why": "They divide the price by the number of cans.",
+   "shows": "The efficient strategy IM's synthesis builds to.",
+   "from": "im",
+   "evidence": "Highlight the use of division to compute the price per can"
+  },
+  {
+   "activityId": "5.3",
+   "type": "stretch",
+   "says": "“$1.40 ÷ 28 = $0.05 an ounce, same as $0.75 ÷ 15.”",
+   "why": "They switch to ounces when the cans differ in size.",
+   "shows": "How much for 1 of the same unit, chosen on purpose.",
+   "from": "im",
+   "evidence": "is the same price per ounce as the first store's 15 oz can for $0.75"
+  },
+  {
+   "activityId": "5.3",
+   "type": "language",
+   "says": "“8 for 6 is good.”",
+   "why": "The choice is ahead of the words for it.",
+   "shows": "They picked the store with the lowest price per can.",
+   "from": "premo"
+  }
+ ],
+ "predict": {
+  "context": "Four store ads for the same 15-oz can of beans: 8 for $6, 10 for $10, 2 for $3, and 80 cents each. Each student writes which store is the best deal and why, shares that with 2–3 partners, and revises it. Then they compare a 28-oz can for $1.40.",
+  "question": "What will most first drafts of the best-deal explanation say?",
+  "countQuestion": "How many students will give a price for one can at every store in their first draft?",
+  "countUnit": "students will give a price for one can at every store.",
+  "tell": "If few do, the drafts are comparing the numbers printed on the ads. That is the third moment you'll rehearse: ask what one can costs at that store.",
+  "activityIds": [
+   "5.2",
+   "5.3"
+  ]
+ },
+ "cruxLanguage": {
+  "routine": "MLR1: Stronger and Clearer Each Time",
+  "phase": "launch",
+  "produceToday": [
+   "unit price",
+   "same speed"
+  ],
+  "byBand": {
+   "emerging": {
+    "entry": "Before writing, they label each ad with its price for one can. They may talk it through in their home language first, then write the store and its price per can.",
+    "frame": "___ is $___ per can."
+   },
+   "developing": {
+    "entry": "They write a first draft with the frame, read it to each partner, and add one detail after each round.",
+    "frame": "The best deal is ___ because its unit price is $___ per can, less than ___."
+   },
+   "expanding": {
+    "entry": "They write freely, then in each partner round ask for one missing detail: which unit, or which store it beats.",
+    "frame": "___ has the lowest unit price because ___, while ___."
+   }
+  }
+ },
+ "cuts": [
+  {
+   "activityId": "5.1",
+   "note": "Keep it short: two of the three expressions, one reason each."
+  },
+  {
+   "activityId": "5.2",
+   "note": "Shorten the question co-crafting to one or two shared questions. Keep the Mai and Tyler share."
+  },
+  {
+   "activityId": "5.3",
+   "note": "Keep the talk about what “best deal” means to a minute, but say what it means today: lowest price per can."
+  }
+ ],
+ "neverCut": [
+  "Quiet work time before groups or partners talk",
+  "The Mai and Tyler share: 140 meters per minute",
+  "The best-deal explanation, drafted and then revised",
+  "The share in IM's order, tables first"
+ ],
+ "inClass": {
+  "launch": "“Write which store is the best deal, and how you know.”",
+  "launchFrom": "premo",
+  "momentIds": [
+   "m7",
+   "m10",
+   "m12"
+  ],
+  "sequence": [
+   "A student who used a table or double number line to get to 1 can",
+   "A student who divided the price by the cans, like 6 ÷ 8",
+   "Connect them: the 1-can row and 6 ÷ 8 both give $0.75 per can"
+  ]
+ },
+ "beforeClass": [
+  "Gather a few grocery ads or fliers with deals like “3 for $5” (IM's preparation).",
+  "Copy the four bean ads onto the board with an empty “1 can: $___” box under each, for the share and the Levels 1–2 way in.",
+  "Have the runners' information ready to show without the questions, for co-crafting questions in 5.2.",
+  "Draw IM's lesson-synthesis chart: “rate as given” and “rate per 1”, with the runners and the ads, ready to fill."
+ ]
+}
