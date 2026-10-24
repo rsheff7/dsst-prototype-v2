@@ -13,7 +13,7 @@ const TOOL_CONTENT: Record<ToolId, {
   whatItGives: string;
 }> = {
   quickread: {
-    title: 'Quick Read',
+    title: 'Prep Sheet',
     subtitle: 'The single sheet to carry into class',
     accent: 'var(--color-brand-primary)',
     purpose:
@@ -58,9 +58,10 @@ const TOOL_CONTENT: Record<ToolId, {
 
 interface ToolInfoProps {
   toolId: ToolId;
+  hideHeading?: boolean;
 }
 
-export default function ToolInfo({ toolId }: ToolInfoProps) {
+export default function ToolInfo({ toolId, hideHeading }: ToolInfoProps) {
   const [open, setOpen] = useState(false);
   const content = TOOL_CONTENT[toolId];
 
@@ -79,16 +80,18 @@ export default function ToolInfo({ toolId }: ToolInfoProps) {
 
   return (
     <>
-      <div className="pt-2 pb-1 flex items-baseline justify-between gap-3">
-        <div className="min-w-0">
-          <h2
-            className="text-[0.95rem] font-semibold leading-tight"
-            style={{ color: content.accent }}
-          >
-            {content.title}
-          </h2>
-          <p className="text-[0.78rem] text-ink-faint mt-0.5">{content.subtitle}</p>
-        </div>
+      <div className={`flex items-baseline justify-between gap-3 ${hideHeading ? '' : 'pt-2 pb-1'}`}>
+        {!hideHeading && (
+          <div className="min-w-0">
+            <h2
+              className="text-[0.95rem] font-semibold leading-tight"
+              style={{ color: content.accent }}
+            >
+              {content.title}
+            </h2>
+            <p className="text-[0.78rem] text-ink-faint mt-0.5">{content.subtitle}</p>
+          </div>
+        )}
         <button
           onClick={() => setOpen(true)}
           aria-label={`About ${content.title}`}

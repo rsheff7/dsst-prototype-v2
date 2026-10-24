@@ -1,11 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { LessonData, WristbandTile, WristbandActivity, WristbandLegendEntry, Activity } from '@/lib/types';
 import { MLRS } from '@/lib/mlrs';
 import MlrChip from '@/components/shared/MlrChip';
 import ToolInfo from '@/components/shared/ToolInfo';
 import { activitySlot, activityHeading, activityShortLabel } from '@/lib/activityLabel';
+import { useLesson } from '@/lib/lessonContext';
+import { WIDA_LEVELS, WIDA_LABELS, type WidaLevel } from '@/lib/eld';
 
 const FRICTION_PILL: Record<WristbandTile['friction_type'], { bg: string; text: string; label: string }> = {
   math: { bg: 'var(--color-bridging-bg)', text: 'var(--color-bridging-text)', label: 'Math' },
@@ -34,6 +36,9 @@ type Mode = 'plan' | 'inclass';
 export default function QuickRead({ lesson }: Props) {
   const [mode, setMode] = useState<Mode>('plan');
   const [destinationExpanded, setDestinationExpanded] = useState(true);
+  const [widaOpen, setWidaOpen] = useState(false);
+  const widaRef = useRef<HTMLDivElement>(null);
+  const { selectedWidaLevel, setSelectedWidaLevel } = useLesson();
   const wb = lesson.wristband;
   const activityById = Object.fromEntries(lesson.activities.map((a) => [a.id, a]));
   const windows = timeWindows(lesson.activities);
@@ -41,28 +46,112 @@ export default function QuickRead({ lesson }: Props) {
     lesson.activities.map((a, i) => [a.id, windows[i]]),
   );
 
+  // Close WIDA popover on outside click
+  useEffect(() => {
+    if (!widaOpen) return;
+    const handler = (e: MouseEvent) => {
+      if (widaRef.current && !widaRef.current.contains(e.target as Node)) {
+        setWidaOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, [widaOpen]);
+
   return (
-    <div className={`pt-12 pb-12 quickread-root quickread-${mode}`}>
-      <ToolInfo toolId="quickread" />
-      <div className="h-6 qr-print-hide" />
+    <div className={`pt-6 pb-12 quickread-root quickread-${mode}`}>
 
 {/* Toolbar (screen only) */}
-      <div className="qr-print-hide mb-5 flex items-center justify-between gap-3 flex-wrap">
+      <div className="qr-print-hide mb-5 flex items-center justify-between gap-3">
+        {/* Left: mode toggle */}
         <ModeToggle mode={mode} onChange={setMode} />
-        {mode === 'plan' && (
-          <button
-            type="button"
-            onClick={() => window.print()}
-            className="rounded-full px-3 py-1 text-[11px] font-semibold cursor-pointer hover:opacity-85 transition-opacity"
-            style={{ backgroundColor: QR_ACCENT, color: 'var(--color-card)' }}
-          >
-            Print
-          </button>
+
+        {/* Center: WIDA level selector — only in in-class view where ELSF content renders */}
+        {mode === 'inclass' && lesson.elsf_inference?.activities.length > 0 && (
+          <div className="flex-1 flex justify-center relative" ref={widaRef}>
+            <button
+              type="button"
+              onClick={() => setWidaOpen(!widaOpen)}
+              className="rounded-full px-3 py-1 text-[11px] font-semibold cursor-pointer transition-colors border"
+              style={
+                selectedWidaLevel !== null
+                  ? { backgroundColor: 'var(--color-thinking)', color: 'white', borderColor: 'var(--color-thinking)' }
+                  : { backgroundColor: 'transparent', color: 'var(--color-ink-muted)', borderColor: 'var(--color-line)' }
+              }
+              aria-expanded={widaOpen}
+            >
+              WIDA level{selectedWidaLevel !== null ? ` · ${WIDA_LABELS[selectedWidaLevel]}` : ''}
+            </button>
+
+            {widaOpen && (
+              <div
+                className="absolute top-full mt-1 left-1/2 -translate-x-1/2 rounded-xl shadow-lg border py-1 min-w-[140px] z-50"
+                style={{ backgroundColor: 'var(--color-card)', borderColor: 'var(--color-line)' }}
+              >
+                <p className="px-3 py-1.5 text-[9px] font-semibold uppercase tracking-[0.08em]" style={{ color: 'var(--color-ink-faint)' }}>
+                  WIDA level
+                </p>
+                {WIDA_LEVELS.map((level: WidaLevel) => (
+                  <button
+                    key={level}
+                    type="button"
+                    onClick={() => {
+                      setSelectedWidaLevel(selectedWidaLevel === level ? null : level);
+                      setWidaOpen(false);
+                    }}
+                    className="w-full px-3 py-1.5 text-left text-[11px] font-medium cursor-pointer hover:bg-black/5 transition-colors"
+                    style={{ color: selectedWidaLevel === level ? 'var(--color-thinking)' : 'var(--color-ink-muted)' }}
+                  >
+                    {WIDA_LABELS[level]}
+                    {selectedWidaLevel === level && <span className="float-right">✓</span>}
+                  </button>
+                ))}
+                {selectedWidaLevel !== null && (
+                  <>
+                    <div className="my-1 border-t" style={{ borderColor: 'var(--color-line)' }} />
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setSelectedWidaLevel(null);
+                        setWidaOpen(false);
+                      }}
+                      className="w-full px-3 py-1.5 text-left text-[11px] cursor-pointer hover:opacity-70 transition-opacity"
+                      style={{ color: 'var(--color-ink-faint)' }}
+                    >
+                      Clear
+                    </button>
+                  </>
+                )}
+              </div>
+            )}
+          </div>
         )}
-        {mode === 'inclass' && (
-          <p className="text-[10px] text-ink-faint">For your phone, mid-lesson.</p>
-        )}
+
+        {/* Right: print + help */}
+        <div className="flex items-center gap-2">
+          {mode === 'plan' && (
+            <button
+              type="button"
+              onClick={() => window.print()}
+              className="rounded-full px-3 py-1 text-[11px] font-semibold cursor-pointer hover:opacity-85 transition-opacity"
+              style={{ backgroundColor: QR_ACCENT, color: 'var(--color-card)' }}
+            >
+              Print
+            </button>
+          )}
+          {mode === 'inclass' && (
+            <p className="text-[10px] text-ink-faint">For your phone, mid-lesson.</p>
+          )}
+          <ToolInfo toolId="quickread" hideHeading />
+        </div>
       </div>
+
+      {/* S1-1: One-line orientation strip (plan mode only) */}
+      {mode === 'plan' && (
+        <p className="qr-print-hide mb-5 text-[0.8rem] text-ink-muted">
+          You&rsquo;re preparing this lesson. The plan is below.
+        </p>
+      )}
 
       {/* Print-only lesson title */}
       <div className="hidden print:block mb-3">

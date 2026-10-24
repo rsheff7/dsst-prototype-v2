@@ -24,7 +24,7 @@ export default function MobileNav({ activeTab, onTabChange }: MobileNavProps) {
           }`}
         >
           <span className="text-lg">📖</span>
-          <span className="text-[10px] font-semibold">Quick Read</span>
+          <span className="text-[10px] font-semibold">Prep Sheet</span>
         </button>
 
         {/* Pathway Tab */}

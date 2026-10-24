@@ -3,7 +3,7 @@
 import { ToolId } from '@/lib/types';
 
 const TABS: { id: ToolId; label: string }[] = [
-  { id: 'quickread', label: 'Quick Read' },
+  { id: 'quickread', label: 'Prep Sheet' },
   { id: 'pathway', label: 'Pathway' },
   { id: 'adapt', label: 'Adapt' },
   { id: 'thinking', label: 'Thinking' },
@@ -53,7 +53,7 @@ export default function ToolNav({ activeTool, onSelect, mobile }: ToolNavProps) 
           <button
             key={id}
             onClick={() => onSelect(id)}
-            className={`px-4 py-2.5 text-[11px] font-semibold cursor-pointer transition-colors border-b-2 focus-visible:outline-none -mb-px ${
+            className={`px-4 py-2.5 text-xs font-semibold cursor-pointer transition-colors border-b-2 focus-visible:outline-none -mb-px ${
               isActive
                 ? 'text-brand-primary border-brand-primary'
                 : 'text-ink-faint hover:text-ink-muted border-transparent'
