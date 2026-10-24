@@ -8,7 +8,8 @@ import { bandForLevel, type ProficiencyBand } from '@/lib/eld';
 import { BANDS, PREP_BUDGET_MINUTES, activityName, bandLabel, buildPrepModel, quoted, type PrepLesson } from '@/lib/prep/prepModel';
 import MobileQuickRead from '@/components/mobile/MobileQuickRead';
 import WidaMobileSelector from '@/components/mobile/WidaMobileSelector';
-import { U3Library } from '@/components/u3/U3ActivityNotes';
+import { U3Library, U3RoutineNotes } from '@/components/u3/U3ActivityNotes';
+import { findRoutine, routineTitle } from '@/lib/u3/routines';
 import { ImCredit } from '@/components/u3/U3Notice';
 import { u3ToPrepModel } from '@/lib/u3/toPrepModel';
 import type { U3Lesson } from '@/lib/u3/types';
@@ -273,6 +274,7 @@ export default function PrepApp({ lesson, u3 }: { lesson?: PrepLesson; u3?: U3Le
       openLibrary,
       openInClass,
       copyForCoach,
+      openRoutine: u3 ? (name) => setSheet(`rt:${name}`) : undefined,
     };
     const { inner, action } = STEP_VIEWS[i](ctx);
     return (
@@ -370,7 +372,7 @@ export default function PrepApp({ lesson, u3 }: { lesson?: PrepLesson; u3?: U3Le
               <span className={s.lab}>If you see · say (as you rehearsed)</span>
               {st.bands.length === 0 && m.inClass.lines.some((x) => x.say.length > 1) && (
                 <span className={cx(s.muted, s.small)}>
-                  Showing every WIDA level. Set your class’s levels on Tonight to shorten this card.
+                  Showing every WIDA level. Set your class’s levels on the Tonight screen to shorten this card.
                 </span>
               )}
               {m.inClass.lines.map((x, i) => (
@@ -378,7 +380,7 @@ export default function PrepApp({ lesson, u3 }: { lesson?: PrepLesson; u3?: U3Le
                   <span className={s.mvIf}>{x.see}</span>
                   {x.say.map((y, j) => (
                     <span key={j} className={s.mvDo}>
-                      {y.label && <span className={s.lv}>{y.label} </span>}
+                      {y.label && <span className={s.lv}>{y.label} · </span>}
                       {y.text}
                     </span>
                   ))}
@@ -495,6 +497,7 @@ export default function PrepApp({ lesson, u3 }: { lesson?: PrepLesson; u3?: U3Le
   };
 
   const sheetAct = sheet?.startsWith('act:') ? m.activities.find((a) => a.id === sheet.slice(4)) : undefined;
+  const sheetRoutine = sheet?.startsWith('rt:') ? findRoutine(sheet.slice(3)) : null;
 
   return (
     <div className={s.app}>
@@ -509,6 +512,12 @@ export default function PrepApp({ lesson, u3 }: { lesson?: PrepLesson; u3?: U3Le
             onClose={() => setSheet(null)}
           />
           <ActivityDetail a={sheetAct} />
+        </Sheet>
+      )}
+      {sheetRoutine && (
+        <Sheet onClose={() => setSheet(null)}>
+          <SheetTop eyebrow="IM routine" onClose={() => setSheet(null)} />
+          <U3RoutineNotes r={sheetRoutine} />
         </Sheet>
       )}
       {toast && (

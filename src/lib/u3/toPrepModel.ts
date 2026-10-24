@@ -16,6 +16,8 @@ import type { BandMove, PatternKind, PrepActivity, PrepModel, PrepPattern, PrepS
 import { BANDS, bandLabel, quoted } from '../prep/prepModel';
 import type { ProficiencyBand } from '../eld/types';
 import type { ImActivity, Moment, MomentKind, U3Lesson } from './types';
+import { findRoutine, routineTitle } from './routines';
+import type { MlrNumber } from '../mlrs';
 
 const SLOT_LABEL: Record<ImActivity['slot'], string> = {
   'warm-up': 'Warm-up',
@@ -27,11 +29,12 @@ const SLOT_LABEL: Record<ImActivity['slot'], string> = {
 // Plain words: a teacher reading at 9 pm doesn't need IM's or Premo's category names.
 const KIND_LABEL: Record<MomentKind, string> = {
   'student-thinking': 'Student thinking',
-  'im-misconception': 'A common mistake',
+  'im-misconception': 'Common error',
   'routine-breakdown': 'When the routine slips',
   'which-work-first': 'Who shares first',
   'teacher-move': 'Your move',
   language: 'Language',
+  'run-routine': 'Run the routine',
 };
 
 const PATTERN_KIND: Record<string, [PatternKind, string]> = {
@@ -39,8 +42,11 @@ const PATTERN_KIND: Record<string, [PatternKind, string]> = {
   almost: ['almost', 'Almost there'],
   build: ['build', 'Build on this'],
   stretch: ['stretch', 'Ready to stretch'],
-  language: ['lang', 'Language + math'],
+  language: ['lang', 'Language'],
 };
+
+const PHASE_WHEN = { launch: 'at the launch', work: 'while students work', synthesis: 'in the closing discussion' } as const;
+const shortTitle = (name: string) => routineTitle(name).replace(/ \(MLR \d\)$/, '');
 
 const clock = (min: number) => `${Math.floor(min / 60)}:${String(min % 60).padStart(2, '0')}`;
 const words = (...parts: (string | null | undefined)[]) =>
@@ -82,6 +88,8 @@ export function u3ToPrepModel(lesson: U3Lesson, bands: readonly ProficiencyBand[
       language: null,
       source: null,
       im: a,
+      // IM's language routines for the activity, and where they sit.
+      routineLine: a.ell.length ? a.ell.map((e) => `${routineTitle(e.routine)}, ${PHASE_WHEN[e.phase]}`).join(' · ') : undefined,
     });
     t += a.minutes;
   });
@@ -134,6 +142,11 @@ export function u3ToPrepModel(lesson: U3Lesson, bands: readonly ProficiencyBand[
         )
       : null,
     criteria: m.criteria ?? [],
+    // Which routine slipped, named the way IM names it.
+    ...(m.routine && m.kind === 'routine-breakdown' ? { typeLabel: `When ${shortTitle(m.routine)} slips` } : {}),
+    routine: m.routine ? (findRoutine(m.routine)?.name ?? m.routine) : undefined,
+    mlr: m.routine && findRoutine(m.routine)?.mlr ? { number: findRoutine(m.routine)!.mlr as MlrNumber, name: shortTitle(m.routine) } : undefined,
+    runSheet: m.runSheet,
   });
   const scenarios = premo.moments.filter((m) => m.rehearse).map(toScenario);
 
@@ -167,12 +180,12 @@ export function u3ToPrepModel(lesson: U3Lesson, bands: readonly ProficiencyBand[
 
   const cuts = premo.cuts.map((c, i) => {
     const a = im.activities.find((x) => x.id === c.activityId);
-    return { id: `cut-${i}`, text: `${c.activityId} ${a?.title ?? ''}: ${c.note}` };
+    return { id: `cut-${i}`, text: `${c.activityId} ${a?.title ?? ''} — ${c.note}` };
   });
   const supports = Object.fromEntries(
     BANDS.map((b) => {
       const s = premo.cruxLanguage.byBand[b];
-      return [b, { text: s.frame ? `${s.entry} Frame: “${s.frame}”` : s.entry }];
+      return [b, { text: s.entry, frame: s.frame }];
     }),
   ) as PrepModel['supports'];
   // The words to produce are the lesson's own choice (cruxLanguage.produceToday); the unit
@@ -187,6 +200,10 @@ export function u3ToPrepModel(lesson: U3Lesson, bands: readonly ProficiencyBand[
     ? { title: im.coolDown.title ?? 'Cool-down', task: im.coolDown.task, strongAnswer: im.coolDown.response ?? [], lookFors: im.targets, draft: false }
     : null;
 
+  // IM's goals that name a mode of speaking or writing are the lesson's language goals.
+  const langGoal = im.goals.find((g) => g.modes.includes('orally') || g.modes.includes('in writing'));
+  const sup = cruxSupport(lesson);
+
   const cruxName = crux ? `${crux.title} (${crux.id})` : 'the crux';
   const shown: Record<StepKey, number> = {
     orient: words(premo.goal, im.narrative[0], ...activities.flatMap((a) => [a.title, a.watchFor])),
@@ -199,7 +216,7 @@ export function u3ToPrepModel(lesson: U3Lesson, bands: readonly ProficiencyBand[
         (sc.byBand ?? []).filter((b) => useBands.includes(b.band)).reduce((k, b) => k + words(b.say, b.nonverbal), 0),
       0,
     ),
-    adjust: words(premo.goal, premo.rigorCheck, ...cuts.map((c) => c.text), ...premo.neverCut, ...useBands.map((b) => supports[b].text)),
+    adjust: words(sup?.text, premo.goal, premo.rigorCheck, ...cuts.map((c) => c.text), ...premo.neverCut, ...useBands.map((b) => supports[b].text)),
     carry: words(...premo.beforeClass),
   };
   const ledes: Record<StepKey, string> = {
@@ -207,7 +224,7 @@ export function u3ToPrepModel(lesson: U3Lesson, bands: readonly ProficiencyBand[
     student: 'Do IM’s cool-down the way a strong student would. Where it gets hard for you is where it gets hard for them.',
     predict: `${cruxName} is the crux. Predict what your students will do before Premo shows its patterns.`,
     rehearse: `${scenarios.length} moments, in the order the lesson runs. Read the moment, say your move out loud, then check it.`,
-    adjust: 'Only if you need it. What can go if you run short, what never goes, and the language support at the crux.',
+    adjust: 'IM’s language routine at the crux, for each level in your class. Then what can go if you run short, and what never goes.',
     carry: 'Your prep, packaged for tomorrow and for your coach.',
   };
   const base: Omit<PrepStep, 'minutes' | 'lede'>[] = [
@@ -229,6 +246,11 @@ export function u3ToPrepModel(lesson: U3Lesson, bands: readonly ProficiencyBand[
     authored: { status: premo.status, source: im.sources[0] ?? null },
     predict: premo.predict,
     predictTask: cruxIm?.task ?? [],
+    languageGoal: langGoal ? { text: langGoal.text, uses: im.languageUses } : undefined,
+    saidLookFor: produce.length
+      ? `I said it out loud, using ${produce.length > 1 ? `${produce.slice(0, -1).map((w) => `“${w}”`).join(', ')} and ` : ''}“${produce[produce.length - 1]}.”`
+      : undefined,
+    cutWords: { heading: 'If you run short', note: 'What you can shorten or drop, and what each one protects.', summary: 'Cuts' },
     code: im.code,
     gradeUnit: 'Grade 6 · Unit 3',
     totalTime: optionalMin ? `${required}–${required + optionalMin} min` : `${required} min`,
@@ -251,10 +273,22 @@ export function u3ToPrepModel(lesson: U3Lesson, bands: readonly ProficiencyBand[
     language: {
       frames: [],
       vocabulary,
-      profile: {},
-      routineNote: `These sit inside the lesson’s own ${premo.cruxLanguage.routine.replace(/^MLR ?\d:\s*/, '')} routine, ${
-        premo.cruxLanguage.phase === 'launch' ? 'at the start of the activity' : premo.cruxLanguage.phase === 'synthesis' ? 'in the class discussion at the end' : 'while students work'
-      }.`,
+      profile: Object.fromEntries(
+        BANDS.flatMap((b) => {
+          const x = premo.cruxLanguage.byBand[b];
+          return x.does && x.reaching ? [[b, { does: x.does, reaching: x.reaching }]] : [];
+        }),
+      ),
+      support: sup
+        ? {
+            routine: routineTitle(sup.routine),
+            when: PHASE_WHEN[sup.phase],
+            domains: sup.domains,
+            principles: (sup as { principleLine?: string }).principleLine?.replace(/^Design Principle\(s\):\s*/, '') ?? null,
+            text: sup.text,
+          }
+        : undefined,
+      routineNote: `Each level’s way into ${routineTitle(premo.cruxLanguage.routine)}, ${PHASE_WHEN[premo.cruxLanguage.phase]}.`,
     },
     // Premo's list already covers IM's preparation in plain words; showing both repeated items.
     setup: { crux: null, checklist: premo.beforeClass.length ? premo.beforeClass : im.preparation },

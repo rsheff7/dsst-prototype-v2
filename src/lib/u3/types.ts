@@ -210,7 +210,9 @@ export type MomentKind =
   | 'which-work-first'
   /** The teacher's own impulse to confirm or rescue. */
   | 'teacher-move'
-  | 'language';
+  | 'language'
+  /** Running the crux's language routine: a short run sheet from IM's English-learner support. */
+  | 'run-routine';
 
 export interface Moment {
   id: string;
@@ -233,6 +235,8 @@ export interface Moment {
   /** The IM text this moment rests on, verbatim. Required when `from` is `im`. */
   evidence?: Verbatim;
   rehearse?: boolean;
+  /** For 'run-routine': the routine's steps for this lesson, in order, with minutes where IM gives them. */
+  runSheet?: { step: string; minutes?: number }[];
   /** Three checks of what a good response protects. Never the model wording. */
   criteria?: string[];
   /** On a "building towards" activity, short-of-standard work is not an error. */
@@ -285,7 +289,12 @@ export interface PremoLesson {
     routine: string;
     phase: Phase;
     produceToday: string[];
-    byBand: Record<ProficiencyBand, { entry: string; frame?: string }>;
+    /**
+     * Per band: the way in, a frame, and what a student at that level already does and is
+     * reaching for with THIS lesson's language. Premo's reading; WIDA's own descriptors are
+     * not lesson-specific.
+     */
+    byBand: Record<ProficiencyBand, { entry: string; frame?: string; does?: string; reaching?: string }>;
   };
   /** What a teacher may cut, with what it protects. Mastery and optional activities first. */
   cuts: { activityId: string; note: string }[];

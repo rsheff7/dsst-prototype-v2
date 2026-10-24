@@ -8,10 +8,11 @@
   "Premo's moments: the hands-up breakdown of Think Pair Share (from IM's routine definition), the 16 r 4 remainder, the language moment and its by-level moves, the warm-up and applesauce moments.",
   "IM's English-learner support for 7.2 quotes the question as “buy \\(b\\) burritos for 4 dollars”; the task says “\\(c\\) dollars”. Looks like a typo in IM. Not repeated here.",
   "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person.",
-  "Revised 2026-10-23 after persona review: the 1-hour row is now treated the same way in watchFor, m3 and m5 (a valid strategy; ask the pair to be ready to share first, as IM says, instead of steering them to the 6); m3's evidence now includes IM's “consider asking them to share first”; the “16 r 4 hours” pattern is re-typed from error to almost and m7 calls it unfinished, not wrong; m6 and cruxLanguage ask every level the same question, across the table and back (multiply and divide by 6), with only the way in differing, and the extra “say why” for Levels 5–6 is gone; m1's say line no longer starts with a quoted phrase; home language is offered at every level; jargon (display tour, synthesis, share, MLR name in beforeClass) replaced with plain words; a 7.3 time note added to cuts, since posters and a walk-around don't fit IM's 10 minutes; beforeClass trimmed to three short tasks, including the answer key."
+  "Revised 2026-10-23 after persona review: the 1-hour row is now treated the same way in watchFor, m3 and m5 (a valid strategy; ask the pair to be ready to share first, as IM says, instead of steering them to the 6); m3's evidence now includes IM's “consider asking them to share first”; the “16 r 4 hours” pattern is re-typed from error to almost and m7 calls it unfinished, not wrong; m6 and cruxLanguage ask every level the same question, across the table and back (multiply and divide by 6), with only the way in differing, and the extra “say why” for Levels 5–6 is gone; m1's say line no longer starts with a quoted phrase; home language is offered at every level; jargon (display tour, synthesis, share, MLR name in beforeClass) replaced with plain words; a 7.3 time note added to cuts, since posters and a walk-around don't fit IM's 10 minutes; beforeClass trimmed to three short tasks, including the answer key.",
+  "Revised 2026-10-24: routine centred; copy edit. Added m10, a rehearsed run-routine moment for Compare and Connect (MLR 7) at the start of the 7.3 synthesis, with a five-step run sheet from IM's support (posters 2 min, walk-around 3, IM's two prompts 2 each, amplify throughout: 9 minutes, which fits only with 7.4's minutes, as the cut note says). Added m11, a rehearsed routine-breakdown of Compare and Connect from the catalog's breakdown (posters presented, nothing compared). Un-rehearsed m3 (its share-first point is carried by m5 and watchFor) and m4 (kept as a moment); m2 stays rehearsed, so upstream is m1 and m2, and the crux has m10, m5, m11, m6. predict.tell now points at the fourth rehearsed moment (m5) and ends 'builds to using the 6'. inClass.momentIds now m10, m5, m6. cruxLanguage.byBand has does and reaching per band. Routines named in teacher text (Compare and Connect (MLR 7) on first mention in cruxWhy; Think Pair Share in m2 and neverCut); beforeClass items labelled by routine. Copy edit: 'quiet work' to 'quiet think time'; one home-language line everywhere; fractions in LaTeX (m7, patterns, beforeClass); curly apostrophes and quotes in cruxWhy and m9; comma inside the closing quote in watchFor 7.2; 'mathematics' to 'math' in the 7.4 cut."
  ],
  "crux": "7.3",
- "cruxWhy": "7.3 is where the lesson's new idea is first used: the unit rate is the factor that takes you from one column to the other. IM's lesson narrative calls this the lesson's new insight, and its goals and second learning target are about it. IM’s language support for the lesson sits in 7.3’s closing class discussion.",
+ "cruxWhy": "7.3 is where the lesson’s new idea is first used: the unit rate is the factor that takes you from one column to the other. IM’s lesson narrative calls this the lesson’s new insight, and its goals and second learning target are about it. IM’s language support for the lesson, Compare and Connect (MLR 7: posters and a walk-around), sits in 7.3’s closing class discussion.",
  "object": {
   "name": "the strategy sentence",
   "what": "The sentence each pair writes under the bracelet table saying how they filled it. Question 2 tests it: use the same strategy on the burrito table."
@@ -20,7 +21,7 @@
  "rigorCheck": "Does every pair still fill the bracelet table, write the strategy sentence, and hear the strategies in IM’s order, the 1-hour row first?",
  "watchFor": {
   "7.1": "A group stops at one reason and calls it the answer.",
-  "7.2": "The unit price column says “14 per 2”, not 7.",
+  "7.2": "The unit price column says “14 per 2,” not 7.",
   "7.3": "A pair builds a 1-hour row first. Ask them to be ready to share it first.",
   "7.4": "Doubling 4 pounds to 8, then stuck at 7."
  },
@@ -49,7 +50,7 @@
    "kind": "routine-breakdown",
    "routine": "Think Pair Share",
    "see": "Hands go up before anyone has filled a row.",
-   "means": "With no quiet think time, the first answer becomes everyone’s.",
+   "means": "Think Pair Share starts with quiet think time. Without it, the first answer becomes everyone’s.",
    "say": "Pencils first. Fill two rows on your own.",
    "dont": "Take the first hand.",
    "from": "im",
@@ -73,12 +74,7 @@
    "from": "im",
    "sayFrom": "premo",
    "evidence": "Other students may be inclined to create a different table—such as the ones below—as an intermediate step for completing the given table. If so, consider asking them to share first during whole-class discussion.",
-   "rehearse": true,
-   "criteria": [
-    "Treated the 1-hour row as a real strategy",
-    "Asked them to be ready to share their first row first",
-    "Didn’t steer them to the 6"
-   ]
+   "rehearse": false
   },
   {
    "id": "m4",
@@ -91,11 +87,46 @@
    "from": "im",
    "sayFrom": "premo",
    "evidence": "For some students, the structure of the information in the table may not be apparent. Encourage them to refer to the tables in the preceding activity and think about the relationship between the ratios and unit rates there.",
+   "rehearse": false
+  },
+  {
+   "id": "m10",
+   "activityId": "7.3",
+   "kind": "run-routine",
+   "routine": "MLR7: Compare and Connect",
+   "see": "Partners have finished talking, and every pair has a filled bracelet table and a strategy sentence.",
+   "means": "Compare and Connect puts the strategies side by side so students compare them, not just show them. IM says to amplify the words students use for unit rate, equivalent ratios and how the two connect.",
+   "say": "Put your table on a poster, then find one done differently.",
+   "runSheet": [
+    {
+     "step": "Each pair puts its bracelet table and strategy sentence on a poster.",
+     "minutes": 2
+    },
+    {
+     "step": "Pairs walk around and look at the other posters.",
+     "minutes": 3
+    },
+    {
+     "step": "Ask: “Did anyone solve it in a similar way, but would explain it differently?”",
+     "minutes": 2
+    },
+    {
+     "step": "Ask: “Why does this poster use a 1-hour row, and this one doesn’t? Is the outcome the same?”",
+     "minutes": 2
+    },
+    {
+     "step": "Throughout, repeat and record students’ words for unit rate and equivalent ratios."
+    }
+   ],
+   "dont": "Cut the walk-around and have pairs read their posters aloud instead.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Assign students to prepare a visual display that shows how they completed the table for the first question",
    "rehearse": true,
    "criteria": [
-    "Sent them back to the burrito table",
-    "Asked what the unit rate did there",
-    "Didn’t fill a row for them"
+    "Got every pair’s table and strategy sentence onto a poster",
+    "Sent pairs to look for a different way, not just any poster",
+    "Kept the walk-around instead of presentations"
    ]
   },
   {
@@ -117,6 +148,25 @@
    ]
   },
   {
+   "id": "m11",
+   "activityId": "7.3",
+   "kind": "routine-breakdown",
+   "routine": "MLR7: Compare and Connect",
+   "see": "Pairs read their posters aloud one after another, and no one compares them.",
+   "means": "Showing isn’t comparing. Compare and Connect works when students say how two strategies are alike and how they differ.",
+   "say": "Which poster went across the table? Which went row to row?",
+   "dont": "Thank each pair and call the next.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "as they identify, compare, and contrast different mathematical approaches, representations, and language.",
+   "rehearse": true,
+   "criteria": [
+    "Asked students to compare two posters",
+    "Pointed them to how the strategies differ",
+    "Didn’t move to the next pair without a comparison"
+   ]
+  },
+  {
    "id": "m6",
    "activityId": "7.3",
    "kind": "language",
@@ -126,16 +176,16 @@
    "byBand": {
     "emerging": {
      "say": "Show me. How do you go across? And back?",
-     "move": "They point from hours to bracelets and back, and say or write what they did each way. Home language is fine.",
+     "move": "They point from hours to bracelets and back, and say or write what they did each way. They can work it out first in any language they share with a partner.",
      "nonverbal": "Draw an arrow each way between the hours and bracelets columns, with a blank above each for them to fill."
     },
     "developing": {
      "say": "How do you go across? And back? Finish the frame.",
-     "move": "With “To get bracelets, I ___ the hours by ___. To get hours, I ___ the bracelets by ___,” they tell a partner, then write it on their poster. Home language first is fine."
+     "move": "With “To get bracelets, I ___ the hours by ___. To get hours, I ___ the bracelets by ___,” they tell a partner, then write it on their poster. They can work it out first in any language they share with a partner."
     },
     "expanding": {
      "say": "How do you go across the table? And back?",
-     "move": "They explain both directions on their poster in their own words, hear a classmate’s version, and make theirs clearer once. They can plan it in their home language."
+     "move": "They explain both directions on their poster in their own words, hear a classmate’s version, and make theirs clearer once. They can work it out first in any language they share with a partner."
     }
    },
    "dont": "Say the sentence for them.",
@@ -153,7 +203,7 @@
    "activityId": "7.3",
    "kind": "student-thinking",
    "see": "For 100 bracelets a student writes “16 r 4 hours.”",
-   "means": "Not wrong, unfinished. 16 hours make 96 bracelets; the 4 left are 4 of the 6 made in an hour, so 4/6 = 2/3 of an hour: 16 2/3 hours.",
+   "means": "Not wrong, unfinished. 16 hours make 96 bracelets; the 4 left are 4 of the 6 made in an hour, so \\(\\frac{4}{6} = \\frac{2}{3}\\) of an hour: \\(16\\frac{2}{3}\\) hours.",
    "say": "4 bracelets left over. What part of an hour is that?",
    "dont": "Mark it wrong, or accept “about 17.”",
    "from": "premo",
@@ -227,13 +277,13 @@
    "type": "almost",
    "says": "“16 r 4 hours” for 100 bracelets.",
    "why": "They divided by the rate but left the remainder as bracelets, not part of an hour.",
-   "shows": "The right move. The last step is turning 4 bracelets into 2/3 of an hour.",
+   "shows": "The right move. The last step is turning 4 bracelets into \\(\\frac{2}{3}\\) of an hour.",
    "from": "premo"
   },
   {
    "activityId": "7.3",
    "type": "stretch",
-   "says": "“Each bracelet takes 1/6 of an hour.”",
+   "says": "“Each bracelet takes \\(\\frac{1}{6}\\) of an hour.”",
    "why": "They found the other unit rate.",
    "shows": "Both unit rates, and when each is useful.",
    "from": "im",
@@ -253,7 +303,7 @@
   "question": "How will most pairs fill the bracelet table?",
   "countQuestion": "How many pairs will use the 6 directly, without building a 1-hour row?",
   "countUnit": "pairs will use the 6 directly.",
-  "tell": "If few do, the 6 in the table didn’t read as a tool. That is why the class discussion starts with the 1-hour row and builds to it: the fifth moment you’ll rehearse.",
+  "tell": "If few do, the 6 in the table didn’t read as a tool. That is why the class discussion starts with the 1-hour row and builds to using the 6: the fourth moment you’ll rehearse.",
   "activityIds": [
    "7.2",
    "7.3"
@@ -267,23 +317,29 @@
   ],
   "byBand": {
    "emerging": {
-    "entry": "When pairs walk around to look at the posters, they point to where another poster goes across the table and back, and say or write what it does each way. Home language is fine.",
-    "frame": "___ × 6 = ___. ___ ÷ 6 = ___."
+    "entry": "When pairs walk around to look at the posters, they point to where another poster goes across the table and back, and say or write what it does each way. They can work it out first in any language they share with a partner.",
+    "frame": "___ × 6 = ___. ___ ÷ 6 = ___.",
+    "does": "They can point to a row and say or write its numbers, like 2 hours and 12 bracelets.",
+    "reaching": "Naming the move each way: times 6 across, divide by 6 back."
    },
    "developing": {
-    "entry": "They tell a classmate how another poster goes across the table and back, and whether theirs does the same. Home language first is fine.",
-    "frame": "They multiplied the ___ by ___ and divided the ___ by ___. We did it the same way / a different way."
+    "entry": "They tell a classmate how another poster goes across the table and back, and whether theirs does the same. They can work it out first in any language they share with a partner.",
+    "frame": "They multiplied the ___ by ___ and divided the ___ by ___. We did it the same way / a different way.",
+    "does": "They can tell a partner, in short phrases, how they got one row of the table.",
+    "reaching": "Saying both directions with the frame and comparing theirs with another poster."
    },
    "expanding": {
-    "entry": "They compare another poster with theirs aloud: how each goes across the table and back, and is the outcome the same? They can plan it in their home language.",
-    "frame": "This poster goes across by ___ and back by ___. Ours goes across by ___ and back by ___. Both get ___."
+    "entry": "They compare another poster with theirs aloud: how each goes across the table and back, and is the outcome the same? They can work it out first in any language they share with a partner.",
+    "frame": "This poster goes across by ___ and back by ___. Ours goes across by ___ and back by ___. Both get ___.",
+    "does": "They can explain their own strategy for the whole table in their own words.",
+    "reaching": "Comparing two strategies and saying why both work, using “unit rate.”"
    }
   }
  },
  "cuts": [
   {
    "activityId": "7.4",
-   "note": "Optional, with no new mathematics. Cut it first, and give its 10 minutes to 7.3."
+   "note": "Optional, with no new math. Cut it first, and give its 10 minutes to 7.3."
   },
   {
    "activityId": "7.1",
@@ -291,11 +347,11 @@
   },
   {
    "activityId": "7.3",
-   "note": "IM gives 7.3 10 minutes, with 3–4 of them quiet work. Posters and a walk-around to look at them won’t fit too. Use the minutes from 7.4, put only the bracelet table on the poster, and keep the walk-around to about 3 minutes."
+   "note": "IM gives 7.3 10 minutes, with 3–4 of them quiet think time. Compare and Connect, the posters and walk-around, won’t fit too. Use the minutes from 7.4, put only the bracelet table on the poster, and keep the walk-around to about 3 minutes."
   }
  ],
  "neverCut": [
-  "Quiet think time before partners talk, in 7.2 and 7.3",
+  "Quiet think time in Think Pair Share, before partners talk, in 7.2 and 7.3",
   "The strategy sentence under the bracelet table",
   "Using the strategy again on the burrito table",
   "The class discussion in IM’s order, 1-hour row first"
@@ -304,8 +360,8 @@
   "launch": "“Fill the table, then write how you did it.”",
   "launchFrom": "premo",
   "momentIds": [
-   "m3",
-   "m4",
+   "m10",
+   "m5",
    "m6"
   ],
   "sequence": [
@@ -315,8 +371,8 @@
   ]
  },
  "beforeClass": [
-  "Draw the bracelet table on the board with the 6s filled in.",
-  "Put out one sheet of chart paper and a marker per pair, for the posters.",
-  "Know the answers: 12, 30, 42 bracelets; 11 and 16 2/3 hours; 2 and 4 burritos; $35 and $70."
+  "For Think Pair Share in 7.3: draw the bracelet table on the board with the 6s filled in.",
+  "For Compare and Connect (posters and a walk-around): put out one sheet of chart paper and a marker per pair.",
+  "For the class discussion: know the answers: 12, 30, 42 bracelets; 11 and \\(16\\frac{2}{3}\\) hours; 2 and 4 burritos; $35 and $70."
  ]
 }

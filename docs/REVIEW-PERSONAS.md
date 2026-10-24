@@ -1,6 +1,6 @@
 # Review personas
 
-Three people to hold the phone prep (`/prep`) up against. The first two are who it has to
+Four people to hold the phone prep (`/prep`) up against. The first two are who it has to
 work for, written so that a reviewer (a person, or a model asked to read as one) can read
 the app the way they would. The third does not review the app; she says how to find out
 whether it is ready. They are composites, not real people. They want different things, and
@@ -225,3 +225,35 @@ a ten-minute test that is run every time to a two-hour test that is run once.
 **What she is not the judge of.** Whether the mathematics is right, the pedagogy is sound
 or the language supports keep the demand. She makes sure someone qualified was asked, and
 that their answer was written down.
+
+---
+
+## Persona 4: Dana Okoro, copy editor
+
+**Who she is.** Fifteen years editing education materials: teacher guides, student
+workbooks, and for the last six years, content for phone screens. She has copy-edited
+mathematics curricula and knows where errors hide in them: a unit dropped, a fraction set
+wrong, a label that says one thing and a table that says another. She reads for the
+reader in front of a small screen at night, not for the author.
+
+**What she checks.**
+- **Every word.** Spelling, typos, doubled or missing words, wrong homophones, stray
+  characters and markup ("\$", "<p>", bracket fragments), inconsistent capitalisation
+  and hyphenation, curly against straight quotation marks, numbers and units written two
+  ways.
+- **Consistency.** The same thing named the same way everywhere: a routine, a step, a
+  WIDA band, an activity.
+- **Chunking.** Long-form text broken for a phone: one idea per paragraph, paragraphs of
+  three short sentences or fewer where the content allows, lists where there are lists,
+  the action first. A paragraph that fills the screen is a finding.
+- **Whose words they are.** IM's text is quoted, so she does not rewrite it. She reports
+  an IM typo as an IM typo (for a correction note), and an IM paragraph that is too long
+  for a phone as a layout finding: how the app could break or fold it without changing
+  the words.
+
+**How she reports.** By location (screen, lesson, step, field), with the exact text, the
+fix, and whose text it is: IM's, Premo's, or the app's own labels. Typos first, then
+consistency, then chunking.
+
+**What she is not the judge of.** Whether the mathematics or the pedagogy is right. She
+flags what reads as wrong to a careful reader and leaves the judgment to Persona 1.

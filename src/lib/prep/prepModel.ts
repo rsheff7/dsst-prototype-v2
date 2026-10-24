@@ -120,6 +120,8 @@ export interface PrepActivity {
   source: Activity | null;
   /** IM's own notes for the activity (Unit 3 lessons). Typed loosely to keep this module free of the u3 model. */
   im?: unknown;
+  /** IM's language routines for the activity and where they sit (Unit 3 lessons). */
+  routineLine?: string;
 }
 
 /**
@@ -206,6 +208,10 @@ export interface PrepScenario {
   /** What to check a spoken response against. Never contains the model wording. */
   criteria: string[];
   mlr?: MlrRef;
+  /** The IM routine the moment runs inside, by IM's name (Unit 3 lessons). Opens IM's definition. */
+  routine?: string;
+  /** For running the crux's language routine: the steps, in order. */
+  runSheet?: { step: string; minutes?: number }[];
 }
 
 export interface InClassLine {
@@ -219,6 +225,12 @@ export interface PrepModel {
   heading: string;
   /** Hand-written to the prep standard, and whether a person has checked it. Null when generated. */
   authored: { status: 'draft' | 'reviewed'; source: string | null } | null;
+  /** IM's language goal for the lesson and the language use the unit names it for (Unit 3 lessons). */
+  languageGoal?: { text: string; uses: string[] };
+  /** The spoken look-for on "Do it as a student", in the lesson's own words. */
+  saidLookFor?: string;
+  /** Wording for the cuts section, when it lists cuts rather than swaps. */
+  cutWords?: { heading: string; note: string; summary: string };
   /** The crux activity's student task, as IM prints it (Unit 3 lessons). */
   predictTask?: string[];
   /** The teacher's prediction, when the lesson supplies one. */
@@ -256,7 +268,7 @@ export interface PrepModel {
   rigorCheck: string;
   cuts: { id: string; text: string }[];
   neverCut: { text: string; mlr?: MlrRef }[];
-  supports: Record<ProficiencyBand, { text: string; mlr?: MlrRef }>;
+  supports: Record<ProficiencyBand, { text: string; frame?: string; mlr?: MlrRef }>;
   /** Crux frames and what each band does and is reaching for at the crux. */
   language: {
     frames: SentenceFrame[];
@@ -264,6 +276,8 @@ export interface PrepModel {
     profile: Partial<Record<ProficiencyBand, { does: string; reaching: string }>>;
     /** Where the crux's language support sits in IM's lesson, for a Unit 3 lesson. */
     routineNote?: string;
+    /** IM's own English-learner support for the crux, which the band supports sit inside. */
+    support?: { routine: string; when: string; domains: string[]; principles: string | null; text: string };
   };
   setup: {
     crux: string | null;

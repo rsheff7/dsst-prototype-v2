@@ -6,7 +6,16 @@ import corrections from '../../../content/u3/corrections.json';
 
 // IM's own slips, noted under the line rather than changed in it.
 const NOTES = (corrections as { notes: { line?: string; prefix?: string; note: string }[] }).notes;
-const noteFor = (l: string) => NOTES.find((n) => (n.line ? n.line === l : !!n.prefix && l.startsWith(n.prefix)))?.note ?? null;
+export const noteFor = (l: string) => NOTES.find((n) => (n.line ? n.line === l : !!n.prefix && l.startsWith(n.prefix)))?.note ?? null;
+
+/** Sentences, split only where a sentence ends and the next begins with a capital: "0.4" and "a.m." stay whole. */
+export const sentences = (text: string): string[] =>
+  text.split(/(?<=[.!?][”’"]?)\s+(?=[A-Z“(])/).map((x) => x.trim()).filter(Boolean);
+
+// IM's image captions carry stray HTML and a dangling "Source." link label.
+const tidy = (l: string) => l.replace(/<\/?[a-z][^>]*>/gi, '').replace(/^Description:\s*/, '').replace(/\s*Source\.?$/, '');
+// A paragraph this long is split into pairs of sentences so it reads on a phone. Layout only.
+const LONG = 60;
 
 /**
  * IM's text carries mathematics as \( … \), the way IM's web pages write it.
@@ -74,6 +83,8 @@ export function MathText({ children }: { children: string | null | undefined }) 
   );
 }
 
+const pairs = (xs: string[]) => xs.reduce<string[]>((out, x, i) => (i % 2 ? [...out.slice(0, -1), `${out[out.length - 1]} ${x}`] : [...out, x]), []);
+
 const startsRow = (l: string | undefined) => !!l && /^\|/.test(l.trim());
 // IM writes a table's header row without the leading bar, so a "a | b" line
 // counts as a row when a row follows it, or when it has three or more cells.
@@ -87,7 +98,11 @@ const cells = (l: string) => l.trim().replace(/^\|\s?/, '').split(/\s*\|\s*/);
  */
 export function IMLines({ lines, className }: { lines: string[] | null | undefined; className?: string }) {
   if (!lines?.length) return null;
-  const blocks: ({ kind: 'p'; text: string; note: string | null } | { kind: 't'; rows: string[][]; notes: string[] })[] = [];
+  const blocks: (
+    | { kind: 'p'; text: string; note: string | null }
+    | { kind: 'ul'; items: string[] }
+    | { kind: 't'; rows: string[][]; notes: string[] }
+  )[] = [];
   const clean = lines.filter((l) => !/^\[image: Expand image\]$/.test(l.trim()));
   for (let i = 0; i < clean.length; i++) {
     const l = clean[i];
@@ -98,17 +113,43 @@ export function IMLines({ lines, className }: { lines: string[] | null | undefin
         last.rows.push(cells(l));
         if (note) last.notes.push(note);
       } else blocks.push({ kind: 't', rows: [cells(l)], notes: note ? [note] : [] });
-    } else blocks.push({ kind: 'p', text: l.replace(/\s*\[image: Expand image\]/g, ''), note: noteFor(l) });
+    } else {
+      let text = tidy(l.replace(/\s*\[image: Expand image\]/g, ''));
+      // IM sometimes ends a paragraph with an image caption that the next line repeats in full.
+      const inline = /\s*\[image: ([^\]]*)\]$/.exec(text);
+      if (inline && !text.startsWith('[image:') && clean[i + 1]?.includes(inline[1])) text = text.slice(0, inline.index);
+      const last = blocks[blocks.length - 1];
+      // Short lines after a line that ends in a colon are IM's list items.
+      const listing = last && ((last.kind === 'p' && /:$/.test(last.text)) || last.kind === 'ul');
+      if (listing && !/^\[image:/.test(text) && text.split(/\s+/).length <= 30 && !noteFor(l)) {
+        if (last.kind === 'ul') last.items.push(text);
+        else blocks.push({ kind: 'ul', items: [text] });
+      } else blocks.push({ kind: 'p', text, note: noteFor(l) });
+    }
   }
   return (
     <div className={className ?? s.lines}>
       {blocks.map((b, i) =>
-        b.kind === 'p' ? (
+        b.kind === 'ul' ? (
+          <ul key={i} className={s.list}>
+            {b.items.map((x, j) => (
+              <li key={j}>
+                <MathText>{x}</MathText>
+              </li>
+            ))}
+          </ul>
+        ) : b.kind === 'p' ? (
           <div key={i} className={s.lines}>
           {/^\[image:/.test(b.text) ? (
             <p key={i} className={s.image}>
               <MathText>{b.text.replace(/^\[image:\s*|\]$/g, '')}</MathText>
             </p>
+          ) : b.text.split(/\s+/).length > LONG ? (
+            pairs(sentences(b.text)).map((x, j) => (
+              <p key={j}>
+                <MathText>{x}</MathText>
+              </p>
+            ))
           ) : (
             <p key={i}>
               <MathText>{b.text}</MathText>

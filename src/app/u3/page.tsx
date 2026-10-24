@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { BUILT, UNIT } from '@/lib/u3/content';
-import { MathText } from '@/components/u3/MathText';
+import { IMLines, MathText, noteFor } from '@/components/u3/MathText';
 import s from '@/components/u3/u3.module.css';
 import { ImCredit, PilotBanner } from '@/components/u3/U3Notice';
 
@@ -80,7 +80,7 @@ export default function U3UnitPage() {
       <section className={s.card}>
         <h2>How the language grows</h2>
         <p className={s.muted}>
-          What IM expects students to do with language across the unit (the lessons not built yet are greyed), and the new
+          What IM expects students to do with language across the unit (the lessons not built yet are grayed), and the new
           words in each built lesson: words students should say or write, and words they only need to understand.
         </p>
         {UNIT.languageProgression.map((u) => (
@@ -90,6 +90,7 @@ export default function U3UnitPage() {
               {u.items.map((i) => (
                 <li key={i.text} className={i.lessons.some((c) => built.has(c)) ? undefined : s.muted}>
                   {i.text}
+                  {noteFor(i.text) && <span className={s.correction}> Note: {noteFor(i.text)}</span>}
                 </li>
               ))}
             </ul>
@@ -117,11 +118,7 @@ export default function U3UnitPage() {
 
       <details className={s.card}>
         <summary>IM’s unit narrative</summary>
-        {UNIT.narrative.map((p, i) => (
-          <p key={i}>
-            <MathText>{p}</MathText>
-          </p>
-        ))}
+        <IMLines lines={UNIT.narrative} />
       </details>
       <ImCredit />
     </main>

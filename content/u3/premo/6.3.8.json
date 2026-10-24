@@ -13,10 +13,11 @@
   "Example values that are mine, not IM's: “21” in the 1-hour row and “21, 18, 15” in the patterns (24 − 3 each hour, one walker only) illustrate IM's distance-apart misconception; “11:75, so 12:15” applies IM's time misconception (its example is 2.5 hours after 8 a.m. is 10:30, not 10:50) to question 3, because in question 5 the clock time is given and the hours are what students work out; the displays in m9 and “24 ÷ 3” in m3 are examples too. Each says so in its `means` or `why`.",
   "8.2's purpose is recorded in the IM layer as application, read from the optional modeling sentence (MP4). Its first sentence (“answer questions in the context of constant speed”) could also read as practice. That does not change the crux, since 8.3 is the optional one.",
   "All numbers checked: 12/75 = 0.16, 75/12 = 6.25, 0.16 · 30 = 4.8, 6.25 · 8 = 50; 24 − 3 − 3.4 = 17.6, then 11.2 and 4.8; 24 ÷ 6.4 = 3.75 hours = 3 hours 45 minutes, so 11:45; 24 ÷ 2.5 = 9.6, 9.6 − 3.4 = 6.2; 3.4 · 2.5 = 8.5, 24 − 8.5 = 15.5, 15.5 ÷ 2.5 = 6.2; Jada 10 miles per hour, cousin 2.5.",
-  "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person."
+  "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person.",
+  "Revised 2026-10-24: routine centred; copy edit. Added m12, a rehearsed run-routine moment for Three Reads (MLR 6) at the 8.2 launch (say line, a three-step run sheet, one step per read; IM gives no minutes for the reads, so none are listed; evidence is IM’s “without solving it for students” sentence). The third step follows the launch (first two questions), as noted above. m3, the Three Reads breakdown (“Students start calculating on the first read.”), is now rehearsed. Un-rehearsed m10 (Group Presentations) and m6 (time reading), criteria dropped, to keep six rehearsed: m1 and m2 upstream, m12, m3, m4 and m5 at the crux. m4 stays as the level-specific support during the second read; m12 is the teacher running all three. predict.tell now says the sixth moment (m5). inClass.momentIds now m12, m4, m5. cruxLanguage.byBand: added does and reaching; entries rewritten as one short sentence per read. Routines named with MLR numbers on first mention (cruxWhy, m2, m3, m4, m10, m12, cuts); beforeClass items labelled with the routine they serve. Copy edits: “30-minute question”; cruxWhy parallel fixed; rates as “per” (miles per minute, minutes per mile, miles per hour); times as “8 a.m.”, “10:30 a.m.”, “11:45 a.m.”; “0.75 hours” throughout m6; 12/75 written as \\(\\frac{12}{75}\\) in m1; “mathematics” → “math”; one home-language sentence in m4 and cruxLanguage; “English learners” → “multilingual learners” in cruxWhy. Numbers rechecked: 12/75 = 0.16; 24 − 3 − 3.4 = 17.6; 24 ÷ 6.4 = 3.75 hours = 3 hours 45 minutes, so 11:45 a.m.; 24 ÷ 2.5 = 9.6, 9.6 − 3.4 = 6.2."
  ],
  "crux": "8.2",
- "cruxWhy": "8.2 is where both of IM’s goals are met: students use speeds to find unknown distances and times, and interpret a written story of two friends moving at constant speeds by making a table. IM gives it 30 minutes, its support for English learners (reading the story three times) and has each group explain a problem to the class. 8.1 warms up the speed and pace ideas; 8.3 is optional practice.",
+ "cruxWhy": "8.2 is where both of IM’s goals are met: students use speeds to find unknown distances and times, and interpret a written story of two friends moving at constant speeds by making a table. IM gives it 30 minutes, supports multilingual learners with Three Reads (MLR 6), in which the class reads the story three times, and has each group explain a problem to the class. 8.1 warms up the speed and pace ideas; 8.3 is optional practice.",
  "object": {
   "name": "the distance-apart table",
   "what": "The table each student makes of how far apart Kiran and Clare are after 0, 1, 2 and 3 hours. The next questions test it: when do they meet, and what does Kiran mean by 6.4 miles per hour?"
@@ -33,8 +34,8 @@
    "id": "m1",
    "activityId": "8.1",
    "kind": "student-thinking",
-   "see": "For the 30 minutes question, a student writes “12 ÷ 75” and stops: “That doesn’t come out even.”",
-   "means": "12/75 is 0.16 miles a minute, but only once they see it as hundredths. IM’s check at the start of the unit flags this fraction-to-decimal step for today’s warm-up.",
+   "see": "For the 30-minute question, a student writes “12 ÷ 75” and stops: “That doesn’t come out even.”",
+   "means": "\\(\\frac{12}{75}\\) is 0.16 miles per minute, but only once they see it as hundredths. IM’s check at the start of the unit flags this fraction-to-decimal step for today’s warm-up.",
    "say": "Twelve out of 75. What would that be out of 100?",
    "dont": "Do the division on the board for them.",
    "from": "im",
@@ -43,7 +44,7 @@
    "rehearse": true,
    "criteria": [
     "Kept the decimal step with the student",
-    "Linked 12/75 to a fraction they can already write as a decimal",
+    "Linked \\(\\frac{12}{75}\\) to a fraction they can already write as a decimal",
     "Didn’t do the division for them"
    ]
   },
@@ -53,7 +54,7 @@
    "kind": "routine-breakdown",
    "routine": "MLR1: Stronger and Clearer Each Time",
    "see": "New partners compare: “4.8.” “Same.” “Cool.” They turn around.",
-   "means": "Matching answers end the talk. The partner swap is for pressing each other on how, so the explanation gets clearer before the class discussion.",
+   "means": "In Stronger and Clearer Each Time (MLR 1), students explain to a new partner each time, and matching answers end the talk. The partner swap is for pressing each other on how, so the explanation gets clearer before the class discussion.",
    "say": "Same answer. Now ask how they got it.",
    "dont": "Move on because the answers match.",
    "from": "im",
@@ -67,17 +68,53 @@
    ]
   },
   {
+   "id": "m12",
+   "activityId": "8.2",
+   "kind": "run-routine",
+   "routine": "MLR6: Three Reads",
+   "see": "The Kiran and Clare story is up with its questions covered. Groups are seated, books closed, waiting for you to start.",
+   "means": "Three Reads (MLR 6) means reading the same story three times, each time for one thing, so students understand it before they solve. IM uses it here to support reading the word problem without solving it for students. On the first read, listen for the situation in words: two friends walking toward each other for a picnic. On the second, listen for the quantities and rates: 24 miles apart, 3 miles per hour, 3.4 miles per hour. Amplify that language of quantities and rates; IM says it connects the story’s words with the reasoning students need for the table.",
+   "say": "We’ll read this story three times, each time for something different.",
+   "runSheet": [
+    {
+     "step": "First read: students say what is happening, with no numbers."
+    },
+    {
+     "step": "Second read: students name what can be counted or measured, with units."
+    },
+    {
+     "step": "Third read: show the first two questions, then give quiet think time."
+    }
+   ],
+   "dont": "Solve any part of the problem during the reads.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Use this routine to support reading comprehension of this word problem, without solving it for students.",
+   "rehearse": true,
+   "criteria": [
+    "Gave each read its own job, in order",
+    "Kept numbers out of the first read",
+    "Didn’t solve any part of the problem during the reads"
+   ]
+  },
+  {
    "id": "m3",
    "activityId": "8.2",
    "kind": "routine-breakdown",
    "routine": "MLR6: Three Reads",
-   "see": "On the first read of the story, pencils are already working 24 ÷ 3.",
-   "means": "The first read is for the story only. Calculating now skips knowing what is going on and what is asked. (24 ÷ 3 is an example.)",
+   "see": "On the first read of the story, students start calculating: pencils are already working 24 ÷ 3.",
+   "means": "In Three Reads (MLR 6), the first read is for the story only. Calculating now skips knowing what is going on and what is asked. (24 ÷ 3 is an example.)",
    "say": "No numbers yet. What is happening in this story?",
    "dont": "Let the fastest calculators set the pace.",
    "from": "im",
    "sayFrom": "premo",
-   "evidence": "To ensure that students know what they are being asked to do"
+   "evidence": "To ensure that students know what they are being asked to do",
+   "rehearse": true,
+   "criteria": [
+    "Sent the class back to the story, not the numbers",
+    "Asked what is happening, in words",
+    "Didn’t let the fastest calculators set the pace"
+   ]
   },
   {
    "id": "m4",
@@ -85,20 +122,20 @@
    "kind": "language",
    "routine": "MLR6: Three Reads",
    "see": "On the second read, a student points at “3.4” and says nothing.",
-   "means": "They have found a quantity. Saying what it measures, and whose it is, is the reading work this read asks for.",
+   "means": "This is the second read of Three Reads (MLR 6). They have found a quantity. Saying what it measures, and whose it is, is the reading work this read asks for.",
    "byBand": {
     "emerging": {
      "say": "What can be counted or measured here? Point and show me.",
-     "move": "They point to each number in the story and show what it measures and whose it is, with a word, a gesture, a sketch or their home language.",
+     "move": "They point to each number in the story and show what it measures and whose it is, with a word, a gesture or a sketch. They can work it out first in any language they share with a partner.",
      "nonverbal": "Point to the number, then to Kiran or Clare in the story, then to the photo of the trail."
     },
     "developing": {
      "say": "What can be counted or measured here? Tell your partner.",
-     "move": "They tell a partner what each number measures and whose it is, with its unit, using “___ is ___ miles per hour” or their home language."
+     "move": "They tell a partner what each number measures and whose it is, with its unit, using “___ is ___ miles per hour.” They can work it out first in any language they share with a partner."
     },
     "expanding": {
      "say": "What can be counted or measured here? Tell your partner each one.",
-     "move": "They tell a partner, in their own sentences, what each number measures and whose it is, with its unit, in English or their home language."
+     "move": "They tell a partner, in their own sentences, what each number measures and whose it is, with its unit. They can work it out first in any language they share with a partner."
     }
    },
    "dont": "Tell them what the number means.",
@@ -134,19 +171,14 @@
    "id": "m6",
    "activityId": "8.2",
    "kind": "im-misconception",
-   "see": "“3.75 hours after 8:00. They meet at 11:75, so 12:15.”",
-   "means": "They read 3.75 hours as 3 hours 75 minutes. 0.75 of an hour is 45 minutes, so the picnic is at 11:45. IM’s example is 2.5 hours after 8 a.m. read as 10:50; 11:75 is an example on the meeting-time question.",
-   "say": "0.75 of an hour. How many minutes is that?",
+   "see": "“3.75 hours after 8 a.m. They meet at 11:75, so 12:15.”",
+   "means": "They read 3.75 hours as 3 hours 75 minutes. 0.75 hours is 45 minutes, so the picnic is at 11:45 a.m. IM’s example is 2.5 hours after 8 a.m. read as 10:50 a.m.; 11:75 is an example on the meeting-time question.",
+   "say": "0.75 hours. How many minutes is that?",
    "dont": "Tell them 0.75 hours is 45 minutes.",
    "from": "im",
    "sayFrom": "premo",
    "evidence": "Look for students misinterpreting expressions of time. For example, 2.5 hours after 8 a.m. is 10:30 a.m., not 10:50 a.m.",
-   "rehearse": true,
-   "criteria": [
-    "Sent them to what the decimal part of an hour means",
-    "Left the change to minutes with them",
-    "Didn’t give them the 45 minutes"
-   ]
+   "rehearse": false
   },
   {
    "id": "m7",
@@ -163,7 +195,7 @@
    "id": "m8",
    "activityId": "8.2",
    "kind": "student-thinking",
-   "see": "On the question asking how fast Kiran jogged if they met at 10:30: “24 ÷ 2.5 = 9.6. Kiran jogged 9.6 miles per hour.”",
+   "see": "On the question asking how fast Kiran jogged if they met at 10:30 a.m.: “24 ÷ 2.5 = 9.6. Kiran jogged 9.6 miles per hour.”",
    "means": "9.6 is how fast the gap closed, both friends together. Clare’s 3.4 is still inside it.",
    "say": "Is 9.6 Kiran alone, or both of them?",
    "dont": "Subtract 3.4 for them.",
@@ -188,18 +220,13 @@
    "kind": "routine-breakdown",
    "routine": "Group Presentations",
    "see": "A group finishes explaining whether Kiran is right that it’s like him jogging 6.4 miles per hour. You ask, “Any questions?” Silence.",
-   "means": "“Any questions?” lets everyone off. Putting the group’s finding in their own words is how the rest of the class takes it in.",
+   "means": "In Group Presentations, “Any questions?” lets everyone off. Putting the group’s finding in their own words is how the rest of the class takes it in.",
    "say": "Who can say what this group found, in your words?",
    "dont": "Fill the silence by explaining it again yourself.",
    "from": "im",
    "sayFrom": "premo",
    "evidence": "instead of asking if anyone has any questions for the group, it is often more productive to ask a member of the class to restate their understanding of the group’s findings in their own words.",
-   "rehearse": true,
-   "criteria": [
-    "Asked a classmate, not the group, to restate the finding",
-    "Let the restating student use their own words",
-    "Didn’t explain it again yourself"
-   ]
+   "rehearse": false
   },
   {
    "id": "m11",
@@ -236,7 +263,7 @@
   {
    "activityId": "8.1",
    "type": "stretch",
-   "says": "“6.25 minutes a mile, so 30 ÷ 6.25 = 4.8.”",
+   "says": "“6.25 minutes per mile, so 30 ÷ 6.25 = 4.8.”",
    "why": "They used the pace, the other unit rate, to find a distance.",
    "shows": "Both unit rates, and that dividing by the pace works too.",
    "from": "im",
@@ -246,7 +273,7 @@
    "activityId": "8.2",
    "type": "error",
    "says": "21, then 18, then 15 in the distance-apart table.",
-   "why": "An example of IM’s distance-apart trouble: only Kiran’s 3 miles an hour is taken off.",
+   "why": "An example of IM’s distance-apart trouble: only Kiran’s 3 miles per hour is taken off.",
    "shows": "They can use a speed to step the table hour by hour.",
    "from": "im",
    "evidence": "Students who are unsure about how to calculate distance apart in the table"
@@ -288,11 +315,11 @@
   }
  ],
  "predict": {
-  "context": "Kiran and Clare live 24 miles apart on a rail trail and start walking toward each other at 8:00 a.m., Kiran at 3 miles per hour and Clare at 3.4. After quiet think time, students find how far apart they are after one hour, then make a table of how far apart they are after 0, 1, 2 and 3 hours.",
+  "context": "Kiran and Clare live 24 miles apart on a rail trail and start walking toward each other at 8 a.m., Kiran at 3 miles per hour and Clare at 3.4. After quiet think time, students find how far apart they are after one hour, then make a table of how far apart they are after 0, 1, 2 and 3 hours.",
   "question": "What will most students’ distance-apart tables look like?",
   "countQuestion": "How many students will have 17.6 miles in the 1-hour row?",
   "countUnit": "students will have 17.6 miles in the 1-hour row.",
-  "tell": "If few do, the distance-apart table is following one walker, and the meeting time and the question about Kiran’s 6.4 miles per hour have nothing to stand on. That is the fourth moment you’ll rehearse.",
+  "tell": "If few do, the distance-apart table is following one walker, and the meeting time and the question about Kiran’s 6.4 miles per hour have nothing to stand on. That is the sixth moment you’ll rehearse.",
   "activityIds": [
    "8.1",
    "8.2"
@@ -306,31 +333,37 @@
   ],
   "byBand": {
    "emerging": {
-    "entry": "On the first read, they tell the story with gestures, a sketch or their home language. On the second, they point to each number and show what it measures. On the third, they show on a sketch of the trail how much closer the friends get in one hour, and why, using speed.",
-    "frame": "Kiran’s speed is ___. Clare’s speed is ___. Each hour they get ___ miles closer."
+    "entry": "First read: they tell the story with gestures or a sketch. Second read: they point to each number and show what it measures. Third read: on a trail sketch, they show how much closer the friends get each hour, and why. They can work it out first in any language they share with a partner.",
+    "frame": "Kiran’s speed is ___. Clare’s speed is ___. Each hour they get ___ miles closer.",
+    "does": "They can follow a story of two people moving and match each number to the right person.",
+    "reaching": "Showing that both friends close the gap each hour, using the word speed."
    },
    "developing": {
-    "entry": "On the first read, they tell a partner the story, in English or their home language. On the second, they name each quantity with its unit. On the third, they say how the distance between the friends changes each hour, and why, using speed.",
-    "frame": "Each hour they get ___ miles closer, because Kiran’s speed is ___ and Clare’s speed is ___."
+    "entry": "First read: they tell a partner the story. Second read: they name each quantity with its unit. Third read: they say how the distance apart changes each hour, and why, using speed. They can work it out first in any language they share with a partner.",
+    "frame": "Each hour they get ___ miles closer, because Kiran’s speed is ___ and Clare’s speed is ___.",
+    "does": "They can name each friend’s speed with its unit, such as 3 miles per hour.",
+    "reaching": "Saying in a sentence why the distance apart shrinks by both speeds each hour."
    },
    "expanding": {
-    "entry": "On the first read, they retell the story, in English or their home language. On the second, they name each quantity with its unit. On the third, they say how the distance between the friends changes each hour, and why, using speed.",
-    "frame": "Each hour, the distance apart ___ because ___."
+    "entry": "First read: they retell the story. Second read: they name each quantity with its unit. Third read: they say how the distance apart changes each hour, and why, using speed. They can work it out first in any language they share with a partner.",
+    "frame": "Each hour, the distance apart ___ because ___.",
+    "does": "They can retell the story and name every quantity with its unit.",
+    "reaching": "Explaining why the gap closes 6.4 miles each hour and using that to judge Kiran’s idea."
    }
   }
  },
  "cuts": [
   {
    "activityId": "8.3",
-   "note": "Optional, more practice with no new mathematics. Cut it first."
+   "note": "Optional, more practice with no new math. Cut it first."
   },
   {
    "activityId": "8.1",
-   "note": "Keep it short: two questions, one partner swap, then name speed and pace."
+   "note": "Keep it short: two questions, one partner swap in Stronger and Clearer Each Time (MLR 1), then name speed and pace."
   },
   {
    "activityId": "8.2",
-   "note": "Skip the extra challenge problem and the optional opening where students say what they notice and wonder. Keep the quiet think time, showing answers to the first two questions, and each group explaining its problem."
+   "note": "Skip the extra challenge problem and the optional Notice and Wonder opening, where students say what they notice and wonder. Keep Three Reads (MLR 6), the quiet think time, showing answers to the first two questions, and each group explaining its problem (Group Presentations)."
   }
  ],
  "neverCut": [
@@ -343,9 +376,9 @@
   "launch": "“How far apart after one hour? Then make the distance-apart table.”",
   "launchFrom": "premo",
   "momentIds": [
+   "m12",
    "m4",
-   "m5",
-   "m10"
+   "m5"
   ],
   "sequence": [
    "The way most groups used, as you saw it while walking around",
@@ -354,10 +387,10 @@
   ]
  },
  "beforeClass": [
-  "Look up a rail trail near school to tell students about.",
-  "Set up the Kiran and Clare story to show with its questions covered.",
-  "Poster paper and markers, one set per group of 3–4.",
-  "Decide which group explains each of questions 3, 4 and 5.",
-  "Draw a blank four-column table (hours, Kiran, Clare, distance apart) for students who need it."
+  "For the launch: look up a rail trail near school to tell students about.",
+  "For Three Reads (MLR 6): set up the Kiran and Clare story to show with its questions covered.",
+  "For Group Presentations: poster paper and markers, one set per group of 3–4.",
+  "For Group Presentations: decide which group explains each of questions 3, 4 and 5.",
+  "For the distance-apart table: draw a blank four-column table (hours, Kiran, Clare, distance apart) for students who need it."
  ]
 }

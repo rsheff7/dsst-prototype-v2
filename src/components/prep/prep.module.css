@@ -98,6 +98,7 @@
 .pillOk { background: var(--done-soft); color: var(--done); }
 .pillFlag { background: var(--flag-soft); color: var(--flag); }
 .pillAct { background: var(--act-soft); color: var(--act-ink); }
+.pillBtn { border: 0; font: inherit; cursor: pointer; }
 .pillMll { background: var(--mll-soft); color: var(--mll); }
 
 /* Home */

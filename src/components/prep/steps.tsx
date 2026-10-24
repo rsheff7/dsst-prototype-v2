@@ -6,7 +6,7 @@ import type { PrepState } from './usePrepState';
 import { elapsedSeconds, mmss } from './usePrepState';
 import { PREP_BUDGET_MINUTES } from '@/lib/prep/prepModel';
 import { Check, Icon, MlrPill, cx } from './parts';
-import { IMLines, MathText } from '@/components/u3/MathText';
+import { IMLines, MathText, sentences } from '@/components/u3/MathText';
 import s from './prep.module.css';
 
 export interface StepCtx {
@@ -18,6 +18,24 @@ export interface StepCtx {
   openLibrary: (tab: PrepState['lib']) => void;
   openInClass: () => void;
   copyForCoach: () => void;
+  /** Opens IM's definition of a routine, by IM's name. Unit 3 lessons only. */
+  openRoutine?: (name: string) => void;
+}
+
+/** A routine's name as a chip; tapping it opens IM's definition when the lesson has one. */
+function RoutineChip({ c, name, label }: { c: StepCtx; name?: string; label: string }) {
+  if (!name || !c.openRoutine) return <span className={cx(s.pill, s.pillAct)}>{label}</span>;
+  return (
+    <button type="button" className={cx(s.pill, s.pillAct, s.pillBtn)} onClick={() => c.openRoutine!(name)}>
+      {label} ⓘ
+    </button>
+  );
+}
+
+/** First `n` sentences, and the rest, so a long paragraph can fold on a phone. */
+function splitSentences(text: string, n: number): [string, string] {
+  const parts = sentences(text).map((x) => `${x} `);
+  return [parts.slice(0, n).join('').trim(), parts.slice(n).join('').trim()];
 }
 
 export type StepOut = { inner: ReactNode; action: ReactNode };
@@ -58,15 +76,37 @@ export function orient(c: StepCtx): StepOut {
         <p className={s.goal}>
           <MathText>{m.destination}</MathText>
         </p>
+        {m.languageGoal && (
+          <p className={s.small}>
+            <b>Language goal{m.languageGoal.uses.length ? ` · ${m.languageGoal.uses.join(', ')}` : ''}:</b>{' '}
+            <MathText>{m.languageGoal.text}</MathText>
+          </p>
+        )}
         <dl className={s.kv}>
           <dt>Arc</dt>
           <dd>
-            <MathText>{m.arc}</MathText>
+            {(() => {
+              const [lead, rest] = splitSentences(m.arc, 2);
+              return rest ? (
+                <details className={s.more}>
+                  <summary>
+                    <MathText>{lead}</MathText>
+                  </summary>
+                  <MathText>{rest}</MathText>
+                </details>
+              ) : (
+                <MathText>{m.arc}</MathText>
+              );
+            })()}
           </dd>
-          <dt>Idea</dt>
-          <dd>
-            <MathText>{m.idea}</MathText>
-          </dd>
+          {m.idea !== m.destination && (
+            <>
+              <dt>Idea</dt>
+              <dd>
+                <MathText>{m.idea}</MathText>
+              </dd>
+            </>
+          )}
         </dl>
       </section>
       <section className={s.stack}>
@@ -87,6 +127,11 @@ export function orient(c: StepCtx): StepOut {
                   {a.focus === 'feeder' && <span className={cx(s.pill, s.pillCrux)}>Sets up the crux</span>}
                   {!a.isCrux && a.role && <span className={s.pill}>{a.role}</span>}
                 </span>
+                {a.routineLine && (
+                  <span className={cx(s.tlWatch, s.small)}>
+                    <b>Language routine:</b> {a.routineLine}
+                  </span>
+                )}
                 {a.watchFor && (
                   <span className={s.tlWatch}>
                     <b>Watch for:</b> <MathText>{a.watchFor}</MathText>
@@ -120,9 +165,7 @@ export function student(c: StepCtx): StepOut {
               Cool-down · {cd.title}
             </span>
             <IMLines lines={cd.task} />
-            <p className={cx(s.muted, s.small)}>
-              Answer in writing, the way a strong student would. Then say it out loud.
-            </p>
+            <p className={cx(s.muted, s.small)}>Answer in writing, then say it out loud.</p>
           </>
         ) : (
           <>
@@ -200,7 +243,7 @@ export function student(c: StepCtx): StepOut {
               </Check>
             ))}
             <Check on={st.saidAloud} onClick={() => update((p) => ({ saidAloud: !p.saidAloud }))}>
-              I said it out loud, the way a student would at the close
+              {m.saidLookFor ?? 'I said it out loud, the way a student would at the close.'}
             </Check>
           </div>
           <p className={cx(s.muted, s.small)}>
@@ -393,14 +436,14 @@ export function rehearse(c: StepCtx): StepOut {
 
   const inner = (
     <div className={s.stack}>
-      <div className={s.dotsnav} role="group" aria-label="Scenarios">
+      <div className={s.dotsnav} role="group" aria-label="Moments">
         {list.map((x, j) => (
           <button
             key={x.id}
             type="button"
             className={cx(st.said[x.id] && s.said, st.flags[x.id] && s.flagged)}
             aria-current={j === i}
-            aria-label={`Scenario ${j + 1}`}
+            aria-label={`Moment ${j + 1}`}
             onClick={() => update({ ri: j })}
           >
             {j + 1}
@@ -413,7 +456,8 @@ export function rehearse(c: StepCtx): StepOut {
           <span className={s.pill}>{sc.typeLabel}</span>
           {sc.focus === 'crux' && <span className={cx(s.pill, s.pillCrux)}>Crux</span>}
           {sc.focus === 'feeder' && <span className={cx(s.pill, s.pillCrux)}>Sets up the crux</span>}
-          {sc.mll && <span className={cx(s.pill, s.pillMll)}>MLL</span>}
+          {sc.mll && <span className={cx(s.pill, s.pillMll)}>Multilingual learners</span>}
+          {sc.routine && <RoutineChip c={c} name={sc.routine} label={sc.mlr ? `MLR ${sc.mlr.number} · ${sc.mlr.name}` : sc.routine} />}
         </div>
         {sc.scene ? (
           <div className={s.stack} style={{ gap: 8 }}>
@@ -454,6 +498,19 @@ export function rehearse(c: StepCtx): StepOut {
                   <div className={s.flat}>
                     <span className={s.lab}>What’s going on</span>
                     <MathText>{sc.means}</MathText>
+                  </div>
+                )}
+                {sc.runSheet && sc.runSheet.length > 0 && (
+                  <div className={s.flat}>
+                    <span className={s.lab}>Run it</span>
+                    <ol className={s.clean} style={{ listStyle: 'decimal', paddingLeft: 20 }}>
+                      {sc.runSheet.map((x, j) => (
+                        <li key={j}>
+                          <MathText>{x.step}</MathText>
+                          {x.minutes ? <span className={cx(s.muted, s.small)}> · {x.minutes} min</span> : null}
+                        </li>
+                      ))}
+                    </ol>
                   </div>
                 )}
                 {sc.byBand ? (
@@ -502,7 +559,7 @@ export function rehearse(c: StepCtx): StepOut {
                     </>
                   )
                 )}
-                {sc.mlr && (
+                {sc.mlr && !sc.routine && (
                   <span className={s.row}>
                     <MlrPill mlr={sc.mlr} />
                   </span>
@@ -554,7 +611,7 @@ export function rehearse(c: StepCtx): StepOut {
   else if (!last)
     action = (
       <button type="button" className={cx(s.btn, s.pri)} onClick={() => { update({ ri: i + 1 }); window.scrollTo(0, 0); }}>
-        Next scenario →
+        Next moment →
       </button>
     );
   else
@@ -590,44 +647,30 @@ export function adjust(c: StepCtx): StepOut {
           </p>
         )}
       </section>
-      {m.cuts.length > 0 && (
-        <section className={s.stack}>
-          <h3>Safe to change</h3>
-          <p className={cx(s.muted, s.small)}>Materials and formats you can swap without touching the idea.</p>
-          {m.cuts.map((x) => (
-            <button
-              key={x.id}
-              type="button"
-              className={s.toggle}
-              aria-pressed={!!st.cuts[x.id]}
-              onClick={() => update((p) => ({ cuts: { ...p.cuts, [x.id]: !p.cuts[x.id] } }))}
-            >
-              <span>{x.text}</span>
-              <span className={s.sw} aria-hidden="true" />
-            </button>
-          ))}
-        </section>
-      )}
-      <section className={cx(s.card, s.stack)}>
-        <h3>Never cut</h3>
-        <ul className={s.locked}>
-          {m.neverCut.map((x, i) => (
-            <li key={i}>
-              {Icon.lock}
-              <span>
-                {x.text} {x.mlr && <MlrPill mlr={x.mlr} />}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </section>
       <section className={s.stack}>
         <div className={cx(s.row, s.between)}>
-          <h3>MLL supports at the crux</h3>
+          <h3>Multilingual learners at the crux</h3>
           <span className={cx(s.muted, s.small)}>{st.bands.length ? bands.map(bandLabel).join(' · ') : 'All levels'}</span>
         </div>
+        {m.language.support && (
+          <div className={cx(s.card, s.stack)} style={{ gap: 8 }}>
+            <span className={s.eyebrow}>IM’s support at the crux</span>
+            <p style={{ fontWeight: 600 }}>
+              {m.language.support.routine}, {m.language.support.when}
+            </p>
+            <span className={cx(s.muted, s.small)}>
+              {[m.language.support.domains.join(', ').replace(/^./, (x) => x.toUpperCase()), m.language.support.principles].filter(Boolean).join(' · ')}
+            </span>
+            <details className={s.more}>
+              <summary>IM’s words</summary>
+              <span className={s.small}>
+                <MathText>{m.language.support.text}</MathText>
+              </span>
+            </details>
+          </div>
+        )}
         <p className={cx(s.muted, s.small)}>
-          {m.language.routineNote ? `${m.language.routineNote} ` : ''}Same mathematical demand, different language support. Filtered to your class.
+          {m.language.routineNote ? `${m.language.routineNote} ` : ''}Same math, different way in. Filtered to your class.
         </p>
         {m.language.frames.length > 0 && (
           <div className={cx(s.card, s.stack)} style={{ gap: 8 }}>
@@ -647,12 +690,19 @@ export function adjust(c: StepCtx): StepOut {
                 <span className={s.lv}>{bandLabel(b)}</span>
                 {pr && (
                   <span className={s.small}>
-                    <b>Already does:</b> {pr.does}
+                    <b>Already does:</b> <MathText>{pr.does}</MathText>
                     <br />
-                    <b>Reaching for:</b> {pr.reaching}
+                    <b>Reaching for:</b> <MathText>{pr.reaching}</MathText>
                   </span>
                 )}
-                <p>{m.supports[b].text}</p>
+                <p>
+                  <MathText>{m.supports[b].text}</MathText>
+                </p>
+                {m.supports[b].frame && (
+                  <span className={s.frame}>
+                    <MathText>{m.supports[b].frame}</MathText>
+                  </span>
+                )}
                 {m.supports[b].mlr && (
                   <span className={s.row}>
                     <MlrPill mlr={m.supports[b].mlr} />
@@ -674,6 +724,37 @@ export function adjust(c: StepCtx): StepOut {
             </ul>
           </div>
         )}
+      </section>
+      {m.cuts.length > 0 && (
+        <section className={s.stack}>
+          <h3>{m.cutWords?.heading ?? 'Safe to change'}</h3>
+          <p className={cx(s.muted, s.small)}>{m.cutWords?.note ?? 'Materials and formats you can swap without touching the idea.'}</p>
+          {m.cuts.map((x) => (
+            <button
+              key={x.id}
+              type="button"
+              className={s.toggle}
+              aria-pressed={!!st.cuts[x.id]}
+              onClick={() => update((p) => ({ cuts: { ...p.cuts, [x.id]: !p.cuts[x.id] } }))}
+            >
+              <span><MathText>{x.text}</MathText></span>
+              <span className={s.sw} aria-hidden="true" />
+            </button>
+          ))}
+        </section>
+      )}
+      <section className={cx(s.card, s.stack)}>
+        <h3>Never cut</h3>
+        <ul className={s.locked}>
+          {m.neverCut.map((x, i) => (
+            <li key={i}>
+              {Icon.lock}
+              <span>
+                {x.text} {x.mlr && <MlrPill mlr={x.mlr} />}
+              </span>
+            </li>
+          ))}
+        </ul>
       </section>
     </div>
   );
@@ -702,10 +783,10 @@ Rehearsal: ${said}/${m.scenarios.length}
 Flagged as hard:
 ${flagged}
 
-Swaps I'm planning:
+${m.cutWords ? 'Cuts' : 'Swaps'} I'm planning:
 ${cuts}
 
-Where I'd like help: start with the flagged scenarios.`;
+Where I'd like help: start with the flagged moments.`;
 }
 
 export function carry(c: StepCtx): StepOut {
@@ -754,7 +835,7 @@ export function carry(c: StepCtx): StepOut {
           )}
         </div>
         <div>
-          <span className={s.lab}>Swaps</span>
+          <span className={s.lab}>{m.cutWords?.summary ?? 'Swaps'}</span>
           {cuts.length ? (
             <ul className={s.clean}>
               {cuts.map((x) => (

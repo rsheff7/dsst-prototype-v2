@@ -17,10 +17,11 @@
   "In 9.3 the ostrich and coyote differ by about 0.03 feet (3,772.97 against 3,773), under half an inch. IM ranks the coyote ahead; a class that rounds early will call it a tie. The moment for it is Premo's handling.",
   "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person.",
   "Calculators: IM’s preparation says calculators are optional and all calculations can be done with grade 5 techniques, but IM lists four-function calculators as required materials for 9.3. This file no longer says it can all be done by hand; materials and printing are left to IM’s preparation list rather than repeated in beforeClass.",
-  "Revised 2026-10-23 after persona review (maths-and-multilingual-learner expert, novice teacher): every band’s sentence frame now asks for the decision and a reason from the price of one item; the language moment asks every band the same question (deal or no deal, and why?) and offers home language at every band; the “3.16 ÷ 4, then stopped” pattern is re-typed almost (unfinished, not wrong) and matches moment 4; the “79 cents… so no deal” pattern is re-typed error, since its conclusion is wrong (card A is a deal: 75 cents against 79); the 9.3 cut no longer says “practice, no new mathematics” and says what is lost if shortened; cards B–E are described by what IM’s text shows (card B’s prices; C–E only by item); the share order is worded as a suggestion of kinds of work; beforeClass trimmed to plain tasks with no duplicates of IM’s preparation and no reviewer notes; jargon (launch, synthesis, poll, routine names) replaced with plain words in teacher-facing text."
+  "Revised 2026-10-23 after persona review (maths-and-multilingual-learner expert, novice teacher): every band’s sentence frame now asks for the decision and a reason from the price of one item; the language moment asks every band the same question (deal or no deal, and why?) and offers home language at every band; the “3.16 ÷ 4, then stopped” pattern is re-typed almost (unfinished, not wrong) and matches moment 4; the “79 cents… so no deal” pattern is re-typed error, since its conclusion is wrong (card A is a deal: 75 cents against 79); the 9.3 cut no longer says “practice, no new mathematics” and says what is lost if shortened; cards B–E are described by what IM’s text shows (card B’s prices; C–E only by item); the share order is worded as a suggestion of kinds of work; beforeClass trimmed to plain tasks with no duplicates of IM’s preparation and no reviewer notes; jargon (launch, synthesis, poll, routine names) replaced with plain words in teacher-facing text.",
+  "Revised 2026-10-24: routine centred; copy edit. Added m12, a rehearsed run-routine moment for MLR2: Collect and Display at 9.2 (say line, five-step run sheet from IM’s support text; IM gives no minutes for the steps, so none are shown), and m13, a rehearsed Collect and Display breakdown from the routine catalog (“Students’ words go unrecorded”). Un-rehearsed m4 (decimal division stall; criteria dropped) for the run-routine, and m5 (Take Turns breakdown; criteria dropped) so the crux routine’s breakdown is rehearsed. Rehearsed now: m1 and m2 upstream (as before), m3, m12, m13, m6 at the crux. predict.tell still points at m3 (third rehearsed). inClass.momentIds now m3, m12, m6. Added does/reaching per band to cruxLanguage.byBand. Routines named by IM name with MLR number in m2, m5, m6, m10, m12, m13, cruxLanguage, beforeClass (Take Turns and Collect and Display materials labelled). Copy edits: 9.1 pattern shows now “\\(\\frac{1}{4}\\) and 0.25: the hundredths that prices are written in”; 9.3 cut rewritten action first with “If you’re short of time”; 3/4 and 6/10 set as LaTeX fractions (m7, stretch pattern); commas and periods moved inside closing quotes (cruxWhy, m6, m7, beforeClass); home-language wording unified to “They can work it out first in any language they share with a partner.” in m6 moves and cruxLanguage entries."
  ],
  "crux": "9.2",
- "cruxWhy": "IM says this lesson builds fluency with unit rates “without scaffolding”, so both activities are practice and neither brings new mathematics. 9.2 is the one the lesson comes back to: goal 2 is its goal (justify orally whether a price is a good deal), the closing discussion returns to its juice boxes (card B), and the cool-down asks the same deal question about tacos. It is also where students choose a unit rate for themselves, which is the learning target.",
+ "cruxWhy": "IM says this lesson builds fluency with unit rates “without scaffolding,” so both activities are practice and neither brings new mathematics. 9.2 is the one the lesson comes back to: goal 2 is its goal (justify orally whether a price is a good deal), the closing discussion returns to its juice boxes (card B), and the cool-down asks the same deal question about tacos. It is also where students choose a unit rate for themselves, which is the learning target.",
  "object": {
   "name": "the card A reason",
   "what": "The deal-or-no-deal decision each pair writes together for card A (a 4-pack for $3.16; the 3 bottles left offered for $2.25), with the numbers that back it. Each partner then uses the same kind of reason on their own two of the other four cards (B juice boxes, C bars, D hummus, E yogurt) and explains it to the other."
@@ -57,7 +58,7 @@
    "kind": "routine-breakdown",
    "routine": "Poll the Class",
    "see": "Asked “Will you take the deal?”, six hands go up. The rest of the room waits.",
-   "means": "A student who didn’t vote has no stake in finding out whether the deal is fair.",
+   "means": "In Poll the Class every student goes on record with a vote. A student who didn’t vote has no stake in finding out whether the deal is fair.",
    "say": "Everyone votes. Deal or no deal? Thumbs up or down.",
    "dont": "Start the discussion with the first few hands.",
    "from": "im",
@@ -98,11 +99,61 @@
    "from": "im",
    "sayFrom": "premo",
    "evidence": "Students who are not fluent in multiplication and division computation work from grade 5 may need some review in order to be successful in this activity.",
+   "rehearse": false
+  },
+  {
+   "id": "m12",
+   "activityId": "9.2",
+   "kind": "run-routine",
+   "routine": "MLR2: Collect and Display",
+   "see": "Pairs turn to explain their cards to each other. The chart paper is up, and you have a marker in hand.",
+   "say": "As you explain, I’m writing your words up here.",
+   "runSheet": [
+    {
+     "step": "While pairs explain, listen for how they decide: deal or no deal."
+    },
+    {
+     "step": "Write their words as they say them, such as “the same,” “equal,” “unit rate,” or “cost for the same number of items.”"
+    },
+    {
+     "step": "Keep the chart where every pair can see it, and add to it as they talk."
+    },
+    {
+     "step": "In the closing discussion, point to a phrase when a student uses that way."
+    },
+    {
+     "step": "Say which way each phrase goes: the original unit rate to the new number of items, or the other way."
+    }
+   ],
+   "means": "Collect and Display (MLR 2) turns the words students say aloud into a class chart they can use again. IM says to listen for how students reason about the deals and to amplify language such as “the same,” “equal,” “unit rate,” and “cost for the same number of items,” then refer back to it in the closing discussion and connect each phrase to a way of comparing. Their words for the card A reason end up on the wall.",
+   "dont": "Write your own textbook phrase instead of their words.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Listen for language such as “the same,” “equal,” “unit rate,” “cost for the same number of items,” etc., and display these visually for the whole class to use as a reference.",
    "rehearse": true,
    "criteria": [
-    "Kept the division theirs to do",
-    "Gave a way in through numbers they know",
-    "Didn’t do the division for them"
+    "Started writing as soon as pairs started explaining",
+    "Recorded students’ own words, not a tidied version",
+    "Pointed back to the chart in the closing discussion"
+   ]
+  },
+  {
+   "id": "m13",
+   "activityId": "9.2",
+   "kind": "routine-breakdown",
+   "routine": "MLR2: Collect and Display",
+   "see": "Ten minutes into the cards, the chart paper is still blank. You’ve been at desks helping with card A.",
+   "means": "Collect and Display (MLR 2) has slipped: nothing students said is written down, so the closing discussion on 35 and 40 cents a box has no words of theirs to point back to.",
+   "say": "Say that again? I want it on our chart.",
+   "dont": "Fill the chart later with your own phrases.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "The teacher listens for, and scribes, the student output",
+   "rehearse": true,
+   "criteria": [
+    "Wrote down a student’s words while they were still talking",
+    "Got phrases on the chart before the closing discussion",
+    "Didn’t fill the chart later with your own phrases"
    ]
   },
   {
@@ -111,18 +162,13 @@
    "kind": "routine-breakdown",
    "routine": "Take Turns",
    "see": "One partner works all four other cards (juice boxes, bars, hummus, yogurt) aloud. The other copies the answers.",
-   "means": "The partner copying never uses the card A reason alone, so there is nothing of theirs to explain or defend.",
+   "means": "Take Turns, where partners take turns explaining and agreeing or disagreeing, has slipped. The partner copying never uses the card A reason alone, so there is nothing of theirs to explain or defend.",
    "say": "Your two cards are yours. Who explains first?",
    "dont": "Let the faster partner do all four.",
    "from": "im",
    "sayFrom": "premo",
    "evidence": "limits the phenomenon where one student takes over and the other does not participate.",
-   "rehearse": true,
-   "criteria": [
-    "Gave each partner back their own two cards",
-    "Had both partners explain, one at a time",
-    "Didn’t let one partner do all four"
-   ]
+   "rehearse": false
   },
   {
    "id": "m6",
@@ -130,20 +176,20 @@
    "kind": "language",
    "routine": "MLR2: Collect and Display",
    "see": "Explaining card B (juice boxes: 10 for $3.50 before, 6 for $2.40 now), a student taps it: “It’s more. The new one is more.”",
-   "means": "The decision is right, no deal: 40 cents a box now against 35 before. What is “more”, and for how many boxes, isn’t in words yet.",
+   "means": "The decision is right, no deal: 40 cents a box now against 35 before. What is “more,” and for how many boxes, isn’t in words yet. Collect and Display (MLR 2), the class chart of students’ own phrases, is where those words go.",
    "byBand": {
     "emerging": {
      "say": "Deal or no deal, and why? Point to your numbers.",
-     "move": "They point to the numbers that decide it and give the reason in English or their home language. You write their words beside those numbers on the class display.",
-     "nonverbal": "They point from their numbers to a word already on the display, such as “the same” or “unit rate”."
+     "move": "They point to the numbers that decide it and give the reason. They can work it out first in any language they share with a partner. You write their words beside those numbers on the class display.",
+     "nonverbal": "They point from their numbers to a word already on the display, such as “the same” or “unit rate.”"
     },
     "developing": {
      "say": "Deal or no deal, and why? Use a display word.",
-     "move": "They tell their partner, in their home language first if they like, then with one phrase from the display. You add any new phrase they use."
+     "move": "They tell their partner, then use one phrase from the display. They can work it out first in any language they share with a partner. You add any new phrase they use."
     },
     "expanding": {
      "say": "Deal or no deal, and why? Prove it to your partner.",
-     "move": "They give the price of one box in each offer, working it out in their home language if they like, and the partner checks it. You write the clearest phrase on the display."
+     "move": "They give the price of one box in each offer, and the partner checks it. They can work it out first in any language they share with a partner. You write the clearest phrase on the display."
     }
    },
    "dont": "Say the reason for them.",
@@ -152,7 +198,7 @@
    "rehearse": true,
    "criteria": [
     "Asked every level the same question: deal or no deal, and why?",
-    "Matched the way in to the student, home language welcome, and recorded their words",
+    "Matched the way in to the student and recorded their words",
     "Didn’t say the reason for them"
    ]
   },
@@ -160,8 +206,8 @@
    "id": "m7",
    "activityId": "9.2",
    "kind": "which-work-first",
-   "see": "On desks for card A: 79 cents against 75 cents a bottle, “3 bottles should be $2.37”, and 3.16 × 3/4.",
-   "means": "IM asks for 2–3 different ways and to point out whether a unit rate was used; it gives no order. One order that works: the price of one bottle first, the 3/4 way last, since it skips the unit rate.",
+   "see": "On desks for card A: 79 cents against 75 cents a bottle, “3 bottles should be $2.37,” and 3.16 × \\(\\frac{3}{4}\\).",
+   "means": "IM asks for 2–3 different ways and to point out whether a unit rate was used; it gives no order. One order that works: the price of one bottle first, the \\(\\frac{3}{4}\\) way last, since it skips the unit rate.",
    "say": "Start us off. How did you decide on card A?",
    "dont": "Show only the fastest way.",
    "from": "im",
@@ -197,7 +243,7 @@
    "kind": "routine-breakdown",
    "routine": "MLR7: Compare and Connect",
    "see": "A feet ranking is shared, then a meters ranking, and the class moves on.",
-   "means": "The comparison is the point: the numbers in feet are all bigger than in meters, and the order comes out the same.",
+   "means": "In Compare and Connect (MLR 7), students set two ways side by side and say what is the same and different. That comparison is the point: the numbers in feet are all bigger than in meters, and the order comes out the same.",
    "say": "Different numbers in feet and meters. Why the same order?",
    "dont": "Say “both are right” and move on.",
    "from": "im",
@@ -223,7 +269,7 @@
    "type": "build",
    "says": "“It’s a quarter. The shaded part is one corner, 5 by 5.”",
    "why": "They see the block as a fraction of the whole grid.",
-   "shows": "They can name 25 hundredths as 1/4 and 0.25, the hundredths prices are written in.",
+   "shows": "They can name 25 hundredths as \\(\\frac{1}{4}\\) and 0.25: the hundredths that prices are written in.",
    "from": "im",
    "evidence": "so students can focus on the structure of the fractional pieces and tenths in the image"
   },
@@ -264,7 +310,7 @@
   {
    "activityId": "9.2",
    "type": "stretch",
-   "says": "“6 is 6/10 of 10, so 6 boxes should be 6/10 of $3.50: $2.10.”",
+   "says": "“6 is \\(\\frac{6}{10}\\) of 10, so 6 boxes should be \\(\\frac{6}{10}\\) of $3.50: $2.10.”",
    "why": "They scale the original price straight to the new number of items.",
    "shows": "They can get there without a unit rate, and choose when to.",
    "from": "im",
@@ -298,16 +344,22 @@
   ],
   "byBand": {
    "emerging": {
-    "entry": "While pairs explain their cards, they point to the numbers that decide a card and to a word on the class display, saying it in their home language first if they like; you write their words beside the numbers.",
-    "frame": "Card ___ is a deal / no deal because one ___ costs ___, not ___."
+    "entry": "While pairs explain their cards, they point to the numbers that decide a card and to a word on the Collect and Display (MLR 2) chart, the class list of their phrases; you write their words beside the numbers. They can work it out first in any language they share with a partner.",
+    "frame": "Card ___ is a deal / no deal because one ___ costs ___, not ___.",
+    "does": "They can point to the two prices on a card and say which is more or less.",
+    "reaching": "Pointing to the price of one item and naming it with a chart word, such as “unit rate.”"
    },
    "developing": {
-    "entry": "They tell their partner why a card is a deal or not, in their home language first if they like, then with one phrase from the display; you add any new phrase they use.",
-    "frame": "Card ___ is a deal / no deal because one ___ costs ___ in the new deal and ___ in the original."
+    "entry": "They tell their partner why a card is a deal or not, using one phrase from the display; you add any new phrase they use. They can work it out first in any language they share with a partner.",
+    "frame": "Card ___ is a deal / no deal because one ___ costs ___ in the new deal and ___ in the original.",
+    "does": "They can say deal or no deal and give one number as the reason, such as “79 cents.”",
+    "reaching": "Saying what the number is: “79 cents per bottle,” the price of one, set against 75 cents."
    },
    "expanding": {
-    "entry": "In the closing discussion they explain a card with the price of one item in each offer, then say how a classmate’s way on the display differs from theirs. They can work it out in their home language first.",
-    "frame": "One ___ costs ___ in the new deal and ___ in the original, so card ___ is a deal / no deal; another way to check is ___."
+    "entry": "In the closing discussion they explain a card with the price of one item in each offer, then say how a classmate’s way on the display differs from theirs. They can work it out first in any language they share with a partner.",
+    "frame": "One ___ costs ___ in the new deal and ___ in the original, so card ___ is a deal / no deal; another way to check is ___.",
+    "does": "They can explain a card with the price of one item in each offer.",
+    "reaching": "Comparing their way with a classmate’s, such as the price of one against scaling the whole pack."
    }
   }
  },
@@ -318,7 +370,7 @@
   },
   {
    "activityId": "9.3",
-   "note": "This is where IM’s first goal is met: converting distances into one unit and comparing them in writing. Protect the work time. If short, keep the ranking and hear just two students, one in feet or yards and one in meters. What is lost: time to settle a disputed ranking and to ask why both units give the same order."
+   "note": "Protect the work time: this is where IM’s first goal is met, converting distances into one unit and comparing them in writing. If you’re short of time, keep the ranking and hear just two students, one in feet or yards and one in meters. What is lost: time to settle a disputed ranking and to ask why both units give the same order."
   },
   {
    "activityId": "9.1",
@@ -336,7 +388,7 @@
   "launchFrom": "premo",
   "momentIds": [
    "m3",
-   "m5",
+   "m12",
    "m6"
   ],
   "sequence": [
@@ -347,8 +399,8 @@
  },
  "beforeClass": [
   "Work all five cards (A–E) yourself first. IM’s answer for card E doesn’t say how many yogurt containers.",
-  "Plan to show the class once, with one student, how partners share cards: one explains, the other agrees or disagrees, then swap.",
-  "Put up chart paper for a class list of students’ phrases (“the same”, “unit rate”, “cost for the same number of items”).",
+  "For Take Turns, where partners take turns explaining: plan to show the class once, with one student, how it goes. One explains, the other agrees or disagrees, then swap.",
+  "For Collect and Display (MLR 2), the class chart of students’ phrases: put up chart paper where every pair can see it, ready for words like “the same,” “unit rate,” and “cost for the same number of items.”",
   "Have IM’s conversion facts ready to post for 9.3 when asked (1 mile = 1,760 yards = 5,280 feet; 1 yard = 3 feet; 1 foot = 12 inches; 1 kilometer = 1,000 meters; 1 meter = 100 centimeters)."
  ]
 }

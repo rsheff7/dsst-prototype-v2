@@ -148,6 +148,18 @@ for (const f of premoFiles) {
       for (const c of m.criteria ?? []) for (const s of lines) if (s.length > 12 && norm(c).includes(s)) err(mat, 'a check repeats the model wording');
     }
   }
+  // The crux's language routine is rehearsed as a routine: run it, and catch it slipping.
+  const run = p.moments.filter((m) => m.kind === 'run-routine');
+  if (run.length !== 1) err(at, `${run.length} run-routine moments; the standard is one, at the crux`);
+  for (const m of run) {
+    if (m.activityId !== p.crux) err(`${at} ${m.id}`, 'run-routine belongs at the crux');
+    if (!m.rehearse) err(`${at} ${m.id}`, 'run-routine is rehearsed');
+    if (findRoutine(m.routine ?? '') !== findRoutine(p.cruxLanguage?.routine ?? '')) err(`${at} ${m.id}`, `run-routine runs ${m.routine}; the crux's routine is ${p.cruxLanguage?.routine}`);
+    if (!m.runSheet || m.runSheet.length < 3 || m.runSheet.length > 5) err(`${at} ${m.id}`, 'runSheet has 3 to 5 steps');
+  }
+  if (!p.moments.some((m) => m.rehearse && m.kind === 'routine-breakdown' && findRoutine(m.routine ?? '') === findRoutine(p.cruxLanguage?.routine ?? '')))
+    err(at, "no rehearsed moment for the crux's language routine slipping");
+  for (const b of BANDS) if (!p.cruxLanguage?.byBand?.[b]?.does || !p.cruxLanguage?.byBand?.[b]?.reaching) err(at, `cruxLanguage.byBand.${b} needs does and reaching`);
   const rehearsed = p.moments.filter((m) => m.rehearse);
   if (rehearsed.length !== 6) err(at, `${rehearsed.length} rehearsed moments; the standard is six`);
   if (crux && rehearsed.filter((m) => m.activityId === p.crux).length < 3) err(at, 'fewer than three rehearsed moments at the crux');
@@ -176,7 +188,8 @@ const corr = path.join(ROOT, 'corrections.json');
 if (fs.existsSync(corr)) {
   for (const n of json(corr).notes) {
     const im = imByCode.get(n.code);
-    const lines = im ? flat(im) : [];
+    // A unit-level note (code "6.3") is checked against unit.json.
+    const lines = im ? flat(im) : n.code === '6.3' ? flat(json(path.join(ROOT, 'unit.json'))) : [];
     const hit = lines.some((l) => (n.line ? l === n.line : n.prefix && l.startsWith(n.prefix)));
     if (!hit) err('corrections.json', `${n.code}: no IM line matches "${(n.line ?? n.prefix ?? '').slice(0, 50)}…"`);
     if (!n.note) err('corrections.json', `${n.code}: empty note`);
