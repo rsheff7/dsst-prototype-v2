@@ -14,7 +14,8 @@
   "8.2's purpose is recorded in the IM layer as application, read from the optional modeling sentence (MP4). Its first sentence (“answer questions in the context of constant speed”) could also read as practice. That does not change the crux, since 8.3 is the optional one.",
   "All numbers checked: 12/75 = 0.16, 75/12 = 6.25, 0.16 · 30 = 4.8, 6.25 · 8 = 50; 24 − 3 − 3.4 = 17.6, then 11.2 and 4.8; 24 ÷ 6.4 = 3.75 hours = 3 hours 45 minutes, so 11:45; 24 ÷ 2.5 = 9.6, 9.6 − 3.4 = 6.2; 3.4 · 2.5 = 8.5, 24 − 8.5 = 15.5, 15.5 ÷ 2.5 = 6.2; Jada 10 miles per hour, cousin 2.5.",
   "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person.",
-  "Revised 2026-10-24: routine centred; copy edit. Added m12, a rehearsed run-routine moment for Three Reads (MLR 6) at the 8.2 launch (say line, a three-step run sheet, one step per read; IM gives no minutes for the reads, so none are listed; evidence is IM’s “without solving it for students” sentence). The third step follows the launch (first two questions), as noted above. m3, the Three Reads breakdown (“Students start calculating on the first read.”), is now rehearsed. Un-rehearsed m10 (Group Presentations) and m6 (time reading), criteria dropped, to keep six rehearsed: m1 and m2 upstream, m12, m3, m4 and m5 at the crux. m4 stays as the level-specific support during the second read; m12 is the teacher running all three. predict.tell now says the sixth moment (m5). inClass.momentIds now m12, m4, m5. cruxLanguage.byBand: added does and reaching; entries rewritten as one short sentence per read. Routines named with MLR numbers on first mention (cruxWhy, m2, m3, m4, m10, m12, cuts); beforeClass items labelled with the routine they serve. Copy edits: “30-minute question”; cruxWhy parallel fixed; rates as “per” (miles per minute, minutes per mile, miles per hour); times as “8 a.m.”, “10:30 a.m.”, “11:45 a.m.”; “0.75 hours” throughout m6; 12/75 written as \\(\\frac{12}{75}\\) in m1; “mathematics” → “math”; one home-language sentence in m4 and cruxLanguage; “English learners” → “multilingual learners” in cruxWhy. Numbers rechecked: 12/75 = 0.16; 24 − 3 − 3.4 = 17.6; 24 ÷ 6.4 = 3.75 hours = 3 hours 45 minutes, so 11:45 a.m.; 24 ÷ 2.5 = 9.6, 9.6 − 3.4 = 6.2."
+  "Revised 2026-10-24: routine centred; copy edit. Added m12, a rehearsed run-routine moment for Three Reads (MLR 6) at the 8.2 launch (say line, a three-step run sheet, one step per read; IM gives no minutes for the reads, so none are listed; evidence is IM’s “without solving it for students” sentence). The third step follows the launch (first two questions), as noted above. m3, the Three Reads breakdown (“Students start calculating on the first read.”), is now rehearsed. Un-rehearsed m10 (Group Presentations) and m6 (time reading), criteria dropped, to keep six rehearsed: m1 and m2 upstream, m12, m3, m4 and m5 at the crux. m4 stays as the level-specific support during the second read; m12 is the teacher running all three. predict.tell now says the sixth moment (m5). inClass.momentIds now m12, m4, m5. cruxLanguage.byBand: added does and reaching; entries rewritten as one short sentence per read. Routines named with MLR numbers on first mention (cruxWhy, m2, m3, m4, m10, m12, cuts); beforeClass items labelled with the routine they serve. Copy edits: “30-minute question”; cruxWhy parallel fixed; rates as “per” (miles per minute, minutes per mile, miles per hour); times as “8 a.m.”, “10:30 a.m.”, “11:45 a.m.”; “0.75 hours” throughout m6; 12/75 written as \\(\\frac{12}{75}\\) in m1; “mathematics” → “math”; one home-language sentence in m4 and cruxLanguage; “English learners” → “multilingual learners” in cruxWhy. Numbers rechecked: 12/75 = 0.16; 24 − 3 − 3.4 = 17.6; 24 ÷ 6.4 = 3.75 hours = 3 hours 45 minutes, so 11:45 a.m.; 24 ÷ 2.5 = 9.6, 9.6 − 3.4 = 6.2.",
+  "Revised 2026-10-24: added cruxLanguage.byBand.*.stretch, the extra step for the higher level in each band (Levels 2, 4, 6), under the level-tier rule in src/lib/prep/levelTiers.ts."
  ],
  "crux": "8.2",
  "cruxWhy": "8.2 is where both of IM’s goals are met: students use speeds to find unknown distances and times, and interpret a written story of two friends moving at constant speeds by making a table. IM gives it 30 minutes, supports multilingual learners with Three Reads (MLR 6), in which the class reads the story three times, and has each group explain a problem to the class. 8.1 warms up the speed and pace ideas; 8.3 is optional practice.",
@@ -336,19 +337,22 @@
     "entry": "First read: they tell the story with gestures or a sketch. Second read: they point to each number and show what it measures. Third read: on a trail sketch, they show how much closer the friends get each hour, and why. They can work it out first in any language they share with a partner.",
     "frame": "Kiran’s speed is ___. Clare’s speed is ___. Each hour they get ___ miles closer.",
     "does": "They can follow a story of two people moving and match each number to the right person.",
-    "reaching": "Showing that both friends close the gap each hour, using the word speed."
+    "reaching": "Showing that both friends close the gap each hour, using the word speed.",
+    "stretch": "They say each number with its unit: “3 miles per hour.”"
    },
    "developing": {
     "entry": "First read: they tell a partner the story. Second read: they name each quantity with its unit. Third read: they say how the distance apart changes each hour, and why, using speed. They can work it out first in any language they share with a partner.",
     "frame": "Each hour they get ___ miles closer, because Kiran’s speed is ___ and Clare’s speed is ___.",
     "does": "They can name each friend’s speed with its unit, such as 3 miles per hour.",
-    "reaching": "Saying in a sentence why the distance apart shrinks by both speeds each hour."
+    "reaching": "Saying in a sentence why the distance apart shrinks by both speeds each hour.",
+    "stretch": "They join the two speeds in one sentence: together they close 6.4 miles each hour."
    },
    "expanding": {
     "entry": "First read: they retell the story. Second read: they name each quantity with its unit. Third read: they say how the distance apart changes each hour, and why, using speed. They can work it out first in any language they share with a partner.",
     "frame": "Each hour, the distance apart ___ because ___.",
     "does": "They can retell the story and name every quantity with its unit.",
-    "reaching": "Explaining why the gap closes 6.4 miles each hour and using that to judge Kiran’s idea."
+    "reaching": "Explaining why the gap closes 6.4 miles each hour and using that to judge Kiran’s idea.",
+    "stretch": "They predict when the friends meet from the gap and the combined speed, before calculating."
    }
   }
  },

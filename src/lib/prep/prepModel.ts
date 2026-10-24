@@ -268,7 +268,7 @@ export interface PrepModel {
   rigorCheck: string;
   cuts: { id: string; text: string }[];
   neverCut: { text: string; mlr?: MlrRef }[];
-  supports: Record<ProficiencyBand, { text: string; frame?: string; mlr?: MlrRef }>;
+  supports: Record<ProficiencyBand, { text: string; frame?: string; stretch?: string; mlr?: MlrRef }>;
   /** Crux frames and what each band does and is reaching for at the crux. */
   language: {
     frames: SentenceFrame[];

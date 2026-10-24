@@ -14,7 +14,8 @@
  */
 import type { BandMove, PatternKind, PrepActivity, PrepModel, PrepPattern, PrepScenario, PrepStep, StepKey } from '../prep/prepModel';
 import { BANDS, bandLabel, quoted } from '../prep/prepModel';
-import type { ProficiencyBand } from '../eld/types';
+import type { ProficiencyBand, WidaLevel } from '../eld/types';
+import { bandForLevel } from '../eld/types';
 import type { ImActivity, Moment, MomentKind, U3Lesson } from './types';
 import { findRoutine, routineTitle } from './routines';
 import type { MlrNumber } from '../mlrs';
@@ -61,9 +62,15 @@ const words = (...parts: (string | null | undefined)[]) =>
 const READ_WPM = 180;
 const DOING: Record<StepKey, number> = { orient: 0, student: 2, predict: 1, rehearse: 0, adjust: 0, carry: 0.5 };
 
-export function u3ToPrepModel(lesson: U3Lesson, bands: readonly ProficiencyBand[] = []): PrepModel {
+export function u3ToPrepModel(lesson: U3Lesson, bands: readonly ProficiencyBand[] = [], levels: readonly WidaLevel[] = []): PrepModel {
   const { im, premo } = lesson;
   const useBands = bands.length ? BANDS.filter((b) => bands.includes(b)) : BANDS;
+  // Named by the levels the teacher picked in that band, or by the band.
+  const levelsLabel = (b: ProficiencyBand) => {
+    const ls = levels.filter((l) => bandForLevel(l) === b);
+    return ls.length === 1 ? `Level ${ls[0]}` : bandLabel(b);
+  };
+
   const cruxIdx = im.activities.findIndex((a) => a.id === premo.crux);
 
   // Timeline: IM's slots in IM's order, the cool-down last.
@@ -173,7 +180,9 @@ export function u3ToPrepModel(lesson: U3Lesson, bands: readonly ProficiencyBand[
         ? { see: x.notice, say: x.flat.say ? [{ label: null, text: x.flat.say }] : [], avoid: x.flat.avoid }
         : {
             see: x.notice,
-            say: (x.byBand ?? []).filter((b) => useBands.includes(b.band) && b.say).map((b) => ({ label: bandLabel(b.band), text: b.say! })),
+            say: (x.byBand ?? [])
+              .filter((b) => useBands.includes(b.band) && b.say)
+              .map((b) => ({ label: levelsLabel(b.band), text: b.say! })),
             avoid: x.byBand?.[0]?.avoid ?? null,
           },
     );
@@ -185,7 +194,7 @@ export function u3ToPrepModel(lesson: U3Lesson, bands: readonly ProficiencyBand[
   const supports = Object.fromEntries(
     BANDS.map((b) => {
       const s = premo.cruxLanguage.byBand[b];
-      return [b, { text: s.entry, frame: s.frame }];
+      return [b, { text: s.entry, frame: s.frame, stretch: s.stretch }];
     }),
   ) as PrepModel['supports'];
   // The words to produce are the lesson's own choice (cruxLanguage.produceToday); the unit

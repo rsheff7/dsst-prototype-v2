@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import type { ProficiencyBand } from '@/lib/eld';
+import type { WidaLevel } from '@/lib/eld/types';
 import type { LessonData } from '@/lib/types';
 
 export type PrepView = 'home' | 'step' | 'library' | 'incl';
@@ -22,6 +23,11 @@ export interface PrepState {
   sig: string;
   /** Class ELD profile: which planning bands are in the room. Empty = show all. */
   bands: ProficiencyBand[];
+  /**
+   * Unit 3 lessons: the individual WIDA levels in the room, as the tool set picks them.
+   * `bands` follows from these. Empty = show every band.
+   */
+  levels: WidaLevel[];
   answer: string;
   answerChecked: boolean;
   lookFors: Record<string, boolean>;
@@ -39,7 +45,7 @@ export interface PrepState {
   lib: LibraryTab;
 }
 
-export const freshPrep = (bands: ProficiencyBand[] = [], sig = ''): PrepState => ({
+export const freshPrep = (bands: ProficiencyBand[] = [], sig = '', levels: WidaLevel[] = []): PrepState => ({
   view: 'home',
   ret: 'home',
   step: 0,
@@ -50,6 +56,7 @@ export const freshPrep = (bands: ProficiencyBand[] = [], sig = ''): PrepState =>
   done: false,
   sig,
   bands,
+  levels,
   answer: '',
   answerChecked: false,
   lookFors: {},
@@ -77,13 +84,13 @@ export const freshPrep = (bands: ProficiencyBand[] = [], sig = ''): PrepState =>
  * content; progress saved against a different analysis of the same lesson is
  * dropped rather than attached to the wrong scenarios.
  */
-export function usePrepState(key: string, sig: string, initialBands: ProficiencyBand[]) {
+export function usePrepState(key: string, sig: string, initialBands: ProficiencyBand[], initialLevels: WidaLevel[] = []) {
   const storageKey = `dsst-prep:${key}`;
   // Read in the initializer, not an effect: an effect-time read lets the first
   // save write a fresh state over the saved one. Safe because PrepApp only ever
   // renders in the browser (the lesson it needs is never there on the server).
   const [st, setSt] = useState<PrepState>(() => {
-    const fresh = freshPrep(initialBands, sig);
+    const fresh = freshPrep(initialBands, sig, initialLevels);
     try {
       const saved = JSON.parse(localStorage.getItem(storageKey) ?? 'null');
       if (saved && saved.sig === sig) return { ...fresh, ...saved };
@@ -111,8 +118,8 @@ export function usePrepState(key: string, sig: string, initialBands: Proficiency
     } catch {
       /* no storage */
     }
-    setSt(freshPrep(initialBands, sig));
-  }, [storageKey, initialBands, sig]);
+    setSt(freshPrep(initialBands, sig, initialLevels));
+  }, [storageKey, initialBands, sig, initialLevels]);
 
   return { st, update, reset };
 }

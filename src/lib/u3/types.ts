@@ -294,7 +294,21 @@ export interface PremoLesson {
      * reaching for with THIS lesson's language. Premo's reading; WIDA's own descriptors are
      * not lesson-specific.
      */
-    byBand: Record<ProficiencyBand, { entry: string; frame?: string; does?: string; reaching?: string }>;
+    byBand: Record<
+      ProficiencyBand,
+      {
+        entry: string;
+        frame?: string;
+        does?: string;
+        reaching?: string;
+        /**
+         * The one extra step a student at the band's higher level (2, 4 or 6) takes. The
+         * level-tier rule (src/lib/prep/levelTiers.ts) fades the scaffolds; this line says what
+         * the student adds, which no rule can know.
+         */
+        stretch?: string;
+      }
+    >;
   };
   /** What a teacher may cut, with what it protects. Mastery and optional activities first. */
   cuts: { activityId: string; note: string }[];

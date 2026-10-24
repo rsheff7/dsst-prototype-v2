@@ -159,6 +159,12 @@ for (const f of premoFiles) {
   }
   if (!p.moments.some((m) => m.rehearse && m.kind === 'routine-breakdown' && findRoutine(m.routine ?? '') === findRoutine(p.cruxLanguage?.routine ?? '')))
     err(at, "no rehearsed moment for the crux's language routine slipping");
+  for (const b of BANDS) {
+    const s = p.cruxLanguage?.byBand?.[b]?.stretch;
+    if (!s) err(at, `cruxLanguage.byBand.${b} needs stretch: the extra step at the band's higher level`);
+    else if (s.split(/\s+/).length > 20) err(at, `cruxLanguage.byBand.${b}.stretch is ${s.split(/\s+/).length} words; keep it to 20`);
+    else if (s === p.cruxLanguage.byBand[b].reaching) err(at, `cruxLanguage.byBand.${b}.stretch repeats reaching`);
+  }
   for (const b of BANDS) if (!p.cruxLanguage?.byBand?.[b]?.does || !p.cruxLanguage?.byBand?.[b]?.reaching) err(at, `cruxLanguage.byBand.${b} needs does and reaching`);
   const rehearsed = p.moments.filter((m) => m.rehearse);
   if (rehearsed.length !== 6) err(at, `${rehearsed.length} rehearsed moments; the standard is six`);

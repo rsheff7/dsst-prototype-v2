@@ -9,7 +9,8 @@
   "IM's English-learner support for 7.2 quotes the question as “buy \\(b\\) burritos for 4 dollars”; the task says “\\(c\\) dollars”. Looks like a typo in IM. Not repeated here.",
   "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person.",
   "Revised 2026-10-23 after persona review: the 1-hour row is now treated the same way in watchFor, m3 and m5 (a valid strategy; ask the pair to be ready to share first, as IM says, instead of steering them to the 6); m3's evidence now includes IM's “consider asking them to share first”; the “16 r 4 hours” pattern is re-typed from error to almost and m7 calls it unfinished, not wrong; m6 and cruxLanguage ask every level the same question, across the table and back (multiply and divide by 6), with only the way in differing, and the extra “say why” for Levels 5–6 is gone; m1's say line no longer starts with a quoted phrase; home language is offered at every level; jargon (display tour, synthesis, share, MLR name in beforeClass) replaced with plain words; a 7.3 time note added to cuts, since posters and a walk-around don't fit IM's 10 minutes; beforeClass trimmed to three short tasks, including the answer key.",
-  "Revised 2026-10-24: routine centred; copy edit. Added m10, a rehearsed run-routine moment for Compare and Connect (MLR 7) at the start of the 7.3 synthesis, with a five-step run sheet from IM's support (posters 2 min, walk-around 3, IM's two prompts 2 each, amplify throughout: 9 minutes, which fits only with 7.4's minutes, as the cut note says). Added m11, a rehearsed routine-breakdown of Compare and Connect from the catalog's breakdown (posters presented, nothing compared). Un-rehearsed m3 (its share-first point is carried by m5 and watchFor) and m4 (kept as a moment); m2 stays rehearsed, so upstream is m1 and m2, and the crux has m10, m5, m11, m6. predict.tell now points at the fourth rehearsed moment (m5) and ends 'builds to using the 6'. inClass.momentIds now m10, m5, m6. cruxLanguage.byBand has does and reaching per band. Routines named in teacher text (Compare and Connect (MLR 7) on first mention in cruxWhy; Think Pair Share in m2 and neverCut); beforeClass items labelled by routine. Copy edit: 'quiet work' to 'quiet think time'; one home-language line everywhere; fractions in LaTeX (m7, patterns, beforeClass); curly apostrophes and quotes in cruxWhy and m9; comma inside the closing quote in watchFor 7.2; 'mathematics' to 'math' in the 7.4 cut."
+  "Revised 2026-10-24: routine centred; copy edit. Added m10, a rehearsed run-routine moment for Compare and Connect (MLR 7) at the start of the 7.3 synthesis, with a five-step run sheet from IM's support (posters 2 min, walk-around 3, IM's two prompts 2 each, amplify throughout: 9 minutes, which fits only with 7.4's minutes, as the cut note says). Added m11, a rehearsed routine-breakdown of Compare and Connect from the catalog's breakdown (posters presented, nothing compared). Un-rehearsed m3 (its share-first point is carried by m5 and watchFor) and m4 (kept as a moment); m2 stays rehearsed, so upstream is m1 and m2, and the crux has m10, m5, m11, m6. predict.tell now points at the fourth rehearsed moment (m5) and ends 'builds to using the 6'. inClass.momentIds now m10, m5, m6. cruxLanguage.byBand has does and reaching per band. Routines named in teacher text (Compare and Connect (MLR 7) on first mention in cruxWhy; Think Pair Share in m2 and neverCut); beforeClass items labelled by routine. Copy edit: 'quiet work' to 'quiet think time'; one home-language line everywhere; fractions in LaTeX (m7, patterns, beforeClass); curly apostrophes and quotes in cruxWhy and m9; comma inside the closing quote in watchFor 7.2; 'mathematics' to 'math' in the 7.4 cut.",
+  "Revised 2026-10-24: added cruxLanguage.byBand.*.stretch, the extra step for the higher level in each band (Levels 2, 4, 6), under the level-tier rule in src/lib/prep/levelTiers.ts."
  ],
  "crux": "7.3",
  "cruxWhy": "7.3 is where the lesson’s new idea is first used: the unit rate is the factor that takes you from one column to the other. IM’s lesson narrative calls this the lesson’s new insight, and its goals and second learning target are about it. IM’s language support for the lesson, Compare and Connect (MLR 7: posters and a walk-around), sits in 7.3’s closing class discussion.",
@@ -320,19 +321,22 @@
     "entry": "When pairs walk around to look at the posters, they point to where another poster goes across the table and back, and say or write what it does each way. They can work it out first in any language they share with a partner.",
     "frame": "___ × 6 = ___. ___ ÷ 6 = ___.",
     "does": "They can point to a row and say or write its numbers, like 2 hours and 12 bracelets.",
-    "reaching": "Naming the move each way: times 6 across, divide by 6 back."
+    "reaching": "Naming the move each way: times 6 across, divide by 6 back.",
+    "stretch": "They say the move in words: “times 6” across and “divide by 6” back."
    },
    "developing": {
     "entry": "They tell a classmate how another poster goes across the table and back, and whether theirs does the same. They can work it out first in any language they share with a partner.",
     "frame": "They multiplied the ___ by ___ and divided the ___ by ___. We did it the same way / a different way.",
     "does": "They can tell a partner, in short phrases, how they got one row of the table.",
-    "reaching": "Saying both directions with the frame and comparing theirs with another poster."
+    "reaching": "Saying both directions with the frame and comparing theirs with another poster.",
+    "stretch": "They add the reason: “…because 6 is the unit rate, bracelets per hour.”"
    },
    "expanding": {
     "entry": "They compare another poster with theirs aloud: how each goes across the table and back, and is the outcome the same? They can work it out first in any language they share with a partner.",
     "frame": "This poster goes across by ___ and back by ___. Ours goes across by ___ and back by ___. Both get ___.",
     "does": "They can explain their own strategy for the whole table in their own words.",
-    "reaching": "Comparing two strategies and saying why both work, using “unit rate.”"
+    "reaching": "Comparing two strategies and saying why both work, using “unit rate.”",
+    "stretch": "They ask a classmate one question about a poster that went a different way."
    }
   }
  },

@@ -27,3 +27,16 @@ the Rates section, Lessons 6.3.5–6.3.9. In the app: `/u3` (unit view) and `/u3
 6. Add the lesson to `built` in `unit.json` and to `src/lib/u3/content.ts`.
 7. `npm run check:u3` must pass: every line marked IM's is checked word for word against
    the sources.
+
+## WIDA levels: one band's content, two tiers
+
+Language content is written for three bands (Levels 1–2, 3–4, 5–6). Teachers pick individual levels 1–6, as in the tool set, and the level-tier rule in `src/lib/prep/levelTiers.ts` shows the band's content for that level:
+
+| | Lower level (1, 3, 5) | Higher level (2, 4, 6) |
+|---|---|---|
+| Sentence frame | Given before they speak | Held back, offered if they stall |
+| Without words | Offered first | Kept as a fallback |
+| Home language | Work it out first in it | Share in English, switch if stuck |
+| Partner rehearsal | Before sharing with the class | Share with the class directly |
+
+The rule fades support; it never changes the math or the question. What the higher level adds depends on the lesson, so each band in `cruxLanguage.byBand` carries one authored `stretch` line (20 words at most, not a repeat of `reaching`). The checker requires it. The rule relies on the house home-language sentence: "They can work it out first in any language they share with a partner."

@@ -15,7 +15,8 @@
   "This lesson has no optional activity, so the cuts are all shortenings.",
   "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person. All numbers here were rechecked: 4,200 ÷ 30 = 140, 6,300 ÷ 30 = 210, 6,300 ÷ 45 = 140, 6 ÷ 8 = 0.75, 10 ÷ 10 = 1, 3 ÷ 2 = 1.50, 8 ÷ 6 ≈ 1.33, 0.75 ÷ 15 = 0.05, 1.40 ÷ 28 = 0.05, 7 ÷ 5 = 1.4.",
   "Revised 2026-10-23 after persona review: the 8 ÷ 6 pattern is now “almost” (1.33 cans per dollar is a valid rate; only the “$1.33 a can” label is wrong), matching m8; the 5.3 cut of the “best deal” talk is removed and that opening talk is in neverCut for multilingual classes; every band's frame now asks for a comparison and a reason, and m9's say lines ask “which store, and how do you know?” at every level; the home-language option is offered at every band; the 5.2 kilometers/meters error no longer calls itself “the right first move”; “co-crafting” and “synthesis” replaced with plain words in teacher-facing text; beforeClass cut to three real tasks, without IM's preparation line.",
-  "Revised 2026-10-24: routine centred; copy edit. Added m13, a rehearsed run-routine moment for MLR1 at the 5.3 launch, with a four-step run sheet from IM's support and launch (IM gives 5–10 minutes of quiet work time, a range, so the minutes field is left empty; IM gives no partner-round times). m12 (share order) un-rehearsed to keep six; the order still shows in inClass.sequence and neverCut. m10 stays the rehearsed MLR1 breakdown. Rehearsed order is now m3, m5, m13, m7, m9, m10, so predict.tell names m7 as the fourth. inClass.momentIds now m13, m7, m10. Added does/reaching per band. Routines named with MLR numbers in object, m2, m13, predict context, the 5.2 cut and beforeClass; beforeClass items labelled with the routine they serve. Copy edits: “anymore”; m9 Levels 3–4 say without nested quotes; “as Kiran's”; “quiet think time”; one home-language sentence per band; 5.2 cut note rewritten action-first; money as $0.80, $6; fractions in LaTeX; curly apostrophes; commas and periods inside closing quotes. Numbers rechecked as listed above."
+  "Revised 2026-10-24: routine centred; copy edit. Added m13, a rehearsed run-routine moment for MLR1 at the 5.3 launch, with a four-step run sheet from IM's support and launch (IM gives 5–10 minutes of quiet work time, a range, so the minutes field is left empty; IM gives no partner-round times). m12 (share order) un-rehearsed to keep six; the order still shows in inClass.sequence and neverCut. m10 stays the rehearsed MLR1 breakdown. Rehearsed order is now m3, m5, m13, m7, m9, m10, so predict.tell names m7 as the fourth. inClass.momentIds now m13, m7, m10. Added does/reaching per band. Routines named with MLR numbers in object, m2, m13, predict context, the 5.2 cut and beforeClass; beforeClass items labelled with the routine they serve. Copy edits: “anymore”; m9 Levels 3–4 say without nested quotes; “as Kiran's”; “quiet think time”; one home-language sentence per band; 5.2 cut note rewritten action-first; money as $0.80, $6; fractions in LaTeX; curly apostrophes; commas and periods inside closing quotes. Numbers rechecked as listed above.",
+  "Revised 2026-10-24: added cruxLanguage.byBand.*.stretch, the extra step for the higher level in each band (Levels 2, 4, 6), under the level-tier rule in src/lib/prep/levelTiers.ts."
  ],
  "crux": "5.3",
  "cruxWhy": "5.3 is where the lesson’s goal of comparing by “how much for 1” becomes the whole task: four ads written four different ways, and the fair way to compare them is the price per can. IM’s notes for the class discussion at the end say its purpose is to help students see “that computing and comparing the price per 1 is an efficient way to compare rates in a unit price context,” and to highlight division, the efficient strategy the lesson narrative names. The cool-down is the same kind of shopping problem. 5.2 sets it up with speeds.",
@@ -348,19 +349,22 @@
     "entry": "Before writing, they label each ad with its price for one can, then write the best store and compare its price per can with another store’s. They can work it out first in any language they share with a partner.",
     "frame": "___ is the best deal because one can costs $___ there and $___ at ___.",
     "does": "They can pick the ad that looks cheapest and point to its price for one can.",
-    "reaching": "Naming the best store and its price per can in a short written sentence."
+    "reaching": "Naming the best store and its price per can in a short written sentence.",
+    "stretch": "They say the unit with the price: “$0.75 per can,” not just “$0.75.”"
    },
    "developing": {
     "entry": "They write a first draft with the frame, read it to each partner, and add one detail after each round. They can work it out first in any language they share with a partner.",
     "frame": "The best deal is ___ because its unit price is $___ per can, less than $___ at ___.",
     "does": "They can name the best store and say that it costs less.",
-    "reaching": "Saying price per can and comparing it with another store’s in one sentence."
+    "reaching": "Saying price per can and comparing it with another store’s in one sentence.",
+    "stretch": "They add a reason after “because”: why the lower unit price makes it the better deal."
    },
    "expanding": {
     "entry": "They write freely, then in each partner round ask for one missing detail: which unit, or which store it beats. They can work it out first in any language they share with a partner.",
     "frame": "___ has the lowest unit price because ___, while ___.",
     "does": "They can explain the best deal with price per can at each store.",
-    "reaching": "Explaining why per can stops working for the 28-oz can, and comparing per ounce instead."
+    "reaching": "Explaining why per can stops working for the 28-oz can, and comparing per ounce instead.",
+    "stretch": "They tell a partner what makes their second draft clearer than their first."
    }
   }
  },

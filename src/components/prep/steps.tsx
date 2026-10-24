@@ -7,6 +7,8 @@ import { elapsedSeconds, mmss } from './usePrepState';
 import { PREP_BUDGET_MINUTES } from '@/lib/prep/prepModel';
 import { Check, Icon, MlrPill, cx } from './parts';
 import { IMLines, MathText, sentences } from '@/components/u3/MathText';
+import { TIER_WORDS, forTier, levelLabel, tierOf } from '@/lib/prep/levelTiers';
+import { bandForLevel, bandLevels, type ProficiencyBand, type WidaLevel } from '@/lib/eld/types';
 import s from './prep.module.css';
 
 export interface StepCtx {
@@ -61,6 +63,17 @@ function NextBtn({ c, label }: { c: StepCtx; label?: string }) {
 /** The bands to show: the class profile, or every band when none is set. */
 function bandsFor(st: PrepState) {
   return st.bands.length ? BANDS.filter((b) => st.bands.includes(b)) : BANDS;
+}
+
+/**
+ * One card per picked WIDA level (Unit 3), each showing its band's content under the
+ * level-tier rule; or one per band when levels aren't picked.
+ */
+type LevelCard = { key: string; band: ProficiencyBand; level: WidaLevel | null; label: string };
+function cardsFor(st: PrepState): LevelCard[] {
+  const levels = st.levels ?? [];
+  if (levels.length) return levels.map((l) => ({ key: `L${l}`, band: bandForLevel(l), level: l, label: levelLabel(l) }));
+  return bandsFor(st).map((b) => ({ key: b, band: b, level: null, label: bandLabel(b) }));
 }
 
 // ---------------------------------------------------------------------------
@@ -431,8 +444,10 @@ export function rehearse(c: StepCtx): StepOut {
   const allSaid = list.every((x) => st.said[x.id]);
   const saidCount = list.filter((x) => st.said[x.id]).length;
   const act = m.activities.find((a) => a.id === sc.activityId);
-  const bands = bandsFor(st);
-  const shownBands = (sc.byBand ?? []).filter((b) => bands.includes(b.band));
+  const shownBands = cardsFor(st).flatMap((card) => {
+    const mv = sc.byBand?.find((b) => b.band === card.band);
+    return mv ? [{ card, mv }] : [];
+  });
 
   const inner = (
     <div className={s.stack}>
@@ -517,15 +532,29 @@ export function rehearse(c: StepCtx): StepOut {
                   <>
                     <span className={s.lab}>Respond · by WIDA level</span>
                     <div className={s.prof}>
-                      {shownBands.map((mv) => (
-                        <div key={mv.band} className={s.pc}>
-                          <span className={s.lv}>{bandLabel(mv.band)}</span>
+                      {shownBands.map(({ card, mv }) => {
+                        const tier = card.level ? tierOf(card.level) : null;
+                        return (
+                        <div key={card.key} className={s.pc}>
+                          <span className={s.lv}>{card.label}</span>
+                          {mv.nonverbal && tier === 'lower' && (
+                            <span className={s.small}>
+                              <b>{TIER_WORDS.lower.nonverbal}:</b> {mv.nonverbal}
+                            </span>
+                          )}
                           {mv.say && <b><MathText>{mv.say}</MathText></b>}
-                          {mv.nonverbal && <span className={cx(s.muted, s.small)}>Without words: {mv.nonverbal}</span>}
+                          {tier === 'higher' && <span className={cx(s.muted, s.small)}>Ask first. {TIER_WORDS.higher.frame.replace(/^Hold this/, 'Hold the')}.</span>}
+                          {mv.nonverbal && tier !== 'lower' && (
+                            <span className={cx(s.muted, s.small)}>
+                              {tier === 'higher' ? TIER_WORDS.higher.nonverbal : 'Without words'}: {mv.nonverbal}
+                            </span>
+                          )}
                           {mv.move && (
                             <details className={s.more}>
                               <summary>The full move</summary>
-                              <span className={s.small}>{mv.move}</span>
+                              <span className={s.small}>
+                                <MathText>{tier ? forTier(mv.move, tier) : mv.move}</MathText>
+                              </span>
                             </details>
                           )}
                           {mv.avoid && (
@@ -534,7 +563,8 @@ export function rehearse(c: StepCtx): StepOut {
                             </span>
                           )}
                         </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   </>
                 ) : (
@@ -635,7 +665,7 @@ export function rehearse(c: StepCtx): StepOut {
 
 export function adjust(c: StepCtx): StepOut {
   const { m, st, update } = c;
-  const bands = bandsFor(st);
+  const cards = cardsFor(st);
   const inner = (
     <div className={s.stackLg}>
       <section className={cx(s.rigor, s.stack)}>
@@ -650,7 +680,7 @@ export function adjust(c: StepCtx): StepOut {
       <section className={s.stack}>
         <div className={cx(s.row, s.between)}>
           <h3>Multilingual learners at the crux</h3>
-          <span className={cx(s.muted, s.small)}>{st.bands.length ? bands.map(bandLabel).join(' · ') : 'All levels'}</span>
+          <span className={cx(s.muted, s.small)}>{st.bands.length ? cards.map((x) => x.label).join(' · ') : 'All levels'}</span>
         </div>
         {m.language.support && (
           <div className={cx(s.card, s.stack)} style={{ gap: 8 }}>
@@ -683,11 +713,13 @@ export function adjust(c: StepCtx): StepOut {
           </div>
         )}
         <div className={s.prof}>
-          {bands.map((b) => {
+          {cards.map(({ key, band: b, level, label }) => {
             const pr = m.language.profile[b];
+            const tier = level ? tierOf(level) : null;
+            const sup = m.supports[b];
             return (
-              <div key={b} className={s.pc}>
-                <span className={s.lv}>{bandLabel(b)}</span>
+              <div key={key} className={s.pc}>
+                <span className={s.lv}>{label}</span>
                 {pr && (
                   <span className={s.small}>
                     <b>Already does:</b> <MathText>{pr.does}</MathText>
@@ -696,13 +728,22 @@ export function adjust(c: StepCtx): StepOut {
                   </span>
                 )}
                 <p>
-                  <MathText>{m.supports[b].text}</MathText>
+                  <MathText>{tier ? forTier(sup.text, tier) : sup.text}</MathText>
                 </p>
-                {m.supports[b].frame && (
-                  <span className={s.frame}>
-                    <MathText>{m.supports[b].frame}</MathText>
-                  </span>
+                {tier !== 'lower' && sup.stretch && (
+                  <p className={s.small}>
+                    <b>At Level {level ?? bandLevels(b)[1]}, also:</b> <MathText>{sup.stretch}</MathText>
+                  </p>
                 )}
+                {sup.frame && (
+                  <>
+                    {tier && <span className={cx(s.muted, s.small)}>{TIER_WORDS[tier].frame}:</span>}
+                    <span className={s.frame}>
+                      <MathText>{sup.frame}</MathText>
+                    </span>
+                  </>
+                )}
+                {tier && <span className={cx(s.muted, s.small)}>{TIER_WORDS[tier].partner}</span>}
                 {m.supports[b].mlr && (
                   <span className={s.row}>
                     <MlrPill mlr={m.supports[b].mlr} />

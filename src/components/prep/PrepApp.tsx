@@ -9,7 +9,9 @@ import { BANDS, PREP_BUDGET_MINUTES, activityName, bandLabel, buildPrepModel, qu
 import MobileQuickRead from '@/components/mobile/MobileQuickRead';
 import WidaMobileSelector from '@/components/mobile/WidaMobileSelector';
 import { U3Library, U3RoutineNotes } from '@/components/u3/U3ActivityNotes';
-import { findRoutine, routineTitle } from '@/lib/u3/routines';
+import { findRoutine } from '@/lib/u3/routines';
+import { LEVELS, bandsForLevels, levelName } from '@/lib/prep/levelTiers';
+import type { WidaLevel } from '@/lib/eld/types';
 import { ImCredit } from '@/components/u3/U3Notice';
 import { u3ToPrepModel } from '@/lib/u3/toPrepModel';
 import type { U3Lesson } from '@/lib/u3/types';
@@ -43,8 +45,9 @@ export default function PrepApp({ lesson, u3 }: { lesson?: PrepLesson; u3?: U3Le
     () => (selectedWidaLevel ? [bandForLevel(selectedWidaLevel)] : []),
     [selectedWidaLevel],
   );
+  const initialLevels = useMemo<WidaLevel[]>(() => (u3 && selectedWidaLevel ? [selectedWidaLevel] : []), [u3, selectedWidaLevel]);
   const build = useCallback(
-    (bands: ProficiencyBand[] = []) => (u3 ? u3ToPrepModel(u3, bands) : buildPrepModel(lesson!, bands)),
+    (bands: ProficiencyBand[] = [], levels: WidaLevel[] = []) => (u3 ? u3ToPrepModel(u3, bands, levels) : buildPrepModel(lesson!, bands)),
     [lesson, u3],
   );
   const m0 = useMemo(() => build(), [build]);
@@ -57,8 +60,10 @@ export default function PrepApp({ lesson, u3 }: { lesson?: PrepLesson; u3?: U3Le
     `${u3 ? 'u3:' : ''}${m0.code}:${m0.heading}${m0.authored && !u3 ? ':authored' : ''}`,
     sig,
     initialBands,
+    initialLevels,
   );
-  const m = useMemo(() => build(st.bands), [build, st.bands]);
+  const levels = useMemo(() => st.levels ?? [], [st.levels]);
+  const m = useMemo(() => build(st.bands, levels), [build, st.bands, levels]);
 
   const [sheet, setSheet] = useState<string | null>(null);
   const [toast, setToast] = useState<string | null>(null);
@@ -206,6 +211,35 @@ export default function PrepApp({ lesson, u3 }: { lesson?: PrepLesson; u3?: U3Le
               <h3>Class ELD profile</h3>
               <span className={cx(s.muted, s.small)}>Set once · filters every step</span>
             </header>
+            {u3 ? (
+              <>
+                <div className={s.chips}>
+                  {LEVELS.map((l) => (
+                    <button
+                      key={l}
+                      type="button"
+                      className={s.chip}
+                      aria-pressed={levels.includes(l)}
+                      onClick={() =>
+                        update((p) => {
+                          const cur = p.levels ?? [];
+                          const next = (cur.includes(l) ? cur.filter((x) => x !== l) : [...cur, l]).sort();
+                          return { levels: next, bands: bandsForLevels(next) };
+                        })
+                      }
+                    >
+                      WIDA {levelName(l)}
+                    </button>
+                  ))}
+                </div>
+                <p className={cx(s.muted, s.small)}>
+                  The WIDA levels of the multilingual learners in this class. Supports are written for Levels 1–2, 3–4 and 5–6; at
+                  Levels 2, 4 and 6 the frame is held back and students take one extra step.
+                  {levels.length === 0 && ' None set, so every level shows.'}
+                </p>
+              </>
+            ) : (
+            <>
             <div className={s.chips}>
               {BANDS.map((b) => (
                 <button
@@ -227,6 +261,8 @@ export default function PrepApp({ lesson, u3 }: { lesson?: PrepLesson; u3?: U3Le
               The WIDA levels in this class: Levels 1–2 means the students on your list at WIDA 1 or 2, and so on. Supports for other levels stay in the Library.
               {st.bands.length === 0 && ' None set, so every level shows.'}
             </p>
+            </>
+            )}
           </section>
 
           <section className={s.sect} aria-label="Destination">
