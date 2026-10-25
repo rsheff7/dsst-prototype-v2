@@ -35,7 +35,7 @@ type Mode = 'plan' | 'inclass';
 
 export default function QuickRead({ lesson }: Props) {
   const [mode, setMode] = useState<Mode>('plan');
-  const [destinationExpanded, setDestinationExpanded] = useState(true);
+  
   const [widaOpen, setWidaOpen] = useState(false);
   const widaRef = useRef<HTMLDivElement>(null);
   const { selectedWidaLevel, setSelectedWidaLevel } = useLesson();
@@ -146,12 +146,7 @@ export default function QuickRead({ lesson }: Props) {
         </div>
       </div>
 
-      {/* S1-1: One-line orientation strip (plan mode only) */}
-      {mode === 'plan' && (
-        <p className="qr-print-hide mb-5 text-[0.8rem] text-ink-muted">
-          You&rsquo;re preparing this lesson. The plan is below.
-        </p>
-      )}
+      
 
       {/* Print-only lesson title */}
       <div className="hidden print:block mb-3">
@@ -161,49 +156,31 @@ export default function QuickRead({ lesson }: Props) {
         <p className="text-[11pt] font-bold text-ink leading-tight">{lesson.meta.lesson_title}</p>
       </div>
 
-      {/* Lesson context card — destination is the headline; arc supports it */}
-      <header
-        className="rounded-xl border border-line shadow-sm overflow-hidden border-l-[3px] mb-8"
-        style={{ borderLeftColor: QR_ACCENT, backgroundColor: 'var(--color-card)' }}
-      >
-        {/* Destination section - progressive disclosure */}
-{lesson.destination && (
-            <>
-              {destinationExpanded && (
-                <div className="px-7 py-7" style={{ backgroundColor: 'var(--color-surface)' }}>
-                  <p
-                    className="text-[11px] font-bold uppercase tracking-[0.14em] mb-3"
-                    style={{ color: QR_ACCENT }}
-                  >
-                    By the end of the lesson, students can
-                  </p>
-                  <p
-                    className="text-[1.35rem] text-ink leading-[1.4]"
-                    style={{ fontFamily: 'var(--font-dm-serif), serif' }}
-                  >
-                    {stripSwbatPrefix(lesson.destination)}
-                  </p>
-                </div>
-              )}
-              <button
-                type="button"
-                onClick={() => setDestinationExpanded(!destinationExpanded)}
-                className="w-full py-3 text-[10px] font-medium text-ink-faint hover:text-ink transition-colors border-t border-line-subtle flex items-center justify-center gap-1"
-              >
-                {destinationExpanded ? 'Hide destination ▲' : 'Show destination ▼'}
-              </button>
-            </>
-          )}
-
-        {wb.arc_one_line && (
-          <div className="border-t border-line-subtle px-7 py-4 bg-card">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-1.5">
-              The arc that gets them there
+      {/* Destination — hero treatment, no border, reads as page masthead */}
+      {lesson.destination && (
+        <div className="mb-10 px-2 py-6">
+          <p
+            className="text-[0.75rem] font-semibold uppercase tracking-[0.14em] mb-3"
+            style={{ color: 'var(--color-ink-faint)' }}
+          >
+            By the end of the lesson, students can
+          </p>
+          <p
+            className="text-[1.625rem] leading-[1.35] text-ink"
+            style={{ fontFamily: 'var(--font-dm-serif), serif' }}
+          >
+            {stripSwbatPrefix(lesson.destination)}
+          </p>
+          {wb.arc_one_line && (
+            <p
+              className="mt-5 text-[1.125rem] leading-[1.6]"
+              style={{ color: 'var(--color-ink-muted)' }}
+            >
+              {wb.arc_one_line}
             </p>
-            <p className="text-[0.875rem] text-ink-muted leading-[1.65]">{wb.arc_one_line}</p>
-</div>
+          )}
+        </div>
       )}
-      </header>
 
 {/* Mobile renders MobileQuickRead instead of this component (see
           src/app/lesson/page.tsx and rules.md §3), so the view is chosen purely
@@ -272,15 +249,13 @@ function PlanView({
   return (
     <>
       {Array.isArray(wb.preflight) && wb.preflight.length > 0 && (
-        <section className="qr-preflight rounded-xl border border-line bg-card shadow-sm overflow-hidden mb-6">
-          <div className="px-5 py-3 border-b border-line-subtle bg-surface">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint">Before you begin</p>
-          </div>
-          <ul className="px-5 py-4 space-y-2.5">
+        <section className="qr-preflight border-l-2 border-line bg-surface pl-5 py-4 mb-8">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-ink-muted mb-3">Before you begin</p>
+          <ul className="space-y-2">
             {wb.preflight.map((item, i) => (
               <li key={i} className="flex items-start gap-2.5">
-                <span className="mt-[3px] shrink-0 text-[12px]" style={{ color: QR_ACCENT }}>●</span>
-                <p className="text-[0.825rem] text-ink-muted leading-relaxed">{item}</p>
+                <span className="mt-[2px] shrink-0 text-[13px] text-ink-muted">□</span>
+                <p className="text-[0.875rem] text-ink" style={{ lineHeight: 1.5 }}>{item}</p>
               </li>
             ))}
           </ul>
@@ -709,7 +684,7 @@ function InClassLegend({ entries }: { entries: WristbandLegendEntry[] }) {
 function stripSwbatPrefix(s: string): string {
   const trimmed = s.replace(/^\s*Students\s+(?:can|will be able to)\s+/i, '').trim();
   if (!trimmed) return s;
-  return trimmed.charAt(0).toLowerCase() + trimmed.slice(1);
+  return trimmed.charAt(0).toUpperCase() + trimmed.slice(1);
 }
 
 function firstSentence(text: string): string {
@@ -758,10 +733,9 @@ const planPrintStyles = `
     .quickread-root header > div:last-child p:first-child { font-size: 6.5pt !important; margin: 0 !important; }
     .quickread-root header > div:last-child p:last-child { font-size: 7.5pt !important; line-height: 1.3 !important; margin: 1pt 0 0 0 !important; }
     .qr-print-hide { display: none !important; }
-    .qr-preflight { margin-bottom: 6pt !important; }
-    .qr-preflight > div:first-child { padding: 3pt 8pt !important; }
-    .qr-preflight > div:first-child p { font-size: 7pt !important; margin: 0 !important; }
-    .qr-preflight ul { padding: 4pt 8pt !important; }
+    .qr-preflight { margin-bottom: 6pt !important; padding-left: 8pt !important; }
+    .qr-preflight > p:first-child { font-size: 7pt !important; margin-bottom: 3pt !important; }
+    .qr-preflight ul { padding-left: 0 !important; }
     .qr-preflight ul li { font-size: 7.5pt !important; line-height: 1.3 !important; margin-bottom: 1.5pt !important; gap: 4pt !important; }
     .qr-preflight ul li:last-child { margin-bottom: 0 !important; }
     .qr-preflight ul li span:first-child { font-size: 9pt !important; line-height: 1 !important; }
