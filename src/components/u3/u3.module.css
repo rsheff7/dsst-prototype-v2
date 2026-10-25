@@ -21,7 +21,7 @@
 .lesson { display: grid; grid-template-columns: 52px 1fr auto; gap: 10px; align-items: center; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--color-line); background: var(--color-card); text-decoration: none; color: inherit; }
 .lessonOff { opacity: 0.55; background: transparent; }
 .code { font-size: 13px; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--color-ink-muted); }
-.go { font-size: 13px; font-weight: 700; color: color-mix(in srgb, var(--color-accent), black 20%); }
+.go { font-size: 13px; font-weight: 700; color: color-mix(in srgb, var(--color-accent) 80%, black); }
 .muted { color: var(--color-ink-muted); font-size: 14px; }
 .unit details > summary { cursor: pointer; font-weight: 700; }
 .chips { display: flex; gap: 6px; flex-wrap: wrap; }

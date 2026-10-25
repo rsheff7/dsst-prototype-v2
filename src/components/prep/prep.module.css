@@ -13,7 +13,7 @@
   --act: var(--color-accent);
   --act-soft: var(--color-surface-accent);
   /* Follows the accent, so a brand change carries through to button text. */
-  --act-ink: color-mix(in srgb, var(--color-accent), black 20%);
+  --act-ink: color-mix(in srgb, var(--color-accent) 80%, black);
   --crux: var(--color-crux-accent);
   --crux-soft: var(--color-crux-bg);
   --done: var(--color-demand-low-text);
