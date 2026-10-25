@@ -25,7 +25,7 @@ export default function MlrChip({ mlr, whyHere, showName = true }: MlrChipProps)
         }}
         aria-label={`About MLR ${mlr.number}: ${mlr.name}`}
         className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold cursor-pointer hover:opacity-85 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1"
-        style={{ backgroundColor: '#EEEDFE', color: '#26215C' }}
+        style={{ backgroundColor: 'var(--color-developing-bg)', color: 'var(--color-developing-text)' }}
       >
         <span>{label}</span>
         <span aria-hidden="true" className="opacity-60 text-[9px]">

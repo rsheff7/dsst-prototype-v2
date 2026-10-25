@@ -36,10 +36,10 @@ interface Props {
   scenario?: DecisionScenario;
 }
 
-const WIDA_ACCENT = '#534AB7';
-const WIDA_BG = '#EEEDFE';
-const WIDA_BORDER = '#AFA9EC';
-const WIDA_INK = '#26215C';
+const WIDA_ACCENT = 'var(--color-thinking)';
+const WIDA_BG = 'var(--color-developing-bg)';
+const WIDA_BORDER = 'var(--color-developing-border)';
+const WIDA_INK = 'var(--color-developing-text)';
 
 export default function EldProficiencyView({ activityId, lesson, compact = false, scenario }: Props) {
   const { selectedWidaLevel, setSelectedWidaLevel } = useLesson();

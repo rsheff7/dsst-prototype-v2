@@ -52,9 +52,34 @@
   --mobile-card-radius: 12px;
 
   /* Friction colors for mobile */
-  --mobile-friction-math: #0066cc;
+--mobile-friction-math: #0066cc;
   --mobile-friction-language: #28a745;
   --mobile-friction-both: #ff9800;
+
+  /* Brand — district-swappable layer */
+  --color-brand-primary: #008ED6;   /* Cerulean — active states, primary actions */
+  --color-brand-deep: #0D6F9D;      /* Blue Chill — hover/pressed of primary */
+  --color-brand-accent: #BF8860;    /* Twine — crux-moment highlight */
+
+  /* Demand border tokens (completes the triplet to match proficiency pattern) */
+  --color-demand-low-border: #C0DD97;
+  --color-demand-medium-border: #E8C68A;
+  --color-demand-high-border: #F5C4B3;
+
+  /* Synthesis */
+  --color-synth-accent: #7A3E1C;
+  --color-synth-bg: #FBF3EA;
+  --color-synth-bg-tint: #F6E7D2;
+  --color-synth-border: #E6CFB5;
+  --color-synth-bg-dark: #3A2614;
+
+  /* Crux */
+  --color-crux-accent: #9F2F1A;
+  --color-crux-bg: #FFF8F4;
+
+  /* On-track */
+  --color-ontrack-bg: #EBF3FD;
+  --color-ontrack-text: #0E3A69;
 }
 
 @theme inline {
@@ -70,9 +95,51 @@
   --color-pathway: var(--color-pathway);
   --color-adapt: var(--color-adapt);
   --color-thinking: var(--color-thinking);
-  --color-moves: var(--color-moves);
+--color-moves: var(--color-moves);
   --font-sans: var(--font-dm-sans);
   --font-serif: var(--font-dm-serif);
+
+  /* — New: Brand (district-swappable layer) — */
+  --color-brand-primary: var(--color-brand-primary);
+  --color-brand-deep: var(--color-brand-deep);
+  --color-brand-accent: var(--color-brand-accent);
+
+  /* — New: Semantic (proficiency) — */
+  --color-entering-bg: var(--color-entering-bg);
+  --color-entering-text: var(--color-entering-text);
+  --color-entering-border: var(--color-entering-border);
+  --color-developing-bg: var(--color-developing-bg);
+  --color-developing-text: var(--color-developing-text);
+  --color-developing-border: var(--color-developing-border);
+  --color-bridging-bg: var(--color-bridging-bg);
+  --color-bridging-text: var(--color-bridging-text);
+  --color-bridging-border: var(--color-bridging-border);
+
+  /* — New: Semantic (language demand) — */
+  --color-demand-low-bg: var(--color-demand-low-bg);
+  --color-demand-low-text: var(--color-demand-low-text);
+  --color-demand-low-border: var(--color-demand-low-border);
+  --color-demand-medium-bg: var(--color-demand-medium-bg);
+  --color-demand-medium-text: var(--color-demand-medium-text);
+  --color-demand-medium-border: var(--color-demand-medium-border);
+  --color-demand-high-bg: var(--color-demand-high-bg);
+  --color-demand-high-text: var(--color-demand-high-text);
+  --color-demand-high-border: var(--color-demand-high-border);
+
+  /* — New: Semantic (synthesis) — */
+  --color-synth-accent: var(--color-synth-accent);
+  --color-synth-bg: var(--color-synth-bg);
+  --color-synth-bg-tint: var(--color-synth-bg-tint);
+  --color-synth-border: var(--color-synth-border);
+  --color-synth-bg-dark: var(--color-synth-bg-dark);
+
+  /* — New: Semantic (crux) — */
+  --color-crux-accent: var(--color-crux-accent);
+  --color-crux-bg: var(--color-crux-bg);
+
+  /* — New: Semantic (on-track) — */
+  --color-ontrack-bg: var(--color-ontrack-bg);
+  --color-ontrack-text: var(--color-ontrack-text);
 }
 
 body {

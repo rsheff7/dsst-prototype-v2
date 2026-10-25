@@ -51,13 +51,13 @@ export default function MlrOverlay({ mlrNumber, whyHere, onClose }: MlrOverlayPr
         <div className="px-6 py-6">
           <p
             className="text-[10px] font-semibold uppercase tracking-[0.1em] mb-2"
-            style={{ color: '#534AB7' }}
+            style={{ color: 'var(--color-thinking)' }}
           >
             Mathematical Language Routine
           </p>
           <h3
             className="text-[1.25rem] leading-tight"
-            style={{ fontFamily: 'var(--font-dm-serif), serif', color: '#1A1916' }}
+            style={{ fontFamily: 'var(--font-dm-serif), serif', color: 'var(--color-ink)' }}
           >
             MLR {mlr.number}: {mlr.name}
           </h3>
@@ -73,7 +73,7 @@ export default function MlrOverlay({ mlrNumber, whyHere, onClose }: MlrOverlayPr
                 <li key={i} className="flex items-start gap-2.5">
                   <span
                     className="mt-[2px] shrink-0 inline-flex h-4 w-4 items-center justify-center rounded-full text-[10px] font-bold"
-                    style={{ backgroundColor: '#EEEDFE', color: '#26215C' }}
+                    style={{ backgroundColor: 'var(--color-developing-bg)', color: 'var(--color-developing-text)' }}
                   >
                     {i + 1}
                   </span>
@@ -93,11 +93,11 @@ export default function MlrOverlay({ mlrNumber, whyHere, onClose }: MlrOverlayPr
           {whyHere && (
             <section
               className="mt-5 rounded-xl px-4 py-3 border-l-[3px]"
-              style={{ backgroundColor: '#FAFAF7', borderLeftColor: '#534AB7' }}
+              style={{ backgroundColor: 'var(--color-surface)', borderLeftColor: 'var(--color-thinking)' }}
             >
               <p
                 className="text-[10px] font-semibold uppercase tracking-[0.1em] mb-1"
-                style={{ color: '#534AB7' }}
+                style={{ color: 'var(--color-thinking)' }}
               >
                 Why here
               </p>

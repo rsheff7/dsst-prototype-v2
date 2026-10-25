@@ -81,7 +81,7 @@ function WidaLevelSelector() {
       <p className="text-[10px] font-semibold uppercase tracking-[0.08em] text-ink-faint shrink-0">
         Show moves for a learner at
       </p>
-      <div className="inline-flex rounded-full border" style={{ borderColor: '#E6E4DE' }}>
+      <div className="inline-flex rounded-full border" style={{ borderColor: 'var(--color-line)' }}>
         {WIDA_LEVELS.map((level: WidaLevel) => {
           const isActive = selectedWidaLevel === level;
           return (
@@ -92,8 +92,8 @@ function WidaLevelSelector() {
               className="px-2.5 py-1 text-[10px] font-semibold cursor-pointer transition-colors focus-visible:outline-none first:rounded-l-full last:rounded-r-full"
               style={
                 isActive
-                  ? { backgroundColor: '#534AB7', color: 'white' }
-                  : { color: '#706E69' }
+                  ? { backgroundColor: 'var(--color-thinking)', color: 'white' }
+                  : { color: 'var(--color-ink-muted)' }
               }
               aria-pressed={isActive}
               aria-label={`WIDA level ${level}: ${WIDA_LABELS[level]}`}

@@ -6,11 +6,11 @@ import { useLesson } from '@/lib/lessonContext';
 import { demoLesson } from '@/lib/demoLesson';
 import { StepFlow, SettledPanel, Callout } from '@/components/docs/DocElements';
 
-const ACCENT = '#006C57';
-const PATHWAY = '#00876C';
-const ADAPT = '#854F0B';
-const THINKING = '#534AB7';
-const MOVES = '#185FA5';
+const ACCENT = 'var(--color-brand-primary)';
+const PATHWAY = 'var(--color-pathway)';
+const ADAPT = 'var(--color-adapt)';
+const THINKING = 'var(--color-thinking)';
+const MOVES = 'var(--color-moves)';
 
 export default function FrameworkPage() {
   const { setLesson } = useLesson();
@@ -89,14 +89,14 @@ export default function FrameworkPage() {
 
           {/* The triangle */}
           <div className="mt-10">
-            <div className="rounded-xl border bg-card overflow-hidden" style={{ borderColor: '#E6E4DE' }}>
-              <div className="px-5 py-3 border-b" style={{ backgroundColor: '#FAFAF7', borderColor: '#E6E4DE' }}>
+            <div className="rounded-xl border bg-card overflow-hidden" style={{ borderColor: 'var(--color-line)' }}>
+              <div className="px-5 py-3 border-b" style={{ backgroundColor: 'var(--color-surface)', borderColor: 'var(--color-line)' }}>
                 <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint">
                   The Instructional Core, mapped to Premo
                 </p>
               </div>
 
-              <div className="divide-y" style={{ borderColor: '#E6E4DE' }}>
+              <div className="divide-y" style={{ borderColor: 'var(--color-line)' }}>
                 <CoreRow
                   vertex="Teacher"
                   tool="Lesson Pathway"
@@ -117,7 +117,7 @@ export default function FrameworkPage() {
                 />
               </div>
 
-              <div className="border-t px-5 py-4" style={{ borderColor: '#E6E4DE', backgroundColor: '#F4F8FB' }}>
+              <div className="border-t px-5 py-4" style={{ borderColor: 'var(--color-line)', backgroundColor: 'var(--color-surface)' }}>
                 <div className="flex items-baseline gap-3 mb-1.5">
                   <p className="text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: MOVES }}>
                     Where the three meet
@@ -300,7 +300,7 @@ export default function FrameworkPage() {
           <button
             onClick={openDemo}
             className="rounded-xl text-card px-5 py-3 text-[0.875rem] font-semibold hover:opacity-90 transition-opacity cursor-pointer focus-visible:outline-none"
-            style={{ backgroundColor: ACCENT, color: '#FFFFFF' }}
+            style={{ backgroundColor: ACCENT, color: 'var(--color-card)' }}
           >
             Open the ratios lesson →
           </button>
@@ -357,7 +357,7 @@ function LangLayerRow({
   description: React.ReactNode;
 }) {
   return (
-    <div className="px-5 py-4 border-b last:border-b-0" style={{ borderColor: '#E6E4DE' }}>
+    <div className="px-5 py-4 border-b last:border-b-0" style={{ borderColor: 'var(--color-line)' }}>
       <div className="flex items-baseline gap-3 mb-1.5 flex-wrap">
         <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint">
           {order}
@@ -384,7 +384,7 @@ function TrustBlock({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-xl border bg-card px-5 py-4" style={{ borderColor: '#E6E4DE' }}>
+    <div className="rounded-xl border bg-card px-5 py-4" style={{ borderColor: 'var(--color-line)' }}>
       <p
         className="text-[10px] font-semibold uppercase tracking-[0.1em] mb-1"
         style={{ color: ACCENT }}
