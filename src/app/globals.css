@@ -4,6 +4,8 @@
   /* Surfaces — warm cream-white, slightly different from Premo's */
   --color-surface: #F4F2EC;
   --color-card: #FFFFFF;
+  /* Pressed states and table headers, a step below the surface */
+  --color-surface-sunk: #EBE8E0;
 
   /* Text */
   --color-ink: #1A1916;
@@ -103,6 +105,7 @@
   --color-brand-primary: var(--color-brand-primary);
   --color-brand-deep: var(--color-brand-deep);
   --color-brand-accent: var(--color-brand-accent);
+  --color-surface-sunk: var(--color-surface-sunk);
 
   /* — New: Semantic (proficiency) — */
   --color-entering-bg: var(--color-entering-bg);

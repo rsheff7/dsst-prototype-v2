@@ -1,27 +1,28 @@
 /* Phone prep. Layout and components from Premo's Social Studies prep (premo-prep-v2.html);
-   colour and type are DSST's: teal for action, the Quick Read crux red for the crux,
-   Adapt amber for flags. One phone-width column, sticky app bar on top, thumb-zone
+   color and type are DSST's, all from the shared theme tokens in globals.css: the accent
+   for action, the crux red for the crux, Adapt amber for flags. One phone-width column, sticky app bar on top, thumb-zone
    action bar at the bottom. Scoped to .app so nothing leaks into the five tools. */
 
 .app {
   --paper: var(--color-surface);
   --surface: var(--color-card);
-  --sunk: #EBE8E0;
+  --sunk: var(--color-surface-sunk);
   --ink: var(--color-ink);
   --muted: var(--color-ink-muted);
   --line: var(--color-line);
   --act: var(--color-accent);
   --act-soft: var(--color-surface-accent);
-  --act-ink: #006C57;
-  --crux: #9F2F1A;
-  --crux-soft: #FBEDE8;
-  --done: #27500A;
-  --done-soft: #EAF3DE;
+  /* Follows the accent, so a brand change carries through to button text. */
+  --act-ink: color-mix(in srgb, var(--color-accent), black 20%);
+  --crux: var(--color-crux-accent);
+  --crux-soft: var(--color-crux-bg);
+  --done: var(--color-demand-low-text);
+  --done-soft: var(--color-demand-low-bg);
   --flag: var(--color-adapt);
-  --flag-soft: #FAEEDA;
+  --flag-soft: var(--color-demand-medium-bg);
   --mll: var(--color-thinking);
-  --mll-soft: #EEEDFE;
-  --on-accent: #FFFFFF;
+  --mll-soft: var(--color-developing-bg);
+  --on-accent: var(--color-card);
   --shadow: 0 1px 2px rgba(26, 25, 22, 0.06), 0 8px 24px rgba(26, 25, 22, 0.06);
   --display: var(--font-dm-serif), 'DM Serif Display', Georgia, serif;
   --r: 14px;

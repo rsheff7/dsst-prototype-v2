@@ -19,7 +19,7 @@ export default function U3LessonPage() {
   useEffect(() => setMounted(true), []);
   if (!mounted)
     return (
-      <main style={{ maxWidth: 560, margin: '0 auto', padding: 24, color: '#6b6a64' }}>Loading tonight’s prep…</main>
+      <main style={{ maxWidth: 560, margin: '0 auto', padding: 24, color: 'var(--color-ink-muted)' }}>Loading tonight’s prep…</main>
     );
   if (!lesson) {
     return (

@@ -100,7 +100,7 @@ attribute, and it settles questions the tools now guess at:
 
 | Task purpose | What it settles |
 |---|---|
-| Provide experience with a new context | Concrete before abstract. The prep is about the experience working (6.2.4's colour mixing) |
+| Provide experience with a new context | Concrete before abstract. The prep is about the experience working (6.2.4's color mixing) |
 | Introduce a new concept and associated language | The likeliest crux. Rehearse noticing and putting words to the new idea |
 | Introduce a new representation | Students interpret it first, then make it. A move that starts with drawing skips a step |
 | Formalize a definition | A likely crux. The look-for is the definition in students' own words |
