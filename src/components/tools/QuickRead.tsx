@@ -5,7 +5,7 @@ import { LessonData, WristbandTile, WristbandActivity, WristbandLegendEntry, Act
 import { MLRS } from '@/lib/mlrs';
 import MlrChip from '@/components/shared/MlrChip';
 import ToolInfo from '@/components/shared/ToolInfo';
-import { activitySlot, activityHeading, activityShortLabel } from '@/lib/activityLabel';
+import { activitySlot, activityHeading, activityName, focusRoles, type FocusRole } from '@/lib/activityLabel';
 import { useLesson } from '@/lib/lessonContext';
 import { WIDA_LEVELS, WIDA_LABELS, type WidaLevel } from '@/lib/eld';
 
@@ -148,13 +148,14 @@ export default function QuickRead({ lesson }: Props) {
 
       
 
-      {/* Print-only lesson title */}
-      <div className="hidden print:block mb-3">
-        <p className="text-[7pt] font-semibold uppercase tracking-[0.1em] text-ink-faint">
-          {lesson.meta.grade} · {lesson.meta.unit} · {lesson.meta.lesson_number} · {lesson.meta.total_time}
-        </p>
-        <p className="text-[11pt] font-bold text-ink leading-tight">{lesson.meta.lesson_title}</p>
-      </div>
+      {/* Scope — the one thing the header doesn't say */}
+      {lesson.meta.total_time && (
+        <div className="mb-6 px-2">
+          <p className="text-[0.8125rem]" style={{ color: 'var(--color-ink-muted)' }}>
+            {lesson.activities.length} activities · {lesson.meta.total_time}
+          </p>
+        </div>
+      )}
 
       {/* Destination — hero treatment, no border, reads as page masthead */}
       {lesson.destination && (
@@ -171,18 +172,52 @@ export default function QuickRead({ lesson }: Props) {
           >
             {stripSwbatPrefix(lesson.destination)}
           </p>
-          {wb.arc_one_line && (
-            <p
-              className="mt-5 text-[1.125rem] leading-[1.6]"
-              style={{ color: 'var(--color-ink-muted)' }}
-            >
-              {wb.arc_one_line}
-            </p>
-          )}
+{wb.arc_one_line && (
+              <p
+                className="mt-5 text-[1.125rem] leading-[1.6]"
+                style={{ color: 'var(--color-ink-muted)' }}
+              >
+                {wb.arc_one_line}
+             </p>
+           )}
+</div>
+      )}
+
+      {/* Arc — the shape of the lesson at a glance */}
+      {lesson.activities.length > 0 && (
+        <div className="mb-8 px-2">
+          <p
+            className="text-[11px] font-semibold uppercase tracking-[0.12em] mb-3"
+            style={{ color: 'var(--color-ink-faint)' }}
+          >
+            Sequence
+          </p>
+          <div className="flex items-center gap-0 flex-wrap">
+            {lesson.activities.map((act, i) => (
+              <div key={act.id} className="flex items-center">
+                <div
+                  className="rounded-lg px-3 py-2 border"
+                  style={{
+                    backgroundColor: act.is_crux ? 'var(--color-surface)' : 'transparent',
+                    borderColor: act.is_crux ? QR_ACCENT : 'var(--color-line)',
+                    borderWidth: act.is_crux ? 1.5 : 1,
+                  }}
+                >
+                  <p className="text-[0.8125rem] font-semibold text-ink leading-tight">{act.title}</p>
+                  <p className="mt-0.5 text-[11px]" style={{ color: 'var(--color-ink-muted)' }}>
+                    {act.function}{act.duration ? ` · ${act.duration}` : ''}
+                  </p>
+                </div>
+                {i < lesson.activities.length - 1 && (
+                  <span className="mx-1 text-[13px] select-none" style={{ color: 'var(--color-ink-faint)' }}>→</span>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       )}
 
-{/* Mobile renders MobileQuickRead instead of this component (see
+      {/* Mobile renders MobileQuickRead instead of this component (see
           src/app/lesson/page.tsx and rules.md §3), so the view is chosen purely
           by the mode toggle here. The breakpoint wrappers this replaces mounted
           an InClassView that no viewport could ever display. */}
@@ -262,6 +297,8 @@ function PlanView({
         </section>
       )}
 
+      <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-ink-muted mb-3">Activities</p>
+
       <div className="qr-activities flex flex-col gap-3 mb-5">
         {wb.activities.map((wba) => (
           <PlanActivityRow
@@ -334,7 +371,6 @@ function PlanView({
     </>
   );
 }
-
 function PlanActivityRow({
   wba,
   activity,
@@ -345,53 +381,39 @@ function PlanActivityRow({
   window: { start: number; end: number } | undefined;
 }) {
   if (!activity) return null;
+  const isCrux = activity.is_crux;
   return (
     <section
-      className={`qr-activity rounded-xl border bg-card shadow-sm overflow-hidden ${activity.is_crux ? 'border-l-[3px]' : 'border-line'}`}
-      style={activity.is_crux ? { borderLeftColor: QR_ACCENT } : {}}
+      className={`qr-activity rounded-xl border bg-card shadow-sm overflow-hidden ${isCrux ? 'border-l-[3px]' : 'border-line'}`}
+      style={isCrux ? { borderLeftColor: QR_ACCENT } : {}}
     >
-      {/* Identity header — on the white tile, no separate tint */}
+      {/* Identity header */}
       <div className="qr-activity-header px-5 py-4 border-b border-line-subtle">
-        <div className="flex items-center justify-between gap-3 mb-1.5">
-          <span
-            className="text-[10px] font-semibold uppercase tracking-[0.12em]"
-            style={{ color: QR_ACCENT }}
-          >
-            {activityShortLabel(activity)}
-          </span>
-          {activity.is_crux && (
-            <span
-              className="shrink-0 text-[9px] font-bold uppercase tracking-[0.1em] text-white px-2 py-0.5 rounded-full"
-              style={{ backgroundColor: QR_ACCENT }}
-            >
-              Crux
-            </span>
-          )}
-        </div>
         <div className="flex items-baseline gap-2.5 flex-wrap">
           <h2 className="text-[1.1rem] font-semibold text-ink leading-tight">
-            {activityHeading(activity.title)}
+            {activityName(activity)}
           </h2>
-          <span className="text-[11px] text-ink-faint shrink-0">{formatWindow(window, activity.duration)}</span>
+          <span className="text-[12px] text-ink-faint shrink-0 ml-auto">{activity.duration}</span>
         </div>
       </div>
 
-      {/* Learning target band */}
       {activity.learning_target && (
-        <div className="qr-activity-target border-b border-line-subtle px-4 py-2.5">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-1">
-            Learning target
-          </p>
-          <p className="text-[0.825rem] text-ink-muted leading-[1.65]">{activity.learning_target}</p>
-        </div>
+        <p className="px-5 pt-3 pb-1 text-[1rem] text-ink leading-[1.5]">
+          {activity.learning_target}
+        </p>
       )}
 
       {/* Tiles flow horizontally, full width */}
-      <div className="qr-activity-tilegrid px-3 py-3 flex flex-row gap-2 overflow-x-auto">
-        {wba.tiles.map((tile, i) => (
-          <PlanTile key={i} tile={tile} />
-        ))}
-      </div>
+      {wba.tiles.length > 0 && (
+        <>
+          <p className="px-5 pt-3 text-[11px] font-semibold uppercase tracking-[0.1em] text-ink-muted">Anticipated friction points</p>
+          <div className="qr-activity-tilegrid px-3 py-3 flex flex-col gap-2">
+            {wba.tiles.map((tile, i) => (
+              <PlanTile key={i} tile={tile} />
+            ))}
+          </div>
+        </>
+      )}
 
       {/* Synthesis close band — hard to skip */}
       {wba.synthesis_short && (
@@ -419,7 +441,7 @@ function PlanTile({ tile }: { tile: WristbandTile }) {
   const isCrux = tile.is_crux_moment;
   return (
     <div
-      className={`qr-tile flex-1 min-w-[200px] rounded-xl border bg-card shadow-sm overflow-hidden ${isCrux ? 'border-l-[3px]' : 'border-line'}`}
+      className={`qr-tile flex-1 rounded-xl border bg-card shadow-sm overflow-hidden ${isCrux ? 'border-l-[3px]' : 'border-line'}`}
       style={isCrux ? { borderLeftColor: CRUX_ACCENT, backgroundColor: 'var(--color-crux-bg)' } : {}}
     >
       {isCrux && (
@@ -495,6 +517,11 @@ function InClassView({
   windowById: Record<string, { start: number; end: number }>;
   lessonSynthesis: LessonData['lesson_synthesis'];
 }) {
+  const activityList = Object.values(activityById);
+  const roleByIndex = focusRoles(activityList);
+  const roleById: Record<string, FocusRole | null> = {};
+  activityList.forEach((a, i) => { roleById[a.id] = roleByIndex[i]; });
+
   return (
     <div className="space-y-3 max-w-md mx-auto">
       {wb.activities.map((wba) => (
@@ -502,6 +529,7 @@ function InClassView({
           key={wba.activity_id}
           wba={wba}
           activity={activityById[wba.activity_id]}
+          focus={roleById[wba.activity_id] ?? null}
           window={windowById[wba.activity_id]}
         />
       ))}
@@ -549,33 +577,38 @@ function InClassLessonClose({ short, buildsOn }: { short: string; buildsOn: stri
 function InClassActivityBlock({
   wba,
   activity,
+  focus,
   window,
 }: {
   wba: WristbandActivity;
   activity: Activity | undefined;
+  focus: FocusRole | null;
   window: { start: number; end: number } | undefined;
 }) {
   if (!activity) return null;
+  const isCrux = activity.is_crux;
+  const isFeeder = focus === 'feeder';
+const kicker = focus === 'crux' ? 'Establishing the crux' : focus === 'feeder' ? 'Setting up the crux' : activity.function;
   return (
     <section className="rounded-xl overflow-hidden" style={{ backgroundColor: 'var(--color-ink)' }}>
-      <div className="px-4 py-2 flex items-baseline justify-between gap-3">
-        <div className="flex items-baseline gap-2 flex-wrap min-w-0">
-          <span className="text-[11px] font-bold uppercase tracking-[0.12em] text-white">
-            {activityShortLabel(activity)}
+      <div className="px-4 py-2 flex items-center justify-between gap-3">
+        <div className="flex items-center gap-2 flex-wrap min-w-0">
+          <span
+            className={`shrink-0 text-[9px] font-bold uppercase tracking-[0.1em] px-2 py-0.5 rounded-full ${
+              isCrux || isFeeder ? 'text-ink' : 'bg-white/15 text-white'
+            }`}
+            style={isCrux || isFeeder ? { backgroundColor: 'var(--color-card)' } : {}}
+          >
+            {kicker}
           </span>
-          <span className="text-[10px] text-white opacity-60">
-            {formatWindow(window, activity.duration)}
+<span className="text-[11px] text-white opacity-60 ml-auto">
+            {activity.duration}
           </span>
         </div>
-        {activity.is_crux && (
-          <span
-            className="text-[9px] font-bold uppercase tracking-[0.1em] px-2 py-0.5 rounded-full"
-            style={{ backgroundColor: 'var(--color-card)', color: 'var(--color-ink)' }}
-          >
-            Crux
-          </span>
-        )}
-      </div>
+        <span className="text-[11px] font-semibold text-white truncate">
+          {activityName(activity)}
+        </span>
+</div>
       <div className="bg-white">
         {wba.tiles.map((tile, i) => (
           <InClassTile key={i} tile={tile} />
