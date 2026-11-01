@@ -56,8 +56,7 @@ export default function MlrOverlay({ mlrNumber, whyHere, onClose }: MlrOverlayPr
             Mathematical Language Routine
           </p>
           <h3
-            className="text-[1.25rem] leading-tight"
-            style={{ fontFamily: 'var(--font-dm-serif), serif', color: 'var(--color-ink)' }}
+            className="text-[1.25rem] leading-tight font-serif" style={{ color: 'var(--color-ink)' }}
           >
             MLR {mlr.number}: {mlr.name}
           </h3>

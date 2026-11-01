@@ -188,8 +188,7 @@ export default function HomePage() {
       <div className="w-full max-w-md">
         <div className="mb-12 text-center">
           <h1
-            className="text-[2.75rem] tracking-tight text-ink leading-none"
-            style={{ fontFamily: 'var(--font-dm-serif), serif' }}
+            className="text-[2.75rem] tracking-tight text-ink leading-none font-serif"
           >
             DSST
           </h1>

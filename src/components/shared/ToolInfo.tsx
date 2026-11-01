@@ -129,8 +129,7 @@ export default function ToolInfo({ toolId, hideHeading }: ToolInfoProps) {
                 About this tool
               </p>
               <h3
-                className="text-[1.25rem] leading-tight"
-                style={{ fontFamily: 'var(--font-dm-serif), serif', color: 'var(--color-ink)' }}
+                className="text-[1.25rem] leading-tight font-serif" style={{ color: 'var(--color-ink)' }}
               >
                 {content.title}
               </h3>

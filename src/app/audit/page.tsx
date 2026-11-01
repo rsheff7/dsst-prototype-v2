@@ -39,7 +39,7 @@ export default function AuditPage() {
           </div>
         </div>
         <main className="mx-auto max-w-2xl px-6 py-16">
-          <h1 className="text-[1.75rem] text-ink mb-4" style={{ fontFamily: 'var(--font-dm-serif), serif' }}>
+          <h1 className="text-[1.75rem] text-ink mb-4 font-serif">
             Coherence audit
           </h1>
           <p className="text-[0.95rem] text-ink-muted mb-6 leading-relaxed">
@@ -72,7 +72,7 @@ export default function AuditPage() {
         <p className="text-[0.7rem] font-semibold uppercase tracking-[0.08em] text-ink-faint mb-1">
           Coherence audit for
         </p>
-        <h1 className="text-[1.5rem] text-ink mb-1" style={{ fontFamily: 'var(--font-dm-serif), serif' }}>
+        <h1 className="text-[1.5rem] text-ink mb-1 font-serif">
           {lesson.meta.lesson_title}
         </h1>
         <p className="text-[0.85rem] text-ink-muted mb-8">

@@ -53,8 +53,7 @@ export default function FrameworkPage() {
             Premo · for DSST
           </p>
           <h1
-            className="text-[2rem] leading-[1.1] tracking-tight text-ink"
-            style={{ fontFamily: 'var(--font-dm-serif), serif' }}
+            className="text-[2rem] leading-[1.1] tracking-tight text-ink font-serif"
           >
             What this is, and why to trust it.
           </h1>
@@ -72,8 +71,7 @@ export default function FrameworkPage() {
             Part one
           </p>
           <h2
-            className="text-[1.6rem] leading-tight text-ink mb-5"
-            style={{ fontFamily: 'var(--font-dm-serif), serif' }}
+            className="text-[1.6rem] leading-tight text-ink mb-5 font-serif"
           >
             What this is
           </h2>
@@ -123,8 +121,8 @@ export default function FrameworkPage() {
                     Where the three meet
                   </p>
                   <p
-                    className="text-[1rem] font-semibold"
-                    style={{ fontFamily: 'var(--font-dm-serif), serif', color: MOVES }}
+                    className="text-[1rem] font-semibold font-serif"
+                    style={{ color: MOVES }}
                   >
                     Move Walkthrough
                   </p>
@@ -150,8 +148,7 @@ export default function FrameworkPage() {
             Part one — continued
           </p>
           <h2
-            className="text-[1.6rem] leading-tight text-ink mb-5"
-            style={{ fontFamily: 'var(--font-dm-serif), serif' }}
+            className="text-[1.6rem] leading-tight text-ink mb-5 font-serif"
           >
             How the tool reasons about language
           </h2>
@@ -235,8 +232,7 @@ export default function FrameworkPage() {
             Part two
           </p>
           <h2
-            className="text-[1.6rem] leading-tight text-ink mb-5"
-            style={{ fontFamily: 'var(--font-dm-serif), serif' }}
+            className="text-[1.6rem] leading-tight text-ink mb-5 font-serif"
           >
             Why to trust it
           </h2>
@@ -334,8 +330,8 @@ function CoreRow({
           {vertex}
         </p>
         <p
-          className="text-[1rem] font-semibold"
-          style={{ fontFamily: 'var(--font-dm-serif), serif', color: toolAccent }}
+          className="text-[1rem] font-semibold font-serif"
+          style={{ color: toolAccent }}
         >
           {tool}
         </p>
@@ -363,8 +359,8 @@ function LangLayerRow({
           {order}
         </p>
         <p
-          className="text-[1rem] font-semibold"
-          style={{ fontFamily: 'var(--font-dm-serif), serif', color: accent }}
+          className="text-[1rem] font-semibold font-serif"
+          style={{ color: accent }}
         >
           {title}
         </p>
@@ -392,8 +388,7 @@ function TrustBlock({
         {label}
       </p>
       <h3
-        className="text-[1.05rem] text-ink mb-2 leading-tight"
-        style={{ fontFamily: 'var(--font-dm-serif), serif' }}
+        className="text-[1.05rem] text-ink mb-2 leading-tight font-serif"
       >
         {title}
       </h3>

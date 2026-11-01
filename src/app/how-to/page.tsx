@@ -45,8 +45,7 @@ export default function HowToPage() {
             How to use Premo
           </p>
           <h1
-            className="text-[2rem] leading-[1.1] tracking-tight text-ink"
-            style={{ fontFamily: 'var(--font-dm-serif), serif' }}
+            className="text-[2rem] leading-[1.1] tracking-tight text-ink font-serif"
           >
             Three steps from a PDF to a planning artifact.
           </h1>
@@ -241,8 +240,7 @@ function Step({
         </span>
         <div className="min-w-0">
           <h2
-            className="text-[1.35rem] leading-tight text-ink mb-1"
-            style={{ fontFamily: 'var(--font-dm-serif), serif' }}
+            className="text-[1.35rem] leading-tight text-ink mb-1 font-serif"
           >
             {title}
           </h2>
@@ -278,8 +276,8 @@ function ToolCard({
             {label}
           </p>
           <p
-            className="text-[1.1rem] font-semibold"
-            style={{ fontFamily: 'var(--font-dm-serif), serif', color: accent }}
+            className="text-[1.1rem] font-semibold font-serif"
+            style={{ color: accent }}
           >
             {title}
           </p>

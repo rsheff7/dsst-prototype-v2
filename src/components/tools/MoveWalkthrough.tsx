@@ -71,8 +71,7 @@ function MoveCard({ move }: { move: TeacherMove }) {
           Move
         </p>
         <p
-          className="text-[1.025rem] leading-[1.5]"
-          style={{ color: 'var(--color-ontrack-text)', fontFamily: 'var(--font-dm-serif), serif' }}
+          className="text-[1.025rem] leading-[1.5] font-serif" style={{ color: 'var(--color-ontrack-text)' }}
         >
           {move.move}
         </p>
@@ -207,8 +206,7 @@ function ScenarioCard({
         )}
       </div>
       <p
-        className="text-[0.95rem] text-ink leading-snug group-hover:text-ink"
-        style={{ fontFamily: 'var(--font-dm-serif), serif' }}
+        className="text-[0.95rem] text-ink leading-snug group-hover:text-ink font-serif"
       >
         {scenario.label}
       </p>
@@ -293,8 +291,7 @@ export default function MoveWalkthrough({ lesson }: Props) {
               How to use this
             </p>
             <p
-              className="text-[1rem] text-ink leading-[1.6]"
-              style={{ fontFamily: 'var(--font-dm-serif), serif' }}
+              className="text-[1rem] text-ink leading-[1.6] font-serif"
             >
               Each card below is a moment you might see during this lesson. Open the ones that feel less familiar. Each one shows what you might see, what it usually means, and how to respond — all on a single screen.
             </p>
@@ -437,8 +434,7 @@ export default function MoveWalkthrough({ lesson }: Props) {
           Pre-lesson cheat sheet
         </p>
         <h2
-          className="text-[1.5rem] text-ink leading-tight mb-3"
-          style={{ fontFamily: 'var(--font-dm-serif), serif' }}
+          className="text-[1.5rem] text-ink leading-tight mb-3 font-serif"
         >
           Moments to watch for
         </h2>
@@ -492,8 +488,7 @@ export default function MoveWalkthrough({ lesson }: Props) {
                         />
                         <div className="flex-1 min-w-0">
                           <p
-                            className="text-[1.05rem] text-ink leading-[1.5] mb-1.5"
-                            style={{ fontFamily: 'var(--font-dm-serif), serif' }}
+                            className="text-[1.05rem] text-ink leading-[1.5] mb-1.5 font-serif"
                           >
                             {s.label}
                           </p>
@@ -681,7 +676,7 @@ export default function MoveWalkthrough({ lesson }: Props) {
         >
           You might see this
         </p>
-        <p className="text-[1.1rem] text-ink leading-[1.55]" style={{ fontFamily: 'var(--font-dm-serif), serif' }}>
+        <p className="text-[1.1rem] text-ink leading-[1.55] font-serif">
           {current.label}
         </p>
       </div>
@@ -706,8 +701,7 @@ export default function MoveWalkthrough({ lesson }: Props) {
           }}
         >
           <p
-            className="text-[1.025rem] leading-[1.6]"
-            style={{ color: 'var(--color-ontrack-text)', fontFamily: 'var(--font-dm-serif), serif' }}
+            className="text-[1.025rem] leading-[1.6] font-serif" style={{ color: 'var(--color-ontrack-text)' }}
           >
             {current.interpretation}
           </p>

@@ -50,7 +50,7 @@ export default function QAPage() {
           </div>
         </div>
         <main className="mx-auto max-w-2xl px-6 py-16">
-          <h1 className="text-[1.75rem] text-ink mb-4" style={{ fontFamily: 'var(--font-dm-serif), serif' }}>
+          <h1 className="text-[1.75rem] text-ink mb-4 font-serif">
             Coherence checker
           </h1>
           <p className="text-[0.95rem] text-ink-muted mb-6 leading-relaxed">
@@ -83,7 +83,7 @@ export default function QAPage() {
         <p className="text-[0.7rem] font-semibold uppercase tracking-[0.08em] text-ink-faint mb-1">
           Coherence check for
         </p>
-        <h1 className="text-[1.5rem] text-ink mb-1" style={{ fontFamily: 'var(--font-dm-serif), serif' }}>
+        <h1 className="text-[1.5rem] text-ink mb-1 font-serif">
           {lesson.meta.lesson_title}
         </h1>
         <p className="text-[0.85rem] text-ink-muted mb-8">
@@ -109,8 +109,8 @@ export default function QAPage() {
             {summary.ready ? 'Ready to publish' : 'Not ready — fix failures'}
           </p>
           <p
-            className="text-[1.5rem] mb-2"
-            style={{ fontFamily: 'var(--font-dm-serif), serif', color: summary.ready ? 'var(--color-demand-low-text)' : 'var(--color-demand-high-text)' }}
+            className="text-[1.5rem] mb-2 font-serif"
+            style={{ color: summary.ready ? 'var(--color-demand-low-text)' : 'var(--color-demand-high-text)' }}
           >
             {summary.passed} / {summary.total} checks passing
           </p>

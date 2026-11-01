@@ -80,8 +80,7 @@ export default function AnticipatedThinking({ lesson }: Props) {
               What student thinking to expect
             </p>
             <p
-              className="text-[1rem] text-ink leading-[1.65]"
-              style={{ fontFamily: 'var(--font-dm-serif), serif' }}
+              className="text-[1rem] text-ink leading-[1.65] font-serif"
             >
               {lesson.anticipated_thinking.orientation}
             </p>
@@ -162,8 +161,7 @@ export default function AnticipatedThinking({ lesson }: Props) {
                 </div>
 
                 <h3
-                  className="text-[1.1rem] text-ink leading-snug mb-2"
-                  style={{ fontFamily: 'var(--font-dm-serif), serif' }}
+                  className="text-[1.1rem] text-ink leading-snug mb-2 font-serif"
                 >
                   {pattern.label}
                 </h3>

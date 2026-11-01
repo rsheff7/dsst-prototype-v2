@@ -24,7 +24,7 @@ export default function AdaptationGuardrails({ lesson }: Props) {
           <p className="text-[10px] font-semibold uppercase tracking-[0.12em] mb-2" style={{ color: 'var(--color-adapt)' }}>
             What this lesson is for
           </p>
-          <p className="text-[1.05rem] text-ink leading-[1.65]" style={{ fontFamily: 'var(--font-dm-serif), serif' }}>
+          <p className="text-[1.05rem] text-ink leading-[1.65] font-serif">
             {g.mathematical_purpose}
           </p>
         </div>
@@ -105,8 +105,7 @@ export default function AdaptationGuardrails({ lesson }: Props) {
           Before you adapt — ask yourself:
         </p>
         <p
-          className="text-[1.15rem] leading-[1.55]"
-          style={{ fontFamily: 'var(--font-dm-serif), serif', color: 'var(--color-adapt)' }}
+          className="text-[1.15rem] leading-[1.55] font-serif" style={{ color: 'var(--color-adapt)' }}
         >
           {g.rigor_check}
         </p>

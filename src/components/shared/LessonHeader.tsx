@@ -58,8 +58,7 @@ if (compact) {
             {meta.grade} · {meta.unit} · {meta.lesson_number}
           </p>
           <p
-            className="text-[1.1rem] text-ink leading-snug truncate"
-            style={{ fontFamily: 'var(--font-dm-serif), serif' }}
+            className="text-[1.1rem] text-ink leading-snug truncate font-serif"
           >
             {meta.lesson_title}
           </p>

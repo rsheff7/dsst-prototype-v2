@@ -37,8 +37,7 @@ export function SectionHeading({
         {eyebrow}
       </p>
       <h2
-        className="text-[1.6rem] leading-tight text-ink mb-5"
-        style={{ fontFamily: 'var(--font-dm-serif), serif' }}
+        className="text-[1.6rem] leading-tight text-ink mb-5 font-serif"
       >
         {title}
       </h2>
@@ -112,8 +111,7 @@ export function StepFlow({ steps, accent = DOC_ACCENT }: { steps: FlowStep[]; ac
           <div className="min-w-0 flex-1">
             <div className="flex flex-wrap items-center gap-2 mb-1">
               <h3
-                className="text-[1rem] leading-tight text-ink"
-                style={{ fontFamily: 'var(--font-dm-serif), serif' }}
+                className="text-[1rem] leading-tight text-ink font-serif"
               >
                 {s.title}
               </h3>
