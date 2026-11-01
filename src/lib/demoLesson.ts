@@ -54,11 +54,11 @@ export const demoLesson = {
       "is_crux": false,
       "friction_points": [
         {
-          "description": "Students count the total number of figures correctly but lose track of which category sub-total belongs to which attribute label.",
+          "description": "They count the total fine but mix up which group's number goes with which label.",
           "type": "math"
         },
         {
-          "description": "Students use vague everyday descriptive terms like 'big ones' or 'pointy things' instead of precise categorical labels.",
+          "description": "They reach for everyday words like \"big ones\" or \"pointy things\" instead of naming a specific sorting rule.",
           "type": "language",
           "mlr": {
             "number": 2,
@@ -98,7 +98,7 @@ export const demoLesson = {
       "is_crux": true,
       "friction_points": [
         {
-          "description": "Students write the larger quantity first in the ratio statement regardless of the order in which the category names are written.",
+          "description": "They put the bigger number first no matter which group they named first.",
           "type": "language-math",
           "mlr": {
             "number": 3,
@@ -106,7 +106,7 @@ export const demoLesson = {
           }
         },
         {
-          "description": "Students omit category nouns entirely, writing only numbers without indicating what the quantities represent.",
+          "description": "They write just the numbers, skipping the group names entirely.",
           "type": "language",
           "mlr": {
             "number": 1,
@@ -150,11 +150,11 @@ export const demoLesson = {
       "is_crux": false,
       "friction_points": [
         {
-          "description": "Students draw collections without grouping or organizing items, making it difficult for viewers to visually verify the written ratio count.",
+          "description": "They draw a flat scatter with no grouping, so you can't tell where one group ends and the other begins.",
           "type": "math"
         },
         {
-          "description": "Students struggle to explain how their visual arrangement proves the 'for every' relationship written in their sentence.",
+          "description": "They can't walk through why their drawing matches the ratio they wrote.",
           "type": "language-math",
           "mlr": {
             "number": 7,
