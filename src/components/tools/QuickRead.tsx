@@ -362,29 +362,54 @@ function PlanActivityRow({
         )}
       </div>
 
-      {/* Tiles flow horizontally, full width */}
-{wba.tiles.length > 0 && (
-         <>
-           <p className="px-3 pt-4 pb-1 text-[11px] font-semibold uppercase tracking-[0.1em] text-ink-muted">Anticipated friction points</p>
-           <div className="qr-activity-tilegrid px-3 py-3 flex flex-col gap-4">
-             {wba.tiles.map((tile, i) => (
-               <PlanTile key={i} tile={tile} />
-             ))}
-           </div>
-         </>
-       )}
+{/* Friction tiles */}
+      {wba.tiles.length > 0 && (
+          <>
+            <p className="px-4 pt-4 pb-1 text-[11px] font-semibold uppercase tracking-[0.1em] text-ink-muted">
+              Anticipated friction points
+              <FrictionTypeSummary tiles={wba.tiles} />
+            </p>
+            <div className="qr-activity-tilegrid px-3 py-3 flex flex-col gap-4">
+              {wba.tiles.map((tile, i) => (
+                <PlanTile key={i} tile={tile} />
+              ))}
+            </div>
+          </>
+        )}
 
       </section>
   );
 }
 
+function FrictionTypeSummary({ tiles }: { tiles: WristbandTile[] }) {
+  const langCount = tiles.filter(t => t.friction_type === 'language' || t.friction_type === 'language-math').length;
+  const mathCount = tiles.filter(t => t.friction_type === 'math' || t.friction_type === 'language-math').length;
+  const segments: { label: string; color: string }[] = [];
+  if (langCount > 0) segments.push({ label: `${langCount} language`, color: FRICTION_BAR['language'] });
+  if (mathCount > 0) segments.push({ label: `${mathCount} math`, color: FRICTION_BAR['math'] });
+  if (segments.length === 0) return null;
+  return (
+    <span className="ml-2 font-normal normal-case tracking-normal">
+      {segments.map((seg, i) => (
+        <span key={i}>
+          {i > 0 && <span className="text-ink-faint"> · </span>}
+          <span style={{ color: seg.color }}>{seg.label}</span>
+        </span>
+      ))}
+    </span>
+  );
+}
+
 function PlanTile({ tile }: { tile: WristbandTile }) {
-  const pill = FRICTION_PILL[tile.friction_type];
   const isCrux = tile.is_crux_moment;
+  const barColor = FRICTION_BAR[tile.friction_type];
+
+  
+
   return (
     <div
-      className={`qr-tile flex-1 rounded-lg overflow-hidden ${isCrux ? 'border-l-[3px]' : ''}`}
-      style={isCrux ? { borderLeftColor: CRUX_ACCENT, backgroundColor: 'var(--color-crux-bg)' } : { backgroundColor: '#F5F5F3' }}
+      className="qr-tile flex-1 rounded-lg overflow-hidden border-l-[3px]"
+      style={{ borderLeftColor: isCrux ? CRUX_ACCENT : barColor, backgroundColor: isCrux ? 'var(--color-crux-bg)' : '#F5F5F3' }}
     >
       {isCrux && (
         <div
@@ -397,50 +422,21 @@ function PlanTile({ tile }: { tile: WristbandTile }) {
         </div>
       )}
 
-      <div className="px-5 py-4 space-y-4">
-        {/* NOTICE */}
-        <div className="qr-tile-section">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-1.5">
-            Notice
-          </p>
-          <p className="text-[0.825rem] text-ink leading-relaxed">{tile.observation_short}</p>
-        </div>
+      <div className="px-5 py-4 space-y-3">
+        {/* Observation — muted, context the teacher already has */}
+        <p className="text-[0.825rem] text-ink-muted leading-relaxed">{tile.observation_short}</p>
 
-        {/* CLARIFY */}
-        <div className="qr-tile-section">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-1.5">
-            Clarify
-          </p>
-          <div className="flex items-center gap-1.5 flex-wrap">
-            <span
-              className="rounded-full px-2 py-0.5 text-[10px] font-semibold"
-              style={{ backgroundColor: pill.bg, color: pill.text }}
-            >
-              {pill.label}
-            </span>
-          </div>
-        </div>
+        {/* MLR reference */}
+        {tile.mlr && <MlrChip mlr={tile.mlr} />}
 
-        {/* RESPOND */}
-        <div className="qr-tile-section">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-1.5">
-            Respond
+        {/* Response — the action, visually dominant */}
+        <p className="text-[0.825rem] text-ink leading-relaxed">{tile.move_short}</p>
+
+        {tile.avoid_short && (
+          <p className="text-[0.725rem] text-ink-faint leading-relaxed">
+            Avoid: {tile.avoid_short}
           </p>
-          <div className="flex items-start gap-2 flex-wrap">
-            {tile.mlr && <MlrChip mlr={tile.mlr} showName={false} />}
-            <p className="text-[0.825rem] text-ink-muted leading-relaxed flex-1 min-w-0">
-              {tile.move_short}
-            </p>
-          </div>
-          {tile.avoid_short && (
-            <p
-              className="qr-tile-avoid mt-2 text-[0.75rem] leading-relaxed italic"
-              style={{ color: 'var(--color-demand-high-text)' }}
-            >
-              <span className="font-semibold not-italic">Avoid:</span> {tile.avoid_short}
-            </p>
-          )}
-        </div>
+        )}
       </div>
     </div>
   );
