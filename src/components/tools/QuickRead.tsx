@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { LessonData, WristbandTile, WristbandActivity, WristbandLegendEntry, Activity } from '@/lib/types';
 import { MLRS } from '@/lib/mlrs';
 import MlrChip from '@/components/shared/MlrChip';
@@ -68,8 +68,7 @@ export default function QuickRead({ lesson }: Props) {
             By the end of the lesson, students can
           </p>
           <p
-            className="text-[1.625rem] leading-[1.35] text-ink"
-            style={{ fontFamily: 'var(--font-dm-serif), serif' }}
+            className="text-[1.625rem] leading-[1.35] text-ink font-serif"
           >
             {stripSwbatPrefix(lesson.destination)}
           </p>
@@ -128,12 +127,16 @@ function ArcDisclosure({ text, destination }: { text: string; destination?: stri
         style={{ gridTemplateRows: open ? '1fr' : '0fr' }}
       >
         <div className="overflow-hidden">
-          <p
-            className="px-5 pb-4 text-[0.925rem] leading-[1.7]"
-            style={{ fontFamily: 'var(--font-dm-serif), serif', color: 'var(--color-ink-muted)' }}
-          >
-            {text}
-          </p>
+          <div className="px-5 pb-4 space-y-4">
+            {splitSentences(text).map((s, i) => (
+              <p
+                key={i}
+                className="text-[0.925rem] leading-[1.7] font-serif" style={{ color: 'var(--color-ink-muted)' }}
+              >
+                {s}
+              </p>
+            ))}
+          </div>
           {destination && (
             <div className="border-t border-line px-5 py-3">
               <p className="text-[10px] font-semibold uppercase tracking-[0.1em] mb-1" style={{ color: 'var(--color-ink-faint)' }}>
@@ -200,8 +203,10 @@ function PlanView({
             const act = activityById[wba.activity_id];
             if (!act) return null;
             const isCrux = act.is_crux;
+            const isLast = i === wb.activities.length - 1;
             return (
-              <div key={wba.activity_id} className="relative pl-12 pb-6 last:pb-0">
+              <Fragment key={wba.activity_id}>
+              <div className="relative pl-12">
                 {/* Numbered circle */}
                 <div
                   className={`absolute left-0 top-4 h-10 w-10 rounded-full border-2 bg-card flex items-center justify-center shadow-sm ${isCrux ? '' : 'border-line'}`}
@@ -215,20 +220,35 @@ function PlanView({
                   window={windowById[wba.activity_id]}
                 />
               </div>
+{/* Bridge to next activity — px-9 on the card below is a compensation value, not a design choice. See KNOWN-FRAGILE on PlanActivityRow: it offsets the header's px-5 + card p-4. Change card insets and this silently misaligns; better to refactor to shared padding. */}
+              {wba.synthesis_short && (
+                <div className="relative pl-12 py-4">
+<div className="absolute left-0 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full border-2 border-line bg-card flex items-center justify-center shadow-sm">
+                    <span className="h-2 w-2 rounded-full bg-ink-faint" />
+                  </div>
+<div
+                    className="rounded-xl border border-line bg-card px-9 py-4"
+                  >
+                    <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-ink-muted mb-1">Transition</p>
+                    <p className="text-[0.875rem] text-ink-muted leading-[1.55]">{wba.synthesis_short}</p>
+                  </div>
+                 </div>
+               )}
+              </Fragment>
             );
           })}
         </div>
       </div>
 
-      {(wb.lesson_synthesis_short || lessonSynthesis?.prompt) && (
-        <div className="relative pl-12 pb-2">
-          <div
-            className="absolute left-0 top-4 h-10 w-10 rounded-full border-2 flex items-center justify-center shadow-sm"
-            style={{ borderColor: SYNTH_ACCENT, backgroundColor: 'var(--color-synth-bg-tint)', borderWidth: 2 }}
-          >
-            <span className="text-[14px] font-bold" style={{ color: SYNTH_ACCENT }}>★</span>
-          </div>
-          <section
+{(wb.lesson_synthesis_short || destination) && (
+         <div className="relative pl-12 py-4">
+           <div
+             className="absolute left-0 top-4 h-10 w-10 rounded-full border-2 flex items-center justify-center shadow-sm"
+             style={{ borderColor: SYNTH_ACCENT, backgroundColor: 'var(--color-synth-bg-tint)', borderWidth: 2 }}
+           >
+             <span className="text-[14px] font-bold" style={{ color: SYNTH_ACCENT }}>★</span>
+           </div>
+           <section
             className="qr-lesson-close rounded-xl border shadow-sm overflow-hidden mb-6 border-l-[3px]"
             style={{ backgroundColor: SYNTH_BG, borderColor: 'var(--color-synth-border)', borderLeftColor: SYNTH_ACCENT }}
           >
@@ -289,6 +309,22 @@ function PlanView({
     </>
   );
 }
+// ── KNOWN-FRAGILE: card spacing is not a single source of truth ──────────────
+// The card below has THREE competing horizontal insets rather than one "card
+// padding," which is why any "adjust the padding" request touches multiple
+// spots and risks introducing broken JSX nesting (we hit that this session):
+//   • <section> p-4        → the card's nominal padding
+//   • header  px-5         → identity block indented FURTHER in (line ~329)
+//   • tilegrid px-3        → friction tiles indented LESS than the header (line ~353)
+// So header text and friction tiles do NOT share one left edge.
+// COUPLED OUTSIDE THIS COMPONENT: in the timeline rows, each node circle is
+// position:absolute + the row is pl-12, hand-tuned to the h-10 w-10 circle.
+// The transition card then compensates with px-9 to land its text on the
+// header's edge — a magic number that silently breaks if you change any of
+// the three insets above. A clean model would be: card = one vstack with a
+// single padding; circle+card = flex HStack; transition reuses the same card.
+// Refactor is deferred — flagged here so the next edit goes straight to it.
+// ─────────────────────────────────────────────────────────────────────────────
 function PlanActivityRow({
   wba,
   activity,
@@ -301,12 +337,12 @@ function PlanActivityRow({
   if (!activity) return null;
   const isCrux = activity.is_crux;
   return (
-    <section
-      className={`qr-activity rounded-xl border bg-card shadow-sm overflow-hidden ${isCrux ? 'border-l-[3px]' : 'border-line'}`}
+<section
+      className={`qr-activity rounded-xl border bg-card shadow-sm overflow-hidden p-4 ${isCrux ? 'border-l-[3px]' : 'border-line'}`}
       style={isCrux ? { borderLeftColor: QR_ACCENT } : {}}
     >
       {/* Identity header */}
-      <div className="qr-activity-header px-5 py-4 border-b border-line-subtle">
+<div className="qr-activity-header px-5 py-4">
         {activity.function && (
           <p className="text-[10px] font-bold uppercase tracking-[0.12em] mb-1" style={{ color: QR_ACCENT }}>
             {activity.function}
@@ -316,46 +352,29 @@ function PlanActivityRow({
           <h2 className="text-[1.1rem] font-semibold text-ink leading-tight">
             {activityHeading(activity.title)}
           </h2>
-          <span className="text-[12px] text-ink-faint shrink-0 ml-auto">{activity.duration}</span>
+          <span className="text-[12px] text-ink-faint shrink-0 ml-auto">{activity.duration} · {activity.grouping}</span>
         </div>
+
+        {activity.learning_target && (
+          <p className="mt-2 text-[0.95rem] text-ink leading-[1.55] max-w-[60ch]">
+            {activity.learning_target}
+          </p>
+        )}
       </div>
 
-      {activity.learning_target && (
-        <p className="px-5 pt-3 pb-1 text-[1rem] text-ink leading-[1.5]">
-          {activity.learning_target}
-        </p>
-      )}
-
       {/* Tiles flow horizontally, full width */}
-      {wba.tiles.length > 0 && (
-        <>
-          <p className="px-5 pt-3 text-[11px] font-semibold uppercase tracking-[0.1em] text-ink-muted">Anticipated friction points</p>
-          <div className="qr-activity-tilegrid px-3 py-3 flex flex-col gap-2">
-            {wba.tiles.map((tile, i) => (
-              <PlanTile key={i} tile={tile} />
-            ))}
-          </div>
-        </>
-      )}
+{wba.tiles.length > 0 && (
+         <>
+           <p className="px-3 pt-4 pb-1 text-[11px] font-semibold uppercase tracking-[0.1em] text-ink-muted">Anticipated friction points</p>
+           <div className="qr-activity-tilegrid px-3 py-3 flex flex-col gap-4">
+             {wba.tiles.map((tile, i) => (
+               <PlanTile key={i} tile={tile} />
+             ))}
+           </div>
+         </>
+       )}
 
-      {/* Synthesis close band — hard to skip */}
-      {wba.synthesis_short && (
-        <div
-          className="qr-activity-synth border-t-2 px-5 py-3.5 flex items-start gap-3"
-          style={{ backgroundColor: SYNTH_BG, borderTopColor: SYNTH_ACCENT }}
-        >
-          <span
-            className="shrink-0 text-[9px] font-bold uppercase tracking-[0.12em] text-white px-2 py-0.5 rounded-full mt-[1px]"
-            style={{ backgroundColor: SYNTH_ACCENT }}
-          >
-            Close
-          </span>
-          <p className="text-[0.875rem] font-semibold text-ink leading-[1.55] flex-1">
-            {wba.synthesis_short}
-          </p>
-        </div>
-      )}
-    </section>
+      </section>
   );
 }
 
@@ -364,8 +383,8 @@ function PlanTile({ tile }: { tile: WristbandTile }) {
   const isCrux = tile.is_crux_moment;
   return (
     <div
-      className={`qr-tile flex-1 rounded-xl border bg-card shadow-sm overflow-hidden ${isCrux ? 'border-l-[3px]' : 'border-line'}`}
-      style={isCrux ? { borderLeftColor: CRUX_ACCENT, backgroundColor: 'var(--color-crux-bg)' } : {}}
+      className={`qr-tile flex-1 rounded-lg overflow-hidden ${isCrux ? 'border-l-[3px]' : ''}`}
+      style={isCrux ? { borderLeftColor: CRUX_ACCENT, backgroundColor: 'var(--color-crux-bg)' } : { backgroundColor: '#F5F5F3' }}
     >
       {isCrux && (
         <div
@@ -378,7 +397,7 @@ function PlanTile({ tile }: { tile: WristbandTile }) {
         </div>
       )}
 
-      <div className="px-4 py-3 space-y-3">
+      <div className="px-5 py-4 space-y-4">
         {/* NOTICE */}
         <div className="qr-tile-section">
           <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-ink-faint mb-1.5">
@@ -514,7 +533,7 @@ function InClassActivityBlock({
 const kicker = activity.function;
   return (
     <section className="rounded-xl overflow-hidden" style={{ backgroundColor: 'var(--color-ink)' }}>
-      <div className="px-4 py-2 flex items-center justify-between gap-3">
+<div className="px-4 py-2.5 flex items-center justify-between gap-3">
         <div className="flex items-center gap-2 flex-wrap min-w-0">
           <span
             className={`shrink-0 text-[9px] font-bold uppercase tracking-[0.1em] px-2 py-0.5 rounded-full ${
@@ -532,7 +551,7 @@ const kicker = activity.function;
           {activityName(activity)}
         </span>
 </div>
-      <div className="bg-white">
+<div className="bg-white p-3">
         {wba.tiles.map((tile, i) => (
           <InClassTile key={i} tile={tile} />
         ))}
@@ -555,7 +574,7 @@ function InClassSynthRow({ text }: { text: string }) {
       >
         <span className="text-[10px] font-bold" style={{ color: SYNTH_ACCENT }}>↳</span>
       </div>
-      <div className="flex-1 min-w-0 px-3 py-2.5">
+<div className="flex-1 min-w-0 px-4 py-3">
         <p className="text-[0.7rem] font-bold uppercase tracking-[0.1em] mb-1" style={{ color: SYNTH_ACCENT }}>
           Close — synthesize
         </p>
@@ -570,7 +589,7 @@ function InClassTile({ tile }: { tile: WristbandTile }) {
   const obs = tile.glyph_observation || tile.observation_short.toUpperCase();
   const move = tile.glyph_move || firstSentence(tile.move_short);
   return (
-    <div
+<div
       className="flex items-stretch border-t"
       style={{ borderColor: 'var(--color-line)', backgroundColor: isCrux ? 'var(--color-crux-bg)' : undefined }}
     >
@@ -587,7 +606,7 @@ function InClassTile({ tile }: { tile: WristbandTile }) {
       </div>
 
       {/* Main content */}
-      <div className="flex-1 min-w-0 px-3 py-2.5">
+<div className="flex-1 min-w-0 px-4 py-3">
         <p className="text-[0.78rem] font-bold text-ink leading-tight tracking-tight mb-1">{obs}</p>
         <p className="text-[0.85rem] font-semibold text-ink leading-tight tracking-tight">{move}</p>
       </div>
@@ -647,6 +666,13 @@ function firstSentence(text: string): string {
   const trimmed = text.trim();
   const idx = trimmed.search(/[.!?]\s/);
   return idx > 0 ? trimmed.slice(0, idx).toUpperCase() : trimmed.toUpperCase();
+}
+
+function splitSentences(text: string): string[] {
+  const trimmed = text.trim();
+  const matches = trimmed.match(/[^.!?]+[.!?]+(\s|$)|[^.!?]+$/g);
+  if (!matches) return [trimmed];
+  return matches.map((s) => s.trim()).filter(Boolean);
 }
 
 function timeWindows(activities: Activity[]): { start: number; end: number }[] {
