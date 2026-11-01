@@ -1,13 +1,12 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import { LessonData, WristbandTile, WristbandActivity, WristbandLegendEntry, Activity } from '@/lib/types';
 import { MLRS } from '@/lib/mlrs';
 import MlrChip from '@/components/shared/MlrChip';
 import ToolInfo from '@/components/shared/ToolInfo';
 import { activitySlot, activityHeading, activityName, focusRoles, type FocusRole } from '@/lib/activityLabel';
-import { useLesson } from '@/lib/lessonContext';
-import { WIDA_LEVELS, WIDA_LABELS, type WidaLevel } from '@/lib/eld';
+
 
 const FRICTION_PILL: Record<WristbandTile['friction_type'], { bg: string; text: string; label: string }> = {
   math: { bg: 'var(--color-bridging-bg)', text: 'var(--color-bridging-text)', label: 'Math' },
@@ -31,14 +30,7 @@ interface Props {
   lesson: LessonData;
 }
 
-type Mode = 'plan' | 'inclass';
-
 export default function QuickRead({ lesson }: Props) {
-  const [mode, setMode] = useState<Mode>('plan');
-  
-  const [widaOpen, setWidaOpen] = useState(false);
-  const widaRef = useRef<HTMLDivElement>(null);
-  const { selectedWidaLevel, setSelectedWidaLevel } = useLesson();
   const wb = lesson.wristband;
   const activityById = Object.fromEntries(lesson.activities.map((a) => [a.id, a]));
   const windows = timeWindows(lesson.activities);
@@ -46,116 +38,25 @@ export default function QuickRead({ lesson }: Props) {
     lesson.activities.map((a, i) => [a.id, windows[i]]),
   );
 
-  // Close WIDA popover on outside click
-  useEffect(() => {
-    if (!widaOpen) return;
-    const handler = (e: MouseEvent) => {
-      if (widaRef.current && !widaRef.current.contains(e.target as Node)) {
-        setWidaOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handler);
-    return () => document.removeEventListener('mousedown', handler);
-  }, [widaOpen]);
-
   return (
-    <div className={`pt-6 pb-12 quickread-root quickread-${mode}`}>
+    <div className="pt-6 pb-12 quickread-root quickread-plan">
 
 {/* Toolbar (screen only) */}
-      <div className="qr-print-hide mb-5 flex items-center justify-between gap-3">
-        {/* Left: mode toggle */}
-        <ModeToggle mode={mode} onChange={setMode} />
-
-        {/* Center: WIDA level selector — only in in-class view where ELSF content renders */}
-        {mode === 'inclass' && lesson.elsf_inference?.activities.length > 0 && (
-          <div className="flex-1 flex justify-center relative" ref={widaRef}>
-            <button
-              type="button"
-              onClick={() => setWidaOpen(!widaOpen)}
-              className="rounded-full px-3 py-1 text-[11px] font-semibold cursor-pointer transition-colors border"
-              style={
-                selectedWidaLevel !== null
-                  ? { backgroundColor: 'var(--color-thinking)', color: 'white', borderColor: 'var(--color-thinking)' }
-                  : { backgroundColor: 'transparent', color: 'var(--color-ink-muted)', borderColor: 'var(--color-line)' }
-              }
-              aria-expanded={widaOpen}
-            >
-              WIDA level{selectedWidaLevel !== null ? ` · ${WIDA_LABELS[selectedWidaLevel]}` : ''}
-            </button>
-
-            {widaOpen && (
-              <div
-                className="absolute top-full mt-1 left-1/2 -translate-x-1/2 rounded-xl shadow-lg border py-1 min-w-[140px] z-50"
-                style={{ backgroundColor: 'var(--color-card)', borderColor: 'var(--color-line)' }}
-              >
-                <p className="px-3 py-1.5 text-[9px] font-semibold uppercase tracking-[0.08em]" style={{ color: 'var(--color-ink-faint)' }}>
-                  WIDA level
-                </p>
-                {WIDA_LEVELS.map((level: WidaLevel) => (
-                  <button
-                    key={level}
-                    type="button"
-                    onClick={() => {
-                      setSelectedWidaLevel(selectedWidaLevel === level ? null : level);
-                      setWidaOpen(false);
-                    }}
-                    className="w-full px-3 py-1.5 text-left text-[11px] font-medium cursor-pointer hover:bg-black/5 transition-colors"
-                    style={{ color: selectedWidaLevel === level ? 'var(--color-thinking)' : 'var(--color-ink-muted)' }}
-                  >
-                    {WIDA_LABELS[level]}
-                    {selectedWidaLevel === level && <span className="float-right">✓</span>}
-                  </button>
-                ))}
-                {selectedWidaLevel !== null && (
-                  <>
-                    <div className="my-1 border-t" style={{ borderColor: 'var(--color-line)' }} />
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setSelectedWidaLevel(null);
-                        setWidaOpen(false);
-                      }}
-                      className="w-full px-3 py-1.5 text-left text-[11px] cursor-pointer hover:opacity-70 transition-opacity"
-                      style={{ color: 'var(--color-ink-faint)' }}
-                    >
-                      Clear
-                    </button>
-                  </>
-                )}
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* Right: print + help */}
-        <div className="flex items-center gap-2">
-          {mode === 'plan' && (
-            <button
-              type="button"
-              onClick={() => window.print()}
-              className="rounded-full px-3 py-1 text-[11px] font-semibold cursor-pointer hover:opacity-85 transition-opacity"
-              style={{ backgroundColor: QR_ACCENT, color: 'var(--color-card)' }}
-            >
-              Print
-            </button>
-          )}
-          {mode === 'inclass' && (
-            <p className="text-[10px] text-ink-faint">For your phone, mid-lesson.</p>
-          )}
-          <ToolInfo toolId="quickread" hideHeading />
-        </div>
+      <div className="qr-print-hide mb-5 flex items-center justify-end gap-2">
+        <button
+          type="button"
+          onClick={() => window.print()}
+          className="rounded-full px-3 py-1 text-[11px] font-semibold cursor-pointer hover:opacity-85 transition-opacity"
+          style={{ backgroundColor: QR_ACCENT, color: 'var(--color-card)' }}
+        >
+          Print
+        </button>
+        <ToolInfo toolId="quickread" hideHeading />
       </div>
 
       
 
-      {/* Scope — the one thing the header doesn't say */}
-      {lesson.meta.total_time && (
-        <div className="mb-6 px-2">
-          <p className="text-[0.8125rem]" style={{ color: 'var(--color-ink-muted)' }}>
-            {lesson.activities.length} activities · {lesson.meta.total_time}
-          </p>
-        </div>
-      )}
+      
 
       {/* Destination — hero treatment, no border, reads as page masthead */}
       {lesson.destination && (
@@ -183,85 +84,68 @@ export default function QuickRead({ lesson }: Props) {
 </div>
       )}
 
-      {/* Arc — the shape of the lesson at a glance */}
-      {lesson.activities.length > 0 && (
+      
+
+      {/* Arc statement — collapsed by default */}
+      {lesson.arc_statement && (
         <div className="mb-8 px-2">
-          <p
-            className="text-[11px] font-semibold uppercase tracking-[0.12em] mb-3"
-            style={{ color: 'var(--color-ink-faint)' }}
-          >
-            Sequence
-          </p>
-          <div className="flex items-center gap-0 flex-wrap">
-            {lesson.activities.map((act, i) => (
-              <div key={act.id} className="flex items-center">
-                <div
-                  className="rounded-lg px-3 py-2 border"
-                  style={{
-                    backgroundColor: act.is_crux ? 'var(--color-surface)' : 'transparent',
-                    borderColor: act.is_crux ? QR_ACCENT : 'var(--color-line)',
-                    borderWidth: act.is_crux ? 1.5 : 1,
-                  }}
-                >
-                  <p className="text-[0.8125rem] font-semibold text-ink leading-tight">{act.title}</p>
-                  <p className="mt-0.5 text-[11px]" style={{ color: 'var(--color-ink-muted)' }}>
-                    {act.function}{act.duration ? ` · ${act.duration}` : ''}
-                  </p>
-                </div>
-                {i < lesson.activities.length - 1 && (
-                  <span className="mx-1 text-[13px] select-none" style={{ color: 'var(--color-ink-faint)' }}>→</span>
-                )}
-              </div>
-            ))}
-          </div>
+          <ArcDisclosure text={lesson.arc_statement} destination={lesson.destination} />
         </div>
       )}
 
-      {/* Mobile renders MobileQuickRead instead of this component (see
-          src/app/lesson/page.tsx and rules.md §3), so the view is chosen purely
-          by the mode toggle here. The breakpoint wrappers this replaces mounted
-          an InClassView that no viewport could ever display. */}
-      {mode === 'plan' ? (
-        <PlanView
-          wb={wb}
-          activityById={activityById}
-          windowById={windowById}
-          lessonSynthesis={lesson.lesson_synthesis}
-          destination={lesson.destination}
-        />
-      ) : (
-        <InClassView
-          wb={wb}
-          activityById={activityById}
-          windowById={windowById}
-          lessonSynthesis={lesson.lesson_synthesis}
-        />
-      )}
+      <PlanView
+        wb={wb}
+        activityById={activityById}
+        windowById={windowById}
+        lessonSynthesis={lesson.lesson_synthesis}
+        destination={lesson.destination}
+        activityCount={lesson.activities.length}
+        totalTime={lesson.meta.total_time}
+      />
 
       <style jsx global>{planPrintStyles}</style>
     </div>
   );
 }
 
-function ModeToggle({ mode, onChange }: { mode: Mode; onChange: (m: Mode) => void }) {
+function ArcDisclosure({ text, destination }: { text: string; destination?: string }) {
+  const [open, setOpen] = useState(false);
   return (
-    <div className="inline-flex rounded-full border" style={{ borderColor: 'var(--color-line)' }}>
+    <div className="rounded-xl border border-line bg-card overflow-hidden">
       <button
         type="button"
-        onClick={() => onChange('plan')}
-        className="px-3 py-1 text-[11px] font-semibold rounded-full cursor-pointer transition-colors focus-visible:outline-none"
-        style={mode === 'plan' ? { backgroundColor: QR_ACCENT, color: 'var(--color-card)' } : { color: 'var(--color-ink-muted)' }}
+        onClick={() => setOpen((v) => !v)}
+        className="w-full px-5 py-3 text-left cursor-pointer hover:bg-surface-accent transition-colors focus-visible:outline-none flex items-center gap-2"
+        aria-expanded={open}
       >
-        Plan view
+        <span className="text-[10px] font-semibold uppercase tracking-[0.12em]" style={{ color: QR_ACCENT }}>
+          The arc of this lesson
+        </span>
+        <span className="ml-auto text-[11px] text-ink-faint">{open ? '−' : '+'}</span>
       </button>
-      <button
-        type="button"
-        onClick={() => onChange('inclass')}
-        className="px-3 py-1 text-[11px] font-semibold rounded-full cursor-pointer transition-colors focus-visible:outline-none"
-        style={mode === 'inclass' ? { backgroundColor: QR_ACCENT, color: 'var(--color-card)' } : { color: 'var(--color-ink-muted)' }}
+      <div
+        className="grid transition-all duration-200 ease-in-out"
+        style={{ gridTemplateRows: open ? '1fr' : '0fr' }}
       >
-        In class
-      </button>
+        <div className="overflow-hidden">
+          <p
+            className="px-5 pb-4 text-[0.925rem] leading-[1.7]"
+            style={{ fontFamily: 'var(--font-dm-serif), serif', color: 'var(--color-ink-muted)' }}
+          >
+            {text}
+          </p>
+          {destination && (
+            <div className="border-t border-line px-5 py-3">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.1em] mb-1" style={{ color: 'var(--color-ink-faint)' }}>
+                Where students must arrive
+              </p>
+              <p className="text-[0.825rem] leading-[1.65]" style={{ color: 'var(--color-ink-muted)' }}>
+                {destination}
+              </p>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
@@ -274,12 +158,16 @@ function PlanView({
   windowById,
   lessonSynthesis,
   destination,
+  activityCount,
+  totalTime,
 }: {
   wb: LessonData['wristband'];
   activityById: Record<string, Activity>;
   windowById: Record<string, { start: number; end: number }>;
   lessonSynthesis: LessonData['lesson_synthesis'];
   destination: string;
+  activityCount: number;
+  totalTime?: string;
 }) {
   return (
     <>
@@ -297,24 +185,53 @@ function PlanView({
         </section>
       )}
 
-      <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-ink-muted mb-3">Activities</p>
+      <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-ink-muted mb-3">
+        Activities<span className="font-normal normal-case tracking-normal" style={{ color: 'var(--color-ink-faint)' }}>{totalTime ? ` — ${activityCount} activities, about ${totalTime.replace('min', 'minutes')}` : ''}</span>
+      </p>
 
-      <div className="qr-activities flex flex-col gap-3 mb-5">
-        {wb.activities.map((wba) => (
-          <PlanActivityRow
-            key={wba.activity_id}
-            wba={wba}
-            activity={activityById[wba.activity_id]}
-            window={windowById[wba.activity_id]}
-          />
-        ))}
+      <div className="qr-activities relative mb-5">
+        {/* Vertical hairline connecting all activity circles */}
+        <div
+          className="absolute left-[19px] top-6 bottom-6 w-px"
+          style={{ backgroundColor: 'var(--color-line)' }}
+        />
+        <div className="space-y-0">
+          {wb.activities.map((wba, i) => {
+            const act = activityById[wba.activity_id];
+            if (!act) return null;
+            const isCrux = act.is_crux;
+            return (
+              <div key={wba.activity_id} className="relative pl-12 pb-6 last:pb-0">
+                {/* Numbered circle */}
+                <div
+                  className={`absolute left-0 top-4 h-10 w-10 rounded-full border-2 bg-card flex items-center justify-center shadow-sm ${isCrux ? '' : 'border-line'}`}
+                  style={isCrux ? { borderColor: QR_ACCENT } : {}}
+                >
+                  <span className="text-[11px] font-semibold text-ink-muted">{act.id}</span>
+                </div>
+                <PlanActivityRow
+                  wba={wba}
+                  activity={act}
+                  window={windowById[wba.activity_id]}
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
 
       {(wb.lesson_synthesis_short || lessonSynthesis?.prompt) && (
-        <section
-          className="qr-lesson-close rounded-xl border shadow-sm overflow-hidden mb-6 border-l-[3px]"
-          style={{ backgroundColor: SYNTH_BG, borderColor: 'var(--color-synth-border)', borderLeftColor: SYNTH_ACCENT }}
-        >
+        <div className="relative pl-12 pb-2">
+          <div
+            className="absolute left-0 top-4 h-10 w-10 rounded-full border-2 flex items-center justify-center shadow-sm"
+            style={{ borderColor: SYNTH_ACCENT, backgroundColor: 'var(--color-synth-bg-tint)', borderWidth: 2 }}
+          >
+            <span className="text-[14px] font-bold" style={{ color: SYNTH_ACCENT }}>★</span>
+          </div>
+          <section
+            className="qr-lesson-close rounded-xl border shadow-sm overflow-hidden mb-6 border-l-[3px]"
+            style={{ backgroundColor: SYNTH_BG, borderColor: 'var(--color-synth-border)', borderLeftColor: SYNTH_ACCENT }}
+          >
           <div
             className="px-5 py-3 border-b"
             style={{ borderColor: 'var(--color-synth-border)', backgroundColor: 'var(--color-synth-bg-tint)' }}
@@ -348,7 +265,8 @@ function PlanView({
               </ul>
             )}
           </div>
-        </section>
+          </section>
+        </div>
       )}
 
       {wb.mlr_legend.length > 0 && (
@@ -389,9 +307,14 @@ function PlanActivityRow({
     >
       {/* Identity header */}
       <div className="qr-activity-header px-5 py-4 border-b border-line-subtle">
+        {activity.function && (
+          <p className="text-[10px] font-bold uppercase tracking-[0.12em] mb-1" style={{ color: QR_ACCENT }}>
+            {activity.function}
+          </p>
+        )}
         <div className="flex items-baseline gap-2.5 flex-wrap">
           <h2 className="text-[1.1rem] font-semibold text-ink leading-tight">
-            {activityName(activity)}
+            {activityHeading(activity.title)}
           </h2>
           <span className="text-[12px] text-ink-faint shrink-0 ml-auto">{activity.duration}</span>
         </div>
@@ -588,7 +511,7 @@ function InClassActivityBlock({
   if (!activity) return null;
   const isCrux = activity.is_crux;
   const isFeeder = focus === 'feeder';
-const kicker = focus === 'crux' ? 'Establishing the crux' : focus === 'feeder' ? 'Setting up the crux' : activity.function;
+const kicker = activity.function;
   return (
     <section className="rounded-xl overflow-hidden" style={{ backgroundColor: 'var(--color-ink)' }}>
       <div className="px-4 py-2 flex items-center justify-between gap-3">
