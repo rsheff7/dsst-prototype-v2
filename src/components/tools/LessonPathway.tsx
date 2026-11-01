@@ -148,19 +148,18 @@ function ActivityCard({
             )}
           </div>
 
-          <h3 className="text-[1.05rem] font-semibold text-ink leading-snug">{activity.title}</h3>
+          <div className="flex items-baseline gap-2.5 flex-wrap mt-1">
+            <h3 className="text-[1.05rem] font-semibold text-ink leading-snug">{activity.title}</h3>
+            <span className="text-[0.7rem] text-ink-faint shrink-0 ml-auto">{activity.duration} · {activity.grouping}</span>
+          </div>
 
           <p
-            className="mt-2.5 text-[0.925rem] text-ink leading-[1.65] max-w-[58ch]"
-            style={{ fontFamily: 'var(--font-dm-serif), serif' }}
+            className="mt-2.5 text-[0.925rem] text-ink leading-[1.65] max-w-[58ch] font-serif"
           >
             {activity.function_summary}
           </p>
 
           <div className="mt-3.5 flex items-center gap-2.5 flex-wrap">
-            <span className="text-[0.7rem] text-ink-faint">{activity.duration}</span>
-            <span className="text-ink-faint text-[0.65rem]">·</span>
-            <span className="text-[0.7rem] text-ink-faint">{activity.grouping}</span>
             <span className="ml-auto inline-flex items-center gap-1.5 flex-wrap">
               <span
                 role="button"
@@ -258,8 +257,7 @@ function ActivityCard({
                   Learning target for this activity
                 </p>
                 <p
-                  className="text-[0.95rem] text-ink leading-[1.55]"
-                  style={{ fontFamily: 'var(--font-dm-serif), serif' }}
+                  className="text-[0.95rem] text-ink leading-[1.55] font-serif"
                 >
                   {activity.learning_target}
                 </p>
@@ -426,17 +424,21 @@ export default function LessonPathway({ lesson, onNavigate }: Props) {
       >
         <div className="px-6 py-5">
           <p
-            className="text-[10px] font-semibold uppercase tracking-[0.12em] mb-2"
+            className="text-[10px] font-semibold uppercase tracking-[0.12em] mb-3"
             style={{ color: ACCENT }}
           >
             The arc of this lesson
           </p>
-          <p
-            className="text-[1rem] text-ink leading-[1.65]"
-            style={{ fontFamily: 'var(--font-dm-serif), serif' }}
-          >
-            {lesson.arc_statement}
-          </p>
+          <div className="space-y-4">
+            {lesson.arc_statement.split(/(?<=[.!?])\s+/).map((s, i) => (
+              <p
+                key={i}
+                className="text-[1rem] text-ink leading-[1.65] font-serif"
+              >
+                {s}
+              </p>
+            ))}
+          </div>
         </div>
 
         <div className="border-t border-line-subtle px-6 py-4 bg-surface">
@@ -493,8 +495,7 @@ export default function LessonPathway({ lesson, onNavigate }: Props) {
                   Land here
                 </p>
                 <p
-                  className="text-[1rem] text-ink leading-[1.55]"
-                  style={{ fontFamily: 'var(--font-dm-serif), serif' }}
+                  className="text-[1rem] text-ink leading-[1.55] font-serif"
                 >
                   {lesson.destination}
                 </p>
