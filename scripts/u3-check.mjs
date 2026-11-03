@@ -207,6 +207,15 @@ for (const f of planFiles) {
   if (!im.goals.some((g) => g.text === pl.clo?.imGoal)) err(at, 'clo.imGoal is not one of IM’s goals, word for word');
   for (const k of ['function', 'form', 'statement', 'exemplar', 'lookFor']) if (!pl.clo?.[k]) err(at, `clo.${k} is missing`);
   if (!pl.clo?.precise?.length) err(at, 'clo.precise needs at least one term');
+  // Vocabulary in use (R2.3): the exemplar says every term the CLO marks as precise.
+  const low = (s) => (s ?? '').toLowerCase().replace(/[’']/g, "'");
+  for (const term of pl.clo?.precise ?? []) if (!low(pl.clo?.exemplar).includes(low(term))) err(at, `clo.exemplar doesn’t use the precise term “${term}”`);
+  if (!pl.clo?.posted?.goal || !/^We /.test(pl.clo.posted.goal)) err(at, 'clo.posted.goal must be in students’ words, starting “We …”');
+  if (!pl.clo?.posted?.sentence) err(at, 'clo.posted.sentence is missing');
+  else {
+    if (pl.clo.posted.sentence === pl.clo.exemplar) err(at, 'clo.posted.sentence repeats the crux exemplar; post a parallel example');
+    if (!(pl.clo.precise ?? []).some((term) => low(pl.clo.posted.sentence).includes(low(term)))) err(at, 'clo.posted.sentence uses none of the precise terms');
+  }
   // Every IM activity has a plan entry, and nothing else does.
   const ids = im.activities.map((a) => a.id);
   for (const id of ids) if (!pl.activities?.some((a) => a.id === id)) err(at, `no plan for activity ${id}`);
@@ -225,11 +234,26 @@ for (const f of planFiles) {
     // Rehearsal stays near the reviewed prep's length: three moments at the crux, two elsewhere.
     const cap = a.id === pr.crux ? 3 : 2;
     if ((a.momentIds ?? []).length > cap) err(at, `${a.id} has ${a.momentIds.length} moments to rehearse; the most is ${cap}`);
+    // Every rehearsed moment has its own checks: Premo's, or the plan's momentCriteria.
+    for (const m of a.momentIds ?? []) {
+      const mo = pr.moments.find((x) => x.id === m);
+      if (mo && !(mo.criteria?.length) && (a.momentCriteria?.[m]?.length ?? 0) !== 3) err(at, `${a.id}: moment ${m} needs three momentCriteria (Premo has none)`);
+    }
+    if (a.dependsOn && !ids.includes(a.dependsOn.activityId)) err(at, `${a.id}.dependsOn names ${a.dependsOn.activityId}, not in IM’s lesson`);
+    if (a.id === pr.crux && !a.barriers?.length) err(at, `${a.id}: the crux needs at least one barrier`);
     for (const b of a.backPocket ?? []) if (wordsIn(b) > 16) warn(at, `${a.id} back-pocket question is ${wordsIn(b)} words: "${b.slice(0, 50)}…"`);
   }
   const c = pl.crux;
   if (c?.threeReads?.length !== 3) err(at, 'crux.threeReads needs exactly three reads');
   for (const r of c?.threeReads ?? []) if (wordsIn(r.say) > 16) err(at, `Three Reads line is ${wordsIn(r.say)} words; keep it to 16`);
+  for (const r of c?.threeReads ?? []) if (!r.focus || !r.listenFor) err(at, 'each Three Reads entry needs focus and listenFor');
+  if (!c?.release?.talkMoments?.length) err(at, 'crux.release.talkMoments is empty');
+  for (const b of BANDS) if (!c?.release?.byBand?.[b]?.nonverbal) err(at, `crux.release.byBand.${b} needs nonverbal`);
+  // Fewer words, never less math: the Levels 1–2 frame still has words and at least two blanks.
+  const ef = c?.release?.byBand?.emerging?.frame ?? '';
+  if ((ef.match(/___/g) ?? []).length < 2 || (ef.replace(/___/g, '').match(/[A-Za-z]{2,}/g) ?? []).length < 3) err(at, 'crux.release.byBand.emerging.frame needs words and at least two blanks: keep the comparison');
+  // Collect and Display keeps students' own words (MLR 2): the teacher scribes, not revoices.
+  if (c?.synthesis?.routine === 'MLR2: Collect and Display' && (c.synthesis.steps ?? []).some((x) => /revoice/i.test(x))) err(at, 'Collect and Display steps: scribe students’ words and add the precise term beside them; don’t revoice');
   if (!SYNTH.includes(c?.synthesis?.routine)) err(at, `crux.synthesis.routine must be one of: ${SYNTH.join(', ')} (decision D1)`);
   if (!c?.release?.successCriteria || !c?.release?.say) err(at, 'crux.release needs successCriteria and say');
   for (const b of BANDS) if (!c?.release?.byBand?.[b]?.frame || !c?.release?.byBand?.[b]?.stretch) err(at, `crux.release.byBand.${b} needs frame and stretch`);
@@ -238,10 +262,14 @@ for (const f of planFiles) {
   if (!ls?.ideas?.length || !ls?.pointTo || !ls?.check?.question || !ls?.check?.sounds) err(at, 'lessonSynthesis needs ideas, pointTo and check { question, sounds }');
   // The quick check must not give away the cool-down.
   if (ls?.check?.question && (im.coolDown.task ?? []).some((l) => l.length > 20 && ls.check.question.includes(l.slice(0, 20)))) err(at, 'lessonSynthesis.check repeats the cool-down');
+  const nums = (s) => new Set((s.match(/\d+(?:\.\d+)?/g) ?? []).filter((n) => Number(n) > 2));
+  const coolNums = nums((im.coolDown.task ?? []).join(' '));
+  const shared = [...nums(ls?.check?.question ?? '')].filter((n) => coolNums.has(n));
+  if (shared.length > 1) err(at, `lessonSynthesis.check reuses the cool-down’s numbers (${shared.join(', ')})`);
   if (!pl.beforeClass?.length) err(at, 'beforeClass is empty');
   for (const c of pl.cuts ?? []) if (!ids.includes(c.activityId)) err(at, `cut for ${c.activityId}, which is not in IM’s lesson`);
   if (flat({ ...pl, reviewNotes: [] }).some((s) => /Compare and Connect|poster/i.test(s))) warn(at, 'mentions Compare and Connect or posters, which D1 replaces');
-  for (const [where, s] of flat(pl).map((s) => ['', s])) if (/maths|colour|grey\b/.test(s)) err(at, `US spelling: "${s.slice(0, 50)}…"`);
+  for (const [where, s] of flat(pl).map((s) => ['', s])) if (/maths|colour|grey\b|favour|behaviour|centre\b|organis|practise\b|metre\b/.test(s)) err(at, `US spelling: "${s.slice(0, 50)}…"`);
 }
 
 // ---------------------------------------------------------------------------

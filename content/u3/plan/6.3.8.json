@@ -20,9 +20,10 @@
   "Lesson synthesis: IM’s is a teacher-led set of questions about Jada (2 miles in 12 minutes): her speed, 2 ÷ 12 = \\(\\frac{1}{6}\\) mile per minute; her pace, 12 ÷ 2 = 6 minutes per mile; and favorite tools. The ideas say those aloud. IM’s questions use 8.3’s numbers even when 8.3 is cut, so pointTo sends the teacher to the 8.2 display first. The check uses 12 miles per hour for 4 hours (48 miles), which avoids the cool-down’s 10, 6, 45, 75 and 27.",
   "Non-crux activities carry no language supports (D7).",
   "beforeClass and cuts rewritten from Premo’s for D1: Premo’s versions plan for Group Presentations with paper and markers. Premo’s 8.2 cut also skips the optional Notice and Wonder opening, which would replace the first read; kept.",
-  "2026-11-02: m12 (running Three Reads) replaced by m3 (Three Reads slipping): the Launch card already rehearses running it."
+  "2026-11-02: m12 (running Three Reads) replaced by m3 (Three Reads slipping): the Launch card already rehearses running it.",
+  "Revised 2026-11-03 after persona review: 6.4 is now how many miles the distance apart decreases each hour (IM’s framing), not “their speed,” in the exemplar, frames, synthesis, 8.2 and 8.3 strategies and the language misconception; “speed” stays for each walker. Precise terms now speed, per, miles per hour, divide (the crux divides; “multiply by” and “divide by” were not verbatim in the exemplar). Added clo.posted (train, 60 miles per hour, 150 miles), nonverbal ways in by band, and momentCriteria for m11. Emerging frame keeps the reason with “So.” Collect and Display: each group says its sentence while the teacher scribes it as said and writes the precise term beside it, no revoicing; students then point to where each way shows the 6.4 (IM’s connect-the-strategies move). Synthesis sounds in one voice. Copy: ‘per’ in release.say; constant-speed; 12 out of 75; “after 1 hour” throughout; Alone:; beforeClass labels match other lessons and split to ≤ 30 words; story split; pointTo trimmed; 8.2 grouping says only how students work."
  ],
- "story": "Lesson 8 is the fourth of five lessons on rates. It puts speed and pace to work on longer problems, two friends walking toward each other and two cousins moving apart, before Lesson 9 turns to solving rate problems more broadly.",
+ "story": "Lesson 8 is the fourth of five rates lessons. Students use speed and pace on longer problems: two friends walking toward each other, then two cousins moving apart. Lesson 9 solves rate problems more broadly.",
  "previous": "In Lesson 7 students used one unit rate to go across a table of equivalent ratios; today that unit rate is a speed or a pace.",
  "clo": {
   "imGoal": "Calculate unit rates that represent speed or pace, use them to determine unknown distances or elapsed times, and explain (orally) the solution method.",
@@ -33,16 +34,19 @@
    "speed",
    "per",
    "miles per hour",
-   "multiply by",
-   "divide by"
+   "divide"
   ],
   "informal": [
    "pace",
    "closer",
    "the gap"
   ],
-  "exemplar": "Together their speed is 3 + 3.4 = 6.4 miles per hour, so I divide 24 by 6.4 to find the time: 3.75 hours. They meet at 11:45 a.m.",
-  "lookFor": "The penguin explanation names a rate with “per” (\\(\\frac{5}{3}\\) feet per second, or 0.6 seconds per foot) and says what it multiplies: 45 × \\(\\frac{5}{3}\\) = 75 feet, 45 × 0.6 = 27 seconds."
+  "exemplar": "Kiran’s speed is 3 miles per hour, Clare’s is 3.4, so the distance apart decreases by 6.4 miles each hour. I divide 24 by 6.4: 3.75 hours, 11:45 a.m.",
+  "lookFor": "The penguin explanation uses the form: names a rate with “per” (\\(\\frac{5}{3}\\) feet per second, or 0.6 seconds per foot) and says what it multiplies: 45 × \\(\\frac{5}{3}\\) = 75 feet, 45 × 0.6 = 27 seconds.",
+  "posted": {
+   "goal": "We will explain how we use a speed, named with “per,” to find a distance or a time.",
+   "sentence": "The train’s speed is 60 miles per hour, so I divide 150 by 60 to find the time: 2.5 hours."
+  }
  },
  "activities": [
   {
@@ -61,7 +65,7 @@
     "Calling 6.25 a speed in miles per minute, when it is a pace: 6.25 minutes per mile."
    ],
    "backPocket": [
-    "Twelve out of 75. What would that be out of 100?",
+    "12 out of 75. What would that be out of 100?",
     "Is your number miles per minute, or minutes per mile?",
     "Can you find 4.8 another way?"
    ],
@@ -77,8 +81,8 @@
    "strategies": [
     "Take both walks off each hour: 24 − 3 − 3.4 = 17.6 miles after 1 hour, then 11.2 and 4.8.",
     "Use a four-column table: hours, Kiran’s miles, Clare’s miles and distance apart.",
-    "Add the speeds: the gap shrinks 6.4 miles each hour, so 24 ÷ 6.4 = 3.75 hours, and they meet at 11:45 a.m.",
-    "For Kiran’s jog: 24 ÷ 2.5 = 9.6 together, and 9.6 − 3.4 = 6.2 miles per hour; or 3.4 × 2.5 = 8.5, 24 − 8.5 = 15.5, 15.5 ÷ 2.5 = 6.2.",
+    "Add the speeds: the distance apart decreases by 6.4 miles each hour, so 24 ÷ 6.4 = 3.75 hours, and they meet at 11:45 a.m.",
+    "For Kiran’s jog: 24 ÷ 2.5 = 9.6 miles closer each hour, and 9.6 − 3.4 = 6.2 miles per hour; or 3.4 × 2.5 = 8.5, 24 − 8.5 = 15.5, 15.5 ÷ 2.5 = 6.2.",
     "Sketch the trail and mark off where each friend is each hour."
    ],
    "barriers": [
@@ -91,10 +95,10 @@
     "Reading 3.75 hours as 3 hours 75 minutes: “11:75, so 12:15.”",
     "Calling 9.6 Kiran’s jogging speed, when it is both friends together.",
     "Saying Kiran is “not correct”: the meeting time is right, but the place would be Clare’s house.",
-    "Language: saying “6.4 miles” for how fast the gap closes, instead of 6.4 miles per hour."
+    "Language: calling 6.4 “their speed.” Each walker has a speed; 6.4 is how many miles the distance apart decreases each hour."
    ],
    "backPocket": [
-    "Where is Clare after one hour? Show both of them.",
+    "Where is Clare after 1 hour? Show both of them.",
     "How much closer do they get each hour? Why that much?",
     "0.75 hours. How many minutes is that?",
     "Is 9.6 Kiran alone, or both of them?",
@@ -105,7 +109,7 @@
     "m4",
     "m5"
    ],
-   "grouping": "Groups of 3–4: quiet think time on the first two questions, then a partner. Show a solution to each, then 8–10 minutes in groups; each group explains one problem.",
+   "grouping": "Groups of 3–4: quiet think time on the first two questions, then share with a partner. After the class sees a solution to each, 8–10 minutes in groups; each group explains one problem.",
    "monitor": "Track who takes off both walks, who uses a four-column table or a sketch, and who adds the speeds. Listen for “per” after each speed."
   },
   {
@@ -114,7 +118,7 @@
     "Compare the same time: in 24 minutes Jada bikes 4 miles and her cousin swims 1 mile.",
     "Find speeds: Jada 10 miles per hour, her cousin 2.5, so Jada is 7.5 miles per hour faster.",
     "After 15 minutes: Jada 2.5 miles plus her cousin \\(\\frac{5}{8}\\) mile is \\(3\\frac{1}{8}\\) miles apart.",
-    "Add the speeds: 12.5 miles per hour apart, so 5 ÷ 12.5 = 0.4 hours, or 24 minutes."
+    "Add the speeds: the distance apart grows by 12.5 miles each hour, so 5 ÷ 12.5 = 0.4 hours, or 24 minutes."
    ],
    "barriers": [
     "The rates are in minutes, but the question “how much faster” is easiest in miles per hour.",
@@ -131,8 +135,15 @@
    "momentIds": [
     "m11"
    ],
-   "grouping": "Individual: a few minutes of quiet think time on the two questions, then a brief whole-class discussion.",
-   "monitor": "Watch for a drawing, same time, same distance, pace, speed and combined speed. Share a drawing first, then most common to least common."
+   "grouping": "Alone: a few minutes of quiet think time on the two questions, then a brief whole-class discussion.",
+   "monitor": "Watch for a drawing, same time, same distance, pace, speed and combined speed. Share a drawing first, then most common to least common.",
+   "momentCriteria": {
+    "m11": [
+     "Asked them to label the units before saying who is faster.",
+     "Had them say what 24 minutes per mile means: 24 minutes for each mile.",
+     "Didn’t tell them pace works backwards."
+    ]
+   }
   }
  ],
  "crux": {
@@ -150,50 +161,54 @@
    {
     "focus": "The question",
     "say": "Read it once more with the questions. What are we asked to find?",
-    "listenFor": "How far apart they are after one hour, then a table for 0, 1, 2 and 3 hours."
+    "listenFor": "How far apart they are after 1 hour, then a table for 0, 1, 2 and 3 hours."
    }
   ],
   "release": {
    "successCriteria": "When you explain, name each speed with “per,” miles per hour, and say how you used it.",
-   "say": "Name the speed with “per,” and say how you used it.",
+   "say": "Name the speed with ‘per,’ and say how you used it.",
    "talkMoments": [
     "After quiet think time, partners take turns saying the 1-hour row: “Kiran’s speed is ___ miles per hour, so…”",
     "Before the meeting time, groups say how much closer the friends get each hour, and why."
    ],
    "byBand": {
     "emerging": {
-     "frame": "Kiran’s speed is ___ miles per hour. Clare’s speed is ___ miles per hour. Each hour they get ___ miles closer.",
-     "stretch": "They join the speeds in one line: “3 + 3.4 = 6.4 miles closer each hour.”"
+     "frame": "Kiran: ___ miles per hour. Clare: ___ miles per hour. So each hour the distance apart decreases by ___ miles.",
+     "stretch": "They join the speeds in one line: “3 + 3.4 = 6.4, so 6.4 miles closer each hour.”",
+     "nonverbal": "Point to each friend’s speed, then to the drop from 24 to 17.6 in the 1-hour row."
     },
     "developing": {
-     "frame": "Each hour they get ___ miles closer, because Kiran’s speed is ___ and Clare’s speed is ___.",
-     "stretch": "They use it: “So I divide 24 by 6.4 to find the time.”"
+     "frame": "Each hour the distance apart decreases by ___ miles, because Kiran’s speed is ___ miles per hour and Clare’s speed is ___ miles per hour.",
+     "stretch": "They use it: “So I divide 24 by 6.4 to find the time.”",
+     "nonverbal": "Walk two fingers toward each other on the trail sketch, one step per hour."
     },
     "expanding": {
-     "frame": "Together their speed is ___ ___ per ___, so I multiply (or divide) ___ by ___ to find the ___.",
-     "stretch": "They judge Kiran’s idea with it: same meeting time, but a different meeting place."
+     "frame": "Kiran’s speed is ___ miles per hour and Clare’s is ___, so the distance apart decreases by ___ miles each hour. I divide ___ by ___ to find the ___.",
+     "stretch": "They judge Kiran’s idea with it: same meeting time, but a different meeting place.",
+     "nonverbal": "Trace down the distance-apart column, tapping each 6.4 drop, then point to 24 and 6.4."
     }
    }
   },
   "synthesis": {
    "routine": "MLR2: Collect and Display",
    "steps": [
-    "Call groups in IM’s order: the most common way first, adding the speeds last.",
-    "Scribe each group’s words beside one distance-apart table, with “− 6.4 each hour” down the side.",
-    "Revoice each into the frame, and circle “speed” and “per.”",
+    "Call groups in IM’s order, the most common way first and adding the speeds last. Each group says its sentence aloud.",
+    "Scribe each group’s words as said beside one distance-apart table, with “− 6.4 each hour” down the side.",
+    "Write the precise term beside their words (speed, per, miles per hour), and circle “per.”",
+    "Ask: “Where does each group’s way show the 6.4?” Students come up and point to it on the table.",
     "Leave the display up for 8.3 and the cool-down."
    ],
-   "prompt": "How do the two speeds tell you how fast the gap closes, and how did you use that?",
-   "sounds": "They met after 2.5 hours, so together their speed is 24 ÷ 2.5 = 9.6 miles per hour. I subtract Clare’s 3.4 miles per hour: Kiran jogged 6.2 miles per hour."
+   "prompt": "How do the two speeds tell you how much the distance apart decreases each hour, and how did you use that?",
+   "sounds": "I divide 24 by 2.5: the distance apart decreased by 9.6 miles each hour. I subtract Clare’s 3.4, so Kiran’s speed was 6.2 miles per hour."
   }
  },
  "lessonSynthesis": {
   "ideas": [
    "Speed is distance per unit of time: Jada bikes 2 miles in 12 minutes, so 2 ÷ 12 = \\(\\frac{1}{6}\\) mile per minute.",
    "Pace is the other unit rate, time per unit of distance: 12 ÷ 2 = 6 minutes per mile.",
-   "To solve a constant speed problem, use a table, a double number line, or multiply and divide by the speed or pace."
+   "To solve a constant-speed problem, use a table, a double number line, or multiply and divide by the speed or pace."
   ],
-  "pointTo": "Point to the 8.2 display: the distance-apart table dropping 6.4 each hour, and the speed sentences beside it. If you taught 8.3, point to Jada’s 6 minutes per mile and \\(\\frac{1}{6}\\) mile per minute too.",
+  "pointTo": "Point to the 8.2 display: the table dropping 6.4 each hour, and the speed sentences. If you taught 8.3, add Jada’s 6 minutes per mile and \\(\\frac{1}{6}\\) mile per minute.",
   "check": {
    "question": "A cyclist rides 12 miles per hour. How far does she ride in 4 hours, and how do you know?",
    "sounds": "Her speed is 12 miles per hour, so I multiply 4 by 12 to find the distance: 48 miles."
@@ -201,9 +216,10 @@
  },
  "beforeClass": [
   "For the launch: look up a rail trail near school to tell students about.",
-  "For Three Reads (MLR 6): display the Kiran and Clare story with its questions covered until the third read.",
-  "For the release (MLR 8): have the frames for your students’ levels ready, and a blank four-column table (hours, Kiran, Clare, distance apart).",
-  "For Collect and Display (MLR 2): board space beside a blank distance-apart table; decide which group explains questions 3, 4 and 5. Know 17.6, 11.2, 4.8; 11:45 a.m.; 6.2."
+  "For Three Reads in 8.2: display the Kiran and Clare story with its questions covered until the third read.",
+  "For the release: have the frames for your students’ levels ready, and a blank four-column table (hours, Kiran, Clare, distance apart).",
+  "For Collect and Display (MLR 2): board space beside a blank distance-apart table. Decide which group explains questions 3, 4 and 5.",
+  "Know the numbers: 17.6, 11.2, 4.8; 11:45 a.m.; 6.2."
  ],
  "cuts": [
   {

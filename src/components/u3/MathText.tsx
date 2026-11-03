@@ -140,6 +140,7 @@ export function IMLines({ lines, className, fill }: { lines: string[] | null | u
   const answerTables = fill?.answers ? tablesIn(fill.answers) : [];
   const used = new Set<number>();
   let key: string[][] | null = null;
+  let tableNo = 0;
   const blocks: (
     | { kind: 'p'; text: string; note: string | null }
     | { kind: 'ul'; items: string[] }
@@ -203,6 +204,7 @@ export function IMLines({ lines, className, fill }: { lines: string[] | null | u
           <div key={i} className={s.tableWrap}>
             {(() => {
               // Pick IM's completed table once per task table, in order.
+              tableNo = blocks.slice(0, i).filter((x) => x.kind === 't').length;
               const k = answerTables.findIndex((x, n) => !used.has(n) && headerKey(x[0]) === headerKey(b.rows[0]) && x.length === b.rows.length);
               if (k >= 0) used.add(k);
               key = k >= 0 ? answerTables[k] : null;
@@ -223,7 +225,8 @@ export function IMLines({ lines, className, fill }: { lines: string[] | null | u
                   <tr key={j}>
                     {Array.from({ length: Math.max(...b.rows.map((x) => x.length)) }, (_, c) => {
                       const blank = !(r[c] ?? '').trim();
-                      const cell = `${fill?.key}:${i}:${j}:${c}`;
+                      // Keyed by which table this is, not where it sits among the paragraphs.
+                      const cell = `${fill?.key}:${tableNo}:${j}:${c}`;
                       const entry = fill?.values[cell] ?? '';
                       const im = key?.[j + 1]?.[c]?.trim();
                       const mark = fill?.check && blank && entry.trim() && im ? markCell(entry, im) : null;
@@ -236,16 +239,17 @@ export function IMLines({ lines, className, fill }: { lines: string[] | null | u
                                 value={entry}
                                 aria-label={`${b.rows[0][c] ?? 'value'}, row ${j + 1}`}
                                 aria-invalid={mark === 'wrong' || undefined}
+                                aria-describedby={mark || (fill.check && im) ? `${cell}-note` : undefined}
                                 onChange={(e) => fill.onChange(cell, e.target.value)}
                               />
                               {mark && (
-                                <span className={s.markNote}>
+                                <span className={s.markNote} id={`${cell}-note`}>
                                   {mark === 'right' ? '✓' : mark === 'wrong' ? '✗ IM: ' : 'IM: '}
                                   {mark !== 'right' && <MathText>{im}</MathText>}
                                 </span>
                               )}
                               {fill.check && !entry.trim() && im && (
-                                <span className={s.markNote}>
+                                <span className={s.markNote} id={`${cell}-note`}>
                                   IM: <MathText>{im}</MathText>
                                 </span>
                               )}

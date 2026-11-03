@@ -18,10 +18,16 @@
 .posterBig { font-size: 22px; line-height: 1.35; font-weight: 600; }
 
 /* Printing the posted exemplar: only the poster prints. */
+.posterFrame { font-size: 15px; }
+.ministep { all: unset; cursor: pointer; font-size: 11px; font-weight: 600; line-height: 1.2; border-top: 3px solid currentColor; padding-top: 6px; }
+.ministep:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+
+/* Printing the language goal: one page, the poster only, large enough for a wall. */
 .root { min-height: 100%; }
 @media print {
-  .root * { visibility: hidden; }
-  .root .poster, .root .poster * { visibility: visible; }
-  .root .poster { position: fixed; inset: 0; border: 0; font-size: 20px; background: var(--color-card); }
-  .posterBig { font-size: 34px; }
+  .root :global(*) { visibility: hidden; }
+  .root .poster, .root .poster :global(*) { visibility: visible; }
+  .root .poster { position: absolute; top: 0; left: 0; right: 0; border: 0; padding: 0; font-size: 22px; background: none; }
+  .posterBig { font-size: 36px; }
+  .posterFrame { font-size: 26px; }
 }

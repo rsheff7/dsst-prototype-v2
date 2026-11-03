@@ -15,28 +15,32 @@
   "IM’s 5.1 response for 7 ÷ 5 says “0.4 which is closer to 1.5 than 1”; the strategy line here states it correctly (1.4 is 0.1 from \\(1\\frac{1}{2}\\)).",
   "Release frames by band: adapted from Premo’s cruxLanguage frames, which already ask for a comparison and a reason at every band. The emerging frame is shortened for Levels 1–2.",
   "Lesson synthesis check: a pens problem, so it avoids the cool-down’s sparkling water, $1.69 and 4 for $5.",
-  "Non-crux activities carry no language supports (D7)."
+  "Non-crux activities carry no language supports (D7).",
+  "Revised 2026-11-03 after persona review: added clo.posted (goal and a muffin example with new numbers); m1 momentCriteria; nonverbal ways in for each band. Emerging frame now compares two stores; developing says “per can” on both prices. clo.precise drops “same speed” (5.2’s, not the crux’s); the exemplar now uses “unit price,” “per” and “price per can.” clo.form says “best deal,” matching the frames; the lesson check now has three stores so “best deal” fits. lookFor checks the form and “per,” not just numbers. Read 3 asks students what “best deal” means before the teacher clarifies lowest price per can. MLR 1 synthesis now runs partner rounds and the rewrite first, then a short share in IM’s order, where students make the table-to-division connection (D1 option 3). “Quiet work time” is now “quiet think time”; the 5.3 cut notes IM’s 15 minutes. Story, pointTo and beforeClass trimmed to 30 words. Check numbers: 6 ÷ 3 = 2.00, 9 ÷ 5 = 1.80, 25 ÷ 10 = 2.50; posted 6 ÷ 5 = 1.20, 6 ÷ 4 = 1.50."
  ],
- "story": "Lesson 5 opens the rates section. Students compare speeds and prices by finding how much for 1 of the same unit, and start to see that the same rate per 1 means equivalent ratios. Lessons 6–9 build on that rate per 1.",
+ "story": "Lesson 5 opens the rates section. Students compare speeds and prices by finding how much for 1 of the same unit. The same rate per 1 means equivalent ratios.",
  "previous": "In earlier lessons students found and used rates per 1 in a context, most recently to convert units in Lesson 4; today they use rates per 1 to compare speeds and prices.",
  "clo": {
   "imGoal": "Justify (orally and in writing) comparisons of speeds or prices.",
   "function": "justify",
-  "form": "___ is the better deal because it costs $___ per ___, less than $___ per ___ at ___.",
-  "statement": "Students will justify, orally and in writing, which price or speed is better by comparing the rate per 1, named with “per.”",
+  "form": "___ is the best deal because its unit price is $___ per ___, less than $___ per ___ at ___.",
+  "statement": "Students will justify, orally and in writing, which price is the best deal or which speed is faster by comparing the unit price or rate per 1, named with “per.”",
   "precise": [
    "unit price",
    "per",
-   "price per can",
-   "same speed"
+   "price per can"
   ],
   "informal": [
    "cheapest",
    "each",
    "how much for 1"
   ],
-  "exemplar": "8 for $6 is the best deal because 6 ÷ 8 = $0.75 per can, less than $0.80, $1.00 and $1.50 per can at the other stores.",
-  "lookFor": "The answer names both prices per bottle, $1.69 and $5 ÷ 4 = $1.25, and says this week cost $0.44 less: 1.69 − 1.25 = 0.44."
+  "exemplar": "8 for $6 is the best deal. Its unit price, or price per can, is 6 ÷ 8 = $0.75, less than $0.80, $1.00 and $1.50 at the other stores.",
+  "lookFor": "The answer uses the CLO’s form: it names each price per bottle with “per,” $1.69 and $5 ÷ 4 = $1.25, says which is less, and how much: 1.69 − 1.25 = $0.44 less this week.",
+  "posted": {
+   "goal": "We will find how much for 1 to compare prices and speeds, and explain which is the best deal using “unit price” and “per.”",
+   "sentence": "Store B is the best deal because its unit price is $1.20 per muffin (6 ÷ 5), less than $1.50 per muffin at Store A."
+  }
  },
  "activities": [
   {
@@ -63,7 +67,14 @@
     "m1"
    ],
    "grouping": "Whole class: one problem at a time, 1 minute of quiet think time each, then a signal for an answer and a strategy.",
-   "monitor": "Note who reasons from 1, \\(\\frac{1}{2}\\) and \\(1\\frac{1}{2}\\) without calculating, and where hands split, to ask both sides to explain."
+   "monitor": "Note who reasons from 1, \\(\\frac{1}{2}\\) and \\(1\\frac{1}{2}\\) without calculating, and where hands split, to ask both sides to explain.",
+   "momentCriteria": {
+    "m1": [
+     "Asked the closer-to-1 side to explain how they decided",
+     "Had students with opposite answers talk to an agreement",
+     "Didn’t announce 1.4 and move on"
+    ]
+   }
   },
   {
    "id": "5.2",
@@ -120,7 +131,7 @@
     "m9",
     "m10"
    ],
-   "grouping": "Alone: 5–10 minutes of quiet work time on a first draft, then the whole-class discussion.",
+   "grouping": "Alone: 5–10 minutes of quiet think time on a first draft. Pairs: two partner rounds on the draft, then a short whole-class share.",
    "monitor": "Track who uses a table or double number line to get to 1 can, and who divides price by cans, to share in that order."
   }
  ],
@@ -138,42 +149,46 @@
    },
    {
     "focus": "The question",
-    "say": "Read it once more. What are we asked to decide and explain?",
-    "listenFor": "Which store is the best deal, and why. For today, best deal means lowest price per can."
+    "say": "Read it once more. What could ‘best deal’ mean? What are we asked?",
+    "listenFor": "Students’ own meanings first: cheapest, most cans, not more than you need. Then clarify: for today, best deal means lowest price per can. We decide which store and explain why."
    }
   ],
   "release": {
    "successCriteria": "In your explanation, name the price per can at the best store and at one other store, and say which is less.",
    "say": "Name the price per can, and compare it with another store.",
    "talkMoments": [
-    "After quiet work time, partners take turns saying their best store with the frame: “___ is the better deal because it costs $___ per can.”",
+    "After quiet think time, partners take turns saying their best store with the frame: “___ is the best deal because its unit price is $___ per can, less than $___ per can at ___.”",
     "Before the 28-oz question, partners tell each other what to compare when the cans aren’t the same size."
    ],
    "byBand": {
     "emerging": {
-     "frame": "Best deal: ___. It costs $___ per can.",
-     "stretch": "They add a second store: “$___ per can is less than $___ per can at ___.”"
+     "frame": "___: $___ per can. ___: $___ per can. $___ is less, so ___ is the best deal.",
+     "stretch": "They join it into one sentence with “because”: “___ is the best deal because…”",
+     "nonverbal": "They write each ad’s price in its “1 can: $___” box, then circle the smallest box."
     },
     "developing": {
-     "frame": "The best deal is ___ because its unit price is $___ per can, less than $___ at ___.",
-     "stretch": "They add how they found it: “I divided the price by the cans: ___ ÷ ___.”"
+     "frame": "The best deal is ___ because its unit price is $___ per can, less than $___ per can at ___.",
+     "stretch": "They add how they found it: “I divided the price by the cans: ___ ÷ ___.”",
+     "nonverbal": "They point from the best ad’s 1-can row to another ad’s, and tap the smaller price."
     },
     "expanding": {
      "frame": "___ has the lowest unit price because ___, while ___.",
-     "stretch": "They explain why per can stops working for the 28-oz can, and compare per ounce instead."
+     "stretch": "They explain why per can stops working for the 28-oz can, and compare per ounce instead.",
+     "nonverbal": "They hold the 15-oz and 28-oz ads side by side and point to the ounces."
     }
    }
   },
   "synthesis": {
    "routine": "MLR1: Stronger and Clearer Each Time",
    "steps": [
-    "Share in IM’s order: a table down to 1 can first, then 6 ÷ 8 = 0.75.",
-    "Connect them: both give $0.75 per can. Say “unit price” and “per can” as you point.",
-    "Partners read drafts to each other, twice; each listener asks one question: how much per can?",
-    "Each student rewrites their own draft with the price per can at two stores."
+    "Partner round 1: each student reads the draft; the listener asks one question: how much per can?",
+    "Partner round 2: switch partners and go again.",
+    "Each student rewrites their own draft with the price per can at two stores.",
+    "Short share in IM’s order: a table down to 1 can first, then 6 ÷ 8 = 0.75.",
+    "Ask students how the table and 6 ÷ 8 connect. They say it: both give $0.75 per can. Point to “unit price” as they do."
    ],
    "prompt": "Which store is the best deal, and how do you know?",
-   "sounds": "8 for $6 is the best deal. Its unit price is $0.75 per can, and 2 for $3 is $1.50 per can, so 8 for $6 costs less for each can."
+   "sounds": "8 for $6 is the best deal because its unit price is $0.75 per can, less than $1.50 per can at 2 for $3."
   }
  },
  "lessonSynthesis": {
@@ -183,17 +198,17 @@
    "Tyler and Mai both ran 140 meters per minute: same rate per 1, so 4,200 : 30 and 6,300 : 45 are equivalent ratios.",
    "Dividing gets you to 1: $6 ÷ 8 cans is $0.75 per can, the lowest unit price of the four ads."
   ],
-  "pointTo": "Display IM’s list, each rate as given beside its rate per 1, runners first, then the ads. Point to the 5.3 rows and to students’ rewritten drafts: the same prices per can, in their words.",
+  "pointTo": "Display IM’s chart: each rate as given beside its rate per 1, runners first, then the ads. Point to students’ rewritten drafts: the same prices per can, in their words.",
   "check": {
-   "question": "Store A sells 3 pens for $6. Store B sells 5 pens for $9. Which is the better deal?",
-   "sounds": "Store B is the better deal because it costs $1.80 per pen, less than $2.00 per pen at Store A."
+   "question": "Store A sells 3 pens for $6. Store B sells 5 pens for $9. Store C sells 10 pens for $25. Which store has the best deal?",
+   "sounds": "Store B is the best deal because its unit price is $1.80 per pen, less than $2.00 per pen at Store A and $2.50 at Store C."
   }
  },
  "beforeClass": [
   "For Three Reads in 5.3: display the four bean ads with the questions covered until the third read.",
   "For the release: have the frames for your students’ levels ready to post or hand out.",
   "For Stronger and Clearer Each Time (MLR 1): plan partners for two rounds, and draw an empty “1 can: $___” box under each ad.",
-  "For the lesson synthesis: a two-column chart, “rate as given” and “rate per 1,” with the runners and the ads: 140, 210, 140 meters per minute; $0.75, $1.00, $1.50, $0.80 per can."
+  "Lesson synthesis chart: “rate as given” and “rate per 1,” with the runners and the ads: 140, 210, 140 meters per minute; $0.75, $1.00, $1.50, $0.80 per can."
  ],
  "cuts": [
   {
@@ -206,7 +221,7 @@
   },
   {
    "activityId": "5.3",
-   "note": "Never cut the quiet work time, the share in IM’s order or the rewrite. If time is tight, keep Three Reads quick and run one partner round, not two."
+   "note": "Never cut the quiet think time, the rewrite or the share in IM’s order. IM gives 5.3 15 minutes; if tight, keep Three Reads quick and run one partner round."
   }
  ]
 }

@@ -12,14 +12,16 @@
   "Check m7: it is a language moment, so it stays, and its question (“What does each number mean?”) fits the release and synthesis. But its by-level moves still say “help fix the explanation” and “rewrite the explanation,” which belong to MLR 3’s flawed sample. It may need a wording change in the Premo layer.",
   "Check: Premo’s cruxLanguage frames are written around the flawed explanation (“The rates are not equal, but…”). The release frames here follow clo.form instead and build toward the choice.",
   "Synthesis routine: MLR 1 Stronger and Clearer Each Time, not MLR 2. The CLO is explaining the choice orally and in writing, and IM’s own support for 6.2 had pairs propose an improved written response to the last question. MLR 1 keeps that job, refining a written explanation through talk, without the flawed sample D1 replaces. IM’s synthesis also says to leave the oatmeal table up, so the table still serves as the class reference. Doubt: 6.2 is 15 minutes, so two partner rounds are tight; the cut allows one round, and MLR 2 is a fair fallback if a reviewer prefers it.",
-  "Three Reads: IM’s 6.2 launch explains oatmeal, then gives quiet think time on “Who is correct?” The three reads come after the oatmeal sentence and cover only the opening part of the task (recipe, Priya, Han, the question); Lin’s and Diego’s questions stay covered until the class agrees both are correct, as IM’s launch sequences it. IM places Three Reads in 6.3, not 6.2; that is D1’s choice, not IM’s.",
+  "m7 (language) stays: its question (“What does each number mean?”) and its by-level moves (“help fix the explanation,” “rewrite the explanation”) fit the synthesis, which now opens with IM’s flawed explanation.",
   "Strategies: 6.1 from IM’s sample responses; 6.2 from IM’s response, table and narrative (table or double number line); 6.3 from IM’s response and synthesis (the double-and-add strategy).",
-  "Misconceptions: IM gives one each for 6.2 (“cannot both be right”) and 6.3 (not sure how to use the rates), used there. The rest are Premo’s: 6.1’s “per only goes with money or speed” (from IM’s challenge to go beyond them); 6.2’s 5 × 0.4 = 2 (premo m5), “2 r 3” (premo pattern, its own doubt) and the “oats one” language error; 6.3’s dropping \\(\\frac{1}{4}\\) ticket per dollar (from IM’s synthesis, which treats the objection as good reasoning). A reviewer should check the Premo ones.",
+  "Synthesis routine: MLR 1 Stronger and Clearer Each Time, with IM’s critique built in (D1 option 3). Round 1’s text is IM’s flawed explanation from its MLR 3 support: pairs say what is wrong, write a stronger explanation, then refine it in partner rounds. IM’s synthesis also says to leave the oatmeal table up. Doubt: 6.2 is 15 minutes, so two partner rounds are tight; the cut allows one.",
   "6.3 momentIds are m10 and m11, the rehearsed one and the watch-for one. m9 (IM’s misconception) is in 6.3’s misconceptions and back-pocket questions instead; m8 (Three Reads breakdown in 6.3) is left out because non-crux activities carry no language supports (D7).",
   "Lesson synthesis: IM’s three takeaways with the oatmeal numbers. The check uses a new context (8 cups of water for 2 scoops of mix) to avoid the cool-down’s grapes: 8 ÷ 2 = 4 cups per scoop, 5 × 4 = 20.",
-  "beforeClass and cuts: rewritten from Premo’s for D1. Premo’s MLR 3 chart-paper item and its Think Pair Share frames are dropped; its oatmeal table and “unit rate” word display are kept. Premo’s two cuts are kept as written; a 6.2 cut was added."
+  "beforeClass and cuts: rewritten from Premo’s for D1. Premo’s MLR 3 chart-paper item and its Think Pair Share frames are dropped; its oatmeal table and “unit rate” word display are kept. Premo’s two cuts are kept as written; a 6.2 cut was added.",
+  "Revised 2026-11-03 after persona review: synthesis (MLR 1) now opens with IM’s flawed explanation, quoted exactly; pairs critique it, write a stronger one, then partner rounds; prompt and sounds updated, m7 kept. Added clo.posted, nonverbal ways in, momentCriteria for m4, m5, m10. Emerging and developing frames keep the reason. clo.precise drops “multiply” and “cups of oats per cup of water” (the exemplar answers Lin with ≤ 30 words; Diego’s rate stays in the strategies, the flawed explanation and the emerging stretch); lookFor checks “per” and both units. Exemplar and sounds agree on “I know the oats” and “12.5 cups of water.” Three Reads listenFor keeps both units. ‘per’ in say-lines. “ounces” throughout 6.3. Tables written “15 to 6,” blanks “___.” Story glosses “unit rate (rate per 1)” once. pointTo, beforeClass trimmed to ≤ 30 words; cuts in cut-first order (6.3, 6.1, 6.2).",
+  "2026-11-03 (Claude, after the revision): restored “cups of oats per cup of water” as a precise term, since the CLO asks students to name each rate; the exemplar now answers both Lin and Diego (37 words, over the 30-word guide on purpose)."
  ],
- "story": "Lesson 6 sits early in the rates section. It shows that every ratio has two unit rates, and that the question decides which one to use, which students lean on to complete tables in Lesson 7.",
+ "story": "Lesson 6 shows that every ratio has a unit rate (rate per 1) for each quantity, and the question decides which to use. Lesson 7’s tables lean on both.",
  "previous": "In Lesson 5 students compared speeds and prices by finding a rate per 1; today they find that each ratio has two rates per 1, one for each quantity.",
  "clo": {
   "imGoal": "Choose which unit rate to use to solve a given problem and explain the choice (orally and in writing).",
@@ -29,16 +31,19 @@
   "precise": [
    "per",
    "cups of water per cup of oats",
-   "cups of oats per cup of water",
-   "multiply"
+   "cups of oats per cup of water"
   ],
   "informal": [
    "Priya’s rate",
    "Han’s rate",
    "the oats one"
   ],
-  "exemplar": "For Lin’s 5 cups of oats, I used Han’s rate, 2.5 cups of water per cup of oats, because I know the oats: 5 × 2.5 = 12.5 cups of water.",
-  "lookFor": "The explanation names each number as a rate with both units: $3 per pound of grapes, and \\(\\frac{1}{3}\\) pound of grapes per dollar."
+  "exemplar": "For Lin, I used 2.5 cups of water per cup of oats because I know the oats: 12.5 cups. For Diego, I used 0.4 cups of oats per cup of water because I know the water: 4 cups.",
+  "lookFor": "The explanation names each number with “per” and both units, $3 per pound of grapes and \\(\\frac{1}{3}\\) pound of grapes per dollar, and says what each one tells you.",
+  "posted": {
+   "goal": "We will explain which rate we used to solve a problem and why, naming the rate with “per” and both units.",
+   "sentence": "I used Ana’s rate, 3 cups of flour per cup of sugar, because I know the sugar: 4 × 3 = 12 cups of flour."
+  }
  },
  "activities": [
   {
@@ -56,7 +61,7 @@
     "Thinking “per” only goes with prices and speeds, when IM challenges students to find another kind."
    ],
    "backPocket": [
-    "Where did we use “per” in past lessons?",
+    "Where did we use ‘per’ in past lessons?",
     "Can you find one that isn’t a price or a speed?",
     "What do we know for sure about 30 miles per hour?"
    ],
@@ -71,7 +76,7 @@
    "id": "6.2",
    "strategies": [
     "Divide one amount by the other: 6 ÷ 15 = 0.4 cups of oats per cup of water, and 15 ÷ 6 = 2.5 cups of water per cup of oats.",
-    "Scale down in the table: 15 | 6 to 5 | 2, then to 2.5 | 1 and to 1 | 0.4.",
+    "Scale down in the table: 15 to 6, then 5 to 2, then 2.5 to 1 and 1 to 0.4.",
     "A double number line for water and oats shows both rates on one diagram.",
     "Lin: 5 × 2.5 = 12.5 cups of water. Diego: 10 × 0.4 = 4 cups of oats."
    ],
@@ -97,19 +102,31 @@
     "m5",
     "m7"
    ],
-   "grouping": "Pairs: 2–3 minutes of quiet think time on “Who is correct?”, then partners agree and justify, then the rest of the task.",
-   "monitor": "Note pairs who use a table and pairs who use a double number line, and track who picks each rate by what the question gives."
+   "grouping": "Pairs: 2–3 minutes of quiet think time on who is correct, then partners agree and justify, then the rest of the task.",
+   "monitor": "Note pairs who use a table and pairs who use a double number line, and track who picks each rate by what the question gives.",
+   "momentCriteria": {
+    "m4": [
+     "Asked what each number counts instead of saying both are right",
+     "Pointed them to the 1 in each row of the table",
+     "Let the pair decide whether both can be right"
+    ],
+    "m5": [
+     "Asked whether the recipe has more water or more oats",
+     "Let them check 2 cups of water against 5 cups of oats",
+     "Didn’t tell them to use 2.5"
+    ]
+   }
   },
   {
    "id": "6.3",
    "strategies": [
-    "Divide one amount by the other: 12 ÷ 15 = 0.8 oz of cream cheese per oz of sugar; 15 ÷ 12 = 1.25 oz of sugar per oz of cream cheese.",
+    "Divide one amount by the other: 12 ÷ 15 = 0.8 ounces of cream cheese per ounce of sugar; 15 ÷ 12 = 1.25 ounces of sugar per ounce of cream cheese.",
     "Milk: \\(1\\frac{2}{3}\\) gallons per week and 0.6 weeks per gallon. Tickets: $4 per ticket and \\(\\frac{1}{4}\\) ticket per dollar.",
-    "Choose the rate that starts from what you know: 35 × 0.8 = 28 oz; 3 × 0.6 = 1.8 weeks; 1,000 × $4 = $4,000.",
-    "Double and add for the cheesecake: 24 and 30, plus 4 and 5, gives 28 oz of cream cheese for 35 oz of sugar."
+    "Choose the rate that starts from what you know: 35 × 0.8 = 28 ounces; 3 × 0.6 = 1.8 weeks; 1,000 × $4 = $4,000.",
+    "Double and add for the cheesecake: 24 and 30, plus 4 and 5, gives 28 ounces of cream cheese for 35 ounces of sugar."
    ],
    "barriers": [
-    "“oz” means ounces, and gallons may be unfamiliar.",
+    "The task writes “oz” for ounces, and gallons may be unfamiliar.",
     "“Gallons per week” and “weeks per gallon” put time in different places."
    ],
    "misconceptions": [
@@ -127,7 +144,14 @@
     "m11"
    ],
    "grouping": "Pairs: 3–4 minutes on the first three situations, agree with a partner, then the last three problems.",
-   "monitor": "In the second half, pick 1–2 students per question to share which rate they chose and how they used it."
+   "monitor": "In the second half, pick 1–2 students per question to share which rate they chose and how they used it.",
+   "momentCriteria": {
+    "m10": [
+     "Called the double-and-add reasoning correct",
+     "Asked whether it works as fast for the milk",
+     "Didn’t tell them to switch to the unit rate"
+    ]
+   }
   }
  ],
  "crux": {
@@ -140,7 +164,7 @@
    {
     "focus": "Quantities and units",
     "say": "Read it again. What is measured, and in what units?",
-    "listenFor": "15 cups of water and 6 cups of oats; Priya says 0.4 per cup of water, Han 2.5 per cup of oats."
+    "listenFor": "15 cups of water and 6 cups of oats; Priya says 0.4 cups of oats per cup of water, Han 2.5 cups of water per cup of oats."
    },
    {
     "focus": "The question",
@@ -150,38 +174,43 @@
   ],
   "release": {
    "successCriteria": "In your explanation, name each rate with “per” and both units, and say why you chose the rate you used.",
-   "say": "Name each rate with “per,” and say why you chose it.",
+   "say": "Name each rate with ‘per,’ and say why you chose it.",
    "talkMoments": [
     "After quiet think time, partners take turns: “Priya’s 0.4 means ___ per ___.” Then the same for Han’s 2.5.",
     "Before the last question, partners tell each other which rate they used for Lin, which for Diego, and why."
    ],
    "byBand": {
     "emerging": {
-     "frame": "___ cups of ___ per cup of ___.",
-     "stretch": "They add what they know: “I know the oats, so I use 2.5.”"
+     "frame": "I know the ___, so I use ___ cups of ___ per cup of ___.",
+     "stretch": "They name the other rate too: “Priya’s 0.4 is cups of oats per cup of water.”",
+     "nonverbal": "Point to the row with 1 cup of oats, then to the 2.5 beside it."
     },
     "developing": {
-     "frame": "I used ___’s rate, ___ per ___, because I know the ___.",
-     "stretch": "They add the multiplication: “5 × 2.5 = 12.5 cups of water.”"
+     "frame": "I used ___’s rate, ___ cups of ___ per cup of ___, because I know the ___.",
+     "stretch": "They add the multiplication: “5 × 2.5 = 12.5 cups of water.”",
+     "nonverbal": "Point to what the question gives, then to the table row that starts from it."
     },
     "expanding": {
      "frame": "For ___, I used ___’s rate, ___ ___ per ___, because I know the ___: ___ × ___ = ___.",
-     "stretch": "They say why the other rate takes more steps for this question."
+     "stretch": "They say why the other rate takes more steps for this question.",
+     "nonverbal": "Trace on the table from the 1 cup of oats row down to Lin’s 5 cups."
     }
    }
   },
   "synthesis": {
    "routine": "MLR1: Stronger and Clearer Each Time",
    "steps": [
-    "Each student writes a first answer to the last question: which rate for Lin, which for Diego, and why.",
+    "Before pairs share the last answer, show IM’s flawed explanation: “I did not use either Priya’s rate (0.4 cups of oats per cup of water) or Han’s rate (2.5 cups of water per cup of oats) because they are not equal.”",
+    "Pairs: say what is wrong with it. If a pair can’t connect the two rates, ask what each number means.",
+    "Alone: write a stronger explanation of which rate answers Lin’s question, which answers Diego’s, and why.",
     "Round 1: meet a partner and read it aloud. The listener asks “What does that number mean?” or “Why that rate?”",
     "Round 2: a new partner, the same questions. Borrow words that made it clearer.",
-    "Students rewrite their answer, stronger and clearer, with “per,” both units and the reason.",
-    "Read one or two aloud beside the oatmeal table. If no one says it, name it: know the oats, use water per cup of oats.",
+    "Students rewrite their explanation, stronger and clearer, with “per,” both units and the reason.",
+    "Read one or two aloud beside the oatmeal table. Ask the class: which rate starts from what each question gives?",
     "Leave the oatmeal table up for 6.3 and the lesson synthesis."
    ],
-   "prompt": "Did you use Priya’s rate or Han’s rate for Lin, and for Diego? Why?",
-   "sounds": "For Lin, I used Han’s rate, 2.5 cups of water per cup of oats, because I knew the oats: 5 × 2.5 = 12.5. For Diego, I used Priya’s 0.4 cups of oats per cup of water: 10 × 0.4 = 4."
+   "prompt": "What is wrong with this explanation? Which rate would you use for Lin, and for Diego, and why?",
+   "sounds": "Either rate works. For Lin, I used Han’s rate because I know the oats: 2.5 cups of water per cup of oats, 5 × 2.5 = 12.5 cups of water."
   }
  },
  "lessonSynthesis": {
@@ -190,30 +219,30 @@
    "One division finds each one: 6 ÷ 15 = 0.4, and 15 ÷ 6 = 2.5.",
    "The question decides which to use: when you know the oats, use water per cup of oats; when you know the water, use oats per cup of water."
   ],
-  "pointTo": "Point to the oatmeal table: the 1 in each row, 0.4 and 2.5, and Lin’s and Diego’s rows. If you taught 6.3, point to its three choices too: 0.8, 0.6 and $4.",
+  "pointTo": "Point to the oatmeal table: the 1 in each row, 0.4 and 2.5, and Lin’s and Diego’s rows. If you taught 6.3, also point to 0.8, 0.6 and $4.",
   "check": {
    "question": "A pitcher uses 8 cups of water for 2 scoops of mix. You have 5 scoops. Which rate do you use, and why?",
    "sounds": "I use 4 cups of water per scoop, because I know the scoops: 5 × 4 = 20 cups of water."
   }
  },
  "beforeClass": [
-  "For Three Reads in 6.2: display the recipe, Priya’s and Han’s claims and “Who is correct?”, with Lin’s and Diego’s questions covered. Have one sentence ready: oatmeal is oats cooked in boiling water.",
-  "For the release: draw the oatmeal table on the board (water | oats: 15 | 6, then 1 | blank, then blank | 1), and have the frames for your students’ levels ready to post or hand out.",
-  "For Stronger and Clearer Each Time (MLR 1): plan how partners meet for two rounds, and post the listener questions: “What does that number mean?” “Why that rate?”",
-  "For 6.3: add “unit rate” to the class word display, say “oz” means ounces, and know the answers: 0.8 and 1.25; \\(1\\frac{2}{3}\\) and 0.6; $4 and \\(\\frac{1}{4}\\); 28 oz, 1.8 weeks, $4,000."
+  "For Three Reads: display the recipe, Priya’s and Han’s claims and the question “Who is correct?” Cover Lin’s and Diego’s questions. Explain oatmeal: oats cooked in boiling water.",
+  "For the release: draw the oatmeal table (water to oats: 15 to 6, then 1 to ___, then ___ to 1), and have your students’ frames ready to post.",
+  "For Stronger and Clearer Each Time (MLR 1): write IM’s flawed explanation on chart paper, plan two partner rounds, and post the listener questions.",
+  "For 6.3: add “unit rate” to the word display, and know the answers: 0.8 and 1.25; \\(1\\frac{2}{3}\\) and 0.6; $4 and \\(\\frac{1}{4}\\); 28 ounces, 1.8 weeks, $4,000."
  ],
  "cuts": [
-  {
-   "activityId": "6.1",
-   "note": "No optional activity in this lesson. Keep the warm-up to 5 minutes: one familiar example in the share, then move on."
-  },
   {
    "activityId": "6.3",
    "note": "Skip the raffle “deal” extension, and take one student per question in the share instead of two."
   },
   {
+   "activityId": "6.1",
+   "note": "Keep the warm-up to 5 minutes: one familiar example in the share, then move on."
+  },
+  {
    "activityId": "6.2",
-   "note": "Never cut the quiet think time or the synthesis. If time is tight, run one partner round in Stronger and Clearer Each Time, not two."
+   "note": "Never cut the quiet think time or the synthesis. If time is tight, critique the flawed explanation as a class and run one partner round, not two."
   }
  ]
 }

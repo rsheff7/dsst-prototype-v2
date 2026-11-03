@@ -17,6 +17,17 @@ test('mixed numbers and rounding to two places', () => {
   assert.equal(markCell('16.6', '\\(16\\frac{2}{3}\\)'), 'wrong');
 });
 
+test('units, currency and a fixed tolerance', () => {
+  assert.equal(markCell('12', '12 inches'), 'right');
+  assert.equal(markCell('2.5', '2.5 mph'), 'right');
+  assert.equal(markCell('3', '\\$3'), 'right');
+  assert.equal(markCell('5.', '5'), 'right');
+  assert.equal(markCell('1 / 2', '0.5'), 'right');
+  assert.equal(markCell('999', '1000'), 'wrong');
+  assert.equal(markCell('749.3', '750'), 'wrong');
+  assert.equal(markCell('16.66', '\\(16\\frac{2}{3}\\)'), 'wrong');
+});
+
 test('expressions IM writes differently are shown to compare, not marked wrong', () => {
   assert.equal(markCell('c/b', '\\(\\frac{c}{b}\\)'), 'right');
   assert.equal(markCell('7b', '\\(b \\boldcdot (7)\\)'), 'compare');

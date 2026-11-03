@@ -14,22 +14,25 @@ const plain = (s: string) =>
     .replace(/\\left|\\right|[{}]/g, '')
     .trim();
 const toNumber = (s: string): number | null => {
-  const t = plain(s).replace(/[$,]/g, '').replace(/\s*(dollars?|cents?|cups?|hours?|minutes?|miles?|meters?|seconds?|pounds?)$/i, '').trim();
-  let m = /^(-?\d+)\s+(\d+)\/(\d+)$/.exec(t);
+  // Units and currency don't change the value: "$35", "12 inches", "2.5 mph", "40%".
+  const t = plain(s).replace(/\\?\$/g, '').replace(/,/g, '').replace(/\s*(%|[a-z][a-z .]*)$/i, '').trim();
+  let m = /^(-?\d+)\s+(\d+)\s*\/\s*(\d+)$/.exec(t);
   if (m) return Number(m[1]) + Number(m[2]) / Number(m[3]);
-  m = /^(-?\d*\.?\d+)\/(\d*\.?\d+)$/.exec(t);
+  m = /^(-?\d*\.?\d+)\s*\/\s*(\d*\.?\d+)$/.exec(t);
   if (m) return Number(m[1]) / Number(m[2]);
-  return /^-?\d*\.?\d+$/.test(t) ? Number(t) : null;
+  return /^-?(\d+\.?\d*|\.\d+)$/.test(t) ? Number(t) : null;
 };
 export type CellMark = 'right' | 'wrong' | 'compare';
 /** Is the teacher's entry IM's answer? Numbers match by value (0.4 = 6/15; 16.67 for 16 2/3); anything else is shown to compare. */
 export function markCell(entry: string, imAnswer: string): CellMark {
-  const options = imAnswer.split(/\s+or\s+/);
+  // IM gives alternatives as "6/15 or 0.4"; only split between two answers, not inside words.
+  const options = imAnswer.split(/(?<=[\d)}])\s+or\s+(?=[\\\d$(-])/);
   const n = toNumber(entry);
   if (n !== null && options.some((o) => toNumber(o) !== null)) {
     return options.some((o) => {
       const x = toNumber(o);
-      return x !== null && Math.abs(x - n) <= Math.max(0.006, Math.abs(x) * 0.001);
+      // Within rounding to the hundredth: 16.67 for 16 2/3, never 999 for 1000.
+      return x !== null && Math.abs(x - n) <= 0.006;
     })
       ? 'right'
       : 'wrong';

@@ -22,7 +22,7 @@ import type { ImActivity, Moment, U3Lesson } from '@/lib/u3/types';
 import type { PlanActivity, PlanLesson } from '@/lib/u3/planTypes';
 import type { WidaLevel } from '@/lib/eld/types';
 import { bandForLevel } from '@/lib/eld/types';
-import { LEVELS, TIER_WORDS, levelName, tierOf } from '@/lib/prep/levelTiers';
+import { LEVELS, TIER_WORDS, forTier, levelName, tierOf } from '@/lib/prep/levelTiers';
 import { findRoutine, routineTitle } from '@/lib/u3/routines';
 import { IMLines, MathText, type TableFill } from '@/components/u3/MathText';
 import U3ActivityNotes, { U3RoutineNotes } from '@/components/u3/U3ActivityNotes';
@@ -33,7 +33,11 @@ import p from './plan.module.css';
 
 type View = 'home' | 'step' | 'incl';
 
+/** Bump when the saved shape changes; older saved plans start fresh rather than misfile. */
+const STATE_VERSION = 2;
+
 interface PlanState {
+  v: number;
   view: View;
   step: number;
   /** Which chosen activity Rehearse is on. */
@@ -54,6 +58,7 @@ interface PlanState {
 }
 
 const fresh = (): PlanState => ({
+  v: STATE_VERSION,
   view: 'home',
   step: 0,
   ai: 0,
@@ -96,16 +101,27 @@ const MOMENT_LABEL: Record<Moment['kind'], string> = {
 // DSST's crux routines (requirements D1): MLR 1, 2, 6 and 8.
 const D1_ROUTINES = [1, 2, 6, 8];
 // For a moment the Premo layer didn't write checks for.
-const FALLBACK_CRITERIA = ['Responded to what I saw, not the answer I wanted', 'Left the thinking with the student', 'Asked for the language goal, not just the number'];
+const FALLBACK_CRITERIA = ['Responded to what I saw, not the answer I wanted', 'Left the thinking with the student', 'Asked for the reasoning, not just the number'];
 const SYNTH_CRITERIA: Record<PlanLesson['crux']['synthesis']['routine'], string[]> = {
   'MLR2: Collect and Display': ['Called on work in IM’s order', 'Wrote students’ own words where all can see them', 'Asked the question in the language goal’s form'],
-  'MLR1: Stronger and Clearer Each Time': ['Students wrote a first draft alone', 'Each partner pressed for one more detail', 'Students rewrote using words they heard'],
+  'MLR1: Stronger and Clearer Each Time': ['Had students write a first draft alone', 'Had each partner press for one more detail', 'Had students rewrite using words they heard'],
 };
 
 const SLOT = { 'warm-up': 'Warm-up', activity: 'Activity', optional: 'Optional', 'cool-down': 'Cool-down' } as const;
 
-const listOf = (xs: string[]) => (xs.length < 2 ? xs.join('') : `${xs.slice(0, -1).join(', ')}${xs.length > 2 ? ',' : ''} and ${xs[xs.length - 1]}`);
-const q = (t: string) => `“${t.replace(/^[“"]|[”"]$/g, '')}”`;
+/** "a, b and c": no serial comma, as the lesson content writes lists. */
+const listOf = (xs: string[]) => (xs.length < 2 ? xs.join('') : `${xs.slice(0, -1).join(', ')} and ${xs[xs.length - 1]}`);
+/** A say-line in curly double quotes; quotes inside it become single, so they never double up. */
+const q = (t: string) => `“${t.replace(/^[“"]|[”"]$/g, '').replace(/“/g, '‘').replace(/”/g, '’')}”`;
+/** Quoted terms in a sentence, punctuation inside the closing quotes: “a,” “b” and “c”. */
+const quotedList = (xs: string[]) =>
+  xs.length < 2 ? xs.map((x) => `“${x}”`).join('') : `${xs.slice(0, -1).map((x) => `“${x},”`).join(' ').replace(/,”$/, '”')} and “${xs[xs.length - 1]}”`;
+/** Home language, by tier (levelTiers' rule, in this view's words). */
+const HOME: Record<'lower' | 'higher', string> = {
+  lower: 'They can work it out first in any language they share with a partner.',
+  higher: 'They share in English, and can switch to a shared language if they get stuck.',
+};
+const levelChip = (l: WidaLevel) => `Level ${levelName(l).replace(/^\d+ · /, `${l} · `)}`;
 
 /** Browser storage for one lesson's plan. Missing storage just means no resume. */
 function usePlanState(key: string) {
@@ -113,7 +129,10 @@ function usePlanState(key: string) {
   const [st, setSt] = useState<PlanState>(() => {
     try {
       const saved = JSON.parse(localStorage.getItem(storageKey) ?? 'null');
-      if (saved) return { ...fresh(), ...saved };
+      if (saved?.v === STATE_VERSION) {
+        const x = { ...fresh(), ...saved };
+        return { ...x, step: Math.min(Math.max(0, x.step), STEPS.length - 1) };
+      }
     } catch {
       /* no storage */
     }
@@ -192,6 +211,12 @@ function Frames() {
                   <b>At Level {r.level ?? (r.band === 'emerging' ? 2 : r.band === 'developing' ? 4 : 6)}, also:</b> <MathText>{x.stretch}</MathText>
                 </span>
               )}
+              {'nonverbal' in x && x.nonverbal && (
+                <span className={s.small}>
+                  <b>{r.tier === 'higher' ? TIER_WORDS.higher.nonverbal : r.tier === 'lower' ? TIER_WORDS.lower.nonverbal : 'Without words'}:</b> <MathText>{x.nonverbal}</MathText>
+                </span>
+              )}
+              <span className={cx(s.muted, s.small)}>{r.tier ? HOME[r.tier] : HOME.lower}</span>
               {r.tier && <span className={cx(s.muted, s.small)}>{TIER_WORDS[r.tier].partner}</span>}
             </div>
           );
@@ -229,7 +254,8 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
   }, [toast]);
 
   const go = (i: number) => {
-    update({ view: 'step', step: i, ai: i === 4 ? 0 : st.ai });
+    // The card position is kept, so Resume and Back return to the card the teacher left.
+    update({ view: 'step', step: i });
     window.scrollTo(0, 0);
   };
   const toggle = (field: 'shown' | 'said' | 'ticks' | 'flags', k: string) => update((x) => ({ [field]: { ...x[field], [k]: !x[field][k] } }));
@@ -292,7 +318,9 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
             </li>
           ))}
         </ol>
-        <span className={cx(s.muted, s.small)}>Tap an activity for IM’s notes.</span>
+        <span className={cx(s.muted, s.small)}>
+          <b>Crux:</b> the activity the lesson turns on. You’ll rehearse it in full. Tap any activity for IM’s notes.
+        </span>
       </section>
     </div>
   );
@@ -300,25 +328,25 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
   const stepClo = () => (
     <div className={s.stackLg}>
       <section className={cx(s.card, s.stack)}>
-        <span className={s.eyebrow}>Content language objective</span>
+        <span className={s.eyebrow}>Language goal · DSST’s content language objective</span>
         <p className={s.goal}>
           <MathText>{plan.clo.statement}</MathText>
         </p>
         <dl className={s.kv}>
-          <dt>Function</dt>
-          <dd>{plan.clo.function}</dd>
-          <dt>Form</dt>
+          <dt>Students</dt>
+          <dd>{plan.clo.function.replace(/^./, (x) => x.toUpperCase())}</dd>
+          <dt>Sentence</dt>
           <dd>
             <span className={s.frame}>
               <MathText>{plan.clo.form}</MathText>
             </span>
           </dd>
-          <dt>Precise</dt>
-          <dd>{plan.clo.precise.join(', ')}</dd>
+          <dt>Precise words</dt>
+          <dd>{listOf(plan.clo.precise)}</dd>
           {plan.clo.informal.length > 0 && (
             <>
-              <dt>Fine today</dt>
-              <dd>{plan.clo.informal.join(', ')}</dd>
+              <dt>Everyday words, fine today</dt>
+              <dd>{listOf(plan.clo.informal)}</dd>
             </>
           )}
         </dl>
@@ -339,6 +367,10 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
             IM’s notes ⓘ
           </button>
         </div>
+        <details className={s.more}>
+          <summary>The crux task</summary>
+          <IMLines lines={crux.task.filter((l) => !/^\[image:|Attribution:/.test(l))} />
+        </details>
         <textarea
           id="plan-clo"
           value={st.clo}
@@ -349,7 +381,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
       {st.shown.clo && (
         <section className={cx(s.stack, s.reveal)}>
           <div className={s.flat}>
-            <span className={s.lab}>Premo’s exemplar</span>
+            <span className={s.lab}>A strong sentence</span>
             <p className={p.say}>
               <MathText>{q(plan.clo.exemplar)}</MathText>
             </p>
@@ -360,7 +392,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
               Follow the form
             </Check>
             <Check on={!!st.ticks['clo#terms']} onClick={() => toggle('ticks', 'clo#terms')}>
-              Use {listOf(plan.clo.precise.map((t) => q(t)))} precisely
+              Use {quotedList(plan.clo.precise)} precisely
             </Check>
             <Check on={!!st.ticks['clo#nums']} onClick={() => toggle('ticks', 'clo#nums')}>
               Say it with the task’s own numbers
@@ -376,9 +408,14 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
       <section className={cx(s.card, s.stack)}>
         <span className={s.eyebrow}>Cool-down · {im.coolDown.title}</span>
         <IMLines lines={im.coolDown.task} fill={fill('cool', im.coolDown.response, !!st.shown.cool)} />
-        <p className={cx(s.muted, s.small)}>Fill in the table, write your reasoning, then say it out loud.</p>
+        <p className={cx(s.muted, s.small)}>
+          {(im.coolDown.task ?? []).some((l) => l.includes('|')) ? 'Fill in the table, write your reasoning, then say it out loud.' : 'Write your answer and reasoning, then say it out loud.'}
+        </p>
       </section>
-      <textarea value={st.cool} placeholder="Your reasoning, as a strong student…" onChange={(e) => update({ cool: e.target.value })} />
+      <label htmlFor="plan-cool" className={s.lab}>
+        Your answer, as a strong student
+      </label>
+      <textarea id="plan-cool" value={st.cool} placeholder="Your reasoning…" onChange={(e) => update({ cool: e.target.value })} />
       {st.shown.cool && (
         <section className={cx(s.stack, s.reveal)}>
           <div className={s.flat}>
@@ -409,8 +446,8 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
             type="button"
             className={cx(s.toggle)}
             aria-pressed={on}
-            disabled={isCrux}
-            onClick={() => update((x) => ({ extra: x.extra.includes(a.id) ? x.extra.filter((y) => y !== a.id) : [...x.extra, a.id] }))}
+            aria-disabled={isCrux || undefined}
+            onClick={() => !isCrux && update((x) => ({ extra: x.extra.includes(a.id) ? x.extra.filter((y) => y !== a.id) : [...x.extra, a.id] }))}
           >
             <span className={s.stack} style={{ gap: 2 }}>
               <b>
@@ -431,8 +468,38 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
         );
       })}
       <p className={cx(s.muted, s.small)}>Each activity you add is about {PER_EXTRA} more minutes. The warm-up is never required.</p>
+      {plan.activities
+        .filter((pa) => pa.dependsOn && chosen.includes(pa.id) && !chosen.includes(pa.dependsOn.activityId))
+        .map((pa) => (
+          <p key={pa.id} className={cx(s.flat, s.small)}>
+            <b>
+              {pa.id} uses {pa.dependsOn!.activityId}.
+            </b>{' '}
+            <MathText>{pa.dependsOn!.note}</MathText>
+          </p>
+        ))}
+      {cutsList()}
     </div>
   );
+
+  const cutsList = () =>
+    plan.cuts.length > 0 && (
+      <details className={s.acc}>
+        <summary>
+          <b>If you run short</b>
+          <span className={cx(s.muted, s.small)}>What can go, and what each cut protects</span>
+        </summary>
+        <div className={s.accIn}>
+          <ul className={s.clean}>
+            {plan.cuts.map((c, i) => (
+              <li key={i}>
+                <b>{c.activityId} ·</b> <MathText>{c.note}</MathText>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </details>
+    );
 
   // --------------------------------------------------------------- rehearse
   // One card at a time, the way the reviewed prep rehearses: what you see, say your
@@ -468,8 +535,8 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
             // Photos show only as alt text and credit here; IM's notes keep them.
             see: <IMLines lines={a.task.filter((l) => !/^\[image:|Attribution:/.test(l))} fill={fill(`task:${a.id}`, a.response, !!st.said[`math:${a.id}`])} />,
             seeAs: 'task',
-            prompt: 'Solve it, then say the ways students will solve it and what you’ll watch for.',
-            criteria: ['Solved the task myself', 'Named more than one way students might solve it', 'Said what I’ll watch and listen for while they work'],
+            prompt: 'Solve it the way a strong student would. Then say where you think students will get stuck.',
+            criteria: ['Solved the task myself', 'Named one place students will get stuck', 'Know what I’ll listen for while they work'],
             model: (
               <>
                 <div className={s.flat}>
@@ -488,10 +555,22 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
                     </details>
                   )}
                 </div>
+                {pa.barriers.length > 0 && (
+                  <div className={s.avoid}>
+                    <span className={s.lab}>Barriers · what can block the language goal</span>
+                    <ul className={s.clean}>
+                      {pa.barriers.map((x, i) => (
+                        <li key={i}>
+                          <MathText>{x}</MathText>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
                 <div className={s.avoid}>
-                  <span className={s.lab}>Barriers and misconceptions</span>
+                  <span className={s.lab}>Misconceptions</span>
                   <ul className={s.clean}>
-                    {[...pa.barriers, ...pa.misconceptions].map((x, i) => (
+                    {pa.misconceptions.map((x, i) => (
                       <li key={i}>
                         <MathText>{x}</MathText>
                       </li>
@@ -499,7 +578,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
                   </ul>
                 </div>
                 <div className={s.respond}>
-                  <span className={s.lab}>Back-pocket questions</span>
+                  <span className={s.lab}>Back-pocket questions · ask if they’re stuck</span>
                   <ul className={s.clean}>
                     {pa.backPocket.map((x, i) => (
                       <li key={i}>
@@ -522,7 +601,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
               label: 'Launch',
               routine: 'MLR6: Three Reads',
               see: 'The task is up with its questions covered. Students are waiting to start.',
-              prompt: 'Run the three reads out loud.',
+              prompt: 'Run Three Reads out loud: read the task three times, each time for something different.',
               criteria: ['Read 1: the situation, with no numbers', 'Read 2: the quantities, with their units', 'Read 3: the question, without solving it'],
               model: (
                 <>
@@ -546,13 +625,13 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
             ? {
                 label: 'Release with a frame',
                 routine: 'MLR8: Discussion Supports',
-                see: 'The three reads are done. Students are about to start work.',
-                prompt: 'Say how you release them: the language they must use, and the frame.',
+                see: 'Three Reads are done. Students are about to start work.',
+                prompt: 'Send them to work: say the language they must use, and give the frame (a sentence starter with blanks).',
                 criteria: ['Named the language they must use', 'Offered the frame the way my students’ levels need it', 'Set up a moment for them to say it to a partner'],
                 model: (
                   <>
                     <div className={s.respond}>
-                      <span className={s.lab}>Respond</span>
+                      <span className={s.lab}>Say</span>
                       <p style={{ fontWeight: 600 }}>
                         <MathText>{q(plan.crux.release.say)}</MathText>
                       </p>
@@ -577,10 +656,10 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
               }
             : c.kind === 'synthesis'
               ? {
-                  label: 'Synthesis',
+                  label: 'Activity synthesis',
                   routine: synthRoutine,
-                  see: 'Work time is over. Pairs have answers and are ready to share.',
-                  prompt: `Run the synthesis with ${routineTitle(synthRoutine)}: who shares, what students say, and your question.`,
+                  see: 'Quiet think time and partner work are over. Pairs have answers and are ready to share.',
+                  prompt: `Close the activity with ${routineTitle(synthRoutine)}: who shares, what students say, and your question.`,
                   criteria: SYNTH_CRITERIA[synthRoutine],
                   model: (
                     <>
@@ -612,7 +691,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
                   routine: m?.routine && D1_ROUTINES.includes(findRoutine(m.routine)?.mlr ?? 0) ? m.routine : undefined,
                   see: <MathText>{m?.see ?? ''}</MathText>,
                   prompt: 'What do you do or say next?',
-                  criteria: m?.criteria?.length ? m.criteria : FALLBACK_CRITERIA,
+                  criteria: m?.criteria?.length ? m.criteria : (pa.momentCriteria?.[m?.id ?? ''] ?? FALLBACK_CRITERIA),
                   model: m ? (
                     <>
                       <div className={s.flat}>
@@ -630,7 +709,20 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
                                   <MathText>{q(m.byBand![bandForLevel(l)].say)}</MathText>
                                 </b>
                                 {levels.length > 0 && tierOf(l) === 'higher' && (
-                                  <span className={cx(s.muted, s.small)}>Ask first; hold the frame back unless they stall.</span>
+                                  <span className={cx(s.muted, s.small)}>Ask first. {TIER_WORDS.higher.frame}.</span>
+                                )}
+                                {m.byBand![bandForLevel(l)].nonverbal && (
+                                  <span className={s.small}>
+                                    <b>{levels.length ? TIER_WORDS[tierOf(l)].nonverbal : 'Without words'}:</b> <MathText>{m.byBand![bandForLevel(l)].nonverbal!}</MathText>
+                                  </span>
+                                )}
+                                {m.byBand![bandForLevel(l)].move && (
+                                  <details className={s.more}>
+                                    <summary>The full move</summary>
+                                    <span className={s.small}>
+                                      <MathText>{levels.length ? forTier(m.byBand![bandForLevel(l)].move, tierOf(l)) : m.byBand![bandForLevel(l)].move}</MathText>
+                                    </span>
+                                  </details>
                                 )}
                               </div>
                             ))}
@@ -658,7 +750,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
     const said = !!st.said[c.id];
     const lang = c.kind === 'launch' || c.kind === 'release' || c.kind === 'synthesis' || m?.kind === 'language';
     return (
-      <article className={cx(s.scard, isCrux && s.scardCrux)} aria-live="polite">
+      <article className={cx(s.scard, isCrux && s.scardCrux)}>
         <div className={s.row}>
           <span className={s.pill}>
             {a.id} {a.title}
@@ -672,6 +764,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
           <span className={s.lab}>{spec.seeAs === 'task' ? 'The task students get' : 'You see'}</span>
           <div className={spec.seeAs === 'task' ? s.flat : s.notice}>{spec.see}</div>
         </div>
+        <div aria-live="polite">
         {!said ? (
           <div className={s.sayit}>
             {Icon.mic}
@@ -699,10 +792,11 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
             )}
             <button type="button" className={s.flagbtn} aria-pressed={!!st.flags[c.id]} onClick={() => toggle('flags', c.id)}>
               {Icon.flag}
-              {st.flags[c.id] ? 'Flagged for coach' : 'Flag as hard'}
+              {st.flags[c.id] ? 'Marked as hard' : 'Mark as hard'}
             </button>
           </div>
         )}
+        </div>
       </article>
     );
   };
@@ -713,14 +807,14 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
     const saidCount = cards.filter((c) => st.said[c.id]).length;
     return (
       <div className={s.stack}>
-        <div className={s.dotsnav} role="group" aria-label="Moments">
+        <div className={s.dotsnav} role="group" aria-label="Rehearsal cards">
           {cards.map((c, j) => (
             <button
               key={c.id}
               type="button"
               className={cx(st.said[c.id] && s.said, st.flags[c.id] && s.flagged)}
               aria-current={j === i}
-              aria-label={`Moment ${j + 1}`}
+              aria-label={`Card ${j + 1}`}
               onClick={() => update({ ai: j })}
             >
               {j + 1}
@@ -748,7 +842,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
           <b>Point to:</b> <MathText>{plan.lessonSynthesis.pointTo}</MathText>
         </span>
         <Check on={!!st.said['lsynth']} onClick={() => toggle('said', 'lsynth')}>
-          I said the ideas out loud, pointing to the chart
+          I said the ideas out loud, pointing to the display
         </Check>
         <details className={s.more}>
           <summary>IM’s lesson synthesis</summary>
@@ -770,11 +864,32 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
     </div>
   );
 
+  const CARD_LABEL = { math: 'Do the math', launch: 'Launch (Three Reads)', release: 'Release with a frame', synthesis: 'Activity synthesis', moment: '' } as const;
+  /** The cool-down cells the teacher filled, as "header (row n): value". */
+  const coolCells = () => {
+    const tables = (im.coolDown.task ?? []).filter((l) => l.includes('|'));
+    const header = (tables[0] ?? '').replace(/^\|\s?/, '').split(/\s*\|\s*/);
+    return Object.entries(st.cells)
+      .filter(([k, v]) => k.startsWith('cool:') && v.trim())
+      .map(([k, v]) => {
+        const [, , row, col] = k.split(':');
+        return `${header[Number(col)] || 'value'} (row ${Number(row) + 1}): ${v.trim()}`;
+      });
+  };
+  const LOOK_FORS = [
+    { look: 'The language goal is said, and the teacher knows what it sounds like', sounds: plan.clo.exemplar },
+    { look: `Three Reads launches ${cruxId}: situation, quantities, then the question`, sounds: plan.crux.threeReads[0]?.say ?? '' },
+    { look: 'The frame is in use at release, with the language named', sounds: plan.crux.release.successCriteria },
+    { look: 'The teacher listens for students’ language, not only their answers', sounds: plan.crux.release.talkMoments[0] ?? '' },
+    { look: `Students say the language goal at least once in the ${routineTitle(plan.crux.synthesis.routine)} synthesis`, sounds: plan.crux.synthesis.sounds },
+  ];
   const record = () => {
-    const flagged = cards.filter((c) => st.flags[c.id]).map((c) => `- ${c.activityId}: ${c.momentId ? moment(c.momentId)?.see : c.kind === 'math' ? 'doing the math' : c.kind}`);
+    const flagged = cards
+      .filter((c) => st.flags[c.id])
+      .map((c) => `- ${c.activityId} ${c.momentId ? moment(c.momentId)?.see : CARD_LABEL[c.kind]}`);
     return [
       `# Lesson ${im.code} ${im.title}: planning record`,
-      `${new Date().toLocaleDateString()} · Grade 6 Unit 3 · Activities rehearsed: ${chosen.join(', ')}`,
+      `${new Date().toLocaleDateString('en-US')} · Grade 6 · Unit 3 · Activities rehearsed: ${chosen.join(', ')} · WIDA levels: ${levels.length ? levels.join(', ') : 'not set'}`,
       ``,
       `## Language goal`,
       plan.clo.statement,
@@ -782,22 +897,18 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
       `My sentence: ${st.clo || '(not written)'}`,
       ``,
       `## Cool-down, as a student`,
-      ...(filled('cool') ? [`Table: ${Object.entries(st.cells).filter(([k, v]) => k.startsWith('cool:') && v.trim()).map(([, v]) => v.trim()).join(', ')}`] : []),
+      ...coolCells(),
       st.cool || '(no reasoning written)',
       ``,
       `## Lesson synthesis`,
       ...plan.lessonSynthesis.ideas.map((x) => `- ${x}`),
       `Quick check: ${q(plan.lessonSynthesis.check.question)}`,
       ``,
-      `## Flagged as hard`,
+      `## Marked as hard`,
       ...(flagged.length ? flagged : ['- None']),
       ``,
       `## Coach look-fors`,
-      `- The language goal and what it sounds like: ${q(plan.clo.exemplar)}`,
-      `- Three Reads at the launch of ${cruxId}, and ${routineTitle(plan.crux.synthesis.routine)} in its synthesis`,
-      `- The frame in use at release, with the success criteria named: ${plan.crux.release.successCriteria}`,
-      `- The teacher monitoring students’ language, not only their answers`,
-      `- Students saying the language goal in the synthesis at least once`,
+      ...LOOK_FORS.map((x) => `- ${x.look}. Sounds like: ${q(x.sounds)}`),
     ]
       .join('\n')
       // Plain text for a planning folder: fractions as a/b, mixed numbers as 16 2/3.
@@ -809,30 +920,56 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
   const stepCarry = () => (
     <div className={s.stackLg}>
       <section className={s.stack}>
-        <h3>The exemplar to post</h3>
+        <h3>The language goal to post</h3>
+        <p className={cx(s.muted, s.small)}>
+          In students’ words, with an example that isn’t tomorrow’s answer. Print it, or put it on the board.
+        </p>
         <div className={p.poster}>
-          <span className={s.eyebrow}>
-            Lesson {im.code} · Today’s language goal
-          </span>
+          <span className={s.eyebrow}>Lesson {im.code} · Language goal</span>
           <p className={p.posterBig}>
-            <MathText>{plan.clo.statement}</MathText>
+            <MathText>{plan.clo.posted.goal}</MathText>
           </p>
           <span className={s.lab}>It sounds like</span>
           <p className={p.posterBig}>
-            <MathText>{q(plan.clo.exemplar)}</MathText>
+            <MathText>{q(plan.clo.posted.sentence)}</MathText>
           </p>
-          <span className={s.frame}>
+          <span className={cx(s.frame, p.posterFrame)}>
             <MathText>{plan.clo.form}</MathText>
           </span>
         </div>
         <button type="button" className={cx(s.btn, s.sm)} onClick={() => window.print()}>
-          Print the exemplar
+          Print it
         </button>
+      </section>
+      <section className={cx(s.card, s.stack)}>
+        <h3>What your coach will look for</h3>
+        <ul className={s.clean}>
+          {LOOK_FORS.map((x, i) => (
+            <li key={i}>
+              {x.look}.{' '}
+              <span className={s.muted}>
+                Sounds like: <MathText>{q(x.sounds)}</MathText>
+              </span>
+            </li>
+          ))}
+        </ul>
       </section>
       <section className={cx(s.card, s.stack)}>
         <h3>Your planning record</h3>
         <p className={cx(s.muted, s.small)}>For your lesson planning folder and your coach. It includes the coach’s look-fors.</p>
         <div className={s.duo}>
+          <button
+            type="button"
+            className={cx(s.btn, s.pri)}
+            onClick={() => {
+              const text = record();
+              // On a phone, the share sheet sends it to Notes, Mail, Drive or Messages; elsewhere, copy.
+              if (navigator.share) navigator.share({ title: `Lesson ${im.code} planning record`, text }).catch(() => undefined);
+              else navigator.clipboard?.writeText(text).then(() => setToast('Copied'), () => setToast('Couldn’t copy'));
+            }}
+          >
+            Share
+          </button>
           <button
             type="button"
             className={s.btn}
@@ -849,12 +986,15 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
             type="button"
             className={s.btn}
             onClick={() => {
-              const url = URL.createObjectURL(new Blob([record()], { type: 'text/markdown' }));
+              const url = URL.createObjectURL(new Blob([record()], { type: 'text/plain' }));
               const el = document.createElement('a');
               el.href = url;
-              el.download = `plan-${im.code}-${new Date().toISOString().slice(0, 10)}.md`;
+              el.download = `plan-${im.code}-${new Date().toISOString().slice(0, 10)}.txt`;
+              document.body.appendChild(el);
               el.click();
-              URL.revokeObjectURL(url);
+              el.remove();
+              // Revoking at once can cancel the download in Safari; let it start first.
+              setTimeout(() => URL.revokeObjectURL(url), 10000);
             }}
           >
             Download
@@ -869,22 +1009,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
           </div>
         </details>
       </section>
-      {plan.cuts.length > 0 && (
-        <details className={s.acc}>
-          <summary>
-            <b>If you run short</b>
-          </summary>
-          <div className={s.accIn}>
-            <ul className={s.clean}>
-              {plan.cuts.map((c, i) => (
-                <li key={i}>
-                  <b>{c.activityId}</b> <MathText>{c.note}</MathText>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </details>
-      )}
+      {cutsList()}
       {plan.beforeClass.length > 0 && (
         <section className={cx(s.card, s.stack)}>
           <h3>Before class tomorrow</h3>
@@ -910,14 +1035,15 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
         {label}
       </button>
     );
-    if (k === 'clo' && !st.shown.clo) return btn('Show Premo’s exemplar', () => toggle('shown', 'clo'), !st.clo.trim());
-    if (k === 'cool' && !st.shown.cool) return btn('Check my answer', () => toggle('shown', 'cool'), !st.cool.trim() && !filled('cool'));
+    // Nothing is locked (R3.4): writing first is the point, but a teacher can look first.
+    if (k === 'clo' && !st.shown.clo) return btn(st.clo.trim() ? 'Compare with a strong sentence' : 'Show a strong sentence', () => toggle('shown', 'clo'));
+    if (k === 'cool' && !st.shown.cool) return btn(st.cool.trim() || filled('cool') ? 'Check my answer' : 'Show IM’s answer', () => toggle('shown', 'cool'));
     if (k === 'rehearse' && cards.length) {
       const i = Math.min(st.ai, cards.length - 1);
       const c = cards[i];
       if (!st.said[c.id]) return btn('I said it', () => toggle('said', c.id));
       if (i < cards.length - 1)
-        return btn('Next moment →', () => {
+        return btn('Next card →', () => {
           update({ ai: i + 1 });
           window.scrollTo(0, 0);
         });
@@ -950,12 +1076,22 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
           <div className={s.meta}>
             <span>About {total} min</span>
             <span>{STEPS.length} steps</span>
+            {plan.status === 'draft' && <span>Draft · not yet reviewed by DSST</span>}
           </div>
+          {/* Any step can come first (R3.4): experienced teachers often start with the cool-down. */}
           <div className={s.ministeps} style={{ gridTemplateColumns: `repeat(${STEPS.length}, 1fr)` }}>
             {STEPS.map((x, i) => (
-              <span key={x.key} className={st.started && i <= st.step ? undefined : s.todo}>
+              <button
+                key={x.key}
+                type="button"
+                className={cx(p.ministep, st.started && i <= st.step ? undefined : s.todo)}
+                onClick={() => {
+                  if (!st.started) update({ started: Date.now() });
+                  go(i);
+                }}
+              >
                 {x.short}
-              </span>
+              </button>
             ))}
           </div>
           <button
@@ -973,8 +1109,11 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
         <section className={s.sect} aria-label="Class ELD profile">
           <header className={s.sectHead}>
             <h3>Class ELD profile</h3>
-            <span className={cx(s.muted, s.small)}>Sets the frames at the crux</span>
+            <span className={cx(s.muted, s.small)}>Set once · sets the frames at the crux</span>
           </header>
+          <p className={cx(s.muted, s.small)}>
+            The WIDA levels of the multilingual learners in this class. Supports are written for Levels 1–2, 3–4 and 5–6; at Levels 2, 4 and 6 the frame is held back and students take one extra step.
+          </p>
           <div className={s.chips}>
             {LEVELS.map((l) => (
               <button
@@ -984,7 +1123,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
                 aria-pressed={levels.includes(l)}
                 onClick={() => update((x) => ({ levels: (x.levels.includes(l) ? x.levels.filter((y) => y !== l) : [...x.levels, l]).sort() }))}
               >
-                WIDA {levelName(l)}
+                {levelChip(l)}
               </button>
             ))}
           </div>
@@ -1064,7 +1203,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
           <span className={s.eyebrow}>
             {crux.id} {crux.title} · Crux
           </span>
-          <span style={{ fontSize: 13, fontWeight: 700, opacity: 0.9 }}>LANGUAGE GOAL</span>
+          <span className={s.eyebrow}>Language goal</span>
           <p className={s.nowSay} style={{ fontSize: 19 }}>
             <MathText>{plan.clo.statement}</MathText>
           </p>
@@ -1093,9 +1232,24 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
             <MathText>{q(plan.crux.synthesis.prompt)}</MathText>
           </span>
           <span className={s.mvIf}>
-            Listen for: <MathText>{q(plan.clo.exemplar)}</MathText>
+            Listen for: <MathText>{q(plan.crux.synthesis.sounds)}</MathText>
           </span>
         </div>
+        {/* When it goes wrong: the crux moments you rehearsed, one line each. */}
+        {(actPlan(cruxId)?.momentIds ?? [])
+          .map(moment)
+          .filter((m): m is Moment => !!m && !!(m.say || m.byBand))
+          .map((m) => (
+            <div key={m.id} className={s.mv}>
+              <span className={s.mvIf}>
+                If: <MathText>{m.see}</MathText>
+              </span>
+              <span className={s.mvDo}>
+                <MathText>{q(m.say ?? m.byBand![bandForLevel(levels[0] ?? 3)].say)}</MathText>
+              </span>
+            </div>
+          ))}
+        {cutsList()}
       </main>
     </>
   );

@@ -159,7 +159,7 @@ Unchanged: IM's text verbatim with live notes, the cool-down, the crux callout, 
 
 | # | Decision | Options | Who |
 |---|---|---|---|
-| D1 | **Which MLRs at the crux.** ~~Open~~ **Decided 2026-11-02 (Robert): Heather's direction for now.** DSST's priority routines, not IM's per-activity placement: Three Reads (MLR 6) at the launch, a frame (MLR 8) always, and Stronger and Clearer Each Time (MLR 1) or Collect and Display (MLR 2) in the synthesis. Routines appear first, at the moment they happen. | Heather to confirm the final 2–3 |
+| D1 | **Which MLRs at the crux.** ~~Open~~ **Decided 2026-11-02 (Robert): Heather's direction for now.** DSST's priority routines, not IM's per-activity placement: Three Reads (MLR 6) at the launch, a frame (MLR 8) always, and Stronger and Clearer Each Time (MLR 1) or Collect and Display (MLR 2) in the synthesis. Routines appear first, at the moment they happen. **Amended 2026-11-03 (Robert), option 3:** where IM's own crux routine does a move that matters, that move is built into DSST's routine. In 6.3.6, Stronger and Clearer's first round starts from IM's flawed explanation (from Clarify, Critique, Correct). In 6.3.7, Collect and Display ends with students connecting the 1-hour row to × 6 across (from Compare and Connect). | Heather to confirm the final 2–3 |
 | D2 | **Who writes the CLO's form and function.** | Premo drafts from IM's goal and DSST reviews, or DSST supplies them per lesson | Robert, with DSST |
 | D3 | **Unit at a Glance.** | Get DSST's file for Unit 3 so vocabulary matches it, or use IM's terminology until then | Robert to request |
 | D4 | **Posted exemplar format** | Printable page, image to project, or both | Heather |
@@ -169,6 +169,20 @@ Unchanged: IM's text verbatim with live notes, the cool-down, the crux callout, 
 | D7 | **Non-crux activities** | Math, misconceptions and moves only, or also a frame | Josh's view: math only |
 
 ---
+
+## 5a. Rules added after the persona review (2026-11-03)
+
+These come from reviews by four personas: math and multilingual learners, a second-year teacher, test and quality, and a copy editor.
+
+- **Fewer words, never less math.** At Levels 1–2 and 3–4 the frame keeps the lesson's comparison or reason. The checker requires words and at least two blanks.
+- **Every frame row shows the home-language line and a without-words way in**, under the level-tier rule.
+- **Vocabulary in use.** The exemplar uses every precise term, and the checker enforces it.
+- **What gets posted.** The language goal in students' words, plus a parallel example, not the crux answer.
+- **Collect and Display.** The teacher scribes students' own words and adds the precise term beside them, never revoices them, and students do the connecting.
+- **Every rehearsed moment has its own three checks.**
+- **Dependencies are named.** When an activity reuses an earlier one, the plan says so, and Choose activities warns if the earlier one isn't chosen.
+- **Nothing is locked.** Any step can be opened from the home screen, and the exemplar and IM's answer can be shown without typing first (R3.4).
+- **The draft status shows on the home screen.**
 
 ## 6. Out of scope for this update
 

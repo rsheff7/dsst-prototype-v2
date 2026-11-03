@@ -32,6 +32,10 @@ export interface PlanActivity {
   /** d. How students work, and what to monitor and track. */
   grouping: string;
   monitor: string;
+  /** Checks for a moment whose Premo layer has none: three short things a good response does, first person. */
+  momentCriteria?: Record<string, string[]>;
+  /** When this activity leans on an earlier one the teacher may not have chosen (e.g. 7.3 reuses 7.2's table). */
+  dependsOn?: { activityId: string; note: string };
 }
 
 export interface PlanCrux {
@@ -49,7 +53,16 @@ export interface PlanCrux {
      * The frame by band, and the extra step at the band's higher level. Shown under the
      * level-tier rule (src/lib/prep/levelTiers.ts) for the levels the teacher picks.
      */
-    byBand: Record<ProficiencyBand, { frame: string; stretch: string }>;
+    byBand: Record<
+      ProficiencyBand,
+      {
+        /** Keeps the lesson's comparison or reason at every level; fewer words, never less math. */
+        frame: string;
+        stretch: string;
+        /** A way in without words for this task (point, gesture, show on the table). */
+        nonverbal: string;
+      }
+    >;
   };
   /** g. Synthesize with MLR 1 or MLR 2. */
   synthesis: {
@@ -86,6 +99,11 @@ export interface PlanLesson {
     exemplar: string;
     /** The cool-down look-for that checks the CLO. */
     lookFor: string;
+    /**
+     * What goes on the wall: the goal in students' words ("We will…") and a parallel
+     * example in the CLO's form with new numbers, so the poster doesn't give away the crux.
+     */
+    posted: { goal: string; sentence: string };
   };
   activities: PlanActivity[];
   crux: PlanCrux;
