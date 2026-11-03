@@ -770,7 +770,6 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
             {Icon.speak}
             <b>Say your move out loud.</b>
             {spec.prompt}
-            <span className={cx(s.muted, s.small)}>Just to yourself: nothing is recorded.</span>
           </div>
         ) : (
           <div className={cx(s.stack, s.reveal)}>
