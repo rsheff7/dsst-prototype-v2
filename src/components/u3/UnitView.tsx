@@ -1,0 +1,130 @@
+'use client';
+
+import Link from 'next/link';
+import { UNIT } from '@/lib/u3/content';
+import { IMLines, MathText, noteFor } from '@/components/u3/MathText';
+import s from '@/components/u3/u3.module.css';
+import { ImCredit, PilotBanner } from '@/components/u3/U3Notice';
+
+const USE_LABEL: Record<string, string> = { interpret: 'Interpret', explain: 'Explain', justify: 'Justify' };
+
+/**
+ * Unit 3 at a glance: where each lesson sits, what to check before the unit,
+ * and how the language grows. IM's words throughout, as IM wrote them.
+ * Shared by the reviewed prep (/u3) and the planning view (/plan): only where a
+ * built lesson links, and what its link says, differ.
+ */
+export default function UnitView({ lessons, href, go }: { lessons: string[]; href: (code: string) => string; go: string }) {
+  const built = new Set(lessons);
+  const builtTerms = lessons.map((c) => [c, UNIT.terminology[c]] as const).filter(([, t]) => t);
+  return (
+    <main className={s.unit}>
+      <PilotBanner />
+      <header style={{ display: 'grid', gap: 6 }}>
+        <span className={s.eyebrow}>Grade 6 · Unit 3 · IM 6–8 Math</span>
+        <h1>{UNIT.title}</h1>
+        <p className={s.muted}>
+          {lessons.length} of {Object.keys(UNIT.lessonTitles).length} lessons built so far. Each opens a prep for the night before.
+        </p>
+      </header>
+
+      {UNIT.sections.map((sec) => (
+        <section key={sec.title} className={s.section}>
+          <h2>{sec.title}</h2>
+          {sec.lessons.map((c) =>
+            built.has(c) ? (
+              <Link key={c} href={href(c)} className={s.lesson}>
+                <span className={s.code}>{c}</span>
+                <span>{UNIT.lessonTitles[c]}</span>
+                <span className={s.go}>{go}</span>
+              </Link>
+            ) : (
+              <div key={c} className={`${s.lesson} ${s.lessonOff}`}>
+                <span className={s.code}>{c}</span>
+                <span>{UNIT.lessonTitles[c]}</span>
+                <span className={s.muted} style={{ fontSize: 12 }}>
+                  Not built yet
+                </span>
+              </div>
+            ),
+          )}
+        </section>
+      ))}
+
+      <section className={s.card}>
+        <h2>Before the unit</h2>
+        <p className={s.muted}>
+          IM’s Check Your Readiness is a short pre-test to give before the unit starts. These are its items that point to the
+          lessons built here, with what IM says to do if most students struggle.
+        </p>
+        {UNIT.readinessCheck.map((r) => (
+          <details key={r.item}>
+            <summary>
+              Item {r.item} · first needed in {r.firstIn}
+            </summary>
+            <div style={{ display: 'grid', gap: 8, marginTop: 8 }}>
+              {r.task.map((t, i) => (
+                <p key={i}>
+                  <MathText>{t}</MathText>
+                </p>
+              ))}
+              {r.note.map((n, i) => (
+                <p key={i} className={s.muted}>
+                  <MathText>{n}</MathText>
+                </p>
+              ))}
+              <p>
+                <b>If most students struggle:</b> <MathText>{r.move.replace(/^If most students struggle with this item, /, '')}</MathText>
+              </p>
+            </div>
+          </details>
+        ))}
+      </section>
+
+      <section className={s.card}>
+        <h2>How the language grows</h2>
+        <p className={s.muted}>
+          What IM expects students to do with language across the unit (the lessons not built yet are grayed), and the new
+          words in each built lesson: words students should say or write, and words they only need to understand.
+        </p>
+        {UNIT.languageProgression.map((u) => (
+          <div key={u.use}>
+            <b>{USE_LABEL[u.use] ?? u.use}</b>
+            <ul style={{ margin: '4px 0 0', paddingLeft: 18 }}>
+              {u.items.map((i) => (
+                <li key={i.text} className={i.lessons.some((c) => built.has(c)) ? undefined : s.muted}>
+                  {i.text}
+                  {noteFor(i.text) && <span className={s.correction}> Note: {noteFor(i.text)}</span>}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+        {builtTerms.map(([c, t]) => (
+          <div key={c} style={{ display: 'grid', gap: 4 }}>
+            <span className={s.code}>{c}</span>
+            <div className={s.chips}>
+              {t.productive.length + t.receptive.length === 0 && <span className={s.muted}>No new words.</span>}
+              {t.productive.map((w) => (
+                <span key={w} className={`${s.chip} ${s.chipProduce}`}>
+                  say it: {w}
+                </span>
+              ))}
+              {t.receptive.map((w) => (
+                <span key={w} className={s.chip}>
+                  understand it: {w}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </section>
+
+      <details className={s.card}>
+        <summary>IM’s unit narrative</summary>
+        <IMLines lines={UNIT.narrative} />
+      </details>
+      <ImCredit />
+    </main>
+  );
+}
