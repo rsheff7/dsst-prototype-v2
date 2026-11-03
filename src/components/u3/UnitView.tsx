@@ -14,9 +14,59 @@ const USE_LABEL: Record<string, string> = { interpret: 'Interpret', explain: 'Ex
  * Shared by the reviewed prep (/u3) and the planning view (/plan): only where a
  * built lesson links, and what its link says, differ.
  */
-export default function UnitView({ lessons, href, go }: { lessons: string[]; href: (code: string) => string; go: string }) {
+export default function UnitView({
+  lessons,
+  href,
+  go,
+  foldLanguage = false,
+}: {
+  lessons: string[];
+  href: (code: string) => string;
+  go: string;
+  /** Show "How the language grows" as a closed accordion (the planning view). */
+  foldLanguage?: boolean;
+}) {
   const built = new Set(lessons);
   const builtTerms = lessons.map((c) => [c, UNIT.terminology[c]] as const).filter(([, t]) => t);
+  const languageGrows = (
+    <>
+        <p className={s.muted}>
+          What IM expects students to do with language across the unit (the lessons not built yet are grayed), and the new
+          words in each built lesson: words students should say or write, and words they only need to understand.
+        </p>
+        {UNIT.languageProgression.map((u) => (
+          <div key={u.use}>
+            <b>{USE_LABEL[u.use] ?? u.use}</b>
+            <ul style={{ margin: '4px 0 0', paddingLeft: 18 }}>
+              {u.items.map((i) => (
+                <li key={i.text} className={i.lessons.some((c) => built.has(c)) ? undefined : s.muted}>
+                  {i.text}
+                  {noteFor(i.text) && <span className={s.correction}> Note: {noteFor(i.text)}</span>}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+        {builtTerms.map(([c, t]) => (
+          <div key={c} style={{ display: 'grid', gap: 4 }}>
+            <span className={s.code}>{c}</span>
+            <div className={s.chips}>
+              {t.productive.length + t.receptive.length === 0 && <span className={s.muted}>No new words.</span>}
+              {t.productive.map((w) => (
+                <span key={w} className={`${s.chip} ${s.chipProduce}`}>
+                  say it: {w}
+                </span>
+              ))}
+              {t.receptive.map((w) => (
+                <span key={w} className={s.chip}>
+                  understand it: {w}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+    </>
+  );
   return (
     <main className={s.unit}>
       <PilotBanner />
@@ -81,44 +131,19 @@ export default function UnitView({ lessons, href, go }: { lessons: string[]; hre
         ))}
       </section>
 
-      <section className={s.card}>
-        <h2>How the language grows</h2>
-        <p className={s.muted}>
-          What IM expects students to do with language across the unit (the lessons not built yet are grayed), and the new
-          words in each built lesson: words students should say or write, and words they only need to understand.
-        </p>
-        {UNIT.languageProgression.map((u) => (
-          <div key={u.use}>
-            <b>{USE_LABEL[u.use] ?? u.use}</b>
-            <ul style={{ margin: '4px 0 0', paddingLeft: 18 }}>
-              {u.items.map((i) => (
-                <li key={i.text} className={i.lessons.some((c) => built.has(c)) ? undefined : s.muted}>
-                  {i.text}
-                  {noteFor(i.text) && <span className={s.correction}> Note: {noteFor(i.text)}</span>}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-        {builtTerms.map(([c, t]) => (
-          <div key={c} style={{ display: 'grid', gap: 4 }}>
-            <span className={s.code}>{c}</span>
-            <div className={s.chips}>
-              {t.productive.length + t.receptive.length === 0 && <span className={s.muted}>No new words.</span>}
-              {t.productive.map((w) => (
-                <span key={w} className={`${s.chip} ${s.chipProduce}`}>
-                  say it: {w}
-                </span>
-              ))}
-              {t.receptive.map((w) => (
-                <span key={w} className={s.chip}>
-                  understand it: {w}
-                </span>
-              ))}
-            </div>
-          </div>
-        ))}
-      </section>
+      {foldLanguage ? (
+        <details className={s.card}>
+          <summary>
+            <h2 style={{ display: 'inline' }}>How the language grows</h2>
+          </summary>
+          {languageGrows}
+        </details>
+      ) : (
+        <section className={s.card}>
+          <h2>How the language grows</h2>
+          {languageGrows}
+        </section>
+      )}
 
       <details className={s.card}>
         <summary>IM’s unit narrative</summary>

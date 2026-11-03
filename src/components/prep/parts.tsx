@@ -46,6 +46,8 @@ export const Icon = {
     </>,
   ),
   flag: svg(<path d="M5 21V4h11l-2 4 2 4H5" />),
+  /** A speech bubble: say it out loud. Not a microphone, which reads as "this records". */
+  speak: svg(<path d="M4 5h16v11H9l-5 4z" />),
   mic: svg(
     <>
       <rect x="9" y="3" width="6" height="11" rx="3" />
