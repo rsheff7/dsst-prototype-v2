@@ -1,0 +1,222 @@
+{
+ "status": "draft",
+ "reviewNotes": [
+  "No person has reviewed this file.",
+  "Story and previous: from IM’s lesson narrative, its student summary (speed and pace are reciprocals) and Lesson 7’s plan (equivalent ratios share one unit rate; multiply or divide by it to go across a table). The rates section is Lessons 5–9; Lesson 9 is Solving Rate Problems.",
+  "CLO: imGoal is IM goal 1, copied verbatim; it is the only goal that names a mode, and the mode is “orally” only, so the statement says “orally.” IM’s cool-down still asks students to “Explain or show your reasoning,” so the look-for checks the written explanation too. Function is “explain,” from IM’s goal; unit.json’s language progression lists “interpret” for Lesson 8 (situations involving constant speed), which fits IM goal 2 and the Three Reads launch. A reviewer may want both named.",
+  "CLO form and precise terms: unit.json makes “speed” productive and “pace” receptive today, so “speed” and “per” are precise and “pace” is listed as informal (students should recognize it, not yet be held to it). “Closer” and “the gap” are informal words from Premo’s cruxLanguage and the language pattern “The far between them gets small.” Check whether “distance apart” should be precise: it is IM’s phrase in the task and table.",
+  "Exemplar numbers checked against IM’s 8.2 response: 3 + 3.4 = 6.4 miles per hour; 24 ÷ 6.4 = 3.75 hours = 3 hours 45 minutes, so 11:45 a.m. IM gets the meeting time from the gap “decreasing by 6.4 miles each hour,” so the exemplar uses that reasoning; it does not use IM’s table rows.",
+  "Synthesis sounds uses IM’s alternative answer to question 5: 24 ÷ 2.5 = 9.6, 9.6 − 3.4 = 6.2 miles per hour. Table rows checked: 24 − 3 − 3.4 = 17.6, then 11.2 and 4.8. Other 8.2 numbers checked: 3.4 × 2.5 = 8.5, 24 − 8.5 = 15.5, 15.5 ÷ 2.5 = 6.2.",
+  "Look-for numbers checked against IM’s cool-down: 10 ÷ 6 = \\(\\frac{5}{3}\\) feet per second, 45 × \\(\\frac{5}{3}\\) = 75 feet; 6 ÷ 10 = 0.6 seconds per foot, 45 × 0.6 = 27 seconds.",
+  "Crux is 8.2, as in Premo’s layer: IM’s only full activity (30 minutes), where both goals are met. Here IM’s own crux support is already Three Reads (MLR 6) at the launch, so D1 changes the release and the synthesis, not the launch. The three reads follow IM’s read targets: the situation without numbers, then what can be counted or measured, then the questions.",
+  "Third read: IM’s support says to “reveal the first three questions”; IM’s launch gives quiet think time on “the first two questions” and then shows a solution to each. Like Premo, this follows the launch. A reviewer should confirm.",
+  "Synthesis routine: MLR 2 Collect and Display, not MLR 1. IM’s 8.2 synthesis has each group present its assigned problem, from the most common strategy to the least common, while the teacher highlights unit rates, scaling and tables. MLR 2 fits that: the teacher scribes each group’s speed sentence beside one distance-apart table, building the reference students reuse on 8.3 and the cool-down. IM already places MLR 1 in the 8.1 warm-up, and a second round of partner revision would not fit after 8–10 minutes of group work.",
+  "8.2 momentIds: the checker allows three at the crux, so these are Premo’s own in-class three: m12 (running Three Reads), m4 (the second read, by level) and m5 (the one-walker table, the testable object). m10 (Group Presentations breakdown) is out under D1: groups still explain their problems, as IM’s synthesis says, but the teacher collects their words on one display. m3, m6, m7, m8 and m9 still fit and live on as misconceptions and back-pocket questions; a reviewer may prefer m3 over m4.",
+  "IM’s materials list “Tools for creating a visual display,” and its launch gives each group those tools. With MLR 2 the teacher’s display does the collecting, so beforeClass doesn’t list group materials. A reviewer may want groups to keep making their own displays for the problem they explain.",
+  "Premo’s cruxLanguage frames were written for the Three Reads launch and already avoid posters, so the emerging and developing release frames reuse them nearly as written; the expanding frame follows clo.form. Stretches are rewritten to step toward the CLO: join the speeds, use them, then judge Kiran’s idea.",
+  "8.2 misconceptions: the one-walker table and the time mix-up are IM’s (the “21” and “11:75” are Premo’s examples, as in m5 and m6); 9.6 as Kiran’s speed (m8) and “not correct” on Kiran’s idea (m7) are Premo’s. The language error (“6.4 miles” for a speed) is mine, tied to the CLO’s “per.”",
+  "8.1 misconceptions: IM gives none. Both are Premo’s: stopping at 12 ÷ 75 (m1, from IM’s readiness check note on fractions and decimals) and calling 6.25 a speed in miles per minute (from IM’s synthesis on speed versus pace). 8.3’s first misconception is IM’s; the second (subtracting distances when moving apart) is mine, from IM’s synthesis question on traveling away from each other.",
+  "Strategies: 8.1 from IM’s four strategies in the narrative (corrections.json: IM’s brackets in 0.16 · 30 = 4.8 are misplaced; the number is right). 8.3 from IM’s monitor list and response: Jada 10 miles per hour, cousin 2.5, 7.5 faster; 15 ÷ 6 = 2.5 and 15 ÷ 24 = \\(\\frac{5}{8}\\), so \\(3\\frac{1}{8}\\) miles; 5 ÷ 12.5 = 0.4 hours = 24 minutes.",
+  "Lesson synthesis: IM’s is a teacher-led set of questions about Jada (2 miles in 12 minutes): her speed, 2 ÷ 12 = \\(\\frac{1}{6}\\) mile per minute; her pace, 12 ÷ 2 = 6 minutes per mile; and favorite tools. The ideas say those aloud. IM’s questions use 8.3’s numbers even when 8.3 is cut, so pointTo sends the teacher to the 8.2 display first. The check uses 12 miles per hour for 4 hours (48 miles), which avoids the cool-down’s 10, 6, 45, 75 and 27.",
+  "Non-crux activities carry no language supports (D7).",
+  "beforeClass and cuts rewritten from Premo’s for D1: Premo’s versions plan for Group Presentations with paper and markers. Premo’s 8.2 cut also skips the optional Notice and Wonder opening, which would replace the first read; kept.",
+  "2026-11-02: m12 (running Three Reads) replaced by m3 (Three Reads slipping): the Launch card already rehearses running it."
+ ],
+ "story": "Lesson 8 is the fourth of five lessons on rates. It puts speed and pace to work on longer problems, two friends walking toward each other and two cousins moving apart, before Lesson 9 turns to solving rate problems more broadly.",
+ "previous": "In Lesson 7 students used one unit rate to go across a table of equivalent ratios; today that unit rate is a speed or a pace.",
+ "clo": {
+  "imGoal": "Calculate unit rates that represent speed or pace, use them to determine unknown distances or elapsed times, and explain (orally) the solution method.",
+  "function": "explain",
+  "form": "The speed is ___ ___ per ___, so I multiply (or divide) ___ by ___ to find the ___.",
+  "statement": "Students will explain orally how they use a speed, named with “per,” to find an unknown distance or time.",
+  "precise": [
+   "speed",
+   "per",
+   "miles per hour",
+   "multiply by",
+   "divide by"
+  ],
+  "informal": [
+   "pace",
+   "closer",
+   "the gap"
+  ],
+  "exemplar": "Together their speed is 3 + 3.4 = 6.4 miles per hour, so I divide 24 by 6.4 to find the time: 3.75 hours. They meet at 11:45 a.m.",
+  "lookFor": "The penguin explanation names a rate with “per” (\\(\\frac{5}{3}\\) feet per second, or 0.6 seconds per foot) and says what it multiplies: 45 × \\(\\frac{5}{3}\\) = 75 feet, 45 × 0.6 = 27 seconds."
+ },
+ "activities": [
+  {
+   "id": "8.1",
+   "strategies": [
+    "Use the speed: 12 ÷ 75 = 0.16 miles per minute, and 0.16 × 30 = 4.8 miles.",
+    "Use the pace: 75 ÷ 12 = 6.25 minutes per mile, so 8 × 6.25 = 50 minutes and 30 ÷ 6.25 = 4.8 miles.",
+    "Scale the table: 30 is 75 × 0.4, so 12 × 0.4 = 4.8; or 75 is 30 × 2.5, so 12 ÷ 2.5 = 4.8."
+   ],
+   "barriers": [
+    "Writing \\(\\frac{12}{75}\\) as a decimal, 0.16, which IM’s check at the start of the unit flags for today.",
+    "“At that rate” means the same speed the whole time."
+   ],
+   "misconceptions": [
+    "Stopping at “12 ÷ 75” because it “doesn’t come out even.”",
+    "Calling 6.25 a speed in miles per minute, when it is a pace: 6.25 minutes per mile."
+   ],
+   "backPocket": [
+    "Twelve out of 75. What would that be out of 100?",
+    "Is your number miles per minute, or minutes per mile?",
+    "Can you find 4.8 another way?"
+   ],
+   "momentIds": [
+    "m1",
+    "m2"
+   ],
+   "grouping": "Pairs: 3 minutes of quiet think time, share with a partner, then a new partner for Stronger and Clearer Each Time (MLR 1).",
+   "monitor": "Note who uses the speed, who uses the pace and who scales the table, so each way is shared and recorded."
+  },
+  {
+   "id": "8.2",
+   "strategies": [
+    "Take both walks off each hour: 24 − 3 − 3.4 = 17.6 miles after 1 hour, then 11.2 and 4.8.",
+    "Use a four-column table: hours, Kiran’s miles, Clare’s miles and distance apart.",
+    "Add the speeds: the gap shrinks 6.4 miles each hour, so 24 ÷ 6.4 = 3.75 hours, and they meet at 11:45 a.m.",
+    "For Kiran’s jog: 24 ÷ 2.5 = 9.6 together, and 9.6 − 3.4 = 6.2 miles per hour; or 3.4 × 2.5 = 8.5, 24 − 8.5 = 15.5, 15.5 ÷ 2.5 = 6.2.",
+    "Sketch the trail and mark off where each friend is each hour."
+   ],
+   "barriers": [
+    "A rail trail may be unfamiliar: a flat path on an old railway line.",
+    "The story is long, with two people, two speeds and a start time to keep apart.",
+    "“Distance apart” is a new quantity: not how far either one walked."
+   ],
+   "misconceptions": [
+    "Taking off only Kiran’s 3 miles, so the 1-hour row says 21.",
+    "Reading 3.75 hours as 3 hours 75 minutes: “11:75, so 12:15.”",
+    "Calling 9.6 Kiran’s jogging speed, when it is both friends together.",
+    "Saying Kiran is “not correct”: the meeting time is right, but the place would be Clare’s house.",
+    "Language: saying “6.4 miles” for how fast the gap closes, instead of 6.4 miles per hour."
+   ],
+   "backPocket": [
+    "Where is Clare after one hour? Show both of them.",
+    "How much closer do they get each hour? Why that much?",
+    "0.75 hours. How many minutes is that?",
+    "Is 9.6 Kiran alone, or both of them?",
+    "Same meeting time? Same meeting place?"
+   ],
+   "momentIds": [
+    "m3",
+    "m4",
+    "m5"
+   ],
+   "grouping": "Groups of 3–4: quiet think time on the first two questions, then a partner. Show a solution to each, then 8–10 minutes in groups; each group explains one problem.",
+   "monitor": "Track who takes off both walks, who uses a four-column table or a sketch, and who adds the speeds. Listen for “per” after each speed."
+  },
+  {
+   "id": "8.3",
+   "strategies": [
+    "Compare the same time: in 24 minutes Jada bikes 4 miles and her cousin swims 1 mile.",
+    "Find speeds: Jada 10 miles per hour, her cousin 2.5, so Jada is 7.5 miles per hour faster.",
+    "After 15 minutes: Jada 2.5 miles plus her cousin \\(\\frac{5}{8}\\) mile is \\(3\\frac{1}{8}\\) miles apart.",
+    "Add the speeds: 12.5 miles per hour apart, so 5 ÷ 12.5 = 0.4 hours, or 24 minutes."
+   ],
+   "barriers": [
+    "The rates are in minutes, but the question “how much faster” is easiest in miles per hour.",
+    "“Opposite directions” from a pier may be hard to picture without a sketch."
+   ],
+   "misconceptions": [
+    "Thinking 24 minutes per mile is faster than 6 minutes per mile.",
+    "Subtracting the two distances, when moving apart means adding them."
+   ],
+   "backPocket": [
+    "Label the units. What does 24 minutes per mile mean?",
+    "Moving apart: does the gap grow by one distance or both?"
+   ],
+   "momentIds": [
+    "m11"
+   ],
+   "grouping": "Individual: a few minutes of quiet think time on the two questions, then a brief whole-class discussion.",
+   "monitor": "Watch for a drawing, same time, same distance, pace, speed and combined speed. Share a drawing first, then most common to least common."
+  }
+ ],
+ "crux": {
+  "threeReads": [
+   {
+    "focus": "The situation",
+    "say": "Listen as I read. No numbers yet: what is happening here?",
+    "listenFor": "Two friends live along a trail and walk toward each other to have a picnic."
+   },
+   {
+    "focus": "Quantities and units",
+    "say": "Read it again. What can be counted or measured? Say the units.",
+    "listenFor": "24 miles apart, starting at 8:00 a.m., Kiran 3 miles per hour, Clare 3.4 miles per hour."
+   },
+   {
+    "focus": "The question",
+    "say": "Read it once more with the questions. What are we asked to find?",
+    "listenFor": "How far apart they are after one hour, then a table for 0, 1, 2 and 3 hours."
+   }
+  ],
+  "release": {
+   "successCriteria": "When you explain, name each speed with “per,” miles per hour, and say how you used it.",
+   "say": "Name the speed with “per,” and say how you used it.",
+   "talkMoments": [
+    "After quiet think time, partners take turns saying the 1-hour row: “Kiran’s speed is ___ miles per hour, so…”",
+    "Before the meeting time, groups say how much closer the friends get each hour, and why."
+   ],
+   "byBand": {
+    "emerging": {
+     "frame": "Kiran’s speed is ___ miles per hour. Clare’s speed is ___ miles per hour. Each hour they get ___ miles closer.",
+     "stretch": "They join the speeds in one line: “3 + 3.4 = 6.4 miles closer each hour.”"
+    },
+    "developing": {
+     "frame": "Each hour they get ___ miles closer, because Kiran’s speed is ___ and Clare’s speed is ___.",
+     "stretch": "They use it: “So I divide 24 by 6.4 to find the time.”"
+    },
+    "expanding": {
+     "frame": "Together their speed is ___ ___ per ___, so I multiply (or divide) ___ by ___ to find the ___.",
+     "stretch": "They judge Kiran’s idea with it: same meeting time, but a different meeting place."
+    }
+   }
+  },
+  "synthesis": {
+   "routine": "MLR2: Collect and Display",
+   "steps": [
+    "Call groups in IM’s order: the most common way first, adding the speeds last.",
+    "Scribe each group’s words beside one distance-apart table, with “− 6.4 each hour” down the side.",
+    "Revoice each into the frame, and circle “speed” and “per.”",
+    "Leave the display up for 8.3 and the cool-down."
+   ],
+   "prompt": "How do the two speeds tell you how fast the gap closes, and how did you use that?",
+   "sounds": "They met after 2.5 hours, so together their speed is 24 ÷ 2.5 = 9.6 miles per hour. I subtract Clare’s 3.4 miles per hour: Kiran jogged 6.2 miles per hour."
+  }
+ },
+ "lessonSynthesis": {
+  "ideas": [
+   "Speed is distance per unit of time: Jada bikes 2 miles in 12 minutes, so 2 ÷ 12 = \\(\\frac{1}{6}\\) mile per minute.",
+   "Pace is the other unit rate, time per unit of distance: 12 ÷ 2 = 6 minutes per mile.",
+   "To solve a constant speed problem, use a table, a double number line, or multiply and divide by the speed or pace."
+  ],
+  "pointTo": "Point to the 8.2 display: the distance-apart table dropping 6.4 each hour, and the speed sentences beside it. If you taught 8.3, point to Jada’s 6 minutes per mile and \\(\\frac{1}{6}\\) mile per minute too.",
+  "check": {
+   "question": "A cyclist rides 12 miles per hour. How far does she ride in 4 hours, and how do you know?",
+   "sounds": "Her speed is 12 miles per hour, so I multiply 4 by 12 to find the distance: 48 miles."
+  }
+ },
+ "beforeClass": [
+  "For the launch: look up a rail trail near school to tell students about.",
+  "For Three Reads (MLR 6): display the Kiran and Clare story with its questions covered until the third read.",
+  "For the release (MLR 8): have the frames for your students’ levels ready, and a blank four-column table (hours, Kiran, Clare, distance apart).",
+  "For Collect and Display (MLR 2): board space beside a blank distance-apart table; decide which group explains questions 3, 4 and 5. Know 17.6, 11.2, 4.8; 11:45 a.m.; 6.2."
+ ],
+ "cuts": [
+  {
+   "activityId": "8.3",
+   "note": "Optional, more practice with no new math. Cut it first."
+  },
+  {
+   "activityId": "8.1",
+   "note": "Keep it short: two questions, one partner swap in Stronger and Clearer Each Time (MLR 1), then name speed and pace."
+  },
+  {
+   "activityId": "8.2",
+   "note": "Skip the extra challenge problem and the optional Notice and Wonder opening. Never cut Three Reads, the quiet think time, showing a distance-apart table, or the synthesis."
+  }
+ ]
+}

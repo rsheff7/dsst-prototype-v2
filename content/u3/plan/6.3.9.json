@@ -1,0 +1,221 @@
+{
+ "status": "draft",
+ "reviewNotes": [
+  "No person has reviewed this file.",
+  "Story and previous: from IM’s lesson narrative (fluency with unit rates “without scaffolding”), Lesson 8’s goals (speed and pace, unknown distances and times), and unit.json’s sections (Rates is Lessons 5–9; Percentages starts at Lesson 10).",
+  "Crux is 9.2, as in Premo’s layer. Premo’s note stands: 9.3 is a fair alternative (goal 1, IM’s “multiple unit rates in a sequence”). A reviewer could choose 9.3.",
+  "CLO: imGoal is IM goal 2, copied verbatim. It names “orally,” goal 1 names “in writing,” and goal 2 is the crux’s goal, so goal 2 is used. Function is “justify,” from IM’s goal; unit.json’s language progression lists “explain” for Lesson 9 (“how to make decisions using rates”), so a reviewer may prefer that word.",
+  "Form follows Premo’s expanding frame (cruxLanguage), shortened. Precise terms: “(good / better / best) deal” is unit.json’s productive term for Lesson 9; “unit rate” (Lesson 7) and “per” carry over. “Meters per second,” also listed for Lesson 9, is left out, as in Premo’s layer: nothing in the lesson uses it.",
+  "Exemplar uses card A, the only card with full prices in the IM layer (from the launch story): 3.16 ÷ 4 = 0.79, 2.25 ÷ 3 = 0.75, and 3 × 0.79 = 2.37, matching IM’s answer for card A.",
+  "Look-for numbers checked against IM’s cool-down: 8.49 ÷ 10 = 0.849, about $0.85; 5.40 ÷ 6 = 0.90.",
+  "Card B numbers checked against IM’s narrative: 3.50 ÷ 10 = 0.35, 2.40 ÷ 6 = 0.40, and \\(\\frac{6}{10}\\) × 3.50 = 2.10. IM’s image captions for card B have two slips (corrections.json): “1 juice box costs $3.50” should be $0.35, and “3.49” should be $3.50. Not repeated here.",
+  "Cards C–E: only IM’s answers are in the IM layer, so this file uses no prices from them. beforeClass lists IM’s decisions (C, D deal; E no deal). Card E’s count is unstated in IM; at $0.85 each, $5.10 is 6 containers (corrections.json). Check against the blackline master.",
+  "Per D1, the crux uses Three Reads to launch, a frame at release, and MLR 2 in the synthesis. IM’s own 9.2 support is already Collect and Display, so nothing of IM’s is replaced at the crux. 9.3’s Compare and Connect is not at the crux, and m10 (its breakdown) is left out of 9.3’s momentIds by the rule.",
+  "9.2 momentIds: m3, m12, m6, the same three as Premo’s inClass.momentIds, within the checker’s cap of three at the crux. m2 (Poll the Class breakdown) and m5 (Take Turns breakdown) are left out by the rule, since neither routine is a D1 routine. m4 (decimal stall), m13 (Collect and Display breakdown) and m7 (share order) are eligible but cut for the cap; m4’s question is a back-pocket line, and m7’s order is in the synthesis steps.",
+  "Synthesis routine: MLR 2 Collect and Display, not MLR 1. IM places MLR 2 at 9.2’s synthesis, says to listen during partner talk and refer back to the display in the discussion, and IM’s synthesis is “record the different strategies in one place and display them.” The lesson synthesis then points back to the same juice box numbers. MLR 1 needs rounds of written revision; IM’s task already has partners revise after feedback, but there is no written response to rewrite and the 20 minutes are taken by the sort.",
+  "Three Reads: IM’s launch tells the 4-pack story and shows card A’s picture, then polls the class. The three reads are of card A and the sorting directions, as the brief asks; the poll follows the third read. Card A’s printed wording was not available; the reads use the story’s numbers. Check them against the card.",
+  "Share order in the synthesis steps is Premo’s (inClass.sequence and m7), not IM’s; IM says pick 2–3 different strategies and highlight whether a unit rate was used.",
+  "Strategies: 9.1 from IM’s responses; 9.2 from the three paths in IM’s narrative; 9.3 from IM’s response, checked: 1,408 × 3 = 4,224; 49,632 ÷ 12 = 4,136; 115,000 ÷ 2.54 ÷ 12 ≈ 3,772.97; 107,300 ÷ 2.54 ÷ 12 ≈ 3,520.34.",
+  "Misconceptions: IM gives one each for 9.2 (grade 5 computation, placed here as a barrier, with m4) and 9.3 (intermediate steps, m9). The rest are Premo’s: 9.1 counting squares (from IM’s narrative), 9.2 comparing totals (m3) and one bottle against 3 (Premo pattern), 9.3 the hare’s inches (m8) and the ostrich–coyote tie (m11). A reviewer should check the Premo ones.",
+  "Lesson synthesis: IM calls the unit rates “price per bottle”; on card B they are per juice box, so this file says “per box,” as Premo’s layer does. The check uses stickers (4 for $1.00 against 10 for $2.00), not the cool-down’s tacos.",
+  "beforeClass is held to four items; Premo’s 9.3 conversion facts item is dropped, since IM’s narrative lists the facts to share when asked.",
+  "Non-crux activities carry no language supports (D7).",
+  "2026-11-02: m12 (running Collect and Display) replaced by m13 (Collect and Display slipping): the Synthesis card already rehearses running it."
+ ],
+ "story": "Lesson 9 closes the rates section. With no table or diagram prompted, students choose a unit rate for themselves and use it to judge deals and compare distances, before percentages begin in Lesson 10.",
+ "previous": "In Lesson 8 students used speed and pace to find unknown distances and times; today they pick which unit rate to find, then use it to decide.",
+ "clo": {
+  "imGoal": "Apply reasoning about ratios and rates to justify (orally) whether a given price is a good deal.",
+  "function": "justify",
+  "form": "Card ___ is (not) a good deal because one ___ costs ___ in the new deal and ___ in the original.",
+  "statement": "Students will justify orally whether a price is a good deal by comparing the price of one item in each offer, named with “per.”",
+  "precise": [
+   "good deal",
+   "unit rate",
+   "per",
+   "the same number of items"
+  ],
+  "informal": [
+   "cheaper",
+   "costs more",
+   "the price of one"
+  ],
+  "exemplar": "Card A is a good deal because one bottle costs 75 cents in the new deal and 79 cents in the original: 2.25 ÷ 3 = 0.75 and 3.16 ÷ 4 = 0.79.",
+  "lookFor": "The taco explanation names the better deal and backs it with the price per taco in each offer: about $0.85 (8.49 ÷ 10) against $0.90 (5.40 ÷ 6)."
+ },
+ "activities": [
+  {
+   "id": "9.1",
+   "strategies": [
+    "A: see a 5 by 5 block, a quarter of the grid: \\(\\frac{25}{100}\\), 0.25 or \\(\\frac{1}{4}\\).",
+    "B: see one full column, a tenth: \\(\\frac{1}{10}\\), \\(\\frac{10}{100}\\) or 0.1.",
+    "C: see half the grid plus a quarter: \\(\\frac{75}{100}\\), 0.75 or \\(\\frac{3}{4}\\). Some may say 75%."
+   ],
+   "barriers": [
+    "The whole grid stands for 1, not 100, which may be new.",
+    "“Shaded portion” may be unfamiliar words."
+   ],
+   "misconceptions": [
+    "Counting every square, then naming the count, 25, instead of a part of 1.",
+    "Naming B as \\(\\frac{1}{100}\\) because it is one column, not one square of ten."
+   ],
+   "backPocket": [
+    "How did you see the shaded portion?",
+    "What is the whole grid worth?",
+    "Can you name it another way, as a decimal?"
+   ],
+   "momentIds": [
+    "m1"
+   ],
+   "grouping": "Whole class: flash the image for 3 seconds, twice, with 15 seconds of quiet think time after each.",
+   "monitor": "Listen for ways of seeing (blocks, columns, halves) and for names in fractions, decimals and percents."
+  },
+  {
+   "id": "9.2",
+   "strategies": [
+    "Compare both unit rates: card B is 35 cents per box before (3.50 ÷ 10) and 40 cents now (2.40 ÷ 6), so no deal.",
+    "Use the original unit rate on the new number: card A is 79 cents per bottle, so 3 bottles should cost $2.37; $2.25 is less, so deal.",
+    "Scale with no unit rate: 6 is \\(\\frac{6}{10}\\) of 10, so 6 boxes should cost \\(\\frac{6}{10}\\) of $3.50, $2.10; $2.40 is more, so no deal."
+   ],
+   "barriers": [
+    "Dividing decimals, grade 5 work: 3.16 ÷ 4 may stop a pair who chose the right unit rate.",
+    "“Deal,” “original” and “new deal” on the cards: which price is which, and what makes a deal good."
+   ],
+   "misconceptions": [
+    "“Deal, $2.25 is less than $3.16”: two totals for different numbers of bottles.",
+    "Finding 79 cents per bottle, then setting it against $2.25, the price of 3 bottles.",
+    "Language: “The new one is more,” with no “per” and no number of items."
+   ],
+   "backPocket": [
+    "Less money, but for how many bottles?",
+    "Think in cents. How many cents is $3.16?",
+    "What should 3 bottles cost at the 4-pack price?",
+    "What does one box cost in each offer?"
+   ],
+   "momentIds": [
+    "m3",
+    "m6",
+    "m13"
+   ],
+   "grouping": "Pairs: card A together, then two of cards B–E each, worked alone, explained to the partner, revised, then sorted together.",
+   "monitor": "Track which way each pair uses: both unit rates, the original rate on the new number, or scaling. Listen for “the same,” “unit rate,” “cost for the same number of items.”"
+  },
+  {
+   "id": "9.3",
+   "strategies": [
+    "Convert all to feet: antelope 5,280, cougar 4,224 (1,408 × 3), hare 4,136 (49,632 ÷ 12), coyote 3,773, ostrich about 3,772.97, kangaroo about 3,520.",
+    "Convert all to yards: antelope 1,760, cougar 1,408, hare \\(1,378\\frac{2}{3}\\), and so on.",
+    "Convert all to meters through 1 inch = 2.54 centimeters: antelope about 1,609, ostrich 1,150, kangaroo 1,073. The order is the same: antelope, cougar, hare, coyote, ostrich, kangaroo."
+   ],
+   "barriers": [
+    "Customary units (yards, feet, inches) may be unfamiliar next to metric ones.",
+    "1 inch = 2.54 centimeters is the only fact that links the two systems."
+   ],
+   "misconceptions": [
+    "“The hare wins, 49,632 is the biggest number”: inches read against yards and meters.",
+    "Stopping at the kangaroo’s meters: there is no one meters-to-feet fact, so it takes several steps.",
+    "Calling the ostrich and coyote a tie: they differ by under half an inch."
+   ],
+   "backPocket": [
+    "49,632 what? What unit is the cougar’s in?",
+    "Which fact starts in meters? Where does it take you?",
+    "Which one unit would make comparing easiest?"
+   ],
+   "momentIds": [
+    "m8",
+    "m9"
+   ],
+   "grouping": "1–2 minutes to read, a quick class talk on which units to use, quiet think time, then share with students who chose the same unit.",
+   "monitor": "In the first 2–3 minutes, check who converts every distance to one unit. Note which unit each student picks, to group them for sharing."
+  }
+ ],
+ "crux": {
+  "threeReads": [
+   {
+    "focus": "The situation",
+    "say": "Listen as I read card A. No numbers yet: what is happening?",
+    "listenFor": "A pack of drinks is missing a bottle, and the clerk offers a price for what’s left."
+   },
+   {
+    "focus": "Quantities and units",
+    "say": "Read it again. What does each number count, and in what unit?",
+    "listenFor": "4 bottles for $3.16 in the full pack; 3 bottles for $2.25 now."
+   },
+   {
+    "focus": "The question",
+    "say": "Read the directions. What do we do with card A, then the rest?",
+    "listenFor": "Decide together if card A is a good deal and say why, then split B–E and sort into Deal and No Deal."
+   }
+  ],
+  "release": {
+   "successCriteria": "In your reason, say deal or no deal, and give the price of one item in each offer, with “per.”",
+   "say": "Say deal or no deal, and the price of one.",
+   "talkMoments": [
+    "After card A, each partner says the card A reason aloud with the frame before you split the cards.",
+    "When partners explain their two cards, one uses the frame, and the other agrees or disagrees and says why."
+   ],
+   "byBand": {
+    "emerging": {
+     "frame": "Card ___: deal / no deal. One ___ costs ___.",
+     "stretch": "They add the other offer: “One bottle costs 75 cents now, 79 cents before.”"
+    },
+    "developing": {
+     "frame": "Card ___ is a deal / no deal because one ___ costs ___ now and ___ before.",
+     "stretch": "They name each rate with “per”: “75 cents per bottle, not 79 cents per bottle.”"
+    },
+    "expanding": {
+     "frame": "Card ___ is (not) a good deal because one ___ costs ___ in the new deal and ___ in the original.",
+     "stretch": "They check another way: “At the old price 3 bottles cost $2.37, and $2.25 is less.”"
+    }
+   }
+  },
+  "synthesis": {
+   "routine": "MLR2: Collect and Display",
+   "steps": [
+    "Start the display during partner talk: write students’ phrases, such as “the same,” “unit rate,” “cost for the same number of items.”",
+    "Call 2–3 pairs: the price of one in both offers first, then the original rate on the new number, then scaling by \\(\\frac{6}{10}\\).",
+    "Scribe each pair’s reason beside its numbers, and point to the phrase it uses.",
+    "Revoice each into the frame, and say whether a unit rate was used.",
+    "Leave the display up for the lesson synthesis and the cool-down."
+   ],
+   "prompt": "Is card B a good deal? How do you know?",
+   "sounds": "Card B is not a good deal because one juice box costs 40 cents in the new deal and 35 cents in the original: 2.40 ÷ 6 = 0.40, 3.50 ÷ 10 = 0.35."
+  }
+ },
+ "lessonSynthesis": {
+  "ideas": [
+   "To compare two rates, compare unit rates: the price of one item in each offer.",
+   "10 juice boxes for $3.50 is 35 cents per box, because 3.50 ÷ 10 = 0.35. 6 for $2.40 is 40 cents per box, because 2.40 ÷ 6 = 0.40.",
+   "Each number is the price per box: $0.35 for 1 box against $0.40 for 1 box, so the 10-pack is the better deal."
+  ],
+  "pointTo": "Point to the 9.2 display: card B’s 35 and 40 cents per box, and the phrases beside them. Draw two small tables if it helps, as IM suggests. If you taught 9.3, point to its rankings too: one unit before comparing.",
+  "check": {
+   "question": "Stickers cost 4 for $1.00, or 10 for $2.00. Which offer is the better deal, and why?",
+   "sounds": "10 for $2.00 is the better deal because one sticker costs 20 cents there and 25 cents in the other offer."
+  }
+ },
+ "beforeClass": [
+  "For the card sort: work cards A–E yourself (IM: A, C, D deal; B, E no deal). IM’s card E answer doesn’t say how many containers; check the card.",
+  "For Three Reads in 9.2: display card A and the directions, with the directions covered until the third read.",
+  "For the release: have the frames for your students’ levels ready to post or hand out.",
+  "For Collect and Display (MLR 2): clear board space every pair can see, and a marker; start writing as soon as pairs explain."
+ ],
+ "cuts": [
+  {
+   "activityId": "9.2",
+   "note": "Card F is IM’s extension: pairs set their own price for another pair to judge. Leave it out unless pairs finish the other cards early."
+  },
+  {
+   "activityId": "9.1",
+   "note": "Keep it short: two flashes, one way of seeing each grid."
+  },
+  {
+   "activityId": "9.3",
+   "note": "Protect the work time: this is where IM’s first goal is met, converting distances into one unit and comparing them in writing. If you’re short of time, keep the ranking and hear just two students, one in feet or yards and one in meters. What is lost: time to settle a disputed ranking and to ask why both units give the same order."
+  },
+  {
+   "activityId": "9.2",
+   "note": "Never cut the card A reason, each partner explaining their own two cards, or the synthesis. If time is tight, keep Three Reads quick: one sentence per read."
+  }
+ ]
+}

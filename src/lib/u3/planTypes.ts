@@ -92,6 +92,17 @@ export interface PlanLesson {
   /** Step 7. What to prepare, and what can go if time runs short, under the planning view's routines (D1). */
   beforeClass: string[];
   cuts: { activityId: string; note: string }[];
-  /** Step 6. IM's lesson synthesis, planned. */
-  lessonSynthesis: { desired: string; anticipated: string[]; backPocket: string };
+  /**
+   * Step 6. IM's lesson synthesis is a teacher summary, not a discussion: say the lesson's
+   * ideas, point to where students used them, then one quick check in the language goal
+   * before the cool-down (requirements D5).
+   */
+  lessonSynthesis: {
+    /** The ideas to say aloud, one sentence each, in plain words with the lesson's numbers. */
+    ideas: string[];
+    /** Where to point: the crux's synthesis chart, or the final activity if it is taught. */
+    pointTo: string;
+    /** One question students answer in the language goal's form, and what that sounds like. Not the cool-down's own task. */
+    check: { question: string; sounds: string };
+  };
 }

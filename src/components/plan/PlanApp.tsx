@@ -79,6 +79,26 @@ const STEPS = [
 /** Each activity added beyond the crux adds about this much rehearsal. */
 const PER_EXTRA = 4;
 
+type Card = { id: string; activityId: string; kind: 'math' | 'launch' | 'release' | 'moment' | 'synthesis'; momentId?: string };
+
+const MOMENT_LABEL: Record<Moment['kind'], string> = {
+  'student-thinking': 'Student thinking',
+  'im-misconception': 'Common error',
+  'routine-breakdown': 'When the routine slips',
+  'which-work-first': 'Who shares first',
+  'teacher-move': 'Your move',
+  language: 'Language',
+  'run-routine': 'Run the routine',
+};
+// DSST's crux routines (requirements D1): MLR 1, 2, 6 and 8.
+const D1_ROUTINES = [1, 2, 6, 8];
+// For a moment the Premo layer didn't write checks for.
+const FALLBACK_CRITERIA = ['Responded to what I saw, not the answer I wanted', 'Left the thinking with the student', 'Asked for the language goal, not just the number'];
+const SYNTH_CRITERIA: Record<PlanLesson['crux']['synthesis']['routine'], string[]> = {
+  'MLR2: Collect and Display': ['Called on work in IM’s order', 'Wrote students’ own words where all can see them', 'Asked the question in the language goal’s form'],
+  'MLR1: Stronger and Clearer Each Time': ['Students wrote a first draft alone', 'Each partner pressed for one more detail', 'Students rewrote using words they heard'],
+};
+
 const SLOT = { 'warm-up': 'Warm-up', activity: 'Activity', optional: 'Optional', 'cool-down': 'Cool-down' } as const;
 
 const listOf = (xs: string[]) => (xs.length < 2 ? xs.join('') : `${xs.slice(0, -1).join(', ')}${xs.length > 2 ? ',' : ''} and ${xs[xs.length - 1]}`);
@@ -131,18 +151,6 @@ function Reveal({ k, label, children }: { k: string; label: string; children: Re
     );
 }
 
-function Part({ letter, title, lang, children }: { letter: string; title: string; lang?: boolean; children: ReactNode }) {
-  return (
-    <section className={p.part}>
-      <div className={p.partHead}>
-        <span className={cx(p.letter, lang && p.letterLang)}>{letter}</span>
-        <h4>{title}</h4>
-      </div>
-      {children}
-    </section>
-  );
-}
-
 function RoutineChip({ name }: { name: string }) {
   const { setSheet } = useContext(Ctx);
   return findRoutine(name) ? (
@@ -151,58 +159,6 @@ function RoutineChip({ name }: { name: string }) {
       </button>
     ) : (
       <span className={cx(s.pill, s.pillAct)}>{name}</span>
-    );
-}
-
-/** One Premo moment: what you see, say your move aloud, then check it. */
-function MomentCard({ m }: { m: Moment }) {
-  const { st, toggle, levels } = useContext(Ctx);
-    const said = !!st.said[m.id];
-    const bandSays = m.byBand
-      ? (levels.length ? levels : ([1, 3, 5] as WidaLevel[])).map((l) => ({ l, x: m.byBand![bandForLevel(l)] }))
-      : [];
-    return (
-      <div className={s.pat}>
-        <span className={s.lab}>You see</span>
-        <span className={s.patSays}>
-          <MathText>{m.see}</MathText>
-        </span>
-        {!said ? (
-          <button type="button" className={cx(s.btn, s.sm)} style={{ justifySelf: 'start' }} onClick={() => toggle('said', m.id)}>
-            {Icon.mic} I said my move
-          </button>
-        ) : (
-          <div className={cx(s.stack, s.reveal)} style={{ gap: 8 }}>
-            {m.say && (
-              <span className={p.say}>
-                <MathText>{q(m.say)}</MathText>
-              </span>
-            )}
-            {bandSays.map(({ l, x }) => (
-              <span key={l} className={s.small}>
-                <b>{levels.length ? `Level ${l}` : `Levels ${l}–${l + 1}`}:</b> <MathText>{q(x.say)}</MathText>
-                {levels.length > 0 && tierOf(l) === 'higher' && <span className={s.muted}> Ask first; hold the frame back unless they stall.</span>}
-              </span>
-            ))}
-            {m.criteria && m.criteria.length > 0 && (
-              <div className={s.checks}>
-                {m.criteria.map((c, j) => (
-                  <Check key={j} on={!!st.ticks[`${m.id}#${j}`]} onClick={() => toggle('ticks', `${m.id}#${j}`)}>
-                    {c}
-                  </Check>
-                ))}
-              </div>
-            )}
-            <span className={cx(s.muted, s.small)}>
-              <b>Avoid:</b> {m.dont}
-            </span>
-            <button type="button" className={s.flagbtn} aria-pressed={!!st.flags[m.id]} onClick={() => toggle('flags', m.id)}>
-              {Icon.flag}
-              {st.flags[m.id] ? 'Flagged for coach' : 'Flag as hard'}
-            </button>
-          </div>
-        )}
-      </div>
     );
 }
 
@@ -363,6 +319,15 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
         <label htmlFor="plan-clo" className={s.prompt} style={{ fontSize: 20 }}>
           At the crux, what does a strong student sentence sound like?
         </label>
+        {/* The crux was on the last page; bring its task and IM's notes back without leaving this one. */}
+        <div className={s.row}>
+          <span className={cx(s.pill, s.pillCrux)}>
+            {crux.id} {crux.title}
+          </span>
+          <button type="button" className={cx(s.pill, s.pillBtn)} onClick={() => setSheet(`act:${cruxId}`)}>
+            IM’s notes ⓘ
+          </button>
+        </div>
         <textarea
           id="plan-clo"
           value={st.clo}
@@ -458,190 +423,303 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
     </div>
   );
 
-  const activityPage = (a: ImActivity, pa: PlanActivity) => {
-    const isCrux = a.id === cruxId;
-    // Parts are lettered in the order they show, which follows the IPP: math, anticipate, respond, then implementation.
-    let n = 0;
-    const L = () => 'abcdefg'[n++];
+  // --------------------------------------------------------------- rehearse
+  // One card at a time, the way the reviewed prep rehearses: what you see, say your
+  // move aloud, check it, then the model wording. The cards follow the lesson as it
+  // runs, for the activities the teacher chose: each starts with doing the math; the
+  // crux adds the launch, the release and the synthesis around its moments.
+  const cards = useMemo(() => {
+    const out: Card[] = [];
+    for (const id of chosen) {
+      const a = actIm(id);
+      const pa = actPlan(id);
+      if (!a || !pa) continue;
+      const isCrux = id === cruxId;
+      out.push({ id: `math:${id}`, activityId: id, kind: 'math' });
+      if (isCrux) out.push({ id: `launch:${id}`, activityId: id, kind: 'launch' }, { id: `release:${id}`, activityId: id, kind: 'release' });
+      for (const mid of pa.momentIds) if (moment(mid)) out.push({ id: mid, activityId: id, kind: 'moment', momentId: mid });
+      if (isCrux) out.push({ id: `synth:${id}`, activityId: id, kind: 'synthesis' });
+    }
+    return out;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [chosen.join(','), plan, premo]);
+
+  const cardView = (c: Card) => {
+    const a = actIm(c.activityId)!;
+    const pa = actPlan(c.activityId)!;
+    const m = c.momentId ? moment(c.momentId) : undefined;
+    const isCrux = c.activityId === cruxId;
+    const synthRoutine = plan.crux.synthesis.routine;
+    const spec: { label: string; routine?: string; see: ReactNode; seeAs?: 'task'; prompt: string; criteria: string[]; model: ReactNode } =
+      c.kind === 'math'
+        ? {
+            label: 'Do the math',
+            // Photos show only as alt text and credit here; IM's notes keep them.
+            see: <IMLines lines={a.task.filter((l) => !/^\[image:|Attribution:/.test(l))} />,
+            seeAs: 'task',
+            prompt: 'Solve it, then say the ways students will solve it and what you’ll watch for.',
+            criteria: ['Solved the task myself', 'Named more than one way students might solve it', 'Said what I’ll watch and listen for while they work'],
+            model: (
+              <>
+                <div className={s.flat}>
+                  <span className={s.lab}>Ways students will solve it</span>
+                  <ul className={s.clean}>
+                    {pa.strategies.map((x, i) => (
+                      <li key={i}>
+                        <MathText>{x}</MathText>
+                      </li>
+                    ))}
+                  </ul>
+                  {a.response && (
+                    <details className={s.more}>
+                      <summary>IM’s response</summary>
+                      <IMLines lines={a.response} />
+                    </details>
+                  )}
+                </div>
+                <div className={s.avoid}>
+                  <span className={s.lab}>Barriers and misconceptions</span>
+                  <ul className={s.clean}>
+                    {[...pa.barriers, ...pa.misconceptions].map((x, i) => (
+                      <li key={i}>
+                        <MathText>{x}</MathText>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className={s.respond}>
+                  <span className={s.lab}>Back-pocket questions</span>
+                  <ul className={s.clean}>
+                    {pa.backPocket.map((x, i) => (
+                      <li key={i}>
+                        <MathText>{q(x)}</MathText>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <span className={s.small}>
+                  <b>How students work:</b> <MathText>{pa.grouping}</MathText>
+                </span>
+                <span className={s.small}>
+                  <b>Monitor:</b> <MathText>{pa.monitor}</MathText>
+                </span>
+              </>
+            ),
+          }
+        : c.kind === 'launch'
+          ? {
+              label: 'Launch',
+              routine: 'MLR6: Three Reads',
+              see: 'The task is up with its questions covered. Students are waiting to start.',
+              prompt: 'Run the three reads out loud.',
+              criteria: ['Read 1: the situation, with no numbers', 'Read 2: the quantities, with their units', 'Read 3: the question, without solving it'],
+              model: (
+                <>
+                  {plan.crux.threeReads.map((r, i) => (
+                    <div key={i} className={s.respond}>
+                      <span className={s.lab}>
+                        Read {i + 1} · {r.focus}
+                      </span>
+                      <p style={{ fontWeight: 600 }}>
+                        <MathText>{q(r.say)}</MathText>
+                      </p>
+                      <span className={cx(s.muted, s.small)}>
+                        <b>Listen for:</b> <MathText>{r.listenFor}</MathText>
+                      </span>
+                    </div>
+                  ))}
+                </>
+              ),
+            }
+          : c.kind === 'release'
+            ? {
+                label: 'Release with a frame',
+                routine: 'MLR8: Discussion Supports',
+                see: 'The three reads are done. Students are about to start work.',
+                prompt: 'Say how you release them: the language they must use, and the frame.',
+                criteria: ['Named the language they must use', 'Offered the frame the way my students’ levels need it', 'Set up a moment for them to say it to a partner'],
+                model: (
+                  <>
+                    <div className={s.respond}>
+                      <span className={s.lab}>Respond</span>
+                      <p style={{ fontWeight: 600 }}>
+                        <MathText>{q(plan.crux.release.say)}</MathText>
+                      </p>
+                      <span className={s.small}>
+                        <b>Success criteria:</b> <MathText>{plan.crux.release.successCriteria}</MathText>
+                      </span>
+                    </div>
+                    <span className={s.lab}>The frame · by WIDA level</span>
+                    <Frames />
+                    <div className={s.flat}>
+                      <span className={s.lab}>Talk practice</span>
+                      <ul className={s.clean}>
+                        {plan.crux.release.talkMoments.map((x, i) => (
+                          <li key={i}>
+                            <MathText>{x}</MathText>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </>
+                ),
+              }
+            : c.kind === 'synthesis'
+              ? {
+                  label: 'Synthesis',
+                  routine: synthRoutine,
+                  see: 'Work time is over. Pairs have answers and are ready to share.',
+                  prompt: `Run the synthesis with ${routineTitle(synthRoutine)}: who shares, what students say, and your question.`,
+                  criteria: SYNTH_CRITERIA[synthRoutine],
+                  model: (
+                    <>
+                      <div className={s.flat}>
+                        <span className={s.lab}>Run it</span>
+                        <ol className={s.clean} style={{ listStyle: 'decimal' }}>
+                          {plan.crux.synthesis.steps.map((x, i) => (
+                            <li key={i}>
+                              <MathText>{x}</MathText>
+                            </li>
+                          ))}
+                        </ol>
+                      </div>
+                      <div className={s.respond}>
+                        <span className={s.lab}>Ask</span>
+                        <p style={{ fontWeight: 600 }}>
+                          <MathText>{q(plan.crux.synthesis.prompt)}</MathText>
+                        </p>
+                        <span className={cx(s.muted, s.small)}>
+                          <b>Sounds like:</b> <MathText>{q(plan.crux.synthesis.sounds)}</MathText>
+                        </span>
+                      </div>
+                    </>
+                  ),
+                }
+              : {
+                  label: m ? MOMENT_LABEL[m.kind] : '',
+                  // Only the crux routines DSST chose (D1) get a chip; a moment tagged with another routine shows none.
+                  routine: m?.routine && D1_ROUTINES.includes(findRoutine(m.routine)?.mlr ?? 0) ? m.routine : undefined,
+                  see: <MathText>{m?.see ?? ''}</MathText>,
+                  prompt: 'What do you do or say next?',
+                  criteria: m?.criteria?.length ? m.criteria : FALLBACK_CRITERIA,
+                  model: m ? (
+                    <>
+                      <div className={s.flat}>
+                        <span className={s.lab}>What’s going on</span>
+                        <MathText>{m.means}</MathText>
+                      </div>
+                      {m.byBand ? (
+                        <>
+                          <span className={s.lab}>Respond · by WIDA level</span>
+                          <div className={s.prof}>
+                            {(levels.length ? levels : ([1, 3, 5] as WidaLevel[])).map((l) => (
+                              <div key={l} className={s.pc}>
+                                <span className={s.lv}>{levels.length ? `Level ${l}` : `Levels ${l}–${l + 1}`}</span>
+                                <b>
+                                  <MathText>{q(m.byBand![bandForLevel(l)].say)}</MathText>
+                                </b>
+                                {levels.length > 0 && tierOf(l) === 'higher' && (
+                                  <span className={cx(s.muted, s.small)}>Ask first; hold the frame back unless they stall.</span>
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                        </>
+                      ) : (
+                        m.say && (
+                          <div className={s.respond}>
+                            <span className={s.lab}>Respond</span>
+                            <p style={{ fontWeight: 600 }}>
+                              <MathText>{q(m.say)}</MathText>
+                            </p>
+                          </div>
+                        )
+                      )}
+                      <div className={s.avoid}>
+                        <span className={s.lab}>Avoid</span>
+                        <p>
+                          <MathText>{m.dont}</MathText>
+                        </p>
+                      </div>
+                    </>
+                  ) : null,
+                };
+    const said = !!st.said[c.id];
+    const lang = c.kind === 'launch' || c.kind === 'release' || c.kind === 'synthesis' || m?.kind === 'language';
     return (
-      <div className={s.stackLg}>
-        <section className={cx(s.scard, isCrux && s.scardCrux)}>
-          <div className={s.row}>
-            <span className={s.pill}>
-              {a.id} · {SLOT[a.slot]} · {a.minutes} min
-            </span>
-            {isCrux && <span className={cx(s.pill, s.pillCrux)}>Crux</span>}
-            <button type="button" className={cx(s.pill, s.pillBtn)} onClick={() => setSheet(`act:${a.id}`)}>
-              IM’s notes ⓘ
+      <article className={cx(s.scard, isCrux && s.scardCrux)} aria-live="polite">
+        <div className={s.row}>
+          <span className={s.pill}>
+            {a.id} {a.title}
+          </span>
+          <span className={s.pill}>{spec.label}</span>
+          {isCrux && <span className={cx(s.pill, s.pillCrux)}>Crux</span>}
+          {lang && <span className={cx(s.pill, s.pillMll)}>Language</span>}
+          {spec.routine && <RoutineChip name={spec.routine} />}
+        </div>
+        <div className={s.stack} style={{ gap: 8 }}>
+          <span className={s.lab}>{spec.seeAs === 'task' ? 'The task students get' : 'You see'}</span>
+          <div className={spec.seeAs === 'task' ? s.flat : s.notice}>{spec.see}</div>
+        </div>
+        {!said ? (
+          <div className={s.sayit}>
+            {Icon.mic}
+            <b>Say your move out loud.</b>
+            {spec.prompt}
+          </div>
+        ) : (
+          <div className={cx(s.stack, s.reveal)}>
+            <div>
+              <span className={s.lab}>Check what you said</span>
+              <div className={s.checks}>
+                {spec.criteria.map((t, j) => (
+                  <Check key={j} on={!!st.ticks[`${c.id}#${j}`]} onClick={() => toggle('ticks', `${c.id}#${j}`)}>
+                    {t}
+                  </Check>
+                ))}
+              </div>
+            </div>
+            {st.shown[`model:${c.id}`] ? (
+              <div className={cx(s.stack, s.reveal)}>{spec.model}</div>
+            ) : (
+              <button type="button" className={cx(s.btn, s.sm)} style={{ justifySelf: 'start' }} onClick={() => toggle('shown', `model:${c.id}`)}>
+                Show model wording
+              </button>
+            )}
+            <button type="button" className={s.flagbtn} aria-pressed={!!st.flags[c.id]} onClick={() => toggle('flags', c.id)}>
+              {Icon.flag}
+              {st.flags[c.id] ? 'Flagged for coach' : 'Flag as hard'}
             </button>
           </div>
-          <h3>{a.title}</h3>
-
-          <Part letter={L()} title="Do the math">
-            <details className={s.more}>
-              <summary>The task</summary>
-              <IMLines lines={a.task} />
-            </details>
-            <Reveal k={`math:${a.id}`} label="I solved it. Show the strategies">
-              <ul className={s.clean}>
-                {pa.strategies.map((x, i) => (
-                  <li key={i}>
-                    <MathText>{x}</MathText>
-                  </li>
-                ))}
-              </ul>
-              {a.response && (
-                <details className={s.more}>
-                  <summary>IM’s response</summary>
-                  <IMLines lines={a.response} />
-                </details>
-              )}
-            </Reveal>
-          </Part>
-
-          <Part letter={L()} title="Barriers and misconceptions">
-            {pa.barriers.length > 0 && (
-              <div>
-                <span className={s.lab}>Barriers</span>
-                <ul className={s.clean}>
-                  {pa.barriers.map((x, i) => (
-                    <li key={i}>
-                      <MathText>{x}</MathText>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-            <div>
-              <span className={s.lab}>Misconceptions</span>
-              <ul className={s.clean}>
-                {pa.misconceptions.map((x, i) => (
-                  <li key={i}>
-                    <MathText>{x}</MathText>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Part>
-
-          <Part letter={L()} title="Plan your response">
-            {pa.momentIds
-              .map(moment)
-              .filter((m): m is Moment => !!m)
-              .map((m) => (
-                <MomentCard key={m.id} m={m} />
-              ))}
-            <div>
-              <span className={s.lab}>Back-pocket questions</span>
-              <ul className={s.clean}>
-                {pa.backPocket.map((x, i) => (
-                  <li key={i}>
-                    <MathText>{q(x)}</MathText>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Part>
-
-          {isCrux && (
-            <Part letter={L()} title="Launch with Three Reads" lang>
-              <div className={s.row}>
-                <RoutineChip name="MLR6: Three Reads" />
-              </div>
-              {plan.crux.threeReads.map((r, i) => (
-                <div key={i} className={p.read}>
-                  <span className={s.lab}>
-                    Read {i + 1} · {r.focus}
-                  </span>
-                  <span className={p.say}>
-                    <MathText>{q(r.say)}</MathText>
-                  </span>
-                  <span className={cx(s.muted, s.small)}>
-                    <b>Listen for:</b> <MathText>{r.listenFor}</MathText>
-                  </span>
-                </div>
-              ))}
-              <Check on={!!st.said['tr']} onClick={() => toggle('said', 'tr')}>
-                I ran the three reads out loud
-              </Check>
-            </Part>
-          )}
-
-          {isCrux && (
-            <Part letter={L()} title="Release with a frame" lang>
-              <div className={s.row}>
-                <RoutineChip name="MLR8: Discussion Supports" />
-              </div>
-              <span className={p.say}>
-                <MathText>{q(plan.crux.release.say)}</MathText>
-              </span>
-              <span className={s.small}>
-                <b>Success criteria:</b> <MathText>{plan.crux.release.successCriteria}</MathText>
-              </span>
-              <Frames />
-              <div>
-                <span className={s.lab}>Talk practice</span>
-                <ul className={s.clean}>
-                  {plan.crux.release.talkMoments.map((x, i) => (
-                    <li key={i}>
-                      <MathText>{x}</MathText>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Part>
-          )}
-
-          <Part letter={L()} title="Grouping and monitoring">
-            <span className={s.small}>
-              <b>How students work:</b> <MathText>{pa.grouping}</MathText>
-            </span>
-            <span className={s.small}>
-              <b>Monitor:</b> <MathText>{pa.monitor}</MathText>
-            </span>
-          </Part>
-
-          {isCrux && (
-            <Part letter={L()} title="Synthesize in the language goal" lang>
-              <div className={s.row}>
-                <RoutineChip name={plan.crux.synthesis.routine} />
-              </div>
-              <ol className={s.clean} style={{ listStyle: 'decimal' }}>
-                {plan.crux.synthesis.steps.map((x, i) => (
-                  <li key={i}>
-                    <MathText>{x}</MathText>
-                  </li>
-                ))}
-              </ol>
-              <span className={p.say}>
-                <MathText>{q(plan.crux.synthesis.prompt)}</MathText>
-              </span>
-              <Reveal k="synth-sounds" label="What a strong answer sounds like">
-                <div className={s.flat}>
-                  <MathText>{q(plan.crux.synthesis.sounds)}</MathText>
-                </div>
-              </Reveal>
-            </Part>
-          )}
-        </section>
-      </div>
+        )}
+      </article>
     );
   };
 
   const stepRehearse = () => {
-    const i = Math.min(st.ai, chosen.length - 1);
-    const a = actIm(chosen[i]);
-    const pa = actPlan(chosen[i]);
+    if (!cards.length) return <p className={s.flat}>No activities to rehearse.</p>;
+    const i = Math.min(st.ai, cards.length - 1);
+    const saidCount = cards.filter((c) => st.said[c.id]).length;
     return (
       <div className={s.stack}>
-        <div className={s.dotsnav} role="group" aria-label="Activities">
-          {chosen.map((id, j) => (
-            <button key={id} type="button" aria-current={j === i} style={{ width: 'auto', padding: '0 10px', borderRadius: 999 }} onClick={() => update({ ai: j })}>
-              {id}
+        <div className={s.dotsnav} role="group" aria-label="Moments">
+          {cards.map((c, j) => (
+            <button
+              key={c.id}
+              type="button"
+              className={cx(st.said[c.id] && s.said, st.flags[c.id] && s.flagged)}
+              aria-current={j === i}
+              aria-label={`Moment ${j + 1}`}
+              onClick={() => update({ ai: j })}
+            >
+              {j + 1}
             </button>
           ))}
         </div>
-        {a && pa ? activityPage(a, pa) : <p className={s.flat}>No plan for this activity yet.</p>}
+        {cardView(cards[i])}
+        <p className={cx(s.muted, s.small)} style={{ textAlign: 'center' }}>
+          {i + 1} of {cards.length} · {saidCount} said · {chosen.length} {chosen.length === 1 ? 'activity' : 'activities'}
+        </p>
       </div>
     );
   };
@@ -649,39 +727,40 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
   const stepSynth = () => (
     <div className={s.stackLg}>
       <section className={cx(s.card, s.stack)}>
-        <span className={s.eyebrow}>IM’s lesson synthesis</span>
-        <IMLines lines={im.lessonSynthesis} />
-      </section>
-      <div className={s.stack}>
-        <label htmlFor="plan-synth" className={s.lab}>
-          What do you want students to say?
-        </label>
-        <textarea id="plan-synth" value={st.synth} style={{ minHeight: 90 }} onChange={(e) => update({ synth: e.target.value })} />
-      </div>
-      <Reveal k="lsynth" label="Compare with Premo’s plan">
-        <div className={s.flat}>
-          <span className={s.lab}>Desired</span>
-          <MathText>{plan.lessonSynthesis.desired}</MathText>
-        </div>
-        <div>
-          <span className={s.lab}>You may hear</span>
-          <ul className={s.clean}>
-            {plan.lessonSynthesis.anticipated.map((x, i) => (
-              <li key={i}>
-                <MathText>{q(x)}</MathText>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <span className={s.eyebrow}>Say the ideas</span>
+        {plan.lessonSynthesis.ideas.map((x, i) => (
+          <p key={i} style={{ fontWeight: 600 }}>
+            <MathText>{q(x)}</MathText>
+          </p>
+        ))}
         <span className={s.small}>
-          <b>Back pocket:</b> <MathText>{q(plan.lessonSynthesis.backPocket)}</MathText>
+          <b>Point to:</b> <MathText>{plan.lessonSynthesis.pointTo}</MathText>
         </span>
-      </Reveal>
+        <Check on={!!st.said['lsynth']} onClick={() => toggle('said', 'lsynth')}>
+          I said the ideas out loud, pointing to the chart
+        </Check>
+        <details className={s.more}>
+          <summary>IM’s lesson synthesis</summary>
+          <IMLines lines={im.lessonSynthesis} />
+        </details>
+      </section>
+      <section className={cx(s.card, s.stack)}>
+        <span className={s.eyebrow}>Quick check before the cool-down</span>
+        <p className={s.prompt} style={{ fontSize: 19 }}>
+          <MathText>{q(plan.lessonSynthesis.check.question)}</MathText>
+        </p>
+        <span className={cx(s.muted, s.small)}>Students answer in the language goal’s form. Say a strong answer yourself first.</span>
+        <Reveal k="lcheck" label="What a strong answer sounds like">
+          <div className={s.flat}>
+            <MathText>{q(plan.lessonSynthesis.check.sounds)}</MathText>
+          </div>
+        </Reveal>
+      </section>
     </div>
   );
 
   const record = () => {
-    const flagged = premo.moments.filter((m) => st.flags[m.id]).map((m) => `- ${m.see}`);
+    const flagged = cards.filter((c) => st.flags[c.id]).map((c) => `- ${c.activityId}: ${c.momentId ? moment(c.momentId)?.see : c.kind === 'math' ? 'doing the math' : c.kind}`);
     return [
       `# Lesson ${im.code} ${im.title}: planning record`,
       `${new Date().toLocaleDateString()} · Grade 6 Unit 3 · Activities rehearsed: ${chosen.join(', ')}`,
@@ -694,8 +773,9 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
       `## Cool-down, as a student`,
       st.cool || '(not answered)',
       ``,
-      `## Lesson synthesis: what I want students to say`,
-      st.synth || '(not written)',
+      `## Lesson synthesis`,
+      ...plan.lessonSynthesis.ideas.map((x) => `- ${x}`),
+      `Quick check: ${q(plan.lessonSynthesis.check.question)}`,
       ``,
       `## Flagged as hard`,
       ...(flagged.length ? flagged : ['- None']),
@@ -820,11 +900,18 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
     );
     if (k === 'clo' && !st.shown.clo) return btn('Show Premo’s exemplar', () => toggle('shown', 'clo'), !st.clo.trim());
     if (k === 'cool' && !st.shown.cool) return btn('Check my answer', () => toggle('shown', 'cool'), !st.cool.trim());
-    if (k === 'rehearse' && st.ai < chosen.length - 1)
-      return btn(`Next activity: ${chosen[st.ai + 1]} →`, () => {
-        update({ ai: st.ai + 1 });
-        window.scrollTo(0, 0);
-      });
+    if (k === 'rehearse' && cards.length) {
+      const i = Math.min(st.ai, cards.length - 1);
+      const c = cards[i];
+      if (!st.said[c.id]) return btn('I said it', () => toggle('said', c.id));
+      if (i < cards.length - 1)
+        return btn('Next moment →', () => {
+          update({ ai: i + 1 });
+          window.scrollTo(0, 0);
+        });
+      const skipped = cards.findIndex((x) => !st.said[x.id]);
+      if (skipped >= 0) return btn('Back to the ones you skipped', () => update({ ai: skipped }));
+    }
     if (k === 'carry') return btn('In-class card', () => update({ view: 'incl' }));
     return btn(nextLabel, nextStep);
   };

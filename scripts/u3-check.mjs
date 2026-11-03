@@ -219,7 +219,12 @@ for (const f of planFiles) {
       const mo = pr.moments.find((x) => x.id === m);
       if (!mo) err(at, `${a.id}: moment ${m} is not in the Premo layer`);
       else if (mo.activityId !== a.id) err(at, `${a.id}: moment ${m} belongs to ${mo.activityId}`);
+      // The crux's Launch, Release and Synthesis cards already rehearse running the routines.
+      else if (mo.kind === 'run-routine') err(at, `${a.id}: moment ${m} runs a routine; the planning view's own cards do that`);
     }
+    // Rehearsal stays near the reviewed prep's length: three moments at the crux, two elsewhere.
+    const cap = a.id === pr.crux ? 3 : 2;
+    if ((a.momentIds ?? []).length > cap) err(at, `${a.id} has ${a.momentIds.length} moments to rehearse; the most is ${cap}`);
     for (const b of a.backPocket ?? []) if (wordsIn(b) > 16) warn(at, `${a.id} back-pocket question is ${wordsIn(b)} words: "${b.slice(0, 50)}…"`);
   }
   const c = pl.crux;
@@ -229,7 +234,10 @@ for (const f of planFiles) {
   if (!c?.release?.successCriteria || !c?.release?.say) err(at, 'crux.release needs successCriteria and say');
   for (const b of BANDS) if (!c?.release?.byBand?.[b]?.frame || !c?.release?.byBand?.[b]?.stretch) err(at, `crux.release.byBand.${b} needs frame and stretch`);
   if (!c?.synthesis?.steps?.length || !c?.synthesis?.prompt || !c?.synthesis?.sounds) err(at, 'crux.synthesis needs steps, prompt and sounds');
-  if (!pl.lessonSynthesis?.desired || !pl.lessonSynthesis?.backPocket) err(at, 'lessonSynthesis needs desired and backPocket');
+  const ls = pl.lessonSynthesis;
+  if (!ls?.ideas?.length || !ls?.pointTo || !ls?.check?.question || !ls?.check?.sounds) err(at, 'lessonSynthesis needs ideas, pointTo and check { question, sounds }');
+  // The quick check must not give away the cool-down.
+  if (ls?.check?.question && (im.coolDown.task ?? []).some((l) => l.length > 20 && ls.check.question.includes(l.slice(0, 20)))) err(at, 'lessonSynthesis.check repeats the cool-down');
   if (!pl.beforeClass?.length) err(at, 'beforeClass is empty');
   for (const c of pl.cuts ?? []) if (!ids.includes(c.activityId)) err(at, `cut for ${c.activityId}, which is not in IM’s lesson`);
   if (flat({ ...pl, reviewNotes: [] }).some((s) => /Compare and Connect|poster/i.test(s))) warn(at, 'mentions Compare and Connect or posters, which D1 replaces');

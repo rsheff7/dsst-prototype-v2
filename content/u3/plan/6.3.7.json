@@ -16,7 +16,9 @@
   "7.4 grouping: IM’s launch names no grouping, only the applesauce context, so the grouping line says that.",
   "Non-crux activities carry no language supports (D7).",
   "Release frames by band added 2026-11-02 for the planning view; the Premo layer’s frames were worded for Compare and Connect posters, which D1 replaces.",
-  "beforeClass and cuts added 2026-11-02 for the planning view: the Premo layer’s versions are written for Compare and Connect posters, which D1 replaces."
+  "beforeClass and cuts added 2026-11-02 for the planning view: the Premo layer’s versions are written for Compare and Connect posters, which D1 replaces.",
+  "Lesson synthesis rewritten 2026-11-02 (Robert): IM’s synthesis is a teacher summary of two ideas, so the step is now say the ideas, point to the 7.3 chart (or 7.4 if taught), and one quick check in the CLO form that avoids the cool-down’s numbers.",
+  "7.3 moments trimmed 2026-11-02 to three (IM’s misconception m4, the language moment m6, who shares first m5) so a crux-only night is seven rehearsal cards, close to the reviewed prep’s six."
  ],
  "story": "Lesson 7 sits mid-way through the rates section. It shows that equivalent ratios share one unit rate, and that the unit rate takes you across a table, which students lean on for speed and deals in Lessons 8 and 9.",
  "previous": "In Lesson 6 students found two unit rates for each ratio, \\(\\frac{a}{b}\\) and \\(\\frac{b}{a}\\); today they see those rates stay the same for every equivalent ratio.",
@@ -114,8 +116,6 @@
    ],
    "momentIds": [
     "m4",
-    "m3",
-    "m7",
     "m6",
     "m5"
    ],
@@ -200,12 +200,15 @@
   }
  },
  "lessonSynthesis": {
-  "desired": "Equivalent ratios have the same unit rate, and the unit rate is the factor that takes you from one column of the table to the other.",
-  "anticipated": [
-   "“The speed was 6 bracelets per hour in every row, so you multiply the hours by 6, and divide the bracelets by 6 to go back.”",
-   "“You just times by the same number every time.” Partly right: which number, and why does it stay the same?"
+  "ideas": [
+   "Equivalent ratios have the same unit rate: 6 bracelets per hour in every row.",
+   "The unit rate takes you across the table: multiply hours by 6 to get bracelets, and divide bracelets by 6 to get hours."
   ],
-  "backPocket": "Why was the unit price $7 in every row of the burrito table?"
+  "pointTo": "Point to the 7.3 chart: the 6 in every row, and the arrows, × 6 across and ÷ 6 back. If you taught 7.4, point to the applesauce table instead: the same move with its own unit rate.",
+  "check": {
+   "question": "A recipe uses 3 cups of flour per batch. How do you get from batches to cups, and back?",
+   "sounds": "To get cups from batches, I multiply by the unit rate, 3 cups per batch. To get batches from cups, I divide by 3."
+  }
  },
  "beforeClass": [
   "For Three Reads in 7.3: display the task with the questions covered until the third read.",

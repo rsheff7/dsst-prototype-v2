@@ -38,6 +38,8 @@ This replaces today's six steps (Orient, Do it as a student, Predict, Rehearse, 
 
 ### Step 2: The language goal, or CLO (IPP: Unpack the CLO, about 5 min)
 
+The page names the crux activity and offers its IM notes beside the "sounds like" prompt, so the teacher doesn't have to recall it from the previous page (Robert, 2026-11-02).
+
 This is the biggest gap. Robert (1:16:20) called it "a glaring hole," and "it is an expectation, so therefore, it needs to be in the tool."
 
 - **R2.1** Show **one CLO** for the lesson. It starts from IM's learning goal. IM's middle-school goals carry the mode ("orally and in writing") but not the **form and function** DPS requires (Heather 1:07:34), so Premo adds:
@@ -65,6 +67,11 @@ This is the biggest gap. Robert (1:16:20) called it "a glaring hole," and "it is
 
 ### Step 5: Rehearse each chosen activity (IPP: Lesson Activities, about 10–15 min)
 
+**Format (Robert, 2026-11-02):** the reviewed prep's rehearsal is the base. It shows one card at a time with numbered dots: what you see, say your move out loud, check it against three criteria, then the model wording, with "flag as hard." The cards follow the lesson as it runs:
+- Each chosen activity starts with a **Do the math** card. The task is shown; its model wording holds a–d below.
+- The crux then adds a **Launch** card (Three Reads) and a **Release** card (frame by level), then its moments, then a **Synthesis** card (MLR 1 or 2).
+- There are at most **3 moments at the crux and 2 elsewhere**, so a crux-only night is about seven cards, close to the reviewed prep's six.
+
 Each activity is worked through on its own before the next one starts (P5). Every chosen activity gets parts **a–d**. The crux also gets the language layer, **e–g** (Josh's red items). Non-crux activities carry little or no language support (Josh 2:16:45).
 
 - **a. Do the math.** The exemplar response for the activity's task, with strategies and representations. Anticipate more than one correct strategy, not just right and wrong (Heather 0:28:43). For a Five Practices activity, include the order to share in.
@@ -87,10 +94,13 @@ Each activity is worked through on its own before the next one starts (P5). Ever
 
 **MLRs come first in the activity, never at the bottom** (Heather 0:58:11). Each step shows its routine at the point it happens: launch, release or synthesis.
 
-### Step 6: Lesson synthesis (IPP: Lesson Synthesis, about 5 min)
+### Step 6: Lesson synthesis (IPP: Lesson Synthesis, about 3 min)
 
-- **R6.1** Show IM's lesson synthesis questions, with desired and anticipated responses and one back-pocket question.
-- *Open:* Josh asks whether language guidance belongs here too. See D5.
+IM's lesson synthesis is a teacher summary, not a discussion ("Summarize for students the two new ideas…").
+
+- **R6.1** **Say the ideas:** the lesson's ideas, one sentence each, in plain words with the lesson's numbers.
+- **R6.2** **Point to the crux display:** the chart from the crux synthesis, or the final activity if it's taught.
+- **R6.3** **One quick check before the cool-down:** a question students answer in the CLO's form, plus what a strong answer sounds like. It must not reuse the cool-down's task. This settles D5.
 
 ### Step 7: Carry it (output)
 
@@ -153,7 +163,7 @@ Unchanged: IM's text verbatim with live notes, the cool-down, the crux callout, 
 | D2 | **Who writes the CLO's form and function.** | Premo drafts from IM's goal and DSST reviews, or DSST supplies them per lesson | Robert, with DSST |
 | D3 | **Unit at a Glance.** | Get DSST's file for Unit 3 so vocabulary matches it, or use IM's terminology until then | Robert to request |
 | D4 | **Posted exemplar format** | Printable page, image to project, or both | Heather |
-| D5 | **Language in the lesson synthesis** | Add a CLO prompt and exemplar there too, or keep it at the crux only | Josh and Heather |
+| D5 | **Language in the lesson synthesis.** ~~Open~~ **Decided 2026-11-02 (Robert):** one quick check in the CLO's form before the cool-down (R6.3). | Josh and Heather to confirm |
 | D6 | **Recording the rehearsal** | None; on-device playback only; or a clip shared with the coach (raises consent and storage questions) | Robert, with DSST (storage is Neil's) |
 | D8 | **Lesson coverage for Phase 1.** Which grades, units and lessons the 8 teachers teach from Jan 5 to Feb 17 | Get DSST's pacing calendar for AST and the second school | Robert to request; Heather |
 | D7 | **Non-crux activities** | Math, misconceptions and moves only, or also a frame | Josh's view: math only |
