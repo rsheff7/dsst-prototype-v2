@@ -234,8 +234,10 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
   };
   const toggle = (field: 'shown' | 'said' | 'ticks' | 'flags', k: string) => update((x) => ({ [field]: { ...x[field], [k]: !x[field][k] } }));
   const levels = st.levels;
-  const fill = (key: string): TableFill => ({
+  const fill = (key: string, answers?: string[] | null, check?: boolean): TableFill => ({
     key,
+    answers,
+    check,
     values: st.cells,
     onChange: (cell, value) => update((x) => ({ cells: { ...x.cells, [cell]: value } })),
   });
@@ -373,7 +375,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
     <div className={s.stackLg}>
       <section className={cx(s.card, s.stack)}>
         <span className={s.eyebrow}>Cool-down · {im.coolDown.title}</span>
-        <IMLines lines={im.coolDown.task} fill={fill('cool')} />
+        <IMLines lines={im.coolDown.task} fill={fill('cool', im.coolDown.response, !!st.shown.cool)} />
         <p className={cx(s.muted, s.small)}>Fill in the table, write your reasoning, then say it out loud.</p>
       </section>
       <textarea value={st.cool} placeholder="Your reasoning, as a strong student…" onChange={(e) => update({ cool: e.target.value })} />
@@ -464,7 +466,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
         ? {
             label: 'Do the math',
             // Photos show only as alt text and credit here; IM's notes keep them.
-            see: <IMLines lines={a.task.filter((l) => !/^\[image:|Attribution:/.test(l))} fill={fill(`task:${a.id}`)} />,
+            see: <IMLines lines={a.task.filter((l) => !/^\[image:|Attribution:/.test(l))} fill={fill(`task:${a.id}`, a.response, !!st.said[`math:${a.id}`])} />,
             seeAs: 'task',
             prompt: 'Solve it, then say the ways students will solve it and what you’ll watch for.',
             criteria: ['Solved the task myself', 'Named more than one way students might solve it', 'Said what I’ll watch and listen for while they work'],

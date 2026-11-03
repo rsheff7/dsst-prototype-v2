@@ -3,6 +3,8 @@
 import type { ReactNode } from 'react';
 import s from './u3.module.css';
 import corrections from '../../../content/u3/corrections.json';
+import { markCell } from '@/lib/u3/marks';
+export { markCell, type CellMark } from '@/lib/u3/marks';
 
 // IM's own slips, noted under the line rather than changed in it.
 const NOTES = (corrections as { notes: { line?: string; prefix?: string; note: string }[] }).notes;
@@ -85,6 +87,8 @@ export function MathText({ children }: { children: string | null | undefined }) 
 
 const pairs = (xs: string[]) => xs.reduce<string[]>((out, x, i) => (i % 2 ? [...out.slice(0, -1), `${out[out.length - 1]} ${x}`] : [...out, x]), []);
 
+const cx2 = (...c: (string | false | null | undefined)[]) => c.filter(Boolean).join(' ');
+
 const startsRow = (l: string | undefined) => !!l && /^\|/.test(l.trim());
 // IM writes a table's header row without the leading bar, so a "a | b" line
 // counts as a row when a row follows it, or when it has three or more cells.
@@ -104,10 +108,38 @@ export interface TableFill {
   key: string;
   values: Record<string, string>;
   onChange: (cell: string, value: string) => void;
+  /** IM's response lines; their completed tables are the answer key. */
+  answers?: string[] | null;
+  /** Mark each filled cell against IM's answer. */
+  check?: boolean;
 }
+
+// ---------------------------------------------------------------------------
+// Marking a filled cell against IM's completed table
+// ---------------------------------------------------------------------------
+
+/** IM's tables in a run of lines, as rows of cells, header first. */
+function tablesIn(lines: string[] | null | undefined): string[][][] {
+  const out: string[][][] = [];
+  let cur: string[][] | null = null;
+  (lines ?? []).forEach((l, i, all) => {
+    if (isRow(l, all[i + 1])) {
+      if (!cur) out.push((cur = []));
+      cur.push(cells(l));
+    } else cur = null;
+  });
+  return out;
+}
+const headerKey = (row: string[]) => row.map((c) => c.trim().toLowerCase()).filter(Boolean).join('|');
+
+
 
 export function IMLines({ lines, className, fill }: { lines: string[] | null | undefined; className?: string; fill?: TableFill }) {
   if (!lines?.length) return null;
+  // The answer key for each of this run's tables: IM's completed table with the same header and rows.
+  const answerTables = fill?.answers ? tablesIn(fill.answers) : [];
+  const used = new Set<number>();
+  let key: string[][] | null = null;
   const blocks: (
     | { kind: 'p'; text: string; note: string | null }
     | { kind: 'ul'; items: string[] }
@@ -169,6 +201,13 @@ export function IMLines({ lines, className, fill }: { lines: string[] | null | u
           </div>
         ) : (
           <div key={i} className={s.tableWrap}>
+            {(() => {
+              // Pick IM's completed table once per task table, in order.
+              const k = answerTables.findIndex((x, n) => !used.has(n) && headerKey(x[0]) === headerKey(b.rows[0]) && x.length === b.rows.length);
+              if (k >= 0) used.add(k);
+              key = k >= 0 ? answerTables[k] : null;
+              return null;
+            })()}
             <table className={s.table}>
               <thead>
                 <tr>
@@ -185,15 +224,32 @@ export function IMLines({ lines, className, fill }: { lines: string[] | null | u
                     {Array.from({ length: Math.max(...b.rows.map((x) => x.length)) }, (_, c) => {
                       const blank = !(r[c] ?? '').trim();
                       const cell = `${fill?.key}:${i}:${j}:${c}`;
+                      const entry = fill?.values[cell] ?? '';
+                      const im = key?.[j + 1]?.[c]?.trim();
+                      const mark = fill?.check && blank && entry.trim() && im ? markCell(entry, im) : null;
                       return (
-                        <td key={c} className={fill && blank ? s.fillCell : undefined}>
+                        <td key={c} className={fill && blank ? cx2(s.fillCell, mark && s[`mark_${mark}`]) : undefined}>
                           {fill && blank ? (
-                            <input
-                              className={s.fillInput}
-                              value={fill.values[cell] ?? ''}
-                              aria-label={`${b.rows[0][c] ?? 'value'}, row ${j + 1}`}
-                              onChange={(e) => fill.onChange(cell, e.target.value)}
-                            />
+                            <>
+                              <input
+                                className={s.fillInput}
+                                value={entry}
+                                aria-label={`${b.rows[0][c] ?? 'value'}, row ${j + 1}`}
+                                aria-invalid={mark === 'wrong' || undefined}
+                                onChange={(e) => fill.onChange(cell, e.target.value)}
+                              />
+                              {mark && (
+                                <span className={s.markNote}>
+                                  {mark === 'right' ? '✓' : mark === 'wrong' ? '✗ IM: ' : 'IM: '}
+                                  {mark !== 'right' && <MathText>{im}</MathText>}
+                                </span>
+                              )}
+                              {fill.check && !entry.trim() && im && (
+                                <span className={s.markNote}>
+                                  IM: <MathText>{im}</MathText>
+                                </span>
+                              )}
+                            </>
                           ) : (
                             <MathText>{r[c] ?? ''}</MathText>
                           )}
