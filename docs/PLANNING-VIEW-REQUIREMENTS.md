@@ -1,8 +1,9 @@
 # Teacher Planning View: Requirements for the Next Version
 
-Draft for Robert's review, 2026-11-02.
+Draft for Robert's review, 2026-11-02. The version DSST reviewed on Oct 28 is preserved at tag `dsst-review-2026-10-28` (https://dsst-prototype-v2-r0kesvlf1-dsst-build.vercel.app/u3). This work is on branch `planning-view-ipp`.
 
 **Sources**
+- DSST's pilot roles document, "Premo Pilot Schools R&R's" (Heather Patel).
 - DSST/ScaleUp Kick-Off, Oct 28, 2026 (Otter transcript). Timestamps below are from that recording. Otter names only Robert, so other speakers are identified from context.
 - Josh Smith's follow-up, "Adapted IM Lesson Internalization Guidance," Oct 28. It contains a draft *Lesson Intellectual Preparation Protocol (IPP) for Illustrative Mathematics, Language Supports Version*. That draft blends the whiteboard discussion with DSST's existing IPP.
 
@@ -114,6 +115,17 @@ Each activity is worked through on its own before the next one starts (P5). Ever
 - **R8.3 Group use.** It works for a two-teacher grade team in a 30-minute LICM (Heather 2:21:53), and for a coach narrowing it to the crux for 15 minutes of practice (Josh 1:59:18).
 - **R8.4 Time.** The whole flow, with only the crux chosen, fits in 20–30 minutes. The step estimates on screen must add up to that.
 
+- **R8.5 Saved planning record.** Teachers must keep a lesson planning folder and share it with the Pilot Manager. The tool saves each night's prep (answers, CLO exemplar, chosen activities, flags) in a form that can go into that folder: a PDF, a copyable doc, or a link. *(Pilot R&R)*
+- **R8.6 Grades 6–8.** The pilot is 6th–8th grade math. Content must exist for the lessons pilot teachers actually teach from Jan 5, not only Grade 6 Unit 3. *(Pilot R&R; see D8)*
+- **R8.7 Coach preparation.** DCIs use the tool to prepare for and lead biweekly LICMs, and one LICM per teacher per phase is filmed. The coach summary (R7.3) and the crux-only path (R8.3) must be usable by a DCI on a teacher's lesson. *(Pilot R&R)*
+- **R8.8 Quality review.** The pilot runs a monthly "Quality of Supports Review." Each piece of Premo guidance keeps its source (IM, Premo, or DSST) so reviewers can tell which is which. *(Pilot R&R)*
+
+**From DSST's pilot roles document** ("Premo Pilot Schools R&R's," Heather Patel, last edited Oct 28):
+- **Timeline:** onboarding at PLC #1 in December; Phase 1 from Jan 5 to Feb 17; Phase 2 from Mar 1 to May 21.
+- **Teachers:** they use Premo daily during internalization, "integrating the tool's guidance on language demands, Math Language Routines (MLRs), WIDA-aligned language objectives, and learner-specific scaffolds."
+- **Observations:** DCI observations (about four per classroom, filmed in Sibme) look for "Premo tool integration, student talk ratios, and implementation of Math Language Routines." The coach look-fors in R7.3 should line up with them.
+- **Comparison materials:** teachers submit lesson planning materials made without Premo, before and after the pilot. The saved record (R8.5) should be comparable with those.
+
 ---
 
 ## 4. What changes from the current `unit3-rates` build
@@ -143,6 +155,7 @@ Unchanged: IM's text verbatim with live notes, the cool-down, the crux callout, 
 | D4 | **Posted exemplar format** | Printable page, image to project, or both | Heather |
 | D5 | **Language in the lesson synthesis** | Add a CLO prompt and exemplar there too, or keep it at the crux only | Josh and Heather |
 | D6 | **Recording the rehearsal** | None; on-device playback only; or a clip shared with the coach (raises consent and storage questions) | Robert, with DSST (storage is Neil's) |
+| D8 | **Lesson coverage for Phase 1.** Which grades, units and lessons the 8 teachers teach from Jan 5 to Feb 17 | Get DSST's pacing calendar for AST and the second school | Robert to request; Heather |
 | D7 | **Non-crux activities** | Math, misconceptions and moves only, or also a frame | Josh's view: math only |
 
 ---
