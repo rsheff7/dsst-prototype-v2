@@ -24,7 +24,7 @@ import type { WidaLevel } from '@/lib/eld/types';
 import { bandForLevel } from '@/lib/eld/types';
 import { LEVELS, TIER_WORDS, levelName, tierOf } from '@/lib/prep/levelTiers';
 import { findRoutine, routineTitle } from '@/lib/u3/routines';
-import { IMLines, MathText } from '@/components/u3/MathText';
+import { IMLines, MathText, type TableFill } from '@/components/u3/MathText';
 import U3ActivityNotes, { U3RoutineNotes } from '@/components/u3/U3ActivityNotes';
 import { ImCredit } from '@/components/u3/U3Notice';
 import { Check, Icon, Sheet, SheetTop, cx } from '@/components/prep/parts';
@@ -49,6 +49,8 @@ interface PlanState {
   said: Record<string, boolean>;
   ticks: Record<string, boolean>;
   flags: Record<string, boolean>;
+  /** What the teacher wrote into blank table cells. */
+  cells: Record<string, string>;
 }
 
 const fresh = (): PlanState => ({
@@ -65,6 +67,7 @@ const fresh = (): PlanState => ({
   said: {},
   ticks: {},
   flags: {},
+  cells: {},
 });
 
 const STEPS = [
@@ -231,6 +234,12 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
   };
   const toggle = (field: 'shown' | 'said' | 'ticks' | 'flags', k: string) => update((x) => ({ [field]: { ...x[field], [k]: !x[field][k] } }));
   const levels = st.levels;
+  const fill = (key: string): TableFill => ({
+    key,
+    values: st.cells,
+    onChange: (cell, value) => update((x) => ({ cells: { ...x.cells, [cell]: value } })),
+  });
+  const filled = (key: string) => Object.entries(st.cells).some(([k, v]) => k.startsWith(`${key}:`) && v.trim());
   const crux = actIm(cruxId)!;
 
   // --------------------------------------------------------------- steps
@@ -364,10 +373,10 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
     <div className={s.stackLg}>
       <section className={cx(s.card, s.stack)}>
         <span className={s.eyebrow}>Cool-down · {im.coolDown.title}</span>
-        <IMLines lines={im.coolDown.task} />
-        <p className={cx(s.muted, s.small)}>Answer in writing, with your reasoning, then say it out loud.</p>
+        <IMLines lines={im.coolDown.task} fill={fill('cool')} />
+        <p className={cx(s.muted, s.small)}>Fill in the table, write your reasoning, then say it out loud.</p>
       </section>
-      <textarea value={st.cool} placeholder="Your answer, as a strong student…" onChange={(e) => update({ cool: e.target.value })} />
+      <textarea value={st.cool} placeholder="Your reasoning, as a strong student…" onChange={(e) => update({ cool: e.target.value })} />
       {st.shown.cool && (
         <section className={cx(s.stack, s.reveal)}>
           <div className={s.flat}>
@@ -455,7 +464,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
         ? {
             label: 'Do the math',
             // Photos show only as alt text and credit here; IM's notes keep them.
-            see: <IMLines lines={a.task.filter((l) => !/^\[image:|Attribution:/.test(l))} />,
+            see: <IMLines lines={a.task.filter((l) => !/^\[image:|Attribution:/.test(l))} fill={fill(`task:${a.id}`)} />,
             seeAs: 'task',
             prompt: 'Solve it, then say the ways students will solve it and what you’ll watch for.',
             criteria: ['Solved the task myself', 'Named more than one way students might solve it', 'Said what I’ll watch and listen for while they work'],
@@ -771,7 +780,8 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
       `My sentence: ${st.clo || '(not written)'}`,
       ``,
       `## Cool-down, as a student`,
-      st.cool || '(not answered)',
+      ...(filled('cool') ? [`Table: ${Object.entries(st.cells).filter(([k, v]) => k.startsWith('cool:') && v.trim()).map(([, v]) => v.trim()).join(', ')}`] : []),
+      st.cool || '(no reasoning written)',
       ``,
       `## Lesson synthesis`,
       ...plan.lessonSynthesis.ideas.map((x) => `- ${x}`),
@@ -899,7 +909,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
       </button>
     );
     if (k === 'clo' && !st.shown.clo) return btn('Show Premo’s exemplar', () => toggle('shown', 'clo'), !st.clo.trim());
-    if (k === 'cool' && !st.shown.cool) return btn('Check my answer', () => toggle('shown', 'cool'), !st.cool.trim());
+    if (k === 'cool' && !st.shown.cool) return btn('Check my answer', () => toggle('shown', 'cool'), !st.cool.trim() && !filled('cool'));
     if (k === 'rehearse' && cards.length) {
       const i = Math.min(st.ai, cards.length - 1);
       const c = cards[i];

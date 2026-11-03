@@ -96,7 +96,17 @@ const cells = (l: string) => l.trim().replace(/^\|\s?/, '').split(/\s*\|\s*/);
  * A run of IM lines as IM prints them: paragraphs, and tables where IM's
  * lines are table rows ("| a | b"). The first row of a run is the header.
  */
-export function IMLines({ lines, className }: { lines: string[] | null | undefined; className?: string }) {
+/**
+ * Lets a teacher fill a table's blank cells (the planning view). Each blank cell's value
+ * is kept under `${key}:${table}:${row}:${col}`; filled cells stay as IM printed them.
+ */
+export interface TableFill {
+  key: string;
+  values: Record<string, string>;
+  onChange: (cell: string, value: string) => void;
+}
+
+export function IMLines({ lines, className, fill }: { lines: string[] | null | undefined; className?: string; fill?: TableFill }) {
   if (!lines?.length) return null;
   const blocks: (
     | { kind: 'p'; text: string; note: string | null }
@@ -172,11 +182,24 @@ export function IMLines({ lines, className }: { lines: string[] | null | undefin
               <tbody>
                 {b.rows.slice(1).map((r, j) => (
                   <tr key={j}>
-                    {Array.from({ length: Math.max(...b.rows.map((x) => x.length)) }, (_, c) => (
-                      <td key={c}>
-                        <MathText>{r[c] ?? ''}</MathText>
-                      </td>
-                    ))}
+                    {Array.from({ length: Math.max(...b.rows.map((x) => x.length)) }, (_, c) => {
+                      const blank = !(r[c] ?? '').trim();
+                      const cell = `${fill?.key}:${i}:${j}:${c}`;
+                      return (
+                        <td key={c} className={fill && blank ? s.fillCell : undefined}>
+                          {fill && blank ? (
+                            <input
+                              className={s.fillInput}
+                              value={fill.values[cell] ?? ''}
+                              aria-label={`${b.rows[0][c] ?? 'value'}, row ${j + 1}`}
+                              onChange={(e) => fill.onChange(cell, e.target.value)}
+                            />
+                          ) : (
+                            <MathText>{r[c] ?? ''}</MathText>
+                          )}
+                        </td>
+                      );
+                    })}
                   </tr>
                 ))}
               </tbody>
