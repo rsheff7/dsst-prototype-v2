@@ -1,0 +1,230 @@
+{
+ "status": "draft",
+ "reviewNotes": [
+  "No person has reviewed this file.",
+  "Story and previous: from IM’s lesson narrative and Lesson 6’s goals (two unit rates per ratio, \\(\\frac{a}{b}\\) and \\(\\frac{b}{a}\\)). The rates section is Lessons 5–9.",
+  "CLO: imGoal is IM goal 1, copied verbatim. Function is “explain,” from IM’s goal; unit.json’s language progression lists “justify” for Lesson 7, so a reviewer may prefer that word. Form and exemplar follow 7.3’s response (multiply the hours by 6, divide the bracelets by 6). Precise terms follow unit.json (productive: “unit rate”) plus “per” and the two operations; “across” and “back” are Premo’s informal words from m6 and cruxLanguage.",
+  "Exemplar numbers checked against IM’s 7.3 response: 7 × 6 = 42 and 66 ÷ 6 = 11. The synthesis answer uses 100 ÷ 6 = \\(16\\frac{2}{3}\\), as in IM’s table. Look-for numbers checked against IM’s cool-down: 120 ÷ 4 = 30, 25 × 30 = 750, 270 ÷ 30 = 9.",
+  "Crux is 7.3, as in Premo’s layer. Per D1, the crux uses Three Reads to launch, a frame at release, and MLR 2 in the synthesis, not IM’s Compare and Connect. So m10 and m11 (Compare and Connect run-routine and breakdown) are left out of 7.3’s momentIds.",
+  "Check m6: its by-level moves still mention writing on a poster, which belongs to Compare and Connect. With MLR 2 there is no poster; the strategy sentence under the table does the same job. m6 may need a wording change in the Premo layer.",
+  "Check: premo cruxLanguage frames are written for Compare and Connect (“This poster goes across by ___”). The release frame here follows clo.form instead. The by-level frames may need revising to match.",
+  "Synthesis routine: MLR 2 Collect and Display, not MLR 1. IM’s 7.3 synthesis is a teacher-led share in a set order (1-hour row first, then the unit rate across), and MLR 2 fits that: the teacher scribes each strategy’s words and builds the display students reuse on the burrito table and the cool-down. MLR 1 needs rounds of partner revision that don’t fit 7.3’s 10 minutes, and IM already places MLR 1 in 7.2.",
+  "Three Reads: IM’s launch asks students to read the opening sentence and table, and explains the columns. The three reads replace that read-through; the column explanation now lands in read 2. Read 1 is light, since the task has little text beyond the table.",
+  "Strategies: 7.1 from IM’s four responses (the km/h one is slightly slower: 32 km ≈ 19.9 miles); 7.2 and 7.3 from IM’s responses, narrative and synthesis; 7.4 from IM’s response (× 1.5, ÷ 1.5 or × \\(\\frac{2}{3}\\)). Checked: 7 × 1.5 = 10.5, 10 × 1.5 = 15, 9 ÷ 1.5 = 6, 20 × \\(\\frac{2}{3}\\) = \\(13\\frac{1}{3}\\).",
+  "Misconceptions: IM gives one only for 7.2 (“14 per 2”), used there. The rest are Premo’s: 7.1’s one-right-answer (from IM’s synthesis note that there is no single answer) and same-speed slip; 7.2’s “twice the price per burrito”; 7.3’s “16 r 4 hours” (premo m7) and multiplying the wrong way; 7.4’s stuck-at-7 (premo m9, from IM’s narrative). A reviewer should check the Premo ones.",
+  "7.1 momentIds keeps m8 (Which One Doesn’t Belong breakdown): it matches IM’s synthesis note and Premo’s watchFor, so it isn’t weak.",
+  "7.4 grouping: IM’s launch names no grouping, only the applesauce context, so the grouping line says that.",
+  "Non-crux activities carry no language supports (D7).",
+  "Release frames by band added 2026-11-02 for the planning view; the Premo layer’s frames were worded for Compare and Connect posters, which D1 replaces.",
+  "beforeClass and cuts added 2026-11-02 for the planning view: the Premo layer’s versions are written for Compare and Connect posters, which D1 replaces."
+ ],
+ "story": "Lesson 7 sits mid-way through the rates section. It shows that equivalent ratios share one unit rate, and that the unit rate takes you across a table, which students lean on for speed and deals in Lessons 8 and 9.",
+ "previous": "In Lesson 6 students found two unit rates for each ratio, \\(\\frac{a}{b}\\) and \\(\\frac{b}{a}\\); today they see those rates stay the same for every equivalent ratio.",
+ "clo": {
+  "imGoal": "Apply reasoning about unit rates to complete a table of equivalent ratios, and explain (orally and in writing) the solution method.",
+  "function": "explain",
+  "form": "To get ___ from ___, I multiply (or divide) by the unit rate, ___ ___ per ___.",
+  "statement": "Students will explain, orally and in writing, how they multiply or divide by the unit rate to complete a table, naming the rate with “per.”",
+  "precise": [
+   "unit rate",
+   "per",
+   "multiply by",
+   "divide by"
+  ],
+  "informal": [
+   "across",
+   "back"
+  ],
+  "exemplar": "To get bracelets from hours, I multiply by the unit rate, 6 bracelets per hour: 7 × 6 = 42. To get hours from bracelets, I divide by 6: 66 ÷ 6 = 11.",
+  "lookFor": "The cheetah explanation names the unit rate with “per” (30 meters per second) and says multiply or divide by it: 25 × 30 = 750, 270 ÷ 30 = 9."
+ },
+ "activities": [
+  {
+   "id": "7.1",
+   "strategies": [
+    "Spot the one not written as a unit rate: 5 miles in 15 minutes.",
+    "Spot pace versus speed: 3 minutes per mile is a pace.",
+    "Convert to compare: 5 miles in 15 minutes and 3 minutes per mile are both 20 miles per hour; 32 km per hour is a little slower."
+   ],
+   "barriers": [
+    "The words “pace” and “speed” may be new or mean the same thing to students.",
+    "Kilometers may be unfamiliar next to miles."
+   ],
+   "misconceptions": [
+    "Thinking there is one right answer, when each rate doesn’t belong for a different reason.",
+    "Thinking 5 miles in 15 minutes is slower than 20 miles per hour, when it’s the same speed."
+   ],
+   "backPocket": [
+    "Can you find a reason for each one?",
+    "Which two rates are the same speed? How do you know?",
+    "What does “per” mean in 20 miles per hour?"
+   ],
+   "momentIds": [
+    "m8"
+   ],
+   "grouping": "Groups of 2–4: 1 minute of quiet think time, then each student shares a reason in the group.",
+   "monitor": "Listen for “unit rate,” “speed” and “pace,” and note who checks whether two rates are the same speed."
+  },
+  {
+   "id": "7.2",
+   "strategies": [
+    "Go row to row: 4 burritos is double 2, so $28.",
+    "Divide cost by burritos for the unit price: 14 ÷ 2 = 7, then 5 × 7 = 35 and 10 × 7 = 70.",
+    "For Noah and Lin: \\(\\frac{2c}{2b}\\) is equivalent to \\(\\frac{c}{b}\\), so the price per burrito is the same; a double number line shows it."
+   ],
+   "barriers": [
+    "“Per burrito” means per 1 burrito, not per order.",
+    "Letters \\(b\\) and \\(c\\) in place of numbers may block the last two questions."
+   ],
+   "misconceptions": [
+    "Writing “14 per 2” or “28 per 4” in the unit price column instead of the price of one burrito.",
+    "Thinking Lin pays twice as much per burrito because she pays twice as much in all."
+   ],
+   "backPocket": [
+    "Per burrito means for one burrito. What does one cost?",
+    "What do you notice down the unit price column?",
+    "Lin buys twice as many. What happens to the price of one?"
+   ],
+   "momentIds": [
+    "m1",
+    "m2"
+   ],
+   "grouping": "Pairs: quiet think time for the first two questions, 1–2 minutes with a partner, then the last two together.",
+   "monitor": "Watch for pairs who describe the table’s structure well, and who can explain why \\(b\\) and \\(2b\\) burritos cost the same per item."
+  },
+  {
+   "id": "7.3",
+   "strategies": [
+    "Build a 1-hour row (1 hour, 6 bracelets), then scale up from it.",
+    "Multiply the hours by 6 to go across: 7 × 6 = 42 bracelets.",
+    "Divide the bracelets by 6 to go back: 66 ÷ 6 = 11 hours, and 100 ÷ 6 = \\(16\\frac{2}{3}\\) hours."
+   ],
+   "barriers": [
+    "The table’s structure may not be clear: what the column of 6s is for.",
+    "“Speed” here means bracelets per hour, not how fast someone moves."
+   ],
+   "misconceptions": [
+    "Writing “16 r 4 hours” for 100 bracelets: the 4 bracelets are \\(\\frac{4}{6} = \\frac{2}{3}\\) of an hour.",
+    "Multiplying 66 by 6 instead of dividing, going the wrong way across the table."
+   ],
+   "backPocket": [
+    "What does the 6 in each row tell you?",
+    "How do you get from hours to bracelets? And back?",
+    "4 bracelets left over. What part of an hour is that?"
+   ],
+   "momentIds": [
+    "m4",
+    "m3",
+    "m7",
+    "m6",
+    "m5"
+   ],
+   "grouping": "Pairs: 3–4 minutes of quiet think time to complete the table, then discuss with a partner.",
+   "monitor": "Track who builds a 1-hour row, who goes row to row, and who multiplies or divides by 6 across, to share in that order."
+  },
+  {
+   "id": "7.4",
+   "strategies": [
+    "Find cups per pound (6 ÷ 4 = 1.5), then multiply: 7 × 1.5 = 10.5 and 10 × 1.5 = 15 cups.",
+    "Divide cups by 1.5, or multiply by \\(\\frac{2}{3}\\): 9 cups needs 6 pounds, 20 cups needs \\(13\\frac{1}{3}\\) pounds.",
+    "Build a 1-pound row first, then scale from it."
+   ],
+   "barriers": [
+    "How applesauce is made may be unfamiliar.",
+    "The unit rates are a decimal and a fraction: 1.5 and \\(\\frac{2}{3}\\)."
+   ],
+   "misconceptions": [
+    "Doubling 4 pounds to 8, then getting stuck at 7, since 7 isn’t a multiple of 4."
+   ],
+   "backPocket": [
+    "What does 1 pound of apples make?",
+    "How many pounds do you need for 1 cup?"
+   ],
+   "momentIds": [
+    "m9"
+   ],
+   "grouping": "IM’s launch sets the context first: ask who has made applesauce, or explain how it’s made.",
+   "monitor": "Watch for students who find cups per pound and pounds per cup and use them to go across the table."
+  }
+ ],
+ "crux": {
+  "threeReads": [
+   {
+    "focus": "The situation",
+    "say": "Listen as I read. No numbers yet: what is happening here?",
+    "listenFor": "Someone is making bracelets over a number of hours."
+   },
+   {
+    "focus": "Quantities and units",
+    "say": "Read it again. What do the three columns measure?",
+    "listenFor": "Time in hours, number of bracelets, and speed: 6 bracelets per hour in every row."
+   },
+   {
+    "focus": "The question",
+    "say": "Read it once more. What are we asked to do?",
+    "listenFor": "Complete the table, then explain the strategy we used to do it."
+   }
+  ],
+  "release": {
+   "successCriteria": "In your strategy sentence, name the unit rate with “per” and say whether you multiply or divide by it.",
+   "say": "Name the unit rate, and say multiply or divide by it.",
+   "talkMoments": [
+    "After quiet think time, partners take turns saying one row with the frame: “To get ___ from ___, I ___ by the unit rate, ___ per ___.”",
+    "Before the burrito table, partners tell each other which way they go across and which way back."
+   ],
+   "byBand": {
+    "emerging": {
+     "frame": "___ × 6 = ___. ___ ÷ 6 = ___.",
+     "stretch": "They say the move in words: “times 6” across and “divide by 6” back."
+    },
+    "developing": {
+     "frame": "To get ___, I multiply by 6, the unit rate, ___ per hour.",
+     "stretch": "They add the reason: “…because 6 is the unit rate, bracelets per hour.”"
+    },
+    "expanding": {
+     "frame": "To get ___ from ___, I multiply (or divide) by the unit rate, ___ ___ per ___.",
+     "stretch": "They compare their way with a partner’s: across by 6, or row to row, and say why both work."
+    }
+   }
+  },
+  "synthesis": {
+   "routine": "MLR2: Collect and Display",
+   "steps": [
+    "Call pairs in IM’s order: the 1-hour row first, then times 6 across.",
+    "Scribe each pair’s words beside the table, with arrows: × 6 across, ÷ 6 back.",
+    "Revoice each into the frame, and circle “unit rate” and “per.”",
+    "Leave the display up for the burrito table and the cool-down."
+   ],
+   "prompt": "How do you get from hours to bracelets, and from bracelets back to hours?",
+   "sounds": "To get bracelets from hours, I multiply by the unit rate, 6 bracelets per hour. To get hours, I divide by 6, so 100 bracelets takes \\(16\\frac{2}{3}\\) hours."
+  }
+ },
+ "lessonSynthesis": {
+  "desired": "Equivalent ratios have the same unit rate, and the unit rate is the factor that takes you from one column of the table to the other.",
+  "anticipated": [
+   "“The speed was 6 bracelets per hour in every row, so you multiply the hours by 6, and divide the bracelets by 6 to go back.”",
+   "“You just times by the same number every time.” Partly right: which number, and why does it stay the same?"
+  ],
+  "backPocket": "Why was the unit price $7 in every row of the burrito table?"
+ },
+ "beforeClass": [
+  "For Three Reads in 7.3: display the task with the questions covered until the third read.",
+  "For the release: have the frames for your students’ levels ready to post or hand out.",
+  "For Collect and Display (MLR 2): clear board space beside the bracelet table, and a marker.",
+  "For the class discussion: know the answers: 12, 30, 42 bracelets; 11 and \\(16\\frac{2}{3}\\) hours; 2 and 4 burritos; $35 and $70."
+ ],
+ "cuts": [
+  {
+   "activityId": "7.4",
+   "note": "Optional, with no new math. Cut it first, and give its 10 minutes to 7.3."
+  },
+  {
+   "activityId": "7.1",
+   "note": "Keep it short: one reason for each rate, then move on."
+  },
+  {
+   "activityId": "7.3",
+   "note": "Never cut the quiet think time or the synthesis. If time is tight, keep Three Reads quick: one sentence per read."
+  }
+ ]
+}

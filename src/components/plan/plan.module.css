@@ -1,0 +1,27 @@
+/* The planning view. Built on the phone prep's styles (prep.module.css); these are
+   the few pieces it adds. Colors come from the shared tokens in globals.css. */
+
+.part { display: grid; gap: 8px; padding-top: 14px; border-top: 1px solid var(--color-line); }
+.part:first-of-type { border-top: 0; padding-top: 0; }
+.partHead { display: flex; gap: 10px; align-items: baseline; }
+.letter {
+  flex: 0 0 auto; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center;
+  font-size: 12px; font-weight: 800; background: var(--color-surface-sunk); color: var(--color-ink-muted);
+}
+.letterLang { background: var(--color-developing-bg); color: var(--color-thinking); }
+.partHead h4 { margin: 0; font-size: 16px; font-weight: 700; }
+.say { font-weight: 600; }
+.read { display: grid; gap: 4px; padding: 10px 12px; border-radius: 12px; background: var(--color-card); border: 1px solid var(--color-line); }
+.choose { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; }
+.required { font-size: 12px; font-weight: 700; color: var(--color-crux-accent); }
+.poster { display: grid; gap: 12px; padding: 18px; border-radius: 14px; border: 2px solid var(--color-ink); background: var(--color-card); }
+.posterBig { font-size: 22px; line-height: 1.35; font-weight: 600; }
+
+/* Printing the posted exemplar: only the poster prints. */
+.root { min-height: 100%; }
+@media print {
+  .root * { visibility: hidden; }
+  .root .poster, .root .poster * { visibility: visible; }
+  .root .poster { position: fixed; inset: 0; border: 0; font-size: 20px; background: var(--color-card); }
+  .posterBig { font-size: 34px; }
+}

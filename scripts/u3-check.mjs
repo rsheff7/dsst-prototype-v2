@@ -188,6 +188,55 @@ for (const f of premoFiles) {
 }
 
 // ---------------------------------------------------------------------------
+// Planning view (content/u3/plan): see docs/PLANNING-VIEW-REQUIREMENTS.md
+// ---------------------------------------------------------------------------
+const planDir = path.join(ROOT, 'plan');
+const planFiles = fs.existsSync(planDir) ? fs.readdirSync(planDir).filter((f) => f.endsWith('.json')) : [];
+const SYNTH = ['MLR1: Stronger and Clearer Each Time', 'MLR2: Collect and Display'];
+const wordsIn = (s) => (s ?? '').replace(/\\\(|\\\)/g, ' ').split(/\s+/).filter(Boolean).length;
+for (const f of planFiles) {
+  const code = f.replace(/\.json$/, '');
+  const at = `plan/${f}`;
+  const pl = json(path.join(planDir, f));
+  const im = imByCode.get(code);
+  const pr = fs.existsSync(path.join(premoDir, f)) ? json(path.join(premoDir, f)) : null;
+  if (!im || !pr) {
+    err(at, 'needs the lesson’s IM and Premo layers');
+    continue;
+  }
+  if (!im.goals.some((g) => g.text === pl.clo?.imGoal)) err(at, 'clo.imGoal is not one of IM’s goals, word for word');
+  for (const k of ['function', 'form', 'statement', 'exemplar', 'lookFor']) if (!pl.clo?.[k]) err(at, `clo.${k} is missing`);
+  if (!pl.clo?.precise?.length) err(at, 'clo.precise needs at least one term');
+  // Every IM activity has a plan entry, and nothing else does.
+  const ids = im.activities.map((a) => a.id);
+  for (const id of ids) if (!pl.activities?.some((a) => a.id === id)) err(at, `no plan for activity ${id}`);
+  for (const a of pl.activities ?? []) {
+    if (!ids.includes(a.id)) err(at, `activity ${a.id} is not in IM’s lesson`);
+    for (const k of ['strategies', 'misconceptions', 'backPocket']) if (!a[k]?.length) err(at, `${a.id}.${k} is empty`);
+    if (!a.grouping || !a.monitor) err(at, `${a.id} needs grouping and monitor`);
+    // Moments come only from this activity (requirement R8.1).
+    for (const m of a.momentIds ?? []) {
+      const mo = pr.moments.find((x) => x.id === m);
+      if (!mo) err(at, `${a.id}: moment ${m} is not in the Premo layer`);
+      else if (mo.activityId !== a.id) err(at, `${a.id}: moment ${m} belongs to ${mo.activityId}`);
+    }
+    for (const b of a.backPocket ?? []) if (wordsIn(b) > 16) warn(at, `${a.id} back-pocket question is ${wordsIn(b)} words: "${b.slice(0, 50)}…"`);
+  }
+  const c = pl.crux;
+  if (c?.threeReads?.length !== 3) err(at, 'crux.threeReads needs exactly three reads');
+  for (const r of c?.threeReads ?? []) if (wordsIn(r.say) > 16) err(at, `Three Reads line is ${wordsIn(r.say)} words; keep it to 16`);
+  if (!SYNTH.includes(c?.synthesis?.routine)) err(at, `crux.synthesis.routine must be one of: ${SYNTH.join(', ')} (decision D1)`);
+  if (!c?.release?.successCriteria || !c?.release?.say) err(at, 'crux.release needs successCriteria and say');
+  for (const b of BANDS) if (!c?.release?.byBand?.[b]?.frame || !c?.release?.byBand?.[b]?.stretch) err(at, `crux.release.byBand.${b} needs frame and stretch`);
+  if (!c?.synthesis?.steps?.length || !c?.synthesis?.prompt || !c?.synthesis?.sounds) err(at, 'crux.synthesis needs steps, prompt and sounds');
+  if (!pl.lessonSynthesis?.desired || !pl.lessonSynthesis?.backPocket) err(at, 'lessonSynthesis needs desired and backPocket');
+  if (!pl.beforeClass?.length) err(at, 'beforeClass is empty');
+  for (const c of pl.cuts ?? []) if (!ids.includes(c.activityId)) err(at, `cut for ${c.activityId}, which is not in IM’s lesson`);
+  if (flat({ ...pl, reviewNotes: [] }).some((s) => /Compare and Connect|poster/i.test(s))) warn(at, 'mentions Compare and Connect or posters, which D1 replaces');
+  for (const [where, s] of flat(pl).map((s) => ['', s])) if (/maths|colour|grey\b/.test(s)) err(at, `US spelling: "${s.slice(0, 50)}…"`);
+}
+
+// ---------------------------------------------------------------------------
 // Correction notes: each must still point at an IM line, or it silently stops showing.
 // ---------------------------------------------------------------------------
 const corr = path.join(ROOT, 'corrections.json');
@@ -204,5 +253,5 @@ if (fs.existsSync(corr)) {
 
 for (const w of warnings) console.log('warn ', w);
 for (const e of errors) console.log('ERROR', e);
-console.log(`u3 content: ${imFiles.length} IM lessons, ${premoFiles.length} Premo layers, ${errors.length} errors, ${warnings.length} warnings`);
+console.log(`u3 content: ${imFiles.length} IM lessons, ${premoFiles.length} Premo layers, ${planFiles.length} plans, ${errors.length} errors, ${warnings.length} warnings`);
 process.exit(errors.length ? 1 : 0);
