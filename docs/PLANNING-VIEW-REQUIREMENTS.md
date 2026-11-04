@@ -21,7 +21,7 @@ Draft for Robert's review, 2026-11-02. The version DSST reviewed on Oct 28 is pr
 | P4 | **The crux is the language focus, and it's required.** Other activities are recommended and teacher-picked. | Josh 2:15:16; Robert 2:02:53; Heather 2:03:05 |
 | P5 | **Everything is activity-specific.** Exemplars, misconceptions, moves and facilitation language belong to the activity being prepared, and only to this lesson. | Josh 0:48:26; Robert 0:47:52 |
 | P6 | **A few routines, practiced well.** A small, fixed set of MLRs with lesson-specific sample language, never MLRs in the abstract. | Josh 2:08:05; Robert 2:07:01 |
-| P7 | **20–30 minutes, the night before, daily.** | Robert 0:37:58, 1:06:48; Heather 1:40:26 |
+| P7 | **The night before, daily.** The 20–30 minute budget is no longer a constraint (Robert, 2026-11-03): prep time will be measured with real teachers in testing. | Robert 0:37:58, 1:06:48; Heather 1:40:26 |
 
 ---
 
@@ -123,7 +123,7 @@ IM's lesson synthesis is a teacher summary, not a discussion ("Summarize for stu
 - **R8.1 Content only from this lesson.** Fix the bug where responses came from another activity (0:46–0:48). In `unit3-rates`, the checker enforces that moments reference the lesson's own activities. Extend it so each rehearsed moment sits in a chosen activity.
 - **R8.2 Rehearsal recording** (Heather asked, 0:46:39). The option is to record the spoken rehearsal on the device for the teacher's own playback, not uploaded. *Needs a decision (D6).*
 - **R8.3 Group use.** It works for a two-teacher grade team in a 30-minute LICM (Heather 2:21:53), and for a coach narrowing it to the crux for 15 minutes of practice (Josh 1:59:18).
-- **R8.4 Time.** The whole flow, with only the crux chosen, fits in 20–30 minutes. The step estimates on screen must add up to that.
+- **R8.4 Time.** Not a constraint (Robert, 2026-11-03). The screen shows an honest estimate (about 3 minutes per task and 1.5 per thing said aloud, counting every round) and the move count. Real times will come from testing with teachers.
 
 - **R8.5 Saved planning record.** Teachers must keep a lesson planning folder and share it with the Pilot Manager. The tool saves each night's prep (answers, CLO exemplar, chosen activities, flags) in a form that can go into that folder: a PDF, a copyable doc, or a link. *(Pilot R&R)*
 - **R8.6 Grades 6–8.** The pilot is 6th–8th grade math. Content must exist for the lessons pilot teachers actually teach from Jan 5, not only Grade 6 Unit 3. *(Pilot R&R; see D8)*

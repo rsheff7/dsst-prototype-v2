@@ -91,8 +91,18 @@ const PER_EXTRA = 4;
 
 /** A move is every card but Do the task; Three Reads and the by-level card count as one. */
 const isMove = (c: RehearsalCard) => c.kind !== 'math';
-/** Minutes for Rehearse: about 3 to solve each task, about 1.5 per move. */
-const rehearseMinutes = (cs: RehearsalCard[]) => Math.round(cs.filter((c) => !isMove(c)).length * 3 + cs.filter(isMove).length * 1.5);
+/**
+ * An estimate of minutes for Rehearse: about 3 to solve each task, and about 1.5 for each
+ * thing said aloud (each round of Three Reads, each WIDA band on a by-level card). Not a
+ * limit: Robert removed the time budget (2026-11-03) until real teachers are timed.
+ */
+const rehearseMinutes = (cs: RehearsalCard[], bandsPicked: number) =>
+  Math.round(
+    cs.reduce(
+      (n, c) => n + (c.kind === 'math' ? 3 : 1.5 * (c.kind === 'rounds' ? (c.rounds?.length ?? 1) : c.kind === 'levels' ? bandsPicked : 1)),
+      0,
+    ),
+  );
 
 type Card = { id: string; activityId: string; kind: 'math' | 'launch' | 'release' | 'moment' | 'synthesis'; momentId?: string };
 
@@ -246,10 +256,12 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
     () => im.activities.filter((a) => a.id === cruxId || st.extra.includes(a.id)).map((a) => a.id),
     [im.activities, cruxId, st.extra],
   );
+  // How many WIDA bands a by-level card rehearses: the bands of the levels picked, or all three.
+  const nBands = new Set(st.levels.map((l) => bandForLevel(l))).size || 3;
   const minutes = (k: (typeof STEPS)[number]['key'], min: number) =>
     k === 'rehearse'
       ? plan.rehearsal
-        ? rehearseMinutes((plan.rehearsal ?? []).filter((c) => chosen.includes(c.activityId)))
+        ? rehearseMinutes((plan.rehearsal ?? []).filter((c) => chosen.includes(c.activityId)), nBands)
         : min + PER_EXTRA * (chosen.length - 1)
       : min;
   const total = STEPS.reduce((n, x) => n + minutes(x.key, x.min), 0);
@@ -470,7 +482,10 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
                 {plan.rehearsal && (() => {
                   const cs = plan.rehearsal.filter((c) => c.activityId === a.id);
                   const mv = cs.filter(isMove).length;
-                  return ` · ${isCrux ? '' : '+'}${mv} ${mv === 1 ? 'move' : 'moves'}, ${isCrux ? '' : '+'}${rehearseMinutes(cs)} min to rehearse`;
+                  // What adding it changes, so the per-activity minutes add up to the total.
+                  const base = plan.rehearsal.filter((c) => chosen.includes(c.activityId) && c.activityId !== a.id);
+                  const add = rehearseMinutes([...base, ...cs], nBands) - rehearseMinutes(base, nBands);
+                  return ` · ${isCrux ? '' : '+'}${mv} ${mv === 1 ? 'move' : 'moves'}, ${isCrux ? '' : '+'}${isCrux ? rehearseMinutes(cs, nBands) : add} min to rehearse`;
                 })()}
                 {isCrux && (
                   <>
@@ -486,7 +501,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
       })}
       <p className={cx(s.muted, s.small)}>
         {plan.rehearsal
-          ? `Rehearse tonight: ${deck.filter(isMove).length} moves to say out loud, about ${rehearseMinutes(deck)} minutes. The warm-up is never required.`
+          ? `Rehearse tonight: ${deck.filter(isMove).length} moves to say out loud, about ${rehearseMinutes(deck, nBands)} min (an estimate). The warm-up is never required.`
           : `Each activity you add is about ${PER_EXTRA} more minutes. The warm-up is never required.`}
       </p>
       {plan.activities
@@ -847,10 +862,12 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
   const roundKey = (c: RehearsalCard, r: number) => (c.kind === 'levels' ? `${c.id}#${bandsToRehearse()[r]}` : `${c.id}#r${r}`);
   const roundDone = (c: RehearsalCard, r: number) => !!st.said[roundKey(c, r)];
   /** The tier for a band: set by the lowest level picked in it (so the lower level leads). */
-  const tierForBand = (b: ProficiencyBand) => {
+  const tierForBand = (b: ProficiencyBand): 'lower' | 'higher' | null => {
     const ls = levels.filter((l) => bandForLevel(l) === b);
-    return ls.length ? tierOf(Math.min(...ls) as WidaLevel) : 'lower';
+    return ls.length ? tierOf(Math.min(...ls) as WidaLevel) : null;
   };
+  /** The level a band's stretch belongs to: the higher level picked, or the band's higher level. */
+  const stretchLevel = (b: ProficiencyBand) => levels.filter((l) => bandForLevel(l) === b && tierOf(l) === 'higher')[0] ?? ({ emerging: 2, developing: 4, expanding: 6 } as const)[b];
 
   const cardDone = (c: RehearsalCard) => Array.from({ length: roundsOf(c) }, (_, r) => roundDone(c, r)).every(Boolean);
 
@@ -864,7 +881,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
       className={cx(s.pill, s.pillBtn, className)}
       onClick={() => toggle('shown', `gl:${term}`)}
       aria-expanded={!!st.shown[`gl:${term}`]}
-      aria-controls={`gl-${term}`}
+      aria-controls={st.shown[`gl:${term}`] ? `gl-${term}` : undefined}
       aria-label={`${term}: what this means`}
     >
       {term}
@@ -940,28 +957,29 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
         const f = plan.crux.release.byBand[b];
         const tier = tierForBand(b);
         // This moment's own frame and way in, when it isn't at release; else the release ones.
+        // A moment not at release never borrows the release's way in: it would fit the wrong moment.
         const frame = c.levelFrames?.[b] ?? f.frame;
-        const nonverbal = m.byBand[b].nonverbal ?? f.nonverbal;
+        const nonverbal = c.levelNonverbal?.[b] ?? m.byBand[b].nonverbal ?? (c.levelFrames ? undefined : f.nonverbal);
         return (
           <div className={s.pc}>
             <b>
               <MathText>{q(m.byBand[b].say)}</MathText>
             </b>
-            <span className={cx(s.muted, s.small)}>{TIER_WORDS[tier].frame}:</span>
+            <span className={cx(s.muted, s.small)}>{tier ? TIER_WORDS[tier].frame : 'Their frame'}:</span>
             <span className={s.frame}>
               <MathText>{frame}</MathText>
             </span>
-            {tier === 'higher' && !c.levelFrames?.[b] && f.stretch && (
+            {tier !== 'lower' && !c.levelFrames?.[b] && f.stretch && (
               <span className={s.small}>
-                <b>Then, also:</b> <MathText>{f.stretch}</MathText>
+                <b>At Level {stretchLevel(b)}, also:</b> <MathText>{f.stretch}</MathText>
               </span>
             )}
             {nonverbal && (
               <span className={s.small}>
-                <b>{TIER_WORDS[tier].nonverbal}:</b> <MathText>{nonverbal}</MathText> Then they say or write it.
+                <b>{tier ? TIER_WORDS[tier].nonverbal : 'Without words'}:</b> <MathText>{nonverbal}</MathText> Then they say or write it.
               </span>
             )}
-            <span className={cx(s.muted, s.small)}>{HOME[tier]}</span>
+            <span className={cx(s.muted, s.small)}>{HOME[tier ?? 'lower']}</span>
           </div>
         );
       }
@@ -972,7 +990,11 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
       <article className={cx(s.scard, isCrux && s.scardCrux)}>
         {/* One persistent live region, so screen readers hear each change on the card. */}
         <span className={p.srOnly} aria-live="polite">
-          {done ? `${c.name}: model and checks shown.` : inRounds ? `${c.kind === 'levels' ? bandName(bands[current]) : `Read ${current + 1}`} of ${c.name}.` : ''}
+          {done
+            ? `${c.name}: model and checks shown.`
+            : inRounds
+              ? `${c.name}: ${c.kind === 'levels' ? `${bandName(bands[current])}, round ${current + 1} of ${n}` : `read ${current + 1} of ${n}`}.`
+              : ''}
         </span>
         <div className={s.stack} style={{ gap: 6 }}>
           <h3>{c.name}</h3>
@@ -1191,7 +1213,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
         </div>
         {deckView(deck[i])}
         <p className={cx(s.muted, s.small)} style={{ textAlign: 'center' }}>
-          {isMove(deck[i]) ? `Move ${moveNo} of ${moves.length}` : 'Do the task first'} · {movesDone} said · about {rehearseMinutes(deck)} min
+          {isMove(deck[i]) ? `Move ${moveNo} of ${moves.length}` : 'Do the task first'} · {movesDone} said · about {rehearseMinutes(deck, nBands)} min, an estimate
         </p>
       </div>
     );
@@ -1244,12 +1266,13 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
         return `${header[Number(col)] || 'value'} (row ${Number(row) + 1}): ${v.trim()}`;
       });
   };
+  const synthCard = plan.rehearsal?.find((c) => c.activityId === cruxId && c.kind === 'synthesis');
   const LOOK_FORS = [
     { look: 'The language goal is said, and the teacher knows what it sounds like', sounds: plan.clo.exemplar },
     { look: `Three Reads launches ${cruxId}: situation, quantities, then the question`, sounds: plan.crux.threeReads[0]?.say ?? '' },
     { look: 'The frame is in use at release, with the language named', sounds: plan.crux.release.successCriteria },
     { look: 'The teacher listens for students’ language, not only their answers', sounds: plan.crux.release.talkMoments[0] ?? '' },
-    { look: `Students say the language goal at least once in the ${routineTitle(plan.crux.synthesis.routine)} synthesis`, sounds: plan.crux.synthesis.sounds },
+    { look: `Students say the language goal at least once in the ${routineTitle(plan.crux.synthesis.routine)} synthesis`, sounds: synthCard?.sounds ?? plan.crux.synthesis.sounds },
   ];
   const record = () => {
     const flagged = plan.rehearsal
@@ -1608,11 +1631,12 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
         <Frames />
         <div className={s.mv}>
           <span className={s.lab}>Synthesis · {routineTitle(plan.crux.synthesis.routine)}</span>
+          {/* What the teacher rehearsed on the synthesis card, when there is one. */}
           <span className={s.mvDo}>
-            <MathText>{q(plan.crux.synthesis.prompt)}</MathText>
+            <MathText>{q(synthCard?.say?.[0] ?? plan.crux.synthesis.prompt)}</MathText>
           </span>
           <span className={s.mvIf}>
-            Listen for: <MathText>{q(plan.crux.synthesis.sounds)}</MathText>
+            Listen for: <MathText>{q(synthCard?.sounds ?? plan.crux.synthesis.sounds)}</MathText>
           </span>
         </div>
         {/* Where students get stuck at the crux, including the points no card rehearses. */}

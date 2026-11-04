@@ -193,6 +193,8 @@ for (const f of premoFiles) {
 const planDir = path.join(ROOT, 'plan');
 const planFiles = fs.existsSync(planDir) ? fs.readdirSync(planDir).filter((f) => f.endsWith('.json')) : [];
 const SYNTH = ['MLR1: Stronger and Clearer Each Time', 'MLR2: Collect and Display'];
+/** LaTeX to plain for comparing numbers: \(16\frac{2}{3}\) → "16 2/3". */
+const plainMath = (s) => (s ?? '').replace(/\\\(|\\\)/g, ' ').replace(/(\d)\\frac\{([^}]*)\}\{([^}]*)\}/g, '$1 $2/$3').replace(/\\frac\{([^}]*)\}\{([^}]*)\}/g, '$1/$2').replace(/,(?=\d{3})/g, '');
 const wordsIn = (s) => (s ?? '').replace(/\\\(|\\\)/g, ' ').split(/\s+/).filter(Boolean).length;
 for (const f of planFiles) {
   const code = f.replace(/\.json$/, '');
@@ -337,9 +339,40 @@ for (const f of planFiles) {
     if (c.whereIfChosen && !ids.includes(c.whereIfChosen.activityId)) err(cat, `whereIfChosen names ${c.whereIfChosen.activityId}, not in IM’s lesson`);
     // If it doesn't work never states the answer: no "=", no bare result from the card's show.
     if (c.ifNot && /=/.test(c.ifNot)) err(cat, 'ifNot gives a worked answer (has “=”)');
+    // Every Three Reads round asks something.
+    for (const [i, r] of (c.rounds ?? []).entries()) if (!r.ask || !r.aim) err(cat, `round ${i + 1} needs ask and aim`);
+    // Models and Aims never state a worked answer (Persona 1): no arithmetic, no "that gives".
+    const WORKED = /=|\d\s*[×x*÷+−]\s*\d+(?:\.\d+)?\s+(?:is|gives|makes)\s+\$?\d|\b(that gives|which gives|the answer is)\b/i;
+    for (const [k, v] of [['aim', c.aim], ...(c.rounds ?? []).map((r) => ['round aim', r.aim]), ...(c.say ?? []).map((x) => ['say', x]), ...(c.ifSkipped?.say ?? []).map((x) => ['ifSkipped.say', x])])
+      if (v && WORKED.test(v)) err(cat, `${k} states a worked answer: “${v.slice(0, 50)}”`);
+    if (c.ifSkipped && c.ifSkipped.activityId === c.activityId) err(cat, 'ifSkipped names the card’s own activity, so it never applies');
+    if (c.whereIfChosen) {
+      const w = c.whereIfChosen.where ?? '';
+      const wm2 = /^(About (\d+) minutes? into|Start of) Activity (\d+\.\d+)\. \S/.exec(w);
+      if (!wm2 || wm2[3] !== c.activityId) err(cat, 'whereIfChosen.where must use the "Where we are" form for this card’s activity');
+    }
+    for (const w of [c.where, c.whereIfChosen?.where]) if (w && !/[.!]["”’]?$/.test(w.trim())) err(cat, '"Where we are" must end with a period');
+    if (c.ifNot && (c.ifNot.match(/\?/g) ?? []).length > 1) err(cat, 'ifNot is one question, not two');
+    for (const [b, f] of Object.entries(c.levelFrames ?? {})) if (!/___/.test(f)) err(cat, `levelFrames.${b} has no blanks`);
+    // With its own frames, a card needs its own way in without words for each band, unless the Premo moment has one (no borrowing).
+    if (c.levelFrames) { const pm = (pr.moments ?? []).find((x) => x.id === c.momentId);
+      for (const b of Object.keys(c.levelFrames)) if (!c.levelNonverbal?.[b] && !pm?.byBand?.[b]?.nonverbal) err(cat, `levelFrames.${b} has no way in without words (levelNonverbal)`); }
+    if ((c.kind === 'levels' || c.language) && c.activityId !== pr.crux) err(cat, 'language cards belong to the crux only (D7)');
+    if (c.kind === 'math' && (c.say ?? []).length) err(cat, 'a Do the task card has no model line');
+    // A Do the task card's checks only use numbers IM's task or answers contain.
+    if (c.kind === 'math') {
+      const ima = im.activities.find((x) => x.id === c.activityId);
+      const imNums = new Set((plainMath([...(ima?.task ?? []), ...(ima?.response ?? [])].join(' ')).match(/\d+(?:\.\d+)?/g) ?? []));
+      for (const ch of c.checks ?? []) for (const n of plainMath(ch).match(/\d+(?:\.\d+)?/g) ?? []) if (Number(n) > 2 && !imNums.has(n)) err(cat, `check number ${n} isn’t in IM’s task or answers`);
+    }
+    const COMMON = /^(Another|That|This|It|He|She|We|You|Who|Which|What|Stronger|Clearer|Everyone|Someone|Nobody|Either|Neither|Your|My|Our)$/;
+    // Names by pattern: a capitalized word acting as a student ("X says", "X’s table") that IM's lesson doesn't use.
+    const ALLOW = new Set(['A', 'The', 'Pair', 'Group', 'Partner', 'Partners', 'Student', 'Students', 'Card', 'Store', 'Level', 'Levels', 'Read', 'IM', 'Today', 'They', 'Their', 'Each', 'One', 'Both', 'Crux', 'Hands', 'Pencils', 'Most', 'Some', 'Everyone', 'Nobody', 'Ask', 'Then', 'Look']);
+    for (const m2 of flat({ ...c, checks: [], more: [] }).join(' ').matchAll(/\b([A-Z][a-zà-ÿ]+)(?:’s|'s| (?:says|said|writes|wrote|points|pointed|stares|thinks|asks|doubles|counts|is stuck|has|stops|stopped))\b/g))
+      if (!ALLOW.has(m2[1]) && !COMMON.test(m2[1]) && !new RegExp(`\\b${m2[1]}\\b`).test(flat(im).join(' '))) err(cat, `“${m2[1]}” looks like a student name; write “a student” or “Pair A”`);
     // Line length (25 words); Aims are checked at 15 above. IM's verbatim text in show is exempt.
     for (const [k, v] of [['ask', c.ask], ['ifNot', c.ifNot], ['avoid', c.avoid], ...(c.checks ?? []).map((x) => ['check', x]), ...(c.say ?? []).map((x) => ['say', x])])
-      if (v && v.split(/(?<=[.?!])\s+/).some((sen) => wordsIn(sen) > 25)) warn(cat, `${k} has a sentence over 25 words`);
+      if (v && v.split(/(?<=[.?!])\s+/).some((sen) => wordsIn(sen) > 25)) err(cat, `${k} has a sentence over 25 words`);
   }
   // Ids unique; every activity has a Do the task card; the crux has its four routine cards.
   const seen = new Set();
@@ -348,6 +381,16 @@ for (const f of planFiles) {
     seen.add(c.id);
   }
   if (pl.rehearsal) {
+    // One card per moment; cards in class order within each activity; Three Reads before the release.
+    const mids = pl.rehearsal.filter((c) => c.momentId).map((c) => c.momentId);
+    for (const m3 of new Set(mids)) if (mids.filter((x) => x === m3).length > 1) err(at, `two cards rehearse moment ${m3}`);
+    const minuteOf = (c) => (/^Before class/.test(c.where) ? -1 : /^Start of/.test(c.where) ? 0 : Number(/^About (\d+)/.exec(c.where)?.[1] ?? 0));
+    for (const id of ids) {
+      const cs = pl.rehearsal.filter((c) => c.activityId === id);
+      for (let i = 1; i < cs.length; i++) if (minuteOf(cs[i]) < minuteOf(cs[i - 1])) err(at, `${id}: card ${cs[i].id} comes before ${cs[i - 1].id} in class time`);
+      const ri = cs.findIndex((c) => c.kind === 'rounds'), li = cs.findIndex((c) => c.kind === 'release');
+      if (ri >= 0 && li >= 0 && li < ri) err(at, `${id}: the release card comes before Three Reads`);
+    }
     for (const id of ids) if (!pl.rehearsal.some((c) => c.activityId === id && c.kind === 'math')) err(at, `no Do the task card for ${id}`);
     for (const k of ['rounds', 'release', 'synthesis']) if (!pl.rehearsal.some((c) => c.activityId === pr.crux && c.kind === k)) err(at, `the crux has no ${k} card`);
     if (!pl.rehearsal.some((c) => c.activityId === pr.crux && c.kind === 'levels')) err(at, 'the crux has no by-level language card');

@@ -21,12 +21,12 @@ The personas are defined in `docs/REVIEW-PERSONAS.md`. This spec covers the nigh
 
 ## Every card, top to bottom
 
-1. **Card name**, a plain verb phrase ("Choose who shares first"), plus small labels: *Key activity*, the routine (*Three Reads*, *Collect and Display*) and *Language*. Tap any label for a one-line definition.
+1. **Card name**, a plain verb phrase ("Choose who shares first"), plus small labels: *Crux*, the routine (*Three Reads*, *Collect and Display*) and *Language*. Tap any label for a one-line definition.
 2. **Today's sentence.** This shows on the key-activity cards: one line, tap to see it all. It is the model sentence (`clo.exemplar`): "To get bracelets, I multiply by the unit rate, 6 bracelets per hour: 7 × 6 = 42. To get hours, I divide by 6: 66 ÷ 6 = 11."
 3. **Where we are:** "About N minutes into Activity 7.3." Then what just happened, and what's on the board.
 4. **What's in front of you:** the exact rows of the table, and the student's words or work.
 5. **The question**, asked from the teacher's seat, then the **Aim**: what the student ends up doing, in 15 words or fewer, never the words to say.
-6. **Say it out loud (speech-bubble icon) → "I said it".** Then the model wording, then **"Did yours do these?"** with ticks that are never marked wrong, then **More**, collapsed.
+6. **Say it out loud (speech-bubble icon) → "I said it".** Then the model wording, then **"Did yours do these?"** with ticks that are never marked wrong, then the folded guidance (see `docs/REHEARSAL-GUIDANCE-RULE.md`).
 
 The two kinds of language support are called **Today's frame** (with blanks) and **Today's sentence** (filled in) everywhere.
 
@@ -86,32 +86,30 @@ The two kinds of language support are called **Today's frame** (with blanks) and
   - Last: **When partners talk** (`talkMoments`).
 - **Phone:** one screen before, about two after. Levels not picked stay collapsed.
 
-## Card 4 · Maya is stuck
-
-*Maya is an example student.*
+## Card 4 · A student is stuck
 
 - **Where we are:** About 4 minutes into Activity 7.3, during quiet think time.
-- **Shown:** Maya's table: hours and 6s filled, bracelets blank. Beside it, what she can look back at:
+- **Shown:** Their table: hours and 6s filled, bracelets blank. Beside it, what they can look back at:
   - **7.2 taught:** her burrito table (2 | 14 | 7 … 10 | 70 | 7).
   - **7.2 skipped:** the board line "2 burritos, \$14, \$7 per burrito."
-- **Question:** "What do you say to Maya?"
-- **Aim:** Maya fills the first bracelet box herself, using work she's already done.
+- **Question:** "What do you say to this student?"
+- **Aim:** The student fills the first bracelet box, using work they've already done.
 - **After:**
   - **7.2 taught:** "Look back at the burrito table. What did the 7 do?"
   - **7.2 skipped:** "Look at the burrito row. How do the 2 and the 7 make 14?" With 7.2 skipped, the 7 is a result, not something that "did" anything.
   - Then **What's going on**, the checks, **Avoid**, and **If she's still stuck**: "What does the 6 in each row tell you?"
 - **Phone:** about 1.5 screens.
 
-## Card 5 · Help Dani say it in words
+## Card 5 · Help a student say it in words
 
-*Label: Language.* "This moment is about the sentence, not the answer." *Dani is an example student.*
+*Label: Language.* "This moment is about the sentence, not the answer."
 
 - **Where we are:** About 7 minutes into Activity 7.3, during partner talk.
-- **Shown:** Dani's table (IM's answers, including the 100 row: \(16\frac{2}{3}\)) and Today's frame on the board.
-- **Student:** Dani points across the columns: "You just do 6."
-- **Rehearse each level picked, lowest first.** It's the same question at every level, with a different way in. One short round per level picked, three at most. The chip reads "Dani's WIDA level: 1–2," then "3–4," and so on. Names rotate across lessons and are never tied to a level.
-- **Question:** "What do you say to Dani?"
-- **Aim:** Dani says both directions and names the rate: 6 bracelets per hour.
+- **Shown:** Their table (IM's answers, including the 100 row: \(16\frac{2}{3}\)) and Today's frame on the board.
+- **Student:** A student points across the columns: "You just do 6."
+- **Rehearse each level picked, lowest first.** It's the same question at every level, with a different way in. One short round per level picked, three at most. Each round is labeled with the WIDA level picked.
+- **Question:** "What do you say to this student?"
+- **Aim:** The student says both directions and names the rate: 6 bracelets per hour.
 - **After:**
   - The model line for that level.
   - The checks.
@@ -160,18 +158,18 @@ Three cards come first, in the order they happen in class:
 2. **Hands up too early** (Premo m2, about 1 minute in).
 3. **A student says "14 per 2"** (Premo m1, about 3 minutes in).
 
-These three have no language layer, level chip or Today's sentence. Card 4 then shows Maya's own burrito table, and Card 2's "Where we are" reads "Just finished the burrito table." That makes ten cards in all.
+These three have no language layer, level chip or Today's sentence. Card 4 then shows the student's own burrito table, and Card 2's "Where we are" reads "Just finished the burrito table." That makes ten cards in all.
 
 ## Wording rules for all cards, all lessons
 
 1. **Card names** are plain verb phrases. No routine names, lesson numbers or moment IDs in names.
-2. **"Where we are"** always reads "About N minutes into Activity X.Y," then what just happened and what's on the board.
+2. **"Where we are"** always reads "About N minutes into Activity X.Y." (a period), then a sentence on what just happened and what's on the board. "Before class." and "Start of Activity X.Y." are the other two forms.
 3. **Show what you refer to.** Every card shows the board, the table or the earlier work it refers to. Nothing relies on memory.
-4. **Questions** come from the teacher's seat: one question per sentence, to a named student or pair. Names are marked as example students, rotate, and are never tied to a WIDA level.
+4. **Questions** come from the teacher's seat: one question per sentence, to "a student" or "Pair A". No student names (Robert, 2026-11-03).
 5. **The Aim** is one sentence of 15 words or fewer. It says what the student ends up doing and never gives the words to say.
 6. **Checks** start with a past-tense verb, sit under "Did yours do these?" and are never marked wrong.
-7. **One name for each thing:** Today's frame, Today's sentence, WIDA level, Key activity, and each strategy's name (for 6.3.7: 1-hour row, row to row, across by 6).
-8. **Lines of 15 words or fewer.** US spelling, curly quotes with punctuation inside, fractions in LaTeX, "multilingual learners." Nothing about recording.
+7. **One name for each thing:** Today's frame, Today's sentence, WIDA level, Crux, and each strategy's name (for 6.3.7: 1-hour row, row to row, across by 6).
+8. **Sentences of 25 words or fewer** (Aims 15). US spelling, curly quotes with punctuation inside, fractions in LaTeX, "multilingual learners." Nothing about recording.
 
 ## New and changed content (all five lessons)
 
@@ -188,7 +186,7 @@ These three have no language layer, level chip or Today's sentence. Card 4 then 
 | Premo m6 moves | premo 6.3.7 | Point to the level frames, no poster |
 | Premo m5 `see` | premo 6.3.7 | "Adding rows," not "doubling" |
 | Pair B's work | plan 6.3.7 | NEW, written by a person |
-| Glossary | app-wide | Key activity, Three Reads, Today's frame, Today's sentence, Collect and Display, Stronger and Clearer, WIDA level, quiet think time, unit rate |
+| Glossary | app-wide | Crux, Three Reads, Today's frame, Today's sentence, Collect and Display, Stronger and Clearer, WIDA level, quiet think time, unit rate |
 
 In 6.3.6, the closing card is **Stronger and Clearer** instead. It shows IM's flawed explanation and asks, "What should students fix first?"
 
@@ -196,8 +194,8 @@ In 6.3.6, the closing card is **Stronger and Clearer** instead. It shows IM's fl
 
 The personas' recommendations are in brackets.
 
-1. **Example student names** (Maya, Dani): yes or no? [Yes, marked "example student," rotated, never tied to a WIDA level.]
-2. **Dani's card: rehearse each level picked, lowest first, or just one?** [Each level picked, three short rounds at most.]
+1. **Example student names?** Decided: no names.
+2. **The say-it-in-words card: rehearse each level picked, lowest first, or just one?** Decided: each level, counted as one move. [Each level picked, three short rounds at most.]
 3. **Pair B's row-to-row work:** accept the version above, or write your own? [Accept; it's checked.]
-4. **"Key activity" in place of "Crux" on screen,** with a tap definition? [Yes. It avoids "required," which clashes with "nothing is locked."]
+4. **"Key activity" in place of "Crux" on screen?** Decided: keep "Crux", with a tap definition.
 5. **Today's frame shown before the teacher speaks on Card 3:** yes or no? [Yes. It's what's on the board, not the answer.]

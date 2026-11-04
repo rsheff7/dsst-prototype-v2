@@ -18,15 +18,16 @@
   "Non-crux activities carry no language supports (D7).",
   "Revised 2026-11-03 after persona review: added clo.posted (goal and a muffin example with new numbers); m1 momentCriteria; nonverbal ways in for each band. Emerging frame now compares two stores; developing says “per can” on both prices. clo.precise drops “same speed” (5.2’s, not the crux’s); the exemplar now uses “unit price,” “per” and “price per can.” clo.form says “best deal,” matching the frames; the lesson check now has three stores so “best deal” fits. lookFor checks the form and “per,” not just numbers. Read 3 asks students what “best deal” means before the teacher clarifies lowest price per can. MLR 1 synthesis now runs partner rounds and the rewrite first, then a short share in IM’s order, where students make the table-to-division connection (D1 option 3). “Quiet work time” is now “quiet think time”; the 5.3 cut notes IM’s 15 minutes. Story, pointTo and beforeClass trimmed to 30 words. Check numbers: 6 ÷ 3 = 2.00, 9 ÷ 5 = 1.80, 25 ÷ 10 = 2.50; posted 6 ÷ 5 = 1.20, 6 ÷ 4 = 1.50.",
   "2026-11-03: rehearsal cards written to the card spec and guidance rule. Twelve cards: a task card per activity, 5.1’s m1, 5.2’s m3 and m5, and at the crux Three Reads, the release, m7, m9, m10 and the MLR 1 synthesis. NEW: m3’s copied-numbers paper (“4,200 30 · 6,300 \\(\\frac{1}{2}\\) · 6.3 45”), written to Premo’s description; every ifNot question; and m1’s note to have the other side answer. All other student words are Premo’s, and the synthesis board is IM’s response table. Doubts: m1 is typed decision (whom to call), not student. The synthesis card sits after m10 and rehearses the share’s connection question, with the partner rounds in runIt; a reviewer may prefer it before m10. m5’s timing (9 minutes) assumes groups reach Mai and Tyler late in the 15 minutes. m9’s ifNot points to the 8 and $6, close to a hint; check it doesn’t give the answer.",
-  "2026-11-03: rehearsal revised after persona review 2 (moves rule, Three Reads, frames, wording). Moves: 9 cards that count (crux-only 6; 5.1 adds 1, 5.2 adds 2). Three Reads: round aims no longer state answers; read 3 is now IM’s strategy brainstorm (crux.threeReads[2], launch checks and runIt updated). IM’s “best deal” talk moves to a runIt step before read 3. m10: the first move asks the listener what number would show it’s cheapest; “how much per can?” is now If it doesn’t work. Synthesis card renamed “Finish on the board”; its Sounds like models the table-to-division connection. Release notes split and use clo.form’s frame. 5.3 cut gets an honest timing line. Wording: numerals (1 can, 1 minute, $1.50), “A student…” openings, “Where we are” periods, m1 renamed “Choose who explains first” and “opposite” used throughout, m9 check without a question mark, math:5.3 aim one sentence. NEW: crux.threeReads[2] listenFor (strategies students might name); m10’s checks."
+  "2026-11-03: rehearsal revised after persona review 2 (moves rule, Three Reads, frames, wording). Moves: 9 cards that count (crux-only 6; 5.1 adds 1, 5.2 adds 2). Three Reads: round aims no longer state answers; read 3 is now IM’s strategy brainstorm (crux.threeReads[2], launch checks and runIt updated). IM’s “best deal” talk moves to a runIt step before read 3. m10: the first move asks the listener what number would show it’s cheapest; “how much per can?” is now If it doesn’t work. Synthesis card renamed “Finish on the board”; its Sounds like models the table-to-division connection. Release notes split and use clo.form’s frame. 5.3 cut gets an honest timing line. Wording: numerals (1 can, 1 minute, $1.50), “A student…” openings, “Where we are” periods, m1 renamed “Choose who explains first” and “opposite” used throughout, m9 check without a question mark, math:5.3 aim one sentence. NEW: crux.threeReads[2] listenFor (strategies students might name); m10’s checks.",
+  "2026-11-03: round-3 fixes. crux.synthesis prompt and sounds now match the synth:5.3 card; read 3 says “How might we solve it?”; talk moment uses Today’s frame (CLO form); long sentences split (previous, CLO statement and look-for, 5.3 strategy, check sounds, beforeClass chart); “way in” and “What must every explanation include?” reworded; pointTo says IM’s list (IM: “display a list”). “IM’s order” kept: IM’s 5.3 synthesis has representations first, then division. m9 has no levelFrames (it uses the release frames), so no levelNonverbal added."
  ],
  "story": "Lesson 5 opens the rates section. Students compare speeds and prices by finding how much for 1 of the same unit. The same rate per 1 means equivalent ratios.",
- "previous": "In earlier lessons students found and used rates per 1 in a context, most recently to convert units in Lesson 4; today they use rates per 1 to compare speeds and prices.",
+ "previous": "In earlier lessons students found and used rates per 1, most recently to convert units in Lesson 4. Today they use rates per 1 to compare speeds and prices.",
  "clo": {
   "imGoal": "Justify (orally and in writing) comparisons of speeds or prices.",
   "function": "justify",
   "form": "___ is the best deal because its unit price is $___ per ___, less than $___ per ___ at ___.",
-  "statement": "Students will justify, orally and in writing, which price is the best deal or which speed is faster by comparing the unit price or rate per 1, named with “per.”",
+  "statement": "Students will justify, orally and in writing, which price is the best deal or which speed is faster. They compare the unit price or rate per 1, named with “per.”",
   "precise": [
    "unit price",
    "per",
@@ -38,7 +39,7 @@
    "how much for 1"
   ],
   "exemplar": "8 for $6 is the best deal. Its unit price, or price per can, is 6 ÷ 8 = $0.75, less than $0.80, $1.00 and $1.50 at the other stores.",
-  "lookFor": "The answer uses the CLO’s form: it names each price per bottle with “per,” $1.69 and $5 ÷ 4 = $1.25, says which is less, and how much: 1.69 − 1.25 = $0.44 less this week.",
+  "lookFor": "The answer uses the CLO’s form. It names each price per bottle with “per”: $1.69, and $5 ÷ 4 = $1.25. It says which is less, and by how much: $0.44.",
   "posted": {
    "goal": "We will find how much for 1 to compare prices and speeds, and explain which is the best deal using “unit price” and “per.”",
    "sentence": "Store B is the best deal because its unit price is $1.20 per muffin (6 ÷ 5), less than $1.50 per muffin at Store A."
@@ -110,7 +111,7 @@
    "id": "5.3",
    "strategies": [
     "A table down to 1 can: 8 cans for $6, 4 cans for $3, 1 can for $0.75.",
-    "Divide price by cans: 6 ÷ 8 = 0.75, 10 ÷ 10 = 1, 3 ÷ 2 = 1.50; 80 cents each is already $0.80 per can. 8 for $6 is the best deal.",
+    "Divide price by cans: 6 ÷ 8 = 0.75, 10 ÷ 10 = 1, 3 ÷ 2 = 1.50. 80 cents each is already $0.80 per can. 8 for $6 is the best deal.",
     "28-oz can: compare per ounce. $1.40 ÷ 28 = $0.05 an ounce, the same as $0.75 ÷ 15."
    ],
    "barriers": [
@@ -151,7 +152,7 @@
    },
    {
     "focus": "Ways to solve",
-    "say": "Read it once more. How might we solve this?",
+    "say": "Read it once more. How might we solve it?",
     "listenFor": "Ways, not answers: a table down to 1 can, or divide price by cans. Some may say find what 1 can costs."
    }
   ],
@@ -159,7 +160,7 @@
    "successCriteria": "In your explanation, name the price per can at the best store and at one other store, and say which is less.",
    "say": "Name the price per can, and compare it with another store.",
    "talkMoments": [
-    "After quiet think time, partners take turns saying their best store with the frame: “___ is the best deal because its unit price is $___ per can, less than $___ per can at ___.”",
+    "After quiet think time, partners take turns saying their best store. They use Today’s frame: “___ is the best deal because its unit price is $___ per ___, less than $___ per ___ at ___.”",
     "Before the 28-oz question, partners tell each other what to compare when the cans aren’t the same size."
    ],
    "byBand": {
@@ -189,8 +190,8 @@
     "Short share in IM’s order: a table down to 1 can first, then 6 ÷ 8 = 0.75.",
     "Ask students how the table and 6 ÷ 8 connect. They say it: both give $0.75 per can. Point to “unit price” as they do."
    ],
-   "prompt": "Which store is the best deal, and how do you know?",
-   "sounds": "8 for $6 is the best deal because its unit price is $0.75 per can, less than $1.50 per can at 2 for $3."
+   "prompt": "How do the table and 6 ÷ 8 connect?",
+   "sounds": "Both give the unit price, $0.75 per can: the table works down to 1 can, and 6 ÷ 8 gets there in one step."
   }
  },
  "lessonSynthesis": {
@@ -200,17 +201,17 @@
    "Tyler and Mai both ran 140 meters per minute: same rate per 1, so 4,200 : 30 and 6,300 : 45 are equivalent ratios.",
    "Dividing gets you to 1: $6 ÷ 8 cans is $0.75 per can, the lowest unit price of the four ads."
   ],
-  "pointTo": "Display IM’s chart: each rate as given beside its rate per 1, runners first, then the ads. Point to students’ rewritten drafts: the same prices per can, in their words.",
+  "pointTo": "Display IM’s list: each rate as given beside its rate per 1, runners first, then the ads. Point to students’ rewritten drafts: the same prices per can, in their words.",
   "check": {
    "question": "Store A sells 3 pens for $6. Store B sells 5 pens for $9. Store C sells 10 pens for $25. Which store has the best deal?",
-   "sounds": "Store B is the best deal because its unit price is $1.80 per pen, less than $2.00 per pen at Store A and $2.50 at Store C."
+   "sounds": "Store B is the best deal. Its unit price is $1.80 per pen, less than $2.00 per pen at Store A and $2.50 at Store C."
   }
  },
  "beforeClass": [
   "For Three Reads in 5.3: display the four bean ads with the questions covered until the third read.",
   "For the release: have the frames for your students’ levels ready to post or hand out.",
   "For Stronger and Clearer Each Time (MLR 1): plan partners for two rounds, and draw an empty “1 can: $___” box under each ad.",
-  "Lesson synthesis chart: “rate as given” and “rate per 1,” with the runners and the ads: 140, 210, 140 meters per minute; $0.75, $1.00, $1.50, $0.80 per can."
+  "Lesson synthesis chart: “rate as given” and “rate per 1,” runners and ads. Rates per 1: 140, 210, 140 meters per minute; $0.75, $1.00, $1.50, $0.80 per can."
  ],
  "cuts": [
   {
@@ -320,7 +321,7 @@
     "Could a table of meters and minutes help you start?"
    ],
    "checks": [
-    "Offered a table of meters and minutes as a way in",
+    "Offered a table of meters and minutes to start",
     "Left the numbers for the student to fill in",
     "Didn’t fill a row for them"
    ],
@@ -424,7 +425,7 @@
    "language": true,
    "name": "Send students to work",
    "where": "About 3 minutes into Activity 5.3. Next: 5–10 minutes of quiet think time on a first draft, then partner rounds.",
-   "ask": "What must every explanation include? What do you tell the class?",
+   "ask": "What do you tell the class every explanation needs?",
    "aim": "Students know their explanation needs the price per can at two stores.",
    "say": [
     "Name the price per can, and compare it with another store."
@@ -487,7 +488,7 @@
    "aim": "The student names the price per can and compares it with another store.",
    "checks": [
     "Kept the same question at every level: which store, and how they know",
-    "Matched the way in to the student’s level",
+    "Gave their level’s frame or nonverbal, not the same help for all",
     "Didn’t write the price or the sentence for them"
    ],
    "ifNot": "Point to the 8 and the $6. What does 1 can cost?",

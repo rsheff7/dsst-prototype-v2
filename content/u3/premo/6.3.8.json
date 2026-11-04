@@ -133,7 +133,7 @@
     },
     "developing": {
      "say": "What can be counted or measured here? Tell your partner.",
-     "move": "They tell a partner what each number measures and whose it is, with its unit, using “___ is ___ miles per hour.” They can work it out first in any language they share with a partner."
+     "move": "They tell a partner what each number measures and whose it is, with its unit, using “___ is ___’s ___, in ___.” They can work it out first in any language they share with a partner."
     },
     "expanding": {
      "say": "What can be counted or measured here? Tell your partner each one.",
@@ -147,7 +147,7 @@
    "rehearse": true,
    "criteria": [
     "Kept the same question at every level: what can be counted or measured",
-    "Matched the way in to the student’s level",
+    "Gave their level’s frame or a way to show it without words",
     "Didn’t tell them what the number means"
    ]
   },
@@ -250,17 +250,17 @@
    "means": "They found the meeting time with the right division. Saying what they divided, by what, and what it finds is the explaining IM’s goal asks for.",
    "byBand": {
     "emerging": {
-     "say": "What did you divide, and by what? Point and tell me.",
+     "say": "What did you divide, by what, and why? Point and tell me.",
      "move": "They point to the 24, the 6.4 and the 3.75, then say them in Today’s frame. They can work it out first in any language they share with a partner.",
      "nonverbal": "Point to the 24 on the trail sketch, then to the 6.4, then to the 3.75."
     },
     "developing": {
-     "say": "What did you divide, and why? Tell your partner.",
+     "say": "What did you divide, by what, and why? Tell your partner.",
      "move": "They tell a partner what they divided, by what, and what it finds, in Today’s frame. They can work it out first in any language they share with a partner.",
      "nonverbal": "Point to the 24, then the 6.4, and say each one’s unit."
     },
     "expanding": {
-     "say": "What did you divide, and why? Tell your partner in one sentence.",
+     "say": "What did you divide, by what, and why? Tell your partner in one sentence.",
      "move": "They tell a partner, in their own sentence, what they divided, by what, and what it finds, naming each rate with “per.” They can work it out first in any language they share with a partner.",
      "nonverbal": "Trace from the 24 to the 6.4 to the answer, then say it."
     }
@@ -270,8 +270,8 @@
    "sayFrom": "premo",
    "rehearse": false,
    "criteria": [
-    "Asked the same question at every level: what was divided, by what, and why",
-    "Matched the way in to the student’s level",
+    "Asked the same question at every level: what they divided, by what, and why",
+    "Gave their level’s frame or a way to show it without words",
     "Didn’t say the sentence for them"
    ]
   }

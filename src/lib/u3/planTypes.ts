@@ -131,6 +131,8 @@ export interface RehearsalCard {
   ifSkipped?: { activityId: string; show?: string[]; say?: string[]; checks?: string[] };
   /** For a 'levels' card whose moment isn't at release: the frame each band uses here (else the release frames). */
   levelFrames?: Partial<Record<ProficiencyBand, string>>;
+  /** With `levelFrames`: this moment's way in without words, per band, when the Premo moment has none for that band. */
+  levelNonverbal?: Partial<Record<ProficiencyBand, string>>;
   /** A different "where" line when an earlier activity was chosen. */
   whereIfChosen?: { activityId: string; where: string };
 }
