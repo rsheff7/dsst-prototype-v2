@@ -388,7 +388,6 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
             </>
           )}
         </dl>
-        <span className={s.small}>A first try in a home language or in everyday words counts. The frame is where students refine it, not a gate.</span>
         <span className={cx(s.muted, s.small)}>
           From IM’s goal: <MathText>{plan.clo.imGoal}</MathText>
           {plan.clo.progressionNote && <> {plan.clo.progressionNote}</>}
