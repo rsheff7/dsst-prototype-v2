@@ -127,8 +127,10 @@ export interface RehearsalCard {
   runIt?: string[];
   /** The Premo moment this card rehearses (its means and dont, and by-level says for 'levels'). */
   momentId?: string;
-  /** When an earlier activity the card leans on wasn't chosen. */
-  ifSkipped?: { activityId: string; show?: string[]; say?: string[] };
+  /** When an earlier activity the card leans on wasn't chosen: what's shown, said and checked instead. */
+  ifSkipped?: { activityId: string; show?: string[]; say?: string[]; checks?: string[] };
+  /** For a 'levels' card whose moment isn't at release: the frame each band uses here (else the release frames). */
+  levelFrames?: Partial<Record<ProficiencyBand, string>>;
   /** A different "where" line when an earlier activity was chosen. */
   whereIfChosen?: { activityId: string; where: string };
 }

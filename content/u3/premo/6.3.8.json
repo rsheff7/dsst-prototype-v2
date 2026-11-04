@@ -15,7 +15,8 @@
   "All numbers checked: 12/75 = 0.16, 75/12 = 6.25, 0.16 · 30 = 4.8, 6.25 · 8 = 50; 24 − 3 − 3.4 = 17.6, then 11.2 and 4.8; 24 ÷ 6.4 = 3.75 hours = 3 hours 45 minutes, so 11:45; 24 ÷ 2.5 = 9.6, 9.6 − 3.4 = 6.2; 3.4 · 2.5 = 8.5, 24 − 8.5 = 15.5, 15.5 ÷ 2.5 = 6.2; Jada 10 miles per hour, cousin 2.5.",
   "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person.",
   "Revised 2026-10-24: routine centred; copy edit. Added m12, a rehearsed run-routine moment for Three Reads (MLR 6) at the 8.2 launch (say line, a three-step run sheet, one step per read; IM gives no minutes for the reads, so none are listed; evidence is IM’s “without solving it for students” sentence). The third step follows the launch (first two questions), as noted above. m3, the Three Reads breakdown (“Students start calculating on the first read.”), is now rehearsed. Un-rehearsed m10 (Group Presentations) and m6 (time reading), criteria dropped, to keep six rehearsed: m1 and m2 upstream, m12, m3, m4 and m5 at the crux. m4 stays as the level-specific support during the second read; m12 is the teacher running all three. predict.tell now says the sixth moment (m5). inClass.momentIds now m12, m4, m5. cruxLanguage.byBand: added does and reaching; entries rewritten as one short sentence per read. Routines named with MLR numbers on first mention (cruxWhy, m2, m3, m4, m10, m12, cuts); beforeClass items labelled with the routine they serve. Copy edits: “30-minute question”; cruxWhy parallel fixed; rates as “per” (miles per minute, minutes per mile, miles per hour); times as “8 a.m.”, “10:30 a.m.”, “11:45 a.m.”; “0.75 hours” throughout m6; 12/75 written as \\(\\frac{12}{75}\\) in m1; “mathematics” → “math”; one home-language sentence in m4 and cruxLanguage; “English learners” → “multilingual learners” in cruxWhy. Numbers rechecked: 12/75 = 0.16; 24 − 3 − 3.4 = 17.6; 24 ÷ 6.4 = 3.75 hours = 3 hours 45 minutes, so 11:45 a.m.; 24 ÷ 2.5 = 9.6, 9.6 − 3.4 = 6.2.",
-  "Revised 2026-10-24: added cruxLanguage.byBand.*.stretch, the extra step for the higher level in each band (Levels 2, 4, 6), under the level-tier rule in src/lib/prep/levelTiers.ts."
+  "Revised 2026-10-24: added cruxLanguage.byBand.*.stretch, the extra step for the higher level in each band (Levels 2, 4, 6), under the level-tier rule in src/lib/prep/levelTiers.ts.",
+  "2026-11-03: added m13 (language, not rehearsed in Premo’s six): a student who has 24 ÷ 6.4 = 3.75 says the CLO sentence, “I divide 24 by 6.4 to find the time.” NEW, Premo’s: the see, means, by-level moves and checks; the plan uses it as a language card at the crux in place of m3."
  ],
  "crux": "8.2",
  "cruxWhy": "8.2 is where both of IM’s goals are met: students use speeds to find unknown distances and times, and interpret a written story of two friends moving at constant speeds by making a table. IM gives it 30 minutes, supports multilingual learners with Three Reads (MLR 6), in which the class reads the story three times, and has each group explain a problem to the class. 8.1 warms up the speed and pace ideas; 8.3 is optional practice.",
@@ -240,6 +241,39 @@
    "from": "im",
    "sayFrom": "premo",
    "evidence": "Some students may confuse the meaning of the speed and pace, thinking that 24 minutes per mile is faster than 6 minutes per mile."
+  },
+  {
+   "id": "m13",
+   "activityId": "8.2",
+   "kind": "language",
+   "see": "A student points to 24 ÷ 6.4 = 3.75 on their paper and says: “I did this one.”",
+   "means": "They found the meeting time with the right division. Saying what they divided, by what, and what it finds is the explaining IM’s goal asks for.",
+   "byBand": {
+    "emerging": {
+     "say": "What did you divide, and by what? Point and tell me.",
+     "move": "They point to the 24, the 6.4 and the 3.75, then say them in Today’s frame. They can work it out first in any language they share with a partner.",
+     "nonverbal": "Point to the 24 on the trail sketch, then to the 6.4, then to the 3.75."
+    },
+    "developing": {
+     "say": "What did you divide, and why? Tell your partner.",
+     "move": "They tell a partner what they divided, by what, and what it finds, in Today’s frame. They can work it out first in any language they share with a partner.",
+     "nonverbal": "Point to the 24, then the 6.4, and say each one’s unit."
+    },
+    "expanding": {
+     "say": "What did you divide, and why? Tell your partner in one sentence.",
+     "move": "They tell a partner, in their own sentence, what they divided, by what, and what it finds, naming each rate with “per.” They can work it out first in any language they share with a partner.",
+     "nonverbal": "Trace from the 24 to the 6.4 to the answer, then say it."
+    }
+   },
+   "dont": "Say the sentence for them.",
+   "from": "premo",
+   "sayFrom": "premo",
+   "rehearse": false,
+   "criteria": [
+    "Asked the same question at every level: what was divided, by what, and why",
+    "Matched the way in to the student’s level",
+    "Didn’t say the sentence for them"
+   ]
   }
  ],
  "patterns": [

@@ -4,6 +4,16 @@
 
 This rule covers the guidance at the bottom of each rehearsal card. It sets which kinds of guidance a card gets, decided by the kind of card rather than case by case, so all five lessons come out the same way. Once approved, the content checker requires each kind wherever it applies.
 
+## Moves (Robert, 2026-11-03)
+
+- **What counts as a move:** each card is one move, except Do the task cards, which are solving, not saying. Three Reads (three rounds) and the by-level card (one round per WIDA band picked) each count as **one move**.
+- **Crux-only night:** a target of **8 moves**. The checker warns above 8 and fails above 10.
+- **Each added activity:** at most **2 moves**. Choose activities shows the moves and minutes each activity adds.
+- **The counter** on Rehearse counts moves, with an estimate of about 3 minutes per task and 1.5 per move.
+- **Not on screen:** a source label for new student work. Its source stays in each lesson's notes.
+
+**Wording:** "Where we are" is followed by a period. Aims are 15 words or fewer; other lines 25.
+
 ## Card types
 
 Every rehearsal card is one of these six types.

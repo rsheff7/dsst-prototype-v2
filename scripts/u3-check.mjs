@@ -288,7 +288,10 @@ for (const f of planFiles) {
     if (c.ifSkipped && !ids.includes(c.ifSkipped.activityId)) err(cat, `ifSkipped names ${c.ifSkipped.activityId}`);
     // No student names (Robert, 2026-11-03): "a student", "Pair A".
     const text = flat({ ...c, more: [] }).join(' ');
-    if (/\b(Maya|Dani|Ana|Jo|Sam)\b/.test(text)) err(cat, 'uses a student name; write “a student” or “Pair A”');
+    // No student names (Robert, 2026-11-03): "a student", "Pair A". Names in IM's own problems (Lin, Diego…) are fine in that lesson.
+    const imText = flat(im).join(' ');
+    const named = (text.match(/\b(Maya|Dani|Ana|Jo|Sam|Priya|Elena|Jordan|Dana|Robert|Maria|Jose|Luis|Aisha|Omar|Mia|Liam|Noah|Emma|Ava|Leo|Kai|Zoe|Ben|Max|Eli|Ivy|Nia|Raj|Lucia|Mateo|Sofia|Diego|Carlos|Ana|Jin|Mei|Amir|Fatima|Yusuf|Kofi|Ama|Tariq|Hana)\b/g) ?? []).filter((n) => !new RegExp(`\\b${n}\\b`).test(imText));
+    if (named.length) err(cat, `uses a student name (${named[0]}); write “a student” or “Pair A”`);
   }
   if (pl.rehearsal && !pl.rehearsal.some((c) => c.activityId === pr.crux)) err(at, 'rehearsal has no cards for the crux');
   // The guidance rule (docs/REHEARSAL-GUIDANCE-RULE.md): what each card type must carry.
@@ -311,6 +314,48 @@ for (const f of planFiles) {
     if (c.ifNot && !/\?\s*$/.test(c.ifNot)) err(cat, 'ifNot is one question');
     if (c.why && wordsIn(c.why) > 40) err(cat, `why is ${wordsIn(c.why)} words; keep it to two short sentences`);
     if (c.more) err(cat, 'more is retired; use the rule’s guidance fields');
+    // Model: every card but Do the task, Three Reads and the by-level card says something.
+    if (!['math', 'rounds', 'levels'].includes(c.kind) && !(c.say ?? []).length) err(cat, 'needs a model (say)');
+    // kind and type agree.
+    const PAIR = { math: ['task'], rounds: ['routine'], release: ['send'], synthesis: ['routine'], levels: ['language'], moment: ['student', 'decision'] };
+    if (!PAIR[c.kind]?.includes(c.type)) err(cat, `kind ${c.kind} can't be type ${c.type}`);
+    // Where we are: one of three forms, minutes within IM's time for the activity.
+    const actMin = im.activities.find((x) => x.id === c.activityId)?.minutes ?? 0;
+    const wm = /^About (\d+) minutes? into Activity (\d+\.\d+)\. \S/.exec(c.where ?? '');
+    if (!(wm || /^Before class\. /.test(c.where ?? '') || /^Start of Activity \d+\.\d+\. /.test(c.where ?? '')))
+      err(cat, 'where must start "Before class. ", "Start of Activity X.Y. " or "About N minutes into Activity X.Y. " and say what just happened');
+    if (wm && wm[2] !== c.activityId) err(cat, `where names Activity ${wm[2]}, but the card is ${c.activityId}`);
+    if (wm && Number(wm[1]) > actMin) err(cat, `where says ${wm[1]} minutes into a ${actMin}-minute activity`);
+    // Checks: past tense, not the model repeated.
+    const PAST = /^(\w+ed|Had|Didn’t|Didn't|Did|Got|Said|Made|Kept|Let|Put|Gave|Took|Told|Wrote|Found|Saw|Held|Showed|Left|Read|Ran|Sent|Set|Stopped|Went|Chose|Drew|Knew|Began|Brought|Spoke|Heard|Led|Met|Paid|Sat|Stood|Thought|Understood|Won|Built|Caught|Taught|Meant|Struck|Fed)\b/;
+    for (const ch of [...(c.checks ?? []), ...(c.ifSkipped?.checks ?? [])]) {
+      if (!PAST.test(ch)) err(cat, `check “${ch.slice(0, 40)}” must start with a past-tense verb`);
+      if (/[.?]$/.test(ch.trim())) err(cat, `check “${ch.slice(0, 40)}” ends with punctuation`);
+      if ((c.say ?? []).some((x) => low(x) === low(ch))) err(cat, 'a check repeats the model');
+    }
+    if (c.ifSkipped?.checks && c.ifSkipped.checks.length !== 3) err(cat, 'ifSkipped.checks needs exactly three');
+    if (c.whereIfChosen && !ids.includes(c.whereIfChosen.activityId)) err(cat, `whereIfChosen names ${c.whereIfChosen.activityId}, not in IM’s lesson`);
+    // If it doesn't work never states the answer: no "=", no bare result from the card's show.
+    if (c.ifNot && /=/.test(c.ifNot)) err(cat, 'ifNot gives a worked answer (has “=”)');
+    // Line length (25 words); Aims are checked at 15 above. IM's verbatim text in show is exempt.
+    for (const [k, v] of [['ask', c.ask], ['ifNot', c.ifNot], ['avoid', c.avoid], ...(c.checks ?? []).map((x) => ['check', x]), ...(c.say ?? []).map((x) => ['say', x])])
+      if (v && v.split(/(?<=[.?!])\s+/).some((sen) => wordsIn(sen) > 25)) warn(cat, `${k} has a sentence over 25 words`);
+  }
+  // Ids unique; every activity has a Do the task card; the crux has its four routine cards.
+  const seen = new Set();
+  for (const c of pl.rehearsal ?? []) {
+    if (seen.has(c.id)) err(at, `duplicate card id ${c.id}`);
+    seen.add(c.id);
+  }
+  if (pl.rehearsal) {
+    for (const id of ids) if (!pl.rehearsal.some((c) => c.activityId === id && c.kind === 'math')) err(at, `no Do the task card for ${id}`);
+    for (const k of ['rounds', 'release', 'synthesis']) if (!pl.rehearsal.some((c) => c.activityId === pr.crux && c.kind === k)) err(at, `the crux has no ${k} card`);
+    if (!pl.rehearsal.some((c) => c.activityId === pr.crux && c.kind === 'levels')) err(at, 'the crux has no by-level language card');
+    // Moves (Robert, 2026-11-03): crux-only night ≤ 8 (warn) and ≤ 10 (fail); each added activity ≤ 2.
+    const moves = (a) => pl.rehearsal.filter((c) => c.activityId === a && c.kind !== 'math').length;
+    if (moves(pr.crux) > 10) err(at, `crux-only night is ${moves(pr.crux)} moves; the most is 10`);
+    else if (moves(pr.crux) > 8) warn(at, `crux-only night is ${moves(pr.crux)} moves; the target is 8`);
+    for (const id of ids.filter((x) => x !== pr.crux)) if (moves(id) > 2) err(at, `${id} adds ${moves(id)} moves; the most is 2`);
   }
   for (const [where, s] of flat(pl).map((s) => ['', s])) if (/maths|colour|grey\b|favour|behaviour|centre\b|organis|practise\b|metre\b/.test(s)) err(at, `US spelling: "${s.slice(0, 50)}…"`);
 }

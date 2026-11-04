@@ -5,7 +5,7 @@
 - **Keep "Crux"** on screen, with a tap definition.
 - **The reviewers' recommendations stand** for the other three decisions: rehearse each picked level, accept Pair B's work, and show Today's frame before speaking.
 
-The other four lessons keep the earlier cards until this one is approved.
+All five lessons now use these cards (2026-11-03), under `docs/REHEARSAL-GUIDANCE-RULE.md`. Changes since: Read 3 is IM's strategy brainstorm, Three Reads and the by-level card count as one move each, and the by-level card shows each moment's own way in.
 
 - **Drafted** by Jordan Ellis (second-year teacher).
 - **Edited for wording** by Dana Okoro (copy editor).
