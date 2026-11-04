@@ -19,7 +19,8 @@
   "Revised 2026-11-03 after persona review: added clo.posted (goal and a muffin example with new numbers); m1 momentCriteria; nonverbal ways in for each band. Emerging frame now compares two stores; developing says “per can” on both prices. clo.precise drops “same speed” (5.2’s, not the crux’s); the exemplar now uses “unit price,” “per” and “price per can.” clo.form says “best deal,” matching the frames; the lesson check now has three stores so “best deal” fits. lookFor checks the form and “per,” not just numbers. Read 3 asks students what “best deal” means before the teacher clarifies lowest price per can. MLR 1 synthesis now runs partner rounds and the rewrite first, then a short share in IM’s order, where students make the table-to-division connection (D1 option 3). “Quiet work time” is now “quiet think time”; the 5.3 cut notes IM’s 15 minutes. Story, pointTo and beforeClass trimmed to 30 words. Check numbers: 6 ÷ 3 = 2.00, 9 ÷ 5 = 1.80, 25 ÷ 10 = 2.50; posted 6 ÷ 5 = 1.20, 6 ÷ 4 = 1.50.",
   "2026-11-03: rehearsal cards written to the card spec and guidance rule. Twelve cards: a task card per activity, 5.1’s m1, 5.2’s m3 and m5, and at the crux Three Reads, the release, m7, m9, m10 and the MLR 1 synthesis. NEW: m3’s copied-numbers paper (“4,200 30 · 6,300 \\(\\frac{1}{2}\\) · 6.3 45”), written to Premo’s description; every ifNot question; and m1’s note to have the other side answer. All other student words are Premo’s, and the synthesis board is IM’s response table. Doubts: m1 is typed decision (whom to call), not student. The synthesis card sits after m10 and rehearses the share’s connection question, with the partner rounds in runIt; a reviewer may prefer it before m10. m5’s timing (9 minutes) assumes groups reach Mai and Tyler late in the 15 minutes. m9’s ifNot points to the 8 and $6, close to a hint; check it doesn’t give the answer.",
   "2026-11-03: rehearsal revised after persona review 2 (moves rule, Three Reads, frames, wording). Moves: 9 cards that count (crux-only 6; 5.1 adds 1, 5.2 adds 2). Three Reads: round aims no longer state answers; read 3 is now IM’s strategy brainstorm (crux.threeReads[2], launch checks and runIt updated). IM’s “best deal” talk moves to a runIt step before read 3. m10: the first move asks the listener what number would show it’s cheapest; “how much per can?” is now If it doesn’t work. Synthesis card renamed “Finish on the board”; its Sounds like models the table-to-division connection. Release notes split and use clo.form’s frame. 5.3 cut gets an honest timing line. Wording: numerals (1 can, 1 minute, $1.50), “A student…” openings, “Where we are” periods, m1 renamed “Choose who explains first” and “opposite” used throughout, m9 check without a question mark, math:5.3 aim one sentence. NEW: crux.threeReads[2] listenFor (strategies students might name); m10’s checks.",
-  "2026-11-03: round-3 fixes. crux.synthesis prompt and sounds now match the synth:5.3 card; read 3 says “How might we solve it?”; talk moment uses Today’s frame (CLO form); long sentences split (previous, CLO statement and look-for, 5.3 strategy, check sounds, beforeClass chart); “way in” and “What must every explanation include?” reworded; pointTo says IM’s list (IM: “display a list”). “IM’s order” kept: IM’s 5.3 synthesis has representations first, then division. m9 has no levelFrames (it uses the release frames), so no levelNonverbal added."
+  "2026-11-03: round-3 fixes. crux.synthesis prompt and sounds now match the synth:5.3 card; read 3 says “How might we solve it?”; talk moment uses Today’s frame (CLO form); long sentences split (previous, CLO statement and look-for, 5.3 strategy, check sounds, beforeClass chart); “way in” and “What must every explanation include?” reworded; pointTo says IM’s list (IM: “display a list”). “IM’s order” kept: IM’s 5.3 synthesis has representations first, then division. m9 has no levelFrames (it uses the release frames), so no levelNonverbal added.",
+  "2026-11-03: CLO restructured (Robert, with Elena’s review): a two-line board version (Content, Language; “We will…”, 20 words or fewer, no task numbers), “Say it like this” frame as part of the objective, and four scripted moments for using it. The “Students will…” statement and posted.goal are gone; the board version is the one CLO."
  ],
  "story": "Lesson 5 opens the rates section. Students compare speeds and prices by finding how much for 1 of the same unit. The same rate per 1 means equivalent ratios.",
  "previous": "In earlier lessons students found and used rates per 1, most recently to convert units in Lesson 4. Today they use rates per 1 to compare speeds and prices.",
@@ -27,7 +28,11 @@
   "imGoal": "Justify (orally and in writing) comparisons of speeds or prices.",
   "function": "justify",
   "form": "___ is the best deal because its unit price is $___ per ___, less than $___ per ___ at ___.",
-  "statement": "Students will justify, orally and in writing, which price is the best deal or which speed is faster. They compare the unit price or rate per 1, named with “per.”",
+  "board": {
+   "content": "We will compare prices and speeds by finding how much for 1.",
+   "language": "We will justify, out loud and in writing, which is the best deal, using “unit price” and “per.”"
+  },
+  "mode": "out loud and in writing",
   "precise": [
    "unit price",
    "per",
@@ -41,8 +46,13 @@
   "exemplar": "8 for $6 is the best deal. Its unit price, or price per can, is 6 ÷ 8 = $0.75, less than $0.80, $1.00 and $1.50 at the other stores.",
   "lookFor": "The answer uses the CLO’s form. It names each price per bottle with “per”: $1.69, and $5 ÷ 4 = $1.25. It says which is less, and by how much: $0.44.",
   "posted": {
-   "goal": "We will find how much for 1 to compare prices and speeds, and explain which is the best deal using “unit price” and “per.”",
    "sentence": "Store B is the best deal because its unit price is $1.20 per muffin (6 ÷ 5), less than $1.50 per muffin at Store A."
+  },
+  "use": {
+   "launch": "Before the warm-up, read both lines together. Point to “unit price” and “per”.",
+   "release": "When you send students to 5.3, point to “Say it like this.”",
+   "synthesis": "In the synthesis, point back to the language line. Read one student’s sentence beside it.",
+   "coolDown": "After the cool-down, students check themselves: “I can justify which is the best deal, using “unit price” and “per.””"
   }
  },
  "activities": [

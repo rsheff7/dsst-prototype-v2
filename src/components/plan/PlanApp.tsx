@@ -242,6 +242,26 @@ function Frames() {
     );
   }
 
+/** The CLO as it goes on the board: Content, Language, then the frame as part of the objective. */
+function BoardCLO({ plan }: { plan: PlanLesson }) {
+  return (
+    <div className={s.stack}>
+      <p className={s.goal} style={{ margin: 0 }}>
+        <span className={s.lab}>Content </span>
+        {plan.clo.board.content}
+      </p>
+      <p className={s.goal} style={{ margin: 0 }}>
+        <span className={s.lab}>Language </span>
+        {plan.clo.board.language}
+      </p>
+      <span className={s.lab}>Say it like this</span>
+      <span className={s.frame}>
+        <MathText>{plan.clo.form}</MathText>
+      </span>
+    </div>
+  );
+}
+
 export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: PlanLesson }) {
   const { im, premo } = lesson;
   const { st, update, reset } = usePlanState(im.code);
@@ -353,18 +373,12 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
     <div className={s.stackLg}>
       <section className={cx(s.card, s.stack)}>
         <span className={s.eyebrow}>Content language objective</span>
-        <p className={s.goal}>
-          <MathText>{plan.clo.statement}</MathText>
-        </p>
+        <BoardCLO plan={plan} />
         <dl className={s.kv}>
-          <dt>Students</dt>
+          <dt>Function</dt>
           <dd>{plan.clo.function.replace(/^./, (x) => x.toUpperCase())}</dd>
-          <dt>Sentence</dt>
-          <dd>
-            <span className={s.frame}>
-              <MathText>{plan.clo.form}</MathText>
-            </span>
-          </dd>
+          <dt>Mode</dt>
+          <dd>{plan.clo.mode.replace(/^./, (x) => x.toUpperCase())}</dd>
           <dt>Precise words</dt>
           <dd>{listOf(plan.clo.precise)}</dd>
           {plan.clo.informal.length > 0 && (
@@ -374,8 +388,17 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
             </>
           )}
         </dl>
+        <h4 className={s.lab}>Use it in class</h4>
+        <ol className={s.stack} style={{ margin: 0, paddingLeft: 20 }}>
+          <li>{plan.clo.use.launch}</li>
+          <li>{plan.clo.use.release}</li>
+          <li>{plan.clo.use.synthesis}</li>
+          <li>{plan.clo.use.coolDown}</li>
+        </ol>
+        <span className={s.small}>A first try in a home language or in everyday words counts. The frame is where students refine it, not a gate.</span>
         <span className={cx(s.muted, s.small)}>
           From IM’s goal: <MathText>{plan.clo.imGoal}</MathText>
+          {plan.clo.progressionNote && <> {plan.clo.progressionNote}</>}
         </span>
       </section>
       <div className={s.stack}>
@@ -1283,7 +1306,9 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
       `${new Date().toLocaleDateString('en-US')} · Grade 6 · Unit 3 · Activities rehearsed: ${chosen.join(', ')} · WIDA levels: ${levels.length ? levels.join(', ') : 'not set'}`,
       ``,
       `## Language objective`,
-      plan.clo.statement,
+      `Content: ${plan.clo.board.content}`,
+      `Language: ${plan.clo.board.language}`,
+      `Say it like this: ${plan.clo.form}`,
       `Exemplar: ${q(plan.clo.exemplar)}`,
       `My sentence: ${st.clo || '(not written)'}`,
       ``,
@@ -1318,15 +1343,19 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
         <div className={p.poster}>
           <span className={s.eyebrow}>Lesson {im.code} · Language objective</span>
           <p className={p.posterBig}>
-            <MathText>{plan.clo.posted.goal}</MathText>
+            <b>Content:</b> {plan.clo.board.content}
           </p>
-          <span className={s.lab}>It sounds like</span>
           <p className={p.posterBig}>
-            <MathText>{q(plan.clo.posted.sentence)}</MathText>
+            <b>Language:</b> {plan.clo.board.language}
           </p>
+          <span className={s.lab}>Say it like this</span>
           <span className={cx(s.frame, p.posterFrame)}>
             <MathText>{plan.clo.form}</MathText>
           </span>
+          <span className={s.lab}>It sounds like</span>
+          <p className={p.posterFrame}>
+            <MathText>{q(plan.clo.posted.sentence)}</MathText>
+          </p>
         </div>
         <button type="button" className={cx(s.btn, s.sm)} onClick={() => window.print()}>
           Print it
@@ -1608,7 +1637,9 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
           </span>
           <span className={s.eyebrow}>Language objective</span>
           <p className={s.nowSay} style={{ fontSize: 19 }}>
-            <MathText>{plan.clo.statement}</MathText>
+            {plan.clo.board.content}
+            <br />
+            {plan.clo.board.language}
           </p>
         </section>
         <div className={s.mv}>

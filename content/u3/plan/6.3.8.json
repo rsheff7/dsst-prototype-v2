@@ -26,15 +26,21 @@
   "2026-11-03 (Claude): synthesis card’s Sounds like now matches its board (the 6.4), not question 5.",
   "2026-11-03: rehearsal revised after persona review 2 (moves rule, Three Reads, frames, wording). Crux-only night is now 6 moves (launch, m4, release, m5, m13, synthesis). Release frames: every level supplies both speeds and the 1-hour distance apart, and says “I divide ___ by ___ to find the time”; no frame states that the gap closes by the sum (m5’s error). Stretches give a task, not the answer. Release nonverbals no longer point to 17.6 or 6.4, since m4 (read 2) shows them. m4: levelFrames for read 2 (what each number measures, with units), its own goingOn (no MLR code). Three Reads: round aims say what each read is for; read 3 is IM’s strategy brainstorm, with crux.threeReads[2], checks[2] and runIt[2] to match; card renamed “Read the problem three times.” m3 (Pencils out on the first read) is out of 8.2’s momentIds and the deck; its point is the Three Reads card’s Avoid. NEW: m13 card and Premo moment m13 (a student explains 24 ÷ 6.4, the CLO sentence), its show lines and sounds; Group B’s board line rewritten in plain words (Kiran’s idea as IM’s answer to question 4 describes it). Synthesis: IM says only “most common to least common”; “add the speeds last” is now our expectation, not IM’s; the meeting-time way is “add the speeds” in strategies, the 8.2 task card, show, checks and runIt. m1: goingOn credits 12 ÷ 75; ifNot stays on the out-of-100 route; “12 out of 75.” m5: own goingOn; “1 hour.” Talk moment and release note use Today’s frame, not a second frame. Wording: Where we are in two sentences; student lines start “A student…/A pair…”; m11 checks lose periods; “Do the warm-up yourself”; “Today’s frame”; “wrote down”; MLR codes dropped from 8.1 grouping, cuts and beforeClass. Doubt: Premo m4’s developing move still names “___ is ___ miles per hour,” which differs from the card’s levelFrames.",
   "2026-11-03: round-3 fixes. Talk moment and release note now use each level’s frame for the 1-hour row (Today’s frame, clo.form, can’t hold “17.6 miles apart”). Release frames: emerging and developing get a “because ___” reason slot; the “I divide ___ by ___” ending moved to m13’s new levelFrames; expanding cut to three blanks; developing stretch is now a task (fill the 2-hour row). m4: emerging frame no longer supplies “speed”; levelNonverbal for developing and expanding (no solving gesture); Premo m4 developing move matches the card’s frame. m13: every level asks what, by what, and why (Premo). m1 ifNot simplifies 12/75 first (4/25 = 16/100). m2 renamed as a verb phrase. synth:8.2: math words in show, board labels “Group A · …”, sounds use the lesson’s “distance apart decreases” and no longer call 6.4 Kiran’s; crux.synthesis prompt and sounds match the card; “math word” in steps and runIt. Read 3 follows IM’s English-learner support: reveal the first three questions, work time, then brainstorm Kiran’s claim. Doubt: IM’s launch gives quiet think time on the first two questions; its read-3 support reveals three.",
-  "2026-11-03: Elena round 4. IM’s launch and read-3 support fit together: read 3 reveals three questions with nobody solving; quiet think time stays on the first two (release and m5 unchanged). The Kiran brainstorm moved to a talk moment after the first-two checkpoint, as checking a claim. m4 developing nonverbal shows what 3.4 measures."
+  "2026-11-03: Elena round 4. IM’s launch and read-3 support fit together: read 3 reveals three questions with nobody solving; quiet think time stays on the first two (release and m5 unchanged). The Kiran brainstorm moved to a talk moment after the first-two checkpoint, as checking a claim. m4 developing nonverbal shows what 3.4 measures.",
+  "2026-11-03: CLO restructured (Robert, with Elena’s review): a two-line board version (Content, Language; “We will…”, 20 words or fewer, no task numbers), “Say it like this” frame as part of the objective, and four scripted moments for using it. The “Students will…” statement and posted.goal are gone; the board version is the one CLO.",
+  "2026-11-03: Elena: the old frame (“The speed is ___ per ___”) couldn’t express the crux’s combined speeds. New form, exemplar and posted sentence work for one speed or two (the distance changes each hour)."
  ],
  "story": "Lesson 8 is the fourth of five rates lessons. Students use speed and pace on longer problems: two friends walking toward each other, then two cousins moving apart. Lesson 9 solves rate problems more broadly.",
  "previous": "In Lesson 7 students used one unit rate to go across a table of equivalent ratios. Today that unit rate is a speed or a pace.",
  "clo": {
   "imGoal": "Calculate unit rates that represent speed or pace, use them to determine unknown distances or elapsed times, and explain (orally) the solution method.",
   "function": "explain",
-  "form": "The speed is ___ ___ per ___, so I multiply (or divide) ___ by ___ to find the ___.",
-  "statement": "Students will explain orally how they use a speed, named with “per,” to find an unknown distance or time.",
+  "form": "Each ___, the distance changes by ___, because the speed is ___ per ___. So I multiply (or divide) ___ by ___ to find the ___.",
+  "board": {
+   "content": "We will use a speed to find an unknown distance or time.",
+   "language": "We will explain, out loud, how we used the speed, using “speed” and “miles per hour.”"
+  },
+  "mode": "out loud",
   "precise": [
    "speed",
    "per",
@@ -46,12 +52,18 @@
    "closer",
    "the gap"
   ],
-  "exemplar": "Kiran’s speed is 3 miles per hour, Clare’s is 3.4, so the distance apart decreases by 6.4 miles each hour. I divide 24 by 6.4: 3.75 hours, 11:45 a.m.",
+  "exemplar": "Each hour, the distance apart changes by 6.4 miles, because the speeds are 3 and 3.4 miles per hour. So I divide 24 by 6.4 to find the time: 3.75 hours.",
   "lookFor": "The penguin explanation uses the form: names a rate with “per” (\\(\\frac{5}{3}\\) feet per second, or 0.6 seconds per foot) and says what it multiplies: 45 × \\(\\frac{5}{3}\\) = 75 feet, 45 × 0.6 = 27 seconds.",
   "posted": {
-   "goal": "We will explain how we use a speed, named with “per,” to find a distance or a time.",
-   "sentence": "The train’s speed is 60 miles per hour, so I divide 150 by 60 to find the time: 2.5 hours."
-  }
+   "sentence": "Each hour, the distance changes by 60 miles, because the speed is 60 miles per hour. So I divide 150 by 60 to find the time: 2.5 hours."
+  },
+  "use": {
+   "launch": "Before the warm-up, read both lines together. Point to “speed” and “miles per hour”.",
+   "release": "When you send students to 8.2, point to “Say it like this.”",
+   "synthesis": "In the synthesis, point back to the language line. Read one student’s sentence beside it.",
+   "coolDown": "After the cool-down, students check themselves: “I can explain how I used a speed to find a distance or time.”"
+  },
+  "progressionNote": "IM’s unit overview lists “interpret” for this lesson (situations with constant speed). The objective follows the lesson’s own goal: “explain.”"
  },
  "activities": [
   {
@@ -406,7 +418,7 @@
     "Gave each level its frame for the 1-hour row",
     "Told them when they’ll say the 1-hour row to a partner"
    ],
-   "sounds": "Kiran’s speed is 3 miles per hour, Clare’s is 3.4, so the distance apart decreases by 6.4 miles each hour. I divide 24 by 6.4: 3.75 hours, 11:45 a.m.",
+   "sounds": "Each hour, the distance apart changes by 6.4 miles, because the speeds are 3 and 3.4 miles per hour. So I divide 24 by 6.4 to find the time: 3.75 hours.",
    "why": "Naming the language before work starts means students practice it while they solve. Saying “per” keeps each walker’s speed apart from the distance apart."
   },
   {

@@ -26,15 +26,20 @@
   "2026-11-03: rehearsal revised after persona review 2 (moves rule, Three Reads, frames, wording). Release: success criteria, say and level frames now ask for a fair comparison (price per item, or the same number of items), not the unit price, so m3’s Avoid and the synthesis’s strategy comparison hold; Level 1–2 frame gains “because … less / more than”; model sentences keep “per.” clo.form (the posted frame, also the Level 5–6 frame) is unchanged and still names the unit rate: a reviewer should decide whether to loosen it too. Three Reads: round aims no longer state answers; read 3 is now a strategy brainstorm (crux.threeReads[2] rewritten), the class poll moves between reads 2 and 3 as in IM’s launch order (vote, then “How could you figure out…”), and beforeClass now covers the directions until after read 3. Strategy names fixed lesson-wide: unit rate, the original rate on the new number, scaling the pack. Synthesis Sounds like now models the connection. goingOn written for m6 (replacing a default with a routine code), m8 and m9, asset-framed. Names: Do the warm-up yourself, Send students to work, Finish on the board. Wording: Where we are periods, student colons, check voice, m9 pipes, LaTeX \\(1{,}378\\). NEW (Premo-written, unreviewed): the m6, m8, m9 goingOn lines, the synthesis Sounds like, the new level frames and nonverbals, and the read 3 listen-for.",
   "2026-11-03: round-3 fixes. Robert chose option (a): the goal no longer requires the unit rate. clo.form, statement, posted, lookFor and the Levels 5–6 frame accept any fair comparison, per item or the same number of items; precise was “good deal” and “per” (“unit rate” stays a math word on the board). Levels 1–2 and 3–4 frames now build in the fair comparison; their stretches set a task. Strategy “unit rate” renamed “price of one” lesson-wide. “Chart” is now “board” throughout. crux.synthesis prompt and sounds match the synthesis card. Three Reads: all three reads are of card A; read 3 is “how we might solve it.” m9: three distances converted (the coyote was already in feet); ostrich added to still to do. goingOn in “They…” voice; Today’s frame; lowercase after colons. Do the task checks now use only IM’s answer numbers ($0.79, $2.37, $0.35, $2.10, 3,773).",
   "2026-11-03: Robert approved Elena’s change. “Unit rate” is a precise term again (IM’s learning target and listen-for name it). The form, the Levels 5–6 frame, exemplar, posted sentence, success criteria and release ask now name it in a second sentence, “The original unit rate is ___ per ___,” to stay under 25 words. Either fair comparison still meets the goal; a scaling student does one more division (3.50 ÷ 10) to name the original unit rate; synth:9.2’s “6 × 35 cents” makes that connection. IM notes scaling itself bypasses the unit rate.",
-  "2026-11-03: Elena round 4. Every level’s frame now leaves the method open and ends “The original unit rate is ___ per ___” (Levels 1 and 3 never see a stretch, so the term must be in the frame). “Original” gives the unit rate a referent. Release card synced to crux.release; m6 sounds names the unit rate; lookFor accepts 30 tacos and tacos per dollar, as IM’s cool-down does."
+  "2026-11-03: Elena round 4. Every level’s frame now leaves the method open and ends “The original unit rate is ___ per ___” (Levels 1 and 3 never see a stretch, so the term must be in the frame). “Original” gives the unit rate a referent. Release card synced to crux.release; m6 sounds names the unit rate; lookFor accepts 30 tacos and tacos per dollar, as IM’s cool-down does.",
+  "2026-11-03: CLO restructured (Robert, with Elena’s review): a two-line board version (Content, Language; “We will…”, 20 words or fewer, no task numbers), “Say it like this” frame as part of the objective, and four scripted moments for using it. The “Students will…” statement and posted.goal are gone; the board version is the one CLO."
  ],
  "story": "Lesson 9 closes the rates section. With no table or diagram prompted, students choose a unit rate themselves to judge deals and compare distances. Percentages begin in Lesson 10.",
  "previous": "In Lesson 8 students used speed and pace to find unknown distances and times; today they pick which unit rate to find, then use it to decide.",
  "clo": {
   "imGoal": "Apply reasoning about ratios and rates to justify (orally) whether a given price is a good deal.",
   "function": "justify",
-  "form": "Card ___ is (not) a good deal because ___ cost(s) ___ in the new deal and ___ in the original. The original unit rate is ___ per ___.",
-  "statement": "Students will justify orally whether a price is a good deal by comparing the offers fairly, per item or for the same number of items, and naming the unit rate.",
+  "form": "The new price is (not) a good deal because ___ cost(s) ___ in the new deal and ___ in the original. The original unit rate is ___ per ___.",
+  "board": {
+   "content": "We will compare prices fairly to decide whether a price is a good deal.",
+   "language": "We will justify, out loud, whether it is a “good deal,” using “unit rate” and “per.”"
+  },
+  "mode": "out loud",
   "precise": [
    "good deal",
    "per",
@@ -49,9 +54,15 @@
   "exemplar": "Card A is a good deal because 3 bottles cost $2.25 in the new deal and $2.37 in the original. The original unit rate is 79 cents per bottle.",
   "lookFor": "The taco explanation names the better deal and compares fairly, per taco or for 30 tacos ($25.47 against $27.00), then names a unit rate (per taco or tacos per dollar): about $0.85 per taco (8.49 ÷ 10) against $0.90 (5.40 ÷ 6).",
   "posted": {
-   "goal": "We will say whether a price is a good deal, prove it fairly, and name the unit rate.",
    "sentence": "3 markers for $2.10 is a good deal because 3 markers cost $2.10 now and $2.40 in the original. The original unit rate is 80 cents per marker."
-  }
+  },
+  "use": {
+   "launch": "Before the warm-up, read both lines together. Point to “unit rate” and “per”.",
+   "release": "When you send students to 9.2, point to “Say it like this.”",
+   "synthesis": "In the synthesis, point back to the language line. Read one student’s sentence beside it.",
+   "coolDown": "After the cool-down, students check themselves: “I can justify whether a price is a good deal, using the unit rate.”"
+  },
+  "progressionNote": "IM’s unit overview lists “explain” for this lesson. The objective follows the lesson’s own goal: “justify.”"
  },
  "activities": [
   {

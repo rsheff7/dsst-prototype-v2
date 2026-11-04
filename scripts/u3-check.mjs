@@ -207,12 +207,24 @@ for (const f of planFiles) {
     continue;
   }
   if (!im.goals.some((g) => g.text === pl.clo?.imGoal)) err(at, 'clo.imGoal is not one of IM’s goals, word for word');
-  for (const k of ['function', 'form', 'statement', 'exemplar', 'lookFor']) if (!pl.clo?.[k]) err(at, `clo.${k} is missing`);
+  for (const k of ['function', 'form', 'mode', 'exemplar', 'lookFor']) if (!pl.clo?.[k]) err(at, `clo.${k} is missing`);
   if (!pl.clo?.precise?.length) err(at, 'clo.precise needs at least one term');
   // Vocabulary in use (R2.3): the exemplar says every term the CLO marks as precise.
   const low = (s) => (s ?? '').toLowerCase().replace(/[’']/g, "'");
   for (const term of pl.clo?.precise ?? []) if (!low(pl.clo?.exemplar).includes(low(term))) err(at, `clo.exemplar doesn’t use the precise term “${term}”`);
-  if (!pl.clo?.posted?.goal || !/^We /.test(pl.clo.posted.goal)) err(at, 'clo.posted.goal must be in students’ words, starting “We …”');
+  // The board version (Robert, 2026-11-03): two lines for students and visitors.
+  for (const k of ['content', 'language']) {
+    const v = pl.clo?.board?.[k] ?? '';
+    if (!/^We will /.test(v)) err(at, `clo.board.${k} must start “We will”`);
+    if (wordsIn(v) > 20) err(at, `clo.board.${k} is ${wordsIn(v)} words; keep it to 20`);
+    if (/\d/.test(v.replace(/\bfor 1\b/, ''))) err(at, `clo.board.${k} has a number from the task`);
+  }
+  if (pl.clo?.board && !low(pl.clo.board.language).includes(low(pl.clo.function))) err(at, 'clo.board.language must use the function verb');
+  if (pl.clo?.board && !low(pl.clo.board.language).includes(low(pl.clo.mode))) err(at, 'clo.board.language must say the mode');
+  const imMode = /orally and in writing/.test(pl.clo?.imGoal ?? '') ? 'out loud and in writing' : /\(orally\)/.test(pl.clo?.imGoal ?? '') ? 'out loud' : /in writing/.test(pl.clo?.imGoal ?? '') ? 'in writing' : null;
+  if (imMode && pl.clo?.mode !== imMode) err(at, `clo.mode should be “${imMode}”, from IM’s goal`);
+  for (const k of ['launch', 'release', 'synthesis', 'coolDown']) if (!pl.clo?.use?.[k]) err(at, `clo.use.${k} is missing`);
+  if (/\b(Card|Store) ___/.test(pl.clo?.form ?? '')) err(at, 'clo.form names the task; the board frame must not');
   if (!pl.clo?.posted?.sentence) err(at, 'clo.posted.sentence is missing');
   else {
     if (pl.clo.posted.sentence === pl.clo.exemplar) err(at, 'clo.posted.sentence repeats the crux exemplar; post a parallel example');

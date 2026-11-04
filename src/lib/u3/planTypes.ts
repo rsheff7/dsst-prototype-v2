@@ -151,8 +151,13 @@ export interface PlanLesson {
     function: string;
     /** The sentence construction students produce. */
     form: string;
-    /** The CLO in one sentence, as a teacher would post it. */
-    statement: string;
+    /**
+     * The CLO as it goes on the board, for students and visitors: two lines, "We will…",
+     * 20 words or fewer each, no task numbers. The form ("Say it like this") is part of it.
+     */
+    board: { content: string; language: string };
+    /** IM's mode, in students' words: "out loud", or "out loud and in writing". */
+    mode: string;
     /** Terms that must be precise, and words that can stay informal today. */
     precise: string[];
     informal: string[];
@@ -164,7 +169,11 @@ export interface PlanLesson {
      * What goes on the wall: the goal in students' words ("We will…") and a parallel
      * example in the CLO's form with new numbers, so the poster doesn't give away the crux.
      */
-    posted: { goal: string; sentence: string };
+    posted: { sentence: string };
+    /** How students use the objective in class: four scripted moments. */
+    use: { launch: string; release: string; synthesis: string; coolDown: string };
+    /** Where IM's unit language progression names a different verb than the lesson's goal. */
+    progressionNote?: string;
   };
   activities: PlanActivity[];
   crux: PlanCrux;
