@@ -269,6 +269,28 @@ for (const f of planFiles) {
   if (!pl.beforeClass?.length) err(at, 'beforeClass is empty');
   for (const c of pl.cuts ?? []) if (!ids.includes(c.activityId)) err(at, `cut for ${c.activityId}, which is not in IM’s lesson`);
   if (flat({ ...pl, reviewNotes: [] }).some((s) => /Compare and Connect|poster/i.test(s))) warn(at, 'mentions Compare and Connect or posters, which D1 replaces');
+  // Rehearsal cards (docs/REHEARSAL-CARD-SPEC.md): each stands on its own.
+  for (const c of pl.rehearsal ?? []) {
+    const cat = `${at} card ${c.id}`;
+    if (!ids.includes(c.activityId)) err(cat, `activity ${c.activityId} is not in IM’s lesson`);
+    for (const k of ['name', 'where', 'ask', 'aim']) if (!c[k]) err(cat, `needs ${k}`);
+    if (/\bm\d+\b|MLR|\(\d\.\d\)/.test(c.name ?? '')) err(cat, `name “${c.name}” has an id or routine; use a plain verb phrase`);
+    if (wordsIn(c.aim) > 15) err(cat, `aim is ${wordsIn(c.aim)} words; keep it to 15`);
+    for (const r of c.rounds ?? []) if (wordsIn(r.aim) > 15) err(cat, `round aim is ${wordsIn(r.aim)} words; keep it to 15`);
+    if ((c.checks ?? []).length !== 3) err(cat, 'needs exactly three checks');
+    if (c.kind === 'rounds' && (c.rounds ?? []).length !== (pl.crux?.threeReads ?? []).length) err(cat, 'rounds must match crux.threeReads');
+    if (c.momentId) {
+      const mo = pr.moments.find((x) => x.id === c.momentId);
+      if (!mo) err(cat, `moment ${c.momentId} is not in the Premo layer`);
+      else if (mo.activityId !== c.activityId) err(cat, `moment ${c.momentId} belongs to ${mo.activityId}`);
+      else if (c.kind === 'levels' && !mo.byBand) err(cat, `moment ${c.momentId} has no by-level moves`);
+    }
+    if (c.ifSkipped && !ids.includes(c.ifSkipped.activityId)) err(cat, `ifSkipped names ${c.ifSkipped.activityId}`);
+    // No student names (Robert, 2026-11-03): "a student", "Pair A".
+    const text = flat({ ...c, more: [] }).join(' ');
+    if (/\b(Maya|Dani|Ana|Jo|Sam)\b/.test(text)) err(cat, 'uses a student name; write “a student” or “Pair A”');
+  }
+  if (pl.rehearsal && !pl.rehearsal.some((c) => c.activityId === pr.crux)) err(at, 'rehearsal has no cards for the crux');
   for (const [where, s] of flat(pl).map((s) => ['', s])) if (/maths|colour|grey\b|favour|behaviour|centre\b|organis|practise\b|metre\b/.test(s)) err(at, `US spelling: "${s.slice(0, 50)}…"`);
 }
 

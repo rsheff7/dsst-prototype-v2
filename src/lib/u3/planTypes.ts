@@ -76,6 +76,49 @@ export interface PlanCrux {
   };
 }
 
+/**
+ * One rehearsal card, written so it stands on its own: where we are in the lesson, what's
+ * in front of the teacher, one plain question, and the aim, then the model and the checks.
+ * See docs/REHEARSAL-CARD-SPEC.md. No student names: "a student", "Pair A".
+ */
+export interface RehearsalCard {
+  id: string;
+  /** IM's activity; the card shows when the teacher chose that activity. */
+  activityId: string;
+  /** math: the task, fillable · rounds: one card in short rounds (Three Reads) · levels: one round per WIDA level picked. */
+  kind: 'math' | 'moment' | 'rounds' | 'levels' | 'release' | 'synthesis';
+  /** A plain verb phrase: "Choose who shares first". No routine names or ids. */
+  name: string;
+  /** The IM routine the card runs, for its tappable label. */
+  routine?: string;
+  /** A card about how students say it, not only the answer. */
+  language?: boolean;
+  /** "About N minutes into Activity X.Y." then what just happened and what's on the board. */
+  where: string;
+  /** What's in front of the teacher: lines as IM writes them (tables as "| a | b"). */
+  show?: string[];
+  /** The student's words or work, in a sentence. */
+  student?: string;
+  ask: string;
+  /** What the student ends up doing, 15 words or fewer, never the words to say. */
+  aim: string;
+  /** For 'rounds': each round's own question and aim (the model comes from crux.threeReads). */
+  rounds?: { ask: string; aim: string }[];
+  /** Model wording to say (the app quotes these), and plain notes after it. */
+  say?: string[];
+  notes?: string[];
+  /** "Did yours do these?": three, past tense. */
+  checks: string[];
+  /** Folded extras: { title, lines }. */
+  more?: { title: string; lines: string[] }[];
+  /** The Premo moment this card rehearses (its means and dont, and by-level says for 'levels'). */
+  momentId?: string;
+  /** When an earlier activity the card leans on wasn't chosen. */
+  ifSkipped?: { activityId: string; show?: string[]; say?: string[] };
+  /** A different "where" line when an earlier activity was chosen. */
+  whereIfChosen?: { activityId: string; where: string };
+}
+
 export interface PlanLesson {
   status: 'draft' | 'reviewed';
   reviewNotes: string[];
@@ -107,6 +150,8 @@ export interface PlanLesson {
   };
   activities: PlanActivity[];
   crux: PlanCrux;
+  /** The rehearsal, card by card (docs/REHEARSAL-CARD-SPEC.md). Lessons without it use the earlier cards. */
+  rehearsal?: RehearsalCard[];
   /** Step 7. What to prepare, and what can go if time runs short, under the planning view's routines (D1). */
   beforeClass: string[];
   cuts: { activityId: string; note: string }[];

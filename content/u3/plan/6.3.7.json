@@ -19,7 +19,8 @@
   "beforeClass and cuts added 2026-11-02 for the planning view: the Premo layer’s versions are written for Compare and Connect posters, which D1 replaces.",
   "Lesson synthesis rewritten 2026-11-02 (Robert): IM’s synthesis is a teacher summary of two ideas, so the step is now say the ideas, point to the 7.3 chart (or 7.4 if taught), and one quick check in the CLO form that avoids the cool-down’s numbers.",
   "7.3 moments trimmed 2026-11-02 to three (IM’s misconception m4, the language moment m6, who shares first m5) so a crux-only night is seven rehearsal cards, close to the reviewed prep’s six.",
-  "Revised 2026-11-03 after persona review: added clo.posted (goal, parallel pages-per-minute sentence) and a nonverbal way in per band; rewrote the emerging and developing frames to keep both directions in words with blanks for the operation and the rate; moved the core idea out of the stretches; cut the exemplar to 30 words with every precise term; lookFor now checks form and terms. Synthesis (D1 option 3): kept MLR 2, removed revoicing (teacher scribes students’ words and writes the precise term beside them), and added IM’s Compare and Connect move as the last step, students connecting the 1-hour row to × 6 across. Added m4, m8 and m9 criteria and 7.3’s dependsOn on 7.2. 7.4 grouping now says IM names none; its launch advice moved to monitor. Added a 7.2 cut entry. Copy: “midway,” ‘per’ in back-pocket, “kilometers” throughout, beforeClass wording."
+  "Revised 2026-11-03 after persona review: added clo.posted (goal, parallel pages-per-minute sentence) and a nonverbal way in per band; rewrote the emerging and developing frames to keep both directions in words with blanks for the operation and the rate; moved the core idea out of the stretches; cut the exemplar to 30 words with every precise term; lookFor now checks form and terms. Synthesis (D1 option 3): kept MLR 2, removed revoicing (teacher scribes students’ words and writes the precise term beside them), and added IM’s Compare and Connect move as the last step, students connecting the 1-hour row to × 6 across. Added m4, m8 and m9 criteria and 7.3’s dependsOn on 7.2. 7.4 grouping now says IM names none; its launch advice moved to monitor. Added a 7.2 cut entry. Copy: “midway,” ‘per’ in back-pocket, “kilometers” throughout, beforeClass wording.",
+  "2026-11-03: rehearsal cards written to docs/REHEARSAL-CARD-SPEC.md v2 (Robert: no student names; keep “Crux”). Pair B’s row-to-row work is NEW, written for the spec and checked: 2 + 5 = 7 h, 12 + 30 = 42; 7 + 2 + 2 = 11 h, 42 + 12 + 12 = 66."
  ],
  "story": "Lesson 7 sits midway through the rates section. It shows that equivalent ratios share one unit rate, and that the unit rate takes you across a table, which students lean on for speed and deals in Lessons 8 and 9.",
  "previous": "In Lesson 6 students found two unit rates for each ratio, \\(\\frac{a}{b}\\) and \\(\\frac{b}{a}\\); today they see those rates stay the same for every equivalent ratio.",
@@ -111,7 +112,8 @@
    "strategies": [
     "Build a 1-hour row (1 hour, 6 bracelets), then scale up from it.",
     "Multiply the hours by 6 to go across: 7 × 6 = 42 bracelets.",
-    "Divide the bracelets by 6 to go back: 66 ÷ 6 = 11 hours, and 100 ÷ 6 = \\(16\\frac{2}{3}\\) hours."
+    "Divide the bracelets by 6 to go back: 66 ÷ 6 = 11 hours, and 100 ÷ 6 = \\(16\\frac{2}{3}\\) hours.",
+    "Multiply the bracelets by \\(\\frac{1}{6}\\) to go back: 66 × \\(\\frac{1}{6}\\) = 11 hours. This is where IM’s synthesis ends."
    ],
    "barriers": [
     "The table’s structure may not be clear: what the column of 6s is for.",
@@ -265,6 +267,354 @@
   {
    "activityId": "7.3",
    "note": "Never cut the quiet think time or the synthesis. If time is tight, keep Three Reads quick: one sentence per read."
+  }
+ ],
+ "rehearsal": [
+  {
+   "id": "math:7.2",
+   "activityId": "7.2",
+   "kind": "math",
+   "name": "Do the burrito task yourself",
+   "where": "Before class. Solve the task students do first: the burrito table.",
+   "ask": "Fill in the table. What is the price of one burrito, and how do you know?",
+   "aim": "Know every answer, and that the price of one stays $7 in every row.",
+   "notes": [
+    "How students might solve it:",
+    "Go row to row: 4 burritos is double 2, so $28.",
+    "Divide cost by burritos for the unit price: 14 ÷ 2 = 7, then 5 × 7 = 35 and 10 × 7 = 70.",
+    "For Noah and Lin: \\(\\frac{2c}{2b}\\) is equivalent to \\(\\frac{c}{b}\\), so the price per burrito is the same; a double number line shows it."
+   ],
+   "checks": [
+    "Filled every row: $28, $35, $70, and $7 per burrito",
+    "Found the price of one burrito from 14 ÷ 2",
+    "Said why the price of one stays the same"
+   ],
+   "more": [
+    {
+     "title": "Where students get stuck",
+     "lines": [
+      "Writing “14 per 2” or “28 per 4” in the unit price column instead of the price of one burrito.",
+      "Thinking Lin pays twice as much per burrito because she pays twice as much in all.",
+      "“Per burrito” means per 1 burrito, not per order.",
+      "Letters \\(b\\) and \\(c\\) in place of numbers may block the last two questions."
+     ]
+    },
+    {
+     "title": "Ask if they’re stuck",
+     "lines": [
+      "Per burrito means for one burrito. What does one cost?",
+      "What do you notice down the unit price column?",
+      "Lin buys twice as many. What happens to the price of one?"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "m2",
+   "activityId": "7.2",
+   "kind": "moment",
+   "momentId": "m2",
+   "name": "Hands up too early",
+   "where": "About 1 minute into Activity 7.2. You’ve just handed out the burrito table.",
+   "student": "Hands go up before anyone has filled a row.",
+   "ask": "What do you say to the class?",
+   "aim": "Every student fills two rows alone before anyone talks.",
+   "say": [
+    "Pencils first. Fill two rows on your own."
+   ],
+   "checks": [
+    "Protected the quiet think time",
+    "Asked for work on paper before talk",
+    "Didn’t take the first hand"
+   ]
+  },
+  {
+   "id": "m1",
+   "activityId": "7.2",
+   "kind": "moment",
+   "momentId": "m1",
+   "name": "A student writes “14 per 2”",
+   "where": "About 3 minutes into Activity 7.2, during quiet think time.",
+   "show": [
+    "| number of burritos | cost in dollars | unit price (dollars per burrito)",
+    "| 2 | 14 | 14 per 2",
+    "| 4 | 28 | 28 per 4"
+   ],
+   "student": "A student wrote “14 per 2” and “28 per 4” in the unit price column.",
+   "ask": "What do you say to this student?",
+   "aim": "The student finds what one burrito costs.",
+   "say": [
+    "Per burrito means for one burrito. What does one cost?"
+   ],
+   "checks": [
+    "Said what “per burrito” means",
+    "Asked for the price of one",
+    "Didn’t write the 7 in for them"
+   ]
+  },
+  {
+   "id": "math:7.3",
+   "activityId": "7.3",
+   "kind": "math",
+   "name": "Do the task yourself",
+   "where": "Before class. Solve the task students do today.",
+   "ask": "Fill in the five blanks. How did you get from 66 bracelets to hours?",
+   "aim": "Know every answer and two ways to get it. You’ll spot both on papers.",
+   "notes": [
+    "How students might solve it:",
+    "1-hour row: 1 hour makes 6 bracelets, then build the rest from it.",
+    "Row to row: add rows you know. 2 h + 5 h = 7 h, so 12 + 30 = 42.",
+    "Across by 6: 7 × 6 = 42 bracelets. Back: 66 ÷ 6 = 11 hours, and 100 ÷ 6 = \\(16\\frac{2}{3}\\) hours.",
+    "IM’s endpoint: multiply the bracelets by \\(\\frac{1}{6}\\) to go back."
+   ],
+   "checks": [
+    "Got 12, 30, 42, 11 and \\(16\\frac{2}{3}\\)",
+    "Went across by 6 in at least one row",
+    "Said what the 4 left over means: \\(\\frac{4}{6} = \\frac{2}{3}\\) of an hour"
+   ],
+   "more": [
+    {
+     "title": "Where students get stuck",
+     "lines": [
+      "Writing “16 r 4 hours” for 100 bracelets: the 4 bracelets are \\(\\frac{4}{6} = \\frac{2}{3}\\) of an hour.",
+      "Multiplying 66 by 6 instead of dividing, going the wrong way across the table.",
+      "The table’s structure may not be clear: what the column of 6s is for.",
+      "“Speed” here means bracelets per hour, not how fast someone moves."
+     ]
+    },
+    {
+     "title": "Ask if they’re stuck",
+     "lines": [
+      "What does the 6 in each row tell you?",
+      "How do you get from hours to bracelets? And back?",
+      "4 bracelets left over. What part of an hour is that?"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "launch:7.3",
+   "activityId": "7.3",
+   "kind": "rounds",
+   "routine": "MLR6: Three Reads",
+   "language": true,
+   "name": "Read the problem three times",
+   "where": "Start of Activity 7.3. The bracelet table is up, questions covered.",
+   "whereIfChosen": {
+    "activityId": "7.2",
+    "where": "Start of Activity 7.3. Students just finished the burrito table. The bracelet table is up, questions covered."
+   },
+   "ask": "Read the problem aloud. After each read, ask one question. Nobody solves yet.",
+   "aim": "Students understand the problem before anyone starts solving.",
+   "rounds": [
+    {
+     "ask": "You’ve read it once. What do you ask?",
+     "aim": "Students say what’s happening, with no numbers."
+    },
+    {
+     "ask": "You’ve read it twice. What do you ask?",
+     "aim": "Students say what each column counts, with units, and what “speed” means here."
+    },
+    {
+     "ask": "You’ve read it three times. What do you ask?",
+     "aim": "Students say what they must do, without solving."
+    }
+   ],
+   "checks": [
+    "Read 1: asked what’s happening, with no numbers",
+    "Read 2: asked what each column counts, with units",
+    "Read 3: asked what they must do, without solving"
+   ]
+  },
+  {
+   "id": "release:7.3",
+   "activityId": "7.3",
+   "kind": "release",
+   "routine": "MLR8: Discussion Supports",
+   "language": true,
+   "name": "Send students to work",
+   "where": "About 2 minutes into Activity 7.3. Next: 3–4 minutes of quiet think time, then partner talk.",
+   "ask": "What must every sentence include? What do you tell the class?",
+   "aim": "Students know their sentence needs the unit rate, “per,” and multiply or divide.",
+   "say": [
+    "Name the unit rate, and say multiply or divide by it."
+   ],
+   "notes": [
+    "Success criteria: In your strategy sentence, name the unit rate with “per” and say whether you multiply or divide by it."
+   ],
+   "checks": [
+    "Named what every sentence needs: the unit rate, “per,” multiply or divide",
+    "Pointed to today’s frame on the board",
+    "Told them when they’ll say it to a partner"
+   ],
+   "more": [
+    {
+     "title": "When partners talk",
+     "lines": [
+      "After quiet think time, partners take turns saying one row with the frame: “To get ___ from ___, I ___ by the unit rate, ___ per ___.”",
+      "Before the burrito table, partners tell each other which way they go across and which way back."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "m4",
+   "activityId": "7.3",
+   "kind": "moment",
+   "momentId": "m4",
+   "name": "A student is stuck",
+   "where": "About 4 minutes into Activity 7.3, during quiet think time.",
+   "show": [
+    "Their table:",
+    "| time in hours | number of bracelets | speed (bracelets per hour)",
+    "| 2 |  | 6",
+    "| 5 |  | 6",
+    "| 7 |  | 6",
+    "The burrito table they can look back at:",
+    "| number of burritos | cost in dollars | unit price (dollars per burrito)",
+    "| 2 | 14 | 7",
+    "| 4 | 28 | 7",
+    "| 5 | 35 | 7",
+    "| 10 | 70 | 7"
+   ],
+   "student": "Hours and 6s are filled in. The bracelets column is blank, and the student hasn’t written anything.",
+   "ask": "What do you say to this student?",
+   "aim": "The student fills the first bracelet box, using work they’ve already done.",
+   "say": [
+    "Look back at the burrito table. What did the 7 do?"
+   ],
+   "ifSkipped": {
+    "activityId": "7.2",
+    "show": [
+     "Their table:",
+     "| time in hours | number of bracelets | speed (bracelets per hour)",
+     "| 2 |  | 6",
+     "| 5 |  | 6",
+     "| 7 |  | 6",
+     "On the board: 2 burritos, $14, $7 per burrito."
+    ],
+    "say": [
+     "Look at the burrito row. How do the 2 and the 7 make 14?"
+    ]
+   },
+   "checks": [
+    "Pointed them back to the burrito table instead of telling them",
+    "Asked a question about the 7, then waited",
+    "Let them fill the first bracelet box themselves"
+   ],
+   "more": [
+    {
+     "title": "If they’re still stuck",
+     "lines": [
+      "“What does the 6 in each row tell you?”"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "m6",
+   "activityId": "7.3",
+   "kind": "levels",
+   "momentId": "m6",
+   "language": true,
+   "name": "Help a student say it in words",
+   "where": "About 7 minutes into Activity 7.3, during partner talk.",
+   "show": [
+    "Their table:",
+    "| time in hours | number of bracelets | speed (bracelets per hour)",
+    "| 2 | 12 | 6",
+    "| 5 | 30 | 6",
+    "| 7 | 42 | 6",
+    "| 11 | 66 | 6",
+    "| \\(16\\frac{2}{3}\\) | 100 | 6"
+   ],
+   "student": "The student points across the columns: “You just do 6.”",
+   "ask": "What do you say to this student?",
+   "aim": "The student says both directions and names the rate: 6 bracelets per hour.",
+   "checks": [
+    "Asked the same question at every level: across and back",
+    "Gave the way in their level needs",
+    "Didn’t say the sentence for them"
+   ]
+  },
+  {
+   "id": "m5",
+   "activityId": "7.3",
+   "kind": "moment",
+   "momentId": "m5",
+   "name": "Choose who shares first",
+   "where": "About 8 minutes into Activity 7.3. You’re about to start the discussion.",
+   "show": [
+    "Pair A · 1-hour row: 1 hour, 6 bracelets. 2 hours, 12 bracelets.",
+    "Pair B · row to row: 2 h + 5 h = 7 h, so 12 + 30 = 42. 7 h + 2 h + 2 h = 11 h, so 42 + 12 + 12 = 66.",
+    "Pair C · across by 6: 7 × 6 = 42. 66 ÷ 6 = 11."
+   ],
+   "ask": "Who do you call first? What do you ask them?",
+   "aim": "Share in order: 1-hour row, row to row, then across by 6.",
+   "say": [
+    "Start us off. How did you get your first row?"
+   ],
+   "notes": [
+    "Order: Pair A, then Pair B, then Pair C."
+   ],
+   "checks": [
+    "Called the 1-hour row first",
+    "Ended on multiplying and dividing by 6 across",
+    "Didn’t let the fastest pair go first"
+   ],
+   "more": [
+    {
+     "title": "Why this order",
+     "lines": [
+      "IM’s order runs from the 1-hour row to using the 6 across, so the short way grows out of the long one. IM calls the first way “less efficient,” never slow."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "synth:7.3",
+   "activityId": "7.3",
+   "kind": "synthesis",
+   "routine": "MLR2: Collect and Display",
+   "language": true,
+   "name": "Finish on the board",
+   "where": "About 9 minutes into Activity 7.3. Pairs A, B and C have spoken. Their words are on the board.",
+   "show": [
+    "On the board:",
+    "Pair A: “A 1-hour row, then the rest from it.”",
+    "Pair C: “Times 6 across, divide by 6 back.”"
+   ],
+   "ask": "Pair C’s words are up. What math words do you add? What do you ask?",
+   "aim": "Students say where the 1-hour row’s 6 shows up when they multiply across.",
+   "notes": [
+    "Write beside it: “unit rate,” “per,” “multiply by,” “divide by.”",
+    "Then ask, and let students make the connection:"
+   ],
+   "say": [
+    "How does the 1-hour row show the 6 we multiply by across?"
+   ],
+   "checks": [
+    "Called pairs in IM’s order, 1-hour row first",
+    "Wrote students’ own words, with the math word beside them",
+    "Asked them to connect the 1-hour row to × 6, and let them do it"
+   ],
+   "more": [
+    {
+     "title": "Sounds like",
+     "lines": [
+      "To get bracelets from hours, I multiply by the unit rate, 6 bracelets per hour. To get hours, I divide by 6, so 100 bracelets takes \\(16\\frac{2}{3}\\) hours."
+     ]
+    },
+    {
+     "title": "Run it, start to finish",
+     "lines": [
+      "Call pairs in IM’s order: the 1-hour row first, then × 6 across and ÷ 6 back.",
+      "Scribe each pair’s words as said beside the table, with arrows. Write the precise term beside their words: unit rate, per, multiply by, divide by.",
+      "Ask students to connect the two: “How does the 1-hour row show the 6 we multiply by across?” Partners talk, then two share; scribe their words.",
+      "Leave the display up for the burrito table and the cool-down."
+     ]
+    }
+   ]
   }
  ]
 }
