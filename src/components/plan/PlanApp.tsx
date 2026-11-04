@@ -79,7 +79,7 @@ const fresh = (): PlanState => ({
 
 const STEPS = [
   { key: 'goal', name: 'Understand the end goal', short: 'Goal', min: 4 },
-  { key: 'clo', name: 'The language goal', short: 'Language', min: 5 },
+  { key: 'clo', name: 'The language objective', short: 'Language', min: 5 },
   { key: 'cool', name: 'Do the cool-down', short: 'Cool-down', min: 5 },
   { key: 'choose', name: 'Choose activities', short: 'Choose', min: 1 },
   { key: 'rehearse', name: 'Rehearse', short: 'Rehearse', min: 10 },
@@ -352,7 +352,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
   const stepClo = () => (
     <div className={s.stackLg}>
       <section className={cx(s.card, s.stack)}>
-        <span className={s.eyebrow}>Language goal · DSST’s content language objective</span>
+        <span className={s.eyebrow}>Content language objective</span>
         <p className={s.goal}>
           <MathText>{plan.clo.statement}</MathText>
         </p>
