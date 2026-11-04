@@ -170,8 +170,6 @@ export interface PlanLesson {
      * example in the CLO's form with new numbers, so the poster doesn't give away the crux.
      */
     posted: { sentence: string };
-    /** How students use the objective in class: four scripted moments. */
-    use: { launch: string; release: string; synthesis: string; coolDown: string };
     /** Where IM's unit language progression names a different verb than the lesson's goal. */
     progressionNote?: string;
   };

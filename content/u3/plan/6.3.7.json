@@ -25,7 +25,8 @@
   "2026-11-03 (Claude): added 7.1 and 7.4 cards (task + one moment each) so every activity can be rehearsed, like the other lessons. m9’s doubled table (4 | 6, 8 | 12, 7 | ___) is NEW, from Premo’s description; checked: 8 pounds makes 12 cups.",
   "2026-11-03: rehearsal revised after persona review 2 (moves rule, Three Reads, frames, wording). Three Reads round aims no longer state answers; read 3 is now a strategy brainstorm (crux.threeReads[2], launch checks and runIt updated). Release note and crux talk moment now use clo.form’s frame, split in two. synth:7.3 now shows Pair B’s words and the math-word list before the question; new Aim; Sounds like models the 1-hour-row-to-× 6 connection; strategy names unified (1-hour row, row to row, across by 6) in checks, runIt and crux steps. m4 has an asset-framed What’s going on and its own ifSkipped checks. m9 has a new What’s going on and a fuller Where. New aims for m5, m6 and math:7.3; m2 renamed “Wait out early hands”; m8 check “Didn’t name a favorite.” Student lines start “A student…”; “hours” for “h”; Where lines use a period form; long lines split. 7.3 cut now gives IM’s 10 minutes. NEW: Pair B’s board words (“Row to row: we added rows we knew.”), the read-3 strategy list, and the m4 and m9 What’s going on lines are Premo’s, for review.",
   "2026-11-03: round-3 fixes.",
-  "2026-11-03: CLO restructured (Robert, with Elena’s review): a two-line board version (Content, Language; “We will…”, 20 words or fewer, no task numbers), “Say it like this” frame as part of the objective, and four scripted moments for using it. The “Students will…” statement and posted.goal are gone; the board version is the one CLO."
+  "2026-11-03: CLO restructured (Robert, with Elena’s review): a two-line board version (Content, Language; “We will…”, 20 words or fewer, no task numbers), “Say it like this” frame as part of the objective, and four scripted moments for using it. The “Students will…” statement and posted.goal are gone; the board version is the one CLO.",
+  "2026-11-03: Robert removed “Use it in class” from the objective page."
  ],
  "story": "Lesson 7 sits midway through the rates section. It shows that equivalent ratios share one unit rate, and that the unit rate takes you across a table, which students lean on for speed and deals in Lessons 8 and 9.",
  "previous": "In Lesson 6 students found two unit rates for each ratio, \\(\\frac{a}{b}\\) and \\(\\frac{b}{a}\\); today they see those rates stay the same for every equivalent ratio.",
@@ -52,12 +53,6 @@
   "lookFor": "The cheetah explanation is in the CLO’s form: it names the unit rate with “per” (30 meters per second) and says multiply by or divide by it: 25 × 30 = 750, 270 ÷ 30 = 9.",
   "posted": {
    "sentence": "To get pages from minutes, I multiply by the unit rate, 4 pages per minute: 8 × 4 = 32. To get minutes, I divide by 4: 36 ÷ 4 = 9."
-  },
-  "use": {
-   "launch": "Before the warm-up, read both lines together. Point to “unit rate” and “per.”",
-   "release": "When you send students to 7.3, point to “Say it like this.”",
-   "synthesis": "In the synthesis, point back to the language line. Read one student’s sentence beside it.",
-   "coolDown": "After the cool-down, students check themselves: “I can explain when to multiply or divide by the unit rate.”"
   },
   "progressionNote": "IM’s unit overview lists “justify” for this lesson. The objective follows the lesson’s own goal: “explain.”"
  },

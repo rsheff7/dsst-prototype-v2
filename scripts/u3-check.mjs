@@ -223,7 +223,6 @@ for (const f of planFiles) {
   if (pl.clo?.board && !low(pl.clo.board.language).includes(low(pl.clo.mode))) err(at, 'clo.board.language must say the mode');
   const imMode = /orally and in writing/.test(pl.clo?.imGoal ?? '') ? 'out loud and in writing' : /\(orally\)/.test(pl.clo?.imGoal ?? '') ? 'out loud' : /in writing/.test(pl.clo?.imGoal ?? '') ? 'in writing' : null;
   if (imMode && pl.clo?.mode !== imMode) err(at, `clo.mode should be “${imMode}”, from IM’s goal`);
-  for (const k of ['launch', 'release', 'synthesis', 'coolDown']) if (!pl.clo?.use?.[k]) err(at, `clo.use.${k} is missing`);
   if (/\b(Card|Store) ___/.test(pl.clo?.form ?? '')) err(at, 'clo.form names the task; the board frame must not');
   if (!pl.clo?.posted?.sentence) err(at, 'clo.posted.sentence is missing');
   else {

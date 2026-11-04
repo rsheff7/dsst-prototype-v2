@@ -388,13 +388,6 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
             </>
           )}
         </dl>
-        <h4 className={s.lab}>Use it in class</h4>
-        <ol className={s.stack} style={{ margin: 0, paddingLeft: 20 }}>
-          <li>{plan.clo.use.launch}</li>
-          <li>{plan.clo.use.release}</li>
-          <li>{plan.clo.use.synthesis}</li>
-          <li>{plan.clo.use.coolDown}</li>
-        </ol>
         <span className={s.small}>A first try in a home language or in everyday words counts. The frame is where students refine it, not a gate.</span>
         <span className={cx(s.muted, s.small)}>
           From IM’s goal: <MathText>{plan.clo.imGoal}</MathText>
