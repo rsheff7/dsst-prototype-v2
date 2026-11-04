@@ -16,7 +16,8 @@
   "Release frames by band: adapted from Premo’s cruxLanguage frames, which already ask for a comparison and a reason at every band. The emerging frame is shortened for Levels 1–2.",
   "Lesson synthesis check: a pens problem, so it avoids the cool-down’s sparkling water, $1.69 and 4 for $5.",
   "Non-crux activities carry no language supports (D7).",
-  "Revised 2026-11-03 after persona review: added clo.posted (goal and a muffin example with new numbers); m1 momentCriteria; nonverbal ways in for each band. Emerging frame now compares two stores; developing says “per can” on both prices. clo.precise drops “same speed” (5.2’s, not the crux’s); the exemplar now uses “unit price,” “per” and “price per can.” clo.form says “best deal,” matching the frames; the lesson check now has three stores so “best deal” fits. lookFor checks the form and “per,” not just numbers. Read 3 asks students what “best deal” means before the teacher clarifies lowest price per can. MLR 1 synthesis now runs partner rounds and the rewrite first, then a short share in IM’s order, where students make the table-to-division connection (D1 option 3). “Quiet work time” is now “quiet think time”; the 5.3 cut notes IM’s 15 minutes. Story, pointTo and beforeClass trimmed to 30 words. Check numbers: 6 ÷ 3 = 2.00, 9 ÷ 5 = 1.80, 25 ÷ 10 = 2.50; posted 6 ÷ 5 = 1.20, 6 ÷ 4 = 1.50."
+  "Revised 2026-11-03 after persona review: added clo.posted (goal and a muffin example with new numbers); m1 momentCriteria; nonverbal ways in for each band. Emerging frame now compares two stores; developing says “per can” on both prices. clo.precise drops “same speed” (5.2’s, not the crux’s); the exemplar now uses “unit price,” “per” and “price per can.” clo.form says “best deal,” matching the frames; the lesson check now has three stores so “best deal” fits. lookFor checks the form and “per,” not just numbers. Read 3 asks students what “best deal” means before the teacher clarifies lowest price per can. MLR 1 synthesis now runs partner rounds and the rewrite first, then a short share in IM’s order, where students make the table-to-division connection (D1 option 3). “Quiet work time” is now “quiet think time”; the 5.3 cut notes IM’s 15 minutes. Story, pointTo and beforeClass trimmed to 30 words. Check numbers: 6 ÷ 3 = 2.00, 9 ÷ 5 = 1.80, 25 ÷ 10 = 2.50; posted 6 ÷ 5 = 1.20, 6 ÷ 4 = 1.50.",
+  "2026-11-03: rehearsal cards written to the card spec and guidance rule. Twelve cards: a task card per activity, 5.1’s m1, 5.2’s m3 and m5, and at the crux Three Reads, the release, m7, m9, m10 and the MLR 1 synthesis. NEW: m3’s copied-numbers paper (“4,200 30 · 6,300 \\(\\frac{1}{2}\\) · 6.3 45”), written to Premo’s description; every ifNot question; and m1’s note to have the other side answer. All other student words are Premo’s, and the synthesis board is IM’s response table. Doubts: m1 is typed decision (whom to call), not student. The synthesis card sits after m10 and rehearses the share’s connection question, with the partner rounds in runIt; a reviewer may prefer it before m10. m5’s timing (9 minutes) assumes groups reach Mai and Tyler late in the 15 minutes. m9’s ifNot points to the 8 and $6, close to a hint; check it doesn’t give the answer."
  ],
  "story": "Lesson 5 opens the rates section. Students compare speeds and prices by finding how much for 1 of the same unit. The same rate per 1 means equivalent ratios.",
  "previous": "In earlier lessons students found and used rates per 1 in a context, most recently to convert units in Lesson 4; today they use rates per 1 to compare speeds and prices.",
@@ -222,6 +223,337 @@
   {
    "activityId": "5.3",
    "note": "Never cut the quiet think time, the rewrite or the share in IM’s order. IM gives 5.3 15 minutes; if tight, keep Three Reads quick and run one partner round."
+  }
+ ],
+ "rehearsal": [
+  {
+   "id": "math:5.1",
+   "activityId": "5.1",
+   "kind": "math",
+   "type": "task",
+   "name": "Do the warm-up yourself",
+   "where": "Before class. Solve the warm-up students do first: three quotients.",
+   "ask": "Is each one closer to \\(\\frac{1}{2}\\), 1 or \\(1\\frac{1}{2}\\)? How do you know without calculating?",
+   "aim": "Know each answer, and a reason that starts from 1 or \\(\\frac{1}{2}\\).",
+   "notes": [
+    "How students might solve it:",
+    "20 ÷ 20 = 1, and 18 is less than 20, so 20 ÷ 18 is a little more than 1.",
+    "10 ÷ 20 = \\(\\frac{1}{2}\\), so 9 ÷ 20 is just under \\(\\frac{1}{2}\\).",
+    "7 ÷ 5 = \\(1\\frac{2}{5}\\), or 1.4: only 0.1 from \\(1\\frac{1}{2}\\), so closer to \\(1\\frac{1}{2}\\)."
+   ],
+   "checks": [
+    "Got closer to 1, closer to \\(\\frac{1}{2}\\), and closer to \\(1\\frac{1}{2}\\)",
+    "Reasoned from 20 ÷ 20 = 1 and 10 ÷ 20 = \\(\\frac{1}{2}\\), without long division",
+    "Said 1.4 is 0.1 from \\(1\\frac{1}{2}\\) and 0.4 from 1"
+   ]
+  },
+  {
+   "id": "m1",
+   "activityId": "5.1",
+   "kind": "moment",
+   "momentId": "m1",
+   "type": "decision",
+   "name": "Hands split on 7 ÷ 5",
+   "where": "About 4 minutes into Activity 5.1. Students just signaled their answers to the third problem.",
+   "show": [
+    "On the board: 7 ÷ 5. Is it closer to \\(\\frac{1}{2}\\), 1 or \\(1\\frac{1}{2}\\)?",
+    "Some hands: closer to 1. Other hands: closer to \\(1\\frac{1}{2}\\)."
+   ],
+   "student": "The class splits: some say closer to 1, some say closer to \\(1\\frac{1}{2}\\).",
+   "ask": "Who do you ask to speak first? What do you ask them?",
+   "aim": "Students with opposite answers explain their reasoning until the class agrees.",
+   "say": [
+    "Closer-to-1 side, tell the others how you decided."
+   ],
+   "notes": [
+    "Then ask the closer-to-\\(1\\frac{1}{2}\\) side to answer them."
+   ],
+   "checks": [
+    "Asked the closer-to-1 side to explain how they decided",
+    "Had students with opposite answers talk to an agreement",
+    "Didn’t announce 1.4 and move on"
+   ],
+   "why": "IM: when answers split, students with opposing answers explain their reasoning to reach agreement. The class then owns the 1.4."
+  },
+  {
+   "id": "math:5.2",
+   "activityId": "5.2",
+   "kind": "math",
+   "type": "task",
+   "name": "Do the treadmill task yourself",
+   "where": "Before class. Solve the task students do next: the three runners.",
+   "ask": "Answer every question. At what rate did each person run?",
+   "aim": "Know each rate, and why Mai and Tyler ran the same speed.",
+   "notes": [
+    "How students might solve it:",
+    "Match what’s the same: Tyler and Kiran both ran 30 minutes, and Kiran ran more meters, so Kiran was faster.",
+    "A table down to 1 minute: 4,200 meters in 30, 1,400 in 10, 140 in 1.",
+    "Divide meters by minutes: 4,200 ÷ 30 = 140, 6,300 ÷ 30 = 210, 6,300 ÷ 45 = 140.",
+    "Mai’s first 30 minutes: same speed as Tyler, so 4,200 meters."
+   ],
+   "checks": [
+    "Found 140, 210 and 140 meters per minute",
+    "Changed 6.3 kilometers to 6,300 meters and \\(\\frac{1}{2}\\) hour to 30 minutes",
+    "Got 4,200 meters for Mai’s first 30 minutes, and said why"
+   ]
+  },
+  {
+   "id": "m3",
+   "activityId": "5.2",
+   "kind": "moment",
+   "momentId": "m3",
+   "type": "student",
+   "name": "A student doesn’t know how to start",
+   "where": "About 2 minutes into Activity 5.2, during quiet think time.",
+   "show": [
+    "The task:",
+    "Tyler ran 4,200 meters in 30 minutes.",
+    "Kiran ran 6,300 meters in \\(\\frac{1}{2}\\) hour.",
+    "Mai ran 6.3 kilometers in 45 minutes.",
+    "Their paper: “4,200 30 · 6,300 \\(\\frac{1}{2}\\) · 6.3 45”"
+   ],
+   "student": "The student copied Tyler’s, Kiran’s and Mai’s numbers and wrote nothing else.",
+   "ask": "What do you say to this student?",
+   "aim": "The student sets up meters and minutes side by side and fills a row.",
+   "say": [
+    "Could a table of meters and minutes help you start?"
+   ],
+   "checks": [
+    "Offered a table or double number line as a way in",
+    "Left the numbers for the student to fill in",
+    "Didn’t fill a row for them"
+   ],
+   "ifNot": "What two numbers from Tyler’s line would go in your first row?"
+  },
+  {
+   "id": "m5",
+   "activityId": "5.2",
+   "kind": "moment",
+   "momentId": "m5",
+   "type": "student",
+   "name": "A student says Mai and Tyler aren’t the same",
+   "where": "About 9 minutes into Activity 5.2. Groups are comparing Mai and Tyler.",
+   "show": [
+    "Tyler ran 4,200 meters in 30 minutes.",
+    "Mai ran 6.3 kilometers in 45 minutes: 6,300 meters."
+   ],
+   "student": "A student says: “Mai and Tyler aren’t the same. She ran farther and longer.”",
+   "ask": "What do you say to this student?",
+   "aim": "The student finds both runners’ meters per minute and compares them.",
+   "say": [
+    "True. Now how far did each go in one minute?"
+   ],
+   "checks": [
+    "Agreed with what the student noticed",
+    "Sent them to meters in one minute for each runner",
+    "Didn’t announce “same speed” for them"
+   ],
+   "ifNot": "How far did Tyler run in 10 minutes?"
+  },
+  {
+   "id": "math:5.3",
+   "activityId": "5.3",
+   "kind": "math",
+   "type": "task",
+   "name": "Do the bean task yourself",
+   "where": "Before class. Solve the key activity: the best deal on beans.",
+   "ask": "Which store is the best deal? How does the 28-oz can’s price compare?",
+   "aim": "Know each price per can, and two ways to get there. You’ll see both.",
+   "notes": [
+    "How students might solve it:",
+    "A table down to 1 can: 8 cans for $6, 4 cans for $3, 1 can for $0.75.",
+    "Divide price by cans: 6 ÷ 8 = 0.75, 10 ÷ 10 = 1, 3 ÷ 2 = 1.50; 80 cents each is $0.80.",
+    "28-oz can: compare per ounce. $1.40 ÷ 28 = $0.05, the same as $0.75 ÷ 15."
+   ],
+   "checks": [
+    "Got $0.75, $1.00, $1.50 and $0.80 per can: 8 for $6 is best",
+    "Found one price per can with a table and one by dividing",
+    "Compared the 28-oz can per ounce: $0.05, the same as 8 for $6"
+   ]
+  },
+  {
+   "id": "launch:5.3",
+   "activityId": "5.3",
+   "kind": "rounds",
+   "type": "routine",
+   "routine": "MLR6: Three Reads",
+   "language": true,
+   "name": "Read the problem three times",
+   "where": "Start of Activity 5.3. The four bean ads are up, questions covered.",
+   "show": [
+    "Four stores posted ads about sales on 15-oz cans of baked beans:",
+    "8 for $6 · 10 for $10 · 2 for $3 · 80 cents each"
+   ],
+   "ask": "Read the problem aloud. After each read, ask one question. Nobody solves yet.",
+   "aim": "Students understand the ads and what “best deal” means before anyone compares.",
+   "rounds": [
+    {
+     "ask": "You’ve read it once. What do you ask?",
+     "aim": "Students say what’s happening, with no numbers."
+    },
+    {
+     "ask": "You’ve read it twice. What do you ask?",
+     "aim": "Students say what the ads count, cans and dollars, with units."
+    },
+    {
+     "ask": "You’ve read it three times. What do you ask?",
+     "aim": "Students say what “best deal” could mean, then what they must decide."
+    }
+   ],
+   "checks": [
+    "Read 1: asked what’s happening, with no numbers",
+    "Read 2: asked what the ads count, with units",
+    "Read 3: asked what “best deal” means to them before clarifying price per can"
+   ],
+   "why": "IM: Three Reads makes sure students know what they’re being asked to do. Here, it settles what “best deal” means before anyone compares.",
+   "runIt": [
+    "Read 1: read it aloud. Ask what’s happening, with no numbers.",
+    "Read 2: read it again. Ask what the ads count, and in what units.",
+    "Read 3: read it again. Ask what “best deal” could mean; take students’ meanings first.",
+    "Clarify: today, best deal means lowest price per can. Then show the questions."
+   ]
+  },
+  {
+   "id": "release:5.3",
+   "activityId": "5.3",
+   "kind": "release",
+   "type": "send",
+   "routine": "MLR8: Discussion Supports",
+   "language": true,
+   "name": "Send students to work",
+   "where": "About 3 minutes into Activity 5.3. Next: 5–10 minutes of quiet think time on a first draft, then partner rounds.",
+   "ask": "What must every explanation include? What do you tell the class?",
+   "aim": "Students know their explanation needs the price per can at two stores.",
+   "say": [
+    "Name the price per can, and compare it with another store."
+   ],
+   "notes": [
+    "Success criteria: In your explanation, name the price per can at the best store and at one other store, and say which is less.",
+    "When partners talk: After quiet think time, partners take turns saying their best store with the frame: “___ is the best deal because its unit price is $___ per can, less than $___ per can at ___.”"
+   ],
+   "checks": [
+    "Named what every explanation needs: the price per can at two stores",
+    "Pointed to today’s frame on the board",
+    "Told them when they’ll say it to a partner"
+   ],
+   "sounds": "8 for $6 is the best deal. Its unit price, or price per can, is 6 ÷ 8 = $0.75, less than $0.80, $1.00 and $1.50 at the other stores.",
+   "why": "Naming the language before work starts means students practice it while they solve. Their first draft then has something to strengthen."
+  },
+  {
+   "id": "m7",
+   "activityId": "5.3",
+   "kind": "moment",
+   "momentId": "m7",
+   "type": "student",
+   "name": "A student picks the most cans",
+   "where": "About 5 minutes into Activity 5.3, during quiet think time.",
+   "show": [
+    "The ads (15-oz cans):",
+    "8 for $6 · 10 for $10 · 2 for $3 · 80 cents each"
+   ],
+   "student": "A student wrote: “10 for $10 is the best. You get the most cans.”",
+   "ask": "What do you say to this student?",
+   "aim": "The student finds what one can costs at each store.",
+   "say": [
+    "What does one can cost at that store?"
+   ],
+   "checks": [
+    "Made one can the thing to compare",
+    "Asked about that store’s price, not which store wins",
+    "Didn’t name the best store"
+   ],
+   "ifNot": "If 2 cans cost $3, what does 1 can cost?"
+  },
+  {
+   "id": "m9",
+   "activityId": "5.3",
+   "kind": "levels",
+   "momentId": "m9",
+   "type": "language",
+   "routine": "MLR1: Stronger and Clearer Each Time",
+   "language": true,
+   "name": "Help a student say why it’s best",
+   "where": "About 8 minutes into Activity 5.3, near the end of quiet think time.",
+   "show": [
+    "The ads (15-oz cans):",
+    "8 for $6 · 10 for $10 · 2 for $3 · 80 cents each",
+    "Their first draft: “8 for 6 is good.”"
+   ],
+   "student": "The student’s first draft reads “8 for 6 is good.”",
+   "ask": "What do you say to this student?",
+   "aim": "The student names the price per can and compares it with another store.",
+   "checks": [
+    "Kept the same question at every level: which store, and how do you know?",
+    "Matched the way in to the student’s level",
+    "Didn’t write the price or the sentence for them"
+   ],
+   "ifNot": "Point to the 8 and the $6. What does one can cost?",
+   "sounds": "8 for $6 is the best deal because its unit price is $0.75 per can, less than $1.50 per can at 2 for $3."
+  },
+  {
+   "id": "m10",
+   "activityId": "5.3",
+   "kind": "moment",
+   "momentId": "m10",
+   "type": "student",
+   "routine": "MLR1: Stronger and Clearer Each Time",
+   "name": "A partner says “looks good”",
+   "where": "About 10 minutes into Activity 5.3, during the first partner round.",
+   "show": [
+    "The writer’s draft: “8 for $6 is best because it’s cheapest.”"
+   ],
+   "student": "The partner listens to the draft, then says “looks good.”",
+   "ask": "What do you say to the listener?",
+   "aim": "The listener presses for the price per can, and the writer adds it.",
+   "say": [
+    "Ask your partner one question: how much per can?"
+   ],
+   "checks": [
+    "Gave the listener a detail to press for",
+    "Kept the revising with the writer",
+    "Didn’t let “looks good” end the round"
+   ],
+   "ifNot": "What number would show it’s the cheapest?"
+  },
+  {
+   "id": "synth:5.3",
+   "activityId": "5.3",
+   "kind": "synthesis",
+   "type": "routine",
+   "routine": "MLR1: Stronger and Clearer Each Time",
+   "language": true,
+   "name": "Connect the table to dividing",
+   "where": "About 13 minutes into Activity 5.3. Partner rounds and rewrites are done. Two students have shared.",
+   "show": [
+    "On the board, shared first:",
+    "| price (dollars) | cans",
+    "| 6 | 8",
+    "| 3 | 4",
+    "| 0.75 | 1",
+    "Shared next: 6 ÷ 8 = 0.75"
+   ],
+   "ask": "The table and 6 ÷ 8 are both up. What do you ask the class?",
+   "aim": "Students say how the table and the division both give $0.75 per can.",
+   "say": [
+    "How do the table and 6 ÷ 8 connect?"
+   ],
+   "notes": [
+    "Let students make the connection. As they say it, point to “unit price.”"
+   ],
+   "checks": [
+    "Ran the partner rounds and the rewrite before the share",
+    "Shared a table down to 1 can first, then 6 ÷ 8",
+    "Asked how they connect, and let students say it"
+   ],
+   "sounds": "8 for $6 is the best deal because its unit price is $0.75 per can, less than $1.50 per can at 2 for $3.",
+   "why": "IM: Stronger and Clearer gives talk a purpose: refine an answer with partners, then revise it in writing. Here, the rewrite adds the price per can.",
+   "runIt": [
+    "Partner round 1: each student reads the draft; the listener asks one question: how much per can?",
+    "Partner round 2: switch partners and go again.",
+    "Each student rewrites their own draft with the price per can at two stores.",
+    "Short share in IM’s order: a table down to 1 can first, then 6 ÷ 8 = 0.75.",
+    "Ask how the table and 6 ÷ 8 connect. Students say it; point to “unit price” as they do."
+   ]
   }
  ]
 }

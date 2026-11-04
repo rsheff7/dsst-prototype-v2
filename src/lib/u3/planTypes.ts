@@ -87,6 +87,11 @@ export interface RehearsalCard {
   activityId: string;
   /** math: the task, fillable · rounds: one card in short rounds (Three Reads) · levels: one round per WIDA level picked. */
   kind: 'math' | 'moment' | 'rounds' | 'levels' | 'release' | 'synthesis';
+  /**
+   * The card's type, which sets the guidance it must carry (docs/REHEARSAL-GUIDANCE-RULE.md):
+   * task · routine · send (send to work) · student (student moment) · language (language moment) · decision.
+   */
+  type: 'task' | 'routine' | 'send' | 'student' | 'language' | 'decision';
   /** A plain verb phrase: "Choose who shares first". No routine names or ids. */
   name: string;
   /** The IM routine the card runs, for its tappable label. */
@@ -109,8 +114,17 @@ export interface RehearsalCard {
   notes?: string[];
   /** "Did yours do these?": three, past tense. */
   checks: string[];
-  /** Folded extras: { title, lines }. */
-  more?: { title: string; lines: string[] }[];
+  // Guidance, by the rule. What's going on and Avoid default to the Premo moment's means and dont.
+  /** A strong student answer in the language goal's form. */
+  sounds?: string;
+  goingOn?: string;
+  avoid?: string;
+  /** The next question if the first move doesn't land. Never the answer. */
+  ifNot?: string;
+  /** The purpose of this routine or choice, here. IM's reason where IM gives one. */
+  why?: string;
+  /** The routine's steps for this activity. */
+  runIt?: string[];
   /** The Premo moment this card rehearses (its means and dont, and by-level says for 'levels'). */
   momentId?: string;
   /** When an earlier activity the card leans on wasn't chosen. */

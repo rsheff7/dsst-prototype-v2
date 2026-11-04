@@ -20,7 +20,9 @@
   "Lesson synthesis rewritten 2026-11-02 (Robert): IM’s synthesis is a teacher summary of two ideas, so the step is now say the ideas, point to the 7.3 chart (or 7.4 if taught), and one quick check in the CLO form that avoids the cool-down’s numbers.",
   "7.3 moments trimmed 2026-11-02 to three (IM’s misconception m4, the language moment m6, who shares first m5) so a crux-only night is seven rehearsal cards, close to the reviewed prep’s six.",
   "Revised 2026-11-03 after persona review: added clo.posted (goal, parallel pages-per-minute sentence) and a nonverbal way in per band; rewrote the emerging and developing frames to keep both directions in words with blanks for the operation and the rate; moved the core idea out of the stretches; cut the exemplar to 30 words with every precise term; lookFor now checks form and terms. Synthesis (D1 option 3): kept MLR 2, removed revoicing (teacher scribes students’ words and writes the precise term beside them), and added IM’s Compare and Connect move as the last step, students connecting the 1-hour row to × 6 across. Added m4, m8 and m9 criteria and 7.3’s dependsOn on 7.2. 7.4 grouping now says IM names none; its launch advice moved to monitor. Added a 7.2 cut entry. Copy: “midway,” ‘per’ in back-pocket, “kilometers” throughout, beforeClass wording.",
-  "2026-11-03: rehearsal cards written to docs/REHEARSAL-CARD-SPEC.md v2 (Robert: no student names; keep “Crux”). Pair B’s row-to-row work is NEW, written for the spec and checked: 2 + 5 = 7 h, 12 + 30 = 42; 7 + 2 + 2 = 11 h, 42 + 12 + 12 = 66."
+  "2026-11-03: rehearsal cards written to docs/REHEARSAL-CARD-SPEC.md v2 (Robert: no student names; keep “Crux”). Pair B’s row-to-row work is NEW, written for the spec and checked: 2 + 5 = 7 h, 12 + 30 = 42; 7 + 2 + 2 = 11 h, 42 + 12 + 12 = 66.",
+  "2026-11-03: rehearsal cards brought to docs/REHEARSAL-GUIDANCE-RULE.md (types, Sounds like, If it doesn’t work, Why, Run it). Why lines for Three Reads and Collect and Display paraphrase IM’s routine definitions in content/routines.json.",
+  "2026-11-03 (Claude): added 7.1 and 7.4 cards (task + one moment each) so every activity can be rehearsed, like the other lessons. m9’s doubled table (4 | 6, 8 | 12, 7 | ___) is NEW, from Premo’s description; checked: 8 pounds makes 12 cups."
  ],
  "story": "Lesson 7 sits midway through the rates section. It shows that equivalent ratios share one unit rate, and that the unit rate takes you across a table, which students lean on for speed and deals in Lessons 8 and 9.",
  "previous": "In Lesson 6 students found two unit rates for each ratio, \\(\\frac{a}{b}\\) and \\(\\frac{b}{a}\\); today they see those rates stay the same for every equivalent ratio.",
@@ -271,6 +273,51 @@
  ],
  "rehearsal": [
   {
+   "id": "math:7.1",
+   "activityId": "7.1",
+   "kind": "math",
+   "type": "task",
+   "name": "Do the warm-up yourself",
+   "where": "Before class. Try the warm-up students start with.",
+   "ask": "Which one doesn’t belong? Find a reason for each of the four.",
+   "aim": "Have a reason for every rate, so you can take any answer.",
+   "notes": [
+    "How students might see it:",
+    "Spot the one not written as a unit rate: 5 miles in 15 minutes.",
+    "Spot pace versus speed: 3 minutes per mile is a pace.",
+    "Convert to compare: 5 miles in 15 minutes and 3 minutes per mile are both 20 miles per hour; 32 kilometers per hour is a little slower."
+   ],
+   "checks": [
+    "Found a reason for each of the four rates",
+    "Saw that 3 minutes per mile is a pace, not a speed",
+    "Compared at least two rates in the same unit"
+   ]
+  },
+  {
+   "id": "m8",
+   "activityId": "7.1",
+   "kind": "moment",
+   "momentId": "m8",
+   "type": "decision",
+   "name": "A group wants one right answer",
+   "where": "About 4 minutes into Activity 7.1, during group talk.",
+   "show": [
+    "5 miles in 15 minutes · 3 minutes per mile · 20 miles per hour · 32 kilometers per hour"
+   ],
+   "student": "A group argues over which one is the right answer.",
+   "ask": "What do you say to the group?",
+   "aim": "The group finds a reason for each rate, not one answer.",
+   "say": [
+    "Find a reason for each one."
+   ],
+   "why": "Which One Doesn’t Belong has no single answer. Each reason students give is a way to compare rates, which the lesson builds on.",
+   "checks": [
+    "Asked for a reason for each rate, not the one answer",
+    "Didn’t name the one I had in mind",
+    "Asked the group if each reason holds up"
+   ]
+  },
+  {
    "id": "math:7.2",
    "activityId": "7.2",
    "kind": "math",
@@ -289,25 +336,7 @@
     "Found the price of one burrito from 14 ÷ 2",
     "Said why the price of one stays the same"
    ],
-   "more": [
-    {
-     "title": "Where students get stuck",
-     "lines": [
-      "Writing “14 per 2” or “28 per 4” in the unit price column instead of the price of one burrito.",
-      "Thinking Lin pays twice as much per burrito because she pays twice as much in all.",
-      "“Per burrito” means per 1 burrito, not per order.",
-      "Letters \\(b\\) and \\(c\\) in place of numbers may block the last two questions."
-     ]
-    },
-    {
-     "title": "Ask if they’re stuck",
-     "lines": [
-      "Per burrito means for one burrito. What does one cost?",
-      "What do you notice down the unit price column?",
-      "Lin buys twice as many. What happens to the price of one?"
-     ]
-    }
-   ]
+   "type": "task"
   },
   {
    "id": "m2",
@@ -326,7 +355,9 @@
     "Protected the quiet think time",
     "Asked for work on paper before talk",
     "Didn’t take the first hand"
-   ]
+   ],
+   "type": "decision",
+   "why": "Think Pair Share starts with quiet think time. Without it, the first answer becomes everyone’s."
   },
   {
    "id": "m1",
@@ -350,13 +381,15 @@
     "Said what “per burrito” means",
     "Asked for the price of one",
     "Didn’t write the 7 in for them"
-   ]
+   ],
+   "type": "student",
+   "ifNot": "If 2 burritos cost $14, what does 1 burrito cost?"
   },
   {
    "id": "math:7.3",
    "activityId": "7.3",
    "kind": "math",
-   "name": "Do the task yourself",
+   "name": "Do the bracelet task yourself",
    "where": "Before class. Solve the task students do today.",
    "ask": "Fill in the five blanks. How did you get from 66 bracelets to hours?",
    "aim": "Know every answer and two ways to get it. You’ll spot both on papers.",
@@ -372,25 +405,7 @@
     "Went across by 6 in at least one row",
     "Said what the 4 left over means: \\(\\frac{4}{6} = \\frac{2}{3}\\) of an hour"
    ],
-   "more": [
-    {
-     "title": "Where students get stuck",
-     "lines": [
-      "Writing “16 r 4 hours” for 100 bracelets: the 4 bracelets are \\(\\frac{4}{6} = \\frac{2}{3}\\) of an hour.",
-      "Multiplying 66 by 6 instead of dividing, going the wrong way across the table.",
-      "The table’s structure may not be clear: what the column of 6s is for.",
-      "“Speed” here means bracelets per hour, not how fast someone moves."
-     ]
-    },
-    {
-     "title": "Ask if they’re stuck",
-     "lines": [
-      "What does the 6 in each row tell you?",
-      "How do you get from hours to bracelets? And back?",
-      "4 bracelets left over. What part of an hour is that?"
-     ]
-    }
-   ]
+   "type": "task"
   },
   {
    "id": "launch:7.3",
@@ -424,6 +439,13 @@
     "Read 1: asked what’s happening, with no numbers",
     "Read 2: asked what each column counts, with units",
     "Read 3: asked what they must do, without solving"
+   ],
+   "type": "routine",
+   "why": "IM: Three Reads makes sure students know what they’re being asked to do. Here, it makes the table’s columns clear before anyone calculates.",
+   "runIt": [
+    "Read 1: read it aloud. Ask what’s happening, with no numbers.",
+    "Read 2: read it again. Ask what each column counts, with units.",
+    "Read 3: read it again. Ask what they must do. Then show the questions and start quiet think time."
    ]
   },
   {
@@ -440,22 +462,17 @@
     "Name the unit rate, and say multiply or divide by it."
    ],
    "notes": [
-    "Success criteria: In your strategy sentence, name the unit rate with “per” and say whether you multiply or divide by it."
+    "Success criteria: In your strategy sentence, name the unit rate with “per” and say whether you multiply or divide by it.",
+    "When partners talk: After quiet think time, partners take turns saying one row with the frame: “To get ___ from ___, I ___ by the unit rate, ___ per ___.”"
    ],
    "checks": [
     "Named what every sentence needs: the unit rate, “per,” multiply or divide",
     "Pointed to today’s frame on the board",
     "Told them when they’ll say it to a partner"
    ],
-   "more": [
-    {
-     "title": "When partners talk",
-     "lines": [
-      "After quiet think time, partners take turns saying one row with the frame: “To get ___ from ___, I ___ by the unit rate, ___ per ___.”",
-      "Before the burrito table, partners tell each other which way they go across and which way back."
-     ]
-    }
-   ]
+   "type": "send",
+   "sounds": "To get bracelets, I multiply by the unit rate, 6 bracelets per hour: 7 × 6 = 42. To get hours, I divide by 6: 66 ÷ 6 = 11.",
+   "why": "Naming the language before work starts means students practice it while they solve, not only at the end."
   },
   {
    "id": "m4",
@@ -502,14 +519,8 @@
     "Asked a question about the 7, then waited",
     "Let them fill the first bracelet box themselves"
    ],
-   "more": [
-    {
-     "title": "If they’re still stuck",
-     "lines": [
-      "“What does the 6 in each row tell you?”"
-     ]
-    }
-   ]
+   "type": "student",
+   "ifNot": "What does the 6 in each row tell you?"
   },
   {
    "id": "m6",
@@ -535,7 +546,10 @@
     "Asked the same question at every level: across and back",
     "Gave the way in their level needs",
     "Didn’t say the sentence for them"
-   ]
+   ],
+   "type": "language",
+   "ifNot": "Point to the 2 and the 12. What did you do to get from one to the other?",
+   "sounds": "To get bracelets from hours, I multiply by the unit rate, 6 bracelets per hour. To get hours, I divide by 6."
   },
   {
    "id": "m5",
@@ -562,14 +576,8 @@
     "Ended on multiplying and dividing by 6 across",
     "Didn’t let the fastest pair go first"
    ],
-   "more": [
-    {
-     "title": "Why this order",
-     "lines": [
-      "IM’s order runs from the 1-hour row to using the 6 across, so the short way grows out of the long one. IM calls the first way “less efficient,” never slow."
-     ]
-    }
-   ]
+   "type": "decision",
+   "why": "IM’s order runs from the 1-hour row to using the 6 across, so the short way grows out of the long one. IM calls the first way “less efficient,” never slow."
   },
   {
    "id": "synth:7.3",
@@ -598,22 +606,62 @@
     "Wrote students’ own words, with the math word beside them",
     "Asked them to connect the 1-hour row to × 6, and let them do it"
    ],
-   "more": [
-    {
-     "title": "Sounds like",
-     "lines": [
-      "To get bracelets from hours, I multiply by the unit rate, 6 bracelets per hour. To get hours, I divide by 6, so 100 bracelets takes \\(16\\frac{2}{3}\\) hours."
-     ]
-    },
-    {
-     "title": "Run it, start to finish",
-     "lines": [
-      "Call pairs in IM’s order: the 1-hour row first, then × 6 across and ÷ 6 back.",
-      "Scribe each pair’s words as said beside the table, with arrows. Write the precise term beside their words: unit rate, per, multiply by, divide by.",
-      "Ask students to connect the two: “How does the 1-hour row show the 6 we multiply by across?” Partners talk, then two share; scribe their words.",
-      "Leave the display up for the burrito table and the cool-down."
-     ]
-    }
+   "type": "routine",
+   "sounds": "To get bracelets from hours, I multiply by the unit rate, 6 bracelets per hour. To get hours, I divide by 6, so 100 bracelets takes \\(16\\frac{2}{3}\\) hours.",
+   "why": "IM: Collect and Display turns students’ spoken words into a shared reference. The class reuses them on the burrito table and the cool-down.",
+   "runIt": [
+    "Call pairs in IM’s order: the 1-hour row first, then × 6 across and ÷ 6 back.",
+    "Scribe each pair’s words as said beside the table, with arrows. Write the precise term beside their words: unit rate, per, multiply by, divide by.",
+    "Ask students to connect the two: “How does the 1-hour row show the 6 we multiply by across?” Partners talk, then two share; scribe their words.",
+    "Leave the display up for the burrito table and the cool-down."
+   ]
+  },
+  {
+   "id": "math:7.4",
+   "activityId": "7.4",
+   "kind": "math",
+   "type": "task",
+   "name": "Do the applesauce task yourself",
+   "where": "Before class. Solve the optional task, in case you teach it.",
+   "ask": "Fill in the table. How did you get 7 pounds when 4 pounds makes 6 cups?",
+   "aim": "Know every answer, and why 7 can’t come from doubling.",
+   "notes": [
+    "How students might solve it:",
+    "Find cups per pound (6 ÷ 4 = 1.5), then multiply: 7 × 1.5 = 10.5 and 10 × 1.5 = 15 cups.",
+    "Divide cups by 1.5, or multiply by \\(\\frac{2}{3}\\): 9 cups needs 6 pounds, 20 cups needs \\(13\\frac{1}{3}\\) pounds.",
+    "Build a 1-pound row first, then scale from it."
+   ],
+   "checks": [
+    "Got 10.5 cups, 15 cups, 6 pounds and \\(13\\frac{1}{3}\\) pounds",
+    "Found cups per pound: 1.5",
+    "Saw why doubling 4 stops working at 7"
+   ]
+  },
+  {
+   "id": "m9",
+   "activityId": "7.4",
+   "kind": "moment",
+   "momentId": "m9",
+   "type": "student",
+   "name": "A student is stuck at 7 pounds",
+   "where": "About 4 minutes into Activity 7.4.",
+   "show": [
+    "| pounds of apples | cups of applesauce",
+    "| 4 | 6",
+    "| 8 | 12",
+    "| 7 |  "
+   ],
+   "student": "The student doubled 4 pounds to 8 and is now stuck at 7.",
+   "ask": "What do you say to this student?",
+   "aim": "The student finds what 1 pound makes, then uses it.",
+   "say": [
+    "What does 1 pound make?"
+   ],
+   "ifNot": "Look back at the bracelet table. What row helped there?",
+   "checks": [
+    "Asked what 1 pound makes instead of showing 7 ÷ 4",
+    "Let them find 1.5 cups per pound themselves",
+    "Pointed to the 1-hour row from 7.3 if they stayed stuck"
    ]
   }
  ]

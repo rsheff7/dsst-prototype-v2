@@ -291,6 +291,27 @@ for (const f of planFiles) {
     if (/\b(Maya|Dani|Ana|Jo|Sam)\b/.test(text)) err(cat, 'uses a student name; write “a student” or “Pair A”');
   }
   if (pl.rehearsal && !pl.rehearsal.some((c) => c.activityId === pr.crux)) err(at, 'rehearsal has no cards for the crux');
+  // The guidance rule (docs/REHEARSAL-GUIDANCE-RULE.md): what each card type must carry.
+  const NEEDS = {
+    task: [],
+    routine: ['why', 'runIt'],
+    send: ['sounds', 'why'],
+    student: ['goingOn', 'avoid', 'ifNot'],
+    language: ['goingOn', 'avoid', 'ifNot', 'sounds'],
+    decision: ['why', 'avoid'],
+  };
+  for (const c of pl.rehearsal ?? []) {
+    const cat = `${at} card ${c.id}`;
+    if (!NEEDS[c.type]) { err(cat, `type must be one of ${Object.keys(NEEDS).join(', ')}`); continue; }
+    const mo = c.momentId ? pr.moments.find((x) => x.id === c.momentId) : null;
+    const has = { ...c, goingOn: c.goingOn ?? mo?.means, avoid: c.avoid ?? mo?.dont };
+    for (const k of NEEDS[c.type]) if (!has[k] || (Array.isArray(has[k]) && !has[k].length)) err(cat, `a ${c.type} card needs ${k}`);
+    if (c.type === 'routine' && c.runIt && (c.runIt.length < 3 || c.runIt.length > 5)) err(cat, 'runIt needs 3–5 steps');
+    if (c.type === 'routine' && c.kind !== 'rounds' && !c.sounds) err(cat, 'a routine card needs sounds (Three Reads has its listen-for lines instead)');
+    if (c.ifNot && !/\?\s*$/.test(c.ifNot)) err(cat, 'ifNot is one question');
+    if (c.why && wordsIn(c.why) > 40) err(cat, `why is ${wordsIn(c.why)} words; keep it to two short sentences`);
+    if (c.more) err(cat, 'more is retired; use the rule’s guidance fields');
+  }
   for (const [where, s] of flat(pl).map((s) => ['', s])) if (/maths|colour|grey\b|favour|behaviour|centre\b|organis|practise\b|metre\b/.test(s)) err(at, `US spelling: "${s.slice(0, 50)}…"`);
 }
 

@@ -21,7 +21,8 @@
   "beforeClass is held to four items; Premo’s 9.3 conversion facts item is dropped, since IM’s narrative lists the facts to share when asked.",
   "Non-crux activities carry no language supports (D7).",
   "2026-11-02: m12 (running Collect and Display) replaced by m13 (Collect and Display slipping): the Synthesis card already rehearses running it.",
-  "Revised 2026-11-03 after persona review: exemplar, form, statement, success criteria, look-for and all frames now name the price with “per” and “unit rate”; “the same number of items” moved from precise to informal (it stays on the display) so the exemplar uses every precise term in 25 words; emerging frame now compares both prices per item, then deal / no deal; one form, “deal / no deal”; added clo.posted (new numbers: 3 markers for $2.10, 70 against 80 cents per marker, 2.10 ÷ 3 = 0.70, 4.00 ÷ 5 = 0.80, from an original 5 for $4.00) and nonverbal ways in; Collect and Display steps scribe students’ words with the precise term beside them, no revoicing, and pairs compare unit price against scaling the pack (D1 option 3); merged the two 9.2 cuts, shortened the 9.3 cut, cut-first order 9.1, 9.3, 9.2; grouping labels for 9.2 and 9.3; momentCriteria for m8 and m9; “quiet think time”; lesson synthesis in one form, $0.35 per box; trimmed story and pointTo to 30 words (IM’s two small tables suggestion dropped from pointTo); copy fixes to 9.1 barriers, 9.3 strategies and beforeClass."
+  "Revised 2026-11-03 after persona review: exemplar, form, statement, success criteria, look-for and all frames now name the price with “per” and “unit rate”; “the same number of items” moved from precise to informal (it stays on the display) so the exemplar uses every precise term in 25 words; emerging frame now compares both prices per item, then deal / no deal; one form, “deal / no deal”; added clo.posted (new numbers: 3 markers for $2.10, 70 against 80 cents per marker, 2.10 ÷ 3 = 0.70, 4.00 ÷ 5 = 0.80, from an original 5 for $4.00) and nonverbal ways in; Collect and Display steps scribe students’ words with the precise term beside them, no revoicing, and pairs compare unit price against scaling the pack (D1 option 3); merged the two 9.2 cuts, shortened the 9.3 cut, cut-first order 9.1, 9.3, 9.2; grouping labels for 9.2 and 9.3; momentCriteria for m8 and m9; “quiet think time”; lesson synthesis in one form, $0.35 per box; trimmed story and pointTo to 30 words (IM’s two small tables suggestion dropped from pointTo); copy fixes to 9.1 barriers, 9.3 strategies and beforeClass.",
+  "2026-11-03: rehearsal cards written to the card spec and guidance rule. NEW (not in IM or Premo): card A’s wording on the Three Reads and m3 cards, from IM’s launch story (the printed card wasn’t available); the m6 student’s card B work (3.50 ÷ 10 = 0.35, 2.40 ÷ 6 = 0.40, from IM’s narrative); the synthesis chart’s Pair A, B and C words on card B (Pair A and C from Premo’s patterns, Pair B from IM’s narrative: $2.10); the m9 student’s work in feet (from IM’s response); and every ifNot question. Card B’s original rate is $0.35 per box throughout, not IM’s caption slip. Doubts: 9.2 moments run m3, m13, m6 in class order, not the plan’s m3, m6, m13 (m13 is the chart still blank, so it comes before m6’s display words). Minutes in 9.2 are estimates: IM gives 20 minutes but no split. The synthesis card’s model asks two questions, as D1 option 3 does; the m13 card is typed decision, as 6.3.7’s routine breakdown was."
  ],
  "story": "Lesson 9 closes the rates section. With no table or diagram prompted, students choose a unit rate themselves to judge deals and compare distances. Percentages begin in Lesson 10.",
  "previous": "In Lesson 8 students used speed and pace to find unknown distances and times; today they pick which unit rate to find, then use it to decide.",
@@ -202,6 +203,337 @@
    "sounds": "Card B is not a good deal because the unit rate is 40 cents per box in the new deal and 35 cents per box in the original."
   }
  },
+ "rehearsal": [
+  {
+   "id": "math:9.1",
+   "activityId": "9.1",
+   "kind": "math",
+   "type": "task",
+   "name": "Do the grid warm-up yourself",
+   "where": "Before class. Solve the warm-up: three grids, each flashed for 3 seconds.",
+   "ask": "How much is shaded in each grid? How did you see each one?",
+   "aim": "Know each amount as a fraction and a decimal, and one way of seeing it.",
+   "notes": [
+    "How students might solve it:",
+    "A: a 5 by 5 block, a quarter of the grid: \\(\\frac{25}{100}\\), 0.25 or \\(\\frac{1}{4}\\).",
+    "B: one full column, a tenth: \\(\\frac{1}{10}\\), \\(\\frac{10}{100}\\) or 0.1.",
+    "C: half the grid plus a quarter: \\(\\frac{75}{100}\\), 0.75 or \\(\\frac{3}{4}\\). Some may say 75%."
+   ],
+   "checks": [
+    "Named A as \\(\\frac{25}{100}\\), 0.25 or \\(\\frac{1}{4}\\)",
+    "Named B as \\(\\frac{1}{10}\\) and C as \\(\\frac{3}{4}\\)",
+    "Saw each grid as blocks or columns, without counting squares"
+   ]
+  },
+  {
+   "id": "m1",
+   "activityId": "9.1",
+   "kind": "moment",
+   "momentId": "m1",
+   "type": "student",
+   "name": "A student counts every square",
+   "where": "About 1 minute into Activity 9.1, just after the first flash. The image is hidden again.",
+   "show": [
+    "Grid A: a 10 by 10 grid, the whole grid worth 1.",
+    "Shaded: the first 5 squares in each of columns 1 to 5, a 5 by 5 block."
+   ],
+   "student": "A student says, “I counted every square. 25.”",
+   "ask": "What do you say to this student?",
+   "aim": "The student describes the 5 by 5 block as a part of the whole grid.",
+   "say": [
+    "How did you see the shaded portion?"
+   ],
+   "checks": [
+    "Asked how they saw it, not how they solved it",
+    "Kept the image hidden so seeing beats counting",
+    "Didn’t show them the quarter"
+   ],
+   "ifNot": "If the whole grid is 1, how much of it is the block?"
+  },
+  {
+   "id": "math:9.2",
+   "activityId": "9.2",
+   "kind": "math",
+   "type": "task",
+   "name": "Do the card sort yourself",
+   "where": "Before class. Solve the card sort students do today, cards A–E.",
+   "ask": "Card A: 4 bottles for $3.16, now 3 for $2.25. Card B: 10 boxes for $3.50, now 6 for $2.40. Deal or no deal?",
+   "aim": "Know each card’s decision, and three ways to check it.",
+   "notes": [
+    "How students might solve it:",
+    "Both unit rates: card B is 35 cents per box before (3.50 ÷ 10) and 40 cents now (2.40 ÷ 6), so no deal.",
+    "Original rate on the new number: card A is 79 cents per bottle, so 3 bottles should cost $2.37. $2.25 is less, so deal.",
+    "Scaling the pack: 6 is \\(\\frac{6}{10}\\) of 10, so 6 boxes should cost \\(\\frac{6}{10}\\) of $3.50, $2.10. $2.40 is more, so no deal.",
+    "Cards C–E: their prices are on the printed cards only. IM’s card E answer doesn’t say how many containers."
+   ],
+   "checks": [
+    "Got card A: deal, 75 cents per bottle against 79",
+    "Got card B: no deal, 40 cents per box against 35",
+    "Worked C–E from the printed cards: C and D deal, E no deal"
+   ]
+  },
+  {
+   "id": "launch:9.2",
+   "activityId": "9.2",
+   "kind": "rounds",
+   "type": "routine",
+   "routine": "MLR6: Three Reads",
+   "language": true,
+   "name": "Read the card three times",
+   "where": "Start of Activity 9.2. Card A’s picture is up. The sorting directions are covered.",
+   "show": [
+    "Card A: a 4-pack of drinks for $3.16. One bottle is missing.",
+    "The clerk offers the 3 bottles left for $2.25."
+   ],
+   "ask": "Read card A aloud twice, then the directions. After each read, ask one question. Nobody solves yet.",
+   "aim": "Students understand the offer and the sort before anyone votes or solves.",
+   "rounds": [
+    {
+     "ask": "You’ve read card A once. What do you ask?",
+     "aim": "Students say what’s happening, with no numbers."
+    },
+    {
+     "ask": "You’ve read card A twice. What do you ask?",
+     "aim": "Students say what each number counts: bottles or dollars, in each offer."
+    },
+    {
+     "ask": "You’ve read the directions. What do you ask?",
+     "aim": "Students say what to do with card A, then the rest, without solving."
+    }
+   ],
+   "checks": [
+    "Read 1: asked what’s happening, with no numbers",
+    "Read 2: asked what each number counts, and in which offer",
+    "Read 3: asked what to do with card A and the rest, without solving"
+   ],
+   "why": "IM: Three Reads makes sure students know what they’re being asked to do. Here, it pins down which price buys how many bottles before the vote.",
+   "runIt": [
+    "Read 1: tell card A’s story aloud. Ask what’s happening, with no numbers.",
+    "Read 2: read it again. Ask what each number counts, and in which offer.",
+    "Read 3: uncover and read the directions. Ask what to do with card A, then the rest.",
+    "Then poll the class: deal or no deal? Show the count before pairs start."
+   ]
+  },
+  {
+   "id": "release:9.2",
+   "activityId": "9.2",
+   "kind": "release",
+   "type": "send",
+   "routine": "MLR8: Discussion Supports",
+   "language": true,
+   "name": "Send pairs to work",
+   "where": "About 4 minutes into Activity 9.2. The class has voted on card A. Next: card A in pairs, then two cards each.",
+   "ask": "What must every reason include? What do you tell the class?",
+   "aim": "Students know their reason needs deal or no deal and both unit rates, with “per.”",
+   "say": [
+    "Say deal or no deal, and the price per item in each offer."
+   ],
+   "notes": [
+    "Success criteria: In your reason, say deal or no deal, and give the unit rate in each offer, the price of one item, with “per.”",
+    "When partners talk: After card A, each partner says the card A reason aloud with the frame before you split the cards.",
+    "Then: When partners explain their two cards, one uses the frame, and the other agrees or disagrees and says why."
+   ],
+   "checks": [
+    "Named what every reason needs: deal or no deal, and both unit rates with “per”",
+    "Pointed to today’s frame on the board",
+    "Told them when they’ll say the card A reason to a partner"
+   ],
+   "sounds": "Card A is a good deal because the unit rate is 75 cents per bottle in the new deal and 79 cents per bottle in the original.",
+   "why": "Naming the reason’s parts before work starts means pairs practice it on card A, then reuse it alone on their own two cards."
+  },
+  {
+   "id": "m3",
+   "activityId": "9.2",
+   "kind": "moment",
+   "momentId": "m3",
+   "type": "student",
+   "name": "A pair compares the two totals",
+   "where": "About 6 minutes into Activity 9.2. Pairs are sharing card A ideas, before they split the cards.",
+   "show": [
+    "Card A:",
+    "Original: 4 bottles for $3.16",
+    "New deal: 3 bottles for $2.25"
+   ],
+   "student": "A pair wrote, “Deal. $2.25 is less than $3.16.”",
+   "ask": "What do you say to this pair?",
+   "aim": "The pair compares prices for the same number of bottles, or for one.",
+   "say": [
+    "Less money, but for how many bottles?"
+   ],
+   "checks": [
+    "Took their numbers seriously",
+    "Asked how many bottles each price buys",
+    "Didn’t tell them to find the price of one bottle"
+   ],
+   "ifNot": "What should 3 bottles cost at the 4-pack price?"
+  },
+  {
+   "id": "m13",
+   "activityId": "9.2",
+   "kind": "moment",
+   "momentId": "m13",
+   "type": "decision",
+   "name": "Notice the chart is still blank",
+   "where": "About 13 minutes into Activity 9.2. You’ve been at desks helping with card A. Pairs are starting to explain their cards.",
+   "show": [
+    "The chart paper: still blank.",
+    "Words to listen for (IM): “the same,” “equal,” “unit rate,” “cost for the same number of items.”"
+   ],
+   "ask": "What do you do now? What do you say to the next pair you hear?",
+   "aim": "Students’ own words reach the chart before the closing discussion.",
+   "say": [
+    "Say that again? I want it on our chart."
+   ],
+   "checks": [
+    "Wrote down a student’s words while they were still talking",
+    "Got phrases on the chart before the closing discussion",
+    "Didn’t fill the chart later with your own phrases"
+   ],
+   "why": "IM: Collect and Display keeps students’ spoken words as a class reference. A blank chart leaves the closing discussion nothing of theirs to point back to."
+  },
+  {
+   "id": "m6",
+   "activityId": "9.2",
+   "kind": "levels",
+   "momentId": "m6",
+   "type": "language",
+   "language": true,
+   "name": "Help a student say why",
+   "where": "About 14 minutes into Activity 9.2. Partners are explaining their two cards to each other.",
+   "show": [
+    "Card B:",
+    "Original: 10 juice boxes for $3.50",
+    "New deal: 6 juice boxes for $2.40",
+    "Their work: 3.50 ÷ 10 = 0.35 and 2.40 ÷ 6 = 0.40. No deal."
+   ],
+   "student": "Explaining card B, the student taps it: “It’s more. The new one is more.”",
+   "ask": "What do you say to this student?",
+   "aim": "The student says no deal and names the price per box in each offer.",
+   "checks": [
+    "Asked every level the same question: deal or no deal, and why?",
+    "Matched the way in to the student and recorded their words",
+    "Didn’t say the reason for them"
+   ],
+   "ifNot": "Point to the 0.40. One what costs that much?",
+   "sounds": "Card B is not a good deal because the unit rate is 40 cents per box in the new deal and 35 cents per box in the original."
+  },
+  {
+   "id": "synth:9.2",
+   "activityId": "9.2",
+   "kind": "synthesis",
+   "type": "routine",
+   "routine": "MLR2: Collect and Display",
+   "language": true,
+   "name": "Finish on the chart",
+   "where": "About 17 minutes into Activity 9.2. Cards are sorted. Pairs A, B and C have shared card B, and their words are on the chart.",
+   "show": [
+    "On the chart:",
+    "Pair A · both unit rates: “35 cents a box before, 40 cents now. No deal.”",
+    "Pair B · original rate on the new number: “6 boxes should be $2.10, not $2.40.”",
+    "Pair C · scaling the pack: “6 is \\(\\frac{6}{10}\\) of 10, so 6 boxes should be \\(\\frac{6}{10}\\) of $3.50.”"
+   ],
+   "ask": "Pair C’s words are up. What do you write beside Pair A’s? What do you ask?",
+   "aim": "Pairs say how scaling the pack reaches the same decision as the unit rate.",
+   "notes": [
+    "Write beside Pair A’s words: “unit rate,” “per box.”",
+    "Then ask pairs to compare the ways, and let them make the connection:"
+   ],
+   "say": [
+    "Which ways used a unit rate? How does scaling the pack reach the same decision?"
+   ],
+   "checks": [
+    "Called pairs in order: both unit rates, then the new number, then scaling",
+    "Wrote students’ own words, with “unit rate” or “per” beside them",
+    "Asked pairs to compare unit price and scaling, and let them connect the two"
+   ],
+   "sounds": "Card B is not a good deal because the unit rate is 40 cents per box in the new deal and 35 cents per box in the original.",
+   "why": "IM: Collect and Display turns students’ spoken words into a shared reference. Here it links each way to whether it used a unit rate.",
+   "runIt": [
+    "During partner talk, scribe students’ words as said, such as “the same.” Write “unit rate” or “per” beside them.",
+    "Call 2–3 pairs: both unit rates first, then the original rate on the new number, then scaling by \\(\\frac{6}{10}\\).",
+    "Scribe each pair’s reason beside its numbers; add “unit rate” or “per” next to their words, not in place of them.",
+    "Ask pairs to compare: which ways used a unit rate, and how does scaling reach the same decision? You scribe their connections.",
+    "Leave the chart up for the lesson synthesis and the cool-down."
+   ]
+  },
+  {
+   "id": "math:9.3",
+   "activityId": "9.3",
+   "kind": "math",
+   "type": "task",
+   "name": "Do the sprint task yourself",
+   "where": "Before class. Solve the task: rank six animals’ one-minute sprints.",
+   "ask": "Which animal sprinted the farthest? What are the place rankings?",
+   "aim": "Know the full ranking, and the chain of facts from meters to feet.",
+   "notes": [
+    "How students might solve it:",
+    "All in feet: antelope 5,280, cougar 4,224 (1,408 × 3), hare 4,136 (49,632 ÷ 12), coyote 3,773, ostrich about 3,772.97, kangaroo about 3,520.",
+    "All in yards: antelope 1,760, cougar 1,408, hare \\(1,378\\frac{2}{3}\\), and so on.",
+    "All in meters, through 1 inch = 2.54 centimeters: antelope about 1,609, ostrich 1,150, kangaroo 1,073. The order is the same."
+   ],
+   "checks": [
+    "Ranked antelope, cougar, hare, coyote, ostrich, kangaroo",
+    "Put every distance in one unit before comparing",
+    "Found the coyote just ahead: 3,773 feet against about 3,772.97"
+   ]
+  },
+  {
+   "id": "m8",
+   "activityId": "9.3",
+   "kind": "moment",
+   "momentId": "m8",
+   "type": "student",
+   "name": "A student says the hare wins",
+   "where": "About 4 minutes into Activity 9.3, during quiet think time.",
+   "show": [
+    "| animal | sprint distance",
+    "| cougar | 1,408 yards",
+    "| antelope | 1 mile",
+    "| hare | 49,632 inches",
+    "| kangaroo | 1,073 meters",
+    "| ostrich | 1.15 kilometers",
+    "| coyote | 3,773 feet"
+   ],
+   "student": "A student says, “The hare wins. 49,632 is the biggest number.”",
+   "ask": "What do you say to this student?",
+   "aim": "The student sees the units differ and picks one unit to compare in.",
+   "say": [
+    "49,632 what? What unit is the cougar’s in?"
+   ],
+   "checks": [
+    "Asked what unit 49,632 is in instead of saying inches",
+    "Pointed to the cougar’s unit so they saw the units differ",
+    "Let them choose the one unit to convert to"
+   ],
+   "ifNot": "Which is longer, 1 inch or 1 yard?"
+  },
+  {
+   "id": "m9",
+   "activityId": "9.3",
+   "kind": "moment",
+   "momentId": "m9",
+   "type": "student",
+   "name": "A student is stuck on meters",
+   "where": "About 7 minutes into Activity 9.3, during quiet think time.",
+   "show": [
+    "Their work so far, in feet: antelope 5,280, cougar 4,224, hare 4,136, coyote 3,773.",
+    "Still to do: | kangaroo | 1,073 meters",
+    "The fact on the page: 1 inch = 2.54 centimeters"
+   ],
+   "student": "The student stops at the kangaroo: “There’s no meters to feet.”",
+   "ask": "What do you say to this student?",
+   "aim": "The student builds the chain from meters to feet, one fact at a time.",
+   "say": [
+    "Which fact starts in meters? Where does it take you?"
+   ],
+   "checks": [
+    "Asked which fact starts in meters instead of giving the chain",
+    "Pointed to 1 inch = 2.54 centimeters as the link",
+    "Let them work the steps: meters, centimeters, inches, feet"
+   ],
+   "ifNot": "How many centimeters are in 1 meter?"
+  }
+ ],
  "lessonSynthesis": {
   "ideas": [
    "To compare two rates, compare unit rates: the price of one item in each offer.",

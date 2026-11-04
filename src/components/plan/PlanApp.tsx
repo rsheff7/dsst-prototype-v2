@@ -835,6 +835,36 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
     </button>
   );
 
+  /** The folded guidance, in the rule's order. */
+  const folded = (c: RehearsalCard, m: Moment | undefined) => {
+    const pa = actPlan(c.activityId);
+    const goingOn = c.goingOn ?? (c.type === 'student' || c.type === 'language' || c.type === 'decision' ? m?.means : undefined);
+    const parts: { title: string; lines: string[] }[] = [
+      ...(goingOn ? [{ title: 'What’s going on', lines: [goingOn] }] : []),
+      ...(c.ifNot ? [{ title: 'If it doesn’t work', lines: [q(c.ifNot)] }] : []),
+      ...(c.why ? [{ title: 'Why', lines: [c.why] }] : []),
+      ...(c.runIt?.length ? [{ title: 'Run it', lines: c.runIt }] : []),
+      ...(c.type === 'task' && pa
+        ? [
+            { title: 'Where they get stuck', lines: [...pa.misconceptions, ...pa.barriers] },
+            { title: 'Ask if they’re stuck', lines: pa.backPocket.map(q) },
+          ]
+        : []),
+    ];
+    return parts.map((x) => (
+      <details key={x.title} className={s.more}>
+        <summary>{x.title}</summary>
+        <ul className={s.clean}>
+          {x.lines.map((l, j) => (
+            <li key={j}>
+              <MathText>{l}</MathText>
+            </li>
+          ))}
+        </ul>
+      </details>
+    ));
+  };
+
   const deckView = (c: RehearsalCard) => {
     const a = actIm(c.activityId)!;
     const isCrux = c.activityId === cruxId;
@@ -1003,14 +1033,16 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
                 ))}
               </div>
             )}
-            {m && c.kind !== 'levels' && (
-              <span className={s.small}>
-                <b>What’s going on:</b> <MathText>{m.means}</MathText>
-              </span>
+            {/* The guidance rule (docs/REHEARSAL-GUIDANCE-RULE.md): shown, then folded, in the same order on every card. */}
+            {c.sounds && (
+              <div className={s.flat}>
+                <span className={s.lab}>Sounds like</span>
+                <MathText>{q(c.sounds)}</MathText>
+              </div>
             )}
             {c.kind === 'release' && (
               <>
-                <span className={s.lab}>Frames by WIDA level</span>
+                <span className={s.lab}>By WIDA level</span>
                 <Frames />
               </>
             )}
@@ -1024,26 +1056,15 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
                 ))}
               </div>
             </div>
-            {m && (
+            {(c.avoid ?? m?.dont) && (
               <div className={s.avoid}>
                 <span className={s.lab}>Avoid</span>
                 <p>
-                  <MathText>{m.dont}</MathText>
+                  <MathText>{(c.avoid ?? m?.dont)!}</MathText>
                 </p>
               </div>
             )}
-            {(c.more ?? []).map((x, i) => (
-              <details key={i} className={s.more}>
-                <summary>{x.title}</summary>
-                <ul className={s.clean}>
-                  {x.lines.map((l, j) => (
-                    <li key={j}>
-                      <MathText>{l}</MathText>
-                    </li>
-                  ))}
-                </ul>
-              </details>
-            ))}
+            {folded(c, m)}
             <button type="button" className={s.flagbtn} aria-pressed={!!st.flags[c.id]} onClick={() => toggle('flags', c.id)}>
               {Icon.flag}
               {st.flags[c.id] ? 'Marked as hard' : 'Mark as hard'}
@@ -1529,6 +1550,25 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
             Listen for: <MathText>{q(plan.crux.synthesis.sounds)}</MathText>
           </span>
         </div>
+        {/* Where students get stuck at the crux, including the points no card rehearses. */}
+        {(() => {
+          const pc = actPlan(cruxId);
+          const items = pc ? [...pc.misconceptions, ...pc.barriers] : [];
+          return (
+            items.length > 0 && (
+              <div className={s.mv}>
+                <span className={s.lab}>Watch for</span>
+                <ul className={s.clean}>
+                  {items.map((x, i) => (
+                    <li key={i}>
+                      <MathText>{x}</MathText>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )
+          );
+        })()}
         {/* When it goes wrong: the crux moments you rehearsed, one line each. */}
         {(actPlan(cruxId)?.momentIds ?? [])
           .map(moment)

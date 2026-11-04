@@ -21,7 +21,9 @@
   "Non-crux activities carry no language supports (D7).",
   "beforeClass and cuts rewritten from Premo’s for D1: Premo’s versions plan for Group Presentations with paper and markers. Premo’s 8.2 cut also skips the optional Notice and Wonder opening, which would replace the first read; kept.",
   "2026-11-02: m12 (running Three Reads) replaced by m3 (Three Reads slipping): the Launch card already rehearses running it.",
-  "Revised 2026-11-03 after persona review: 6.4 is now how many miles the distance apart decreases each hour (IM’s framing), not “their speed,” in the exemplar, frames, synthesis, 8.2 and 8.3 strategies and the language misconception; “speed” stays for each walker. Precise terms now speed, per, miles per hour, divide (the crux divides; “multiply by” and “divide by” were not verbatim in the exemplar). Added clo.posted (train, 60 miles per hour, 150 miles), nonverbal ways in by band, and momentCriteria for m11. Emerging frame keeps the reason with “So.” Collect and Display: each group says its sentence while the teacher scribes it as said and writes the precise term beside it, no revoicing; students then point to where each way shows the 6.4 (IM’s connect-the-strategies move). Synthesis sounds in one voice. Copy: ‘per’ in release.say; constant-speed; 12 out of 75; “after 1 hour” throughout; Alone:; beforeClass labels match other lessons and split to ≤ 30 words; story split; pointTo trimmed; 8.2 grouping says only how students work."
+  "Revised 2026-11-03 after persona review: 6.4 is now how many miles the distance apart decreases each hour (IM’s framing), not “their speed,” in the exemplar, frames, synthesis, 8.2 and 8.3 strategies and the language misconception; “speed” stays for each walker. Precise terms now speed, per, miles per hour, divide (the crux divides; “multiply by” and “divide by” were not verbatim in the exemplar). Added clo.posted (train, 60 miles per hour, 150 miles), nonverbal ways in by band, and momentCriteria for m11. Emerging frame keeps the reason with “So.” Collect and Display: each group says its sentence while the teacher scribes it as said and writes the precise term beside it, no revoicing; students then point to where each way shows the 6.4 (IM’s connect-the-strategies move). Synthesis sounds in one voice. Copy: ‘per’ in release.say; constant-speed; 12 out of 75; “after 1 hour” throughout; Alone:; beforeClass labels match other lessons and split to ≤ 30 words; story split; pointTo trimmed; 8.2 grouping says only how students work.",
+  "2026-11-03: rehearsal cards written to the card spec and guidance rule. NEW (not in IM or Premo): the synthesis board’s Group A, B and C sentences (numbers checked: 24 − 3 − 3.4 = 17.6, 3 + 3.4 = 6.4, 24 ÷ 6.4 = 3.75); m1’s table and “12 ÷ 75” beside it; m5’s blank 2- and 3-hour rows; m11’s work “12 ÷ 2 = 6, 24 ÷ 1 = 24”; the m4 story lines are IM’s, lightly shortened. Doubts: m3 and m4 happen during the reads, so they sit between the launch and release cards; the synthesis Sounds like is crux.synthesis.sounds (question 5, 9.6), not the 6.4 on the board; m2 and m3 are typed as decisions (class-wide prompts), as 6.3.7’s m2; m11’s What’s going on is rewritten to start from what the student can do.",
+  "2026-11-03 (Claude): synthesis card’s Sounds like now matches its board (the 6.4), not question 5."
  ],
  "story": "Lesson 8 is the fourth of five rates lessons. Students use speed and pace on longer problems: two friends walking toward each other, then two cousins moving apart. Lesson 9 solves rate problems more broadly.",
  "previous": "In Lesson 7 students used one unit rate to go across a table of equivalent ratios; today that unit rate is a speed or a pace.",
@@ -202,6 +204,339 @@
    "sounds": "I divide 24 by 2.5: the distance apart decreased by 9.6 miles each hour. I subtract Clare’s 3.4, so Kiran’s speed was 6.2 miles per hour."
   }
  },
+ "rehearsal": [
+  {
+   "id": "math:8.1",
+   "activityId": "8.1",
+   "kind": "math",
+   "type": "task",
+   "name": "Do the treadmill task yourself",
+   "where": "Before class. Solve the warm-up students do first: Andre’s dad on the treadmill.",
+   "ask": "Answer both questions. Which unit rate did you use for each?",
+   "aim": "Know both answers, and a speed way and a pace way to get them.",
+   "notes": [
+    "How students might solve it:",
+    "Use the speed: 12 ÷ 75 = 0.16 miles per minute, so 0.16 × 30 = 4.8 miles.",
+    "Use the pace: 75 ÷ 12 = 6.25 minutes per mile, so 8 × 6.25 = 50 minutes, and 30 ÷ 6.25 = 4.8 miles.",
+    "Scale the table: 30 is 75 × 0.4, so 12 × 0.4 = 4.8 miles."
+   ],
+   "checks": [
+    "Got 50 minutes and 4.8 miles",
+    "Found both unit rates: 0.16 miles per minute and 6.25 minutes per mile",
+    "Said which one is the speed and which is the pace"
+   ]
+  },
+  {
+   "id": "m1",
+   "activityId": "8.1",
+   "kind": "moment",
+   "momentId": "m1",
+   "type": "student",
+   "name": "A student stops at “12 ÷ 75”",
+   "where": "About 2 minutes into Activity 8.1, during quiet think time.",
+   "show": [
+    "Their work on the 30-minute question:",
+    "| distance (miles) | time (minutes)",
+    "| 12 | 75",
+    "| ? | 30",
+    "Beside the table: 12 ÷ 75"
+   ],
+   "student": "A student wrote “12 ÷ 75” and stopped: “That doesn’t come out even.”",
+   "ask": "What do you say to this student?",
+   "aim": "The student writes \\(\\frac{12}{75}\\) as a decimal and finishes the question.",
+   "say": [
+    "Twelve out of 75. What would that be out of 100?"
+   ],
+   "checks": [
+    "Kept the decimal step with the student",
+    "Linked \\(\\frac{12}{75}\\) to a fraction they can already write as a decimal",
+    "Didn’t do the division for them"
+   ],
+   "ifNot": "What do you multiply 75 by to get 30?"
+  },
+  {
+   "id": "m2",
+   "activityId": "8.1",
+   "kind": "moment",
+   "momentId": "m2",
+   "type": "decision",
+   "name": "Partners stop at matching answers",
+   "where": "About 6 minutes into Activity 8.1. Students have just moved to a new partner.",
+   "student": "New partners compare: “4.8.” “Same.” “Cool.” They turn around.",
+   "ask": "What do you say to these partners?",
+   "aim": "Partners explain how they got 4.8, more clearly than the first time.",
+   "say": [
+    "Same answer. Now ask how they got it."
+   ],
+   "checks": [
+    "Sent partners to each other’s reasoning, not the answer",
+    "Asked for a detail: a step, a unit or a rate",
+    "Didn’t move on because the answers matched"
+   ],
+   "why": "IM: in Stronger and Clearer Each Time, partners press each other for details. A matching answer is where the explaining starts, not where it ends."
+  },
+  {
+   "id": "math:8.2",
+   "activityId": "8.2",
+   "kind": "math",
+   "type": "task",
+   "name": "Do the picnic task yourself",
+   "where": "Before class. Solve the task students do today: Kiran and Clare on the rail trail.",
+   "ask": "Make the distance-apart table. When do they meet, and how fast did Kiran jog?",
+   "aim": "Know every answer, and why the distance apart drops 6.4 miles each hour.",
+   "notes": [
+    "How students might solve it:",
+    "Take both walks off each hour: 24 − 3 − 3.4 = 17.6 miles after 1 hour, then 11.2 and 4.8.",
+    "Four columns: hours, Kiran’s miles, Clare’s miles and distance apart.",
+    "The distance apart decreases by 6.4 miles each hour: 24 ÷ 6.4 = 3.75 hours, so they meet at 11:45 a.m.",
+    "Kiran’s idea: right about the meeting time, but they would meet at Clare’s house.",
+    "Kiran’s jog: Clare walks 3.4 × 2.5 = 8.5 miles, 24 − 8.5 = 15.5, and 15.5 ÷ 2.5 = 6.2 miles per hour."
+   ],
+   "checks": [
+    "Got 17.6, 11.2 and 4.8 in the table",
+    "Got 11:45 a.m. and 6.2 miles per hour",
+    "Said what Kiran gets right, and what changes: the meeting place"
+   ]
+  },
+  {
+   "id": "launch:8.2",
+   "activityId": "8.2",
+   "kind": "rounds",
+   "type": "routine",
+   "routine": "MLR6: Three Reads",
+   "language": true,
+   "name": "Read the story three times",
+   "where": "Start of Activity 8.2. You’ve told students about rail trails. The story is up, questions covered.",
+   "whereIfChosen": {
+    "activityId": "8.1",
+    "where": "Start of Activity 8.2. Students just finished the treadmill warm-up. You’ve told them about rail trails. The story is up, questions covered."
+   },
+   "ask": "Read the story aloud. After each read, ask one question. Nobody solves yet.",
+   "aim": "Students understand the story before anyone starts solving.",
+   "rounds": [
+    {
+     "ask": "You’ve read it once. What do you ask?",
+     "aim": "Students say what’s happening, with no numbers."
+    },
+    {
+     "ask": "You’ve read it twice. What do you ask?",
+     "aim": "Students say what can be counted or measured, whose it is, with units."
+    },
+    {
+     "ask": "You’ve read it three times. What do you ask?",
+     "aim": "Students say what they must find, without solving."
+    }
+   ],
+   "checks": [
+    "Read 1: asked what’s happening, with no numbers",
+    "Read 2: asked what can be counted or measured, with units",
+    "Read 3: showed the questions and asked what they must find"
+   ],
+   "why": "IM: Three Reads makes sure students know what they’re being asked to do. Here, it sorts out two walkers, two speeds and a start time before anyone calculates.",
+   "runIt": [
+    "Read 1: read the story aloud. Ask what’s happening, with no numbers.",
+    "Read 2: read it again. Ask what can be counted or measured, with units.",
+    "Read 3: show the questions and read again. Ask what they must find. Then start quiet think time."
+   ]
+  },
+  {
+   "id": "m3",
+   "activityId": "8.2",
+   "kind": "moment",
+   "momentId": "m3",
+   "type": "decision",
+   "name": "Pencils out on the first read",
+   "where": "About 3 minutes into Activity 8.2. You’ve just finished the first read.",
+   "student": "Pencils are already working 24 ÷ 3. Nobody has said what’s happening.",
+   "ask": "What do you say to the class?",
+   "aim": "Students tell the story in words before anyone uses a number.",
+   "say": [
+    "No numbers yet. What is happening in this story?"
+   ],
+   "checks": [
+    "Sent the class back to the story, not the numbers",
+    "Asked what is happening, in words",
+    "Didn’t let the fastest calculators set the pace"
+   ],
+   "why": "IM: Three Reads makes sure students know what they’re being asked to do. The first read is for the story, so everyone sees that both friends walk."
+  },
+  {
+   "id": "m4",
+   "activityId": "8.2",
+   "kind": "levels",
+   "momentId": "m4",
+   "type": "language",
+   "routine": "MLR6: Three Reads",
+   "language": true,
+   "name": "Help a student say what a number measures",
+   "where": "About 4 minutes into Activity 8.2, during the second read.",
+   "show": [
+    "The story:",
+    "Kiran and Clare live 24 miles away from each other along a rail trail.",
+    "At 8:00 a.m. one Saturday, they started walking toward each other, planning a picnic when they meet.",
+    "Kiran walks at a speed of 3 miles per hour while Clare walks 3.4 miles per hour."
+   ],
+   "student": "The student points at “3.4” and says nothing.",
+   "ask": "What do you say to this student?",
+   "aim": "The student says what 3.4 measures, whose it is, and its unit.",
+   "checks": [
+    "Kept the same question at every level: what can be counted or measured",
+    "Matched the way in to the student’s level",
+    "Didn’t tell them what the number means"
+   ],
+   "ifNot": "Point to the person in the story beside 3.4. What does that person do?",
+   "sounds": "Clare’s speed is 3.4 miles per hour: she walks 3.4 miles each hour."
+  },
+  {
+   "id": "release:8.2",
+   "activityId": "8.2",
+   "kind": "release",
+   "type": "send",
+   "routine": "MLR8: Discussion Supports",
+   "language": true,
+   "name": "Send students to work",
+   "where": "About 6 minutes into Activity 8.2. Next: quiet think time on the first two questions, then partner talk.",
+   "ask": "What must every explanation include? What do you tell the class?",
+   "aim": "Students know to name each speed with “per” and say how they used it.",
+   "say": [
+    "Name each speed with “per,” and say how you used it."
+   ],
+   "notes": [
+    "Success criteria: When you explain, name each speed with “per,” miles per hour, and say how you used it.",
+    "When partners talk: After quiet think time, partners take turns saying the 1-hour row: “Kiran’s speed is ___ miles per hour, so…”"
+   ],
+   "checks": [
+    "Named what every explanation needs: each speed with “per,” and how it was used",
+    "Pointed to today’s frame on the board",
+    "Told them when they’ll say the 1-hour row to a partner"
+   ],
+   "sounds": "Kiran’s speed is 3 miles per hour, Clare’s is 3.4, so the distance apart decreases by 6.4 miles each hour. I divide 24 by 6.4: 3.75 hours, 11:45 a.m.",
+   "why": "Naming the language before work starts means students practice it while they solve. Saying “per” keeps each walker’s speed apart from the distance apart."
+  },
+  {
+   "id": "m5",
+   "activityId": "8.2",
+   "kind": "moment",
+   "momentId": "m5",
+   "type": "student",
+   "name": "A student’s 1-hour row says 21",
+   "where": "About 9 minutes into Activity 8.2, during quiet think time.",
+   "show": [
+    "Their table:",
+    "| elapsed time (hours) | distance apart (miles)",
+    "| 0 | 24",
+    "| 1 | 21",
+    "| 2 | ",
+    "| 3 | "
+   ],
+   "student": "The student explains: “Kiran walked 3, so 24 take away 3.”",
+   "ask": "What do you say to this student?",
+   "aim": "The student takes both friends’ walks off the 24 in the 1-hour row.",
+   "say": [
+    "Where is Clare after one hour? Show both of them."
+   ],
+   "checks": [
+    "Asked about both friends, not just one",
+    "Offered a sketch of the trail or a column for each walker",
+    "Didn’t fix the 1-hour row for them"
+   ],
+   "ifNot": "Make a column for Kiran and one for Clare. How far has each walked after 1 hour?"
+  },
+  {
+   "id": "synth:8.2",
+   "activityId": "8.2",
+   "kind": "synthesis",
+   "type": "routine",
+   "routine": "MLR2: Collect and Display",
+   "language": true,
+   "name": "Finish on the board",
+   "where": "About 24 minutes into Activity 8.2. Groups A, B and C have said their sentences. Their words are on the board.",
+   "show": [
+    "On the board:",
+    "| elapsed time (hours) | distance apart (miles)",
+    "| 0 | 24",
+    "| 1 | 17.6",
+    "| 2 | 11.2",
+    "| 3 | 4.8",
+    "Down the side: “− 6.4 each hour.”",
+    "Group A · the table: “Take off 3 and 3.4 each hour: 17.6, 11.2, 4.8.”",
+    "Group B · Kiran’s idea: “Same time as one person going 6.4 miles per hour, but they meet at Clare’s house.”",
+    "Group C · meeting time: “3 + 3.4 = 6.4 miles closer each hour. 24 ÷ 6.4 = 3.75 hours, 11:45 a.m.”"
+   ],
+   "ask": "Group C’s words are up. What math words do you add? What do you ask?",
+   "aim": "Students point to where each group’s way shows the 6.4.",
+   "notes": [
+    "Write beside their words: “speed,” “per,” “miles per hour.” Circle “per.”",
+    "Then ask, and let students come up and point to it on the table:"
+   ],
+   "say": [
+    "Where does each group’s way show the 6.4?"
+   ],
+   "checks": [
+    "Called groups in IM’s order, adding the speeds last",
+    "Wrote each group’s words as said, with the math word beside them",
+    "Asked where each way shows the 6.4, and let students point to it"
+   ],
+   "sounds": "Each hour the distance apart decreases by 6.4 miles, 3 + 3.4. It’s the 6.4 down the table, in Kiran’s idea, and in 24 ÷ 6.4.",
+   "why": "IM: Collect and Display turns students’ spoken words into a shared reference. The class reuses them on 8.3 and the cool-down.",
+   "runIt": [
+    "Call groups in IM’s order, the most common way first and adding the speeds last. Each group says its sentence aloud.",
+    "Scribe each group’s words as said beside one distance-apart table, with “− 6.4 each hour” down the side.",
+    "Write the precise term beside their words (speed, per, miles per hour), and circle “per.”",
+    "Ask: “Where does each group’s way show the 6.4?” Students come up and point to it on the table.",
+    "Leave the display up for 8.3 and the cool-down."
+   ]
+  },
+  {
+   "id": "math:8.3",
+   "activityId": "8.3",
+   "kind": "math",
+   "type": "task",
+   "name": "Do the swimming and biking task yourself",
+   "where": "Before class. Solve the optional task: Jada bikes while her cousin swims.",
+   "ask": "Answer all three questions. Which unit rate helped most for each?",
+   "aim": "Know every answer, and which unit rate fits each question.",
+   "notes": [
+    "How students might solve it:",
+    "Compare the same time: in 24 minutes Jada bikes 4 miles and her cousin swims 1 mile.",
+    "Find speeds: Jada 10 miles per hour, her cousin 2.5, so Jada is 7.5 miles per hour faster.",
+    "After 15 minutes: Jada 2.5 miles plus her cousin \\(\\frac{5}{8}\\) mile is \\(3\\frac{1}{8}\\) miles apart.",
+    "Add the speeds: the distance apart grows by 12.5 miles each hour, so 5 ÷ 12.5 = 0.4 hours, or 24 minutes."
+   ],
+   "checks": [
+    "Got 7.5 miles per hour faster",
+    "Got \\(3\\frac{1}{8}\\) miles after 15 minutes, and 24 minutes to be 5 miles apart",
+    "Added the two distances, because they move apart"
+   ]
+  },
+  {
+   "id": "m11",
+   "activityId": "8.3",
+   "kind": "moment",
+   "momentId": "m11",
+   "type": "student",
+   "name": "A student says the cousin is faster",
+   "where": "About 3 minutes into Activity 8.3, during quiet think time.",
+   "show": [
+    "Their work:",
+    "Jada: 12 ÷ 2 = 6",
+    "Cousin: 24 ÷ 1 = 24"
+   ],
+   "student": "The student says: “The cousin is faster. 24 is more than 6.”",
+   "ask": "What do you say to this student?",
+   "aim": "The student labels both paces and says who takes less time per mile.",
+   "say": [
+    "Label the units. What does 24 minutes per mile mean?"
+   ],
+   "checks": [
+    "Asked them to label the units before saying who is faster.",
+    "Had them say what 24 minutes per mile means: 24 minutes for each mile.",
+    "Didn’t tell them pace works backwards."
+   ],
+   "goingOn": "They found both paces correctly: 6 and 24 minutes per mile. They compared them as if they were speeds, where more means faster.",
+   "ifNot": "Who takes longer to go 1 mile?"
+  }
+ ],
  "lessonSynthesis": {
   "ideas": [
    "Speed is distance per unit of time: Jada bikes 2 miles in 12 minutes, so 2 ÷ 12 = \\(\\frac{1}{6}\\) mile per minute.",

@@ -19,7 +19,8 @@
   "Lesson synthesis: IM’s three takeaways with the oatmeal numbers. The check uses a new context (8 cups of water for 2 scoops of mix) to avoid the cool-down’s grapes: 8 ÷ 2 = 4 cups per scoop, 5 × 4 = 20.",
   "beforeClass and cuts: rewritten from Premo’s for D1. Premo’s MLR 3 chart-paper item and its Think Pair Share frames are dropped; its oatmeal table and “unit rate” word display are kept. Premo’s two cuts are kept as written; a 6.2 cut was added.",
   "Revised 2026-11-03 after persona review: synthesis (MLR 1) now opens with IM’s flawed explanation, quoted exactly; pairs critique it, write a stronger one, then partner rounds; prompt and sounds updated, m7 kept. Added clo.posted, nonverbal ways in, momentCriteria for m4, m5, m10. Emerging and developing frames keep the reason. clo.precise drops “multiply” and “cups of oats per cup of water” (the exemplar answers Lin with ≤ 30 words; Diego’s rate stays in the strategies, the flawed explanation and the emerging stretch); lookFor checks “per” and both units. Exemplar and sounds agree on “I know the oats” and “12.5 cups of water.” Three Reads listenFor keeps both units. ‘per’ in say-lines. “ounces” throughout 6.3. Tables written “15 to 6,” blanks “___.” Story glosses “unit rate (rate per 1)” once. pointTo, beforeClass trimmed to ≤ 30 words; cuts in cut-first order (6.3, 6.1, 6.2).",
-  "2026-11-03 (Claude, after the revision): restored “cups of oats per cup of water” as a precise term, since the CLO asks students to name each rate; the exemplar now answers both Lin and Diego (37 words, over the 30-word guide on purpose)."
+  "2026-11-03 (Claude, after the revision): restored “cups of oats per cup of water” as a precise term, since the CLO asks students to name each rate; the exemplar now answers both Lin and Diego (37 words, over the 30-word guide on purpose).",
+  "2026-11-03: rehearsal cards written to the card spec and guidance rule. NEW (not in IM or Premo): every If it doesn’t work question; the m10 pair’s work set out as a table (IM’s own numbers, 24 | 30 and 4 | 5 to 28 | 35); the synthesis card’s “fix first” note. Doubts: the synthesis card comes before m7, since m7 happens while pairs discuss the flawed explanation, so Stronger and Clearer is not the deck’s last card; the flawed explanation is quoted verbatim at 27 words, over the 25-word line rule; Three Reads sits on 6.2 per D1, though IM’s Three Reads support is for 6.3; m10 is typed a student moment, not a decision."
  ],
  "story": "Lesson 6 shows that every ratio has a unit rate (rate per 1) for each quantity, and the question decides which to use. Lesson 7’s tables lean on both.",
  "previous": "In Lesson 5 students compared speeds and prices by finding a rate per 1; today they find that each ratio has two rates per 1, one for each quantity.",
@@ -243,6 +244,382 @@
   {
    "activityId": "6.2",
    "note": "Never cut the quiet think time or the synthesis. If time is tight, critique the flawed explanation as a class and run one partner round, not two."
+  }
+ ],
+ "rehearsal": [
+  {
+   "id": "math:6.1",
+   "activityId": "6.1",
+   "kind": "math",
+   "type": "task",
+   "name": "Do the warm-up yourself",
+   "where": "Before class. Solve the warm-up students do first: “something per something.”",
+   "ask": "Think of two things described as “something per something.” Can you find one that isn’t a price or a speed?",
+   "aim": "Have examples ready, including one that isn’t a price or a speed.",
+   "notes": [
+    "How students might solve it:",
+    "Recall past lessons: a unit price like $1 per granola bar, or a speed like 30 miles per hour.",
+    "Think outside class: 40 miles per gallon, or $2 per gallon.",
+    "Name the words without the numbers: “miles per hour,” “dollars per pound.”"
+   ],
+   "checks": [
+    "Wrote two “per” examples, with numbers",
+    "Found one that isn’t a price or a speed",
+    "Said what 30 miles per hour tells you about 1 hour"
+   ]
+  },
+  {
+   "id": "m1",
+   "activityId": "6.1",
+   "kind": "moment",
+   "momentId": "m1",
+   "type": "student",
+   "name": "A group lists rates with no numbers",
+   "where": "About 2 minutes into Activity 6.1, while groups make their list.",
+   "show": [
+    "The group’s list:",
+    "miles per hour",
+    "dollars per pound"
+   ],
+   "student": "A group’s list has two rates and no numbers.",
+   "ask": "What do you say to this group?",
+   "aim": "The group keeps its list and tries one example with numbers.",
+   "say": [
+    "Good list. Can someone in your group give one with numbers?"
+   ],
+   "ifNot": "What might a sign at a grocery store say, per pound?",
+   "checks": [
+    "Credited the list as a fair start",
+    "Invited an example with numbers without requiring it",
+    "Didn’t treat the missing numbers as a mistake"
+   ]
+  },
+  {
+   "id": "m2",
+   "activityId": "6.1",
+   "kind": "moment",
+   "momentId": "m2",
+   "type": "decision",
+   "name": "Unpack one familiar rate",
+   "where": "About 4 minutes into Activity 6.1. Groups are sharing, and you’re writing their examples on the board.",
+   "show": [
+    "On the board:",
+    "30 miles per hour",
+    "$2 per gallon",
+    "40 miles per gallon"
+   ],
+   "student": "A group shares “30 miles per hour.” The class nods and waits for the next group.",
+   "ask": "What do you ask the class?",
+   "aim": "Students say what they know for sure about one familiar rate.",
+   "say": [
+    "What are some things we know for sure about an object moving 30 miles per hour?"
+   ],
+   "why": "IM unpacks one familiar rate, so “per” means an amount for each 1. IM says not to stress “per 1” yet.",
+   "checks": [
+    "Picked one familiar rate from the class list",
+    "Asked students what they know for sure about it",
+    "Didn’t explain “per 1” for them"
+   ]
+  },
+  {
+   "id": "math:6.2",
+   "activityId": "6.2",
+   "kind": "math",
+   "type": "task",
+   "name": "Do the oatmeal task yourself",
+   "where": "Before class. Solve the task students do today: Cooking Oatmeal.",
+   "ask": "Who is correct, Priya or Han? Which rate did you use for Lin, and which for Diego?",
+   "aim": "Know both rates, both answers, and why each question picks its rate.",
+   "notes": [
+    "How students might solve it:",
+    "Divide: 6 ÷ 15 = 0.4 cups of oats per cup of water; 15 ÷ 6 = 2.5 cups of water per cup of oats.",
+    "Scale down in the table: 15 to 6, then 5 to 2, then 2.5 to 1 and 1 to 0.4.",
+    "A double number line for water and oats shows both rates on one diagram.",
+    "Lin: 5 × 2.5 = 12.5 cups of water. Diego: 10 × 0.4 = 4 cups of oats."
+   ],
+   "checks": [
+    "Showed both are right: 0.4 and 2.5 each sit beside a 1",
+    "Got 12.5 cups of water for Lin and 4 cups of oats for Diego",
+    "Said which rate each question needs, and why"
+   ]
+  },
+  {
+   "id": "launch:6.2",
+   "activityId": "6.2",
+   "kind": "rounds",
+   "type": "routine",
+   "routine": "MLR6: Three Reads",
+   "language": true,
+   "name": "Read the problem three times",
+   "where": "Start of Activity 6.2. The recipe, both claims and “Who is correct?” are up. Lin’s and Diego’s questions are covered.",
+   "whereIfChosen": {
+    "activityId": "6.1",
+    "where": "Start of Activity 6.2. Students just shared their “per” lists. The recipe and both claims are up; Lin’s and Diego’s questions are covered."
+   },
+   "ask": "Read the problem aloud. After each read, ask one question. Nobody solves yet.",
+   "aim": "Students understand the recipe and both claims before anyone calculates.",
+   "rounds": [
+    {
+     "ask": "You’ve read it once. What do you ask?",
+     "aim": "Students say what’s happening, with no numbers."
+    },
+    {
+     "ask": "You’ve read it twice. What do you ask?",
+     "aim": "Students say what is measured, with units, and what each friend claims."
+    },
+    {
+     "ask": "You’ve read it three times. What do you ask?",
+     "aim": "Students say what they must decide, without solving."
+    }
+   ],
+   "checks": [
+    "Read 1: asked what’s happening, with no numbers",
+    "Read 2: asked what is measured, and in what units",
+    "Read 3: asked what they must decide, without solving"
+   ],
+   "why": "IM: Three Reads makes sure students know what they’re being asked to do. Here, it pulls the two claims apart before anyone divides.",
+   "runIt": [
+    "Before read 1: say oatmeal is oats cooked in boiling water.",
+    "Read 1: read it aloud. Ask what’s happening, with no numbers.",
+    "Read 2: read it again. Ask what is measured, and in what units.",
+    "Read 3: read it again. Ask what they must decide. Then start quiet think time."
+   ]
+  },
+  {
+   "id": "release:6.2",
+   "activityId": "6.2",
+   "kind": "release",
+   "type": "send",
+   "routine": "MLR8: Discussion Supports",
+   "language": true,
+   "name": "Send students to work",
+   "where": "About 3 minutes into Activity 6.2. Next: 2–3 minutes of quiet think time on who is correct, then partners agree.",
+   "ask": "What must every explanation include? What do you tell the class?",
+   "aim": "Students know their explanation names each rate with “per,” both units, and why.",
+   "say": [
+    "Name each rate with ‘per,’ and say why you chose it."
+   ],
+   "notes": [
+    "Success criteria: In your explanation, name each rate with “per” and both units, and say why you chose the rate you used.",
+    "When partners talk: After quiet think time, partners take turns: “Priya’s 0.4 means ___ per ___.” Then the same for Han’s 2.5.",
+    "Then: Before the last question, partners tell each other which rate they used for Lin, which for Diego, and why."
+   ],
+   "checks": [
+    "Named what every explanation needs: each rate with “per,” both units, the reason",
+    "Pointed to today’s frame on the board",
+    "Told them when they’ll say it to a partner"
+   ],
+   "sounds": "For Lin, I used 2.5 cups of water per cup of oats because I know the oats: 12.5 cups. For Diego, I used 0.4 cups of oats per cup of water because I know the water: 4 cups.",
+   "why": "Naming the language before work starts means students practice it while they solve. Today the reason, “because I know the ___,” is the hard part."
+  },
+  {
+   "id": "m4",
+   "activityId": "6.2",
+   "kind": "moment",
+   "momentId": "m4",
+   "type": "student",
+   "name": "A student says one must be wrong",
+   "where": "About 6 minutes into Activity 6.2, as partners compare answers to “Who is correct?”",
+   "show": [
+    "Priya: “That’s 0.4 cups of oats per cup of water.”",
+    "Han: “That’s 2.5 cups of water per cup of oats.”",
+    "| water (cups) | oats (cups)",
+    "| 15 | 6",
+    "| 1 | ",
+    "|  | 1"
+   ],
+   "student": "A student says: “They got different numbers, so one of them is wrong.”",
+   "ask": "What do you say to this student?",
+   "aim": "The student says what each number counts and decides if both can be right.",
+   "say": [
+    "What does Priya’s 0.4 count? And Han’s 2.5?"
+   ],
+   "ifNot": "Where is the 1 in each row?",
+   "checks": [
+    "Asked what each number counts instead of saying both are right",
+    "Pointed them to the 1 in each row of the table",
+    "Let the pair decide whether both can be right"
+   ]
+  },
+  {
+   "id": "m5",
+   "activityId": "6.2",
+   "kind": "moment",
+   "momentId": "m5",
+   "type": "student",
+   "name": "A student writes “5 × 0.4 = 2”",
+   "where": "About 9 minutes into Activity 6.2. The class agreed both are right; pairs are on Lin’s question.",
+   "show": [
+    "Lin decides to cook 5 cups of oats. How many cups of water should she boil?",
+    "The class table:",
+    "| water (cups) | oats (cups)",
+    "| 15 | 6",
+    "| 1 | 0.4",
+    "| 2.5 | 1"
+   ],
+   "student": "A student wrote “5 × 0.4 = 2 cups of water.”",
+   "ask": "What do you say to this student?",
+   "aim": "The student sees 2 cups is too little water and picks the other rate.",
+   "say": [
+    "In the recipe, is there more water or more oats?"
+   ],
+   "ifNot": "Which row of the table starts from 1 cup of oats?",
+   "checks": [
+    "Asked whether the recipe has more water or more oats",
+    "Let them check 2 cups of water against 5 cups of oats",
+    "Didn’t tell them to use 2.5"
+   ]
+  },
+  {
+   "id": "synth:6.2",
+   "activityId": "6.2",
+   "kind": "synthesis",
+   "type": "routine",
+   "routine": "MLR1: Stronger and Clearer Each Time",
+   "language": true,
+   "name": "Make the explanation stronger",
+   "where": "About 11 minutes into Activity 6.2. Pairs have answered Lin and Diego. The oatmeal table is up.",
+   "show": [
+    "IM’s flawed explanation, on chart paper:",
+    "“I did not use either Priya’s rate (0.4 cups of oats per cup of water) or Han’s rate (2.5 cups of water per cup of oats) because they are not equal.”",
+    "The oatmeal table:",
+    "| water (cups) | oats (cups)",
+    "| 15 | 6",
+    "| 1 | 0.4",
+    "| 2.5 | 1",
+    "| 12.5 | 5",
+    "| 10 | 4"
+   ],
+   "ask": "Here is IM’s flawed explanation. What should students fix first?",
+   "aim": "Students say what each rate means, then explain which rate each question needs.",
+   "notes": [
+    "Fix first: “because they are not equal.” Each rate counts per a different 1, so they needn’t be equal.",
+    "Then ask the class, and let pairs find it:"
+   ],
+   "say": [
+    "What is wrong with this explanation? Which rate would you use for Lin, and for Diego, and why?"
+   ],
+   "checks": [
+    "Showed IM’s flawed explanation before pairs shared the last answer",
+    "Asked what each number means before asking which rate",
+    "Ran at least one partner round, then had students rewrite"
+   ],
+   "sounds": "Either rate works. For Lin, I used Han’s rate because I know the oats: 2.5 cups of water per cup of oats, 5 × 2.5 = 12.5 cups of water.",
+   "avoid": "Correcting the flawed explanation for the class yourself.",
+   "ifNot": "What does each number count?",
+   "why": "IM: Stronger and Clearer lets students refine an explanation through talk, pressed for details. Here, the flawed one gives them something to fix.",
+   "runIt": [
+    "Show IM’s flawed explanation. Pairs say what is wrong; if stuck, ask what each number means.",
+    "Alone: write which rate answers Lin’s question, which answers Diego’s, and why.",
+    "Partner rounds: read it aloud. The listener asks “What does that number mean?” or “Why that rate?”",
+    "Rewrite it stronger and clearer. Read one or two aloud beside the oatmeal table.",
+    "Leave the oatmeal table up for 6.3 and the lesson synthesis."
+   ]
+  },
+  {
+   "id": "m7",
+   "activityId": "6.2",
+   "kind": "levels",
+   "momentId": "m7",
+   "type": "language",
+   "language": true,
+   "name": "Help a student say what each number means",
+   "where": "About 12 minutes into Activity 6.2. Pairs are discussing IM’s flawed explanation beside the oatmeal table.",
+   "show": [
+    "The oatmeal table:",
+    "| water (cups) | oats (cups)",
+    "| 15 | 6",
+    "| 1 | 0.4",
+    "| 2.5 | 1"
+   ],
+   "student": "The student points at 0.4, then at 2.5: “This one… and this one is… the other way?”",
+   "ask": "What do you say to this student?",
+   "aim": "The student names what each number counts, with “per” and both units.",
+   "ifNot": "Put your finger on the 1. Is it 1 cup of water or 1 cup of oats?",
+   "sounds": "Priya’s 0.4 is cups of oats per cup of water. Han’s 2.5 is cups of water per cup of oats.",
+   "checks": [
+    "Kept one question at every level: what each number means",
+    "Matched the way in to the student’s level",
+    "Didn’t say what the numbers mean for them"
+   ]
+  },
+  {
+   "id": "math:6.3",
+   "activityId": "6.3",
+   "kind": "math",
+   "type": "task",
+   "name": "Do the unit-rate task yourself",
+   "where": "Before class. Solve the last task: cheesecake, milk and raffle tickets.",
+   "ask": "Find all six unit rates. Which rate did you use for each of the last three problems?",
+   "aim": "Know every answer, and which rate each problem needs.",
+   "notes": [
+    "How students might solve it:",
+    "Divide: 12 ÷ 15 = 0.8 ounces of cream cheese per ounce of sugar; 15 ÷ 12 = 1.25 the other way.",
+    "Milk: \\(1\\frac{2}{3}\\) gallons per week and 0.6 weeks per gallon. Tickets: $4 per ticket and \\(\\frac{1}{4}\\) ticket per dollar.",
+    "Start from what you know: 35 × 0.8 = 28 ounces; 3 × 0.6 = 1.8 weeks; 1,000 × $4 = $4,000.",
+    "Double and add for the cheesecake: 24 and 30, plus 4 and 5, gives 28 ounces of cream cheese for 35 ounces of sugar.",
+    "IM’s table for 4a ends 25 | 35; it should read 28 | 35."
+   ],
+   "checks": [
+    "Got 0.8 and 1.25; \\(1\\frac{2}{3}\\) and 0.6; $4 and \\(\\frac{1}{4}\\)",
+    "Got 28 ounces, 1.8 weeks and $4,000",
+    "Chose the rate that starts from what each question gives"
+   ]
+  },
+  {
+   "id": "m10",
+   "activityId": "6.3",
+   "kind": "moment",
+   "momentId": "m10",
+   "type": "student",
+   "name": "A pair doubles and adds",
+   "where": "About 12 minutes into Activity 6.3, as pairs work on the last three problems.",
+   "show": [
+    "Lin needs cream cheese for 35 ounces of sugar. The pair’s table:",
+    "| cream cheese (oz) | sugar (oz)",
+    "| 12 | 15",
+    "| 24 | 30",
+    "| 4 | 5",
+    "| 28 | 35"
+   ],
+   "student": "The pair doubled 12 and 15 to 24 and 30, then added 4 and 5: 28 ounces.",
+   "ask": "What do you say to this pair?",
+   "aim": "The pair knows their way works, then tries a unit rate on the milk.",
+   "say": [
+    "That works. Would it work as fast for the milk?"
+   ],
+   "ifNot": "How long does 1 gallon of milk last?",
+   "checks": [
+    "Called the double-and-add reasoning correct",
+    "Asked whether it works as fast for the milk",
+    "Didn’t tell them to switch to the unit rate"
+   ]
+  },
+  {
+   "id": "m11",
+   "activityId": "6.3",
+   "kind": "moment",
+   "momentId": "m11",
+   "type": "student",
+   "name": "A student says you can’t buy a quarter ticket",
+   "where": "About 16 minutes into Activity 6.3, during the class share. The raffle rates are on the board.",
+   "show": [
+    "Tyler paid $16 for 4 raffle tickets.",
+    "$4 per ticket",
+    "\\(\\frac{1}{4}\\) ticket per dollar"
+   ],
+   "student": "A student says: “A quarter of a ticket per dollar? You can’t buy a quarter of a ticket.”",
+   "ask": "What do you say to this student?",
+   "aim": "The student uses the rate to find tickets for an amount of money.",
+   "say": [
+    "If I had $80, how many tickets could I buy?"
+   ],
+   "ifNot": "How many dollars buy one whole ticket?",
+   "checks": [
+    "Credited the objection as thinking about the situation",
+    "Asked them to use the rate with an amount of money",
+    "Didn’t drop the rate as useless"
+   ]
   }
  ]
 }
