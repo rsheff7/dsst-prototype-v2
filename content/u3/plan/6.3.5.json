@@ -21,14 +21,15 @@
   "2026-11-03: rehearsal revised after persona review 2 (moves rule, Three Reads, frames, wording). Moves: 9 cards that count (crux-only 6; 5.1 adds 1, 5.2 adds 2). Three Reads: round aims no longer state answers; read 3 is now IM’s strategy brainstorm (crux.threeReads[2], launch checks and runIt updated). IM’s “best deal” talk moves to a runIt step before read 3. m10: the first move asks the listener what number would show it’s cheapest; “how much per can?” is now If it doesn’t work. Synthesis card renamed “Finish on the board”; its Sounds like models the table-to-division connection. Release notes split and use clo.form’s frame. 5.3 cut gets an honest timing line. Wording: numerals (1 can, 1 minute, $1.50), “A student…” openings, “Where we are” periods, m1 renamed “Choose who explains first” and “opposite” used throughout, m9 check without a question mark, math:5.3 aim one sentence. NEW: crux.threeReads[2] listenFor (strategies students might name); m10’s checks.",
   "2026-11-03: round-3 fixes. crux.synthesis prompt and sounds now match the synth:5.3 card; read 3 says “How might we solve it?”; talk moment uses Today’s frame (CLO form); long sentences split (previous, CLO statement and look-for, 5.3 strategy, check sounds, beforeClass chart); “way in” and “What must every explanation include?” reworded; pointTo says IM’s list (IM: “display a list”). “IM’s order” kept: IM’s 5.3 synthesis has representations first, then division. m9 has no levelFrames (it uses the release frames), so no levelNonverbal added.",
   "2026-11-03: CLO restructured (Robert, with Elena’s review): a two-line board version (Content, Language; “We will…”, 20 words or fewer, no task numbers), “Say it like this” frame as part of the objective, and four scripted moments for using it. The “Students will…” statement and posted.goal are gone; the board version is the one CLO.",
-  "2026-11-03: Robert removed “Use it in class” from the objective page."
+  "2026-11-03: Robert removed “Use it in class” from the objective page.",
+  "2026-11-03: Robert: frames had a blank for a store name, but IM’s four ads have no names. Every frame now names the ad itself (“___ for $___”): Today’s sentence, all three level frames, the Levels 1–2 stretch and the posted sentence. The lesson synthesis check keeps its named stores, since its question names them."
  ],
  "story": "Lesson 5 opens the rates section. Students compare speeds and prices by finding how much for 1 of the same unit. The same rate per 1 means equivalent ratios.",
  "previous": "In earlier lessons students found and used rates per 1, most recently to convert units in Lesson 4. Today they use rates per 1 to compare speeds and prices.",
  "clo": {
   "imGoal": "Justify (orally and in writing) comparisons of speeds or prices.",
   "function": "justify",
-  "form": "___ is the best deal because its unit price is $___ per ___, less than $___ per ___ at ___.",
+  "form": "___ for $___ is the best deal because its unit price is $___ per ___, less than $___ per ___ at ___ for $___.",
   "board": {
    "content": "We will compare prices and speeds by finding how much for 1.",
    "language": "We will justify, out loud and in writing, which is the best deal, using “unit price” and “per.”"
@@ -47,7 +48,7 @@
   "exemplar": "8 for $6 is the best deal. Its unit price, or price per can, is 6 ÷ 8 = $0.75, less than $0.80, $1.00 and $1.50 at the other stores.",
   "lookFor": "The answer uses the CLO’s form. It names each price per bottle with “per”: $1.69, and $5 ÷ 4 = $1.25. It says which is less, and by how much: $0.44.",
   "posted": {
-   "sentence": "Store B is the best deal because its unit price is $1.20 per muffin (6 ÷ 5), less than $1.50 per muffin at Store A."
+   "sentence": "5 for $6 is the best deal because its unit price is $1.20 per muffin (6 ÷ 5), less than $1.50 per muffin at 2 for $3."
   }
  },
  "activities": [
@@ -165,22 +166,22 @@
    "successCriteria": "In your explanation, name the price per can at the best store and at one other store, and say which is less.",
    "say": "Name the price per can, and compare it with another store.",
    "talkMoments": [
-    "After quiet think time, partners take turns saying their best store. They use Today’s frame: “___ is the best deal because its unit price is $___ per ___, less than $___ per ___ at ___.”",
+    "After quiet think time, partners take turns saying their best store. They use Today’s frame: “___ for $___ is the best deal because its unit price is $___ per ___, less than $___ per ___ at ___ for $___.”",
     "Before the 28-oz question, partners tell each other what to compare when the cans aren’t the same size."
    ],
    "byBand": {
     "emerging": {
-     "frame": "___: $___ per can. ___: $___ per can. $___ is less, so ___ is the best deal.",
-     "stretch": "They join it into one sentence with “because”: “___ is the best deal because…”",
+     "frame": "___ for $___: $___ per can. ___ for $___: $___ per can. $___ is less, so ___ for $___ is the best deal.",
+     "stretch": "They join it into one sentence with “because”: “___ for $___ is the best deal because…”",
      "nonverbal": "They write each ad’s price in its “1 can: $___” box, then circle the smallest box."
     },
     "developing": {
-     "frame": "The best deal is ___ because its unit price is $___ per can, less than $___ per can at ___.",
+     "frame": "The best deal is ___ for $___ because its unit price is $___ per can, less than $___ per can at ___ for $___.",
      "stretch": "They add how they found it: “I divided the price by the cans: ___ ÷ ___.”",
      "nonverbal": "They point from the best ad’s 1-can row to another ad’s, and tap the smaller price."
     },
     "expanding": {
-     "frame": "___ has the lowest unit price because ___, while ___.",
+     "frame": "___ for $___ has the lowest unit price because ___, while ___.",
      "stretch": "They explain why per can stops working for the 28-oz can, and compare per ounce instead.",
      "nonverbal": "They hold the 15-oz and 28-oz ads side by side and point to the ounces."
     }
@@ -438,7 +439,7 @@
    "notes": [
     "Success criteria: In your explanation, name the price per can at the best store and at one other store, and say which is less.",
     "When partners talk: after quiet think time, partners take turns saying their best store.",
-    "They use Today’s frame: “___ is the best deal because its unit price is $___ per ___, less than $___ per ___ at ___.”"
+    "They use Today’s frame: “___ for $___ is the best deal because its unit price is $___ per ___, less than $___ per ___ at ___ for $___.”"
    ],
    "checks": [
     "Named what every explanation needs: the price per can at two stores",
