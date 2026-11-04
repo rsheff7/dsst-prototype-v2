@@ -25,7 +25,8 @@
   "2026-11-03: rehearsal cards written to the card spec and guidance rule. NEW (not in IM or Premo): the synthesis board’s Group A, B and C sentences (numbers checked: 24 − 3 − 3.4 = 17.6, 3 + 3.4 = 6.4, 24 ÷ 6.4 = 3.75); m1’s table and “12 ÷ 75” beside it; m5’s blank 2- and 3-hour rows; m11’s work “12 ÷ 2 = 6, 24 ÷ 1 = 24”; the m4 story lines are IM’s, lightly shortened. Doubts: m3 and m4 happen during the reads, so they sit between the launch and release cards; the synthesis Sounds like is crux.synthesis.sounds (question 5, 9.6), not the 6.4 on the board; m2 and m3 are typed as decisions (class-wide prompts), as 6.3.7’s m2; m11’s What’s going on is rewritten to start from what the student can do.",
   "2026-11-03 (Claude): synthesis card’s Sounds like now matches its board (the 6.4), not question 5.",
   "2026-11-03: rehearsal revised after persona review 2 (moves rule, Three Reads, frames, wording). Crux-only night is now 6 moves (launch, m4, release, m5, m13, synthesis). Release frames: every level supplies both speeds and the 1-hour distance apart, and says “I divide ___ by ___ to find the time”; no frame states that the gap closes by the sum (m5’s error). Stretches give a task, not the answer. Release nonverbals no longer point to 17.6 or 6.4, since m4 (read 2) shows them. m4: levelFrames for read 2 (what each number measures, with units), its own goingOn (no MLR code). Three Reads: round aims say what each read is for; read 3 is IM’s strategy brainstorm, with crux.threeReads[2], checks[2] and runIt[2] to match; card renamed “Read the problem three times.” m3 (Pencils out on the first read) is out of 8.2’s momentIds and the deck; its point is the Three Reads card’s Avoid. NEW: m13 card and Premo moment m13 (a student explains 24 ÷ 6.4, the CLO sentence), its show lines and sounds; Group B’s board line rewritten in plain words (Kiran’s idea as IM’s answer to question 4 describes it). Synthesis: IM says only “most common to least common”; “add the speeds last” is now our expectation, not IM’s; the meeting-time way is “add the speeds” in strategies, the 8.2 task card, show, checks and runIt. m1: goingOn credits 12 ÷ 75; ifNot stays on the out-of-100 route; “12 out of 75.” m5: own goingOn; “1 hour.” Talk moment and release note use Today’s frame, not a second frame. Wording: Where we are in two sentences; student lines start “A student…/A pair…”; m11 checks lose periods; “Do the warm-up yourself”; “Today’s frame”; “wrote down”; MLR codes dropped from 8.1 grouping, cuts and beforeClass. Doubt: Premo m4’s developing move still names “___ is ___ miles per hour,” which differs from the card’s levelFrames.",
-  "2026-11-03: round-3 fixes. Talk moment and release note now use each level’s frame for the 1-hour row (Today’s frame, clo.form, can’t hold “17.6 miles apart”). Release frames: emerging and developing get a “because ___” reason slot; the “I divide ___ by ___” ending moved to m13’s new levelFrames; expanding cut to three blanks; developing stretch is now a task (fill the 2-hour row). m4: emerging frame no longer supplies “speed”; levelNonverbal for developing and expanding (no solving gesture); Premo m4 developing move matches the card’s frame. m13: every level asks what, by what, and why (Premo). m1 ifNot simplifies 12/75 first (4/25 = 16/100). m2 renamed as a verb phrase. synth:8.2: math words in show, board labels “Group A · …”, sounds use the lesson’s “distance apart decreases” and no longer call 6.4 Kiran’s; crux.synthesis prompt and sounds match the card; “math word” in steps and runIt. Read 3 follows IM’s English-learner support: reveal the first three questions, work time, then brainstorm Kiran’s claim. Doubt: IM’s launch gives quiet think time on the first two questions; its read-3 support reveals three."
+  "2026-11-03: round-3 fixes. Talk moment and release note now use each level’s frame for the 1-hour row (Today’s frame, clo.form, can’t hold “17.6 miles apart”). Release frames: emerging and developing get a “because ___” reason slot; the “I divide ___ by ___” ending moved to m13’s new levelFrames; expanding cut to three blanks; developing stretch is now a task (fill the 2-hour row). m4: emerging frame no longer supplies “speed”; levelNonverbal for developing and expanding (no solving gesture); Premo m4 developing move matches the card’s frame. m13: every level asks what, by what, and why (Premo). m1 ifNot simplifies 12/75 first (4/25 = 16/100). m2 renamed as a verb phrase. synth:8.2: math words in show, board labels “Group A · …”, sounds use the lesson’s “distance apart decreases” and no longer call 6.4 Kiran’s; crux.synthesis prompt and sounds match the card; “math word” in steps and runIt. Read 3 follows IM’s English-learner support: reveal the first three questions, work time, then brainstorm Kiran’s claim. Doubt: IM’s launch gives quiet think time on the first two questions; its read-3 support reveals three.",
+  "2026-11-03: Elena round 4. IM’s launch and read-3 support fit together: read 3 reveals three questions with nobody solving; quiet think time stays on the first two (release and m5 unchanged). The Kiran brainstorm moved to a talk moment after the first-two checkpoint, as checking a claim. m4 developing nonverbal shows what 3.4 measures."
  ],
  "story": "Lesson 8 is the fourth of five rates lessons. Students use speed and pace on longer problems: two friends walking toward each other, then two cousins moving apart. Lesson 9 solves rate problems more broadly.",
  "previous": "In Lesson 7 students used one unit rate to go across a table of equivalent ratios. Today that unit rate is a speed or a pace.",
@@ -164,8 +165,8 @@
    },
    {
     "focus": "Ways to solve",
-    "say": "Read it with the first three questions; work alone. Then: how might we solve Kiran’s claim?",
-    "listenFor": "For Kiran’s claim: check if one walker at 6.4 miles per hour meets in the same time; use our table; sketch where they would meet."
+    "say": "Read it once more, with three questions showing. How might we solve them? Nobody solves yet.",
+    "listenFor": "Ways, not answers: a table of distance apart each hour, adding the two speeds, or a sketch of where they meet."
    }
   ],
   "release": {
@@ -173,6 +174,7 @@
    "say": "Name the speed with ‘per,’ and say how you used it.",
    "talkMoments": [
     "After quiet think time, partners take turns saying the 1-hour row in their level’s frame.",
+    "After the class sees a solution to the first two questions, groups brainstorm how to check Kiran’s claim.",
     "Before the meeting time, groups say how much closer the friends get each hour, and why."
    ],
    "byBand": {
@@ -327,19 +329,19 @@
     },
     {
      "ask": "You’ve read it three times. What do you ask?",
-     "aim": "Students work alone first, then suggest how we might solve Kiran’s claim."
+     "aim": "Students suggest ways to solve the first three questions, without solving."
     }
    ],
    "checks": [
     "Read 1: asked what’s happening, with no numbers",
     "Read 2: asked what can be counted or measured, with units",
-    "Read 3: showed the first three questions, gave work time, then asked how we might solve Kiran’s claim"
+    "Read 3: showed the first three questions and asked how we might solve them, with nobody solving"
    ],
    "why": "IM: Three Reads makes sure students know what they’re being asked to do. Here, it sorts out two walkers, two speeds and a start time before anyone calculates.",
    "runIt": [
     "Read 1: read the story aloud. Ask what’s happening, with no numbers.",
     "Read 2: read it again. Ask what can be counted or measured, with units.",
-    "Read 3: show the first three questions and read again. Give work time, then show Kiran’s claim and ask how we might solve it."
+    "Read 3: show the first three questions and read again. Ask how we might solve them; nobody solves yet."
    ],
    "avoid": "Letting pencils start on the first read. Send them back to the story: no numbers yet."
   },
@@ -376,7 +378,7 @@
     "expanding": "___ is ___’s ___, in ___, so each ___, ___."
    },
    "levelNonverbal": {
-    "developing": "Point to the number, then to the person it belongs to, then circle its unit.",
+    "developing": "Point to the number, then to the person it belongs to, then circle its unit. Then trace one hour’s walk on the trail sketch.",
     "expanding": "Underline the number and its unit, then draw an arrow to the person it belongs to."
    }
   },
@@ -396,7 +398,8 @@
    ],
    "notes": [
     "Success criteria: When you explain, name each speed with “per,” miles per hour, and say how you used it.",
-    "When partners talk: after quiet think time, partners take turns saying the 1-hour row in their level’s frame."
+    "When partners talk: after quiet think time, partners take turns saying the 1-hour row in their level’s frame.",
+    "Then: after the class sees a solution to the first two questions, groups brainstorm how to check Kiran’s claim."
    ],
    "checks": [
     "Named what every explanation needs: each speed with “per,” and how it was used",

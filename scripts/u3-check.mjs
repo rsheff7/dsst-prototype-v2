@@ -370,9 +370,10 @@ for (const f of planFiles) {
     const ALLOW = new Set(['A', 'The', 'Pair', 'Group', 'Partner', 'Partners', 'Student', 'Students', 'Card', 'Store', 'Level', 'Levels', 'Read', 'IM', 'Today', 'They', 'Their', 'Each', 'One', 'Both', 'Crux', 'Hands', 'Pencils', 'Most', 'Some', 'Everyone', 'Nobody', 'Ask', 'Then', 'Look']);
     for (const m2 of flat({ ...c, checks: [], more: [] }).join(' ').matchAll(/\b([A-Z][a-zà-ÿ]+)(?:’s|'s| (?:says|said|writes|wrote|points|pointed|stares|thinks|asks|doubles|counts|is stuck|has|stops|stopped))\b/g))
       if (!ALLOW.has(m2[1]) && !COMMON.test(m2[1]) && !new RegExp(`\\b${m2[1]}\\b`).test(flat(im).join(' '))) err(cat, `“${m2[1]}” looks like a student name; write “a student” or “Pair A”`);
-    // Line length (25 words); Aims are checked at 15 above. IM's verbatim text in show is exempt.
+    // Line length (25 words); Aims are checked at 15 above. IM's verbatim text in show, and any long quotation in “…”, is exempt.
     for (const [k, v] of [['ask', c.ask], ['ifNot', c.ifNot], ['avoid', c.avoid], ...(c.checks ?? []).map((x) => ['check', x]), ...(c.say ?? []).map((x) => ['say', x])])
-      if (v && v.split(/(?<=[.?!])\s+/).some((sen) => wordsIn(sen) > 25)) err(cat, `${k} has a sentence over 25 words`);
+      // A word-for-word quotation (IM's text, in “…”) counts as one word: it can't be cut.
+      if (v && v.replace(/“[^”]{40,}”/g, 'QUOTE').split(/(?<=[.?!])\s+/).some((sen) => wordsIn(sen) > 25)) err(cat, `${k} has a sentence over 25 words`);
   }
   // Ids unique; every activity has a Do the task card; the crux has its four routine cards.
   const seen = new Set();

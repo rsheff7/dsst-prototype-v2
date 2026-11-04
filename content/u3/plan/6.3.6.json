@@ -22,7 +22,8 @@
   "2026-11-03 (Claude, after the revision): restored “cups of oats per cup of water” as a precise term, since the CLO asks students to name each rate; the exemplar now answers both Lin and Diego (37 words, over the 30-word guide on purpose).",
   "2026-11-03: rehearsal cards written to the card spec and guidance rule. NEW (not in IM or Premo): every If it doesn’t work question; the m10 pair’s work set out as a table (IM’s own numbers, 24 | 30 and 4 | 5 to 28 | 35); the synthesis card’s “fix first” note. Doubts: the synthesis card comes before m7, since m7 happens while pairs discuss the flawed explanation, so Stronger and Clearer is not the deck’s last card; the flawed explanation is quoted verbatim at 27 words, over the 25-word line rule; Three Reads sits on 6.2 per D1, though IM’s Three Reads support is for 6.3; m10 is typed a student moment, not a decision.",
   "2026-11-03: rehearsal revised after persona review 2 (moves rule, Three Reads, frames, wording). Three Reads round aims no longer state the answer; read 3 is now a strategy brainstorm (round 3, crux.threeReads[2], launch checks and Run it). m7 gets levelFrames per band for the flawed-explanation discussion, so Levels 1–2 no longer see the release card’s “point to the 1 cup of oats row” line; it shows the flawed explanation before the question. Synthesis: one question per sentence; Sounds like now models what each rate means, then the choice; Why no longer credits IM for a paraphrase. Release: Sounds like split into two sentences in the CLO form; partner-talk notes use Today’s frame only. “Where we are” lines split into two sentences; student lines start “A student…/A pair…/A group…” with a colon before quotes. Moves: crux-only night 6 (Do the task not counted); 6.1 adds 2, 6.3 adds 2. NEW (not in IM or Premo): the m7 level frames; the read 3 listen-for strategies; the synthesis Sounds like. Doubt: IM runs this discussion as Clarify, Critique, Correct (MLR3); the plan uses Stronger and Clearer, and crux.synthesis.prompt still has the compound question.",
-  "2026-11-03: round-3 fixes."
+  "2026-11-03: round-3 fixes.",
+  "2026-11-03: Elena round 4. m7 nonverbals are now student actions (the teacher no longer points to the unit). Three Reads why quotes IM exactly. synth:6.2 credits IM’s MLR3 placement. IM’s flawed explanation stays whole (31 words); the checker exempts word-for-word quotes."
  ],
  "story": "Lesson 6 shows that every ratio has a unit rate (rate per 1) for each quantity, and the question decides which to use. Lesson 7’s tables lean on both.",
  "previous": "In Lesson 5 students compared speeds and prices by finding a rate per 1. Today they find that each ratio has two rates per 1, one for each quantity.",
@@ -379,7 +380,7 @@
     "Read 2: asked what is measured, and in what units",
     "Read 3: asked how we might solve it, without solving"
    ],
-   "why": "IM uses Three Reads so students understand the situation without solving it. Here, it pulls the two claims apart before anyone divides.",
+   "why": "IM (Activity 6.3’s Three Reads): “set students up to comprehend each situation, without solving the questions for them.” Here, it pulls the two claims apart before anyone divides.",
    "runIt": [
     "Before read 1: say oatmeal is oats cooked in boiling water.",
     "Read 1: read it aloud. Ask what’s happening, with no numbers.",
@@ -509,7 +510,7 @@
    "sounds": "The rates don’t need to be equal. Priya’s 0.4 is cups of oats per cup of water, and Han’s 2.5 is cups of water per cup of oats. For Lin, I used Han’s rate because I know the oats: 5 × 2.5 = 12.5 cups.",
    "avoid": "Correcting the flawed explanation for the class yourself.",
    "ifNot": "What does each number count?",
-   "why": "Stronger and Clearer has students refine an explanation through talk, pressed for details. Here, IM’s flawed explanation gives them something to fix.",
+   "why": "IM gives this flawed explanation with MLR3, Critique, Correct, and Clarify; Premo runs it through Stronger and Clearer. Students fix IM’s explanation, then refine their own through talk.",
    "runIt": [
     "Show IM’s flawed explanation. Pairs say what is wrong; if stuck, ask what each number means.",
     "Alone: write which rate answers Lin’s question, which answers Diego’s, and why.",
@@ -552,8 +553,8 @@
     "expanding": "Priya’s 0.4 means ___, and Han’s 2.5 means ___. The explanation is wrong because ___."
    },
    "levelNonverbal": {
-    "developing": "Point to 0.4, then to the 1 cup of water beside it, and let them say it to a partner.",
-    "expanding": "Point to the 1 beside 0.4, then the 1 beside 2.5, and wait for them to name each rate."
+    "developing": "They put a finger on 0.4, then on the 1 in its row, and tap that column’s heading.",
+    "expanding": "They tap the 1 in each row and its column heading, then hold up the matching rate."
    }
   },
   {
