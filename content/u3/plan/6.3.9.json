@@ -24,18 +24,20 @@
   "Revised 2026-11-03 after persona review: exemplar, form, statement, success criteria, look-for and all frames now name the price with “per” and “unit rate”; “the same number of items” moved from precise to informal (it stays on the display) so the exemplar uses every precise term in 25 words; emerging frame now compares both prices per item, then deal / no deal; one form, “deal / no deal”; added clo.posted (new numbers: 3 markers for $2.10, 70 against 80 cents per marker, 2.10 ÷ 3 = 0.70, 4.00 ÷ 5 = 0.80, from an original 5 for $4.00) and nonverbal ways in; Collect and Display steps scribe students’ words with the precise term beside them, no revoicing, and pairs compare unit price against scaling the pack (D1 option 3); merged the two 9.2 cuts, shortened the 9.3 cut, cut-first order 9.1, 9.3, 9.2; grouping labels for 9.2 and 9.3; momentCriteria for m8 and m9; “quiet think time”; lesson synthesis in one form, $0.35 per box; trimmed story and pointTo to 30 words (IM’s two small tables suggestion dropped from pointTo); copy fixes to 9.1 barriers, 9.3 strategies and beforeClass.",
   "2026-11-03: rehearsal cards written to the card spec and guidance rule. NEW (not in IM or Premo): card A’s wording on the Three Reads and m3 cards, from IM’s launch story (the printed card wasn’t available); the m6 student’s card B work (3.50 ÷ 10 = 0.35, 2.40 ÷ 6 = 0.40, from IM’s narrative); the synthesis chart’s Pair A, B and C words on card B (Pair A and C from Premo’s patterns, Pair B from IM’s narrative: $2.10); the m9 student’s work in feet (from IM’s response); and every ifNot question. Card B’s original rate is $0.35 per box throughout, not IM’s caption slip. Doubts: 9.2 moments run m3, m13, m6 in class order, not the plan’s m3, m6, m13 (m13 is the chart still blank, so it comes before m6’s display words). Minutes in 9.2 are estimates: IM gives 20 minutes but no split. The synthesis card’s model asks two questions, as D1 option 3 does; the m13 card is typed decision, as 6.3.7’s routine breakdown was.",
   "2026-11-03: rehearsal revised after persona review 2 (moves rule, Three Reads, frames, wording). Release: success criteria, say and level frames now ask for a fair comparison (price per item, or the same number of items), not the unit price, so m3’s Avoid and the synthesis’s strategy comparison hold; Level 1–2 frame gains “because … less / more than”; model sentences keep “per.” clo.form (the posted frame, also the Level 5–6 frame) is unchanged and still names the unit rate: a reviewer should decide whether to loosen it too. Three Reads: round aims no longer state answers; read 3 is now a strategy brainstorm (crux.threeReads[2] rewritten), the class poll moves between reads 2 and 3 as in IM’s launch order (vote, then “How could you figure out…”), and beforeClass now covers the directions until after read 3. Strategy names fixed lesson-wide: unit rate, the original rate on the new number, scaling the pack. Synthesis Sounds like now models the connection. goingOn written for m6 (replacing a default with a routine code), m8 and m9, asset-framed. Names: Do the warm-up yourself, Send students to work, Finish on the board. Wording: Where we are periods, student colons, check voice, m9 pipes, LaTeX \\(1{,}378\\). NEW (Premo-written, unreviewed): the m6, m8, m9 goingOn lines, the synthesis Sounds like, the new level frames and nonverbals, and the read 3 listen-for.",
-  "2026-11-03: round-3 fixes. Robert chose option (a): the goal no longer requires the unit rate. clo.form, statement, posted, lookFor and the Levels 5–6 frame accept any fair comparison, per item or the same number of items; precise is now “good deal” and “per” (“unit rate” stays a math word on the board). Levels 1–2 and 3–4 frames now build in the fair comparison; their stretches set a task. Strategy “unit rate” renamed “price of one” lesson-wide. “Chart” is now “board” throughout. crux.synthesis prompt and sounds match the synthesis card. Three Reads: all three reads are of card A; read 3 is “how we might solve it.” m9: three distances converted (the coyote was already in feet); ostrich added to still to do. goingOn in “They…” voice; Today’s frame; lowercase after colons. Do the task checks now use only IM’s answer numbers ($0.79, $2.37, $0.35, $2.10, 3,773)."
+  "2026-11-03: round-3 fixes. Robert chose option (a): the goal no longer requires the unit rate. clo.form, statement, posted, lookFor and the Levels 5–6 frame accept any fair comparison, per item or the same number of items; precise was “good deal” and “per” (“unit rate” stays a math word on the board). Levels 1–2 and 3–4 frames now build in the fair comparison; their stretches set a task. Strategy “unit rate” renamed “price of one” lesson-wide. “Chart” is now “board” throughout. crux.synthesis prompt and sounds match the synthesis card. Three Reads: all three reads are of card A; read 3 is “how we might solve it.” m9: three distances converted (the coyote was already in feet); ostrich added to still to do. goingOn in “They…” voice; Today’s frame; lowercase after colons. Do the task checks now use only IM’s answer numbers ($0.79, $2.37, $0.35, $2.10, 3,773).",
+  "2026-11-03: Robert approved Elena’s change. “Unit rate” is a precise term again (IM’s learning target and listen-for name it). The form, the Levels 5–6 frame, exemplar, posted sentence, success criteria and release ask now name it in a second sentence, “The unit rate is ___ per ___,” to stay under 25 words. Either fair comparison still meets the goal; a student who scaled the pack names the unit rate they scaled from."
  ],
  "story": "Lesson 9 closes the rates section. With no table or diagram prompted, students choose a unit rate themselves to judge deals and compare distances. Percentages begin in Lesson 10.",
  "previous": "In Lesson 8 students used speed and pace to find unknown distances and times; today they pick which unit rate to find, then use it to decide.",
  "clo": {
   "imGoal": "Apply reasoning about ratios and rates to justify (orally) whether a given price is a good deal.",
   "function": "justify",
-  "form": "Card ___ is (not) a good deal because ___ cost(s) ___ in the new deal and ___ in the original.",
-  "statement": "Students will justify orally whether a price is a good deal by comparing the offers fairly: the price per item, or the price of the same number of items.",
+  "form": "Card ___ is (not) a good deal because ___ cost(s) ___ in the new deal and ___ in the original. The unit rate is ___ per ___.",
+  "statement": "Students will justify orally whether a price is a good deal by comparing the offers fairly, per item or for the same number of items, and naming the unit rate.",
   "precise": [
    "good deal",
-   "per"
+   "per",
+   "unit rate"
   ],
   "informal": [
    "cheaper",
@@ -43,11 +45,11 @@
    "the price of one",
    "the same number of items"
   ],
-  "exemplar": "Card A is a good deal because 3 bottles cost $2.25 in the new deal and $2.37 in the original, at 79 cents per bottle.",
-  "lookFor": "The taco explanation names the better deal and compares fairly, per taco or for the same number of tacos: about $0.85 per taco (8.49 ÷ 10) against $0.90 (5.40 ÷ 6).",
+  "exemplar": "Card A is a good deal because 3 bottles cost $2.25 in the new deal and $2.37 in the original. The unit rate is 79 cents per bottle.",
+  "lookFor": "The taco explanation names the better deal and the unit rate, and compares fairly, per taco or for the same number of tacos: about $0.85 per taco (8.49 ÷ 10) against $0.90 (5.40 ÷ 6).",
   "posted": {
-   "goal": "We will say whether a price is a good deal and prove it fairly: the price per item, or for the same number of items.",
-   "sentence": "3 markers for $2.10 is a good deal because 1 marker costs 70 cents in the new deal and 80 cents in the original."
+   "goal": "We will say whether a price is a good deal, prove it fairly, and name the unit rate.",
+   "sentence": "3 markers for $2.10 is a good deal because 1 marker costs 70 cents in the new deal and 80 cents in the original. The unit rate is 80 cents per marker."
   }
  },
  "activities": [
@@ -167,8 +169,8 @@
    }
   ],
   "release": {
-   "successCriteria": "Say deal or no deal, and compare fairly: the price per item, or the price of the same number of items.",
-   "say": "Say deal or no deal. Then compare the two offers fairly: per item, or for the same number of items.",
+   "successCriteria": "Say deal or no deal, compare fairly (per item or for the same number of items), and name the unit rate.",
+   "say": "Say deal or no deal. Compare the offers fairly, and name the unit rate.",
    "talkMoments": [
     "After card A, each partner says the card A reason aloud with Today’s frame before you split the cards.",
     "When partners explain their two cards, one uses Today’s frame, and the other agrees or disagrees and says why."
@@ -176,16 +178,16 @@
    "byBand": {
     "emerging": {
      "frame": "Card ___: deal / no deal, because 1 ___ costs ___ now and ___ before.",
-     "stretch": "They say it again with “per”: the price per item now, then before.",
+     "stretch": "They say it again with “unit rate” and “per”: the unit rate is ___ per ___.",
      "nonverbal": "Point to the two prices they compare, then thumbs up for deal or down for no deal."
     },
     "developing": {
      "frame": "Card ___ is a deal / no deal because, for the same number of items, it costs ___ now and ___ before.",
-     "stretch": "They check it per item: find the price of one in each offer, and say if it agrees.",
+     "stretch": "They check it per item: find the unit rate in each offer, and say if it agrees.",
      "nonverbal": "Circle the two prices they compare, draw < or > between them, and point to the better offer."
     },
     "expanding": {
-     "frame": "Card ___ is (not) a good deal because ___ cost(s) ___ in the new deal and ___ in the original.",
+     "frame": "Card ___ is (not) a good deal because ___ cost(s) ___ in the new deal and ___ in the original. The unit rate is ___ per ___.",
      "stretch": "They check it a second way, per item or for the same number of items, and say whether both agree.",
      "nonverbal": "Write the two prices they compare side by side with < or >, then place the card on its pile."
     }
@@ -340,7 +342,7 @@
     "Pointed to Today’s frame on the board",
     "Told them when they’ll say the card A reason to a partner"
    ],
-   "sounds": "Card A is a good deal because 3 bottles cost $2.25 in the new deal and $2.37 in the original, at 79 cents per bottle.",
+   "sounds": "Card A is a good deal because 3 bottles cost $2.25 in the new deal and $2.37 in the original. The unit rate is 79 cents per bottle.",
    "why": "Naming the reason’s parts before work starts means pairs practice it on card A, then reuse it alone on their own two cards."
   },
   {
