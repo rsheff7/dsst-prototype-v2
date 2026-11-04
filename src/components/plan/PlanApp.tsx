@@ -5,7 +5,7 @@
  * phone, for one Unit 3 lesson. See docs/PLANNING-VIEW-REQUIREMENTS.md.
  *
  *   1 End goal        the lesson's place in the unit, the idea, the arc
- *   2 Language goal   the CLO; the teacher drafts what it sounds like, then compares
+ *   2 Language objective   the CLO; the teacher drafts what it sounds like, then compares
  *   3 Cool-down       solve it, check against IM's response and the CLO look-for
  *   4 Activities      the crux is required; the teacher adds any others
  *   5 Rehearse        each chosen activity on its own: math, barriers, responses,
@@ -120,7 +120,7 @@ const D1_ROUTINES = [1, 2, 6, 8];
 // For a moment the Premo layer didn't write checks for.
 const FALLBACK_CRITERIA = ['Responded to what I saw, not the answer I wanted', 'Left the thinking with the student', 'Asked for the reasoning, not just the number'];
 const SYNTH_CRITERIA: Record<PlanLesson['crux']['synthesis']['routine'], string[]> = {
-  'MLR2: Collect and Display': ['Called on work in IM’s order', 'Wrote students’ own words where all can see them', 'Asked the question in the language goal’s form'],
+  'MLR2: Collect and Display': ['Called on work in IM’s order', 'Wrote students’ own words where all can see them', 'Asked the question in the language objective’s form'],
   'MLR1: Stronger and Clearer Each Time': ['Had students write a first draft alone', 'Had each partner press for one more detail', 'Had students rewrite using words they heard'],
 };
 
@@ -593,7 +593,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
                 </div>
                 {pa.barriers.length > 0 && (
                   <div className={s.avoid}>
-                    <span className={s.lab}>Barriers · what can block the language goal</span>
+                    <span className={s.lab}>Barriers · what can block the language objective</span>
                     <ul className={s.clean}>
                       {pa.barriers.map((x, i) => (
                         <li key={i}>
@@ -1244,7 +1244,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
         <p className={s.prompt} style={{ fontSize: 19 }}>
           <MathText>{q(plan.lessonSynthesis.check.question)}</MathText>
         </p>
-        <span className={cx(s.muted, s.small)}>Students answer in the language goal’s form. Say a strong answer yourself first.</span>
+        <span className={cx(s.muted, s.small)}>Students answer in the language objective’s form. Say a strong answer yourself first.</span>
         <Reveal k="lcheck" label="What a strong answer sounds like">
           <div className={s.flat}>
             <MathText>{q(plan.lessonSynthesis.check.sounds)}</MathText>
@@ -1268,11 +1268,11 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
   };
   const synthCard = plan.rehearsal?.find((c) => c.activityId === cruxId && c.kind === 'synthesis');
   const LOOK_FORS = [
-    { look: 'The language goal is said, and the teacher knows what it sounds like', sounds: plan.clo.exemplar },
+    { look: 'The language objective is said, and the teacher knows what it sounds like', sounds: plan.clo.exemplar },
     { look: `Three Reads launches ${cruxId}: situation, quantities, then the question`, sounds: plan.crux.threeReads[0]?.say ?? '' },
     { look: 'The frame is in use at release, with the language named', sounds: plan.crux.release.successCriteria },
     { look: 'The teacher listens for students’ language, not only their answers', sounds: plan.crux.release.talkMoments[0] ?? '' },
-    { look: `Students say the language goal at least once in the ${routineTitle(plan.crux.synthesis.routine)} synthesis`, sounds: synthCard?.sounds ?? plan.crux.synthesis.sounds },
+    { look: `Students say the language objective at least once in the ${routineTitle(plan.crux.synthesis.routine)} synthesis`, sounds: synthCard?.sounds ?? plan.crux.synthesis.sounds },
   ];
   const record = () => {
     const flagged = plan.rehearsal
@@ -1282,7 +1282,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
       `# Lesson ${im.code} ${im.title}: planning record`,
       `${new Date().toLocaleDateString('en-US')} · Grade 6 · Unit 3 · Activities rehearsed: ${chosen.join(', ')} · WIDA levels: ${levels.length ? levels.join(', ') : 'not set'}`,
       ``,
-      `## Language goal`,
+      `## Language objective`,
       plan.clo.statement,
       `Exemplar: ${q(plan.clo.exemplar)}`,
       `My sentence: ${st.clo || '(not written)'}`,
@@ -1311,12 +1311,12 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
   const stepCarry = () => (
     <div className={s.stackLg}>
       <section className={s.stack}>
-        <h3>The language goal to post</h3>
+        <h3>The language objective to post</h3>
         <p className={cx(s.muted, s.small)}>
           In students’ words, with an example that isn’t tomorrow’s answer. Print it, or put it on the board.
         </p>
         <div className={p.poster}>
-          <span className={s.eyebrow}>Lesson {im.code} · Language goal</span>
+          <span className={s.eyebrow}>Lesson {im.code} · Language objective</span>
           <p className={p.posterBig}>
             <MathText>{plan.clo.posted.goal}</MathText>
           </p>
@@ -1606,7 +1606,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
           <span className={s.eyebrow}>
             {crux.id} {crux.title} · Crux
           </span>
-          <span className={s.eyebrow}>Language goal</span>
+          <span className={s.eyebrow}>Language objective</span>
           <p className={s.nowSay} style={{ fontSize: 19 }}>
             <MathText>{plan.clo.statement}</MathText>
           </p>
