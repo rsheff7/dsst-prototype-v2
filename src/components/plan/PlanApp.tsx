@@ -444,23 +444,36 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
 
   const stepCool = () => (
     <div className={s.stackLg}>
-      <section className={cx(s.card, s.stack)}>
-        <span className={s.eyebrow}>Cool-down · {im.coolDown.title}</span>
-        <IMLines lines={im.coolDown.task} fill={fill('cool', im.coolDown.response, !!st.shown.cool)} />
-        <p className={cx(s.muted, s.small)}>
-          {(im.coolDown.task ?? []).some((l) => l.includes('|')) ? 'Fill in the table, write your reasoning, then say it out loud.' : 'Write your answer and reasoning, then say it out loud.'}
-        </p>
-      </section>
+      {(im.coolDown.task ?? []).length ? (
+        <section className={cx(s.card, s.stack)}>
+          <span className={s.eyebrow}>Cool-down · {im.coolDown.title}</span>
+          <IMLines lines={im.coolDown.task} fill={fill('cool', im.coolDown.response, !!st.shown.cool)} />
+          <p className={cx(s.muted, s.small)}>
+            {(im.coolDown.task ?? []).some((l) => l.includes('|')) ? 'Fill in the table, write your reasoning, then say it out loud.' : 'Write your answer and reasoning, then say it out loud.'}
+          </p>
+        </section>
+      ) : (
+        // A project lesson (6.3.17) has no cool-down in IM: check the end goal against the lesson's closing check instead.
+        <section className={cx(s.card, s.stack)}>
+          <span className={s.eyebrow}>No cool-down in IM for this lesson</span>
+          <p>Instead, write what a strong student would say at the lesson’s closing check. What to look for:</p>
+          <p className={s.say}>
+            <MathText>{plan.clo.lookFor}</MathText>
+          </p>
+        </section>
+      )}
       <label htmlFor="plan-cool" className={s.lab}>
         Your answer, as a strong student
       </label>
       <textarea id="plan-cool" value={st.cool} placeholder="Your reasoning…" onChange={(e) => update({ cool: e.target.value })} />
       {st.shown.cool && (
         <section className={cx(s.stack, s.reveal)}>
-          <div className={s.flat}>
-            <span className={s.lab}>IM’s response</span>
-            <IMLines lines={im.coolDown.response} />
-          </div>
+          {(im.coolDown.response ?? []).length > 0 && (
+            <div className={s.flat}>
+              <span className={s.lab}>IM’s response</span>
+              <IMLines lines={im.coolDown.response} />
+            </div>
+          )}
           <h3>Would your answer show these?</h3>
           <div className={s.checks}>
             {[...im.targets, plan.clo.lookFor].map((t, i) => (
