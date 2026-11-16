@@ -506,7 +506,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
                 {a.id} · {a.title}
               </b>
               <span className={cx(s.muted, s.small)}>
-                {SLOT[a.slot]} · {a.minutes} min in class
+                {isCrux && a.slot === 'optional' ? 'Optional in IM (the whole lesson is)' : SLOT[a.slot]} · {a.minutes} min in class
                 {plan.rehearsal && (() => {
                   const cs = plan.rehearsal.filter((c) => c.activityId === a.id);
                   const mv = cs.filter(isMove).length;
@@ -1054,9 +1054,20 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
           <b>Where we are:</b> <MathText>{where}</MathText>
         </p>
         {c.kind === 'math' ? (
-          <div className={s.flat}>
-            <IMLines lines={a.task.filter((l) => !/^\[image:|Attribution:/.test(l))} fill={fill(`task:${a.id}`, a.response, done)} />
-          </div>
+          <>
+            {/* IM's pictures aren't in the text: the card's description stands in for them. */}
+            {show && (
+              <div className={s.stack} style={{ gap: 4 }}>
+                <span className={s.lab}>What students see (Premo’s description)</span>
+                <div className={s.flat}>
+                  <IMLines lines={show} />
+                </div>
+              </div>
+            )}
+            <div className={s.flat}>
+              <IMLines lines={a.task.filter((l) => !/^\[image:|Attribution:/.test(l))} fill={fill(`task:${a.id}`, a.response, done)} />
+            </div>
+          </>
         ) : c.kind === 'rounds' && !show ? (
           // Three Reads reads the problem, so the problem is on the card.
           <div className={s.flat}>
@@ -1262,13 +1273,15 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
         <Check on={!!st.said['lsynth']} onClick={() => toggle('said', 'lsynth')}>
           I said the ideas out loud, pointing to the display
         </Check>
-        <details className={s.more}>
-          <summary>IM’s lesson synthesis</summary>
-          <IMLines lines={im.lessonSynthesis} />
-        </details>
+        {im.lessonSynthesis.length > 0 && (
+          <details className={s.more}>
+            <summary>IM’s lesson synthesis</summary>
+            <IMLines lines={im.lessonSynthesis} />
+          </details>
+        )}
       </section>
       <section className={cx(s.card, s.stack)}>
-        <span className={s.eyebrow}>Quick check before the cool-down</span>
+        <span className={s.eyebrow}>{(im.coolDown.task ?? []).length ? 'Quick check before the cool-down' : 'Quick check before class ends'}</span>
         <p className={s.prompt} style={{ fontSize: 19 }}>
           <MathText>{q(plan.lessonSynthesis.check.question)}</MathText>
         </p>
@@ -1549,7 +1562,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
             <span className={cx(s.muted, s.small)}>Set once · sets the frames at the crux</span>
           </header>
           <p className={cx(s.muted, s.small)}>
-            The WIDA levels of the multilingual learners in this class. Supports are written for Levels 1–2, 3–4 and 5–6; at Levels 2, 4 and 6 the frame is held back and students take one extra step.
+            Tap the WIDA levels of the multilingual learners in this class. Rehearsal then shows the right frame and support for each level you pick.
           </p>
           <div className={s.chips}>
             {LEVELS.map((l) => (
@@ -1669,10 +1682,10 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
           <span className={s.lab}>Synthesis · {routineTitle(plan.crux.synthesis.routine)}</span>
           {/* What the teacher rehearsed on the synthesis card, when there is one. */}
           <span className={s.mvDo}>
-            <MathText>{q(synthCard?.say?.[0] ?? plan.crux.synthesis.prompt)}</MathText>
+            <MathText>{q(plan.crux.synthesis.prompt)}</MathText>
           </span>
           <span className={s.mvIf}>
-            Listen for: <MathText>{q(synthCard?.sounds ?? plan.crux.synthesis.sounds)}</MathText>
+            Listen for: <MathText>{q(plan.crux.synthesis.sounds)}</MathText>
           </span>
         </div>
         {/* Where students get stuck at the crux, including the points no card rehearses. */}

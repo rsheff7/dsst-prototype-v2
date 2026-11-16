@@ -31,7 +31,7 @@
   "2026-11-03: Robert removed “Use it in class” from the objective page."
  ],
  "story": "Lesson 9 closes the rates section. With no table or diagram prompted, students choose a unit rate themselves to judge deals and compare distances. Percentages begin in Lesson 10.",
- "previous": "In Lesson 8 students used speed and pace to find unknown distances and times; today they pick which unit rate to find, then use it to decide.",
+ "previous": "In Lesson 8 students used speed and pace to find unknown distances and times. Today they pick which unit rate to find, then use it to decide.",
  "clo": {
   "imGoal": "Apply reasoning about ratios and rates to justify (orally) whether a given price is a good deal.",
   "function": "justify",
@@ -53,7 +53,7 @@
    "the same number of items"
   ],
   "exemplar": "Card A is a good deal because 3 bottles cost $2.25 in the new deal and $2.37 in the original. The original unit rate is 79 cents per bottle.",
-  "lookFor": "The taco explanation names the better deal and compares fairly, per taco or for 30 tacos ($25.47 against $27.00), then names a unit rate (per taco or tacos per dollar): about $0.85 per taco (8.49 ÷ 10) against $0.90 (5.40 ÷ 6).",
+  "lookFor": "The taco explanation names the better deal and compares fairly, per taco or for 30 tacos ($25.47 against $27.00). Then it names a unit rate (per taco or tacos per dollar): about $0.85 per taco (8.49 ÷ 10) against $0.90 (5.40 ÷ 6).",
   "posted": {
    "sentence": "3 markers for $2.10 is a good deal because 3 markers cost $2.10 now and $2.40 in the original. The original unit rate is 80 cents per marker."
   },
@@ -90,7 +90,7 @@
    "id": "9.2",
    "strategies": [
     "Price of one: card B is 35 cents per box before (3.50 ÷ 10) and 40 cents now (2.40 ÷ 6), so no deal.",
-    "Use the original unit rate on the new number: card A is 79 cents per bottle, so 3 bottles should cost $2.37; $2.25 is less, so deal.",
+    "Use the original unit rate on the new number: card A is 79 cents per bottle, so 3 bottles should cost $2.37. $2.25 is less, so deal.",
     "Scale with no unit rate: 6 is \\(\\frac{6}{10}\\) of 10, so 6 boxes should cost \\(\\frac{6}{10}\\) of $3.50, $2.10; $2.40 is more, so no deal."
    ],
    "barriers": [
@@ -203,7 +203,7 @@
   "synthesis": {
    "routine": "MLR2: Collect and Display",
    "steps": [
-    "During partner talk, scribe students’ words as said, such as “the same” or “cost for the same number of items,” and write the math word (“unit rate,” “per”) beside them.",
+    "During partner talk, scribe students’ words as said, such as “the same” or “cost for the same number of items.” Write the math word (“unit rate,” “per”) beside them.",
     "Call 2–3 pairs: price of one first, then the original rate on the new number, then scaling the pack.",
     "Scribe each pair’s reason as said beside its numbers; add “unit rate” or “per” next to their words, not in place of them.",
     "Ask pairs to compare the ways. Which ways used a unit rate? How does scaling the pack reach the same decision? Students make the connections; you scribe them.",

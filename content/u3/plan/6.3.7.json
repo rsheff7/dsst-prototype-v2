@@ -28,8 +28,8 @@
   "2026-11-03: CLO restructured (Robert, with Elena’s review): a two-line board version (Content, Language; “We will…”, 20 words or fewer, no task numbers), “Say it like this” frame as part of the objective, and four scripted moments for using it. The “Students will…” statement and posted.goal are gone; the board version is the one CLO.",
   "2026-11-03: Robert removed “Use it in class” from the objective page."
  ],
- "story": "Lesson 7 sits midway through the rates section. It shows that equivalent ratios share one unit rate, and that the unit rate takes you across a table, which students lean on for speed and deals in Lessons 8 and 9.",
- "previous": "In Lesson 6 students found two unit rates for each ratio, \\(\\frac{a}{b}\\) and \\(\\frac{b}{a}\\); today they see those rates stay the same for every equivalent ratio.",
+ "story": "Lesson 7 sits midway through the rates section. It shows that equivalent ratios share one unit rate. The unit rate takes you across a table, and students lean on it for speed and deals in Lessons 8 and 9.",
+ "previous": "In Lesson 6 students found two unit rates for each ratio, \\(\\frac{a}{b}\\) and \\(\\frac{b}{a}\\). Today they see those rates stay the same for every equivalent ratio.",
  "clo": {
   "imGoal": "Apply reasoning about unit rates to complete a table of equivalent ratios, and explain (orally and in writing) the solution method.",
   "function": "explain",
@@ -50,7 +50,7 @@
    "back"
   ],
   "exemplar": "To get bracelets, I multiply by the unit rate, 6 bracelets per hour: 7 × 6 = 42. To get hours, I divide by 6: 66 ÷ 6 = 11.",
-  "lookFor": "The cheetah explanation is in the CLO’s form: it names the unit rate with “per” (30 meters per second) and says multiply by or divide by it: 25 × 30 = 750, 270 ÷ 30 = 9.",
+  "lookFor": "The cheetah explanation is in the CLO’s form: it names the unit rate with “per” (30 meters per second). It says multiply by or divide by it: 25 × 30 = 750, 270 ÷ 30 = 9.",
   "posted": {
    "sentence": "To get pages from minutes, I multiply by the unit rate, 4 pages per minute: 8 × 4 = 32. To get minutes, I divide by 4: 36 ÷ 4 = 9."
   },
@@ -62,7 +62,7 @@
    "strategies": [
     "Spot the one not written as a unit rate: 5 miles in 15 minutes.",
     "Spot pace versus speed: 3 minutes per mile is a pace.",
-    "Convert to compare: 5 miles in 15 minutes and 3 minutes per mile are both 20 miles per hour; 32 kilometers per hour is a little slower."
+    "Convert to compare: 5 miles in 15 minutes and 3 minutes per mile are both 20 miles per hour. 32 kilometers per hour is a little slower."
    ],
    "barriers": [
     "The words “pace” and “speed” may be new or mean the same thing to students.",

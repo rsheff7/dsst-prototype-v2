@@ -218,7 +218,8 @@ for (const f of planFiles) {
     const v = pl.clo?.board?.[k] ?? '';
     if (!/^We will /.test(v)) err(at, `clo.board.${k} must start “We will”`);
     if (wordsIn(v) > 20) err(at, `clo.board.${k} is ${wordsIn(v)} words; keep it to 20`);
-    if (/\d/.test(v.replace(/\bfor 1\b/, ''))) err(at, `clo.board.${k} has a number from the task`);
+    // Numbers that are part of a math term are fine (Robert, 2026-11-15); numbers from the task aren't.
+    if (/\d/.test(v.replace(/\b(?:rate )?per 1(?:00)?\b|\bfor 1\b|\b(?:1|100)%/g, ''))) err(at, `clo.board.${k} has a number from the task`);
   }
   if (pl.clo?.board && !low(pl.clo.board.language).includes(low(pl.clo.function))) err(at, 'clo.board.language must use the function verb');
   if (pl.clo?.board && !low(pl.clo.board.language).includes(low(pl.clo.mode))) err(at, 'clo.board.language must say the mode');
@@ -380,18 +381,37 @@ for (const f of planFiles) {
     const COMMON = /^(Another|That|This|It|He|She|We|You|Who|Which|What|Stronger|Clearer|Everyone|Someone|Nobody|Either|Neither|Your|My|Our)$/;
     // Names by pattern: a capitalized word acting as a student ("X says", "X’s table") that IM's lesson doesn't use.
     const ALLOW = new Set(['A', 'The', 'Pair', 'Group', 'Partner', 'Partners', 'Student', 'Students', 'Card', 'Store', 'Level', 'Levels', 'Read', 'IM', 'Today', 'They', 'Their', 'Each', 'One', 'Both', 'Crux', 'Hands', 'Pencils', 'Most', 'Some', 'Everyone', 'Nobody', 'Ask', 'Then', 'Look']);
-    for (const m2 of flat({ ...c, checks: [], more: [] }).join(' ').matchAll(/\b([A-Z][a-zà-ÿ]+)(?:’s|'s| (?:says|said|writes|wrote|points|pointed|stares|thinks|asks|doubles|counts|is stuck|has|stops|stopped))\b/g))
+    for (const m2 of flat({ ...c, more: [] }).join(' ').matchAll(/\b([A-Z][a-zà-ÿ]+)(?:’s|'s| (?:says|said|writes|wrote|points|pointed|stares|thinks|asks|doubles|counts|is stuck|has|stops|stopped))\b/g))
       if (!ALLOW.has(m2[1]) && !COMMON.test(m2[1]) && !new RegExp(`\\b${m2[1]}\\b`).test(flat(im).join(' '))) err(cat, `“${m2[1]}” looks like a student name; write “a student” or “Pair A”`);
     // Line length (25 words); Aims are checked at 15 above. IM's verbatim text in show, and any long quotation in “…”, is exempt.
     for (const [k, v] of [['ask', c.ask], ['ifNot', c.ifNot], ['avoid', c.avoid], ...(c.checks ?? []).map((x) => ['check', x]), ...(c.say ?? []).map((x) => ['say', x])])
       // A word-for-word quotation (IM's text, in “…”) counts as one word: it can't be cut.
-      if (v && v.replace(/“[^”]{40,}”/g, 'QUOTE').split(/(?<=[.?!])\s+/).some((sen) => wordsIn(sen) > 25)) err(cat, `${k} has a sentence over 25 words`);
+      if (v && v.replace(/“[^”]{40,}”/g, 'QUOTE').split(/(?<=[.?!][”"’]?)\s+/).some((sen) => wordsIn(sen) > 25)) err(cat, `${k} has a sentence over 25 words`);
   }
   // Ids unique; every activity has a Do the task card; the crux has its four routine cards.
   const seen = new Set();
   for (const c of pl.rehearsal ?? []) {
     if (seen.has(c.id)) err(at, `duplicate card id ${c.id}`);
     seen.add(c.id);
+  }
+  // Frames have blanks (Priya, round 4).
+  if (pl.clo?.form && !/___/.test(pl.clo.form)) err(at, 'clo.form has no blanks');
+  for (const [b, v] of Object.entries(pl.crux?.release?.byBand ?? {})) if (v.frame && !/___/.test(v.frame)) err(at, `release frame ${b} has no blanks`);
+  // Every Premo sentence is 25 words or fewer, wherever it sits (Robert's rule). IM's words (show, imGoal,
+  // threeReads text) and long quotations are exempt; reviewNotes are for reviewers, not teachers.
+  {
+    const skip = new Set(['show', 'imGoal', 'reviewNotes', 'evidence', 'text']);
+    // Symbols (×, =, ÷) aren't words. A student's model sentence follows the frame, so its length only warns.
+    const words = (s) => s.replace(/\\\(|\\\)/g, ' ').split(/\s+/).filter((w) => /[A-Za-z0-9]/.test(w)).length;
+    const model = new Set(['sounds', 'exemplar', 'sentence', 'listenFor']);
+    const walk = (x, key) => Array.isArray(x) ? x.forEach((y) => walk(y, key)) : x && typeof x === 'object' ? Object.entries(x).forEach(([k, y]) => !skip.has(k) && walk(y, k)) : typeof x === 'string' && x.replace(/“[^”]{40,}”/g, 'QUOTE').split(/(?<=[.?!][”"’]?)\s+/).some((sen) => words(sen) > 25) && (model.has(key) ? warn : err)(at, `${key} has a sentence over 25 words: “${x.slice(0, 60)}…”`);
+    walk(pl, '');
+  }
+  // The crux synthesis card says what the crux says.
+  {
+    const sc = (pl.rehearsal ?? []).find((c) => c.kind === 'synthesis' && c.activityId === pr.crux);
+    if (sc && pl.crux?.synthesis?.sounds && sc.sounds !== pl.crux.synthesis.sounds) err(at, `card ${sc.id}: sounds differs from crux.synthesis.sounds`);
+    if (sc && pl.crux?.synthesis?.prompt && !(sc.say ?? []).includes(pl.crux.synthesis.prompt)) err(at, `card ${sc.id}: say doesn’t include crux.synthesis.prompt`);
   }
   if (pl.rehearsal) {
     // One card per moment; cards in class order within each activity; Three Reads before the release.
@@ -404,6 +424,8 @@ for (const f of planFiles) {
       const ri = cs.findIndex((c) => c.kind === 'rounds'), li = cs.findIndex((c) => c.kind === 'release');
       if (ri >= 0 && li >= 0 && li < ri) err(at, `${id}: the release card comes before Three Reads`);
     }
+    // A card can't happen after its activity has ended.
+    for (const c of pl.rehearsal) { const a = im.activities.find((x) => x.id === c.activityId); if (a?.minutes && minuteOf(c) >= a.minutes) err(at, `card ${c.id} is at minute ${minuteOf(c)} of a ${a.minutes}-minute activity`); }
     for (const id of ids) if (!pl.rehearsal.some((c) => c.activityId === id && c.kind === 'math')) err(at, `no Do the task card for ${id}`);
     for (const k of ['rounds', 'release', 'synthesis']) if (!pl.rehearsal.some((c) => c.activityId === pr.crux && c.kind === k)) err(at, `the crux has no ${k} card`);
     if (!pl.rehearsal.some((c) => c.activityId === pr.crux && c.kind === 'levels')) err(at, 'the crux has no by-level language card');
@@ -413,7 +435,7 @@ for (const f of planFiles) {
     else if (moves(pr.crux) > 8) warn(at, `crux-only night is ${moves(pr.crux)} moves; the target is 8`);
     for (const id of ids.filter((x) => x !== pr.crux)) if (moves(id) > 2) err(at, `${id} adds ${moves(id)} moves; the most is 2`);
   }
-  for (const [where, s] of flat(pl).map((s) => ['', s])) if (/maths|colour|grey\b|favour|behaviour|centre\b|organis|practise\b|metre\b/.test(s)) err(at, `US spelling: "${s.slice(0, 50)}…"`);
+  for (const [where, s] of flat(pl).map((s) => ['', s])) if (/maths|colour|grey\b|favour|behaviour|centre\b|organis|practise\b|metre\b|analys(?:e|ing)\b|labell|modell|travell|litre/.test(s)) err(at, `US spelling: "${s.slice(0, 50)}…"`);
 }
 
 // ---------------------------------------------------------------------------
