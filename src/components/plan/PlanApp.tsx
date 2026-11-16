@@ -34,12 +34,14 @@ import p from './plan.module.css';
 type View = 'home' | 'step' | 'incl';
 
 /** Bump when the saved shape changes; older saved plans start fresh rather than misfile. */
-const STATE_VERSION = 2;
+const STATE_VERSION = 3;
 
 interface PlanState {
   v: number;
   view: View;
   step: number;
+  /** Steps the teacher has explicitly marked done. */
+  completed: number[];
   /** Which card Rehearse is on (by position; see cardId). */
   ai: number;
   /** The card Rehearse is on, by id, so adding an activity keeps the teacher on the same card. */
@@ -63,6 +65,7 @@ const fresh = (): PlanState => ({
   v: STATE_VERSION,
   view: 'home',
   step: 0,
+  completed: [],
   ai: 0,
   started: null,
   levels: [],
@@ -1438,7 +1441,14 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
   );
 
   // --------------------------------------------------------------- actions per step
-  const nextStep = () => go(Math.min(st.step + 1, STEPS.length - 1));
+  const nextStep = () => {
+    const cur = st.step;
+    update((x) => ({
+      completed: x.completed.includes(cur) ? x.completed : [...x.completed, cur],
+      step: Math.min(cur + 1, STEPS.length - 1),
+    }));
+    window.scrollTo(0, 0);
+  };
   const action = (): ReactNode => {
     const k = STEPS[st.step].key;
     const nextLabel = st.step < STEPS.length - 1 ? `Next: ${STEPS[st.step + 1].name} →` : '';
@@ -1486,10 +1496,12 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
 
   const home = (
     <>
-      <div className={cx(s.bar, s.barPlain)}>
-        <div className={s.ttl}>
+      <div className={cx(s.bar, p.barFull)}>
+        <Link href="/plan" className={s.iconbtn} aria-label="Back to all lessons">
+          {Icon.back}
+        </Link>
+        <div className={cx(s.ttl, p.ttlOneLine)}>
           <b>Grade 6 · Unit 3</b>
-          <span>DSST Math · Lesson {im.code} planning</span>
         </div>
         <span />
       </div>
@@ -1500,27 +1512,47 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
           <div className={s.meta}>
             <span>About {total} min</span>
             <span>{STEPS.length} steps</span>
-            {plan.status === 'draft' && <span>Draft · not yet reviewed by DSST</span>}
           </div>
-          {/* Any step can come first (R3.4): experienced teachers often start with the cool-down. */}
-          <div className={s.ministeps} style={{ gridTemplateColumns: `repeat(${STEPS.length}, 1fr)` }}>
-            {STEPS.map((x, i) => (
-              <button
-                key={x.key}
-                type="button"
-                className={cx(p.ministep, st.started && i <= st.step ? undefined : s.todo)}
-                onClick={() => {
-                  if (!st.started) update({ started: Date.now() });
-                  go(i);
-                }}
-              >
-                {x.short}
-              </button>
-            ))}
+          <button
+            type="button"
+            className={p.widaTrigger}
+            onClick={() => setSheet('wida')}
+          >
+            <span className={p.widaLabel}>WIDA</span>
+            <span className={p.widaValue}>{levels.length ? levels.join(' · ') : 'Select levels'}</span>
+          </button>
+          <div className={p.ministeps}>
+            {STEPS.map((x, i) => {
+              const isCurrent = !!(st.started && i === st.step);
+              const isDone = !!(st.started && st.completed.includes(i) && i !== st.step);
+              const cls = cx(
+                p.ministep,
+                isCurrent ? p.current : undefined,
+                isDone ? p.done : undefined,
+              );
+              return (
+                <button
+                  key={x.key}
+                  type="button"
+                  className={cls}
+                  onClick={() => {
+                    if (!st.started) update({ started: Date.now() });
+                    go(i);
+                  }}
+                >
+                  <span className={p.num}>{i + 1}</span>
+                  <span className={p.label}>{x.name}</span>
+                  <span className={p.status}>
+                    {isDone ? '✓' : isCurrent ? '●' : `${minutes(x.key, x.min)}m`}
+                  </span>
+                </button>
+              );
+            })}
           </div>
           <button
             type="button"
             className={s.btn}
+            disabled={!st.started && levels.length === 0}
             onClick={() => {
               if (!st.started) update({ started: Date.now() });
               go(st.started ? st.step : 0);
@@ -1530,42 +1562,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
             {st.started ? `Resume: ${STEPS[st.step].name}` : 'Start planning'}
           </button>
         </section>
-        <section className={s.sect} aria-label="Class ELD profile">
-          <header className={s.sectHead}>
-            <h3>Class ELD profile</h3>
-            <span className={cx(s.muted, s.small)}>Set once · sets the frames at the crux</span>
-          </header>
-          <p className={cx(s.muted, s.small)}>
-            The WIDA levels of the multilingual learners in this class. Supports are written for Levels 1–2, 3–4 and 5–6; at Levels 2, 4 and 6 the frame is held back and students take one extra step.
-          </p>
-          <div className={s.chips}>
-            {LEVELS.map((l) => (
-              <button
-                key={l}
-                type="button"
-                className={s.chip}
-                aria-pressed={levels.includes(l)}
-                onClick={() => update((x) => ({ levels: (x.levels.includes(l) ? x.levels.filter((y) => y !== l) : [...x.levels, l]).sort() }))}
-              >
-                {levelChip(l)}
-              </button>
-            ))}
-          </div>
-        </section>
-        <section className={s.sect}>
-          <header className={s.sectHead}>
-            <h3>The steps</h3>
-          </header>
-          <ol className={s.clean} style={{ listStyle: 'decimal' }}>
-            {STEPS.map((x) => (
-              <li key={x.key}>
-                {x.name} <span className={s.muted}>· {minutes(x.key, x.min)} min</span>
-              </li>
-            ))}
-          </ol>
-        </section>
         <footer className={s.foot}>
-          <Link href="/plan">All lessons</Link>
           <button type="button" onClick={reset}>
             Start over
           </button>
@@ -1738,6 +1735,27 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
         <Sheet onClose={() => setSheet(null)}>
           <SheetTop eyebrow="IM routine" onClose={() => setSheet(null)} />
           <U3RoutineNotes r={sheetRoutine} />
+        </Sheet>
+      )}
+      {sheet === 'wida' && (
+        <Sheet onClose={() => setSheet(null)}>
+          <SheetTop eyebrow="Class ELD profile" onClose={() => setSheet(null)} />
+          <p className={cx(s.muted, s.small, p.sheetBody)}>
+            The WIDA levels of the multilingual learners in this class. Supports are written for Levels 1–2, 3–4 and 5–6; at Levels 2, 4 and 6 the frame is held back and students take one extra step.
+          </p>
+          <div className={s.chips}>
+            {LEVELS.map((l) => (
+              <button
+                key={l}
+                type="button"
+                className={s.chip}
+                aria-pressed={levels.includes(l)}
+                onClick={() => update((x) => ({ levels: (x.levels.includes(l) ? x.levels.filter((y) => y !== l) : [...x.levels, l]).sort() }))}
+              >
+                {levelChip(l)}
+              </button>
+            ))}
+          </div>
         </Sheet>
       )}
       {toast && (

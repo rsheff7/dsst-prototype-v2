@@ -19,8 +19,24 @@
 
 /* Printing the posted exemplar: only the poster prints. */
 .posterFrame { font-size: 15px; }
-.ministep { all: unset; cursor: pointer; font-size: 11px; font-weight: 600; line-height: 1.2; border-top: 3px solid currentColor; padding-top: 6px; }
+/* Vertical step list inside the hero card. */
+.ministeps { display: grid; gap: 6px; }
+.ministep {
+  all: unset; cursor: pointer; display: flex; align-items: center; gap: 10px;
+  font-size: 14px; font-weight: 600; line-height: 1.3;
+  padding: 8px 10px; border-radius: 8px;
+}
 .ministep:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+.ministep .num {
+  flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%;
+  display: grid; place-items: center; font-size: 12px; font-weight: 700;
+  background: color-mix(in srgb, currentColor 18%, transparent);
+}
+.ministep .label { flex: 1; }
+.ministep .status { flex: 0 0 auto; font-size: 11px; opacity: 0.7; }
+.ministep.current { background: color-mix(in srgb, var(--on-accent) 20%, transparent); }
+.ministep.current .num { background: var(--on-accent); color: var(--act); }
+.ministep.done { opacity: 0.5; }
 
 /* Printing the language goal: one page, the poster only, large enough for a wall. */
 .root { min-height: 100%; }
@@ -34,3 +50,22 @@
 
 .srOnly { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .root h4 { margin: 0; }
+
+/* One-line top bar: back + grade/unit all inline, flush to edges. */
+.barFull { margin-inline: -16px; padding-left: 0; padding-right: 16px; }
+.ttlOneLine { display: flex; align-items: baseline; gap: 6px; min-width: 0; }
+.ttlOneLine b { display: inline; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ttlOneLine span { display: inline; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* WIDA trigger inside the hero card. */
+.widaTrigger {
+  display: flex; align-items: center; justify-content: space-between;
+  width: 100%; padding: 10px 14px; border-radius: 10px;
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+  color: inherit; cursor: pointer; font-size: 14px;
+}
+.widaLabel { font-weight: 700; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.7; }
+.widaValue { font-weight: 600; }
+
+/* WIDA sheet body spacing. */
+.sheetBody { padding-top: 4px; }
