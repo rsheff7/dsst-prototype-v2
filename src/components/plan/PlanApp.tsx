@@ -262,6 +262,13 @@ function BoardCLO({ plan }: { plan: PlanLesson }) {
   );
 }
 
+/** A card's description line that just repeats IM's task (numbered or not) isn't shown twice. */
+const normLine = (s: string) => s.replace(/^\s*(?:\d+|[a-z])[.)]\s*/i, '').replace(/\s+/g, ' ').trim().toLowerCase();
+const inTask = (task: string[], line: string) => {
+  const l = normLine(line);
+  return l.length > 0 && task.some((t) => { const x = normLine(t); return x === l || (l.length > 20 && (x.includes(l) || l.includes(x) && x.length > 20)); });
+};
+
 export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: PlanLesson }) {
   const { im, premo } = lesson;
   const { st, update, reset } = usePlanState(im.code);
@@ -476,7 +483,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
           )}
           <h3>Would your answer show these?</h3>
           <div className={s.checks}>
-            {[...im.targets, plan.clo.lookFor].map((t, i) => (
+            {[...im.targets, ...((im.coolDown.task ?? []).length ? [plan.clo.lookFor] : [])].map((t, i) => (
               <Check key={i} on={!!st.ticks[`cool#${i}`]} onClick={() => toggle('ticks', `cool#${i}`)}>
                 <MathText>{t}</MathText>
               </Check>
@@ -1057,11 +1064,11 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
         {c.kind === 'math' ? (
           <>
             {/* IM's pictures aren't in the text: the card's description stands in for them. */}
-            {show && !show.every((l) => a.task.includes(l)) && (
+            {(() => { const extra = (show ?? []).filter((l) => !inTask(a.task, l)); return extra.length > 0; })() && (
               <div className={s.stack} style={{ gap: 4 }}>
                 <span className={s.lab}>What students see (Premo’s description)</span>
                 <div className={s.flat}>
-                  <IMLines lines={show} />
+                  <IMLines lines={(show ?? []).filter((l) => !inTask(a.task, l))} />
                 </div>
               </div>
             )}
@@ -1145,9 +1152,18 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
             )}
             {c.notes && c.notes.length > 0 && (
               <div className={s.flat}>
-                {c.notes.map((x, i) => (
+                {c.notes.map((x, i, all) => (
                   <p key={i} className={s.small}>
                     <MathText>{x}</MathText>
+                    {/* A last note ending "…the connection:" leads into the card's question; repeat it here so it points at something. */}
+                    {i === all.length - 1 && /:\s*$/.test(x) && say?.[0] && (
+                      <>
+                        {' '}
+                        <b>
+                          <MathText>{q(say[0])}</MathText>
+                        </b>
+                      </>
+                    )}
                   </p>
                 ))}
               </div>
@@ -1563,7 +1579,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
             <span className={cx(s.muted, s.small)}>Set once · sets the frames at the crux</span>
           </header>
           <p className={cx(s.muted, s.small)}>
-            Tap the WIDA levels of the multilingual learners in this class. Rehearsal then shows the right frame and support for each level you pick.
+            Tap the WIDA levels of the multilingual learners in this class. Rehearsal then shows the right frame and support for each level you pick. Within each pair of levels, the higher one gets less help.
           </p>
           <div className={s.chips}>
             {LEVELS.map((l) => (
@@ -1669,6 +1685,18 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
             </span>
           ))}
         </div>
+        {(() => {
+          // A lesson IM runs over two days (6.3.17): show where Day 1 ends.
+          const day2 = plan.rehearsal?.find((c) => /^Start of Day 2/.test(c.where ?? ''));
+          return day2 ? (
+            <div className={s.mv}>
+              <span className={s.lab}>Day 1 ends · Day 2 starts here</span>
+              <span className={s.mvIf}>
+                <MathText>{day2.where.replace(/^Start of Day 2[:.]\s*/, '')}</MathText>
+              </span>
+            </div>
+          ) : null;
+        })()}
         <div className={s.mv}>
           <span className={s.lab}>Release</span>
           <span className={s.mvDo}>

@@ -419,6 +419,30 @@ for (const f of planFiles) {
     walk({ ...pr, reviewNotes: [], status: '' }, '');
     soft = false;
   }
+  // New lessons (round 3): model sentences are the frame filled in; Premo stretch lines, word lists
+  // and spelling match the plan; no note ends on a colon that points at nothing.
+  if (!['6.3.5', '6.3.6', '6.3.7', '6.3.8', '6.3.9'].includes(code)) {
+    const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const formRe = (form) => {
+      let out = '^';
+      for (const tok of form.trim().split(/(___|\s?\([^)]*\))/)) {
+        if (tok === '___') out += '(.+?)';
+        else if (/^\s?\(([^)]*)\)$/.test(tok)) out += `(?:\\s?\\(?${esc(tok.trim().slice(1, -1))}\\)?)?`;
+        else out += esc(tok);
+      }
+      return new RegExp(out.replace(/\\ is\(\?:\\s\?\\\(\?are\\\)\?\)\?/, '\\ (?:is|are)').replace('(?:\\s?\\(?or divide\\)?)?', '').replace(/multiply/g, '(?:multiply|divide)').replace('more(?:\\s?\\(?or less\\)?)?', '(?:more|less)').replace('larger(?:\\s?\\(?or smaller\\)?)?', '(?:larger|smaller)') + '$', 's');
+    };
+    if (pl.clo?.form) {
+      const re = formRe(pl.clo.form);
+      const rc = (pl.rehearsal ?? []).find((c) => c.kind === 'release' && c.activityId === pr.crux);
+      for (const [k, s] of [['clo.exemplar', pl.clo.exemplar], ['clo.posted.sentence', pl.clo.posted?.sentence], ['lessonSynthesis.check.sounds', pl.lessonSynthesis?.check?.sounds], [`card ${rc?.id}.sounds`, rc?.sounds]])
+        if (s && !re.test(s.trim())) err(at, `${k} doesn’t follow clo.form exactly`);
+    }
+    for (const [b, v] of Object.entries(pl.crux?.release?.byBand ?? {})) if (pr.cruxLanguage?.byBand?.[b] && v.stretch && pr.cruxLanguage.byBand[b].stretch !== v.stretch) err(at, `premo cruxLanguage.byBand.${b}.stretch differs from the plan’s`);
+    const produce = [pr.cruxLanguage?.produceToday ?? []].flat().map(low);
+    for (const term of pl.clo?.precise ?? []) if (!produce.some((x) => x.includes(low(term)))) err(at, `premo cruxLanguage.produceToday is missing the precise term “${term}”`);
+    for (const s of flat({ ...pr, reviewNotes: [] })) if (/maths|colour|grey\b|favour|behaviour|centre\b|organis|practise\b|metre\b|analys(?:e|ing)\b|labell|modell|travell|litre|percentageage/.test(s)) err(at, `spelling in the Premo layer: "${s.slice(0, 50)}…"`);
+  }
   // The release card says what the crux release says.
   { const rc = (pl.rehearsal ?? []).find((c) => c.kind === 'release' && c.activityId === pr.crux);
     if (rc && pl.crux?.release?.say && !(rc.say ?? []).includes(pl.crux.release.say)) err(at, `card ${rc.id}: say doesn’t include crux.release.say`); }
