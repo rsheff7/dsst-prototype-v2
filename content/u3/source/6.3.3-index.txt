@@ -1,0 +1,221 @@
+Source: https://im.kendallhunt.com/MS/teachers/1/3/3/index.html
+
+## Lesson 3
+## Measuring with Different-Sized Units
+ View Student Lesson
+## 3.1: Width of a Paper (5 minutes)
+## CCSS Standards
+ Building On
+ 2.MD.A.2
+ Building Towards
+ 6.RP.A.3.d
+ Routines and Materials
+ Required Materials
+ Blank paper
+ Cuisenaire rods
+ Paper clips
+## Warm-up
+ Students begin by thinking about length in terms of non-standard units—9-cm and 6-cm Cuisenaire rods—and consider how the size of units affects the number of units needed to express a length. If Cuisenaire rods are not available, modify the task to say: Does it take more large paper clips or small paper clips lined up end-to-end to measure the width of a piece of paper?
+ Some students may be able to reason that it takes more of the smaller unit than the larger unit to measure the same length; encourage them to articulate their reasoning. Others may need to visualize the situation by drawing or by measuring with actual rods (or paper clips).
+## Launch
+ This activity is written to use 9-cm and 6-cm Cuisenaire rods, which are often blue and dark green, respectively. If your set of Cuisenaire rods has different colors, or if using small and large paper clips as substitutes, instruct students to modify the task accordingly.
+ Hold up the two sizes of rods or paper clips for the students to see. Give them quiet think time but not the manipulatives. Later, allow students to use the rods or paper clips to measure the paper if they need or wish to do so.
+## Student Facing
+ Your teacher will show you two rods. Does it take more green rods or blue rods lined up end to end to measure the width of a piece of printer paper?
+## Student Response
+ Teachers with a valid work email address can click here to register or sign in for free access to Student Response.
+## Anticipated Misconceptions
+ Some students may assume that it will take more of the longer rods because they are used to associating the idea of “more” with “larger.” Encourage them to use the manipulatives to see that it actually takes fewer of the longer rods to reach across the paper.
+## Activity Synthesis
+ Ask students to share their responses and reasoning. Highlight the fact that it takes more of a smaller unit and fewer of a larger unit to measure the same length.
+## 3.2: Measurement Stations (35 minutes)
+## CCSS Standards
+ Addressing
+ 6.RP.A.3.d
+ Routines and Materials
+ Instructional Routines
+ MLR8: Discussion Supports
+ Required Materials
+ Base-ten blocks
+ Blank paper
+ Gallon-sized jug
+ Graduated cylinders
+ Household items
+ Inch cubes
+ Internet-enabled device
+ Liter-sized bottle
+ Materials assembled from the blackline master
+ Metal paper fasteners
+ Meter sticks
+ Pre-assembled polyhedra
+ Quart-sized bottle
+ Rulers
+ Salt
+ Scale
+ Straightedges
+ Teaspoon
+ Tray
+## Activity
+ In groups, students rotate through five different stations, where they measure one or more quantities using different units, and answer a series of summary questions afterward. Here are the quantities being measured and the units used at each station:
+ Station 1: Volume of a box, in cubic inches and cubic centimeters.
+ Station 2: Length, in meters and feet.
+ Station 3: Volume of water, in gallons, quarts, and liters.
+ (If desired, you can have students measure water with actual containers instead of watching the video https://vimeo.com/illustrativemathematics/water.)
+ Station 4: Weights and masses of 2–3 objects, in ounces, pounds, grams, and kilograms.
+ (You can have students weigh actual objects, use the digital simulation http://ggbm.at/eQQVYB7D, or use the paper simulations from the blackline master. If using one of the simulations instead of a real scale, prepare some real objects labeled with their weight or mass for students to hold and feel the weight of.)
+ Station 5: Volume of salt, in milliliters and teaspoons.
+ You will need the blackline master for this activity. Page 1 is a net for the box needed for station 1. If you are using the paper scale simulation instead of a real scale or the applet, pages 2–13 are the parts needed to assemble Station 4.
+ Digital 
+## Launch
+ Tell students they will further investigate the idea of using different units to measure the same set of items. Introduce the five stations, what students are expected to do at each, the protocol for rotating through them, and the questions to answer at the end. Then, demonstrate how to use the straightedge to measure a level teaspoon of salt. If students do not use a level teaspoons of salt, they will not be able to answer the last set of questions about volume.
+ Arrange students into 5 groups and assign a starting station for each group.
+ If students have devices, Stations 3 and 4 can be digital. 
+ Engagement: Develop Effort and Persistence. Encourage and support opportunities for peer interactions. Invite students to talk about their ideas with a partner before writing them down. Display sentence frames to support students when they explain their strategy. For example, “I noticed _____ so I think…”
+ Supports accessibility for: Language; Social-emotional skills 
+ Speaking, Representing: MLR8 Discussion Supports. Use this routine to support small-group discussion. As students rotate through stations, encourage students to solidify their own understanding by pressing for details and questioning their peers' explanations. Provide sentence frames for students to use, such as "I agree/disagree because . . .”, "How do you know . . .”, and “Can you give an example?” This will help students clarify their reasoning about comparing different measurements for the same quantity using different units. 
+ Design Principle(s): Support sense-making; Cultivate conversation 
+## Student Facing
+ Station 1
+ Each large cube is 1 cubic inch. Count how many cubic inches completely pack the box without gaps.
+ Each small cube is 1 cubic centimeter. Each rod is composed of 10 cubic centimeters. Count how many cubic centimeters completely fill the box.
+ | 
+ | cubic inches | cubic centimeters 
+ | volume of the box | | 
+ Station 2
+ Your teacher showed you a length.
+ Use the meter stick to measure the length to the nearest meter.
+ Use a ruler to measure the length to the nearest foot.
+ | 
+ | meters | feet 
+ | length of ________________ | | 
+ Station 3
+ Watch the video.
+ Count how many times you can fill the quart bottle from the gallon jug.
+ Count how many times you can fill the liter bottle from the gallon jug.
+ Video Quarts and Liters available at https://player.vimeo.com/video/304136597. 
+ | 
+ | quarts | liters 
+ | 1 gallon of water | | 
+ Station 4
+ Use the applet to record the weights of different objects in different units.
+ Record their weights in ounces, pounds, grams, and kilograms.
+ | 
+ object | ounces | pounds | grams | kilograms 
+ | | | | | 
+ | | | | | 
+ | | | | | 
+ Station 5
+ Count how many level teaspoons of salt it takes to fill the graduated cylinder to 20 milliliters, 40 milliliters, and 50 milliliters.
+ Pour the salt back into the original container.
+ | 
+ | milliliters | teaspoons 
+ | small amount of salt | 20 | 
+ | medium amount of salt | 40 | 
+ | large amount of salt | 50 | 
+ After you finish all five stations, answer the following questions with your group.
+ Which is larger, a cubic inch or a cubic centimeter? Did more cubic inches or cubic centimeters fit in the cardboard box? Why? 
+ Did it take more feet or meters to measure the indicated length? Why? 
+ Which is bigger, a quart or a liter? Explain your reasoning. 
+ Use the data from Station 4 to put the units of weight and mass in order from smallest to largest. Explain your reasoning.
+ About how many teaspoons of salt would it take to fill the graduated cylinder to 100 milliliters?
+ If you poured 15 teaspoons of salt into an empty graduated cylinder, about how many milliliters would it fill? 
+ How many milliliters per teaspoon are there? 
+ How many teaspoons per milliliter are there? 
+## Student Response
+ Teachers with a valid work email address can click here to register or sign in for free access to Student Response.
+ Print 
+## Launch
+ Tell students they will further investigate the idea of using different units to measure the same set of items. Introduce the five stations, what students are expected to do at each, the protocol for rotating through them, and the questions to answer at the end. Then, demonstrate how to use the straightedge to measure a level teaspoon of salt. If students do not use a level teaspoons of salt, they will not be able to answer the last set of questions about volume.
+ Arrange students into 5 groups and assign a starting station for each group.
+ If students have devices, Stations 3 and 4 can be digital. 
+ Engagement: Develop Effort and Persistence. Encourage and support opportunities for peer interactions. Invite students to talk about their ideas with a partner before writing them down. Display sentence frames to support students when they explain their strategy. For example, “I noticed _____ so I think…”
+ Supports accessibility for: Language; Social-emotional skills 
+ Speaking, Representing: MLR8 Discussion Supports. Use this routine to support small-group discussion. As students rotate through stations, encourage students to solidify their own understanding by pressing for details and questioning their peers' explanations. Provide sentence frames for students to use, such as "I agree/disagree because . . .”, "How do you know . . .”, and “Can you give an example?” This will help students clarify their reasoning about comparing different measurements for the same quantity using different units. 
+ Design Principle(s): Support sense-making; Cultivate conversation 
+## Student Facing
+ Station 1
+ Each large cube is 1 cubic inch. Count how many cubic inches completely pack the box without gaps.
+ Each small cube is 1 cubic centimeter. Each rod is composed of 10 cubic centimeters. Count how many cubic centimeters completely fill the box. 
+ | 
+ | cubic inches | cubic centimeters 
+ | volume of the box | | 
+ Station 2
+ Your teacher showed you a length.
+ Use the meter stick to measure the length to the nearest meter.
+ Use a ruler to measure the length to the nearest foot. 
+ | 
+ | meters | feet 
+ | length of __________________ | | 
+ Station 3
+ If not using real water, open https://vimeo.com/illustrativemathematics/water.
+ Count how many times you can fill the quart bottle from the gallon jug.
+ Count how many times you can fill the liter bottle from the gallon jug. 
+ | 
+ | quarts | liters 
+ | 1 gallon of water | | 
+ Station 4
+ If not using a real scale, open http://ggbm.at/eQQVYB7D.
+ Select 2–3 different objects to measure on the scale.
+ Record the weights in ounces, pounds, grams, and kilograms. 
+ | 
+ object | ounces | pounds | grams | kilograms 
+ | | | | | 
+ | | | | | 
+ | | | | | 
+ Station 5
+ Count how many level teaspoons of salt fill the graduated cylinder to 20 milliliters, 40 milliliters, and 50 milliliters.
+ Pour the salt back into the original container.
+ | 
+ | milliliters | teaspoons 
+ | small amount of salt | 20 | 
+ | medium amount of salt | 40 | 
+ | large amount of salt | 50 | 
+ After you finish all five stations, answer these questions with your group.
+ Which is larger, a cubic inch or a cubic centimeter?
+ Did more cubic inches or cubic centimeters fit in the cardboard box? Why? 
+ Did it take more feet or meters to measure the indicated length? Why? 
+ Which is larger, a quart or a liter? Explain your reasoning. 
+ Use the data from Station 4 to put the units of weight and mass in order from smallest to largest. Explain your reasoning. 
+ About how many teaspoons of salt would it take to fill the graduated cylinder to 100 milliliters? 
+ If you poured 15 teaspoons of salt into an empty graduated cylinder, about how many milliliters would it fill? 
+ How many milliliters per teaspoon are there?
+ How many teaspoons per milliliter are there? 
+## Student Response
+ Teachers with a valid work email address can click here to register or sign in for free access to Student Response.
+## Student Facing
+## Are you ready for more?
+## People in the medical field use metric measurements when working with medicine. For example, a doctor might prescribe medication in 10 mg tablets.
+ Brainstorm a list of reasons why healthcare workers would do this. Organize your thinking so it can be followed by others.
+## Student Response
+ Teachers with a valid work email address can click here to register or sign in for free access to Extension Student Response.
+## Anticipated Misconceptions
+ At Station 1, students may count the number of base-10 centimeter rods rather than the number of centimeter cubes. Remind them that the question prompts for the number of cubes.
+ At Station 2, students may need reminders about measuring objects at the zero marking on the ruler and about keeping the ruler going straight, both of which will affect the answer. Show them they can measure along the edge of the object to make sure the ruler is not veering off in one direction or another.
+ At Station 4, students may be unclear about how to change the output unit on the scale for each object. Consider showing the class ahead of time. Students who are able to distinguish between weight and mass might say they cannot accurately compare their measurements. Clarify that we are talking only about the weight of the objects on Earth’s surface.
+ At Station 5, some students may consistently use under-filled or rounded teaspoons of salt, so their data will not reveal the \(5 : 1\) ratio of milliliters to teaspoons. Repeat the demonstration of how to measure a level teaspoon for them.
+ Students may answer 3 milliliters for the question about 15 teaspoons because they divided by 5 instead of multiplying by 5. Encourage them to pay attention to which unit is bigger and ask what that tells them about which numerical value should be larger.
+## Activity Synthesis
+ Though much of the discussion will take place within groups, spend a few minutes ensuring that everyone understands the answers to the five questions. To conclude the activity, invite students to share anything that surprised them from the measuring work.
+## Lesson Synthesis
+## Lesson Synthesis
+ If you measure the same quantity with different units, it will take more of the smaller unit and less of the larger one to express the measurement. For example, a jug that holds 2 gallons of liquid also holds 8 quarts of liquid. Quarts are four times smaller than gallons, so it takes four times as many quarts to measure the same volume of liquid.
+ To reinforce this idea, ask students questions such as:
+ “What do quarts and gallons measure?” (Volume of a liquid)
+ “Which is bigger: 1 quart, or 1 gallon?” (1 gallon. There are 4 quarts in 1 gallon.)
+ “How many quarts are in 8 gallons?” (32. Since a quart is less than a gallon, you need more quarts to measure the same amount.)
+ “How many gallons are in 8 quarts?” (2. Since a gallon is bigger than a quart, you need fewer gallons to measure the same amount.)
+## 3.3: Cool-down - Which Measurement is Which? (5 minutes)
+## CCSS Standards
+ Addressing
+ 6.RP.A.3.d
+## Cool-Down
+ Teachers with a valid work email address can click here to register or sign in for free access to Cool-Downs.
+## Student Lesson Summary
+## Student Facing
+ The size of the unit we use to measure something affects the measurement.
+ If we measure the same quantity with different units, it will take more of the smaller unit and fewer of the larger unit to express the measurement. For example, a room that measures 4 yards in length will measure 12 feet.
+ [image: A pair of tape diagrams for one quantity. The top tape diagram has 4 equal parts and the bottom tape diagram has 12 equal parts.] [image: Expand image] 
+ [image: A pair of tape diagrams for one quantity. The top tape diagram has 4 equal parts and the bottom tape diagram has 12 equal parts.] 
+ There are 3 feet in a yard, so one foot is \(\frac13\) of a yard.
+ It takes 3 times as many feet to measure the same length as it does with yards.
+ It takes \(\frac13\) as many yards to measure the same length as it does with feet.

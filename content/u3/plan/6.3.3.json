@@ -1,0 +1,481 @@
+{
+ "status": "draft",
+ "reviewNotes": [
+  "No person has reviewed this file. Drafted 2026-11-15 by a model.",
+  "Story and previous: from IM’s lesson narrative (“an important foundation for converting units … in the next lesson”), Lesson 2’s narrative (optional; anchor objects for each unit) and unit.json’s sections (Unit Conversion is Lessons 2–4).",
+  "Crux is 3.2, as in Premo’s layer: it is the lesson’s only activity besides the warm-up, and goal 1 is met in its summary questions.",
+  "CLO: imGoal is IM goal 1, copied verbatim (“Generalize (orally and in writing) …”), so mode is “out loud and in writing.” Goal 2 (estimate in another unit, explain orally) is met by Station 5’s last questions and leads into Lesson 4. unit.json’s progression lists “explain” for Lesson 3; the objective keeps IM’s “generalize” and says so in progressionNote.",
+  "Form: one sentence for this station (which took more, and which unit is smaller), then the rule in IM’s words with the size words as blanks. Every blank is filled from a station table. Precise terms are “smaller unit,” “larger unit” and “same quantity,” from IM’s goal and lesson summary; unit.json lists no productive terms for Lesson 3 (receptive: “order”).",
+  "Exemplar uses Station 2 (IM: 6 meters, 20 feet). Posted sentence uses a new case: 2 yards = 6 feet. Lesson synthesis check uses liters and milliliters, not the cool-down’s pairs (kilograms and pounds, ounces and grams, gallons and liters, cubic feet and cubic meters).",
+  "Look-for numbers are IM’s cool-down answers. IM accepts a reason that names which unit is larger (“an ounce weighs more than a gram”), so the look-for does too.",
+  "Three Reads: IM’s launch introduces the stations and “the questions to answer at the end.” The three reads are of one of those questions, the feet-and-meters one, so groups know what to notice at every station before they go. IM’s level-teaspoon demonstration follows the third read. This is Premo’s choice of text; a reviewer could pick the salt questions instead.",
+  "Release: IM’s own 3.2 support is MLR 8 with frames (“I agree/disagree because …,” “How do you know …?”). They are built into the release talk moments, so IM’s move stays at the crux (D1 option 3).",
+  "Synthesis: MLR 2 Collect and Display, not MLR 1. IM’s synthesis is short and spoken: go over the five questions, then ask what surprised them. Collect and Display lets the teacher scribe each station’s reason and ask what is the same across stations, which is the generalize move. IM’s “What surprised you?” is kept as the last step.",
+  "Timing in 3.2 is Premo’s estimate: IM gives 35 minutes but no split. Cards assume about 3 minutes of launch, five stations of about 4 minutes, then summary questions from about minute 24 and the discussion from about minute 31.",
+  "NEW (Premo-written, not in IM): every student’s words on the cards; the m5 group’s “15 ÷ 5” work (from IM’s misconception); the board’s station reasons on the synthesis card (Station 2’s from IM’s answer, Stations 1 and 3 in students’ words from IM’s answers); every ifNot question.",
+  "3.1 strategies: printer paper is 8.5 inches, about 21.6 centimeters, so about 3.6 green (6-cm) rods and 2.4 blue (9-cm) rods. Students won’t need the numbers; they are there for the teacher.",
+  "The 3.2 task in the IM layer is now the Teacher Guide’s print version, with real materials (extractor fixed 2026-11-15).",
+  "Non-crux activities carry no language supports (D7)."
+ ],
+ "story": "Lesson 3 is hands-on measuring. Students find that a smaller unit takes more to measure the same thing. Lesson 4 turns that into conversions with ratios.",
+ "previous": "In Lesson 2 students matched everyday objects to units like inches and grams. Today they measure the same things in two units and compare the counts.",
+ "clo": {
+  "imGoal": "Generalize (orally and in writing) that it takes more of a smaller unit or fewer of a larger unit to measure the same quantity.",
+  "function": "generalize",
+  "form": "It took more ___ than ___ because a ___ is smaller than a ___. It takes more of a ___ unit and fewer of a ___ unit to measure the same quantity.",
+  "board": {
+   "content": "We will measure the same things in two units and see how unit size changes the count.",
+   "language": "We will generalize, out loud and in writing, how a “smaller unit” and a “larger unit” change the count."
+  },
+  "mode": "out loud and in writing",
+  "precise": [
+   "smaller unit",
+   "larger unit",
+   "same quantity"
+  ],
+  "informal": [
+   "bigger",
+   "shorter",
+   "more of them",
+   "fewer of them",
+   "the same amount"
+  ],
+  "exemplar": "It took more feet than meters because a foot is smaller than a meter. It takes more of a smaller unit and fewer of a larger unit to measure the same quantity.",
+  "lookFor": "Each cool-down answer puts the smaller number with the larger unit. IM: 38 kilograms, 84 pounds; 6 ounces, 170 grams; 180 gallons, 680 liters; 29 cubic meters, 1024 cubic feet. Each reason names which unit is larger or smaller.",
+  "posted": {
+   "sentence": "A shelf is 2 yards long, or 6 feet. It took more feet than yards because a foot is smaller than a yard. It takes more of a smaller unit to measure the same quantity."
+  },
+  "progressionNote": "IM’s unit overview lists “explain” for this lesson. The objective follows the lesson’s own goal: “generalize.”"
+ },
+ "activities": [
+  {
+   "id": "3.1",
+   "strategies": [
+    "Picture it: the green rods are shorter, so it takes more of them to reach across the paper.",
+    "Test it with the rods: printer paper is about 21.6 centimeters wide, so about 3–4 green rods (6 cm) and 2–3 blue rods (9 cm)."
+   ],
+   "barriers": [
+    "“Lined up end to end” and “width” may need a gesture across the paper.",
+    "If your rods are other colors, or you use paper clips, change “green” and “blue” in the task."
+   ],
+   "misconceptions": [
+    "More of the longer rods, because “more” goes with “larger” (IM)."
+   ],
+   "backPocket": [
+    "Which rod is longer?",
+    "If each rod covers more paper, do you need more rods or fewer?",
+    "How could you check with the rods?"
+   ],
+   "momentIds": [
+    "m2",
+    "m1"
+   ],
+   "grouping": "Alone, then whole class: rods held up, quiet think time without them, then share. Rods only after everyone predicts.",
+   "monitor": "Listen for who says the shorter rods take more, and who links “more” to the bigger rod. Ask one of each to share."
+  },
+  {
+   "id": "3.2",
+   "strategies": [
+    "Count at each station: 16 cubic inches and 250 cubic centimeters (25 rods of 10 cubes). Then 6 meters and 20 feet; 4 quarts and a little less than 4 liters.",
+    "Reason from the counts: the unit that took more is the smaller one. Station 4’s counts put the units in order: gram, ounce, pound, kilogram.",
+    "Salt, scale the table: 20 milliliters took 4 teaspoons, so 100 milliliters, 5 times as much, takes about 20 teaspoons.",
+    "Salt, use the rate: about 5 milliliters per teaspoon, so 15 teaspoons fill about 75 milliliters. That is \\(\\frac{1}{5}\\) teaspoon per milliliter."
+   ],
+   "barriers": [
+    "Words: “cubic,” “graduated cylinder,” “level teaspoon,” “weight” and “mass.”",
+    "Some units (quarts, ounces, liters, grams) may be unfamiliar. Lesson 2’s anchor objects help, if it was taught."
+   ],
+   "misconceptions": [
+    "Station 1: counting the 10-cube rods instead of the cubes, so 25 instead of 250 (IM).",
+    "Station 2: measuring from the ruler’s end, not zero, or letting the ruler veer (IM).",
+    "Station 4: not switching the scale’s unit, or saying weight and mass can’t be compared (IM).",
+    "Station 5: heaped or half-full teaspoons, which hide the 5 to 1 pattern (IM).",
+    "15 teaspoons → 3 milliliters: dividing by 5 instead of multiplying (IM).",
+    "Language: “Feet is more,” with no reason about the size of the units."
+   ],
+   "backPocket": [
+    "Before you measure: which unit will take more?",
+    "Which unit is smaller? Which took more?",
+    "The question asks for cubes. How many cubes in one rod?",
+    "Is your teaspoon level with the top?",
+    "Which unit is bigger? So which number should be bigger?"
+   ],
+   "momentIds": [
+    "m6",
+    "m5",
+    "m7"
+   ],
+   "grouping": "Five groups, one per station, rotating about every 4 minutes. Then each group answers the summary questions together.",
+   "monitor": "At each station, check both units are recorded and someone says which took more, and why. At Station 5, check for level teaspoons."
+  }
+ ],
+ "crux": {
+  "threeReads": [
+   {
+    "focus": "The situation",
+    "say": "Listen as I read this question. No answers yet: what is it about?",
+    "listenFor": "We measure one length two ways, in feet and in meters, then compare."
+   },
+   {
+    "focus": "Quantities and units",
+    "say": "Read it again. What are the two units? What will we count?",
+    "listenFor": "Feet and meters: how many of each it takes to cover the same length."
+   },
+   {
+    "focus": "Ways to solve",
+    "say": "Read it once more. How might we find out, and explain why?",
+    "listenFor": "Measure the length both ways and compare the counts; think about which unit is longer."
+   }
+  ],
+  "release": {
+   "successCriteria": "In every why answer, say which unit took more, which unit is smaller, and the rule for both.",
+   "say": "Say which unit took more and which is smaller. Then say the rule.",
+   "talkMoments": [
+    "At each station, before measuring, one student predicts which unit will take more and why. The others answer with “I agree/disagree because …”",
+    "At the summary questions, each student says one answer aloud with Today’s frame before the group writes it."
+   ],
+   "byBand": {
+    "emerging": {
+     "frame": "More ___, because a ___ is smaller. Smaller unit, ___ of them.",
+     "stretch": "They say the other half: a larger unit, fewer of them.",
+     "nonverbal": "Hold the two units side by side, point to the smaller one, then point to the bigger count in the table."
+    },
+    "developing": {
+     "frame": "It took more ___ than ___ because a ___ is smaller. A smaller unit takes ___; a larger unit takes ___.",
+     "stretch": "They check the rule at a second station and say whether it held.",
+     "nonverbal": "Circle the bigger count in the table and draw an arrow to the unit that made it."
+    },
+    "expanding": {
+     "frame": "It took more ___ than ___ because a ___ is smaller than a ___. It takes more of a ___ unit and fewer of a ___ unit to measure the same quantity.",
+     "stretch": "They predict the next station’s result from the rule before measuring, then check it.",
+     "nonverbal": "Sketch two bars of the same length, one split into each unit, and label each count."
+    }
+   }
+  },
+  "synthesis": {
+   "routine": "MLR2: Collect and Display",
+   "steps": [
+    "As groups answer the summary questions, scribe their reasons as said: “feet are shorter so more.” Write “smaller unit” or “larger unit” beside them.",
+    "Go through the five questions quickly, as IM says. Groups give answers; scribe each reason beside its station.",
+    "Ask: “What is the same about every station’s reason?” Students say the rule; you scribe their words.",
+    "End with IM’s question: “What surprised you from the measuring?”",
+    "Leave the board up for the lesson synthesis and the cool-down."
+   ],
+   "prompt": "What is the same about every station’s reason?",
+   "sounds": "At every station the smaller unit took more. It takes more of a smaller unit and fewer of a larger unit to measure the same quantity."
+  }
+ },
+ "rehearsal": [
+  {
+   "id": "math:3.1",
+   "activityId": "3.1",
+   "kind": "math",
+   "type": "task",
+   "name": "Do the warm-up yourself",
+   "where": "Before class. Solve the warm-up: a green 6-cm rod and a blue 9-cm rod, and a sheet of printer paper.",
+   "ask": "Does it take more green rods or blue rods, end to end, to measure the paper’s width? Why?",
+   "aim": "Know the answer, the reason, and how students might check it.",
+   "notes": [
+    "How students might solve it:",
+    "Picture it: green rods are shorter, so more of them fit across.",
+    "Test it: the paper is about 21.6 cm wide, so about 3–4 green rods and 2–3 blue rods."
+   ],
+   "checks": [
+    "Said it takes more green rods",
+    "Gave the reason: the green rods are shorter",
+    "Pictured it before reaching for the rods"
+   ]
+  },
+  {
+   "id": "m2",
+   "activityId": "3.1",
+   "kind": "moment",
+   "momentId": "m2",
+   "type": "decision",
+   "name": "Keep the rods back",
+   "where": "Start of Activity 3.1. You’re holding up a green rod and a blue rod. Students reach for the bin beside you.",
+   "show": [
+    "Task: “Does it take more green rods or blue rods lined up end to end to measure the width of a piece of printer paper?”"
+   ],
+   "student": "A student says: “Can we just try it?” Two more hands reach for the bin.",
+   "ask": "What do you say to the class?",
+   "aim": "Every student predicts before anyone touches the rods.",
+   "say": [
+    "Rods stay here for now. Picture it: which takes more?"
+   ],
+   "checks": [
+    "Kept the rods back until students predicted",
+    "Asked everyone for a prediction",
+    "Promised the rods for checking afterward"
+   ],
+   "why": "IM gives quiet think time but not the rods. A prediction made first is what the rods then test."
+  },
+  {
+   "id": "m1",
+   "activityId": "3.1",
+   "kind": "moment",
+   "momentId": "m1",
+   "type": "student",
+   "name": "A student picks the bigger rods",
+   "where": "About 2 minutes into Activity 3.1. Students are sharing predictions. The rods are still at the front.",
+   "show": [
+    "A green rod and a blue rod, held up side by side. The blue rod is longer."
+   ],
+   "student": "A student says: “More blue rods. They’re bigger.”",
+   "ask": "What do you say to this student?",
+   "aim": "The student tests the prediction with the rods and says what they found.",
+   "say": [
+    "Test it. Line up the blue rods, then the green."
+   ],
+   "checks": [
+    "Sent them to the rods to test it",
+    "Asked them to say what they found",
+    "Didn’t tell them it was green"
+   ],
+   "goingOn": "They compare the rods’ sizes, which is the right thing to notice. They link “more” with “larger,” but here the larger thing is the unit.",
+   "ifNot": "If each rod covers more of the paper, do you need more rods or fewer?"
+  },
+  {
+   "id": "math:3.2",
+   "activityId": "3.2",
+   "kind": "math",
+   "type": "task",
+   "name": "Do the stations yourself",
+   "where": "Before class. Work the five stations and the summary questions, with the materials if you can.",
+   "ask": "At each station, which unit took more? For salt, how many teaspoons fill 100 milliliters, and how many milliliters do 15 teaspoons fill?",
+   "aim": "Know IM’s answers and the one rule every station shows.",
+   "notes": [
+    "How students might solve it:",
+    "Count: 16 cubic inches, 250 cubic centimeters; 6 meters, 20 feet; 4 quarts, a little less than 4 liters.",
+    "Reason from the counts: the unit that took more is smaller. Order: gram, ounce, pound, kilogram.",
+    "Salt, scale the table: 20 milliliters took 4 teaspoons, so 100 milliliters takes about 20.",
+    "Salt, use the rate: about 5 milliliters per teaspoon, so 15 teaspoons fill about 75 milliliters; \\(\\frac{1}{5}\\) teaspoon per milliliter."
+   ],
+   "checks": [
+    "Got 16 cubic inches and 250 cubic centimeters, and a liter larger than a quart",
+    "Got about 20 teaspoons for 100 milliliters and 75 milliliters for 15 teaspoons",
+    "Ordered gram, ounce, pound, kilogram, from the counts"
+   ]
+  },
+  {
+   "id": "launch:3.2",
+   "activityId": "3.2",
+   "kind": "rounds",
+   "type": "routine",
+   "routine": "MLR6: Three Reads",
+   "language": true,
+   "name": "Read the question three times",
+   "where": "Start of Activity 3.2. One summary question is up. The stations are set, and groups haven’t moved yet.",
+   "show": [
+    "On the board: “Did it take more feet or meters to measure the indicated length? Why?”"
+   ],
+   "ask": "Read the question aloud three times. After each read, ask one question. Nobody answers yet.",
+   "aim": "Students know what to notice at every station before they start.",
+   "rounds": [
+    {
+     "ask": "You’ve read it once. What do you ask?",
+     "aim": "Students say what the question is about, with no answer."
+    },
+    {
+     "ask": "You’ve read it twice. What do you ask?",
+     "aim": "Students name the two units and what they will count."
+    },
+    {
+     "ask": "You’ve read it three times. What do you ask?",
+     "aim": "Students suggest how to find out and explain, without answering."
+    }
+   ],
+   "checks": [
+    "Read 1: asked what it is about, with no answer",
+    "Read 2: asked for the two units and what gets counted",
+    "Read 3: asked how we might find out, and took ideas without answering"
+   ],
+   "why": "One question read three times tells every group what to notice at all five stations: which unit took more, and why.",
+   "runIt": [
+    "Read 1: read the question aloud. Ask what it is about. No answers.",
+    "Read 2: read it again. Ask for the two units and what we will count.",
+    "Read 3: read it once more. Ask how we might find out. Take ideas; nobody answers.",
+    "Show the other summary questions: every station ends in a “which took more” question.",
+    "Demonstrate a level teaspoon with a straightedge, as IM says, then send groups to their first station."
+   ]
+  },
+  {
+   "id": "release:3.2",
+   "activityId": "3.2",
+   "kind": "release",
+   "type": "send",
+   "routine": "MLR8: Discussion Supports",
+   "language": true,
+   "name": "Send groups to the stations",
+   "where": "About 3 minutes into Activity 3.2. Three Reads and the teaspoon demonstration just ended. Groups are about to move to their stations.",
+   "show": [
+    "Posted at each station: “I agree/disagree because …,” “How do you know …?” and “Can you give an example?”"
+   ],
+   "ask": "What do you tell groups to say in every why answer?",
+   "aim": "Groups know a why answer names which unit took more and which is smaller.",
+   "say": [
+    "Say which unit took more and which is smaller. Then say the rule."
+   ],
+   "notes": [
+    "Success criteria: In every why answer, say which unit took more, which unit is smaller, and the rule for both.",
+    "When groups talk: at each station, before measuring, one student predicts which unit will take more and why. The others answer with “I agree/disagree because …”",
+    "Then: at the summary questions, each student says one answer aloud with Today’s frame before the group writes it."
+   ],
+   "checks": [
+    "Named what every why answer needs: which took more, which is smaller, the rule",
+    "Pointed to Today’s frame and the posted question frames",
+    "Told them a student predicts before measuring at each station"
+   ],
+   "sounds": "It took more feet than meters because a foot is smaller than a meter. It takes more of a smaller unit and fewer of a larger unit to measure the same quantity.",
+   "why": "Naming the reason’s parts before the stations means groups practice it five times, then use it on the summary questions."
+  },
+  {
+   "id": "m6",
+   "activityId": "3.2",
+   "kind": "moment",
+   "momentId": "m6",
+   "type": "decision",
+   "name": "Get a silent group talking",
+   "where": "About 9 minutes into Activity 3.2. Groups are at their second station.",
+   "show": [
+    "At Station 2: one student holds the meter stick, one writes. Nobody talks.",
+    "Their table so far: | meters | feet",
+    "| length of the back wall | 6 | (blank)"
+   ],
+   "student": "A student writes 6 meters and reaches for the ruler. No one has said why.",
+   "ask": "What do you say to the group?",
+   "aim": "Group members ask each other how they know before writing.",
+   "say": [
+    "Before you write it, ask each other: how do you know?"
+   ],
+   "checks": [
+    "Stopped the group before the next number went down",
+    "Pointed them to a posted frame",
+    "Didn’t supply the number or the reason"
+   ],
+   "why": "IM: Discussion Supports (MLR 8) is for pressing for details and questioning each other. Silent stations leave the summary questions with numbers and no reasons."
+  },
+  {
+   "id": "m5",
+   "activityId": "3.2",
+   "kind": "moment",
+   "momentId": "m5",
+   "type": "student",
+   "name": "A group divides when it should multiply",
+   "where": "About 26 minutes into Activity 3.2. Groups are answering the summary questions.",
+   "show": [
+    "Their Station 5 table: | milliliters | teaspoons",
+    "| 20 | 4",
+    "| 40 | 8",
+    "| 50 | 10",
+    "The question: “If you poured 15 teaspoons of salt into an empty graduated cylinder, about how many milliliters would it fill?”"
+   ],
+   "student": "A group wrote: “15 ÷ 5 = 3. 3 milliliters.”",
+   "ask": "What do you say to this group?",
+   "aim": "The group decides which number should be larger, then fixes the answer.",
+   "say": [
+    "Which unit is bigger? What does that tell you about the numbers?"
+   ],
+   "checks": [
+    "Asked which unit is bigger",
+    "Had them say which number should be larger",
+    "Didn’t tell them to multiply"
+   ],
+   "goingOn": "They found 5 as the link between the units, which is the hard part. They chose divide without asking which unit is bigger.",
+   "ifNot": "In your table, how many milliliters did 4 teaspoons fill?"
+  },
+  {
+   "id": "m7",
+   "activityId": "3.2",
+   "kind": "levels",
+   "momentId": "m7",
+   "type": "language",
+   "language": true,
+   "name": "Help a student say why",
+   "where": "About 28 minutes into Activity 3.2. Groups are on the summary questions. Each student says one answer before the group writes it.",
+   "show": [
+    "Their Station 2 table: | meters | feet",
+    "| length of the back wall | 6 | 20",
+    "The question: “Did it take more feet or meters to measure the indicated length? Why?”"
+   ],
+   "student": "A student says: “Feet. Feet is more.”",
+   "ask": "What do you say to this student?",
+   "aim": "The student says which unit is smaller and why it took more of them.",
+   "checks": [
+    "Asked every level the same question: which took more, and why",
+    "Gave their level’s frame or the way in without words",
+    "Didn’t say the reason for them"
+   ],
+   "ifNot": "Which is longer, one foot or one meter?",
+   "sounds": "It took more feet than meters because a foot is smaller than a meter. A smaller unit takes more.",
+   "goingOn": "They read the table right and have the answer. The reason, the size of the units, isn’t in words yet."
+  },
+  {
+   "id": "synth:3.2",
+   "activityId": "3.2",
+   "kind": "synthesis",
+   "type": "routine",
+   "routine": "MLR2: Collect and Display",
+   "language": true,
+   "name": "Finish on the board",
+   "where": "About 31 minutes into Activity 3.2. Groups have answered the summary questions. Their reasons are on the board.",
+   "show": [
+    "On the board, in students’ words:",
+    "Station 1: “Centimeter cubes are tiny, so lots more fit.”",
+    "Station 2: “More feet. Feet are shorter than meters.”",
+    "Station 3: “The gallon filled fewer liters, so a liter is bigger.”"
+   ],
+   "ask": "Three reasons are up. What do you write beside them? What do you ask?",
+   "aim": "Students state one rule that fits every station.",
+   "notes": [
+    "Write beside each reason: “smaller unit” and “larger unit.”",
+    "Then ask the class, and let them say the rule:"
+   ],
+   "say": [
+    "What is the same about every station’s reason?"
+   ],
+   "checks": [
+    "Wrote students’ own words, with “smaller unit” or “larger unit” beside them",
+    "Asked what is the same across stations, and let students say the rule",
+    "Ended with IM’s question about what surprised them"
+   ],
+   "sounds": "At every station the smaller unit took more. It takes more of a smaller unit and fewer of a larger unit to measure the same quantity.",
+   "why": "IM: Collect and Display keeps students’ words as a class reference. Here five stations’ reasons become one rule, said by students.",
+   "runIt": [
+    "While groups answer, scribe their reasons as said, with the station. Write “smaller unit” or “larger unit” beside them.",
+    "Go through the five questions quickly; scribe each reason beside its station.",
+    "Ask: “What is the same about every station’s reason?” Scribe the rule in their words.",
+    "Ask IM’s question: “What surprised you from the measuring?”",
+    "Leave the board up for the lesson synthesis and the cool-down."
+   ]
+  }
+ ],
+ "lessonSynthesis": {
+  "ideas": [
+   "If you measure the same quantity with different units, it takes more of the smaller unit and fewer of the larger one.",
+   "A jug that holds 2 gallons also holds 8 quarts. A quart is smaller, so it takes 4 times as many quarts.",
+   "In our stations, the shelf was 20 feet but 6 meters, because a foot is smaller than a meter."
+  ],
+  "pointTo": "Point to the 3.2 board: each station’s reason, and the rule students said, with “smaller unit” and “larger unit” beside it.",
+  "check": {
+   "question": "A water bottle holds 1 liter. Would it take more milliliters or more liters to measure it? Why?",
+   "sounds": "It takes more milliliters than liters because a milliliter is smaller than a liter. It takes more of a smaller unit to measure the same quantity."
+  }
+ },
+ "beforeClass": [
+  "Set up the five stations from IM’s preparation list. Include the assembled 2 by 2 by 4 inch box, and something about 20 feet long for Station 2.",
+  "For Three Reads in 3.2: write the feet-and-meters question on the board, and practice a level teaspoon with a straightedge.",
+  "For the release: post IM’s frames at each station, and have Today’s frame for your students’ levels ready.",
+  "For Collect and Display (MLR 2): clear board space with a column for each station; start writing as groups answer."
+ ],
+ "cuts": [
+  {
+   "activityId": "3.1",
+   "note": "Keep it short: one prediction each, one test with the rods, then move on."
+  },
+  {
+   "activityId": "3.2",
+   "note": "About 4 minutes a station leaves about 10 for the questions and the board. If short, trim station time, never the why answers or the closing rule."
+  }
+ ]
+}

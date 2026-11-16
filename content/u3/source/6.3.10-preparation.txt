@@ -1,0 +1,56 @@
+Source: https://im.kendallhunt.com/MS/teachers/1/3/10/preparation.html
+
+## Lesson 10
+## What Are Percentages?
+ View Student Lesson
+## Lesson Narrative
+ This lesson is the first of two that introduce students to percentages as a rate per 100 (MP6) and the ways they are used to describe different types of situations.
+ Percentages are commonly used in two ways:
+ To describe a part of a whole. For example, “Jada drank 25% of the bottle of water.” In this case, the percentage expressing the amount consumed is not bigger than 100% because it refers to a part of a whole, as shown in the diagram below. [image: A tape diagram showing 4 parts with each part worth 25% for a total value of 100%. The first piece is colored in.] [image: Expand image] 
+ [image: A tape diagram showing 4 parts with each part worth 25% for a total value of 100%. The first piece is colored in.] 
+ To describe the size of one quantity as a percentage of another quantity. For example, “Jada drank 300% as much water as Diego did.” In this case, there is no restriction on the size of the percentage, because the percentage is describing a multiplicative comparison between two quantities, as shown below. [image: A tape diagram showing 1 part for the water Diego drank and 3 parts for the water Jada drank with each part worth 100%.] [image: Expand image] 
+ [image: A tape diagram showing 1 part for the water Diego drank and 3 parts for the water Jada drank with each part worth 100%.] 
+ In the first usage there is a single quantity and we are describing a part of it; in the second usage we are comparing two quantities. Students may have prior exposure to percentages, but are likely to have only encountered the first usage and might not be able to make sense of percentages above 100% or those used in comparative contexts. This lesson exposes students to both applications of percentages.
+ Money is the main context for exploring percentages in this lesson and the warm up asks students to convert between dollars and cents providing an opportunity for the teacher to assess students’ current abilities.
+ For the first several lessons exploring percentages, double number lines are the primary representation presented to students. This choice is intended to strongly communicate that we are working with percent rates, and that students can and should use all of the reasoning they have developed to deal with equivalent ratios and rates when dealing with rates per 100. That said, if students prefer to reason using tables or by multiplying or dividing by unit rates, they should not be discouraged from doing so.
+## Learning Goals
+## Teacher Facing
+ Comprehend the word “percentage” (in written and spoken language) and the symbol “%” (in written language) to mean a rate per 100.
+ Draw and label a double number line diagram to represent percentages of a dollar and to find corresponding monetary values or percentages.
+## Student Facing
+ Let’s learn about percentages.
+## Learning Targets
+## Student Facing
+ I can create a double number line with percentages on one line and dollar amounts on the other line.
+ I can explain the meaning of percentages using dollars and cents as an example.
+## CCSS Standards
+ Building On
+ 2.MD.C.8
+ 5.NBT.A.3
+ 6.RP.A
+ Addressing
+ 6.RP.A.3.c
+ Building Towards
+ 6.RP.A.3.c
+## Glossary Entries
+ percent The word percent means “for each 100.” The symbol for percent is %.
+ For example, a quarter is worth 25 cents, and a dollar is worth 100 cents. We can say that a quarter is worth 25% of a dollar.
+ [image: A quarter (coin)] [image: Expand image] 
+ [image: A quarter (coin)] 
+ [image: A diagram of two bars with different lengths.] [image: Expand image] 
+ Description: <p>A diagram of two bars with different lengths. The top bar is labeled 1 Quarter and 25 cents is labeled inside the bar. The bottom bar is labeled 1 Dollar. It is 4 times longer than the top bar and 100 cents is labeled inside the bar.</p> 
+ [image: A diagram of two bars with different lengths.] 
+ percentage A percentage is a rate per 100.
+ For example, a fish tank can hold 36 liters. Right now there is 27 liters of water in the tank. The percentage of the tank that is full is 75%.
+ [image: a double number line] [image: Expand image] 
+ [image: a double number line] 
+## Print Formatted Materials
+ Teachers with a valid work email address can click here to register or sign in for free access to Cool Down, Teacher Guide, and PowerPoint materials.
+ | Student Task Statements | pdf | docx 
+ | Cumulative Practice Problem Set | pdf | docx 
+ | Cool Down | | Log In 
+ | Teacher Guide | | Log In 
+ | Teacher Presentation Materials | pdf | docx 
+## Additional Resources
+ | Google Slides | | Log In 
+ | PowerPoint Slides | | Log In

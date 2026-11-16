@@ -1,0 +1,78 @@
+{
+  "section": "Percentages",
+  "activities": {
+    "13.1": {
+      "response": [
+        "A. 10%",
+        "B. 50%",
+        "C. 75%"
+      ],
+      "extensionResponse": null
+    },
+    "13.2": {
+      "response": [
+        "1. a. 5 liters of milk",
+        "b. 1,000 kilometers",
+        "c. 12 hours",
+        "d. Divide by 2, or multiply by \\(\\frac{1}{2}\\).",
+        "2. a. 200 kilometers",
+        "b. 1 liter of milk",
+        "c. 2.4 hours",
+        "d. Divide by 10, or multiply by \\(\\frac{1}{10}\\).",
+        "3. a. 18 hours",
+        "b. 1,500 kilometers",
+        "c. 7.5 liters of milk",
+        "d. Divide by 4, and multiply by 3 (or multiply by \\(\\frac{3}{4}\\))."
+      ],
+      "extensionResponse": null
+    },
+    "13.3": {
+      "response": [
+        "Answers vary. Sample responses:",
+        "1. Because 50% of a quantity is \\(\\frac{1}{2}\\) of that quantity, I can multiply \\(9 \\boldcdot 2 = 18\\).",
+        "2. Because 25% of a quantity is \\(\\frac{1}{4}\\) of that quantity, I can multiply \\(9 \\boldcdot 4 = 36\\).",
+        "3. Because 10% of a quantity is \\(\\frac{1}{10}\\) of that quantity, I can multiply \\(9 \\boldcdot 10 = 90\\).",
+        "4. Because 75% of a quantity is \\(\\frac{3}{4}\\) of that quantity, I can divide \\(9 \\div 3 = 3\\) to find \\(\\frac{1}{4}\\) of the quantity and then multiply \\(3 \\boldcdot 4 = 12\\).",
+        "5. Because 150% of a quantity is \\(\\frac{3}{2}\\) of that quantity, I can divide \\(9 \\div 3 = 3\\) to find \\(\\frac{1}{2}\\) of the quantity and then multiply \\(3 \\boldcdot 2 = 6\\)."
+      ],
+      "extensionResponse": null
+    },
+    "13.4": {
+      "response": [
+        "1. 50%. 7 is half of 14, so 7 is 50% of 14.",
+        "2. 25%. 5 times 4 is 20, so 5 is \\(\\frac{1}{4}\\) (or 25%) of 20.",
+        "3. 10%. 3 times 10 is 30, so 3 is \\(\\frac{1}{10}\\) (or 10%) of 30.",
+        "4. 75%. 2 is \\(\\frac{1}{4}\\) of 8, so 6 is \\(\\frac{3}{4}\\) (or 75%) of 8.",
+        "5. 400%. 5 is 100% of 5, and 20 is 4 times that, so 20 is 400% of 5."
+      ],
+      "extensionResponse": [
+        "Answers may vary depending on the year.",
+        "1. 25% (as of 2017)",
+        "2. 1.875 billion people are under 14 years old (as of 2017)",
+        "3. 5.625 billion people are over 14 years old (as of 2017)"
+      ]
+    }
+  },
+  "coolDown": {
+    "task": [
+      "Answer each question and explain your reasoning.",
+      "1. How long is 50% of 60 minutes?",
+      "2. How long is 10% of 60 minutes?",
+      "3. How long is 75% of 60 minutes?"
+    ],
+    "response": [
+      "1. 30 minutes because it is \\(\\frac{1}{2}\\) of an hour",
+      "2. 6 minutes because it is \\(\\frac{1}{10}\\) of an hour",
+      "3. 45 minutes because it is \\(\\frac{3}{4}\\) of an hour"
+    ]
+  },
+  "pages": [217, 218, 219, 220, 222, 224, 225, 226],
+  "notes": [
+    "Printed page = PDF page − 2 (p219.png is printed 217, p228.png is printed 226). Pages read: printed 217–218 (13.1 response), 219–220 (13.2 response), 222 (13.3 response), 224 (13.4 response and extension), 225–226 (cool-down task and response).",
+    "13.2 response: item numbers and sub-letters are printed side by side (“1. a. 5 liters of milk”), so they are kept on one line. The double number lines that follow on printed page 220 belong to IM’s activity synthesis, not the student response, and are not transcribed.",
+    "13.3 response item 5: IM writes 150% as \\(\\frac{3}{2}\\) of the quantity and divides 9 by 3 to find \\(\\frac{1}{2}\\); the answer is 6. Transcribed as printed.",
+    "13.4 extension response item 3 says “over 14 years old” where the question asks “14 or older.” Transcribed as printed. The figures are as of 2017.",
+    "Cool-down response lines have no final period in print; kept as printed.",
+    "The Teacher Guide also prints a narrative for the cool-down (“In this activity, students find C (where A% of B is C), given benchmark percentages and a single value for B in the context of telling time.”). The tg format has no field for it, so it is not stored."
+  ]
+}

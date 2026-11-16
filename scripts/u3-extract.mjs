@@ -83,18 +83,22 @@ function supports(lines, phase) {
       i++;
       continue;
     }
-    const e = ELL.exec(l);
-    if (e && /^Design Principle\(s\):/.test(lines[i + 1] ?? '')) {
-      const pl = lines[i + 1].toLowerCase();
+    // IM sometimes prints the design principle on the support's own line.
+    const inl = /\s*Design Principles?\(s\):.*$/.exec(l);
+    const lt = inl ? l.slice(0, inl.index).trim() : l;
+    const e = ELL.exec(lt);
+    if (e && (inl || /^Design Principles?\(s\):/.test(lines[i + 1] ?? ''))) {
+      const pLine = inl ? inl[0].trim() : lines[i + 1];
+      const pl = pLine.toLowerCase();
       ell.push({
         routine: `${e[2].replace(' ', '')}: ${e[3].trim()}`,
         phase,
         domains: DOMAINS.filter((d) => e[1].toLowerCase().includes(d)),
         principles: PRINCIPLES.filter(([k]) => pl.includes(k)).map(([, v]) => v),
-        text: l,
-        principleLine: lines[i + 1],
+        text: lt,
+        principleLine: pLine,
       });
-      i++;
+      if (!inl) i++;
       continue;
     }
     rest.push(l);
@@ -143,7 +147,11 @@ function activity(block, purposes, tg) {
 
   const narrative = content(section(body, slotHead));
   const launchPart = supports(content(section(body, 'Launch')), 'launch');
-  const task = content(section(body, 'Student Facing'));
+  // IM sometimes prints a digital version, then the print version the Teacher Guide uses (6.3.3's
+  // stations): take the last "Student Facing" block before the extension or the activity synthesis.
+  const endAt = body.findIndex((l) => isHead(l) && ['Are you ready for more?', 'Activity Synthesis'].includes(head(l)));
+  const facing = body.map((l, i) => (isHead(l) && head(l) === 'Student Facing' && (endAt < 0 || i < endAt) && head(body[i + 1] ?? '') !== 'Are you ready for more?' ? i : -1)).filter((i) => i >= 0);
+  const task = content(section(body.slice(facing.length > 1 ? facing[facing.length - 1] : 0), 'Student Facing'));
   const synthPart = supports(content(section(body, 'Activity Synthesis')), 'synthesis');
   const misconceptions = content(section(body, 'Anticipated Misconceptions'));
   // The extension runs from its heading to its Student Response; IM sometimes
@@ -209,10 +217,10 @@ function lesson(n) {
   const cool = all.find((a) => a.slot === 'cool-down');
   const activities = all.filter((a) => a.slot !== 'cool-down');
 
-  const lessonSynthesis = content(idx.slice(synthAt + 1, starts.find((s) => s > synthAt))).filter((l) => !isHead(l));
-  const summary = content(
-    section(idx.slice(idx.findIndex((l) => head(l) === 'Student Lesson Summary') + 1), 'Student Facing', (l) => isHead(l) || GATED.test(l)),
-  );
+  // A project lesson (6.3.17) has no lesson synthesis or student summary.
+  const lessonSynthesis = synthAt < 0 ? [] : content(idx.slice(synthAt + 1, starts.find((s) => s > synthAt))).filter((l) => !isHead(l));
+  const sumAt = idx.findIndex((l) => head(l) === 'Student Lesson Summary');
+  const summary = sumAt < 0 ? [] : content(section(idx.slice(sumAt + 1), 'Student Facing', (l) => isHead(l) || GATED.test(l)));
 
   return {
     code: `6.3.${n}`,

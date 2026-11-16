@@ -104,7 +104,8 @@ for (const f of premoFiles) {
 
   const crux = acts.get(p.crux);
   if (!crux) err(at, `crux ${p.crux} is not an activity`);
-  else if (crux.slot !== 'activity') err(at, `crux ${p.crux} is a ${crux.slot}; the crux is never a warm-up, optional activity or cool-down`);
+  // IM marks some whole lessons optional (6.3.2): then an optional activity may be the crux.
+  else if (crux.slot !== 'activity' && !(crux.slot === 'optional' && !im.activities.some((a) => a.slot === 'activity'))) err(at, `crux ${p.crux} is a ${crux.slot}; the crux is never a warm-up, optional activity or cool-down`);
   else if (
     (crux.purpose === 'mastery' || crux.purpose === 'practice-language') &&
     im.activities.some((a) => a.slot === 'activity' && a.purpose !== 'mastery' && a.purpose !== 'practice-language')

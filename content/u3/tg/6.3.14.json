@@ -1,0 +1,69 @@
+{
+  "section": "Percentages",
+  "activities": {
+    "14.1": {
+      "response": [
+        "9.6. Possible strategies: \\(6 \\boldcdot 2 = 12\\) and \\(\\frac{8}{10} \\boldcdot 12 = 9.6\\) (or \\(6 \\boldcdot (0.8) = 4.8\\) and \\((4.8) \\boldcdot 2 = 9.6\\))",
+        "10.8. Possible strategies: \\((4.5) \\boldcdot 4 = 18\\) and \\(\\frac{6}{10} \\boldcdot 18 = 10.8\\) (or \\((0.6) \\boldcdot 4 = 2.4\\) and \\((2.4) \\boldcdot (4.5) = 10.8\\))"
+      ],
+      "extensionResponse": null
+    },
+    "14.2": {
+      "response": [
+        "1. $1.50. Possible strategies: \\(\\frac{10}{100} \\boldcdot 15 = 1.50\\) or \\((0.10) \\boldcdot 15 = 1.50\\)",
+        "[double number line] value (dollars): 0, 1.50, 3.00, 4.50, 6.00, 7.50, 9.00, 10.50, 12.00, 13.50, 15.00; percentage: 0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 100%. 1.50 and 10% are circled.",
+        "| value (dollars) | percentage",
+        "| 15 | 100",
+        "| 1.5 | 10",
+        "2. 25%. Possible strategies: \\(6 \\div 24 = \\frac{25}{100}\\) or \\(6 \\div 24 = 0.25\\)",
+        "[double number line] value (dollars): 0, 6, 12, 18, 24; percentage: 0%, 25%, 50%, 75%, 100%. 6 and 25% are circled.",
+        "| value (dollars) | percentage",
+        "| 24 | 100",
+        "| 6 | 25"
+      ],
+      "extensionResponse": [
+        "Yes. Han paid 80% or \\(\\frac{4}{5}\\) what Clare paid. So Clare paid \\(\\frac{5}{4}\\) or 125% of what Han paid."
+      ]
+    },
+    "14.3": {
+      "response": [
+        "For Problem Card 1:",
+        "1. Jada can only afford Device A because 60% of $40 is $24. Possible strategy:",
+        "[double number line] money (dollars): 0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40; percentage: 0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 100%. 24 and 60% are circled.",
+        "2. Jada has 96% of the money needed for Device B. Possible strategy: Set up a table, and reason that since 100 is \\(25 \\boldcdot 4\\), we also multiply 24 by 4.",
+        "| money (dollars) | percentage",
+        "| 25 | 100",
+        "| 1 | 4",
+        "| 24 | 96",
+        "For Problem Card 2:",
+        "$60. Sample reasoning: if $24 is 40%, then $6 is 10%. Therefore, $60 is 100%."
+      ],
+      "extensionResponse": null
+    }
+  },
+  "coolDown": {
+    "task": [
+      "It takes Jada 20 minutes to walk to school. It takes Andre 80% as long to walk to school.",
+      "How long does it take Andre to walk to school?"
+    ],
+    "response": [
+      "16 minutes. Possible strategies:",
+      "10% of 20 minutes is 2 minutes. \\(8 \\boldcdot 2 = 16\\), so it takes 16 minutes for Andre to walk to school.",
+      "Using a table:",
+      "| time (minutes) | percentage",
+      "| 20 | 100",
+      "| 2 | 10",
+      "| 16 | 80"
+    ]
+  },
+  "pages": [232, 234, 235, 237, 238, 239, 241],
+  "notes": [
+    "Printed page numbers are 2 less than the image filenames (p234.png = printed 232, p243.png = printed 241). Pages read: printed 232 (14.1 response), 234–235 (14.2 response and extension), 237 (the info gap cards), 238–239 (14.3 response), 241 (cool-down).",
+    "Double number lines are drawn in the print. They are given here as one bracketed line each, listing the tick labels on each line and what is circled; the wording of those lines is the transcriber's, the numbers are IM's. The 14.2 question 2 line has one more unlabeled tick after 24 and 100%.",
+    "Tables are given as rows starting with “|”, header row first, as in the other lessons. The lesson summary's table (printed 242) has arrows labeled “\\(\\boldcdot \\frac{1}{4}\\)” on both sides; the lesson synthesis table (printed 240) has arrows labeled “\\(\\boldcdot \\frac{1}{5}\\)”. Neither is a student response, so neither is transcribed above.",
+    "Info Gap: Music Devices card text, printed page 237, for reference (IM says it is the text of the cards for reference and planning): Problem Card 1: “A store sells 3 different music devices: Device A, Device B, and Device C. 1. Which of the devices can Jada afford? 2. What percentage of the money needed for Device B does she have?” Data Card 1: “Device A costs $15. Device B costs $25. Device C costs $40. Jada has 60% of the money needed to buy Device C.” Problem Card 2: “The store starts selling another music device. Jada is interested in Device D, though she does not have enough money to buy it. How much does Device D cost?” Data Card 2: “Jada has $24. Jada has 40% of the money needed to buy Device D.”",
+    "The 14.2 response for question 1 writes $1.50 in the double number line and 1.5 in the table, as printed.",
+    "The cool-down's strategies are printed as two bullets; the bullets are not reproduced as characters.",
+    "Dollar signs in prose are written as plain $ (not \\$) inside the JSON text."
+  ]
+}

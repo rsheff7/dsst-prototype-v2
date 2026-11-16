@@ -1,0 +1,74 @@
+{
+  "section": "Percentages",
+  "activities": {
+    "15.1": {
+      "response": [
+        "23. Possible reasoning: 23 hundredths times 100 is 23.",
+        "0.5. Possible reasoning: 50 is one half of 100, and one half can be written as 0.5.",
+        "1.45. Possible reasoning: 145 is bigger than 100 but close to 100, and the answer has to have the digits 1, 4, and 5, so it must be 1.45.",
+        "0.07. The answer is the same as 7 times \\(\\frac{1}{100}\\), which is \\(\\frac{7}{100}\\)."
+      ],
+      "extensionResponse": null
+    },
+    "15.2": {
+      "response": [
+        "1. 75 people attended the basketball game.",
+        "2. 350 people attended the drama play. Possible strategies:",
+        "[double number line] number of people: 0, 25, 75, 250, 350; percentage: 0%, 10%, 30%, 100%, 140%, with a tick every 10%. 75 and 30% are circled; 350 and 140% are circled.",
+        "| number of people | percentage",
+        "| 250 | 100",
+        "| 25 | 10",
+        "| 75 | 30",
+        "| 350 | 140",
+        "3. 110 people attended literacy night. Possible strategies:",
+        "There is 4% for every 10 people, so multiply \\(10 \\boldcdot 11 = 110\\).",
+        "First find 1%, then multiply by 44 to find 44%.",
+        "| number of people | percentage",
+        "| 250 | 100",
+        "| 2.5 | 1",
+        "| 110 | 44"
+      ],
+      "extensionResponse": [
+        "70%. Half of 350 is 175, and 175 is 70% of 250."
+      ]
+    },
+    "15.3": {
+      "response": [
+        "1. $8",
+        "2. Here is the table:",
+        "|  | item 1 | item 2 | item 3 | item 4 | item 5",
+        "| normal price | $1 | $4 | $10 | $55 | $120",
+        "| sale price | $0.80 | $3.20 | $8 | $44 | $96",
+        "3. Answers vary. Sample response: Multiply each normal price by 0.8 (or by \\(\\frac{80}{100}\\)) to find the sale price.",
+        "4. These expressions work:",
+        "\\(\\frac{80}{100} \\boldcdot x\\) (See discussion.)",
+        "\\(\\frac{8}{10} \\boldcdot x\\) because \\(\\frac{80}{100} = \\frac{8}{10}\\)",
+        "\\(\\frac{4}{5} \\boldcdot x\\) because \\(\\frac{8}{10} = \\frac{4}{5}\\)",
+        "\\((0.8) \\boldcdot x\\) because \\(\\frac{80}{100} = 0.8\\)"
+      ],
+      "extensionResponse": null
+    }
+  },
+  "coolDown": {
+    "task": [
+      "Order these three values from least to greatest. Explain or show your reasoning.",
+      "65% of 80",
+      "82% of 50",
+      "170% of 30"
+    ],
+    "response": [
+      "The least is 82% of 50, because \\((0.82) \\boldcdot 50 = 41\\). Next is 170% of 30, because \\((1.7) \\boldcdot 30 = 51\\). The greatest is 65% of 80, \\((0.65) \\boldcdot 80 = 52\\)."
+    ]
+  },
+  "pages": [249, 251, 254, 255, 256],
+  "notes": [
+    "Printed page numbers are 2 less than the image filenames (p251.png = printed 249, p258.png = printed 256). Pages read: printed 249 (15.1 response), 251 (15.2 response and extension), 254–255 (15.3 response, the start of its synthesis), 255–256 (cool-down).",
+    "The 15.2 double number line is given as one bracketed line listing its labeled ticks and what is circled; that line’s wording is the transcriber’s, the numbers are IM’s. The line has unlabeled ticks every 10% (every 25 people) between the labeled ones.",
+    "Tables are given as rows starting with “|”, header row first. In the 15.3 table the first header cell is empty in print and is kept as an empty cell.",
+    "The 15.3 response table labels its first row “normal price”; the task on the web page says “regular price.” Transcribed as printed.",
+    "In the 15.2 and 15.3 responses, the strategies under item 3 and the expressions under item 4 are printed as hollow bullets; the bullets are not reproduced as characters.",
+    "The cool-down has a narrative and an anticipated misconception in the Teacher Guide that the web page does not show. Printed page 255, verbatim: “In addition to assessing students ability to find \\(A\\%\\) of \\(B\\), this cool-down allows students to practice arithmetic involving fractions or decimals (using grade 5 techniques). This is a good review for upcoming units on fractions and decimals.” Anticipated Misconceptions: “Students may put these amounts in order based on just the percentages or just the amount that corresponds to 100%, not realizing that both parts of the expression affect the value. Demonstrate calculating 65% of 80 to get them on the right track.”",
+    "The cool-down's three values are printed side by side on one line; they are given here as three lines.",
+    "Dollar signs in prose are written as plain $ (not \\$) inside the JSON text."
+  ]
+}

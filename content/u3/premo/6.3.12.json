@@ -1,0 +1,388 @@
+{
+ "status": "draft",
+ "reviewNotes": [
+  "No person has reviewed this file.",
+  "Crux is 12.3 (5 Dollars), not 12.2. 12.3 is the only required activity that addresses 6.RP.A.3.c (12.1 and 12.2 are building towards it), it asks students to draw the tape diagram themselves (goal 2), and it compares two amounts as a percent and as a fraction (goal 3). The cool-down is the same shape: “___% as much as,” then a diagram. 12.2 is the strong alternative: IM’s language progression names Lesson 12 for interpreting tape diagrams, and 12.2 is where students first read one. A reviewer could reasonably pick 12.2.",
+  "Testable object: Elena’s tape diagram, the diagram each student draws for question 1b. The synthesis tests it by asking where the $2, the $5, 40% and \\(\\frac{2}{5}\\) are on it. Diego’s diagram then reuses it past 100%.",
+  "cruxLanguage.routine is IM’s MLR8 support for 12.3. The extractor places it at the launch, because IM prints it in the Launch section. Its text says it happens in the whole-class discussion after question 1, so the run sheet follows the text. phase is set to launch to match the IM layer.",
+  "IM’s own moments: the Notice and Wonder note that the question mark needn’t be decided (m1), IM’s synthesis question about what represents 100% in the dog-and-puppy diagram (m2), the MLR1 partner rounds in 12.2 (m3), IM’s synthesis for 12.3 (m5), IM’s MLR8 support in 12.3 (m7, m8), IM’s double-number-line misconception in 12.4 (m9) and IM’s flawed MLR3 answer in 12.4 (m10).",
+  "Premo’s moments: m4 (“Elena has $40”), m6 (the language moment and its by-level moves). The catalog has no breakdown for MLR8; m8’s breakdown (writing the fraction without pointing to the diagram) is Premo’s reading of IM’s “press for details.”",
+  "m5 is a share-order moment, but IM’s 12.3 synthesis gives no order: it says show diagrams, then show IM’s if no one has something equivalent. So m5 is typed student-thinking, and the order (5 parts, then 10 parts, then the bare calculation) is Premo’s.",
+  "Language mode: none of IM’s three goals for Lesson 12 names a mode. The plan uses “out loud and in writing,” since the crux synthesis is spoken and the cool-down is written. A reviewer should confirm.",
+  "Math checked: 12.2: 5 × 9 = 45, 9 is \\(\\frac{1}{5}\\) of 45; 90 ÷ 9 = 10, so \\(\\frac{1}{10}\\) and 10%. 12.3: 40% of $5 is $2 (each 20% is $1); 150% of $5 is $7.50 (each 50% is $2.50); Noah has 250%, or \\(\\frac{5}{2}\\), as much as Elena. 12.4: 1.5 is 50% of 3; 80% of 3 is 2.4. Cool-down: 36 is 3 of 4 equal parts, so each is 12 and the large holds 48.",
+  "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person. The diagram lines in the tg file are descriptions, not IM’s words."
+ ],
+ "crux": "12.3",
+ "cruxWhy": "12.3 is where students first draw their own tape diagram for a percentage and say the same comparison as a fraction. It is the lesson’s only required activity that addresses the standard, and the cool-down asks the same thing with a new situation. IM’s language support for the lesson, Discussion Supports (MLR8), sits in 12.3’s class discussion: “where do you see 40% or \\(\\frac{2}{5}\\)?”",
+ "object": {
+  "name": "Elena’s tape diagram",
+  "what": "The diagram each student draws for question 1b, Noah’s $5 as the whole and Elena’s $2 as part of it. The discussion tests it: where are the $2, the $5, 40% and \\(\\frac{2}{5}\\)?"
+ },
+ "goal": "Students draw a tape diagram for “___% as much as,” with the amount compared to as 100%, and say the same comparison as a fraction.",
+ "rigorCheck": "Does every student still draw Elena’s tape diagram and say where 40% and \\(\\frac{2}{5}\\) are on it?",
+ "watchFor": {
+  "12.1": "A pair goes straight to the question mark and skips the four equal pieces.",
+  "12.2": "On the dog-and-puppy diagram, a student calls the puppy 100%.",
+  "12.3": "A student writes that Elena has $40.",
+  "12.4": "A student can’t fit 80% between 50% and 100% on the double number line."
+ },
+ "moments": [
+  {
+   "id": "m1",
+   "activityId": "12.1",
+   "kind": "routine-breakdown",
+   "routine": "Notice and Wonder",
+   "see": "The image goes up, and a student calls out: “It’s 75%!”",
+   "means": "They jumped to the question mark. IM wants the four equal pieces noticed first; the percentage doesn’t need deciding yet.",
+   "say": "Hold that thought. What do you notice about the two bars?",
+   "dont": "Confirm the 75% and move on.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "It is not necessary to decide what should be used in place of the question mark.",
+   "rehearse": true,
+   "criteria": [
+    "Held the answer without confirming or rejecting it",
+    "Turned the class back to what they notice",
+    "Made sure the four equal pieces came up"
+   ]
+  },
+  {
+   "id": "m2",
+   "activityId": "12.2",
+   "kind": "student-thinking",
+   "see": "On the dog-and-puppy diagram, a student labels the puppy’s box 100%.",
+   "means": "They made the first amount they saw the whole. When we compare the puppy to the dog, the dog is 100%.",
+   "say": "We’re comparing the puppy to the dog. Which tape is the whole?",
+   "dont": "Move the 100% label to the dog’s tape for them.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "When we compare the puppy’s weight to the dog’s weight, what represents 100%?",
+   "rehearse": true,
+   "criteria": [
+    "Named what the puppy is compared to",
+    "Asked which tape is the whole",
+    "Let the student move the label"
+   ]
+  },
+  {
+   "id": "m3",
+   "activityId": "12.2",
+   "kind": "routine-breakdown",
+   "routine": "MLR1: Stronger and Clearer Each Time",
+   "see": "Partners swap explanations of the \\(\\frac{1}{5}\\), read them and say “looks good.”",
+   "means": "Stronger and Clearer works when partners press for details. Agreeing gives the writer nothing to revise.",
+   "say": "Ask your partner one question. Where is the \\(\\frac{1}{5}\\) on the diagram?",
+   "dont": "Let pairs swap and stop.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Ask each student to meet with 2–3 other partners in a row for feedback."
+  },
+  {
+   "id": "m4",
+   "activityId": "12.3",
+   "kind": "student-thinking",
+   "see": "For question 1a, a student writes: “Elena has $40.”",
+   "means": "They read 40% as 40 dollars. They haven’t yet made Noah’s $5 the whole.",
+   "say": "What is 100% here? Show me on a tape.",
+   "dont": "Tell them to multiply 5 by 0.4.",
+   "from": "premo",
+   "sayFrom": "premo",
+   "rehearse": true,
+   "criteria": [
+    "Asked what 100% is before anything else",
+    "Asked for a tape, not a calculation",
+    "Didn’t give the 0.4 method"
+   ]
+  },
+  {
+   "id": "m5",
+   "activityId": "12.3",
+   "kind": "student-thinking",
+   "see": "On desks: Noah’s tape in 5 parts of $1, Noah’s tape in 10 parts of 50 cents, and a bare 5 × 0.4 = 2.",
+   "means": "Each is right. The 5-part tape shows 40% as 2 of 5 parts most plainly, so the fraction grows from it.",
+   "say": "Start us off. Where is Noah’s $5 on your tape?",
+   "dont": "Show IM’s diagram before students show theirs.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Have students show and explain their diagrams. Then show these if no one has something equivalent:"
+  },
+  {
+   "id": "m7",
+   "activityId": "12.3",
+   "kind": "run-routine",
+   "routine": "MLR8: Discussion Supports",
+   "see": "Partners have shared their tape diagrams for question 1. You bring the class back together, with two diagrams displayed.",
+   "means": "Discussion Supports press for details: students point to where each number lives on the diagram. IM says this helps them see the link between percentages and fractions.",
+   "say": "Where do you see Elena’s $2 and Noah’s $5?",
+   "runSheet": [
+    {
+     "step": "After question 1 and partner talk, bring the class together and display two tape diagrams."
+    },
+    {
+     "step": "Ask where they see Elena’s $2 and Noah’s $5. Mark each on the displayed diagram as students say it."
+    },
+    {
+     "step": "Ask where they see 40% and \\(\\frac{2}{5}\\). Mark both."
+    },
+    {
+     "step": "As a challenge, ask where they see 250% or \\(\\frac{5}{2}\\): Noah compared to Elena."
+    }
+   ],
+   "dont": "Point to the parts yourself while you explain.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "During the discussion, press for details in students’ explanations by asking where they see Elena’s $2 and Noah’s $5 represented in the diagram.",
+   "rehearse": true,
+   "criteria": [
+    "Asked students to point to each number on the diagram",
+    "Marked the diagram as students spoke",
+    "Asked for both 40% and the fraction"
+   ]
+  },
+  {
+   "id": "m8",
+   "activityId": "12.3",
+   "kind": "routine-breakdown",
+   "routine": "MLR8: Discussion Supports",
+   "see": "A student says “It’s \\(\\frac{2}{5}\\).” You write it on the board and call the next student. Nobody points to the diagram.",
+   "means": "The fraction is right, but the link to the diagram is the point. Without it, the fraction is just a second answer.",
+   "say": "Where on the tape do you see the \\(\\frac{2}{5}\\)?",
+   "dont": "Write the answer and call the next hand.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Use a visual display of the tape diagrams to annotate (or mark) student responses.",
+   "rehearse": true,
+   "criteria": [
+    "Asked where the fraction is on the tape",
+    "Marked the diagram where the student pointed",
+    "Didn’t move on with only the number"
+   ]
+  },
+  {
+   "id": "m6",
+   "activityId": "12.3",
+   "kind": "language",
+   "routine": "MLR8: Discussion Supports",
+   "see": "A student points at their tape and says: “Elena has 2 of them.”",
+   "means": "The idea is there: 2 of Noah’s 5 parts. The words for the whole, the percent and the fraction aren’t yet.",
+   "byBand": {
+    "emerging": {
+     "say": "Show me 100%. How many of those parts are Elena’s?",
+     "move": "They point to Noah’s whole tape, then Elena’s parts, and say or write the numbers with their frame. They can work it out first in any language they share with a partner.",
+     "nonverbal": "They trace Noah’s whole tape, then hold up fingers for Elena’s parts and for all the parts."
+    },
+    "developing": {
+     "say": "2 of how many? What is 100% here?",
+     "move": "With their frame, they tell a partner the percent, the fraction and the parts, then write it under the diagram. They can work it out first in any language they share with a partner.",
+     "nonverbal": "They draw a bracket under Noah’s tape, label it 100%, and circle Elena’s parts."
+    },
+    "expanding": {
+     "say": "Say it as a percent and as a fraction.",
+     "move": "They say the full comparison in their own words, then make it clearer once after a partner asks “What is 100%?” They can work it out first in any language they share with a partner.",
+     "nonverbal": "They label each part of Noah’s tape 20%, then point to Elena’s two."
+    }
+   },
+   "dont": "Say the sentence for them.",
+   "from": "premo",
+   "sayFrom": "premo",
+   "rehearse": true,
+   "criteria": [
+    "Asked every level for the whole, the percent and the parts",
+    "Matched the way in to the student’s level",
+    "Didn’t say the sentence for them"
+   ]
+  },
+  {
+   "id": "m9",
+   "activityId": "12.4",
+   "kind": "im-misconception",
+   "see": "A student has a double number line with 1.5 at 50% and 3 at 100%, and no place for 80%.",
+   "means": "50% and 100% are too far apart to place 80%. Smaller steps, like 10%, make room.",
+   "say": "What if you marked every 10%?",
+   "dont": "Draw the tick marks for them.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "After students create a double number line diagram with tick marks at 50% and 100%, some may struggle to know how to fit 80% in between."
+  },
+  {
+   "id": "m10",
+   "activityId": "12.4",
+   "kind": "student-thinking",
+   "see": "For question 2 a student writes: “1.2 liters, because 0.8 times 1.5 is 1.2.”",
+   "means": "They took 80% of the 1.5 liters he drank, not of all the water he brought. The 100% is the 3 liters.",
+   "say": "80% of what? What is 100% of his water?",
+   "dont": "Cross it out and write 2.4.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "If Andre drank 80% of his water on his entire hike, then he drank 1.2 liters of water because 0.8 times 1.5 liters is 1.2 liters."
+  }
+ ],
+ "patterns": [
+  {
+   "activityId": "12.1",
+   "type": "build",
+   "says": "“One of the rectangles is divided into four pieces of equal length.”",
+   "why": "They see the equal parts, the key to reading any tape diagram.",
+   "shows": "They can see fourths in a bar, which today becomes 25% steps.",
+   "from": "im",
+   "evidence": "One of the rectangles is divided into four pieces of equal length."
+  },
+  {
+   "activityId": "12.2",
+   "type": "error",
+   "says": "The puppy’s box is labeled 100% on the dog-and-puppy diagram.",
+   "why": "The puppy is named first, so it feels like the whole.",
+   "shows": "They know a tape diagram needs a 100%. Which amount is the whole is the new step.",
+   "from": "premo"
+  },
+  {
+   "activityId": "12.2",
+   "type": "build",
+   "says": "“The puppy is \\(\\frac{1}{5}\\) of its adult weight because the whole is divided into 5 pieces of equal length.”",
+   "why": "They read the fraction from the count of equal parts.",
+   "shows": "20% and \\(\\frac{1}{5}\\) are the same part of the same tape.",
+   "from": "im",
+   "evidence": "The puppy is \\(\\frac{1}{5}\\) of its adult weight because the whole is divided into 5 pieces of equal length."
+  },
+  {
+   "activityId": "12.3",
+   "type": "error",
+   "says": "“Elena has $40.”",
+   "why": "40% is read as 40 dollars, with no whole in mind.",
+   "shows": "They know Elena has some amount tied to 40. Making Noah’s $5 the whole is the next step.",
+   "from": "premo"
+  },
+  {
+   "activityId": "12.3",
+   "type": "almost",
+   "says": "A correct $2, with no diagram: “5 × 0.4 = 2.”",
+   "why": "They know a percent can be a decimal multiplier.",
+   "shows": "The calculation is right. The diagram and the fraction are what 12.3 asks them to add.",
+   "from": "premo"
+  },
+  {
+   "activityId": "12.3",
+   "type": "build",
+   "says": "Noah’s tape in 5 parts of $1, with 2 parts shaded for Elena.",
+   "why": "They split the whole so that 40% is a count of parts.",
+   "shows": "40% is \\(\\frac{2}{5}\\), on the same tape.",
+   "from": "im",
+   "evidence": "Elena has \\(\\frac{2}{5}\\) as much money as Noah"
+  },
+  {
+   "activityId": "12.3",
+   "type": "almost",
+   "says": "For Diego, a tape that stops at Noah’s $5, with $7.50 written beside it.",
+   "why": "They think a tape diagram can’t go past the whole.",
+   "shows": "They found $7.50. Next is drawing a tape longer than 100%: 3 halves.",
+   "from": "premo"
+  },
+  {
+   "activityId": "12.3",
+   "type": "stretch",
+   "says": "“Noah has \\(\\frac{5}{2}\\) as much money as Elena.”",
+   "why": "They turned the comparison around.",
+   "shows": "The whole depends on what you compare to: now Elena is 100%.",
+   "from": "im",
+   "evidence": "Noah has \\(\\frac{5}{2}\\) as much money as Elena."
+  },
+  {
+   "activityId": "12.3",
+   "type": "language",
+   "says": "“Elena has 2 of them.”",
+   "why": "The idea is ahead of the words.",
+   "shows": "They count parts of the whole, which is the reasoning the language goal names.",
+   "from": "premo"
+  },
+  {
+   "activityId": "12.4",
+   "type": "error",
+   "says": "“1.2 liters, because 0.8 times 1.5 is 1.2.”",
+   "why": "They took 80% of the amount drunk, not the amount brought.",
+   "shows": "They can find 80% of a number. Choosing the right 100% is the step left.",
+   "from": "im",
+   "evidence": "because 0.8 times 1.5 liters is 1.2 liters."
+  }
+ ],
+ "predict": {
+  "context": "After the puppy diagrams, students get one line: Noah has $5. Elena has 40% as much, Diego 150% as much. They find each amount, then compare with a fraction and draw a diagram.",
+  "question": "What will most students’ diagrams for Elena look like?",
+  "countQuestion": "How many students will draw Noah’s $5 as the whole tape, in equal parts?",
+  "countUnit": "students will draw Noah’s $5 as the whole.",
+  "tell": "If few do, students don’t yet know which amount is 100%. That’s the question to ask first: the moment you’ll rehearse after Three Reads.",
+  "activityIds": [
+   "12.2",
+   "12.3"
+  ]
+ },
+ "cruxLanguage": {
+  "routine": "MLR8: Discussion Supports",
+  "phase": "launch",
+  "produceToday": [
+   "tape diagram",
+   "___% as much as"
+  ],
+  "byBand": {
+   "emerging": {
+    "entry": "In the discussion, they point to Noah’s whole tape, then to Elena’s parts, and say or write the percent and the fraction. They can work it out first in any language they share with a partner.",
+    "frame": "___ has ___% as much as ___, or ___ as much. 100% is ___ parts. ___ is ___ parts.",
+    "does": "They can count the parts of a tape and say or write the numbers.",
+    "reaching": "Naming the whole as 100% and saying Elena’s part as a percent and a fraction.",
+    "stretch": "They add what one part is worth: “Each part is $1.”"
+   },
+   "developing": {
+    "entry": "They tell a partner where they see 40% and \\(\\frac{2}{5}\\) on the tape, then say it to the class with the frame. They can work it out first in any language they share with a partner.",
+    "frame": "___ has ___% as much as ___, or ___ as much. ___ is 100%, in ___ equal parts. ___ is ___ of those parts.",
+    "does": "They can tell a partner, in short phrases, what part of the tape is shaded.",
+    "reaching": "Saying the comparison as a percent and a fraction, and linking both to the parts.",
+    "stretch": "They do the same for Diego, with a tape longer than 100%."
+   },
+   "expanding": {
+    "entry": "They explain to the class where 40% and \\(\\frac{2}{5}\\) are on the tape, then try the challenge: where is 250%? They can work it out first in any language they share with a partner.",
+    "frame": "___ has ___% as much as ___, or ___ as much. ___ is 100%, split into ___ equal parts, and ___ is ___ of those parts.",
+    "does": "They can explain how they drew their tape in their own words.",
+    "reaching": "Explaining why 40% and \\(\\frac{2}{5}\\) name the same parts of the same whole.",
+    "stretch": "They turn it around: Noah has 250%, or \\(\\frac{5}{2}\\), as much as Elena."
+   }
+  }
+ },
+ "cuts": [
+  {
+   "activityId": "12.4",
+   "note": "Optional, with no new math. Cut it first."
+  },
+  {
+   "activityId": "12.1",
+   "note": "Keep it short: make sure the four equal pieces come up, then move on."
+  },
+  {
+   "activityId": "12.2",
+   "note": "If time is tight, keep question 2 and IM’s synthesis on what is 100%. 12.3 needs that idea."
+  }
+ ],
+ "neverCut": [
+  "Every student drawing Elena’s tape diagram in 12.3",
+  "Asking where 40% and \\(\\frac{2}{5}\\) are on the tape",
+  "Naming what is 100% before solving",
+  "Quiet work time before partners talk in 12.3"
+ ],
+ "inClass": {
+  "launch": "“Noah’s $5 is the whole. Draw it, then show Elena’s money.”",
+  "launchFrom": "premo",
+  "momentIds": [
+   "m4",
+   "m7",
+   "m6"
+  ],
+  "sequence": [
+   "A student whose tape has 5 parts of $1",
+   "A student whose tape has 10 parts of 50 cents",
+   "A student who multiplied 5 by 0.4, then found it on a tape"
+  ]
+ },
+ "beforeClass": [
+  "For Think Pair Share in 12.3: write “Noah has $5.” on the board, with space for two tapes.",
+  "For Discussion Supports: have a marker ready to mark students’ diagrams on the display.",
+  "Know the answers: Elena $2, \\(\\frac{2}{5}\\) as much; Diego $7.50, \\(1\\frac{1}{2}\\) as much."
+ ]
+}

@@ -1,0 +1,331 @@
+{
+ "code": "6.3.3",
+ "title": "Measuring with Different-Sized Units",
+ "section": "Unit Conversion",
+ "goals": [
+  {
+   "text": "Generalize (orally and in writing) that it takes more of a smaller unit or fewer of a larger unit to measure the same quantity.",
+   "modes": [
+    "orally",
+    "in writing"
+   ]
+  },
+  {
+   "text": "Given a measurement in one unit, estimate what would be the same amount expressed in a different unit, and explain (orally) the reasoning.",
+   "modes": [
+    "orally"
+   ]
+  }
+ ],
+ "targets": [
+  "When I know a measurement in one unit, I can decide whether it takes more or less of a different unit to measure the same quantity."
+ ],
+ "narrative": [
+  "This lesson develops students’ familiarity with standard units of length, volume, weight, and mass through the tactile experiences of measuring objects. The main idea is that it takes more of a smaller unit and less of a larger unit to measure the same quantity. This idea is an important foundation for converting units of measurement using ratio reasoning in the next lesson (MP7)."
+ ],
+ "materials": [
+  "Base-ten blocks",
+  "Blank paper",
+  "Cuisenaire rods",
+  "Gallon-sized jug",
+  "Graduated cylinders",
+  "Household items",
+  "Inch cubes",
+  "Internet-enabled device",
+  "Liter-sized bottle",
+  "Materials assembled from the blackline master",
+  "Metal paper fasteners",
+  "Meter sticks",
+  "Paper clips",
+  "Pre-assembled polyhedra",
+  "Quart-sized bottle",
+  "Rulers",
+  "Salt",
+  "Scale",
+  "Straightedges",
+  "Teaspoon",
+  "Tray"
+ ],
+ "preparation": [
+  "For the first activity, prepare to display or distribute 6-cm and 9-cm Cuisenaire rods, which are often colored dark green and blue, respectively. If Cuisenaire rods are not available, small and large paper clips can be substituted.",
+  "For the second activity, identify where each station will be and set up the following materials:",
+  "For Station 1:",
+  "From the first page of the blackline master, print the net for the 2-in by 2-in by 4-in box onto card stock, cut it out, and assemble it.",
+  "Provide at least twenty inch cubes, one centimeter cube, and thirty 10-cm rods. The centimeter cube and 10-cm rods can come from a set of base-ten blocks or Cuisenaire rods. However, base-ten blocks are preferable so students can see how one rod is composed of ten centimeter cubes. Wooden inch cubes are available inexpensively at craft stores.",
+  "For Station 2:",
+  "Identify something in the classroom that is about 20 feet long. Prepare a way to communicate to students that this is the object they are supposed to measure (but do not give away its length).",
+  "Provide rulers and at least 2 meter sticks.",
+  "For Station 3:",
+  "Prepare a way for students to be able to watch this video Video Quarts and Liters available at https://player.vimeo.com/video/304136597.",
+  "Provide an empty gallon-sized jug, quart-sized bottle, and liter-sized bottle for comparison.",
+  "For Station 4 (there are 3 different options):",
+  "If students will weigh objects on a real scale: Set up the scale and provide common household items for students to weigh. Note: The scale must be able to output in grams, kilograms, ounces, and pounds for this option to work.",
+  "If students will use the digital scale simulation: Prepare a way for students to access this widget http://ggbm.at/eQQVYB7D.",
+  "If students will use the paper scale simulations: Print pages 2–13 of the blackline master onto cardstock and cut out the scale images and output wheels. Make sure to cut out the two white windows on the base of each scale where the output wheels are supposed to show through. Assemble the paper scale simulations using metal fasteners so the output wheels can rotate behind the scale images.",
+  "For Station 5:",
+  "On a tray for catching spills, provide a 100-ml graduated cylinder, a teaspoon, a straightedge for leveling off the teaspoon, and a small bowl with at least \\(\\frac12\\) cup of salt."
+ ],
+ "standards": {
+  "buildingOn": [
+   "2.MD.A.2"
+  ],
+  "addressing": [
+   "6.RP.A.3.d"
+  ],
+  "buildingTowards": [
+   "6.RP.A.3.d"
+  ]
+ },
+ "activities": [
+  {
+   "id": "3.1",
+   "slot": "warm-up",
+   "title": "Width of a Paper",
+   "minutes": 5,
+   "purpose": null,
+   "purposeEvidence": null,
+   "routines": [],
+   "fivePractices": false,
+   "alignment": {
+    "buildingOn": [
+     "2.MD.A.2"
+    ],
+    "addressing": [],
+    "buildingTowards": [
+     "6.RP.A.3.d"
+    ]
+   },
+   "narrative": [
+    "Students begin by thinking about length in terms of non-standard units—9-cm and 6-cm Cuisenaire rods—and consider how the size of units affects the number of units needed to express a length. If Cuisenaire rods are not available, modify the task to say: Does it take more large paper clips or small paper clips lined up end-to-end to measure the width of a piece of paper?",
+    "Some students may be able to reason that it takes more of the smaller unit than the larger unit to measure the same length; encourage them to articulate their reasoning. Others may need to visualize the situation by drawing or by measuring with actual rods (or paper clips)."
+   ],
+   "launch": [
+    "This activity is written to use 9-cm and 6-cm Cuisenaire rods, which are often blue and dark green, respectively. If your set of Cuisenaire rods has different colors, or if using small and large paper clips as substitutes, instruct students to modify the task accordingly.",
+    "Hold up the two sizes of rods or paper clips for the students to see. Give them quiet think time but not the manipulatives. Later, allow students to use the rods or paper clips to measure the paper if they need or wish to do so."
+   ],
+   "task": [
+    "Your teacher will show you two rods. Does it take more green rods or blue rods lined up end to end to measure the width of a piece of printer paper?"
+   ],
+   "response": [
+    "It takes more green rods, because they are shorter than the blue rods."
+   ],
+   "misconceptions": [
+    "Some students may assume that it will take more of the longer rods because they are used to associating the idea of “more” with “larger.” Encourage them to use the manipulatives to see that it actually takes fewer of the longer rods to reach across the paper."
+   ],
+   "synthesis": [
+    "Ask students to share their responses and reasoning. Highlight the fact that it takes more of a smaller unit and fewer of a larger unit to measure the same length."
+   ],
+   "extension": null,
+   "ell": [],
+   "access": []
+  },
+  {
+   "id": "3.2",
+   "slot": "activity",
+   "title": "Measurement Stations",
+   "minutes": 35,
+   "purpose": "new-context",
+   "purposeEvidence": "This lesson develops students’ familiarity with standard units of length, volume, weight, and mass through the tactile experiences of measuring objects.",
+   "routines": [
+    "MLR8: Discussion Supports"
+   ],
+   "fivePractices": false,
+   "alignment": {
+    "buildingOn": [],
+    "addressing": [
+     "6.RP.A.3.d"
+    ],
+    "buildingTowards": []
+   },
+   "narrative": [
+    "In groups, students rotate through five different stations, where they measure one or more quantities using different units, and answer a series of summary questions afterward. Here are the quantities being measured and the units used at each station:",
+    "Station 1: Volume of a box, in cubic inches and cubic centimeters.",
+    "Station 2: Length, in meters and feet.",
+    "Station 3: Volume of water, in gallons, quarts, and liters.",
+    "(If desired, you can have students measure water with actual containers instead of watching the video https://vimeo.com/illustrativemathematics/water.)",
+    "Station 4: Weights and masses of 2–3 objects, in ounces, pounds, grams, and kilograms.",
+    "(You can have students weigh actual objects, use the digital simulation http://ggbm.at/eQQVYB7D, or use the paper simulations from the blackline master. If using one of the simulations instead of a real scale, prepare some real objects labeled with their weight or mass for students to hold and feel the weight of.)",
+    "Station 5: Volume of salt, in milliliters and teaspoons.",
+    "You will need the blackline master for this activity. Page 1 is a net for the box needed for station 1. If you are using the paper scale simulation instead of a real scale or the applet, pages 2–13 are the parts needed to assemble Station 4.",
+    "Digital"
+   ],
+   "launch": [
+    "Tell students they will further investigate the idea of using different units to measure the same set of items. Introduce the five stations, what students are expected to do at each, the protocol for rotating through them, and the questions to answer at the end. Then, demonstrate how to use the straightedge to measure a level teaspoon of salt. If students do not use a level teaspoons of salt, they will not be able to answer the last set of questions about volume.",
+    "Arrange students into 5 groups and assign a starting station for each group.",
+    "If students have devices, Stations 3 and 4 can be digital."
+   ],
+   "task": [
+    "Station 1",
+    "Each large cube is 1 cubic inch. Count how many cubic inches completely pack the box without gaps.",
+    "Each small cube is 1 cubic centimeter. Each rod is composed of 10 cubic centimeters. Count how many cubic centimeters completely fill the box.",
+    "| cubic inches | cubic centimeters",
+    "| volume of the box | |",
+    "Station 2",
+    "Your teacher showed you a length.",
+    "Use the meter stick to measure the length to the nearest meter.",
+    "Use a ruler to measure the length to the nearest foot.",
+    "| meters | feet",
+    "| length of __________________ | |",
+    "Station 3",
+    "If not using real water, open https://vimeo.com/illustrativemathematics/water.",
+    "Count how many times you can fill the quart bottle from the gallon jug.",
+    "Count how many times you can fill the liter bottle from the gallon jug.",
+    "| quarts | liters",
+    "| 1 gallon of water | |",
+    "Station 4",
+    "If not using a real scale, open http://ggbm.at/eQQVYB7D.",
+    "Select 2–3 different objects to measure on the scale.",
+    "Record the weights in ounces, pounds, grams, and kilograms.",
+    "object | ounces | pounds | grams | kilograms",
+    "| | | | |",
+    "| | | | |",
+    "| | | | |",
+    "Station 5",
+    "Count how many level teaspoons of salt fill the graduated cylinder to 20 milliliters, 40 milliliters, and 50 milliliters.",
+    "Pour the salt back into the original container.",
+    "| milliliters | teaspoons",
+    "| small amount of salt | 20 |",
+    "| medium amount of salt | 40 |",
+    "| large amount of salt | 50 |",
+    "After you finish all five stations, answer these questions with your group.",
+    "Which is larger, a cubic inch or a cubic centimeter?",
+    "Did more cubic inches or cubic centimeters fit in the cardboard box? Why?",
+    "Did it take more feet or meters to measure the indicated length? Why?",
+    "Which is larger, a quart or a liter? Explain your reasoning.",
+    "Use the data from Station 4 to put the units of weight and mass in order from smallest to largest. Explain your reasoning.",
+    "About how many teaspoons of salt would it take to fill the graduated cylinder to 100 milliliters?",
+    "If you poured 15 teaspoons of salt into an empty graduated cylinder, about how many milliliters would it fill?",
+    "How many milliliters per teaspoon are there?",
+    "How many teaspoons per milliliter are there?"
+   ],
+   "response": [
+    "|  | cubic inches | cubic centimeters",
+    "| volume of the box | 16 | 250",
+    "|  | meters | feet",
+    "| length of ____________ | 6 | 20",
+    "|  | quarts | liters",
+    "| 1 gallon of water | 4 | a little less than 4",
+    "| object to weigh | ounces | pounds | grams | kilograms",
+    "| Answers vary |  |  |  | ",
+    "|  | milliliters | teaspoons",
+    "| small amount of salt | 20 | 4",
+    "| medium amount of salt | 40 | 8",
+    "| large amount of salt | 50 | 10",
+    "1. A cubic inch is larger. More cubic centimeters fit in the box because they are smaller.",
+    "2. It took more feet because feet are smaller than meters.",
+    "3. A liter is bigger than a quart because the gallon filled fewer of them.",
+    "4. From least to greatest, the units are gram, ounce, pound, and kilogram, because each object’s weight was the largest number of grams, fewer ounces, even fewer pounds, and the smallest number of kilograms.",
+    "5. a. About 20 teaspoons for 100 milliliters of salt",
+    "| milliliters | teaspoons",
+    "| 20 | 4",
+    "| 40 | 8",
+    "| 50 | 10",
+    "| 100 | 20",
+    "[image: Arrows labeled \\(\\div 5\\) go from each number of milliliters to its number of teaspoons. Arrows labeled \\(\\boldcdot 5\\) go from 20 to 100 and from 4 to 20. Arrows labeled \\(\\boldcdot 2\\) go from 50 to 100 and from 10 to 20.]",
+    "b. About 75 milliliters for 15 teaspoons of salt",
+    "c. About 5 milliliters per teaspoon",
+    "d. About \\(\\frac{1}{5}\\) teaspoons per milliliter"
+   ],
+   "misconceptions": [
+    "At Station 1, students may count the number of base-10 centimeter rods rather than the number of centimeter cubes. Remind them that the question prompts for the number of cubes.",
+    "At Station 2, students may need reminders about measuring objects at the zero marking on the ruler and about keeping the ruler going straight, both of which will affect the answer. Show them they can measure along the edge of the object to make sure the ruler is not veering off in one direction or another.",
+    "At Station 4, students may be unclear about how to change the output unit on the scale for each object. Consider showing the class ahead of time. Students who are able to distinguish between weight and mass might say they cannot accurately compare their measurements. Clarify that we are talking only about the weight of the objects on Earth’s surface.",
+    "At Station 5, some students may consistently use under-filled or rounded teaspoons of salt, so their data will not reveal the \\(5 : 1\\) ratio of milliliters to teaspoons. Repeat the demonstration of how to measure a level teaspoon for them.",
+    "Students may answer 3 milliliters for the question about 15 teaspoons because they divided by 5 instead of multiplying by 5. Encourage them to pay attention to which unit is bigger and ask what that tells them about which numerical value should be larger."
+   ],
+   "synthesis": [
+    "Though much of the discussion will take place within groups, spend a few minutes ensuring that everyone understands the answers to the five questions. To conclude the activity, invite students to share anything that surprised them from the measuring work."
+   ],
+   "extension": {
+    "task": [
+     "People in the medical field use metric measurements when working with medicine. For example, a doctor might prescribe medication in 10 mg tablets.",
+     "Brainstorm a list of reasons why healthcare workers would do this. Organize your thinking so it can be followed by others."
+    ],
+    "response": [
+     "Answers vary and may include:",
+     "Unit conversions are simpler",
+     "Calculations are often simpler"
+    ]
+   },
+   "ell": [
+    {
+     "routine": "MLR8: Discussion Supports",
+     "phase": "launch",
+     "domains": [
+      "speaking",
+      "representing"
+     ],
+     "principles": [
+      "support-sense-making",
+      "cultivate-conversation"
+     ],
+     "text": "Speaking, Representing: MLR8 Discussion Supports. Use this routine to support small-group discussion. As students rotate through stations, encourage students to solidify their own understanding by pressing for details and questioning their peers' explanations. Provide sentence frames for students to use, such as \"I agree/disagree because . . .”, \"How do you know . . .”, and “Can you give an example?” This will help students clarify their reasoning about comparing different measurements for the same quantity using different units.",
+     "principleLine": "Design Principle(s): Support sense-making; Cultivate conversation"
+    }
+   ],
+   "access": [
+    {
+     "area": "Engagement",
+     "title": "Develop Effort and Persistence",
+     "text": "Engagement: Develop Effort and Persistence. Encourage and support opportunities for peer interactions. Invite students to talk about their ideas with a partner before writing them down. Display sentence frames to support students when they explain their strategy. For example, “I noticed _____ so I think…”",
+     "supports": [
+      "Language",
+      "Social-emotional skills"
+     ]
+    }
+   ]
+  }
+ ],
+ "lessonSynthesis": [
+  "If you measure the same quantity with different units, it will take more of the smaller unit and less of the larger one to express the measurement. For example, a jug that holds 2 gallons of liquid also holds 8 quarts of liquid. Quarts are four times smaller than gallons, so it takes four times as many quarts to measure the same volume of liquid.",
+  "To reinforce this idea, ask students questions such as:",
+  "“What do quarts and gallons measure?” (Volume of a liquid)",
+  "“Which is bigger: 1 quart, or 1 gallon?” (1 gallon. There are 4 quarts in 1 gallon.)",
+  "“How many quarts are in 8 gallons?” (32. Since a quart is less than a gallon, you need more quarts to measure the same amount.)",
+  "“How many gallons are in 8 quarts?” (2. Since a gallon is bigger than a quart, you need fewer gallons to measure the same amount.)"
+ ],
+ "coolDown": {
+  "id": "3.3",
+  "title": "Which Measurement is Which?",
+  "minutes": 5,
+  "task": [
+   "1. Lin has a pet German Shepherd that weighs 38 when measured in one unit and 84 when measured in a different unit. Which measurement is in pounds, and which is in kilograms?",
+   "38 ________ 84 ________",
+   "2. Elena has a pet parakeet that weighs 6 when measured in one unit and 170 when measured in a different unit. Which measurement is in ounces, and which is in grams?",
+   "6 ________ 170 ________",
+   "3. Behind Lin’s house there is a kiddie pool that holds 180 or 680 units of water, depending on which unit you are using to measure. Which measurement is in gallons, and which is in liters?",
+   "180 ________ 680 ________",
+   "4. Behind Elena’s house there is a portable storage container that holds 29 or 1024 units, depending on which unit you are using to measure. Which measurement is in cubic feet, and which is in cubic meters?",
+   "29 ________ 1024 ________"
+  ],
+  "response": [
+   "1. 38 is in kilograms and 84 is in pounds because a kilograms is heavier than a pound, so you need fewer kilograms to measure the same quantity.",
+   "2. 6 is in ounces and 170 is in grams because an ounce weighs more than a gram.",
+   "3. 180 is in gallons and 680 is in liters because gallons are a larger unit than liters.",
+   "4. 29 is in cubic meters and 1024 is in cubic feet because cubic meters are larger than cubic feet, so you need fewer of them to measure the same quantity."
+  ]
+ },
+ "summary": [
+  "The size of the unit we use to measure something affects the measurement.",
+  "If we measure the same quantity with different units, it will take more of the smaller unit and fewer of the larger unit to express the measurement. For example, a room that measures 4 yards in length will measure 12 feet.",
+  "[image: A pair of tape diagrams for one quantity. The top tape diagram has 4 equal parts and the bottom tape diagram has 12 equal parts.] [image: Expand image]",
+  "[image: A pair of tape diagrams for one quantity. The top tape diagram has 4 equal parts and the bottom tape diagram has 12 equal parts.]",
+  "There are 3 feet in a yard, so one foot is \\(\\frac13\\) of a yard.",
+  "It takes 3 times as many feet to measure the same length as it does with yards.",
+  "It takes \\(\\frac13\\) as many yards to measure the same length as it does with feet."
+ ],
+ "vocabulary": {
+  "receptive": [
+   "order"
+  ],
+  "productive": []
+ },
+ "languageUses": [
+  "explain"
+ ],
+ "sources": [
+  "https://im.kendallhunt.com/MS/teachers/1/3/3/index.html",
+  "https://im.kendallhunt.com/MS/teachers/1/3/3/preparation.html",
+  "IM 6–8 Math Teacher Guide, Grade 6 Unit 3 (CC BY), transcribed from page images"
+ ]
+}

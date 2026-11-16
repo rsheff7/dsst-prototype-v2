@@ -1,0 +1,34 @@
+Source: https://im.kendallhunt.com/MS/teachers/1/3/15/preparation.html
+
+## Lesson 15
+## Finding This Percent of That
+ View Student Lesson
+## Lesson Narrative
+ Students have practiced solving three different types of percentage problems (corresponding to finding \(A\), \(B\), or \(C\) respectively when \(A\%\) of \(B\) is \(C\)). This lesson focuses on finding “\(A\%\) of \(B\)” as efficiently as possible. While the previous lesson used numbers that students could calculate mentally, the numbers in this lesson are purposefully chosen to be difficult for students to calculate mentally or to represent on a double number line diagram, so as to motivate them to find the simplest way to do the calculation by hand.
+ The third activity hints at work students will do in grade 7, namely finding a constant of proportionality and writing an equation to represent a proportional relationship.
+## Learning Goals
+## Teacher Facing
+ Choose and create diagrams to calculate A% of B, and explain (orally) the solution method.
+ Generalize a process for finding A% of B and justify (orally) why this can be abstracted as $\frac{A}{100} \boldcdot B$.
+ Identify equivalent expressions that could be used to find A% of B and justify (orally) that they are equivalent.
+## Student Facing
+ Let’s solve percentage problems like a pro.
+## Learning Targets
+## Student Facing
+ I can solve different problems like “What is 40% of 60?” by dividing and multiplying.
+## CCSS Standards
+ Building On
+ 5.NBT.B.6
+ Addressing
+ 6.RP.A.3
+ 6.RP.A.3.c
+## Print Formatted Materials
+ Teachers with a valid work email address can click here to register or sign in for free access to Cool Down, Teacher Guide, and PowerPoint materials.
+ | Student Task Statements | pdf | docx 
+ | Cumulative Practice Problem Set | pdf | docx 
+ | Cool Down | | Log In 
+ | Teacher Guide | | Log In 
+ | Teacher Presentation Materials | pdf | docx 
+## Additional Resources
+ | Google Slides | | Log In 
+ | PowerPoint Slides | | Log In

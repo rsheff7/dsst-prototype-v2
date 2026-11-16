@@ -1,0 +1,45 @@
+Source: https://im.kendallhunt.com/MS/teachers/1/3/11/preparation.html
+
+## Lesson 11
+## Percentages and Double Number Lines
+ View Student Lesson
+## Lesson Narrative
+ In the previous lesson, students learned to find percentages of 100 and percentages of 1 in the context of money (100 cents and \$1). In this lesson, they explore percentages of quantities other than 100 and 1 in a variety of contexts. All of the tasks use comparison contexts—describing one quantity relative to another quantity—rather than part-whole contexts.
+ Students continue to have double number lines as a reasoning tool to use if they want. In several cases the double number line is provided. There are two reasons for this. First, the equal intervals on the provided double number line are useful for reasoning about percentages. Second, using the same representation that was used earlier for other ratio and rate reasoning reinforces the idea of a percentage as a rate per 100 (MP7). It is perfectly acceptable, however, for students to use strategies other than double number lines for solving percentage problems.
+## Learning Goals
+## Teacher Facing
+ Comprehend a phrase like “A% of B” (in written and spoken language) to refer to the value that makes a ratio with B that is equivalent to A : 100.
+ Explain (orally) how to use a double number line diagram or table to solve problems such as A% of B is ? and A% of ? is C.
+ State explicitly what one is finding the percentage of.
+## Student Facing
+ Let’s use double number lines to represent percentages.
+## Required Materials
+ Tools for creating a visual display
+## Learning Targets
+## Student Facing
+ I can use double number line diagrams to solve different problems like “What is 40% of 60?” or “60 is 40% of what number?”
+## CCSS Standards
+ Addressing
+ 6.RP.A.3.c
+## Glossary Entries
+ percent The word percent means “for each 100.” The symbol for percent is %.
+ For example, a quarter is worth 25 cents, and a dollar is worth 100 cents. We can say that a quarter is worth 25% of a dollar.
+ [image: A quarter (coin)] [image: Expand image] 
+ [image: A quarter (coin)] 
+ [image: A diagram of two bars with different lengths.] [image: Expand image] 
+ Description: <p>A diagram of two bars with different lengths. The top bar is labeled 1 Quarter and 25 cents is labeled inside the bar. The bottom bar is labeled 1 Dollar. It is 4 times longer than the top bar and 100 cents is labeled inside the bar.</p> 
+ [image: A diagram of two bars with different lengths.] 
+ percentage A percentage is a rate per 100.
+ For example, a fish tank can hold 36 liters. Right now there is 27 liters of water in the tank. The percentage of the tank that is full is 75%.
+ [image: a double number line] [image: Expand image] 
+ [image: a double number line] 
+## Print Formatted Materials
+ Teachers with a valid work email address can click here to register or sign in for free access to Cool Down, Teacher Guide, and PowerPoint materials.
+ | Student Task Statements | pdf | docx 
+ | Cumulative Practice Problem Set | pdf | docx 
+ | Cool Down | | Log In 
+ | Teacher Guide | | Log In 
+ | Teacher Presentation Materials | pdf | docx 
+## Additional Resources
+ | Google Slides | | Log In 
+ | PowerPoint Slides | | Log In

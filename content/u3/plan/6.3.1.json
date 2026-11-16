@@ -1,0 +1,582 @@
+{
+ "status": "draft",
+ "reviewNotes": [
+  "No person has reviewed this file.",
+  "Unit opener. IM's narrative says not to use or define “rate per 1” with students today. Student-facing lines say “how much for 1,” “the time for 1 window” or “number for 1,” and never “unit rate.”",
+  "Crux is 1.2, as in Premo's layer: IM's “meaty problem” and the activity its second goal names (“minutes per window”).",
+  "CLO: imGoal is IM goal 1, “Evaluate (orally) the usefulness of calculating a rate per 1…”, copied verbatim. Goal 2 (“Explain (orally, in writing, and through other representations)…”) fits the crux too; goal 1 was chosen because IM's 1.2 synthesis (“both quantities are valid and have purpose, depending on the question you are answering”) and the lesson synthesis (“Reinforce the usefulness of these quantities”) are where the language is met. A reviewer may prefer goal 2 and “explain.”",
+  "Precise terms: “per” and “at this rate” (IM's productive term for Lesson 1 in the unit terminology). The frame starts “At this rate” so students say it every time.",
+  "Exemplar and look-for numbers checked: 18 ÷ 15 = 1.2; 24,348 × 1.2 = 29,217.6 (IM's answer); cool-down 330 ÷ 10 = 33, 33 × 11 = 363, and 330 + 33 = 363 (IM's two strategies). Posted sentence: 2 minutes per lap, 12 laps, 24 minutes (not stated). Lesson synthesis check: 18 ÷ 12 = 1.5 seconds per page, 150 × 1.5 = 225 seconds (not stated).",
+  "Routines at the crux (D1): Three Reads to launch, a frame at release, MLR2 Collect and Display in the synthesis. IM's own launch (books closed, what students know and wonder about the Burj Khalifa, 5–10 questions) stays first; Three Reads then reads the task statement. Read 2 is where students notice the number of windows is missing, which IM wants them to ask for.",
+  "D1 option 3: IM's Compare and Connect move (what is the same and what is different; attention to windows per minute against minutes per window) is built into Collect and Display's third step. IM's error example (\\(\\frac{5}{6}\\) minutes per window) is its fourth step, from IM's synthesis. The synthesis has five steps in about 5 minutes of IM's 20; a reviewer should check it fits.",
+  "Release talk moments add a partner turn that IM's 1.2 launch doesn't name (IM gives 3–5 minutes of quiet think time, then the class discussion). It's Premo's, for the frame practice at release.",
+  "The Premo run-routine (m8) and breakdown (m9) for Compare and Connect are left out of 1.2's momentIds; the planning view's own cards run the routines.",
+  "NEW student work, Premo's: the m3 crossed-out 18 ÷ 15, the m7 “It’s 1.2. Then I times it,” the m10 “34 r 2 meters” work (IM's misconception, Premo's page), and the synthesis board words. IM's error (\\(\\frac{5}{6}\\) minutes per window) is IM's; the 20,290 minutes it leads to is Premo's arithmetic: 24,348 × \\(\\frac{5}{6}\\) = 20,290.",
+  "Non-crux activities carry no language supports (D7)."
+ ],
+ "story": "Lesson 1 opens the unit. Students meet a problem where finding how much for 1, the time for 1 window, is the way through. Lessons 2–4 turn to units of measurement; the rates section picks this idea up again in Lesson 5.",
+ "previous": "In Unit 2 students used tables and double number lines for equivalent ratios, and learned that “at this rate” signals equivalent ratios; today they find how much for 1 and use it.",
+ "clo": {
+  "imGoal": "Evaluate (orally) the usefulness of calculating a rate per 1 when solving problems involving unfamiliar rates.",
+  "function": "evaluate",
+  "form": "At this rate, it is ___ ___ per ___. That is useful because the question asks for ___, so I ___ it by ___.",
+  "board": {
+   "content": "We will find how much for 1 and use it to solve problems that happen at the same rate.",
+   "language": "We will evaluate, out loud, which amount for 1 helps answer the question, using “per” and “at this rate.”"
+  },
+  "mode": "out loud",
+  "precise": [
+   "per",
+   "at this rate"
+  ],
+  "informal": [
+   "the time for 1 window",
+   "each",
+   "how long"
+  ],
+  "exemplar": "At this rate, it is 1.2 minutes per window. That is useful because the question asks for time, so I multiply it by 24,348 windows.",
+  "lookFor": "The elevator explanation names a number for 1 with “per”: 33 feet per second (330 ÷ 10). It says how that number was used: 33 × 11 = 363 feet, or 330 + 33 = 363 feet. IM accepts both.",
+  "posted": {
+   "sentence": "At this rate, it is 2 minutes per lap. That is useful because the question asks for time, so I multiply it by 12 laps."
+  },
+  "progressionNote": "IM’s unit overview lists “interpret” for this lesson (a context in which a unit rate is helpful). The objective follows the lesson’s own goal: “evaluate.”"
+ },
+ "activities": [
+  {
+   "id": "1.1",
+   "strategies": [
+    "Use the Statue of Liberty: about 300 feet, and the tree is taller, so about 400 feet (IM’s sample).",
+    "Stack the person: count how many people tall the tree is, then multiply by a person’s height.",
+    "Write it in another unit. IM accepts about 100 meters or about 400 feet."
+   ],
+   "barriers": [
+    "“Estimate” may sound like a wild guess, with no reason needed.",
+    "Feet and meters may not yet have a size students can picture."
+   ],
+   "misconceptions": [
+    "Picking a tiny unit, like inches, for something this tall.",
+    "Thinking an estimate must be exact, so refusing to give one."
+   ],
+   "backPocket": [
+    "What in the picture do you know the height of?",
+    "How many of that person would stack up to the tree?",
+    "Could you record your measurement using a different unit?"
+   ],
+   "momentIds": [
+    "m1"
+   ],
+   "grouping": "Pairs: 2 minutes of quiet think time, then 3 minutes to discuss estimates with a partner, using IM’s four questions on the board.",
+   "monitor": "Listen for different strategies and different units, and choose students to share them. Record estimates and their conversions for all to see."
+  },
+  {
+   "id": "1.2",
+   "strategies": [
+    "Minutes per window: 18 ÷ 15 = 1.2 (or \\(1\\frac{1}{5}\\)) minutes per window. Then 24,348 × 1.2 = 29,217.6 minutes.",
+    "Scale a table first (IM’s sample): 15 | 18, 15,000 | 18,000, then 1 | 1.2, then 24,348 | 29,217.6.",
+    "Windows per minute: 15 ÷ 18 = \\(\\frac{5}{6}\\) window per minute. It answers “how many windows,” so students often switch to minutes per window or scale up.",
+    "Make sense of it: 29,217.6 minutes is about 487 hours, about 20 days without stopping."
+   ],
+   "barriers": [
+    "The number of windows isn’t in the task. Students have to notice and ask for it.",
+    "18 ÷ 15 isn’t a whole number; dividing to a decimal is grade 5 work some students need to recall.",
+    "Words: “crew,” “assigned,” and “at this rate.”"
+   ],
+   "misconceptions": [
+    "Stuck because 15 does not divide evenly into 18 (IM).",
+    "\\(\\frac{5}{6}\\) minutes per window instead of \\(1\\frac{1}{5}\\) (IM’s error example), giving fewer minutes than windows.",
+    "Dividing 24,348 by 1.2 instead of multiplying, going the wrong way.",
+    "Language: “It’s 1.2,” with no units and no “per.”"
+   ],
+   "backPocket": [
+    "At this rate, how long will it take the crew to finish 90 windows? 300 windows?",
+    "How long for 5 windows? Then how long for 1?",
+    "1.2 what? Per what?",
+    "Does 1 window take more or less than a minute? How do you know?"
+   ],
+   "momentIds": [
+    "m5",
+    "m3",
+    "m7"
+   ],
+   "grouping": "Whole class for IM’s launch questions, then 3–5 minutes of quiet think time on their own.",
+   "monitor": "Track who finds minutes per window, who finds windows per minute, and who scales a table. Ask each what their number means and how they plan to use it (IM). Note any errors students catch themselves."
+  },
+  {
+   "id": "1.3",
+   "strategies": [
+    "First 2 hours: scale down by 3. 828 ÷ 3 = 276 meters in 2 hours.",
+    "5 hours: meters per hour first, 828 ÷ 6 = 138, then 5 × 138 = 690 meters. Or 828 − 138 = 690 (IM’s less common way).",
+    "Final 15 minutes: 15 minutes is \\(\\frac{1}{4}\\) hour, so 138 ÷ 4 = 34.5 meters.",
+    "A double number line (0 to 828 meters over 0 to 6 hours) or a table, as in IM’s samples."
+   ],
+   "barriers": [
+    "The task mixes hours and minutes: “the final 15 minutes.”",
+    "Words: “scaled,” “professional climber,” and “the highest point on which a person can stand.”"
+   ],
+   "misconceptions": [
+    "“34 r 2 meters” or “34.2 meters” for the final 15 minutes (IM).",
+    "Reading “final 15 minutes” as 15 hours, or as the first 15 minutes."
+   ],
+   "backPocket": [
+    "How far in 1 hour?",
+    "What part of an hour is 15 minutes?",
+    "The 2 left over: 2 what?"
+   ],
+   "momentIds": [
+    "m11",
+    "m10"
+   ],
+   "grouping": "Think Pair Share: 5 minutes of quiet think time, then a minute to share with a partner. Students are ready to explain their thinking.",
+   "monitor": "Find students who solve it different ways or use different representations, so they can share, starting with the more common way.",
+   "momentCriteria": {
+    "m11": [
+     "Asked for a sketch instead of explaining the question",
+     "Asked where the final 15 minutes sit on it",
+     "Didn’t say it’s a quarter of an hour"
+    ],
+    "m10": [
+     "Asked what the remainder means",
+     "Asked for the answer in meters",
+     "Didn’t write 34.5 for them"
+    ]
+   }
+  }
+ ],
+ "crux": {
+  "threeReads": [
+   {
+    "focus": "The situation",
+    "say": "Listen as I read. No numbers yet: what is happening here?",
+    "listenFor": "A crew is washing the windows on the outside of the Burj Khalifa."
+   },
+   {
+    "focus": "Quantities and units",
+    "say": "Read it again. What can be counted or measured?",
+    "listenFor": "Windows and minutes: 15 windows in 18 minutes. The number of windows on the building, which isn’t given."
+   },
+   {
+    "focus": "Ways to solve it",
+    "say": "Read it once more. How might we solve this?",
+    "listenFor": "Find how long 1 window takes. Find how many windows in 1 minute. Or scale up 15 and 18 toward the building’s windows."
+   }
+  ],
+  "release": {
+   "successCriteria": "Say what your number for 1 means, using “per,” and why it helps answer how long.",
+   "say": "Say what your number means, with “per,” and why it helps.",
+   "talkMoments": [
+    "After quiet think time, partners take turns saying their number for 1 with Today’s frame: “At this rate, it is ___ ___ per ___.”",
+    "Before the class discussion, partners decide which number answers “how long?” and say why."
+   ],
+   "byBand": {
+    "emerging": {
+     "frame": "At this rate, ___ ___ per ___. It helps because the question asks ___.",
+     "stretch": "They add what they do with it: “I multiply it by the windows.”",
+     "nonverbal": "They circle their number for 1, write its two units beside it, and point to “how long” in the question."
+    },
+    "developing": {
+     "frame": "At this rate, it is ___ ___ per ___. That helps because the question asks for ___, so I ___ it by ___.",
+     "stretch": "They say what the other number for 1 would tell.",
+     "nonverbal": "They point to the row for 1 in their table, then trace to the row for all the windows."
+    },
+    "expanding": {
+     "frame": "At this rate, it is ___ ___ per ___. That is more useful than ___ per ___, because the question asks ___.",
+     "stretch": "They check that the answer makes sense against the 15 and the 18.",
+     "nonverbal": "They point to both numbers for 1 on the board, then to the one that fits “how long.”"
+    }
+   }
+  },
+  "synthesis": {
+   "routine": "MLR2: Collect and Display",
+   "steps": [
+    "Call a student who found minutes per window, then one who found windows per minute. Scribe each one’s words beside their number.",
+    "Write the math words beside their words: “per,” “at this rate.” Keep their words as said.",
+    "Ask: “What is the same and what is different?” Then: “Which one answers ‘how long?’ more easily, and why?” Partners talk; scribe what two students say.",
+    "Show IM’s error: \\(\\frac{5}{6}\\) minutes per window. Partners say how they know it’s wrong; scribe it.",
+    "Leave the board up for 1.3 and the lesson synthesis."
+   ],
+   "prompt": "Both numbers are right. Which one answers “how long?” more easily, and why?",
+   "sounds": "At this rate, it is 1.2 minutes per window. That is useful because the question asks for time, so I multiply it by the number of windows."
+  }
+ },
+ "lessonSynthesis": {
+  "ideas": [
+   "When the numbers don’t scale easily, find how much for 1: 15 windows in 18 minutes is 1.2 minutes per window.",
+   "Each situation has two numbers for 1: 1.2 minutes per window and \\(\\frac{5}{6}\\) window per minute. Both are right.",
+   "Pick the one that fits the question: minutes per window for “how long,” and 138 meters per hour for “how far.”"
+  ],
+  "pointTo": "Point to the 1.2 board: both numbers for 1 and the words beside them. If you taught 1.3, point to 138 meters per hour too, IM’s second main rate.",
+  "check": {
+   "question": "A printer prints 12 pages in 18 seconds. How long for 150 pages? Which number for 1 helps, and why?",
+   "sounds": "At this rate, it is 1.5 seconds per page. That is useful because the question asks for time, so I multiply it by 150 pages."
+  }
+ },
+ "beforeClass": [
+  "For IM’s launch: have a photo and a map of the Burj Khalifa ready to display.",
+  "Have the number of windows, 24,348, in your notes. Share it only after several students ask.",
+  "For Three Reads in 1.2: display the task, with the question covered until the third read.",
+  "For the release: have the frames for your students’ levels ready to post or hand out.",
+  "For Collect and Display: clear board space and have IM’s error ready to show, \\(\\frac{5}{6}\\) minutes per window.",
+  "Four-function calculators, if you use them. IM suggests them so students focus on reasoning."
+ ],
+ "cuts": [
+  {
+   "activityId": "1.1",
+   "note": "Keep it short: two or three estimates, one other unit each."
+  },
+  {
+   "activityId": "1.3",
+   "note": "If 1.2 runs long, take the first two questions and drop “the final 15 minutes.” Keep 138 meters per hour: the lesson synthesis uses it."
+  },
+  {
+   "activityId": "1.2",
+   "note": "IM gives 20 minutes. Keep the class questions to about five, and Three Reads to one sentence each. Never cut quiet think time or the synthesis. A reviewer should check the five synthesis steps fit."
+  }
+ ],
+ "rehearsal": [
+  {
+   "id": "math:1.1",
+   "activityId": "1.1",
+   "kind": "math",
+   "type": "task",
+   "name": "Do the warm-up yourself",
+   "where": "Before class. Try the warm-up students start with.",
+   "show": [
+    "Use the picture to estimate the height of Hyperion, the tallest known tree.",
+    "The picture: a person, the tree, and the Statue of Liberty. The tree is taller than the statue."
+   ],
+   "ask": "How tall is Hyperion? Give your estimate in two units.",
+   "aim": "Have an estimate and a reason, so you can take any reasonable answer.",
+   "notes": [
+    "How students might see it:",
+    "Use the Statue of Liberty: about 300 feet, and the tree is taller, so about 400 feet (IM’s sample).",
+    "Stack the person: count how many people tall the tree is.",
+    "IM accepts about 100 meters or about 400 feet, or anything close."
+   ],
+   "checks": [
+    "Estimated about 400 feet or about 100 meters",
+    "Used something in the picture as a reference",
+    "Wrote the estimate in a second unit"
+   ]
+  },
+  {
+   "id": "m1",
+   "activityId": "1.1",
+   "kind": "moment",
+   "momentId": "m1",
+   "type": "decision",
+   "name": "Get partners talking about units",
+   "where": "About 4 minutes into Activity 1.1. Partners are discussing their estimates.",
+   "show": [
+    "On the board (IM’s questions):",
+    "How close are your estimates to one another?",
+    "How did you decide on the unit of measure?",
+    "What was important to you in the image when making your estimate?",
+    "Could you record your measurement using a different unit?"
+   ],
+   "student": "One partner says “I said 300.” The other says “I said 400.” Then they stop talking.",
+   "ask": "What do you say to the pair?",
+   "aim": "The pair talks about their units and what in the picture they used.",
+   "say": [
+    "Could you record your measurement using a different unit?"
+   ],
+   "why": "The warm-up builds a sense of really tall things and their units. IM’s questions make partners talk about units and references, not just numbers.",
+   "checks": [
+    "Asked about the unit, not just the number",
+    "Sent partners back to the questions on the board",
+    "Didn’t give the tree’s real height"
+   ]
+  },
+  {
+   "id": "math:1.2",
+   "activityId": "1.2",
+   "kind": "math",
+   "type": "task",
+   "name": "Do the window task yourself",
+   "where": "Before class. Solve the task students do today. The building has 24,348 windows.",
+   "show": [
+    "A window-washing crew can finish 15 windows in 18 minutes.",
+    "If this crew was assigned to wash all the windows on the outside of the Burj Khalifa, how long will the crew be washing at this rate?"
+   ],
+   "ask": "How long will the crew be washing? Find both numbers for 1 on the way.",
+   "aim": "Know the answer, both numbers for 1, and which one fits the question.",
+   "notes": [
+    "How students might solve it:",
+    "Minutes per window: 18 ÷ 15 = 1.2 (or \\(1\\frac{1}{5}\\)) minutes per window. Then 24,348 × 1.2 = 29,217.6 minutes.",
+    "Scale a table first (IM’s sample): 15 | 18, 15,000 | 18,000, then 1 | 1.2, then 24,348 | 29,217.6.",
+    "Windows per minute: 15 ÷ 18 = \\(\\frac{5}{6}\\) window per minute. It answers “how many windows,” so students often switch or scale up.",
+    "Make sense of it: about 487 hours, about 20 days without stopping."
+   ],
+   "checks": [
+    "Got 29,217.6 minutes for all 24,348 windows",
+    "Found the time for 1 window from the 18 and the 15",
+    "Said why minutes per window fits “how long?”"
+   ]
+  },
+  {
+   "id": "launch:1.2",
+   "activityId": "1.2",
+   "kind": "rounds",
+   "type": "routine",
+   "routine": "MLR6: Three Reads",
+   "language": true,
+   "name": "Read the problem three times",
+   "where": "About 4 minutes into Activity 1.2. The class’s questions about the Burj Khalifa are on the board. The task is up, its question covered.",
+   "show": [
+    "A window-washing crew can finish 15 windows in 18 minutes.",
+    "If this crew was assigned to wash all the windows on the outside of the Burj Khalifa, how long will the crew be washing at this rate?"
+   ],
+   "ask": "Read the problem aloud. After each read, ask one question. Nobody solves yet.",
+   "aim": "Students understand the problem, and what’s missing, before anyone solves.",
+   "rounds": [
+    {
+     "ask": "You’ve read it once. What do you ask?",
+     "aim": "Students say what’s happening, with no numbers."
+    },
+    {
+     "ask": "You’ve read it twice. What do you ask?",
+     "aim": "Students name what can be counted or measured, and notice what’s missing."
+    },
+    {
+     "ask": "You’ve read it three times. What do you ask?",
+     "aim": "Students suggest ways to solve it, without solving."
+    }
+   ],
+   "checks": [
+    "Read 1: asked what’s happening, with no numbers",
+    "Read 2: asked what can be counted or measured",
+    "Read 3: asked how we might solve it, and took ideas without solving"
+   ],
+   "why": "IM: Three Reads makes sure students know what they’re being asked to do. Here, the second read shows the number of windows is missing.",
+   "runIt": [
+    "Read 1: read it aloud. Ask what’s happening, with no numbers.",
+    "Read 2: read it again. Ask what can be counted or measured. Don’t give the number of windows yet.",
+    "Read 3: show the question and read it again. Ask how we might solve it; take ideas without solving.",
+    "Then start 3–5 minutes of quiet think time."
+   ]
+  },
+  {
+   "id": "release:1.2",
+   "activityId": "1.2",
+   "kind": "release",
+   "type": "send",
+   "routine": "MLR8: Discussion Supports",
+   "language": true,
+   "name": "Send students to work",
+   "where": "About 6 minutes into Activity 1.2. Three Reads just ended. Next come 3–5 minutes of quiet think time.",
+   "ask": "What do you tell the class to say about the number they find?",
+   "aim": "Students know to name their number for 1 with “per” and say why it helps.",
+   "say": [
+    "Say what your number means, with “per,” and why it helps."
+   ],
+   "notes": [
+    "Success criteria: Say what your number for 1 means, using “per,” and why it helps answer how long.",
+    "When partners talk: after quiet think time, partners take turns saying their number for 1.",
+    "They use Today’s frame: “At this rate, it is ___ ___ per ___. That is useful because the question asks for ___, so I ___ it by ___.”"
+   ],
+   "checks": [
+    "Named what every sentence needs: the number for 1, with “per,” and why it helps",
+    "Pointed to Today’s frame on the board",
+    "Told them when they’ll say it to a partner"
+   ],
+   "sounds": "At this rate, it is 1.2 minutes per window. That is useful because the question asks for time, so I multiply it by 24,348 windows.",
+   "why": "Naming the language before work starts means students practice it while they solve, not only at the end."
+  },
+  {
+   "id": "m5",
+   "activityId": "1.2",
+   "kind": "moment",
+   "momentId": "m5",
+   "type": "decision",
+   "name": "Hold back the missing number",
+   "where": "About 8 minutes into Activity 1.2. Students are in quiet think time.",
+   "show": [
+    "The task gives only: 15 windows in 18 minutes.",
+    "Your notes: the Burj Khalifa has 24,348 windows."
+   ],
+   "student": "A student calls out: “How many windows does it have?”",
+   "ask": "What do you say? When do you share the number?",
+   "aim": "Several students ask for the number before the class gets it.",
+   "say": [
+    "Good question. Who else needs that number?"
+   ],
+   "why": "IM: recognizing missing information and getting it is part of mathematical modeling. Waiting lets more students notice the gap themselves.",
+   "checks": [
+    "Treated the question as good thinking",
+    "Waited for several students to ask before sharing the number",
+    "Didn’t announce it at the first question"
+   ]
+  },
+  {
+   "id": "m3",
+   "activityId": "1.2",
+   "kind": "moment",
+   "momentId": "m3",
+   "type": "student",
+   "name": "A student is stuck on the division",
+   "where": "About 10 minutes into Activity 1.2. Students are in quiet think time. The class has the number of windows.",
+   "show": [
+    "The task: 15 windows in 18 minutes.",
+    "Their page: 18 ÷ 15, crossed out."
+   ],
+   "student": "A student crossed out 18 ÷ 15 and says: “15 doesn’t go into 18.”",
+   "ask": "What do you say to this student?",
+   "aim": "The student finds the time for 1 window through a smaller step.",
+   "say": [
+    "How long for 5 windows? Then how long for 1?"
+   ],
+   "goingOn": "They chose the right division: minutes for each window. A quotient that isn’t a whole number is what stops them.",
+   "ifNot": "If 15 windows share 18 minutes equally, does each get more or less than 1 minute?",
+   "checks": [
+    "Kept the division they chose",
+    "Gave a smaller step with equivalent ratios",
+    "Didn’t do the division for them"
+   ]
+  },
+  {
+   "id": "m7",
+   "activityId": "1.2",
+   "kind": "levels",
+   "type": "language",
+   "momentId": "m7",
+   "language": true,
+   "name": "Help a student say what the number means",
+   "where": "About 13 minutes into Activity 1.2. Partners are taking turns saying their number for 1.",
+   "show": [
+    "Their page:",
+    "18 ÷ 15 = 1.2",
+    "24,348 × 1.2 = 29,217.6",
+    "Today’s frame is on the board."
+   ],
+   "student": "A student points at 1.2 and says: “It’s 1.2. Then I times it.”",
+   "ask": "What do you say to this student?",
+   "aim": "The student says what 1.2 counts and why it fits the question.",
+   "goingOn": "They found the time for 1 window and used it correctly. What 1.2 counts, minutes per window, and why it helps aren’t in words yet.",
+   "ifNot": "Point to the 18 and the 15. Which one is minutes?",
+   "sounds": "At this rate, it is 1.2 minutes per window. That is useful because the question asks for time, so I multiply it by 24,348 windows.",
+   "checks": [
+    "Asked every level the same question: what it means, and why it helps",
+    "Gave their level’s frame or way in without words",
+    "Didn’t say the units for them"
+   ]
+  },
+  {
+   "id": "synth:1.2",
+   "activityId": "1.2",
+   "kind": "synthesis",
+   "type": "routine",
+   "routine": "MLR2: Collect and Display",
+   "language": true,
+   "name": "Finish on the board",
+   "where": "About 15 minutes into Activity 1.2. Two students have shared, and their words are on the board.",
+   "show": [
+    "On the board:",
+    "First share · minutes per window: “1 window takes 1.2 minutes.”",
+    "Second share · windows per minute: “They wash \\(\\frac{5}{6}\\) of a window each minute.”",
+    "Ready to show (IM’s error): “\\(\\frac{5}{6}\\) minutes per window.”"
+   ],
+   "ask": "Where do you write “per”? Then what do you ask?",
+   "aim": "Students say which number answers “how long?”, and why.",
+   "notes": [
+    "Write “per” and “at this rate” beside the students’ words, not in place of them.",
+    "Ask what is the same and what is different, then:"
+   ],
+   "say": [
+    "Both numbers are right. Which one answers “how long?” more easily, and why?"
+   ],
+   "checks": [
+    "Called both numbers for 1 and wrote students’ own words",
+    "Asked which number fits the question, and let students decide",
+    "Showed IM’s error and asked how they knew it was wrong"
+   ],
+   "sounds": "At this rate, it is 1.2 minutes per window. That is useful because the question asks for time, so I multiply it by the number of windows.",
+   "why": "IM: both numbers are valid and have purpose, depending on the question. Collect and Display keeps students’ words up for 1.3 and the lesson synthesis.",
+   "runIt": [
+    "Call a student who found minutes per window, then one who found windows per minute. Scribe each one’s words beside their number.",
+    "Write “per” and “at this rate” beside their words. Keep their words as said.",
+    "Ask what is the same and what is different. Then ask which answers “how long?” more easily. Scribe two students’ answers.",
+    "Show IM’s error, \\(\\frac{5}{6}\\) minutes per window. Partners say how they know it’s wrong; scribe it.",
+    "Leave the board up for 1.3 and the lesson synthesis."
+   ]
+  },
+  {
+   "id": "math:1.3",
+   "activityId": "1.3",
+   "kind": "math",
+   "type": "task",
+   "name": "Do the climbing task yourself",
+   "where": "Before class. Solve the climbing task students do after the windows.",
+   "show": [
+    "In 2011, a professional climber scaled the outside of the Burj Khalifa, making it all the way to 828 meters (the highest point on which a person can stand) in 6 hours.",
+    "How far did they climb in the first 2 hours? In 5 hours? In the final 15 minutes?"
+   ],
+   "ask": "Answer all three questions. What number for 1 helps most?",
+   "aim": "Know all three answers, and the meters per hour behind them.",
+   "notes": [
+    "How students might solve it:",
+    "First 2 hours: scale down by 3. 828 ÷ 3 = 276 meters.",
+    "5 hours: 828 ÷ 6 = 138 meters per hour, then 5 × 138 = 690. Or 828 − 138 = 690.",
+    "Final 15 minutes: \\(\\frac{1}{4}\\) of an hour, so 138 ÷ 4 = 34.5 meters."
+   ],
+   "checks": [
+    "Got 276 meters and 690 meters",
+    "Found 138 meters per hour",
+    "Got 34.5 meters for the final 15 minutes"
+   ]
+  },
+  {
+   "id": "m11",
+   "activityId": "1.3",
+   "kind": "moment",
+   "momentId": "m11",
+   "type": "student",
+   "name": "A student can’t picture the last question",
+   "where": "About 4 minutes into Activity 1.3. Students are in quiet think time.",
+   "show": [
+    "The third question: How far did they climb in the final 15 minutes?",
+    "Their page: 276 meters and 690 meters. The third answer is blank."
+   ],
+   "student": "A student asks: “What does final 15 minutes mean?”",
+   "ask": "What do you say to this student?",
+   "aim": "The student places the final 15 minutes on a sketch of the climb.",
+   "say": [
+    "Sketch the climb. Where on it are the final 15 minutes?"
+   ],
+   "goingOn": "They answered the first two questions, so they can use the rate. The third question switches to minutes and to the end of the climb.",
+   "avoid": "Tell them it’s a quarter of an hour.",
+   "ifNot": "How many minutes are in the last hour of the climb?",
+   "checks": [
+    "Asked for a sketch instead of explaining the question",
+    "Asked where the final 15 minutes sit on it",
+    "Didn’t say it’s a quarter of an hour"
+   ]
+  },
+  {
+   "id": "m10",
+   "activityId": "1.3",
+   "kind": "moment",
+   "momentId": "m10",
+   "type": "student",
+   "name": "A student writes “34 r 2 meters”",
+   "where": "About 8 minutes into Activity 1.3. Students are on the third question.",
+   "show": [
+    "Their page:",
+    "828 ÷ 6 = 138 meters per hour",
+    "138 ÷ 4 = 34 r 2 meters"
+   ],
+   "student": "A student wrote “34 r 2 meters” for the final 15 minutes.",
+   "ask": "What do you say to this student?",
+   "aim": "The student writes the remainder in meters and finishes the answer.",
+   "say": [
+    "The 2 left over: 2 what? Write the answer in meters."
+   ],
+   "goingOn": "They found 138 meters per hour and divided by 4, the right moves. The remainder is the last step.",
+   "avoid": "Write 34.5 for them.",
+   "ifNot": "If 2 meters are shared among the 4 quarters of the hour, how much is each share?",
+   "checks": [
+    "Asked what the remainder means",
+    "Asked for the answer in meters",
+    "Didn’t write 34.5 for them"
+   ]
+  }
+ ]
+}

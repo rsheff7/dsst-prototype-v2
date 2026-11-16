@@ -1,0 +1,74 @@
+Source: https://im.kendallhunt.com/MS/teachers/1/3/3/preparation.html
+
+## Lesson 3
+## Measuring with Different-Sized Units
+ View Student Lesson
+## Lesson Narrative
+ This lesson develops students’ familiarity with standard units of length, volume, weight, and mass through the tactile experiences of measuring objects. The main idea is that it takes more of a smaller unit and less of a larger unit to measure the same quantity. This idea is an important foundation for converting units of measurement using ratio reasoning in the next lesson (MP7).
+## Learning Goals
+## Teacher Facing
+ Generalize (orally and in writing) that it takes more of a smaller unit or fewer of a larger unit to measure the same quantity.
+ Given a measurement in one unit, estimate what would be the same amount expressed in a different unit, and explain (orally) the reasoning.
+## Student Facing
+ Let’s measure things.
+## Required Materials
+ Base-ten blocks
+ Blank paper
+ Cuisenaire rods
+ Gallon-sized jug
+ Graduated cylinders
+ Household items
+ Inch cubes
+ Internet-enabled device
+ Liter-sized bottle
+ Materials assembled from the blackline master
+ Metal paper fasteners
+ Meter sticks
+ Paper clips
+ Pre-assembled polyhedra
+ Quart-sized bottle
+ Rulers
+ Salt
+ Scale
+ Straightedges
+ Teaspoon
+ Tray
+## Required Preparation
+ For the first activity, prepare to display or distribute 6-cm and 9-cm Cuisenaire rods, which are often colored dark green and blue, respectively. If Cuisenaire rods are not available, small and large paper clips can be substituted.
+ For the second activity, identify where each station will be and set up the following materials:
+ For Station 1:
+ From the first page of the blackline master, print the net for the 2-in by 2-in by 4-in box onto card stock, cut it out, and assemble it.
+ Provide at least twenty inch cubes, one centimeter cube, and thirty 10-cm rods. The centimeter cube and 10-cm rods can come from a set of base-ten blocks or Cuisenaire rods. However, base-ten blocks are preferable so students can see how one rod is composed of ten centimeter cubes. Wooden inch cubes are available inexpensively at craft stores.
+ For Station 2:
+ Identify something in the classroom that is about 20 feet long. Prepare a way to communicate to students that this is the object they are supposed to measure (but do not give away its length).
+ Provide rulers and at least 2 meter sticks.
+ For Station 3:
+ Prepare a way for students to be able to watch this video Video Quarts and Liters available at https://player.vimeo.com/video/304136597. 
+ Provide an empty gallon-sized jug, quart-sized bottle, and liter-sized bottle for comparison.
+ For Station 4 (there are 3 different options):
+ If students will weigh objects on a real scale: Set up the scale and provide common household items for students to weigh. Note: The scale must be able to output in grams, kilograms, ounces, and pounds for this option to work.
+ If students will use the digital scale simulation: Prepare a way for students to access this widget http://ggbm.at/eQQVYB7D.
+ If students will use the paper scale simulations: Print pages 2–13 of the blackline master onto cardstock and cut out the scale images and output wheels. Make sure to cut out the two white windows on the base of each scale where the output wheels are supposed to show through. Assemble the paper scale simulations using metal fasteners so the output wheels can rotate behind the scale images.
+ For Station 5:
+ On a tray for catching spills, provide a 100-ml graduated cylinder, a teaspoon, a straightedge for leveling off the teaspoon, and a small bowl with at least \(\frac12\) cup of salt.
+## Learning Targets
+## Student Facing
+ When I know a measurement in one unit, I can decide whether it takes more or less of a different unit to measure the same quantity.
+## CCSS Standards
+ Building On
+ 2.MD.A.2
+ Addressing
+ 6.RP.A.3.d
+ Building Towards
+ 6.RP.A.3.d
+## Print Formatted Materials
+ Teachers with a valid work email address can click here to register or sign in for free access to Cool Down, Teacher Guide, and PowerPoint materials.
+ | Student Task Statements | pdf | docx 
+ | Cumulative Practice Problem Set | pdf | docx 
+ | Cool Down | | Log In 
+ | Teacher Guide | | Log In 
+ | Teacher Presentation Materials | pdf | docx 
+ | Blackline Masters | zip | 
+## Additional Resources
+ | Google Slides | | Log In 
+ | PowerPoint Slides | | Log In
