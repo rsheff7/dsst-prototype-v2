@@ -5,9 +5,9 @@
   "Story and previous: from IM’s lesson narrative (“less support”; double number lines no longer given), Lesson 12’s and 13’s goals (tape diagrams; 10%, 25%, 50% and 75% as fractions), and IM’s lesson synthesis (the third kind of problem is new today).",
   "Crux is 14.2, as in Premo’s layer. 14.3 (Info Gap, 20 minutes, goal 2) is a fair alternative; its purpose reads as practicing language, and the checker keeps that kind of activity off the crux while another activity brings new math.",
   "CLO: imGoal is IM goal 1, verbatim. Function “explain” and mode “out loud” come from it; the unit’s language progression also names “explain” for Lesson 14, so there is no progression note.",
-  "Form: “In my ___, ___ lines up with 100%. ___ is ___ of ___, so it is ___% of ___.” It fits both questions: Han (in my table, $15 lines up with 100%; $1.50 is \\(\\frac{1}{10}\\) of $15, so it is 10% of $15) and Clare ($6 is \\(\\frac{1}{4}\\) of $24, so $6 is 25% of $24). It follows IM Lesson 13’s usage, “25% of a quantity is \\(\\frac14\\) of that quantity,” never “25% = \\(\\frac14\\).” “Lines up with” is Premo’s plain word for IM’s “corresponds with.”",
-  "Precise terms: “100%” and “% of” (IM’s receptive term for Lesson 14 is “___% of”). “Percentage” is productive only from Lesson 15, so it is informal here and not quoted on the board. Board lines may hold “100%” as a math term (Robert, 2026-11-15).",
-  "Numbers checked: 15 ÷ 10 = 1.5; 6 ÷ 24 = 0.25; 60% of 40 = 24; 24 ÷ 25 = 0.96; 24 ÷ 0.4 = 60; 80% of 20 = 16; 6 × 0.8 × 2 = 9.6; 4.5 × 0.6 × 4 = 10.8. Posted sentence: 10 ÷ 50 = 0.2, 20%. Lesson synthesis check: 6 ÷ 30 = 0.2, 20%; it shares no numbers with the cool-down (20 minutes, 80%).",
+  "Form: “In my ___, ___ lines up with 100%. ___ is ___ of ___, so as a percentage, it is ___% of ___.” It fits both questions: Han ($1.50 is \\(\\frac{1}{10}\\) of $15, so as a percentage, it is 10% of $15) and Clare (25% of $24). It follows IM Lesson 13’s usage, “25% of a quantity is \\(\\frac14\\) of that quantity,” never “25% = \\(\\frac14\\).” “Lines up with” is Premo’s plain word for IM’s “corresponds with.”",
+  "Precise terms: “100%,” “% of” and “percentage” (IM’s receptive term for Lesson 14 is “___% of”). “Percentage” is on the list by Robert’s decision (2026-11-15); the form carries it, and the board quotes it. Board lines may hold “100%” as a math term.",
+  "Numbers checked: 15 ÷ 10 = 1.5; 6 ÷ 24 = 0.25; 60% of 40 = 24; 24 ÷ 25 = 0.96; 24 ÷ 0.4 = 60; 80% of 20 = 16; 6 × 0.8 × 2 = 9.6; 4.5 × 0.6 × 4 = 10.8. Posted sentence: 10 ÷ 50 = 0.2, 20%. Lesson synthesis check: 9 ÷ 30 = 0.3, 30%; it shares no numbers with the cool-down (20 minutes, 80%).",
   "Look-for accepts IM’s two strategies (10% is 2 minutes, then 8 × 2; the table 20 | 100, 2 | 10, 16 | 80) and also \\(\\frac{8}{10}\\) of 20 or a double number line. IM’s answer is 16 minutes.",
   "Per D1: Three Reads to launch, an MLR 8 frame at release, MLR 2 Collect and Display in the synthesis. IM’s crux routine is MLR 7 Compare and Connect; its move is built in (option 3): students say where 15 times \\(\\frac{1}{10}\\) shows in each diagram, then why one double number line can’t solve both questions. Those are IM’s two questions from the support and the synthesis.",
   "14.2 is 10 minutes, the same as 6.3.7’s crux. Card times are estimates: Three Reads about 2 minutes, quiet think time about 3, partner sharing about 2, the comparison from about 8. It is tight; the 14.2 cut says what goes: fewer coupons, and two diagrams compared instead of three. IM’s launch also displays coupons first, which this plan keeps brief.",
@@ -16,34 +16,35 @@
   "NEW (Premo-written, unreviewed): the board words for Pairs A, B and C on the synthesis card; the m6 student’s line; all ifNot questions; every goingOn line; the level frames, stretches and nonverbal ways in.",
   "The Info Gap card text comes from IM’s Teacher Guide (printed page 237), copied in tg/6.3.14.json notes. Data Card 1’s line is quoted on the m8 card.",
   "Non-crux activities carry no language supports (D7).",
-  "2026-11-15: persona review fixes. Frames: emerging keeps the fraction step; developing and expanding add a “because ___” clause, expanding also “another way”; the form now says “so it is ___% of ___” so the part isn’t copied twice. Nonverbal moves no longer assume one representation. The exemplar and model sentences match the form exactly (the extra “The percentage off is 25%.” is gone). “Percentage” moved to informal, since the board quotes only precise terms. The m6 levels card has one say line. “Info Gap” is one spelling."
+  "2026-11-15: persona review fixes. Frames: emerging keeps the fraction step; developing and expanding add a “because ___” clause, expanding also “another way”; the form now says “so it is ___% of ___” so the part isn’t copied twice. Nonverbal moves no longer assume one representation. The exemplar and model sentences match the form exactly (the extra “The percentage off is 25%.” is gone). “Percentage” moved to informal, since the board quotes only precise terms. The m6 levels card has one say line. “Info Gap” is one spelling.",
+  "2026-11-15: round-2 review fixes: “percentage” is back on the precise list, carried by the form (“so as a percentage, it is ___% of ___”) and quoted on the board; the emerging frame ends “So it is ___%.”; the lesson-synthesis check is now $9 off $30 (30%), not the posted answer’s 20%; the synthesis prompt asks “Why or why not?” and is the synthesis card’s only say line; 14.3’s card shows IM’s full Problem Card text; “It’s 25” moved from misconceptions to barriers."
  ],
  "story": "Lesson 14 is late in the percentages section. Diagrams are no longer given: students choose a tape diagram, double number line or table, and find a percentage itself for the first time.",
  "previous": "In Lessons 12 and 13 students used tape diagrams and benchmark percentages. Today they pick their own diagram. They also ask what percentage one amount is of another.",
  "clo": {
   "imGoal": "Choose and create a tape diagram, double number line diagram, or table to solve problems involving percentages and explain (orally) the solution method.",
   "function": "explain",
-  "form": "In my ___, ___ lines up with 100%. ___ is ___ of ___, so it is ___% of ___.",
+  "form": "In my ___, ___ lines up with 100%. ___ is ___ of ___, so as a percentage, it is ___% of ___.",
   "board": {
    "content": "We will choose a diagram or table to solve percentage problems, starting from the whole amount.",
-   "language": "We will explain, out loud, how our diagram or table names what is “100%” and uses “% of.”"
+   "language": "We will explain, out loud, how our diagram or table shows “100%” and finds a “percentage” with “% of.”"
   },
   "mode": "out loud",
   "precise": [
    "100%",
-   "% of"
+   "% of",
+   "percentage"
   ],
   "informal": [
    "lines up with",
    "the whole",
-   "percentage",
    "off",
    "save"
   ],
-  "exemplar": "In my double number line, $24 lines up with 100%. $6 is \\(\\frac{1}{4}\\) of $24, so it is 25% of $24.",
+  "exemplar": "In my double number line, $24 lines up with 100%. $6 is \\(\\frac{1}{4}\\) of $24, so as a percentage, it is 25% of $24.",
   "lookFor": "The explanation names 20 minutes as 100% and finds 80% of it: 16 minutes. It may use 10% steps (2 minutes, then 8 × 2), a table, or \\(\\frac{8}{10}\\) of 20.",
   "posted": {
-   "sentence": "In my table, $50 lines up with 100%. $10 is \\(\\frac{1}{5}\\) of $50, so it is 20% of $50."
+   "sentence": "In my table, $50 lines up with 100%. $10 is \\(\\frac{1}{5}\\) of $50, so as a percentage, it is 20% of $50."
   }
  },
  "activities": [
@@ -83,13 +84,13 @@
    ],
    "barriers": [
     "The two questions ask for different things: dollars saved, then a percentage off.",
-    "“Normal price,” “saves” and “percentage off” on a coupon may be unfamiliar words."
+    "“Normal price,” “saves” and “percentage off” on a coupon may be unfamiliar words.",
+    "Language: “It’s 25” is right, but leaves out “%,” “of” and the 100% value."
    ],
    "misconceptions": [
     "Answering Clare’s question with “$6,” the dollars saved, not the percentage.",
     "Finding Han’s sale price, $13.50, instead of what he saves.",
-    "Using one double number line for both questions, with the same amount at 100%.",
-    "Language: “It’s 25,” with no “%,” no “of,” and no 100% value."
+    "Using one double number line for both questions, with the same amount at 100%."
    ],
    "backPocket": [
     "What does the question ask you to find?",
@@ -173,19 +174,19 @@
    ],
    "byBand": {
     "emerging": {
-     "frame": "___ is 100%. ___ is ___ of it. So ___ is ___%.",
+     "frame": "___ is 100%. ___ is ___ of it. So it is ___%.",
      "stretch": "They say what kind of diagram they used and point to 100% on it.",
      "nonverbal": "They circle the 100% value on their diagram, then circle the pair that answers the question."
     },
     "developing": {
-     "frame": "___ lines up with 100%. ___ is ___ of ___, because ___. So it is ___% of ___.",
+     "frame": "___ lines up with 100%. ___ is ___ of ___, because ___. So as a percentage, it is ___% of ___.",
      "stretch": "They add how they split the whole: into 10 parts, or into 4 parts.",
      "nonverbal": "On whatever they drew, they mark the 100% value and the equal parts, then point to the answer."
     },
     "expanding": {
-     "frame": "In my ___, ___ lines up with 100%. ___ is ___ of ___, because ___. So it is ___% of ___. Another way to see it: ___.",
+     "frame": "In my ___, ___ lines up with 100%. ___ is ___ of ___, because ___. So as a percentage, it is ___% of ___. Another way to see it: ___.",
      "stretch": "They check the answer a second way, such as a table against a diagram.",
-     "nonverbal": "On whatever they drew, they mark the equal parts and tap each one as they count the percent."
+     "nonverbal": "On whatever they drew, they mark the equal parts and tap each one as they count up the percentage."
     }
    }
   },
@@ -195,10 +196,10 @@
     "During partner talk, scribe students’ words as said, such as “the whole” or “the full price,” and write “100%” beside them.",
     "Call pairs in IM’s order for Han’s question: a tape diagram first, then a double number line or a table. Draw each as they explain.",
     "Scribe each pair’s words beside its diagram; add “% of” or “\\(\\frac{1}{10}\\) of” next to their words, not in place of them.",
-    "Ask: “Where do you see 15 times \\(\\frac{1}{10}\\) in each one?” Then: “Could one double number line solve both questions? Why not?” Students make the connections; you scribe them.",
+    "Ask: “Where do you see 15 times \\(\\frac{1}{10}\\) in each one?” Then: “Could one double number line solve both questions? Why or why not?” Students make the connections; you scribe them.",
     "Leave the board up for the lesson synthesis and the cool-down."
    ],
-   "prompt": "Could one double number line solve both questions? Why not?",
+   "prompt": "Could one double number line solve both questions? Why or why not?",
    "sounds": "No. Han’s line has $15 at 100%, and Clare’s has $24 at 100%. The whole is different, so we need two lines."
   }
  },
@@ -344,7 +345,7 @@
     "Pointed to Today’s frame on the board",
     "Told them when they’ll explain to a partner"
    ],
-   "sounds": "In my double number line, $24 lines up with 100%. $6 is \\(\\frac{1}{4}\\) of $24, so it is 25% of $24.",
+   "sounds": "In my double number line, $24 lines up with 100%. $6 is \\(\\frac{1}{4}\\) of $24, so as a percentage, it is 25% of $24.",
    "why": "IM says students must first decide what value goes with 100%. Naming it before work starts makes it the first thing every explanation says."
   },
   {
@@ -389,15 +390,15 @@
    ],
    "student": "A student points to the first tick after 0: “It’s 25. Right there.”",
    "ask": "What do you say to this student?",
-   "aim": "The student says what is 100%, then says $6 as a percent of $24.",
+   "aim": "The student says what is 100%, then says $6 as a percentage of $24.",
    "checks": [
     "Asked every level the same question: what lines up with 100%, and what lines up with $6",
     "Gave their level’s frame or nonverbal way in",
     "Didn’t say the sentence for them"
    ],
    "ifNot": "Put a finger on 100%. Which dollar amount is above it?",
-   "sounds": "In my double number line, $24 lines up with 100%. $6 is \\(\\frac{1}{4}\\) of $24, so it is 25% of $24.",
-   "goingOn": "They found the right tick and the right number. What 100% stands for, and that 25 is a percent of $24, isn’t in words yet.",
+   "sounds": "In my double number line, $24 lines up with 100%. $6 is \\(\\frac{1}{4}\\) of $24, so as a percentage, it is 25% of $24.",
+   "goingOn": "They found the right tick and the right number. What 100% stands for, and that 25 means 25% of $24, isn’t in words yet.",
    "say": [
     "What lines up with 100%? What lines up with $6?"
    ]
@@ -436,7 +437,7 @@
    "routine": "MLR2: Collect and Display",
    "language": true,
    "name": "Finish on the board",
-   "where": "About 8 minutes into Activity 14.2. Pairs A, B and C have shown their diagrams for Han. Their words are on the board.",
+   "where": "About 8 minutes into Activity 14.2. Pairs A, B and C have shown their diagrams for Han and said where 15 times \\(\\frac{1}{10}\\) shows in each. Their words are on the board.",
    "show": [
     "On the board:",
     "Pair A · tape diagram: “10 pieces. Each piece is $1.50.”",
@@ -450,8 +451,7 @@
     "Then ask, and let students make the connections:"
    ],
    "say": [
-    "Where do you see 15 times \\(\\frac{1}{10}\\) in each one?",
-    "Could one double number line solve both questions? Why not?"
+    "Could one double number line solve both questions? Why or why not?"
    ],
    "checks": [
     "Called a tape diagram first, then a double number line or a table",
@@ -476,9 +476,9 @@
    "name": "Do the Info Gap yourself",
    "where": "Before class. Solve both problem cards using the facts on the data cards. Students see only their own card.",
    "show": [
-    "Problem Card 1: Which of the devices can Jada afford? What percentage of the money needed for Device B does she have?",
+    "Problem Card 1: A store sells 3 different music devices: Device A, Device B, and Device C. 1. Which of the devices can Jada afford? 2. What percentage of the money needed for Device B does she have?",
     "Data Card 1: Device A costs $15. Device B costs $25. Device C costs $40. Jada has 60% of the money needed to buy Device C.",
-    "Problem Card 2: How much does Device D cost?",
+    "Problem Card 2: The store starts selling another music device. Jada is interested in Device D, though she does not have enough money to buy it. How much does Device D cost?",
     "Data Card 2: Jada has $24. Jada has 40% of the money needed to buy Device D."
    ],
    "ask": "Which devices can Jada afford? What percentage of Device B’s price does she have? What does Device D cost?",
@@ -529,7 +529,7 @@
    "name": "A student finds 40% of $24",
    "where": "About 14 minutes into Activity 14.3. Partners have switched roles for the second cards.",
    "show": [
-    "Problem Card 2: How much does Device D cost?",
+    "Problem Card 2: The store starts selling another music device. Jada is interested in Device D, though she does not have enough money to buy it. How much does Device D cost?",
     "Data Card 2: Jada has $24. Jada has 40% of the money needed to buy Device D.",
     "Their work: “40% of $24 is $9.60.”"
    ],
@@ -556,8 +556,8 @@
   ],
   "pointTo": "Point to the 14.2 board: Han’s diagram with $15 at 100%, Clare’s with $24 at 100%, and the words beside them. If you taught 14.3, point to its tables too.",
   "check": {
-   "question": "A $30 game is on sale, and you save $6. What percentage off is the sale? Say it with Today’s frame.",
-   "sounds": "In my table, $30 lines up with 100%. $6 is \\(\\frac{1}{5}\\) of $30, so it is 20% of $30."
+   "question": "A $30 game is on sale, and you save $9. What percentage off is the sale? Say it with Today’s frame.",
+   "sounds": "In my table, $30 lines up with 100%. $9 is \\(\\frac{3}{10}\\) of $30, so as a percentage, it is 30% of $30."
   }
  },
  "beforeClass": [

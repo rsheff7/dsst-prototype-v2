@@ -14,14 +14,15 @@
   "Misconceptions: IM gives one per activity, all used. Premo’s: 6 dimes is 6% (IM names it only for the cool-down’s 8 dimes, in the Teacher Guide), 150 − 100 = 50% (from IM’s flawed explanation), and $150 for 150% in 10.3.",
   "NEW for review: Pair A, B and C’s work on the share-order card, and Pair C’s “6 × 25% = 150%.” Checked: 150 cents is 150%; 4 quarters is 100 cents and 2 more are 50 cents, 150%; 6 × 25 = 150.",
   "Non-crux activities carry no language supports (D7).",
-  "2026-11-15: persona review fixes. New CLO form (Elena 4, Dana 2): every blank holds a different quantity, and no “is worth.” Exemplar, posted sentence, release, m7, synthesis and check sounds follow it. Exemplar keeps “The percentage is a rate per 100.” so it says every precise term. Precise “% of a dollar” is now “% of,” to match the board. Band frames: emerging is the form in three short sentences; developing adds “more (or less) than 100% because ___”; expanding uses one coin’s percent and “Another way.” New emerging and developing nonverbal moves (Elena 5). Flawed explanation moved out of synthesis step 1 into the card’s show. “IM:” dropped from the Three Reads why. m7 gets its one say line. Long sentences split. One spelling: “half dollar.”"
+  "2026-11-15: persona review fixes. New CLO form (Elena 4, Dana 2): every blank holds a different quantity, and no “is worth.” Exemplar, posted sentence, release, m7, synthesis and check sounds follow it. Exemplar keeps “The percentage is a rate per 100.” so it says every precise term. Precise “% of a dollar” is now “% of,” to match the board. Band frames: emerging is the form in three short sentences; developing adds “more (or less) than 100% because ___”; expanding uses one coin’s percent and “Another way.” New emerging and developing nonverbal moves (Elena 5). Flawed explanation moved out of synthesis step 1 into the card’s show. “IM:” dropped from the Three Reads why. m7 gets its one say line. Long sentences split. One spelling: “half dollar.”",
+  "2026-11-15: round-2 review fixes: the exemplar’s bolted-on “The percentage is a rate per 100.” moved into clo.form as the reason (“A percentage is a rate per 100, so it is ___% of a dollar”), so the form carries “percentage” and “rate per 100”; every model sentence follows it. Release say is the success criteria; talk moment 2 is round 1 after the flawed explanation; synthesis steps 1–2 merged; cut shares two pairs; “percentage” replaces “the percent” as a noun; colons after “asks”; long lines split."
  ],
  "story": "Lesson 10 opens the percentages section. Using coins and a dollar, students learn that a percentage is a rate per 100. They also meet the double number line that Lesson 11 builds on.",
  "previous": "In Lesson 9 students used unit rates, rates per 1, to judge deals; today a rate per 100 gets its name: percentage.",
  "clo": {
   "imGoal": "Comprehend the word “percentage” (in written and spoken language) and the symbol “%” (in written language) to mean a rate per 100.",
   "function": "explain",
-  "form": "The value of ___ is ___ cents, and a dollar is 100 cents, so it is ___% of a dollar.",
+  "form": "The value of ___ is ___ cents, and a dollar is 100 cents. A percentage is a rate per 100, so it is ___% of a dollar.",
   "board": {
    "content": "We will use coins to learn what a percentage of a dollar means.",
    "language": "We will explain, out loud and in writing, what a “percentage” means, using “rate per 100” and “% of.”"
@@ -37,10 +38,10 @@
    "out of 100",
    "more than a dollar"
   ],
-  "exemplar": "The value of 6 quarters is 150 cents, and a dollar is 100 cents, so it is 150% of a dollar. The percentage is a rate per 100.",
+  "exemplar": "The value of 6 quarters is 150 cents, and a dollar is 100 cents. A percentage is a rate per 100, so it is 150% of a dollar.",
   "lookFor": "The 8 dimes answer has the % symbol and a reason per 100 cents. For example, 80 cents per 100 cents is 80%, or a dime is 10%, so 8 dimes is 80%. The 130% answer names coins worth 130 cents, such as 13 dimes, not “130 cents.”",
   "posted": {
-   "sentence": "The value of 7 nickels is 35 cents, and a dollar is 100 cents, so it is 35% of a dollar."
+   "sentence": "The value of 7 nickels is 35 cents, and a dollar is 100 cents. A percentage is a rate per 100, so it is 35% of a dollar."
   }
  },
  "activities": [
@@ -73,7 +74,7 @@
    "id": "10.2",
    "strategies": [
     "Cents compared with 100 cents: 6 dimes is 60 cents, so 60%; 6 quarters is 150 cents, so 150%.",
-    "One coin’s percent, times the coins: a dime is 10%, so 6 dimes is 60%; a quarter is 25%, so 6 quarters is 150%.",
+    "One coin’s percentage, times the coins: a dime is 10%, so 6 dimes is 60%; a quarter is 25%, so 6 quarters is 150%.",
     "Quarter by quarter: 4 quarters is 100% of a dollar, and 2 more quarters is 50% more, so 150%."
    ],
    "barriers": [
@@ -82,7 +83,7 @@
     "“The value of 6 dimes” can be read as the number of coins."
    ],
    "misconceptions": [
-    "Taking “the percent is the cents” as a rule for every percent, not only for a dollar.",
+    "Taking “the percentage is the cents” as a rule for every percentage, not only for a dollar.",
     "Writing “6%” for 6 dimes: counting coins, not their value.",
     "Calling 6 quarters 50%, from 150 − 100 cents, instead of 150% of a dollar.",
     "Language: “It’s 150,” with no % symbol and no “of a dollar.”"
@@ -99,7 +100,7 @@
     "m4"
    ],
    "grouping": "Pairs: 3 minutes of quiet think time, then partners share responses and finish the remaining questions together.",
-   "monitor": "Notice strategies on the last two questions: cents compared with 100, quarter by quarter, or one coin’s percent times the coins. Note who leaves off the % symbol."
+   "monitor": "Notice strategies on the last two questions: cents compared with 100, quarter by quarter, or one coin’s percentage times the coins. Note who leaves off the % symbol."
   },
   {
    "id": "10.3",
@@ -127,7 +128,7 @@
     "m9"
    ],
    "grouping": "Same pairs: 2–3 minutes of quiet think time, then partners share, guided by IM’s three displayed questions.",
-   "monitor": "Look for students who used the double number line, who labeled ticks with fractions or cents, and who reasoned 100 ÷ 4 = 25, to share last.",
+   "monitor": "Look for students who used the double number line, and who labeled ticks with fractions or cents. Share last a student who reasoned 100 ÷ 4 = 25.",
    "momentCriteria": {
     "m8": [
      "Said the fractions were right before asking for dollars",
@@ -156,16 +157,16 @@
    },
    {
     "focus": "Ways to solve",
-    "say": "Read it once more. How might we find a percent of a dollar?",
-    "listenFor": "Find the cents and compare with 100 cents. Or use one coin’s percent: a dime is 10% of a dollar."
+    "say": "Read it once more. How might we find a percentage of a dollar?",
+    "listenFor": "Find the cents and compare with 100 cents. Or use one coin’s percentage: a dime is 10% of a dollar."
    }
   ],
   "release": {
    "successCriteria": "In your answers to the last two questions, write the % symbol and say “of a dollar.” Say how the cents compare with 100 cents.",
-   "say": "Write the % symbol, and say per 100 cents.",
+   "say": "Write the % symbol and “of a dollar.” Say how the cents compare with 100 cents.",
    "talkMoments": [
-    "After quiet think time, partners take turns saying one answer to the last two questions. They use Today’s frame: “The value of ___ is ___ cents, and a dollar is 100 cents, so it is ___% of a dollar.”",
-    "Before the flawed explanation, partners read their 6 quarters sentence to each other."
+    "After quiet think time, partners take turns saying one answer to the last two questions. They use Today’s frame: “The value of ___ is ___ cents, and a dollar is 100 cents. A percentage is a rate per 100, so it is ___% of a dollar.”",
+    "After the flawed explanation, partners read their stronger 6 quarters sentence to each other: that is round 1."
    ],
    "byBand": {
     "emerging": {
@@ -175,12 +176,12 @@
     },
     "developing": {
      "frame": "The value of ___ is ___ cents, and a dollar is 100 cents, so it is ___% of a dollar. It is more (or less) than 100% because ___.",
-     "stretch": "They check it another way: one coin’s percent of a dollar, times the number of coins.",
+     "stretch": "They check it another way: one coin’s percentage of a dollar, times the number of coins.",
      "nonverbal": "They mark the quarter bar six times along the dollar bar and point to where it passes 100 cents."
     },
     "expanding": {
      "frame": "One ___ is ___% of a dollar, so ___ of them is ___% of a dollar. Another way: ___.",
-     "stretch": "They say why a percent can be more than 100%.",
+     "stretch": "They say why a percentage can be more than 100%.",
      "nonverbal": "They sketch the quarter and dollar bars, then extend the quarter bar past the dollar for 6 quarters."
     }
    }
@@ -189,14 +190,13 @@
    "routine": "MLR1: Stronger and Clearer Each Time",
    "steps": [
     "Before pairs share the 6 quarters answer, show IM’s flawed explanation.",
-    "Pairs: say what is wrong with it. Listen for pairs who clarify the wording: “50% greater than a dollar,” or “150% of a dollar.”",
-    "Alone: write a stronger 6 quarters sentence with the % symbol and “of a dollar.”",
-    "Round 1: read it to a partner. The listener asks “Percent of what?” or “How do you know?” Then rewrite it, stronger and clearer.",
+    "Pairs say what is wrong, then each writes it as a correct 6 quarters sentence.",
+    "Round 1: read it to a partner. The listener asks: “Percent of what?” or “How do you know?” Then rewrite it, stronger and clearer.",
     "Share 2–3 pairs, cents first and ratio reasoning last. Write a short version of each for all to see.",
     "End with IM’s double number line: 0, 50, 100, 150 cents over 0%, 50%, 100%, 150%. We line up 100% and 100 because 100% of 100 is 100."
    ],
    "prompt": "What is wrong with this explanation? What percent of a dollar is the value of 6 quarters, and how do you know?",
-   "sounds": "The value of 6 quarters is 150 cents, and a dollar is 100 cents, so it is 150% of a dollar. The explanation should say 50% greater than a dollar, not 50% of a dollar."
+   "sounds": "The value of 6 quarters is 150 cents, and a dollar is 100 cents. A percentage is a rate per 100, so it is 150% of a dollar. The explanation should say 50% greater than a dollar, not 50% of a dollar."
   }
  },
  "lessonSynthesis": {
@@ -207,7 +207,7 @@
   "pointTo": "Point to the 10.2 board: the stronger 6 quarters sentences and the line with 100 cents over 100%. If you taught 10.3, point to its double number line instead: 1.00 lined up with 100%.",
   "check": {
    "question": "What percent of a dollar is the value of 7 dimes and 1 nickel? How do you know?",
-   "sounds": "The value of 7 dimes and 1 nickel is 75 cents, and a dollar is 100 cents, so it is 75% of a dollar."
+   "sounds": "The value of 7 dimes and 1 nickel is 75 cents, and a dollar is 100 cents. A percentage is a rate per 100, so it is 75% of a dollar."
   }
  },
  "beforeClass": [
@@ -223,7 +223,7 @@
   },
   {
    "activityId": "10.2",
-   "note": "IM gives 15 minutes. Move quickly through the first two questions; IM says the last two are the focus. Keep one partner round of Stronger and Clearer. Leave out the 120% extension unless pairs finish early. Never cut quiet think time or the flawed explanation."
+   "note": "IM gives 15 minutes. Move quickly through the first two questions; IM says the last two are the focus. Keep one partner round of Stronger and Clearer. Leave out the 120% extension unless pairs finish early. Never cut quiet think time or the flawed explanation. Share two pairs, not three."
   },
   {
    "activityId": "10.3",
@@ -304,7 +304,7 @@
    "notes": [
     "How students might solve it:",
     "Cents compared with 100 cents: 6 dimes is 60 cents, so 60%. 6 quarters is 150 cents, so 150%.",
-    "One coin’s percent, times the coins: a dime is 10%, so 6 dimes is 60%. A quarter is 25%, so 6 quarters is 150%.",
+    "One coin’s percentage, times the coins: a dime is 10%, so 6 dimes is 60%. A quarter is 25%, so 6 quarters is 150%.",
     "Quarter by quarter: 4 quarters is 100% of a dollar, and 2 more quarters is 50% more."
    ],
    "checks": [
@@ -339,20 +339,20 @@
     },
     {
      "ask": "You’ve read it three times. What do you ask?",
-     "aim": "Students suggest ways to find a percent of a dollar, without solving."
+     "aim": "Students suggest ways to find a percentage of a dollar, without solving."
     }
    ],
    "checks": [
     "Read 1: asked what it’s about, with no numbers",
     "Read 2: asked what is counted, and in what units",
-    "Read 3: asked how we might find a percent of a dollar, without solving"
+    "Read 3: asked how we might find a percentage of a dollar, without solving"
    ],
    "why": "Three Reads makes sure students know what they’re being asked to do. Here, it ties 25% to “25 cents for every 100 cents” before anyone works.",
    "runIt": [
     "IM’s launch: remind students of “rate per 1.” Ask what “rates per 100” might mean. Name it a percentage. Point out the half dollar and dollar coins.",
     "Read 1: read the task aloud. Ask what it’s about, with no numbers.",
     "Read 2: read it again. Ask what is counted, and in what units. Point to the quarter sentence.",
-    "Read 3: show the last two questions and read once more. Ask how we might find a percent of a dollar; take ideas without solving.",
+    "Read 3: show the last two questions and read once more. Ask how we might find a percentage of a dollar; take ideas without solving.",
     "Then start 3 minutes of quiet think time."
    ]
   },
@@ -365,22 +365,22 @@
    "language": true,
    "name": "Send students to work",
    "where": "About 3 minutes into Activity 10.2. Three Reads just ended. Next come 3 minutes of quiet think time, then partner work.",
-   "ask": "What do you tell the class every percent answer needs?",
+   "ask": "What do you tell the class every answer needs?",
    "aim": "Students know each answer needs the % symbol, “of a dollar,” and cents per 100.",
    "say": [
-    "Write the % symbol, and say per 100 cents."
+    "Write the % symbol and “of a dollar.” Say how the cents compare with 100 cents."
    ],
    "notes": [
     "Success criteria: In your answers to the last two questions, write the % symbol and say “of a dollar.” Say how the cents compare with 100 cents.",
     "When partners talk: after quiet think time, partners take turns saying one answer to the last two questions.",
-    "They use Today’s frame: “The value of ___ is ___ cents, and a dollar is 100 cents, so it is ___% of a dollar.”"
+    "They use Today’s frame: “The value of ___ is ___ cents, and a dollar is 100 cents. A percentage is a rate per 100, so it is ___% of a dollar.”"
    ],
    "checks": [
     "Named what every answer needs: the % symbol, “of a dollar,” and per 100 cents",
     "Pointed to Today’s frame on the board",
     "Told them when they’ll say it to a partner"
    ],
-   "sounds": "The value of 6 quarters is 150 cents, and a dollar is 100 cents, so it is 150% of a dollar. The percentage is a rate per 100.",
+   "sounds": "The value of 6 quarters is 150 cents, and a dollar is 100 cents. A percentage is a rate per 100, so it is 150% of a dollar.",
    "why": "IM counts a percentage with no % symbol as an incomplete answer. Naming it before work starts means students practice it while they solve."
   },
   {
@@ -397,16 +397,16 @@
     "| value (cents) | 1 | 5 | 10 | 25 | 50 | 100",
     "Their matches: 25% quarter, 5% nickel, 1% penny, 100% dollar, 10% dime, 50% half dollar."
    ],
-   "student": "A student says: “It’s easy. The percent is just the number of cents.”",
+   "student": "A student says: “It’s easy. The percentage is just the number of cents.”",
    "ask": "What do you say to this student?",
-   "aim": "The student says why cents match the percent for a dollar.",
+   "aim": "The student says why cents match the percentage for a dollar.",
    "say": [
     "Why does that work for a dollar?"
    ],
    "checks": [
     "Agreed the pattern works for a dollar",
     "Asked why, so the 100 cents came from them",
-    "Didn’t let it stand as a rule for every percent"
+    "Didn’t let it stand as a rule for every percentage"
    ],
    "ifNot": "How many cents make a whole dollar?",
    "goingOn": "They spotted a real pattern across six coins. Next is why: a dollar is 100 cents, so the cents are already per 100."
@@ -427,7 +427,7 @@
    "ask": "Here is IM’s flawed explanation. What do you ask pairs to do with it?",
    "aim": "Students fix the explanation, then make their own 6 quarters sentence stronger.",
    "notes": [
-    "The error: 50 cents is how much more than a dollar. It isn’t the percent of a dollar.",
+    "The error: 50 cents is how much more than a dollar. It isn’t the percentage of a dollar.",
     "Listen for pairs who clarify the wording: “50% greater than a dollar,” or “150% of a dollar.”",
     "Then ask, and let pairs find it:"
    ],
@@ -440,14 +440,13 @@
     "Let pairs find the error and clarify the wording",
     "Ran a partner round, then had students rewrite"
    ],
-   "sounds": "The value of 6 quarters is 150 cents, and a dollar is 100 cents, so it is 150% of a dollar. The explanation should say 50% greater than a dollar, not 50% of a dollar.",
+   "sounds": "The value of 6 quarters is 150 cents, and a dollar is 100 cents. A percentage is a rate per 100, so it is 150% of a dollar. The explanation should say 50% greater than a dollar, not 50% of a dollar.",
    "avoid": "Correcting the flawed explanation for the class yourself.",
    "ifNot": "Is 6 quarters more or less than a dollar?",
    "why": "IM gives this flawed explanation with MLR3, Clarify, Critique, Correct; Premo runs it through Stronger and Clearer. Students fix IM’s line, then sharpen their own through talk.",
    "runIt": [
-    "Show IM’s flawed explanation. Pairs say what is wrong; listen for “50% greater” or “150% of a dollar.”",
-    "Alone: write a stronger 6 quarters sentence with the % symbol and “of a dollar.”",
-    "Partner round: read it aloud. The listener asks “Percent of what?” or “How do you know?” Rewrite it.",
+    "Show IM’s flawed explanation. Pairs say what is wrong, then each writes it as a correct 6 quarters sentence.",
+    "Round 1: read it to a partner. The listener asks: “Percent of what?” or “How do you know?” Rewrite it.",
     "Share 2–3 pairs, cents first and ratio reasoning last. Write a short version of each for all to see.",
     "End with IM’s double number line: 100 cents lined up with 100%."
    ]
@@ -459,7 +458,7 @@
    "momentId": "m7",
    "type": "language",
    "language": true,
-   "name": "Help a student say the percent",
+   "name": "Help a student say the percentage",
    "where": "About 11 minutes into Activity 10.2. Pairs are fixing the flawed explanation.",
    "show": [
     "IM’s flawed explanation, on chart paper: “…the value of 6 quarters is 50% of the value of a dollar.”",
@@ -467,14 +466,14 @@
    ],
    "student": "A student says: “It’s 150. Not 50. 150.”",
    "ask": "What do you say to this student?",
-   "aim": "The student says the percent with its symbol and “of a dollar.”",
+   "aim": "The student says the percentage with its symbol and “of a dollar.”",
    "checks": [
     "Asked every level the same question: what the 150 is, and of what",
     "Gave their level’s frame or a way to show it without words",
-    "Didn’t say the percent sentence for them"
+    "Didn’t say the percentage sentence for them"
    ],
    "ifNot": "Point to the dollar bar. How many cents is that?",
-   "sounds": "The value of 6 quarters is 150 cents, and a dollar is 100 cents, so it is 150% of a dollar.",
+   "sounds": "The value of 6 quarters is 150 cents, and a dollar is 100 cents. A percentage is a rate per 100, so it is 150% of a dollar.",
    "goingOn": "They have the right number and see the explanation is wrong. The % symbol and “of a dollar” aren’t in their words yet.",
    "say": [
     "150 what? Of what?"
@@ -503,10 +502,10 @@
    ],
    "checks": [
     "Called the cents way first",
-    "Ended on one coin’s percent times the coins",
+    "Ended on one coin’s percentage times the coins",
     "Didn’t share only the cents shortcut"
    ],
-   "why": "IM wants ratio thinking encouraged early, and says to illustrate it if no one used it. Ending on it shows a percent scales like a unit rate."
+   "why": "IM wants ratio thinking encouraged early, and says to illustrate it if no one used it. Ending on it shows a percentage scales like a unit rate."
   },
   {
    "id": "math:10.3",

@@ -224,7 +224,7 @@ for (const f of planFiles) {
     if (!/^We will /.test(v)) err(at, `clo.board.${k} must start “We will”`);
     if (wordsIn(v) > 20) err(at, `clo.board.${k} is ${wordsIn(v)} words; keep it to 20`);
     // Numbers that are part of a math term are fine (Robert, 2026-11-15); numbers from the task aren't.
-    if (/\d/.test(v.replace(/\b(?:rate )?per 1(?:00)?\b|\bfor 1\b|\b(?:1|100)%/g, ''))) err(at, `clo.board.${k} has a number from the task`);
+    if (/\d/.test(v.replace(/\b(?:rate )?per 1(?:00)?\b|\bfor 1\b|\b(?:1|100)%|\b(?:multiply|divide) by 100\b/g, ''))) err(at, `clo.board.${k} has a number from the task`);
   }
   if (pl.clo?.board && !low(pl.clo.board.language).includes(low(pl.clo.function))) err(at, 'clo.board.language must use the function verb');
   if (pl.clo?.board && !low(pl.clo.board.language).includes(low(pl.clo.mode))) err(at, 'clo.board.language must say the mode');
@@ -342,7 +342,7 @@ for (const f of planFiles) {
     // Where we are: one of three forms, minutes within IM's time for the activity.
     const actMin = im.activities.find((x) => x.id === c.activityId)?.minutes ?? 0;
     const wm = /^About (\d+) minutes? into Activity (\d+\.\d+)\. \S/.exec(c.where ?? '');
-    if (!(wm || /^Before class\. /.test(c.where ?? '') || /^Start of Activity \d+\.\d+\. /.test(c.where ?? '')))
+    if (!(wm || /^Before class\. /.test(c.where ?? '') || /^Start of Activity \d+\.\d+\. /.test(c.where ?? '') || /^Start of Day \d+[.:] /.test(c.where ?? '')))
       err(cat, 'where must start "Before class. ", "Start of Activity X.Y. " or "About N minutes into Activity X.Y. " and say what just happened');
     if (wm && wm[2] !== c.activityId) err(cat, `where names Activity ${wm[2]}, but the card is ${c.activityId}`);
     if (wm && Number(wm[1]) > actMin) err(cat, `where says ${wm[1]} minutes into a ${actMin}-minute activity`);
@@ -434,7 +434,9 @@ for (const f of planFiles) {
     // One card per moment; cards in class order within each activity; Three Reads before the release.
     const mids = pl.rehearsal.filter((c) => c.momentId).map((c) => c.momentId);
     for (const m3 of new Set(mids)) if (mids.filter((x) => x === m3).length > 1) err(at, `two cards rehearse moment ${m3}`);
-    const minuteOf = (c) => (/^Before class/.test(c.where) ? -1 : /^Start of/.test(c.where) ? 0 : Number(/^About (\d+)/.exec(c.where)?.[1] ?? 0));
+    // A lesson IM runs over two days (6.3.17) counts each day from 0: "Day N" in a card's where marks it.
+    const minuteIn = (c) => (/^Before class/.test(c.where) ? -1 : /^Start of/.test(c.where) ? 0 : Number(/^About (\d+)/.exec(c.where)?.[1] ?? 0));
+    const minuteOf = (c) => minuteIn(c) + 1000 * (Number(/\bDay (\d+)/.exec(c.where ?? '')?.[1] ?? 1) - 1);
     for (const id of ids) {
       const cs = pl.rehearsal.filter((c) => c.activityId === id);
       for (let i = 1; i < cs.length; i++) if (minuteOf(cs[i]) < minuteOf(cs[i - 1])) err(at, `${id}: card ${cs[i].id} comes before ${cs[i - 1].id} in class time`);
@@ -442,7 +444,7 @@ for (const f of planFiles) {
       if (ri >= 0 && li >= 0 && li < ri) err(at, `${id}: the release card comes before Three Reads`);
     }
     // A card can't happen after its activity has ended.
-    for (const c of pl.rehearsal) { const a = im.activities.find((x) => x.id === c.activityId); if (a?.minutes && minuteOf(c) >= a.minutes) err(at, `card ${c.id} is at minute ${minuteOf(c)} of a ${a.minutes}-minute activity`); }
+    for (const c of pl.rehearsal) { const a = im.activities.find((x) => x.id === c.activityId); if (a?.minutes && minuteIn(c) >= a.minutes) err(at, `card ${c.id} is at minute ${minuteIn(c)} of a ${a.minutes}-minute activity`); }
     for (const id of ids) if (!pl.rehearsal.some((c) => c.activityId === id && c.kind === 'math')) err(at, `no Do the task card for ${id}`);
     for (const k of ['rounds', 'release', 'synthesis']) if (!pl.rehearsal.some((c) => c.activityId === pr.crux && c.kind === k)) err(at, `the crux has no ${k} card`);
     if (!pl.rehearsal.some((c) => c.activityId === pr.crux && c.kind === 'levels')) err(at, 'the crux has no by-level language card');

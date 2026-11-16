@@ -4,7 +4,7 @@
   "No person has reviewed this file.",
   "Story and previous: from IM’s lesson narrative (benchmark percentages and the fractions they match) and Lesson 12’s tape diagrams.",
   "CLO: imGoal is IM goal 1, copied verbatim (IM writes its fractions as $\\frac14$ there). Function is “explain” and mode “out loud and in writing,” both from that goal. IM’s goal 2 adds “generalize (orally)”: the frame’s “of that number” and the any-number rule carry it. IM’s unit language progression names no use for Lesson 13, so there is no progressionNote.",
-  "Form: “___% of a number is ___ of that number. So for ___, I ___.” It follows IM’s own wording (“50% of a quantity is \\(\\frac12\\) of that quantity”) and IM’s narrative, which avoids “25% = \\(\\frac14\\).” The last blank takes any of IM’s methods: divide by 2, divide by 10, divide by 4 and multiply by 3, or multiply by the fraction. The percentage is written once, so no number is copied into two blanks.",
+  "Form (round 2): “___% of a number is ___ of that number. So for ___, I ___, which gives ___.” It follows IM’s wording (“50% of a quantity is \\(\\frac12\\) of that quantity”) and avoids “25% = \\(\\frac14\\).” The fourth blank takes any of IM’s methods; the last gives the answer, or “\\(\\frac34\\) of the number” for any number.",
   "Math checked: exemplar 24 ÷ 4 × 3 = 18. Posted sentence 70 ÷ 10 = 7. Look-for 60 ÷ 2 = 30, 60 ÷ 10 = 6, 60 ÷ 4 × 3 = 45. Lesson-synthesis check 36 ÷ 4 = 9. Synthesis numbers are IM’s.",
   "Crux is 13.2, as in Premo’s layer. Per D1: Three Reads to launch, a frame at release, and MLR 1 Stronger and Clearer in the synthesis. MLR 1 is IM’s own support for 13.2 (the 75% rule in partner rounds), so no D1 option-3 merge is needed; IM’s “Highlight the following” comes after the rounds.",
   "Three Reads on a list of twelve short questions is Premo’s adaptation: the reads cover the first set (50%) and its diagram, and read 2 asks what is 100% in each question.",
@@ -12,14 +12,15 @@
   "NEW student work on the cards (Premo’s, for review): m1’s “1%,” m2’s blank paper, m3’s “Multiply by 75,” m6’s “÷ 4 × 3,” m8’s 13.5, and the draft rule on the synthesis card. m7’s 4.5 and m9’s 4% are IM’s anticipated misconceptions.",
   "13.3 and 13.4 have no plan language supports (D7). 13.3’s IM support, MLR3 with IM’s flawed answer, appears on its m7 card as the student work.",
   "The checker reports one error for this lesson, in the Premo layer: the extractor misses 13.2’s MLR1 support because of a typo in IM’s text. See the build report.",
-  "2026-11-15: persona review fixes. Form reworded (“So for ___, I ___.”) so the percentage isn’t copied into a second blank; models, posted sentence and check sounds match it exactly. Emerging frame ends “I ___.” so any method fits; developing adds “Another way,” and no band nonverbal assumes a double number line. m3’s goingOn no longer writes “25% = \\(\\frac14\\).” Three Reads read 1 listen-for, the mental-math step in the launch, m8’s question, m7 shown as IM’s flawed example, and the synthesis card’s say now includes the crux prompt. m6 has one say line for every level."
+  "2026-11-15: persona review fixes. Form reworded (“So for ___, I ___.”) so the percentage isn’t copied into a second blank; models, posted sentence and check sounds match it exactly. Emerging frame ends “I ___.” so any method fits; developing adds “Another way,” and no band nonverbal assumes a double number line. m3’s goingOn no longer writes “25% = \\(\\frac14\\).” Three Reads read 1 listen-for, the mental-math step in the launch, m8’s question, m7 shown as IM’s flawed example, and the synthesis card’s say now includes the crux prompt. m6 has one say line for every level.",
+  "2026-11-15: round-2 review fixes: the form now ends “which gives ___,” so every model sentence states the answer (exemplar 18 hours, posted 7 pages, check 9 apples, synthesis “\\(\\frac34\\) of the number”; “or multiply by \\(\\frac34\\)” dropped as past the frame); band frames follow; the extra partner share before the rounds deleted, so Round 1 is the first partner talk (m6 at minute 8 in Round 1, the synthesis card moved to minute 7 and before m6); m3 renamed; “not knowing where to start” moved to barriers; IM’s feedback starter quoted without Premo’s “?”."
  ],
  "story": "Lesson 13 sits in the middle of the percentages section. It names the benchmark percentages, 10%, 25%, 50% and 75%, as fractions of a number, which Lesson 14 uses to solve percentage problems.",
  "previous": "In Lesson 12 students used tape diagrams to see a percentage as equal parts of 100%. Today they name those parts as fractions and use them to find percentages in their heads.",
  "clo": {
   "imGoal": "Explain (orally and in writing) how to solve problems involving the percentages 10%, 25%, 50%, and 75% by reasoning about the fractions $\\frac{1}{10}$, $\\frac14$, $\\frac12$, and $\\frac34$.",
   "function": "explain",
-  "form": "___% of a number is ___ of that number. So for ___, I ___.",
+  "form": "___% of a number is ___ of that number. So for ___, I ___, which gives ___.",
   "board": {
    "content": "We will find common percentages of any number by thinking of them as fractions.",
    "language": "We will explain, out loud and in writing, how to find a percentage, using “of that number” and “multiply by.”"
@@ -36,10 +37,10 @@
    "a tenth",
    "in my head"
   ],
-  "exemplar": "75% of a number is \\(\\frac{3}{4}\\) of that number. So for a 24-hour day, I divide by 4 and multiply by 3.",
+  "exemplar": "75% of a number is \\(\\frac{3}{4}\\) of that number. So for a 24-hour day, I divide by 4 and multiply by 3, which gives 18 hours.",
   "lookFor": "Students answer 30, 6 and 45 minutes, each with the fraction of an hour as the reason: \\(\\frac{1}{2}\\), \\(\\frac{1}{10}\\), \\(\\frac{3}{4}\\). Any method is fine, as in IM’s response. They may divide by 2 or 10, divide by 4 and multiply by 3, or multiply by the fraction.",
   "posted": {
-   "sentence": "10% of a number is \\(\\frac{1}{10}\\) of that number. So for 70 pages, I divide by 10."
+   "sentence": "10% of a number is \\(\\frac{1}{10}\\) of that number. So for 70 pages, I divide by 10, which gives 7 pages."
   }
  },
  "activities": [
@@ -80,10 +81,10 @@
    ],
    "barriers": [
     "“Using mental math” may be unclear: working it out without writing the calculation (IM’s launch).",
-    "Decimal answers: 2.4 hours and 7.5 liters."
+    "Decimal answers: 2.4 hours and 7.5 liters.",
+    "Not knowing where to start: IM’s scaffold is “How much of 100% is 50%?”"
    ],
    "misconceptions": [
-    "Not knowing where to start: IM’s scaffold is “How much of 100% is 50%?”",
     "Writing “Multiply by 75” as the rule for 75%.",
     "Reading 2.4 hours as 2 hours 4 minutes."
    ],
@@ -97,7 +98,7 @@
     "m3",
     "m6"
    ],
-   "grouping": "Quiet think time: students do the first three of each set in their heads and write each rule. Then partner share, then Stronger and Clearer rounds.",
+   "grouping": "Quiet think time: students do the first three of each set in their heads and write each rule. Then Stronger and Clearer rounds: the first round is the partner share.",
    "monitor": "Read the 75% rules as students write. Note who names \\(\\frac{3}{4}\\), who writes only steps, and who writes “Multiply by 75.”"
   },
   {
@@ -193,22 +194,21 @@
    "successCriteria": "In each rule, name the fraction, say “of that number,” and say what you divide or multiply by.",
    "say": "Name the fraction. Then say what you divide or multiply by.",
    "talkMoments": [
-    "After quiet think time, partners read each other one rule using Today’s frame.",
     "In the Stronger and Clearer rounds, each partner asks one question about the fraction in the rule."
    ],
    "byBand": {
     "emerging": {
-     "frame": "___% of a number is ___ of it. I ___.",
+     "frame": "___% of a number is ___ of it. I ___. That gives ___.",
      "stretch": "They check one answer a second way: divide first, then multiply.",
      "nonverbal": "They shade the matching part of a tape, then point to the fraction in their frame."
     },
     "developing": {
-     "frame": "___% of a number is ___ of that number. So for ___, I ___. Another way: I ___.",
+     "frame": "___% of a number is ___ of that number. So for ___, I ___, which gives ___. Another way: I ___.",
      "stretch": "They say how 10% helps find 30% or 70% of a number.",
      "nonverbal": "They draw the number as a bar, split it into equal parts for the fraction, and shade the percentage."
     },
     "expanding": {
-     "frame": "___% of a number is ___ of that number. So for ___, I ___. This works for any number because ___.",
+     "frame": "___% of a number is ___ of that number. So for ___, I ___, which gives ___. This works for any number because ___.",
      "stretch": "They explain why 75% is three 25% parts, on a tape or double number line.",
      "nonverbal": "On a tape or a double number line, they mark 25%, 50% and 75% of the number."
     }
@@ -218,13 +218,13 @@
    "routine": "MLR1: Stronger and Clearer Each Time",
    "steps": [
     "Each student starts from their written rule for 75% of any number.",
-    "Students meet 2–3 partners in a row. Each partner asks one question: “Can you explain how…?” or “You should expand on…”",
+    "Students meet 2–3 partners in a row. Each partner asks one question: “Can you explain how…” or “You should expand on…”",
     "After each round, the writer adds one idea or word they borrowed.",
     "Students rewrite their rule, stronger and clearer, and two read theirs aloud.",
     "Then highlight IM’s three facts: 50%, 10% and 75% of a quantity are \\(\\frac{1}{2}\\), \\(\\frac{1}{10}\\) and \\(\\frac{3}{4}\\) of that quantity."
    ],
    "prompt": "How can you find 75% of any number?",
-   "sounds": "75% of a number is \\(\\frac{3}{4}\\) of that number. So for any number, I divide by 4 and multiply by 3, or multiply by \\(\\frac{3}{4}\\)."
+   "sounds": "75% of a number is \\(\\frac{3}{4}\\) of that number. So for any number, I divide by 4 and multiply by 3, which gives \\(\\frac{3}{4}\\) of the number."
   }
  },
  "lessonSynthesis": {
@@ -236,13 +236,13 @@
   "pointTo": "Point to the 13.2 rules, the stronger and clearer versions, with the fraction beside each percentage. If you taught 13.3, point to its tape: the same fractions, run backward.",
   "check": {
    "question": "How can you find 25% of 36 apples?",
-   "sounds": "25% of a number is \\(\\frac{1}{4}\\) of that number. So for 36 apples, I divide by 4."
+   "sounds": "25% of a number is \\(\\frac{1}{4}\\) of that number. So for 36 apples, I divide by 4, which gives 9 apples."
   }
  },
  "beforeClass": [
   "For Three Reads in 13.2: display the first set and its diagram, with the questions covered until the third read.",
   "For the release: have the frames for your students’ levels ready to post or hand out.",
-  "For Stronger and Clearer: post the two feedback starters, “Can you explain how…?” and “You should expand on…”",
+  "For Stronger and Clearer: post the two feedback starters, “Can you explain how…” and “You should expand on…”",
   "Have mini whiteboards or sticky notes ready, as IM suggests, for the mental math.",
   "Know the answers: 5, 1,000, 12; 200, 1, 2.4; 18, 1,500, 7.5."
  ],
@@ -401,7 +401,7 @@
    "routine": "MLR8: Discussion Supports",
    "language": true,
    "name": "Send students to work",
-   "where": "About 2 minutes into Activity 13.2. Three Reads just ended. Next comes quiet think time, then partner share.",
+   "where": "About 2 minutes into Activity 13.2. Three Reads just ended. Next comes quiet think time, then the partner rounds.",
    "ask": "What do you tell the class to put in every rule?",
    "aim": "Students know each rule names the fraction and the step.",
    "say": [
@@ -409,15 +409,15 @@
    ],
    "notes": [
     "Success criteria: In each rule, name the fraction, say “of that number,” and say what you divide or multiply by.",
-    "When partners talk: after quiet think time, partners read each other one rule.",
-    "They use Today’s frame: “___% of a number is ___ of that number. So for ___, I ___.”"
+    "When partners talk: in the Stronger and Clearer rounds, each partner asks one question about the fraction in the rule.",
+    "They use Today’s frame: “___% of a number is ___ of that number. So for ___, I ___, which gives ___.”"
    ],
    "checks": [
     "Named what every rule needs: the fraction and the step",
     "Pointed to Today’s frame on the board",
-    "Told them when they’ll read a rule to a partner"
+    "Told them when they’ll read their rule to a partner"
    ],
-   "sounds": "75% of a number is \\(\\frac{3}{4}\\) of that number. So for a 24-hour day, I divide by 4 and multiply by 3.",
+   "sounds": "75% of a number is \\(\\frac{3}{4}\\) of that number. So for a 24-hour day, I divide by 4 and multiply by 3, which gives 18 hours.",
    "why": "Naming the language before work starts means students write their rules in it, not only at the end."
   },
   {
@@ -455,7 +455,7 @@
    "kind": "moment",
    "momentId": "m3",
    "type": "student",
-   "name": "A student writes “Multiply by 75”",
+   "name": "A rule that drops “per 100”",
    "where": "About 6 minutes into Activity 13.2. Students are writing their rule for 75% of any number.",
    "show": [
     "The question: How can you find 75% of any number?",
@@ -476,32 +476,6 @@
    ]
   },
   {
-   "id": "m6",
-   "activityId": "13.2",
-   "kind": "levels",
-   "type": "language",
-   "momentId": "m6",
-   "language": true,
-   "name": "Help a student say why",
-   "where": "About 8 minutes into Activity 13.2. Partners are sharing their rules before the rounds.",
-   "show": [
-    "The student’s rule for 75% of any number: “÷ 4 × 3.”"
-   ],
-   "student": "A student wrote “÷ 4 × 3.” Asked to explain, they say: “You just do that.”",
-   "ask": "What do you say to this student?",
-   "aim": "The student names the fraction as the reason for the steps.",
-   "checks": [
-    "Asked every level for the fraction and the steps",
-    "Gave their level’s frame or nonverbal move",
-    "Didn’t say the sentence for them"
-   ],
-   "ifNot": "If you shade 3 of 4 equal parts of a tape, what percentage is shaded?",
-   "sounds": "75% of a number is \\(\\frac{3}{4}\\) of that number. So for any number, I divide by 4 and multiply by 3.",
-   "say": [
-    "Why do your steps work? What fraction of the number is 75%?"
-   ]
-  },
-  {
    "id": "synth:13.2",
    "activityId": "13.2",
    "kind": "synthesis",
@@ -509,10 +483,10 @@
    "routine": "MLR1: Stronger and Clearer Each Time",
    "language": true,
    "name": "Make the 75% rule stronger",
-   "where": "About 9 minutes into Activity 13.2. Every student has a written 75% rule. The first partner round is about to start.",
+   "where": "About 7 minutes into Activity 13.2. Every student has a written 75% rule. The first partner round is about to start.",
    "show": [
     "A first-draft rule: “Divide by 4 then times 3.”",
-    "On the board: “Can you explain how…?” and “You should expand on…”"
+    "On the board: “Can you explain how…” and “You should expand on…”"
    ],
    "ask": "What do you tell pairs before the first round? What should each round add?",
    "aim": "Each rule ends with the fraction as the reason.",
@@ -529,14 +503,40 @@
     "Gave partners a question starter to ask",
     "Had students rewrite their rule before the highlights"
    ],
-   "sounds": "75% of a number is \\(\\frac{3}{4}\\) of that number. So for any number, I divide by 4 and multiply by 3, or multiply by \\(\\frac{3}{4}\\).",
+   "sounds": "75% of a number is \\(\\frac{3}{4}\\) of that number. So for any number, I divide by 4 and multiply by 3, which gives \\(\\frac{3}{4}\\) of the number.",
    "why": "IM: Stronger and Clearer gives students rounds of feedback, so their own explanation gets clearer each time. Here it turns “÷ 4 × 3” into a rule with its reason.",
    "runIt": [
     "Each student starts from their written rule for 75% of any number.",
-    "Students meet 2–3 partners in a row. Each partner asks one question: “Can you explain how…?” or “You should expand on…”",
+    "Students meet 2–3 partners in a row. Each partner asks one question: “Can you explain how…” or “You should expand on…”",
     "After each round, the writer adds one idea or word they borrowed.",
     "Students rewrite their rule, stronger and clearer, and two read theirs aloud.",
     "Highlight IM’s three facts: 50%, 10% and 75% of a quantity are \\(\\frac{1}{2}\\), \\(\\frac{1}{10}\\) and \\(\\frac{3}{4}\\) of it."
+   ]
+  },
+  {
+   "id": "m6",
+   "activityId": "13.2",
+   "kind": "levels",
+   "type": "language",
+   "momentId": "m6",
+   "language": true,
+   "name": "Help a student say why",
+   "where": "About 8 minutes into Activity 13.2. Students are in the first partner round.",
+   "show": [
+    "The student’s rule for 75% of any number: “÷ 4 × 3.”"
+   ],
+   "student": "A student wrote “÷ 4 × 3.” Asked to explain, they say: “You just do that.”",
+   "ask": "What do you say to this student?",
+   "aim": "The student names the fraction as the reason for the steps.",
+   "checks": [
+    "Asked every level for the fraction and the steps",
+    "Gave their level’s frame or nonverbal move",
+    "Didn’t say the sentence for them"
+   ],
+   "ifNot": "If you shade 3 of 4 equal parts of a tape, what percentage is shaded?",
+   "sounds": "75% of a number is \\(\\frac{3}{4}\\) of that number. So for any number, I divide by 4 and multiply by 3, which gives \\(\\frac{3}{4}\\) of the number.",
+   "say": [
+    "Why do your steps work? What fraction of the number is 75%?"
    ]
   },
   {

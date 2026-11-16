@@ -13,7 +13,8 @@
   "The Info Gap card text is in IM’s Teacher Guide (printed page 237, copied in tg/6.3.14.json notes), not on the web page. Moments m8–m10 use it.",
   "produceToday is “___% of”. IM’s terminology lists it as receptive for Lesson 14 and lists nothing productive. Premo has students say it because the language goal’s form needs it.",
   "Student responses, the card text and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person.",
-  "2026-11-15: persona review fixes. m6 asks every level “What lines up with 100%? What lines up with $6?” Frames match the plan’s release frames; each band’s entry now starts with a way in on the third read. Avoid lines are gerunds. “Info Gap” is one spelling."
+  "2026-11-15: persona review fixes. m6 asks every level “What lines up with 100%? What lines up with $6?” Frames match the plan’s release frames; each band’s entry now starts with a way in on the third read. Avoid lines are gerunds. “Info Gap” is one spelling.",
+  "2026-11-15: round-2 review fixes: frames match the plan’s new release frames (“so as a percentage”; emerging “So it is ___%.”); “percentage” added to produceToday by Robert’s decision; “percent” as a noun became “percentage” in m6; m4 asks “why or why not.”"
  ],
  "crux": "14.2",
  "cruxWhy": "14.2 is where the lesson’s new question first appears: what percentage $6 is of $24. IM’s lesson synthesis calls it the third kind of problem, new today. Goal 1, choosing a diagram or table and explaining the method out loud, is 14.2’s work, and its closing discussion compares the diagrams. 14.3 practices the same kinds of problems through an Info Gap.",
@@ -101,7 +102,7 @@
      "step": "Ask: “Where do you see the product of 15 and \\(\\frac{1}{10}\\) represented in the diagram?”"
     },
     {
-     "step": "Ask whether one double number line could solve both questions, and why not."
+     "step": "Ask whether one double number line could solve both questions, and why or why not."
     }
    ],
    "dont": "Letting pairs present one after another with no comparison.",
@@ -140,12 +141,12 @@
    "kind": "language",
    "routine": "MLR7: Compare and Connect",
    "see": "Explaining Clare’s question, a student points to the first tick on their double number line: “It’s 25. Right there.”",
-   "means": "The answer is right: $6 lines up with 25%. What lines up with 100%, and that 25 is a percent of $24, isn’t in words yet.",
+   "means": "The answer is right: $6 lines up with 25%. What lines up with 100%, and that 25 means 25% of $24, isn’t in words yet.",
    "byBand": {
     "emerging": {
      "say": "What lines up with 100%? What lines up with $6? Point, then say.",
-     "move": "They point to $24 and 100%, then to $6 and its percent, and say or write each pair. They can work it out first in any language they share with a partner.",
-     "nonverbal": "They circle $24 with 100%, and $6 with its percent, on their own line."
+     "move": "They point to $24 and 100%, then to $6 and its percentage, and say or write each pair. They can work it out first in any language they share with a partner.",
+     "nonverbal": "They circle $24 with 100%, and $6 with its percentage, on their own line."
     },
     "developing": {
      "say": "What lines up with 100%? What lines up with $6? Use the frame.",
@@ -335,26 +336,27 @@
   "routine": "MLR7: Compare and Connect",
   "phase": "synthesis",
   "produceToday": [
-   "___% of"
+   "___% of",
+   "percentage"
   ],
   "byBand": {
    "emerging": {
     "entry": "Third read: they point to each price in order and show which one is the whole. In the closing discussion, they point to the 100% value on two classmates’ diagrams, then to $1.50 in each. They can work it out first in any language they share with a partner.",
-    "frame": "___ is 100%. ___ is ___ of it. So ___ is ___%.",
+    "frame": "___ is 100%. ___ is ___ of it. So it is ___%.",
     "does": "They can point to $15 and 100% on a double number line and read the pair.",
-    "reaching": "Saying the part as a fraction of the whole, then as a percent, with “% of.”",
+    "reaching": "Saying the part as a fraction of the whole, then as a percentage, with “% of.”",
     "stretch": "They find the 100% value on a second diagram, such as the table’s top row."
    },
    "developing": {
     "entry": "Third read: they tell a partner what they could draw and which amount goes with 100%. Later they say what lines up with 100% in their diagram and a classmate’s. They can work it out first in any language they share with a partner.",
-    "frame": "___ lines up with 100%. ___ is ___ of ___, because ___. So it is ___% of ___.",
+    "frame": "___ lines up with 100%. ___ is ___ of ___, because ___. So as a percentage, it is ___% of ___.",
     "does": "They can say one answer with its unit, like “$1.50” or “25%.”",
     "reaching": "Saying the 100% value before the answer, then the answer with “% of.”",
     "stretch": "They add a second way, such as “\\(\\frac{1}{10}\\) of $15” or “15 ÷ 10.”"
    },
    "expanding": {
     "entry": "Third read: they suggest two ways to solve, saying what goes with 100% in each. In the closing discussion, they say where 15 times \\(\\frac{1}{10}\\) shows in a classmate’s diagram and compare it with theirs. They can work it out first in any language they share with a partner.",
-    "frame": "In my ___, ___ lines up with 100%. ___ is ___ of ___, because ___. So it is ___% of ___. Another way to see it: ___.",
+    "frame": "In my ___, ___ lines up with 100%. ___ is ___ of ___, because ___. So as a percentage, it is ___% of ___. Another way to see it: ___.",
     "does": "They can explain their own diagram for both questions in their own words.",
     "reaching": "Comparing two diagrams and saying why one line can’t solve both questions.",
     "stretch": "They ask a classmate one question about a diagram that differs from theirs."

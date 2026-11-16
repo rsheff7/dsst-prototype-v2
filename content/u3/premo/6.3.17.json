@@ -12,7 +12,8 @@
   "IM’s 17.2 response calls the cost rows “option A,” “B” and “C” without labeling them; read in row order (2 gallons, 7 quarts, 1 gallon and 3 quarts), the coupon numbers bear that out.",
   "IM’s 17.2 synthesis has a stray “$” mid-paragraph, and its launch says “on the the plan”; 17.3’s misconception says “Point out the the problem.” Not repeated.",
   "Student responses were transcribed from the Teacher Guide page images by a model, not checked by a person.",
-  "2026-11-15: persona review fixes. Two days, per Robert. Band frames match the plan’s new form; each entry suggests a way in on the third read. produceToday “per” became “cover.” object.what shortened. Deleted the stale note on the extractor’s junk text (the IM layer’s lessonSynthesis is now empty)."
+  "2026-11-15: persona review fixes. Two days, per Robert. Band frames match the plan’s new form; each entry suggests a way in on the third read. produceToday “per” became “cover.” object.what shortened. Deleted the stale note on the extractor’s junk text (the IM layer’s lessonSynthesis is now empty).",
+  "2026-11-15: round-2 review fixes: band frames match the plan’s new form (1 quart covers ___; so with ___); m7 see reworded; the in-class launch line and the 17.2 cut say where Day 1 ends."
  ],
  "crux": "17.2",
  "cruxWhy": "17.2 carries the cost half of IM’s first goal. Its closing discussion is where students explain their reasoning out loud: “Can all of these values be correct?” It is also the only activity with an IM routine, Three Reads, for the floor plan.",
@@ -163,7 +164,7 @@
    "id": "m7",
    "activityId": "17.2",
    "kind": "language",
-   "see": "After “Can all of these values be correct?”, a student says: “Ours is $87.60. $96.30 is wrong.”",
+   "see": "You ask, “Can all of these values be correct?” A student says: “Ours is $87.60. $96.30 is wrong.”",
    "means": "Their own total is right, and they compared it with another. They haven’t yet explained what the other student bought, so both can be right.",
    "byBand": {
     "emerging": {
@@ -317,21 +318,21 @@
   "byBand": {
    "emerging": {
     "entry": "On the first two reads, they point to the plan’s features (window, door, closet, small wall) and each quantity as it is named. You write each on the plan. On the third read, they point to the quantities on the plan in order, wall by wall, as a way to start. They can work it out first in any language they share with a partner.",
-    "frame": "I need ___ quarts. ___ quarts cover ___ square feet. Two coats is ___ square feet. Buying ___ costs $___. The total cost is $___.",
+    "frame": "I need ___ quarts. 1 quart covers ___ square feet. Two coats is ___ square feet. Buying ___ costs $___. With ___, the total cost is $___.",
     "does": "They can point to a wall and its length on the floor plan.",
     "reaching": "Naming the paint they need and the total cost, with the rate.",
     "stretch": "They say why they need more paint than one coat."
    },
    "developing": {
     "entry": "On the second read they name one quantity with its unit, such as “3 yards,” for you to add to the plan. On the third read they suggest a first step, such as changing yards to feet. They can work it out first in any language they share with a partner.",
-    "frame": "I need ___ quarts, because ___ quarts cover ___ square feet, and two coats is ___ square feet. Buying ___ costs $___, so the total cost is $___. I chose those containers because ___.",
+    "frame": "I need ___ quarts, because 1 quart covers ___ square feet, and two coats is ___ square feet. Buying ___ costs $___, so with ___, the total cost is $___. I chose those containers because ___.",
     "does": "They can name a quantity and its unit from the list.",
     "reaching": "Explaining how the rate gives the paint, then the cost.",
     "stretch": "They say why a different total can also be right."
    },
    "expanding": {
     "entry": "On the third read they suggest a plan that uses the quantities: each wall’s area, minus the window and door, then the total. They can work it out first in any language they share with a partner.",
-    "frame": "I need ___ quarts, because ___ quarts cover ___ square feet, and two coats is ___ square feet. Buying ___ costs $___, so the total cost is $___. Another way to buy it is ___, which costs $___.",
+    "frame": "I need ___ quarts, because 1 quart covers ___ square feet, and two coats is ___ square feet. Buying ___ costs $___, so with ___, the total cost is $___. Another way to buy it is ___, which costs $___.",
     "does": "They can plan the steps: area, then paint, then cost.",
     "reaching": "Explaining why two different totals can both be right.",
     "stretch": "They explain how the coupon changes which containers to buy."
@@ -349,7 +350,7 @@
   },
   {
    "activityId": "17.2",
-   "note": "This lesson runs over two days. Day 1 ends once the class agrees on 300 square feet. Day 2 opens with paint and cost, then 17.3."
+   "note": "This lesson runs over two days. Day 1 gives IM’s full 15 minutes on the area, and ends once the class agrees on 300 square feet. Day 2 opens with paint and cost, then 17.3."
   }
  ],
  "neverCut": [
@@ -359,7 +360,7 @@
   "Each student explains their own total cost"
  ],
  "inClass": {
-  "launch": "“We’ll read this three times. Nobody solves yet.”",
+  "launch": "“Today we find the wall area. Tomorrow we buy the paint. We’ll read this three times. Nobody solves yet.”",
   "launchFrom": "premo",
   "momentIds": [
    "m3",

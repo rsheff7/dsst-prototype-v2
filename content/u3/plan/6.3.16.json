@@ -18,17 +18,18 @@
   "Lesson synthesis check uses IM’s own example from the lesson synthesis (what percentage of 80 is 56: 70%), set as levels in a game. It shares no numbers with the jet fuel cool-down.",
   "NEW (Premo-written, unreviewed): every student’s words and work on the cards, every ifNot, the goingOn lines, the frames by level and their nonverbal ways in, and the Sounds like lines.",
   "Non-crux activities carry no language supports (D7).",
-  "2026-11-15: persona review fixes. New clo.form (the steps are blanks, and the reason adds 1 ___ is ___%), so it no longer answers question 5. Exemplar, posted, release, m5 and check sounds follow it. Band frames rewritten: emerging keeps both steps and the 1-minute reason; developing and expanding add a clause. Nonverbal moves are student actions; expanding no longer assumes a double number line. Three Reads shows IM’s lines word for word. Release show no longer repeats Today’s frame. m5 has one say line. “IM:” dropped before Three Reads and Collect and Display. goingOn for m1 and m2, release say, beforeClass reworded."
+  "2026-11-15: persona review fixes. New clo.form (the steps are blanks, and the reason adds 1 ___ is ___%), so it no longer answers question 5. Exemplar, posted, release, m5 and check sounds follow it. Band frames rewritten: emerging keeps both steps and the 1-minute reason; developing and expanding add a clause. Nonverbal moves are student actions; expanding no longer assumes a double number line. Three Reads shows IM’s lines word for word. Release show no longer repeats Today’s frame. m5 has one say line. “IM:” dropped before Three Reads and Collect and Display. goingOn for m1 and m2, release say, beforeClass reworded.",
+  "2026-11-15: round-2 review fixes: the reason sentence now finishes (“and ___ of them is ___%”) in the form, band frames and every model sentence; the board quotes “multiply by 100”; correct-but-informal ideas moved from misconceptions to barriers; beforeClass[2] reworded."
  ],
  "story": "Lesson 16 ends the percentages section. Students build one rule for what percentage one number is of another, for any numbers: divide, then multiply by 100.",
  "previous": "In Lesson 15 students found A% of B efficiently. Today both numbers are known, and they find the percentage.",
  "clo": {
   "imGoal": "Generalize a process for finding the percentage that C is of B and justify (orally) why this can be abstracted as $\\frac{C}{B} \\boldcdot 100$.",
   "function": "justify",
-  "form": "To find what percentage ___ is of ___, I ___, then ___. That works because ___ is 100%, so 1 ___ is ___%.",
+  "form": "To find what percentage ___ is of ___, I ___, then ___. That works because ___ is 100%, so 1 ___ is ___%, and ___ of them is ___%.",
   "board": {
    "content": "We will find what percentage one number is of another, for any two numbers.",
-   "language": "We will justify, out loud, a rule for finding a “percentage,” using “divide” and “multiply.”"
+   "language": "We will justify, out loud, a rule for finding a “percentage,” using “divide” and “multiply by 100.”"
   },
   "mode": "out loud",
   "precise": [
@@ -42,10 +43,10 @@
    "out of",
    "the whole"
   ],
-  "exemplar": "To find what percentage 15 minutes is of 20 minutes, I divide 15 by 20, then multiply by 100 to get 75%. That works because 20 minutes is 100%, so 1 minute is 5%.",
+  "exemplar": "To find what percentage 15 minutes is of 20 minutes, I divide 15 by 20, then multiply by 100. That works because 20 minutes is 100%, so 1 minute is 5%, and 15 of them is 75%.",
   "lookFor": "The jet fuel answer is 65%, and it shows the steps: 130,000 ÷ 200,000 = 0.65, then multiply by 100. An equivalent fraction (\\(\\frac{130}{200} = \\frac{65}{100}\\)) or 1% = 2,000 liters also counts.",
   "posted": {
-   "sentence": "To find what percentage 14 pages is of 40 pages, I divide 14 by 40, then multiply by 100 to get 35%. That works because 40 pages is 100%, so 1 page is 2.5%."
+   "sentence": "To find what percentage 14 pages is of 40 pages, I divide 14 by 40, then multiply by 100. That works because 40 pages is 100%, so 1 page is 2.5%, and 14 of them is 35%."
   }
  },
  "activities": [
@@ -59,10 +60,10 @@
    ],
    "barriers": [
     "“The percentage 21 is of 28” is a hard phrase: which number is the whole?",
-    "The raised dot for multiply may be new to some students."
+    "The raised dot for multiply may be new to some students.",
+    "Working out both sides in full is correct, but slow. True or False asks for a way to decide without computing."
    ],
    "misconceptions": [
-    "Working out both sides in full before deciding.",
     "Statement 4: comparing 21 and 28 with 30 and 40 as numbers, not as fractions.",
     "Statement 3: deciding 3% of 440 must be smaller, because 3% is less than 30%."
    ],
@@ -89,12 +90,12 @@
    "barriers": [
     "Writing \\(\\frac{9}{20}\\) as a decimal is grade 5 work, and it may stop a student who set it up right.",
     "“What percentage of Diego’s time”: which time is the whole may not be clear.",
-    "“Quotient” in the directions may be an unfamiliar word."
+    "“Quotient” in the directions may be an unfamiliar word.",
+    "Language: “You just move the decimal” is right, but names no step and no reason. Ask what moving the decimal does."
    ],
    "misconceptions": [
     "Deciding 24 minutes can’t be a percentage, because it is more than 100%.",
-    "Using the difference: Lin jumped 4 minutes more, so 4%.",
-    "Language: “You just move the decimal,” with no step named and no reason."
+    "Using the difference: Lin jumped 4 minutes more, so 4%."
    ],
    "backPocket": [
     "If 20 minutes is 100%, what is 1 minute?",
@@ -183,12 +184,12 @@
      "nonverbal": "They point to a time, then its percentage, then to Diego’s 20 minutes and 100 in the table."
     },
     "developing": {
-     "frame": "To find what percentage ___ is of ___, I ___, then ___. That works because ___ is 100%, so 1 ___ is ___%. It is more (or less) than 100% because ___.",
+     "frame": "To find what percentage ___ is of ___, I ___, then ___. That works because ___ is 100%, so 1 ___ is ___%, and ___ of them is ___%. It is more (or less) than 100% because ___.",
      "stretch": "They say why Lin’s percentage is more than 100.",
      "nonverbal": "They draw an arrow from the decimal to the percentage in one row, and write the step on the arrow."
     },
     "expanding": {
-     "frame": "To find what percentage ___ is of ___, I ___, then ___. That works because ___ is 100%, so 1 ___ is ___%. Another way to see it is ___.",
+     "frame": "To find what percentage ___ is of ___, I ___, then ___. That works because ___ is 100%, so 1 ___ is ___%, and ___ of them is ___%. Another way to see it is ___.",
      "stretch": "They say the rule for any whole, not only 20 minutes.",
      "nonverbal": "They write the two steps as arrows across one row, then point to Diego’s row to show why."
     }
@@ -389,7 +390,7 @@
     "Pointed to Today’s frame and IM’s phrase on the board",
     "Told them when they’ll say it to a partner"
    ],
-   "sounds": "To find what percentage 15 minutes is of 20 minutes, I divide 15 by 20, then multiply by 100 to get 75%. That works because 20 minutes is 100%, so 1 minute is 5%.",
+   "sounds": "To find what percentage 15 minutes is of 20 minutes, I divide 15 by 20, then multiply by 100. That works because 20 minutes is 100%, so 1 minute is 5%, and 15 of them is 75%.",
    "why": "IM’s support here is to invite students to use phrases like “75% of 20 minutes.” Naming them before work means students practice them while they solve."
   },
   {
@@ -472,7 +473,7 @@
    "goingOn": "They have seen the pattern, which is what the table is for. They haven’t yet said what moving the decimal does, or why it gives a percentage.",
    "avoid": "Saying “divide by 20 and multiply by 100” for them.",
    "ifNot": "Point to the 1 in Diego’s row. What is it as a percentage?",
-   "sounds": "To find what percentage 24 minutes is of 20 minutes, I divide 24 by 20, then multiply by 100 to get 120%. That works because 20 minutes is 100%, so 1 minute is 5%.",
+   "sounds": "To find what percentage 24 minutes is of 20 minutes, I divide 24 by 20, then multiply by 100. That works because 20 minutes is 100%, so 1 minute is 5%, and 24 of them is 120%.",
    "say": [
     "Moving the decimal is multiplying by what? Why does that give a percentage?"
    ]
@@ -598,7 +599,7 @@
  "beforeClass": [
   "Work the jump rope table and the restaurant questions yourself, including Lin’s 24 minutes and 84 people.",
   "For Three Reads in 16.2: display the jump rope story and questions 1–3. Keep the table and question 5 covered until after the third read.",
-  "For the release: post Today’s frame and IM’s phrase with blanks, “___ minutes is ___% of 20 minutes.” Have the frames for your students’ levels ready.",
+  "For the release: post Today’s frame and IM’s phrase, “___ minutes is ___% of 20 minutes.” Have the frames for your students’ levels ready.",
   "Clear board space beside the table, and have a marker and IM’s 1-minute row (1 minute, 5%) ready to add."
  ],
  "cuts": [
@@ -624,7 +625,7 @@
   "pointTo": "Point to the 16.2 board: the last two columns, students’ words beside them, and the 1-minute row. If you taught 16.3, point to 9 ÷ 75, then times 100.",
   "check": {
    "question": "A game has 80 levels. You have finished 56 of them. What percentage of the game is that, and why?",
-   "sounds": "To find what percentage 56 is of 80, I divide 56 by 80, then multiply by 100 to get 70%. That works because 80 levels is 100%, so 1 level is 1.25%."
+   "sounds": "To find what percentage 56 levels is of 80 levels, I divide 56 by 80, then multiply by 100. That works because 80 levels is 100%, so 1 level is 1.25%, and 56 of them is 70%."
   }
  }
 }

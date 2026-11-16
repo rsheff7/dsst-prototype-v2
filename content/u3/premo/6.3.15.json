@@ -12,7 +12,8 @@
   "The cool-down’s anticipated misconception (order by percentage alone, or by the 100% amount alone) and its narrative are in the Teacher Guide only, not on the web page. They are copied in tg/6.3.15.json notes and used in the plan’s look-for.",
   "IM’s 15.3 task says “regular price”; IM’s answer table says “normal price.” This file uses “regular price.”",
   "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person.",
-  "2026-11-15: persona review fixes. Frames match the plan’s release frames; each band’s entry starts with a way in on the third read. m2’s means names 1% or 2% as the smaller step. The emerging move uses the student’s own table, not IM’s 100/1/80 table. Avoid lines are gerunds. “Can you explain how…?” has its question mark."
+  "2026-11-15: persona review fixes. Frames match the plan’s release frames; each band’s entry starts with a way in on the third read. m2’s means names 1% or 2% as the smaller step. The emerging move uses the student’s own table, not IM’s 100/1/80 table. Avoid lines are gerunds. “Can you explain how…?” has its question mark.",
+  "2026-11-15: round-2 review fixes: frames match the plan’s new release frames (“To find a percentage of a number, like ___%…”); the emerging stretch uses $25 (sale price $20); IM’s prompt “Can you explain how…” is shown without a question mark, as IM prints it; m7 asks “What percentage…”."
  ],
  "crux": "15.3",
  "cruxWhy": "IM says 15.3 makes the lesson’s main idea explicit: to find \\(P\\%\\) of a number, multiply it by \\(\\frac{P}{100}\\). Goals 2 and 3 are 15.3’s work: generalize the process and justify it out loud. The lesson synthesis states it, and the cool-down asks students to use it.",
@@ -107,7 +108,7 @@
      "step": "Students meet a partner and read their process aloud."
     },
     {
-     "step": "Listeners ask: “Can you explain how…?” or “Will this expression always work? How do you know?”"
+     "step": "Listeners ask: “Can you explain how…” or “Will this expression always work? How do you know?”"
     },
     {
      "step": "Writers revise, borrowing ideas and words from their partner."
@@ -152,13 +153,13 @@
    "kind": "student-thinking",
    "see": "For question 4, a student selects \\(\\frac{8}{100} \\boldcdot x\\) and \\((0.08) \\boldcdot x\\).",
    "means": "They read 80% as 8 hundredths, mixing tenths and hundredths. \\(\\frac{8}{100}\\) of a number is 8% of it.",
-   "say": "What percent of the number is \\(\\frac{8}{100}\\) of it?",
+   "say": "What percentage of the number is \\(\\frac{8}{100}\\) of it?",
    "dont": "Crossing them out for the student.",
    "from": "premo",
    "sayFrom": "premo",
    "rehearse": true,
    "criteria": [
-    "Asked them to name the percent the expression finds",
+    "Asked them to name the percentage the expression finds",
     "Pointed them to a price they already worked, such as $10",
     "Didn’t cross out the expressions for them"
    ]
@@ -267,7 +268,7 @@
    "type": "error",
    "says": "Selects \\(\\frac{8}{100} \\boldcdot x\\) and \\((0.08) \\boldcdot x\\) for 80% of \\(x\\).",
    "why": "They read 80% as 8 hundredths.",
-   "shows": "They know a percent becomes a fraction over 100. Which digits go on top is next.",
+   "shows": "They know a percentage can be written as a fraction over 100. Which digits go on top is next.",
    "from": "premo"
   },
   {
@@ -318,18 +319,18 @@
     "frame": "I multiply by ___. 1% is ___. So ___% is ___.",
     "does": "They can find a sale price and point to the step they repeated.",
     "reaching": "Saying the step and one reason, starting from 1%.",
-    "stretch": "They try their process on one more price, such as $10, and say the sale price."
+    "stretch": "They try their process on one more price, such as $25, and say the sale price."
    },
    "developing": {
     "entry": "Third read: they tell a partner one way to find a sale price, such as 10% first. Then they read their process to 2–3 partners and add one reason after each. They can work it out first in any language they share with a partner.",
-    "frame": "To find ___% of a number, I multiply by ___. It works because 1% of the number is ___, so ___% of it is ___. Another way to write it is ___.",
+    "frame": "To find a percentage of a number, like ___%, I multiply by ___. It works because 1% of the number is ___, so that percentage of it is ___. Another way to write it is ___.",
     "does": "They can say the process in short phrases: “times 0.8.”",
     "reaching": "Naming what they multiply and why, with “% of” and “1%.”",
     "stretch": "They name one other expression that also works, such as \\(\\frac{80}{100}\\) times the price."
    },
    "expanding": {
     "entry": "Third read: they suggest two ways to find a sale price and say which is quicker. In the partner rounds, they answer “Will this expression always work?” and make their draft clearer each time. They can work it out first in any language they share with a partner.",
-    "frame": "To find ___% of any number, I multiply it by ___. It works because ___. ___ also works, because ___.",
+    "frame": "To find a percentage of any number, like ___%, I multiply it by ___. It works because ___. ___ also works, because ___.",
     "does": "They can explain their process and give an example price.",
     "reaching": "Justifying why the process works for any price, and that equal expressions give the same value.",
     "stretch": "They explain why \\(\\frac{8}{10}\\) times the price gives the same sale price."
@@ -347,7 +348,7 @@
   },
   {
    "activityId": "15.3",
-   "note": "If time is short, do two partner rounds, not three. Never cut the revising or the discussion of \\(\\frac{80}{100} \\boldcdot x\\)."
+   "note": "15 minutes fits two partner rounds, not three. Never cut the revising or the discussion of \\(\\frac{80}{100} \\boldcdot x\\)."
   }
  ],
  "neverCut": [
@@ -372,7 +373,7 @@
  },
  "beforeClass": [
   "Have calculators available for 15.3; IM allows them so every student can take part.",
-  "For Stronger and Clearer Each Time (MLR 1): post the feedback prompts, “Can you explain how…?” and “Will this expression always work? How do you know?”",
+  "For Stronger and Clearer Each Time (MLR 1): post IM’s feedback prompts, “Can you explain how…” and “Will this expression always work? How do you know?”",
   "For 15.3’s discussion: draw the table percentage | regular price with rows 100 | \\(x\\), 1, and 80, ready to fill.",
   "Know the sale prices: $8; $0.80, $3.20, $8, $44, $96."
  ]

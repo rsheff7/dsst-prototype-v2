@@ -9,7 +9,8 @@
   "IM’s English-learner support for 4.2 says “if they convert 80 miles per hour into kilometers per hour, where 80 is multiplied by \\(\\frac58\\).” The speed limit is 80 kilometers per hour, and multiplying by \\(\\frac58\\) converts it into miles per hour. IM’s activity synthesis has it right. Looks like a slip in IM; not repeated here.",
   "IM’s 4.1 English-learner support (MLR 8) is on one line with its design principle in the source, so the extractor left it in 4.1’s synthesis text instead of the supports. Reported as an extractor issue; nothing here depends on it.",
   "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person.",
-  "2026-11-15: persona review fixes."
+  "2026-11-15: persona review fixes.",
+  "2026-11-15: round-2 review fixes: band frames now match the plan’s (answer and a larger-or-smaller reason; developing and expanding end with “Another way”), with new stretches."
  ],
  "crux": "4.2",
  "cruxWhy": "4.2 is where students first find two rates per 1 between units, kilometers per mile and miles per kilometer, and use one to convert. IM’s goal 2, explaining how to use a “rate per 1,” is met in its closing discussion. IM’s language support for the activity, Compare and Connect (MLR 7), sits there too.",
@@ -321,21 +322,21 @@
   "byBand": {
    "emerging": {
     "entry": "On the third read, they point to the quantities in order: 75 miles per hour, the 80 limit, then 8 kilometers and 5 miles. As ways are compared, they point to where \\(\\frac{5}{8}\\) or \\(\\frac{8}{5}\\) appears in two ways. They can work it out first in any language they share with a partner.",
-    "frame": "There is (are) ___ ___ per ___. I start in ___ and end in ___. I multiply (or divide) by ___.",
+    "frame": "There is (are) ___ ___ per ___. I start in ___ and end in ___. I multiply (or divide) by ___. I get ___, which makes sense because a ___ is larger (or smaller) than a ___.",
     "does": "They can find a matching pair on a double number line, like 8 kilometers and 5 miles.",
     "reaching": "Naming how many of one unit there are per one of the other, and the operation that uses it.",
-    "stretch": "They say why: which unit is longer, so whether the number gets bigger or smaller."
+    "stretch": "They say another way to convert, such as with a double number line."
    },
    "developing": {
     "entry": "On the third read, they suggest putting both speeds in one unit. In the discussion, they tell a partner what one rate means, then say whether a classmate used the same rate. They can work it out first in any language they share with a partner.",
-    "frame": "There is (are) ___ ___ per ___. To convert ___ to ___, I multiply (or divide) by ___ because ___.",
+    "frame": "There is (are) ___ ___ per ___. To convert ___ to ___, I multiply (or divide) by ___. I get ___, which makes sense because a ___ is larger (or smaller) than a ___. Another way: ___.",
     "does": "They can say the steps they took: “80 times five-eighths.”",
     "reaching": "Saying what the rate means and why that operation converts.",
-    "stretch": "They check the answer against which unit is longer."
+    "stretch": "They say the other rate too, with units, and when it would be easier to use."
    },
    "expanding": {
     "entry": "On the third read, they suggest two ways to compare the speeds. In the discussion, they compare their way with a classmate’s: which rate each used, and why both reach the same decision. They can work it out first in any language they share with a partner.",
-    "frame": "There is (are) ___ ___ per ___. To convert ___ to ___, I multiply (or divide) by ___ because ___. Another way: ___.",
+    "frame": "There is (are) ___ ___ per ___. To convert ___ to ___, I multiply (or divide) by ___. I get ___, which makes sense because ___. Another way: ___.",
     "does": "They can convert and explain their own steps.",
     "reaching": "Comparing two ways and saying how the double number line shows the rate per 1.",
     "stretch": "They convert the other way too, and say why both show she was speeding."

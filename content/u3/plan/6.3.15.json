@@ -5,9 +5,9 @@
   "Story and previous: from IM’s lesson narrative (numbers “purposefully chosen to be difficult” for mental math or double number lines; the focus is finding A% of B “as efficiently as possible”) and Lesson 14’s goals (choose a diagram; the three kinds of problem).",
   "Crux is 15.3, as in Premo’s layer. 15.2 is a fair alternative: it first surfaces the 1% strategy, and IM goal 1 is its goal.",
   "CLO: imGoal is IM goal 2, verbatim, including IM’s $…$ math markup. Function “justify” and mode “out loud” come from it; the unit’s language progression names “justify” for Lessons 15 and 16, so there is no progression note.",
-  "Form: “To find ___% of a number, I multiply the number by ___. It works because 1% of the number is ___, so ___% of it is ___.” The blanks hold the step (what to multiply by) and the reason (what 1% is, and how the percentage is built from it). It follows IM’s synthesis argument and accepts any multiplier: \\(\\frac{80}{100}\\), 0.8, \\(\\frac{8}{10}\\) or \\(\\frac{4}{5}\\).",
-  "Precise terms: “% of,” “1%” and “multiply.” “Percentage” is IM’s productive word for Lesson 15; it is on the board’s language line but not in the precise list, since the exemplar would pass 25 words with it. A reviewer may want it added.",
-  "The board’s language line uses “1%” as a math term (Robert, 2026-11-15). It also quotes “percentage,” Robert’s wording; “percentage” isn’t in the precise list because the exemplar must match the form exactly.",
+  "Form: “To find a percentage of a number, like ___%, I multiply the number by ___. It works because 1% of the number is ___, so that percentage of it is ___.” The blanks hold the step and the reason; “that percentage” avoids a second blank for the same number. It accepts any multiplier: \\(\\frac{80}{100}\\), 0.8, \\(\\frac{8}{10}\\) or \\(\\frac{4}{5}\\).",
+  "Precise terms: “percentage,” “% of,” “1%” and “multiply.” “Percentage” is IM’s productive word for Lesson 15; the form carries it (Robert, 2026-11-15), and the board quotes it.",
+  "The board’s language line uses “1%” as a math term (Robert, 2026-11-15).",
   "Numbers checked: 0.8 × 10 = 8; 0.8 × 1 = 0.80; 0.8 × 4 = 3.20; 0.8 × 55 = 44; 0.8 × 120 = 96; 250 ÷ 10 = 25, × 3 = 75; 25 × 14 = 350; 250 ÷ 100 = 2.5, × 44 = 110; 0.82 × 50 = 41; 1.7 × 30 = 51; 0.65 × 80 = 52. Posted sentence: 0.6 × 45 = 27. Lesson synthesis check: IM’s own example, 32% of 500, 0.32 × 500 = 160; it shares no numbers with the cool-down.",
   "Look-for: IM’s cool-down response multiplies by decimals; it also accepts 1% first, \\(\\frac{P}{100}\\), and 10% steps. IM’s cool-down misconception (Teacher Guide only): ordering by the percentages alone or by the 100% amounts alone.",
   "Per D1: Three Reads to launch, an MLR 8 frame at release, MLR 1 Stronger and Clearer Each Time in the synthesis. MLR 1 is IM’s own routine for 15.3, so IM’s move is kept as written: 2–3 partners in a row, IM’s feedback prompts, a table and an expression in each draft. IM’s synthesis then discusses \\(\\frac{80}{100} \\boldcdot x\\) first, with the 1% table.",
@@ -16,20 +16,22 @@
   "15.2 momentIds: m2 and m3; m3 needs momentCriteria here. m4 (Compare and Connect slipping) is left out: 15.2 isn’t the crux, so its language routine isn’t rehearsed (D7).",
   "NEW (Premo-written, unreviewed): the student drafts on the m8 and synthesis cards; all ifNot questions and goingOn lines; the level frames, stretches and nonverbal ways in.",
   "Non-crux activities carry no language supports (D7).",
-  "2026-11-15: persona review fixes. New form leaves the reason as blanks. Emerging frame is “I multiply by ___. 1% is ___. So ___% is ___.”; developing adds “another way”; expanding is open with “because.” The emerging nonverbal no longer hands students IM’s 100/1/80 table. The m8 model and the synthesis final draft connect \\(\\frac{80}{100}\\) to 0.8. Model sentences match the form exactly. “Can you explain how…?” has its question mark. The m8 levels card has one say line."
+  "2026-11-15: persona review fixes. New form leaves the reason as blanks. Emerging frame is “I multiply by ___. 1% is ___. So ___% is ___.”; developing adds “another way”; expanding is open with “because.” The emerging nonverbal no longer hands students IM’s 100/1/80 table. The m8 model and the synthesis final draft connect \\(\\frac{80}{100}\\) to 0.8. Model sentences match the form exactly. “Can you explain how…?” has its question mark. The m8 levels card has one say line.",
+  "2026-11-15: round-2 review fixes: “percentage” is back on the precise list, carried by the form (“To find a percentage of a number, like ___%…, so that percentage of it is ___”), with every model sentence and band frame to match; the emerging stretch uses $25; IM’s prompt “Can you explain how…” is shown without Premo’s question mark; “You times it by 0.8” moved from misconceptions to barriers; “says”/“asks” take a colon; “percent” as a noun became “percentage”; the 15.3 cut plans on two partner rounds."
  ],
  "story": "Lesson 15 is near the end of the percentages section. The numbers are too awkward for diagrams, so students find one process for any percentage: multiply by \\(\\frac{P}{100}\\).",
  "previous": "In Lesson 14 students chose diagrams to solve all three kinds of percentage problems. Today they look for the most efficient way to find a percentage of a number.",
  "clo": {
   "imGoal": "Generalize a process for finding A% of B and justify (orally) why this can be abstracted as $\\frac{A}{100} \\boldcdot B$.",
   "function": "justify",
-  "form": "To find ___% of a number, I multiply the number by ___. It works because 1% of the number is ___, so ___% of it is ___.",
+  "form": "To find a percentage of a number, like ___%, I multiply the number by ___. It works because 1% of the number is ___, so that percentage of it is ___.",
   "board": {
    "content": "We will find a percentage of any number by multiplying, and see why it always works.",
    "language": "We will justify, out loud, why we multiply to find a “percentage,” using “% of” and “1%.”"
   },
   "mode": "out loud",
   "precise": [
+   "percentage",
    "% of",
    "1%",
    "multiply"
@@ -40,10 +42,10 @@
    "divided by 100",
    "times"
   ],
-  "exemplar": "To find 80% of a number, I multiply the number by \\(\\frac{80}{100}\\). It works because 1% of the number is the number divided by 100, so 80% of it is 80 times that.",
+  "exemplar": "To find a percentage of a number, like 80%, I multiply the number by \\(\\frac{80}{100}\\). It works because 1% of the number is the number divided by 100, so that percentage of it is 80 times that.",
   "lookFor": "The order is 82% of 50 (41), 170% of 30 (51), then 65% of 80 (52). Each value is found by multiplying by a decimal or \\(\\frac{P}{100}\\), by 1% first, or by 10% steps, and the reasoning is shown.",
   "posted": {
-   "sentence": "To find 60% of a number, I multiply the number by \\(\\frac{60}{100}\\). It works because 1% of the number is the number divided by 100, so 60% of it is 60 times that."
+   "sentence": "To find a percentage of a number, like 60%, I multiply the number by \\(\\frac{60}{100}\\). It works because 1% of the number is the number divided by 100, so that percentage of it is 60 times that."
   }
  },
  "activities": [
@@ -121,15 +123,15 @@
    ],
    "barriers": [
     "The letter \\(x\\) standing for any regular price may be new.",
-    "Equivalent fractions: seeing \\(\\frac{80}{100}\\), \\(\\frac{8}{10}\\) and \\(\\frac{4}{5}\\) as one value."
+    "Equivalent fractions: seeing \\(\\frac{80}{100}\\), \\(\\frac{8}{10}\\) and \\(\\frac{4}{5}\\) as one value.",
+    "Language: “You times it by 0.8” is a correct step with no reason yet."
    ],
    "misconceptions": [
     "Selecting \\(\\frac{8}{100} \\boldcdot x\\) or \\((0.08) \\boldcdot x\\), reading 80% as 8 hundredths.",
-    "Selecting \\(80 \\boldcdot x\\) or \\(8 \\boldcdot x\\), using the percent as a plain number.",
-    "Language: “You times it by 0.8,” a step with no reason."
+    "Selecting \\(80 \\boldcdot x\\) or \\(8 \\boldcdot x\\), using the 80 in 80% as a plain number."
    ],
    "backPocket": [
-    "What percent of the number is \\(\\frac{8}{100}\\) of it?",
+    "What percentage of the number is \\(\\frac{8}{100}\\) of it?",
     "What is 1% of the regular price? How do you get 80% from it?",
     "Will this expression always work? How do you know?",
     "Does that work for every item? Can you make it one step?"
@@ -171,16 +173,16 @@
    "byBand": {
     "emerging": {
      "frame": "I multiply by ___. 1% is ___. So ___% is ___.",
-     "stretch": "They try their process on one more price, such as $10, and say the sale price.",
+     "stretch": "They try their process on one more price, such as $25, and say the sale price.",
      "nonverbal": "On their own table, they draw an arrow for each step to the sale price, and write what they did on it."
     },
     "developing": {
-     "frame": "To find ___% of a number, I multiply by ___. It works because 1% of the number is ___, so ___% of it is ___. Another way to write it is ___.",
+     "frame": "To find a percentage of a number, like ___%, I multiply by ___. It works because 1% of the number is ___, so that percentage of it is ___. Another way to write it is ___.",
      "stretch": "They name one other expression that also works, and say why it is equal.",
      "nonverbal": "They circle every expression that matches their process and cross out one that doesn’t."
     },
     "expanding": {
-     "frame": "To find ___% of any number, I multiply it by ___. It works because ___. ___ also works, because ___.",
+     "frame": "To find a percentage of any number, like ___%, I multiply it by ___. It works because ___. ___ also works, because ___.",
      "stretch": "They explain why \\(\\frac{8}{10}\\) times the price gives the same sale price.",
      "nonverbal": "They write their process as one expression under their table and point to where each part comes from."
     }
@@ -190,7 +192,7 @@
    "routine": "MLR1: Stronger and Clearer Each Time",
    "steps": [
     "Check that each first draft of question 3 has a table and an expression.",
-    "Students meet 2–3 partners in a row. Each reads their process; the listener asks “Can you explain how…?” or “Will this expression always work?”",
+    "Students meet 2–3 partners in a row. Each reads their process; the listener asks: “Can you explain how…” or “Will this expression always work? How do you know?”",
     "After each partner, writers revise, borrowing ideas and words.",
     "As a class, discuss \\(\\frac{80}{100} \\boldcdot x\\) first, with the table 100 | \\(x\\), 1, 80. Ask students where each row shows up in their final drafts.",
     "Then partners decide which other expressions equal \\(\\frac{80}{100} \\boldcdot x\\), and why."
@@ -425,7 +427,7 @@
     "Pointed to Today’s frame on the board",
     "Told them they’ll read it to 2–3 partners"
    ],
-   "sounds": "To find 80% of a number, I multiply the number by \\(\\frac{80}{100}\\). It works because 1% of the number is the number divided by 100, so 80% of it is 80 times that.",
+   "sounds": "To find a percentage of a number, like 80%, I multiply the number by \\(\\frac{80}{100}\\). It works because 1% of the number is the number divided by 100, so that percentage of it is 80 times that.",
    "why": "Goal 2 asks students to justify the process, not only state it. Naming the reason now means every draft has one to sharpen."
   },
   {
@@ -450,7 +452,7 @@
     "Didn’t write the reason for them"
    ],
    "ifNot": "What is 1% of $10?",
-   "sounds": "To find 80% of a number, I multiply the number by 0.8. It works because 1% of the number is the number divided by 100, so 80% of it is \\(\\frac{80}{100}\\), or 0.8, of the number.",
+   "sounds": "To find a percentage of a number, like 80%, I multiply the number by 0.8. It works because 1% of the number is the number divided by 100, so that percentage of it is \\(\\frac{80}{100}\\), or 0.8, of the number.",
    "goingOn": "They found the step they repeated for every price. Why 0.8 gives 80%, the justify part, isn’t in words yet.",
    "say": [
     "Why does times 0.8 give 80%?"
@@ -472,14 +474,14 @@
    "ask": "What do you say to this student?",
    "aim": "The student tests the expressions on a price they know and revises.",
    "say": [
-    "What percent of the number is \\(\\frac{8}{100}\\) of it?"
+    "What percentage of the number is \\(\\frac{8}{100}\\) of it?"
    ],
    "checks": [
-    "Asked them to name the percent the expression finds",
+    "Asked them to name the percentage the expression finds",
     "Pointed them to a price they already worked, such as $10",
     "Didn’t cross out the expressions for them"
    ],
-   "goingOn": "They know a percent becomes a fraction over 100. They read 80% as 8 hundredths, mixing tenths and hundredths.",
+   "goingOn": "They know a percentage can be written as a fraction over 100. They read 80% as 8 hundredths, mixing tenths and hundredths.",
    "ifNot": "Try \\(\\frac{8}{100}\\) on the $10 T-shirt. Do you get the sale price?"
   },
   {
@@ -514,10 +516,10 @@
    "routine": "MLR1: Stronger and Clearer Each Time",
    "language": true,
    "name": "Make the reason stronger",
-   "where": "About 12 minutes into Activity 15.3. Partner rounds are done. One student’s first and final drafts are up.",
+   "where": "About 12 minutes into Activity 15.3. Two partner rounds are done. One student’s first and final drafts are up.",
    "show": [
     "First draft: “You times it by 0.8.”",
-    "Final draft: “To find 80% of a price, I multiply the price by 0.8. It works because 1% of the price is the price divided by 100, so 80% of it is \\(\\frac{80}{100}\\), or 0.8, of the price.”",
+    "Final draft: “To find a percentage of a price, like 80%, I multiply the price by 0.8. It works because 1% of the price is the price divided by 100, so that percentage of it is \\(\\frac{80}{100}\\), or 0.8, of the price.”",
     "IM’s table:",
     "| percentage | regular price",
     "| 100 | \\(x\\)",
@@ -541,7 +543,7 @@
    "why": "IM: Stronger and Clearer gives students a structured chance to revise and refine their own strategies. Here, the reason from 1% is what gets clearer.",
    "runIt": [
     "Check that each first draft of question 3 has a table and an expression.",
-    "Students meet 2–3 partners in a row. The listener asks “Can you explain how…?” or “Will this expression always work?”",
+    "Students meet 2–3 partners in a row. The listener asks: “Can you explain how…” or “Will this expression always work? How do you know?”",
     "After each partner, writers revise, borrowing ideas and words.",
     "As a class, discuss \\(\\frac{80}{100} \\boldcdot x\\) first, with the 1% table. Ask where each row shows up in a final draft.",
     "Then partners decide which other expressions are equal, and why."
@@ -557,13 +559,13 @@
   "pointTo": "Point to the 15.3 table (100, 1, 80) and a final draft beside it. If you taught 15.2, point to its 1% row too: 2.5 people.",
   "check": {
    "question": "How could you find 32% of a number, such as 500? Say it with Today’s frame.",
-   "sounds": "To find 32% of a number, I multiply the number by \\(\\frac{32}{100}\\). It works because 1% of the number is the number divided by 100, so 32% of it is 32 times that."
+   "sounds": "To find a percentage of a number, like 32%, I multiply the number by \\(\\frac{32}{100}\\). It works because 1% of the number is the number divided by 100, so that percentage of it is 32 times that."
   }
  },
  "beforeClass": [
   "For Three Reads in 15.3: display the task with the price table and expressions covered until after the third read.",
   "For the release: have the frames for your students’ levels ready to post or hand out.",
-  "For Stronger and Clearer (MLR 1): post the prompts “Can you explain how…?” and “Will this expression always work? How do you know?”",
+  "For Stronger and Clearer (MLR 1): post IM’s prompts, “Can you explain how…” and “Will this expression always work? How do you know?”",
   "For the discussion: draw IM’s table, percentage | regular price, rows 100, 1, 80, ready to fill. Have calculators available."
  ],
  "cuts": [
@@ -577,7 +579,7 @@
   },
   {
    "activityId": "15.3",
-   "note": "If time is short, run two partner rounds, not three. Never cut the revising, or the discussion of \\(\\frac{80}{100} \\boldcdot x\\) from the 1% row."
+   "note": "15 minutes fits two partner rounds, not three: run two, and a third only if time allows. Never cut the revising, or the discussion of \\(\\frac{80}{100} \\boldcdot x\\) from the 1% row."
   }
  ]
 }

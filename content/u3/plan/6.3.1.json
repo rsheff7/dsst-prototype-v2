@@ -15,7 +15,8 @@
   "Non-crux activities carry no language supports (D7).",
   "Timing: the 1.2 synthesis has five steps in about 5 minutes of IM’s 20. A reviewer should check they fit (moved here from the cut note).",
   "2026-11-15: persona review fixes. clo.form now evaluates (“more useful than … because the question asks …”) for every band; exemplar, posted, release, m7, synthesis and lesson-synthesis sounds follow it. Three Reads shows both sentences from Read 1. m3 now uses IM’s question (90 and 300 windows); 5 windows gave 6 ÷ 5, not even. m7 has one say line. Synthesis note on why five-sixths is wrong. Avoid lines are gerunds. Developing nonverbal no longer assumes a table. Each band in Premo’s cruxLanguage now has a way in on the third read.",
-  "2026-11-15: lesson-synthesis check: 12 pages in 18 seconds is 1.5 seconds per page, or \\(\\frac{2}{3}\\) page per second. Posted: 2 minutes per lap, or \\(\\frac{1}{2}\\) lap per minute."
+  "2026-11-15: lesson-synthesis check: 12 pages in 18 seconds is 1.5 seconds per page, or \\(\\frac{2}{3}\\) page per second. Posted: 2 minutes per lap, or \\(\\frac{1}{2}\\) lap per minute.",
+  "2026-11-15: round-2 review fixes: new emerging frame, used by plan and Premo alike; m3 aim and check reworded, Premo m3 say marked Premo’s; synthesis error note gives 12.5 minutes; m7 ifNot is now the 15 ÷ 18 question (the checker allows one question; the which-is-minutes prompt moved to the emerging nonverbal) and emerging nonverbal no longer names the units; 1.2 show emptied; m1 colons; “It’s 1.2” moved to barriers."
  ],
  "story": "Lesson 1 opens the unit. Students meet a problem where finding how much for 1, the time for 1 window, is the way through. Lessons 2–4 turn to units of measurement; the rates section picks this idea up again in Lesson 5.",
  "previous": "In Unit 2 students used tables and double number lines for equivalent ratios. They learned that “at this rate” signals equivalent ratios. Today they find how much for 1.",
@@ -82,13 +83,13 @@
    "barriers": [
     "The number of windows isn’t in the task. Students have to notice and ask for it.",
     "18 ÷ 15 isn’t a whole number; dividing to a decimal is grade 5 work some students need to recall.",
-    "Words: “crew,” “assigned,” and “at this rate.”"
+    "Words: “crew,” “assigned,” and “at this rate.”",
+    "Saying it in everyday words: “It’s 1.2,” with no units and no “per.” The idea is right; the words come next."
    ],
    "misconceptions": [
     "Stuck because 15 does not divide evenly into 18 (IM).",
     "\\(\\frac{5}{6}\\) minutes per window instead of \\(1\\frac{1}{5}\\) (IM’s error example), giving fewer minutes than windows.",
-    "Dividing 24,348 by 1.2 instead of multiplying, going the wrong way.",
-    "Language: “It’s 1.2,” with no units and no “per.”"
+    "Dividing 24,348 by 1.2 instead of multiplying, going the wrong way."
    ],
    "backPocket": [
     "At this rate, how long will it take the crew to finish 90 windows? 300 windows?",
@@ -172,7 +173,7 @@
    ],
    "byBand": {
     "emerging": {
-     "frame": "___ ___ per ___ helps more than ___ per ___. The question asks ___.",
+     "frame": "___ ___ per ___ helps more than ___ ___ per ___. The question asks ___.",
      "stretch": "They add what they do with it: “I multiply it by the windows.”",
      "nonverbal": "They circle their number for 1, write its two units beside it, and point to “how long” in the question."
     },
@@ -276,7 +277,7 @@
     "What was important to you in the image when making your estimate?",
     "Could you record your measurement using a different unit?"
    ],
-   "student": "One partner says “I said 300.” The other says “I said 400.” Then they stop talking.",
+   "student": "One partner says: “I said 300.” The other says: “I said 400.” Then they stop talking.",
    "ask": "What do you say to the pair?",
    "aim": "The pair talks about their units and what in the picture they used.",
    "say": [
@@ -296,10 +297,7 @@
    "type": "task",
    "name": "Do the window task yourself",
    "where": "Before class. Solve the task students do today. The building has 24,348 windows.",
-   "show": [
-    "A window-washing crew can finish 15 windows in 18 minutes.",
-    "If this crew was assigned to wash all the windows on the outside of the Burj Khalifa, how long will the crew be washing at this rate?"
-   ],
+   "show": [],
    "ask": "How long will the crew be washing? Find both numbers for 1 on the way.",
    "aim": "Know the answer, both numbers for 1, and which one fits the question.",
    "notes": [
@@ -423,14 +421,14 @@
    ],
    "student": "A student crossed out 18 ÷ 15 and says: “15 doesn’t go into 18.”",
    "ask": "What do you say to this student?",
-   "aim": "The student finds the time for 1 window through a smaller step.",
+   "aim": "The student reasons with equivalent ratios, then comes back to the time for 1 window.",
    "say": [
     "At this rate, how long will it take the crew to finish 90 windows? 300 windows?"
    ],
    "goingOn": "They chose the right division: minutes for each window. A quotient that isn’t a whole number is what stops them.",
    "ifNot": "If 15 windows share 18 minutes equally, does each get more or less than 1 minute?",
    "checks": [
-    "Kept the division they chose",
+    "Treated the division as a right choice",
     "Asked IM’s question with more windows: 90, then 300",
     "Didn’t do the division for them"
    ]
@@ -454,7 +452,7 @@
    "ask": "What do you say to this student?",
    "aim": "The student says what 1.2 counts and why it fits the question.",
    "goingOn": "They found the time for 1 window and used it correctly. What 1.2 counts, minutes per window, and why it helps aren’t in words yet.",
-   "ifNot": "Point to the 18 and the 15. Which one is minutes?",
+   "ifNot": "If they have only 1.2, ask: what would 15 ÷ 18 tell you?",
    "sounds": "At this rate, it is 1.2 minutes per window. That is more useful than \\(\\frac{5}{6}\\) window per minute, because the question asks how long.",
    "checks": [
     "Asked every level the same question: what it means, and why it helps",
@@ -484,8 +482,8 @@
    "aim": "Students say which number answers “how long?” and why.",
    "notes": [
     "Write “per” and “at this rate” beside the students’ words, not in place of them.",
-    "Ask what is the same and what is different, then:",
-    "Five-sixths of a minute per window would make 15 windows take less than 15 minutes, but they take 18."
+    "Ask what is the same and what is different, then ask the question below.",
+    "If no one can say why IM’s error is wrong: five-sixths of a minute per window would make 15 windows take 12.5 minutes. That is less than 15, but they take 18."
    ],
    "say": [
     "Both numbers are right. Which one answers “how long?” more easily, and why?"

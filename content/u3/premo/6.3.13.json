@@ -12,7 +12,8 @@
   "Math checked: 13.2: 10 ÷ 2 = 5, 2,000 ÷ 2 = 1,000, 24 ÷ 2 = 12; 2,000 ÷ 10 = 200, 10 ÷ 10 = 1, 24 ÷ 10 = 2.4; 24 ÷ 4 × 3 = 18, 2,000 ÷ 4 × 3 = 1,500, 10 ÷ 4 × 3 = 7.5. 13.3: 18, 36, 90, 12, 6. 13.4: 50%, 25%, 10%, 75%, 400%; 4% is left over. Cool-down: 30, 6, 45 minutes.",
   "IM’s lesson narrative says to avoid writing “25% = \\(\\frac14\\)” and to say “25% of a quantity is \\(\\frac14\\) of that quantity.” Every frame and model here follows that.",
   "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person.",
-  "2026-11-15: persona review fixes. Band frames match the plan’s release frames; each band’s entry suggests a way in on read 3; m6’s expanding nonverbal no longer assumes a double number line; m8’s question is completed; “Multiply by 75” spelled one way. Premo’s m8 drops “So” to stay within the 16-word say limit; the plan card keeps the reviewer’s wording."
+  "2026-11-15: persona review fixes. Band frames match the plan’s release frames; each band’s entry suggests a way in on read 3; m6’s expanding nonverbal no longer assumes a double number line; m8’s question is completed; “Multiply by 75” spelled one way. Premo’s m8 drops “So” to stay within the 16-word say limit; the plan card keeps the reviewer’s wording.",
+  "2026-11-15: round-2 review fixes: band frames match the plan’s new release frames (each now gives the answer); m4 no longer has a partner share before the rounds; colon in m5; IM’s feedback starter quoted without Premo’s “?”."
  ],
  "crux": "13.2",
  "cruxWhy": "13.2 is where students find 50%, 10% and 75% of three amounts and then say how to find each of any number. That is both of IM’s goals, and the cool-down asks the same three percentages. IM’s language support for 13.2, Stronger and Clearer Each Time (MLR1), revises the explanation for 75% of any number.",
@@ -86,15 +87,15 @@
    "activityId": "13.2",
    "kind": "run-routine",
    "routine": "MLR1: Stronger and Clearer Each Time",
-   "see": "Students have written their rule for 75% of any number, and partners have compared answers.",
+   "see": "Students have written their rule for 75% of any number. The first partner round is about to start.",
    "means": "Stronger and Clearer gives students rounds of feedback, so the rule gets clearer each time. IM uses it for the 75% explanation.",
-   "say": "Find a new partner. Ask one question about their rule.",
+   "say": "Find a partner. Ask one question about their rule.",
    "runSheet": [
     {
      "step": "Each student has their written rule for finding 75% of any number."
     },
     {
-     "step": "Students meet 2–3 partners in a row. Each partner asks one question, such as “Can you explain how…?” or “You should expand on…”"
+     "step": "Students meet 2–3 partners in a row. Each partner asks one question, such as “Can you explain how…” or “You should expand on…”"
     },
     {
      "step": "After each round, the writer adds one idea or word to their rule."
@@ -119,7 +120,7 @@
    "activityId": "13.2",
    "kind": "routine-breakdown",
    "routine": "MLR1: Stronger and Clearer Each Time",
-   "see": "Two partners read each other’s 75% rule. One says “Same as mine,” and they sit back.",
+   "see": "Two partners read each other’s 75% rule. One says: “Same as mine.” They sit back.",
    "means": "Stronger and Clearer works when partners press for details. Agreeing gives the writer nothing to add.",
    "say": "Ask them one question: why does that work for any number?",
    "dont": "Let the round end on “same as mine.”",
@@ -310,21 +311,21 @@
   "byBand": {
    "emerging": {
     "entry": "On read 3, they point in order to the 10, the 2,000 and the bar in 2 parts. In the partner rounds, they show their tape for 75% and say or write the fraction. They can work it out first in any language they share with a partner.",
-    "frame": "___% of a number is ___ of it. I ___.",
+    "frame": "___% of a number is ___ of it. I ___. That gives ___.",
     "does": "They can find half of a number and say or write the answer.",
     "reaching": "Naming the fraction for each percentage and saying the step that goes with it.",
     "stretch": "They check one answer a second way: divide first, then multiply."
    },
    "developing": {
     "entry": "On read 3, they suggest a way to find half, such as splitting the bar into 2 equal parts. In each round, they read their rule with the frame and add one detail. They can work it out first in any language they share with a partner.",
-    "frame": "___% of a number is ___ of that number. So for ___, I ___. Another way: I ___.",
+    "frame": "___% of a number is ___ of that number. So for ___, I ___, which gives ___. Another way: I ___.",
     "does": "They can tell a partner, in short phrases, how they found one answer.",
     "reaching": "Saying the rule for any number, with the fraction as the reason.",
     "stretch": "They say how 10% helps find 30% or 70% of a number."
    },
    "expanding": {
     "entry": "On read 3, they suggest a way that would work for any number, not only these three. In each round, they explain why their rule works, then make it clearer once. They can work it out first in any language they share with a partner.",
-    "frame": "___% of a number is ___ of that number. So for ___, I ___. This works for any number because ___.",
+    "frame": "___% of a number is ___ of that number. So for ___, I ___, which gives ___. This works for any number because ___.",
     "does": "They can explain their method for one problem in their own words.",
     "reaching": "Explaining why the rule works for any number, using “of that number.”",
     "stretch": "They explain why 75% is three 25% parts, on a tape or double number line."
@@ -362,7 +363,7 @@
  },
  "beforeClass": [
   "For 13.2: have mini whiteboards or sticky notes ready, as IM suggests, for mental math.",
-  "For Stronger and Clearer: post the two feedback starters, “Can you explain how…?” and “You should expand on…”",
+  "For Stronger and Clearer: post the two feedback starters, “Can you explain how…” and “You should expand on…”",
   "Know the answers: 5, 1,000, 12; 200, 1, 2.4; 18, 1,500, 7.5."
  ]
 }

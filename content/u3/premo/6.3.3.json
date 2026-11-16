@@ -11,7 +11,8 @@
   "The IM layer’s 3.2 task is now the print version the Teacher Guide uses, with real containers and a scale (extractor fixed 2026-11-15).",
   "Station 1’s answer, 250 cubic centimeters, is IM’s. The 2 by 2 by 4 inch box is about 262 cubic centimeters (5.08 × 5.08 × 10.16), so students who pack carefully may get more than 250. Not repeated here as a number students must hit.",
   "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person.",
-  "2026-11-15: persona review fixes."
+  "2026-11-15: persona review fixes.",
+  "2026-11-15: round-2 review fixes: the 3.2 cut now gives stations about 3½ minutes each and posts station directions."
  ],
  "crux": "3.2",
  "cruxWhy": "3.2 is where students measure the same things in two units and then say what they found: the smaller unit took more. IM’s first goal, generalize orally and in writing, is met in its summary questions. IM’s language support for the lesson, Discussion Supports (MLR 8), runs at its stations.",
@@ -336,7 +337,7 @@
   },
   {
    "activityId": "3.2",
-   "note": "IM gives 35 minutes and no split. About 4 minutes a station leaves about 10 for the summary questions and the discussion. If short, keep the questions; trim station time, not the why."
+   "note": "IM gives 35 minutes and no split. Stations get about 3½ minutes each; post each station’s directions instead of reading them aloud."
   }
  ],
  "neverCut": [

@@ -12,7 +12,8 @@
   "The cool-down response says “burned” for the task’s “used.” Not repeated here.",
   "Math checked: 15 ÷ 20 = 0.75, 24 ÷ 20 = 1.2, 9 ÷ 20 = 0.45; 100 ÷ 20 = 5% per minute; 9 ÷ 75 = 0.12, 51 ÷ 75 = 0.68, 84 ÷ 75 = 1.12; 3 people is 4% of 75 (75 ÷ 25 = 3, 100 ÷ 25 = 4); 25% of 512 = 128, not 125; 0.3 × 44 = 0.03 × 440 = 13.2; \\(\\frac{21}{28} = \\frac{30}{40} = \\frac{3}{4}\\); extension 0.96 × 1,386 = 1,330.56 million and 0.04 × 1,386 = 55.44 million; cool-down 130,000 ÷ 200,000 = 0.65.",
   "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person.",
-  "2026-11-15: persona review fixes. Band frames match the plan’s new frames; each entry suggests a way in on the third read; m1 and m2 means reworded; m5 emerging uses its level’s frame."
+  "2026-11-15: persona review fixes. Band frames match the plan’s new frames; each entry suggests a way in on the third read; m1 and m2 means reworded; m5 emerging uses its level’s frame.",
+  "2026-11-15: round-2 review fixes: developing and expanding frames match the plan’s finished reason sentence; m5’s developing say matches the card’s say line."
  ],
  "crux": "16.2",
  "cruxWhy": "16.2 is where the new idea arrives. IM says its purpose is for students to see that to find one number as a percentage of another, you divide, then multiply by 100. Goal 2 asks students to generalize that and justify it out loud, and question 5 is where they do. 16.3 is IM’s practice of the same idea, and the lesson synthesis states 16.2’s rule.",
@@ -160,7 +161,7 @@
      "nonverbal": "They point from the 0.75 to the 75 and write “× 100” between them."
     },
     "developing": {
-     "say": "Moving the decimal is multiplying by what? Why does it work?",
+     "say": "Moving the decimal is multiplying by what? Why does that give a percentage?",
      "move": "They say the step as multiplying by 100, then say why with the frame. They can work it out first in any language they share with a partner."
     },
     "expanding": {
@@ -335,14 +336,14 @@
    },
    "developing": {
     "entry": "On the third read, they suggest one way to start, such as finding 1 minute. They tell their partner one row with the phrase, then name both steps. You revoice only if needed, and they say it back. They can work it out first in any language they share with a partner.",
-    "frame": "To find what percentage ___ is of ___, I ___, then ___. That works because ___ is 100%, so 1 ___ is ___%. It is more (or less) than 100% because ___.",
+    "frame": "To find what percentage ___ is of ___, I ___, then ___. That works because ___ is 100%, so 1 ___ is ___%, and ___ of them is ___%. It is more (or less) than 100% because ___.",
     "does": "They can give a percentage and one step, such as “divide by 20.”",
     "reaching": "Saying both steps and the reason: 20 minutes is 100%.",
     "stretch": "They say why Lin’s percentage is more than 100."
    },
    "expanding": {
     "entry": "On the third read, they suggest two ways to start and say which is quicker. They state the rule for any time, with the reason, using the phrases. They can work it out first in any language they share with a partner.",
-    "frame": "To find what percentage ___ is of ___, I ___, then ___. That works because ___ is 100%, so 1 ___ is ___%. Another way to see it is ___.",
+    "frame": "To find what percentage ___ is of ___, I ___, then ___. That works because ___ is 100%, so 1 ___ is ___%, and ___ of them is ___%. Another way to see it is ___.",
     "does": "They can state the rule for one row with numbers.",
     "reaching": "Stating it for any time, and saying why multiplying by 100 gives a percentage.",
     "stretch": "They say the rule for any whole, not only 20 minutes."
