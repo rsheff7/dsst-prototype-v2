@@ -449,7 +449,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
           <span className={s.eyebrow}>Cool-down · {im.coolDown.title}</span>
           <IMLines lines={im.coolDown.task} fill={fill('cool', im.coolDown.response, !!st.shown.cool)} />
           <p className={cx(s.muted, s.small)}>
-            {(im.coolDown.task ?? []).some((l) => l.includes('|')) ? 'Fill in the table, write your reasoning, then say it out loud.' : 'Write your answer and reasoning, then say it out loud.'}
+            {(im.coolDown.task ?? []).some((l) => l.includes('|')) ? 'Fill in the table or diagram, write your reasoning, then say it out loud.' : 'Write your answer and reasoning, then say it out loud.'}
           </p>
         </section>
       ) : (
@@ -991,7 +991,8 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
         return (
           <div className={s.pc}>
             <b>
-              <MathText>{q(m.byBand[b].say)}</MathText>
+              {/* Every level hears the card's one question when it has one (Jordan, round 2). */}
+              <MathText>{q(c.say?.[0] ?? m.byBand[b].say)}</MathText>
             </b>
             <span className={cx(s.muted, s.small)}>{tier ? TIER_WORDS[tier].frame : 'Their frame'}:</span>
             <span className={s.frame}>
@@ -1056,7 +1057,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
         {c.kind === 'math' ? (
           <>
             {/* IM's pictures aren't in the text: the card's description stands in for them. */}
-            {show && (
+            {show && !show.every((l) => a.task.includes(l)) && (
               <div className={s.stack} style={{ gap: 4 }}>
                 <span className={s.lab}>What students see (Premo’s description)</span>
                 <div className={s.flat}>
@@ -1717,7 +1718,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
                 const skipped = c.ifSkipped && !chosen.includes(c.ifSkipped.activityId) ? c.ifSkipped : null;
                 const line =
                   c.kind === 'levels' && m.byBand
-                    ? m.byBand[bandsToRehearse()[0]].say
+                    ? (c.say?.[0] ?? m.byBand[bandsToRehearse()[0]].say)
                     : (skipped?.say ?? c.say ?? [m.say ?? ''])[0];
                 return (
                   <div key={c.id} className={s.mv}>

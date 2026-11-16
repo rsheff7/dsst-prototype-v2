@@ -212,7 +212,12 @@ for (const f of planFiles) {
   if (!pl.clo?.precise?.length) err(at, 'clo.precise needs at least one term');
   // Vocabulary in use (R2.3): the exemplar says every term the CLO marks as precise.
   const low = (s) => (s ?? '').toLowerCase().replace(/[’']/g, "'");
-  for (const term of pl.clo?.precise ?? []) if (!low(pl.clo?.exemplar).includes(low(term))) err(at, `clo.exemplar doesn’t use the precise term “${term}”`);
+  // Each precise term is in the frame or the model sentence (Robert, 2026-11-15: relaxed from the model
+  // sentence alone, which pushed "percentage" off the list). The board quotes only precise terms.
+  for (const term of pl.clo?.precise ?? []) if (!low(`${pl.clo?.form} ${pl.clo?.exemplar}`).includes(low(term))) err(at, `neither clo.form nor clo.exemplar uses the precise term “${term}”`);
+  for (const m of (pl.clo?.board?.language ?? '').matchAll(/“([^”]+?)[.,]?”/g)) if (!(pl.clo?.precise ?? []).some((t) => low(t) === low(m[1]))) err(at, `clo.board.language quotes “${m[1]}”, which isn’t a precise term`);
+  // New lessons: the Premo layer's level frames (used by the phone prep) match the plan's. 6.3.5–6.3.9's differ by design.
+  if (!['6.3.5', '6.3.6', '6.3.7', '6.3.8', '6.3.9'].includes(code)) for (const [b, v] of Object.entries(pl.crux?.release?.byBand ?? {})) if (pr.cruxLanguage?.byBand?.[b] && pr.cruxLanguage.byBand[b].frame !== v.frame) err(at, `premo cruxLanguage.byBand.${b}.frame differs from the plan’s release frame`);
   // The board version (Robert, 2026-11-03): two lines for students and visitors.
   for (const k of ['content', 'language']) {
     const v = pl.clo?.board?.[k] ?? '';
@@ -404,9 +409,21 @@ for (const f of planFiles) {
     // Symbols (×, =, ÷) aren't words. A student's model sentence follows the frame, so its length only warns.
     const words = (s) => s.replace(/\\\(|\\\)/g, ' ').split(/\s+/).filter((w) => /[A-Za-z0-9]/.test(w)).length;
     const model = new Set(['sounds', 'exemplar', 'sentence', 'listenFor']);
-    const walk = (x, key) => Array.isArray(x) ? x.forEach((y) => walk(y, key)) : x && typeof x === 'object' ? Object.entries(x).forEach(([k, y]) => !skip.has(k) && walk(y, k)) : typeof x === 'string' && x.replace(/“[^”]{40,}”/g, 'QUOTE').split(/(?<=[.?!][”"’]?)\s+/).some((sen) => words(sen) > 25) && (model.has(key) ? warn : err)(at, `${key} has a sentence over 25 words: “${x.slice(0, 60)}…”`);
+    let soft = false;
+    const walk = (x, key) => Array.isArray(x) ? x.forEach((y) => walk(y, key)) : x && typeof x === 'object' ? Object.entries(x).forEach(([k, y]) => !skip.has(k) && walk(y, k)) : typeof x === 'string' && x.replace(/“[^”]{40,}”/g, 'QUOTE').split(/(?<=[.?!][”"’]?)\s+/).some((sen) => words(sen) > 25) && (model.has(key) || soft ? warn : err)(at, `${key} has a sentence over 25 words: “${x.slice(0, 60)}…”`);
     walk(pl, '');
+    // The Premo layer too (Priya, round 2), outside IM's quoted evidence and verbatim fields.
+    // 6.3.5–6.3.9's Premo layers are the reviewed phone prep; long lines there only warn.
+    const reviewed = ['6.3.5', '6.3.6', '6.3.7', '6.3.8', '6.3.9'].includes(code);
+    soft = reviewed;
+    walk({ ...pr, reviewNotes: [], status: '' }, '');
+    soft = false;
   }
+  // The release card says what the crux release says.
+  { const rc = (pl.rehearsal ?? []).find((c) => c.kind === 'release' && c.activityId === pr.crux);
+    if (rc && pl.crux?.release?.say && !(rc.say ?? []).includes(pl.crux.release.say)) err(at, `card ${rc.id}: say doesn’t include crux.release.say`); }
+  // "a student named X" is a name, whatever X is.
+  for (const m of flat(pl).join(' ').matchAll(/\bnamed ([A-Z][a-zà-ÿ]+)/g)) if (!new RegExp(`\\b${m[1]}\\b`).test(flat(im).join(' '))) err(at, `“named ${m[1]}”: write “a student” or “Pair A”`);
   // The crux synthesis card says what the crux says.
   {
     const sc = (pl.rehearsal ?? []).find((c) => c.kind === 'synthesis' && c.activityId === pr.crux);

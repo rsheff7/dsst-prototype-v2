@@ -178,7 +178,7 @@
   ],
   "release": {
    "successCriteria": "When you explain, name each speed with “per,” miles per hour, and say how you used it.",
-   "say": "Name the speed with ‘per,’ and say how you used it.",
+   "say": "Name each speed with “per,” and say how you used it.",
    "talkMoments": [
     "After quiet think time, partners take turns saying the 1-hour row in their level’s frame.",
     "After the class sees a solution to the first two questions, groups brainstorm how to check Kiran’s claim.",
