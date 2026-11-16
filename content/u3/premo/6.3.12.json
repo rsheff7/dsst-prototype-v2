@@ -2,7 +2,7 @@
  "status": "draft",
  "reviewNotes": [
   "No person has reviewed this file.",
-  "Crux is 12.3 (5 Dollars), not 12.2. 12.3 is the only required activity that addresses 6.RP.A.3.c (12.1 and 12.2 are building towards it), it asks students to draw the tape diagram themselves (goal 2), and it compares two amounts as a percent and as a fraction (goal 3). The cool-down is the same shape: “___% as much as,” then a diagram. 12.2 is the strong alternative: IM’s language progression names Lesson 12 for interpreting tape diagrams, and 12.2 is where students first read one. A reviewer could reasonably pick 12.2.",
+  "Crux is 12.3 (5 Dollars), not 12.2. 12.3 is the only required activity that addresses 6.RP.A.3.c (12.1 and 12.2 are building towards it), it asks students to draw the tape diagram themselves (goal 2), and it compares two amounts as a percentage and as a fraction (goal 3). The cool-down is the same shape: “___% as much as,” then a diagram. 12.2 is the strong alternative: IM’s language progression names Lesson 12 for interpreting tape diagrams, and 12.2 is where students first read one. A reviewer could reasonably pick 12.2.",
   "Testable object: Elena’s tape diagram, the diagram each student draws for question 1b. The synthesis tests it by asking where the $2, the $5, 40% and \\(\\frac{2}{5}\\) are on it. Diego’s diagram then reuses it past 100%.",
   "cruxLanguage.routine is IM’s MLR8 support for 12.3. The extractor places it at the launch, because IM prints it in the Launch section. Its text says it happens in the whole-class discussion after question 1, so the run sheet follows the text. phase is set to launch to match the IM layer.",
   "IM’s own moments: the Notice and Wonder note that the question mark needn’t be decided (m1), IM’s synthesis question about what represents 100% in the dog-and-puppy diagram (m2), the MLR1 partner rounds in 12.2 (m3), IM’s synthesis for 12.3 (m5), IM’s MLR8 support in 12.3 (m7, m8), IM’s double-number-line misconception in 12.4 (m9) and IM’s flawed MLR3 answer in 12.4 (m10).",
@@ -12,10 +12,11 @@
   "Math checked: 12.2: 5 × 9 = 45, 9 is \\(\\frac{1}{5}\\) of 45; 90 ÷ 9 = 10, so \\(\\frac{1}{10}\\) and 10%. 12.3: 40% of $5 is $2 (each 20% is $1); 150% of $5 is $7.50 (each 50% is $2.50); Noah has 250%, or \\(\\frac{5}{2}\\), as much as Elena. 12.4: 1.5 is 50% of 3; 80% of 3 is 2.4. Cool-down: 36 is 3 of 4 equal parts, so each is 12 and the large holds 48.",
   "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person. The diagram lines in the tg file are descriptions, not IM’s words.",
   "2026-11-15: persona review fixes. Band frames now match the plan’s release frames; each band’s entry suggests a way in on read 3; m6’s expanding nonverbal no longer assumes 5 parts; “quiet think time” throughout; Diego is “\\(1\\frac{1}{2}\\) times as much” in Premo’s words.",
-  "2026-11-15: round-2 review fixes: band frames and emerging stretch match the plan’s new release frames; colons before quotations (m3, m8, m6 expanding move); “percentage” as a noun."
+  "2026-11-15: round-2 review fixes: band frames and emerging stretch match the plan’s new release frames; colons before quotations (m3, m8, m6 expanding move); “percentage” as a noun.",
+  "2026-11-15: round-3 review fixes: produceToday lists every precise term; “percentage” as a noun; emerging entry reworded; “MLR 8” in cruxWhy."
  ],
  "crux": "12.3",
- "cruxWhy": "12.3 is where students first draw their own tape diagram for a percentage and say the same comparison as a fraction. It is the lesson’s only required activity that addresses the standard, and the cool-down asks the same thing with a new situation. IM’s language support for the lesson, Discussion Supports (MLR8), sits in 12.3’s class discussion: “where do you see 40% or \\(\\frac{2}{5}\\)?”",
+ "cruxWhy": "12.3 is where students first draw their own tape diagram for a percentage and say the same comparison as a fraction. It is the lesson’s only required activity that addresses the standard, and the cool-down asks the same thing with a new situation. IM’s language support for the lesson, Discussion Supports (MLR 8), sits in 12.3’s class discussion: “where do you see 40% or \\(\\frac{2}{5}\\)?”",
  "object": {
   "name": "Elena’s tape diagram",
   "what": "The diagram each student draws for question 1b, Noah’s $5 as the whole and Elena’s $2 as part of it. The discussion tests it: where are the $2, the $5, 40% and \\(\\frac{2}{5}\\)?"
@@ -322,14 +323,17 @@
   "phase": "launch",
   "produceToday": [
    "tape diagram",
-   "___% as much as"
+   "as much",
+   "% of",
+   "100%",
+   "equal parts"
   ],
   "byBand": {
    "emerging": {
-    "entry": "On read 3, they point in order to Noah’s $5, then 40%, then 150%. In the discussion, they point to Noah’s whole tape, then Elena’s parts. They say or write the percentage and the fraction. They can work it out first in any language they share with a partner.",
+    "entry": "On read 3, they point to Noah’s $5, then 40%, then 150%. In the discussion, they point to Noah’s whole tape, then Elena’s parts. They say or write the percentage and the fraction. They can work it out first in any language they share with a partner.",
     "frame": "In the tape diagram, ___ is 100%. It has ___ equal parts. Each part is ___. ___ is ___ of those parts. So it is ___% of the whole, or ___ as much.",
     "does": "They can count the parts of a tape and say or write the numbers.",
-    "reaching": "Naming the whole as 100% and saying Elena’s part as a percent and a fraction.",
+    "reaching": "Naming the whole as 100% and saying Elena’s part as a percentage and a fraction.",
     "stretch": "They say each part as a percentage too: “Each part is 20%.”"
    },
    "developing": {

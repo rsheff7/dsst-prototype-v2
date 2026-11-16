@@ -13,7 +13,8 @@
   "IM’s 17.2 synthesis has a stray “$” mid-paragraph, and its launch says “on the the plan”; 17.3’s misconception says “Point out the the problem.” Not repeated.",
   "Student responses were transcribed from the Teacher Guide page images by a model, not checked by a person.",
   "2026-11-15: persona review fixes. Two days, per Robert. Band frames match the plan’s new form; each entry suggests a way in on the third read. produceToday “per” became “cover.” object.what shortened. Deleted the stale note on the extractor’s junk text (the IM layer’s lessonSynthesis is now empty).",
-  "2026-11-15: round-2 review fixes: band frames match the plan’s new form (1 quart covers ___; so with ___); m7 see reworded; the in-class launch line and the 17.2 cut say where Day 1 ends."
+  "2026-11-15: round-2 review fixes: band frames match the plan’s new form (1 quart covers ___; so with ___); m7 see reworded; the in-class launch line and the 17.2 cut say where Day 1 ends.",
+  "2026-11-15: round-3 review fixes: Day 1 debrief added to the in-class launch; emerging entry shortened. m3 and m5 keep their short say lines (the checker caps Premo say length); the plan’s cards add the opening credit their checks praise."
  ],
  "crux": "17.2",
  "cruxWhy": "17.2 carries the cost half of IM’s first goal. Its closing discussion is where students explain their reasoning out loud: “Can all of these values be correct?” It is also the only activity with an IM routine, Three Reads, for the floor plan.",
@@ -317,7 +318,7 @@
   ],
   "byBand": {
    "emerging": {
-    "entry": "On the first two reads, they point to the plan’s features (window, door, closet, small wall) and each quantity as it is named. You write each on the plan. On the third read, they point to the quantities on the plan in order, wall by wall, as a way to start. They can work it out first in any language they share with a partner.",
+    "entry": "On the first two reads, they point to the plan’s features (window, door, closet, small wall) and each quantity as it is named. On the third read, they point to the quantities on the plan in order, wall by wall, as a way to start. They can work it out first in any language they share with a partner.",
     "frame": "I need ___ quarts. 1 quart covers ___ square feet. Two coats is ___ square feet. Buying ___ costs $___. With ___, the total cost is $___.",
     "does": "They can point to a wall and its length on the floor plan.",
     "reaching": "Naming the paint they need and the total cost, with the rate.",
@@ -360,7 +361,7 @@
   "Each student explains their own total cost"
  ],
  "inClass": {
-  "launch": "“Today we find the wall area. Tomorrow we buy the paint. We’ll read this three times. Nobody solves yet.”",
+  "launch": "“Today we find the wall area. Tomorrow we buy the paint. We’ll read this three times. Nobody solves yet.” Day 1 ends with IM’s debrief: a few students share their wall area; settle disagreements until the class agrees on 300 square feet.",
   "launchFrom": "premo",
   "momentIds": [
    "m3",

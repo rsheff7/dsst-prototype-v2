@@ -13,7 +13,8 @@
   "IM’s 15.3 task says “regular price”; IM’s answer table says “normal price.” This file uses “regular price.”",
   "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person.",
   "2026-11-15: persona review fixes. Frames match the plan’s release frames; each band’s entry starts with a way in on the third read. m2’s means names 1% or 2% as the smaller step. The emerging move uses the student’s own table, not IM’s 100/1/80 table. Avoid lines are gerunds. “Can you explain how…?” has its question mark.",
-  "2026-11-15: round-2 review fixes: frames match the plan’s new release frames (“To find a percentage of a number, like ___%…”); the emerging stretch uses $25 (sale price $20); IM’s prompt “Can you explain how…” is shown without a question mark, as IM prints it; m7 asks “What percentage…”."
+  "2026-11-15: round-2 review fixes: frames match the plan’s new release frames (“To find a percentage of a number, like ___%…”); the emerging stretch uses $25 (sale price $20); IM’s prompt “Can you explain how…” is shown without a question mark, as IM prints it; m7 asks “What percentage…”.",
+  "2026-11-15: round-3 review fixes: emerging frame matches the plan; stretches equal the plan’s; produceToday lists every precise term (percentage, % of, 1%, multiply); the discussion table is drawn with only its first row filled; the 25-tick-mark and 20%-off patterns are “build” (correct strategies); m1, m2 and m7 criteria match the plan’s checks."
  ],
  "crux": "15.3",
  "cruxWhy": "IM says 15.3 makes the lesson’s main idea explicit: to find \\(P\\%\\) of a number, multiply it by \\(\\frac{P}{100}\\). Goals 2 and 3 are 15.3’s work: generalize the process and justify it out loud. The lesson synthesis states it, and the cool-down asks students to use it.",
@@ -43,7 +44,7 @@
    "rehearse": true,
    "criteria": [
     "Asked the class, not just the student, what to remember",
-    "Linked it to the problem before, 50 ÷ 100",
+    "Asked how many hundredths are in 7, if no one could say",
     "Didn’t give the rule yourself"
    ]
   },
@@ -60,8 +61,8 @@
    "evidence": "This intermediate percentage does not work well for the last question, however, prompting them to find a workaround.",
    "rehearse": true,
    "criteria": [
-    "Started from the 40% they already had",
     "Asked for a smaller step without naming one",
+    "Pointed to the 40% they already had, if they stayed stuck",
     "Didn’t tell them to find 1%"
    ]
   },
@@ -160,7 +161,7 @@
    "rehearse": true,
    "criteria": [
     "Asked them to name the percentage the expression finds",
-    "Pointed them to a price they already worked, such as $10",
+    "Pointed them to the $10 T-shirt, if they weren’t sure",
     "Didn’t cross out the expressions for them"
    ]
   },
@@ -238,7 +239,7 @@
   },
   {
    "activityId": "15.2",
-   "type": "almost",
+   "type": "build",
    "says": "A double number line from 0 to 250 with 25 tick marks, one every 4%.",
    "why": "They trust the double number line and draw all of it.",
    "shows": "They found the right step, 4% for every 10 people. Multiplying instead of drawing is next.",
@@ -273,7 +274,7 @@
   },
   {
    "activityId": "15.3",
-   "type": "almost",
+   "type": "build",
    "says": "“10% of $55 is 5.50, times 2 is 11, and 55 minus 11 is 44.”",
    "why": "They take 20% off instead of finding 80% directly.",
    "shows": "They know 80% is 100% minus 20%. A one-step process is next.",
@@ -311,12 +312,15 @@
   "routine": "MLR1: Stronger and Clearer Each Time",
   "phase": "launch",
   "produceToday": [
-   "percentage"
+   "percentage",
+   "% of",
+   "1%",
+   "multiply"
   ],
   "byBand": {
    "emerging": {
     "entry": "Third read: they point to the regular price and the 80% in order, and show which is the whole. In the partner rounds, they point along their own table as they read their process. They can work it out first in any language they share with a partner.",
-    "frame": "I multiply by ___. 1% is ___. So ___% is ___.",
+    "frame": "I multiply by ___. 1% of the number is ___. So ___% of the number is ___.",
     "does": "They can find a sale price and point to the step they repeated.",
     "reaching": "Saying the step and one reason, starting from 1%.",
     "stretch": "They try their process on one more price, such as $25, and say the sale price."
@@ -326,7 +330,7 @@
     "frame": "To find a percentage of a number, like ___%, I multiply by ___. It works because 1% of the number is ___, so that percentage of it is ___. Another way to write it is ___.",
     "does": "They can say the process in short phrases: “times 0.8.”",
     "reaching": "Naming what they multiply and why, with “% of” and “1%.”",
-    "stretch": "They name one other expression that also works, such as \\(\\frac{80}{100}\\) times the price."
+    "stretch": "They name one other expression that also works, and say why it is equal."
    },
    "expanding": {
     "entry": "Third read: they suggest two ways to find a sale price and say which is quicker. In the partner rounds, they answer “Will this expression always work?” and make their draft clearer each time. They can work it out first in any language they share with a partner.",
@@ -374,7 +378,7 @@
  "beforeClass": [
   "Have calculators available for 15.3; IM allows them so every student can take part.",
   "For Stronger and Clearer Each Time (MLR 1): post IM’s feedback prompts, “Can you explain how…” and “Will this expression always work? How do you know?”",
-  "For 15.3’s discussion: draw the table percentage | regular price with rows 100 | \\(x\\), 1, and 80, ready to fill.",
+  "For 15.3’s discussion: draw a table headed “percentage” and “regular price.” Fill the first row, 100 and \\(x\\); leave rows for 1 and 80 blank.",
   "Know the sale prices: $8; $0.80, $3.20, $8, $44, $96."
  ]
 }

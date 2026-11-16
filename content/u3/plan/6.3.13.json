@@ -13,7 +13,8 @@
   "13.3 and 13.4 have no plan language supports (D7). 13.3’s IM support, MLR3 with IM’s flawed answer, appears on its m7 card as the student work.",
   "The checker reports one error for this lesson, in the Premo layer: the extractor misses 13.2’s MLR1 support because of a typo in IM’s text. See the build report.",
   "2026-11-15: persona review fixes. Form reworded (“So for ___, I ___.”) so the percentage isn’t copied into a second blank; models, posted sentence and check sounds match it exactly. Emerging frame ends “I ___.” so any method fits; developing adds “Another way,” and no band nonverbal assumes a double number line. m3’s goingOn no longer writes “25% = \\(\\frac14\\).” Three Reads read 1 listen-for, the mental-math step in the launch, m8’s question, m7 shown as IM’s flawed example, and the synthesis card’s say now includes the crux prompt. m6 has one say line for every level.",
-  "2026-11-15: round-2 review fixes: the form now ends “which gives ___,” so every model sentence states the answer (exemplar 18 hours, posted 7 pages, check 9 apples, synthesis “\\(\\frac34\\) of the number”; “or multiply by \\(\\frac34\\)” dropped as past the frame); band frames follow; the extra partner share before the rounds deleted, so Round 1 is the first partner talk (m6 at minute 8 in Round 1, the synthesis card moved to minute 7 and before m6); m3 renamed; “not knowing where to start” moved to barriers; IM’s feedback starter quoted without Premo’s “?”."
+  "2026-11-15: round-2 review fixes: the form now ends “which gives ___,” so every model sentence states the answer (exemplar 18 hours, posted 7 pages, check 9 apples, synthesis “\\(\\frac34\\) of the number”; “or multiply by \\(\\frac34\\)” dropped as past the frame); band frames follow; the extra partner share before the rounds deleted, so Round 1 is the first partner talk (m6 at minute 8 in Round 1, the synthesis card moved to minute 7 and before m6); m3 renamed; “not knowing where to start” moved to barriers; IM’s feedback starter quoted without Premo’s “?”.",
+  "2026-11-15: round-3 review fixes: emerging frame keeps “of that number”; synthesis sounds end “which gives the same as multiplying by \\(\\frac{3}{4}\\)” (crux, synth:13.2, m6); “IM:” dropped before paraphrase (synth:13.2 why, 13.3 monitor)."
  ],
  "story": "Lesson 13 sits in the middle of the percentages section. It names the benchmark percentages, 10%, 25%, 50% and 75%, as fractions of a number, which Lesson 14 uses to solve percentage problems.",
  "previous": "In Lesson 12 students used tape diagrams to see a percentage as equal parts of 100%. Today they name those parts as fractions and use them to find percentages in their heads.",
@@ -127,7 +128,7 @@
     "m8"
    ],
    "grouping": "Quiet think time to finish, then share explanations with a partner, then the whole class.",
-   "monitor": "IM: students will finish quickly. Spend the time on how they reasoned, and look for fractions they used.",
+   "monitor": "IM says students will finish quickly. Spend the time on how they reasoned, and look for fractions they used.",
    "momentCriteria": {
     "m7": [
      "Pointed them to the 9 in IM’s diagram",
@@ -198,7 +199,7 @@
    ],
    "byBand": {
     "emerging": {
-     "frame": "___% of a number is ___ of it. I ___. That gives ___.",
+     "frame": "___% of a number is ___ of that number. I ___. That gives ___.",
      "stretch": "They check one answer a second way: divide first, then multiply.",
      "nonverbal": "They shade the matching part of a tape, then point to the fraction in their frame."
     },
@@ -224,7 +225,7 @@
     "Then highlight IM’s three facts: 50%, 10% and 75% of a quantity are \\(\\frac{1}{2}\\), \\(\\frac{1}{10}\\) and \\(\\frac{3}{4}\\) of that quantity."
    ],
    "prompt": "How can you find 75% of any number?",
-   "sounds": "75% of a number is \\(\\frac{3}{4}\\) of that number. So for any number, I divide by 4 and multiply by 3, which gives \\(\\frac{3}{4}\\) of the number."
+   "sounds": "75% of a number is \\(\\frac{3}{4}\\) of that number. So for any number, I divide by 4 and multiply by 3, which gives the same as multiplying by \\(\\frac{3}{4}\\)."
   }
  },
  "lessonSynthesis": {
@@ -503,8 +504,8 @@
     "Gave partners a question starter to ask",
     "Had students rewrite their rule before the highlights"
    ],
-   "sounds": "75% of a number is \\(\\frac{3}{4}\\) of that number. So for any number, I divide by 4 and multiply by 3, which gives \\(\\frac{3}{4}\\) of the number.",
-   "why": "IM: Stronger and Clearer gives students rounds of feedback, so their own explanation gets clearer each time. Here it turns “÷ 4 × 3” into a rule with its reason.",
+   "sounds": "75% of a number is \\(\\frac{3}{4}\\) of that number. So for any number, I divide by 4 and multiply by 3, which gives the same as multiplying by \\(\\frac{3}{4}\\).",
+   "why": "IM’s routine, Stronger and Clearer, gives students rounds of feedback, so their own explanation gets clearer each time. Here it turns “÷ 4 × 3” into a rule with its reason.",
    "runIt": [
     "Each student starts from their written rule for 75% of any number.",
     "Students meet 2–3 partners in a row. Each partner asks one question: “Can you explain how…” or “You should expand on…”",
@@ -534,7 +535,7 @@
     "Didn’t say the sentence for them"
    ],
    "ifNot": "If you shade 3 of 4 equal parts of a tape, what percentage is shaded?",
-   "sounds": "75% of a number is \\(\\frac{3}{4}\\) of that number. So for any number, I divide by 4 and multiply by 3, which gives \\(\\frac{3}{4}\\) of the number.",
+   "sounds": "75% of a number is \\(\\frac{3}{4}\\) of that number. So for any number, I divide by 4 and multiply by 3, which gives the same as multiplying by \\(\\frac{3}{4}\\).",
    "say": [
     "Why do your steps work? What fraction of the number is 75%?"
    ]

@@ -13,16 +13,17 @@
   "NEW student work, Premo’s: the m1 “2 centimeters,” the m3 two piles, the m4 kilogram pile, the m6 “It’s small. Ounce,” and the flawed match’s reason sentence.",
   "Non-crux activities carry no language supports (D7).",
   "2026-11-15: persona review fixes. Synthesis sounds now justify the bread with the box of 96 crayons (IM puts both under 1 pound); peanut butter was in the mismatch too. That sentence keeps “, not 1 kilogram” beyond the frame, because it answers the mismatch. Release talk moments restore IM’s new-group questions. Board line and precise terms aligned: precise is now “closest to” and “about the same” (both in the frame), and the board line quotes only those. Choice marks now “more (or less).” Emerging frame keeps the comparison with the other unit; developing and expanding frames add an open clause. m6 has one say line. Long sentences split. Each band in Premo’s cruxLanguage now has a way in on the third read.",
-  "2026-11-15: round-2 review fixes: new-group questions quoted from IM word for word; 2.3 cut now skips the rewrite if short; posted sentence is the bottle cap against a thumb tip; synthesis sounds end where the form ends (no “not 1 kilogram”); colons after “asks”; “It’s small. Ounce” moved to barriers; Premo frames now equal the plan’s."
+  "2026-11-15: round-2 review fixes: new-group questions quoted from IM word for word; 2.3 cut now skips the rewrite if short; posted sentence is the bottle cap against a thumb tip; synthesis sounds end where the form ends (no “not 1 kilogram”); colons after “asks”; “It’s small. Ounce” moved to barriers; Premo frames now equal the plan’s.",
+  "2026-11-15: round-3 review fixes: Premo stretches now match the plan’s for every band; Premo produceToday carries both precise terms (“closest to,” “about the same”); board content line and other Premo lists drop the Oxford comma (house style). imGoal stays verbatim."
  ],
  "story": "Lesson 2 is optional. It gives every standard unit a size students can picture, using everyday objects. Lessons 3 and 4 then use ratios to convert between units.",
- "previous": "In Lesson 1 students estimated a tree’s height and found minutes per window. Today they anchor how big each unit of length, volume, and weight or mass is.",
+ "previous": "In Lesson 1 students estimated a tree’s height and found minutes per window. Today they anchor how big each unit of length, volume and weight or mass is.",
  "clo": {
   "imGoal": "Identify which unit is closest to the length, volume, weight, or mass of a given object, and explain (orally) the reasoning.",
   "function": "explain",
   "form": "The ___ is closest to 1 ___. It is about the same ___ as a ___, and 1 ___ is more (or less) than that.",
   "board": {
-   "content": "We will match everyday objects to the closest unit of length, volume, weight, or mass.",
+   "content": "We will match everyday objects to the closest unit of length, volume, weight or mass.",
    "language": "We will explain, out loud, which unit is “closest to” an object, naming an object “about the same” size."
   },
   "mode": "out loud",
@@ -146,7 +147,7 @@
    {
     "focus": "Quantities and units",
     "say": "Read it again. What do the units measure? What do L, V and WM mean?",
-    "listenFor": "Length, volume, and weight or mass. L is length, V is volume, WM is weight or mass."
+    "listenFor": "Length, volume and weight or mass. L is length, V is volume, WM is weight or mass."
    },
    {
     "focus": "Ways to solve it",
@@ -354,7 +355,7 @@
     "Close pairs: a kilogram is more than a pound. A liter is a little more than a quart. A meter is a little longer than a yard."
    ],
    "checks": [
-    "Sorted the units into length, volume, and weight or mass",
+    "Sorted the units into length, volume and weight or mass",
     "Put the loaf of bread under 1 pound and the textbook under 1 kilogram",
     "Matched the large sports drink bottle to 1 quart and the large milk jug to 1 gallon"
    ]

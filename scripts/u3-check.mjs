@@ -331,7 +331,7 @@ for (const f of planFiles) {
     for (const k of NEEDS[c.type]) if (!has[k] || (Array.isArray(has[k]) && !has[k].length)) err(cat, `a ${c.type} card needs ${k}`);
     if (c.type === 'routine' && c.runIt && (c.runIt.length < 3 || c.runIt.length > 5)) err(cat, 'runIt needs 3–5 steps');
     if (c.type === 'routine' && c.kind !== 'rounds' && !c.sounds) err(cat, 'a routine card needs sounds (Three Reads has its listen-for lines instead)');
-    if (c.ifNot && !/\?\s*$/.test(c.ifNot)) err(cat, 'ifNot is one question');
+    if (c.ifNot && !/\?[”"’]?\s*$/.test(c.ifNot)) err(cat, 'ifNot is one question');
     if (c.why && wordsIn(c.why) > 40) err(cat, `why is ${wordsIn(c.why)} words; keep it to two short sentences`);
     if (c.more) err(cat, 'more is retired; use the rule’s guidance fields');
     // Model: every card but Do the task, Three Reads and the by-level card says something.
@@ -430,7 +430,7 @@ for (const f of planFiles) {
         else if (/^\s?\(([^)]*)\)$/.test(tok)) out += `(?:\\s?\\(?${esc(tok.trim().slice(1, -1))}\\)?)?`;
         else out += esc(tok);
       }
-      return new RegExp(out.replace(/\\ is\(\?:\\s\?\\\(\?are\\\)\?\)\?/, '\\ (?:is|are)').replace('(?:\\s?\\(?or divide\\)?)?', '').replace(/multiply/g, '(?:multiply|divide)').replace('more(?:\\s?\\(?or less\\)?)?', '(?:more|less)').replace('larger(?:\\s?\\(?or smaller\\)?)?', '(?:larger|smaller)') + '$', 's');
+      return new RegExp(out.replace(/ is\(\?:\\s\?\\\(\?are\\\)\?\)\?/, ' (?:is|are)').replace('(?:\\s?\\(?or divide\\)?)?', '').replace(/multiply/g, '(?:multiply|divide)').replace('more(?:\\s?\\(?or less\\)?)?', '(?:more|less)').replace('larger(?:\\s?\\(?or smaller\\)?)?', '(?:larger|smaller)') + '$', 's');
     };
     if (pl.clo?.form) {
       const re = formRe(pl.clo.form);

@@ -15,7 +15,8 @@
   "NEW for review: Pair A, B and C’s work on the share-order card, and Pair C’s “6 × 25% = 150%.” Checked: 150 cents is 150%; 4 quarters is 100 cents and 2 more are 50 cents, 150%; 6 × 25 = 150.",
   "Non-crux activities carry no language supports (D7).",
   "2026-11-15: persona review fixes. New CLO form (Elena 4, Dana 2): every blank holds a different quantity, and no “is worth.” Exemplar, posted sentence, release, m7, synthesis and check sounds follow it. Exemplar keeps “The percentage is a rate per 100.” so it says every precise term. Precise “% of a dollar” is now “% of,” to match the board. Band frames: emerging is the form in three short sentences; developing adds “more (or less) than 100% because ___”; expanding uses one coin’s percent and “Another way.” New emerging and developing nonverbal moves (Elena 5). Flawed explanation moved out of synthesis step 1 into the card’s show. “IM:” dropped from the Three Reads why. m7 gets its one say line. Long sentences split. One spelling: “half dollar.”",
-  "2026-11-15: round-2 review fixes: the exemplar’s bolted-on “The percentage is a rate per 100.” moved into clo.form as the reason (“A percentage is a rate per 100, so it is ___% of a dollar”), so the form carries “percentage” and “rate per 100”; every model sentence follows it. Release say is the success criteria; talk moment 2 is round 1 after the flawed explanation; synthesis steps 1–2 merged; cut shares two pairs; “percentage” replaces “the percent” as a noun; colons after “asks”; long lines split."
+  "2026-11-15: round-2 review fixes: the exemplar’s bolted-on “The percentage is a rate per 100.” moved into clo.form as the reason (“A percentage is a rate per 100, so it is ___% of a dollar”), so the form carries “percentage” and “rate per 100”; every model sentence follows it. Release say is the success criteria; talk moment 2 is round 1 after the flawed explanation; synthesis steps 1–2 merged; cut shares two pairs; “percentage” replaces “the percent” as a noun; colons after “asks”; long lines split.",
+  "2026-11-15: round-3 fixes. Robert’s decision: the form keeps “A percentage is a rate per 100” as fixed words. It is IM’s definition and the lesson’s language goal, so it is an exception to the rule that the reason goes in a blank. The developing frame now carries it too (Dana), matching Premo; Premo stretches equal the plan’s. The Three Reads card no longer says the launch is done; m4 adds what to share if short; “percentage” replaces “percent” as a noun in the m4 card, synthesis prompt, listener question and quick check."
  ],
  "story": "Lesson 10 opens the percentages section. Using coins and a dollar, students learn that a percentage is a rate per 100. They also meet the double number line that Lesson 11 builds on.",
  "previous": "In Lesson 9 students used unit rates, rates per 1, to judge deals; today a rate per 100 gets its name: percentage.",
@@ -175,7 +176,7 @@
      "nonverbal": "They shade 100-cent bars, starting a second bar when the coins pass a dollar."
     },
     "developing": {
-     "frame": "The value of ___ is ___ cents, and a dollar is 100 cents, so it is ___% of a dollar. It is more (or less) than 100% because ___.",
+     "frame": "The value of ___ is ___ cents, and a dollar is 100 cents. A percentage is a rate per 100, so it is ___% of a dollar. It is more (or less) than 100% because ___.",
      "stretch": "They check it another way: one coin’s percentage of a dollar, times the number of coins.",
      "nonverbal": "They mark the quarter bar six times along the dollar bar and point to where it passes 100 cents."
     },
@@ -191,11 +192,11 @@
    "steps": [
     "Before pairs share the 6 quarters answer, show IM’s flawed explanation.",
     "Pairs say what is wrong, then each writes it as a correct 6 quarters sentence.",
-    "Round 1: read it to a partner. The listener asks: “Percent of what?” or “How do you know?” Then rewrite it, stronger and clearer.",
+    "Round 1: read it to a partner. The listener asks: “A percentage of what?” or “How do you know?” Then rewrite it, stronger and clearer.",
     "Share 2–3 pairs, cents first and ratio reasoning last. Write a short version of each for all to see.",
     "End with IM’s double number line: 0, 50, 100, 150 cents over 0%, 50%, 100%, 150%. We line up 100% and 100 because 100% of 100 is 100."
    ],
-   "prompt": "What is wrong with this explanation? What percent of a dollar is the value of 6 quarters, and how do you know?",
+   "prompt": "What is wrong with this explanation? What percentage of a dollar is the value of 6 quarters, and how do you know?",
    "sounds": "The value of 6 quarters is 150 cents, and a dollar is 100 cents. A percentage is a rate per 100, so it is 150% of a dollar. The explanation should say 50% greater than a dollar, not 50% of a dollar."
   }
  },
@@ -206,7 +207,7 @@
   ],
   "pointTo": "Point to the 10.2 board: the stronger 6 quarters sentences and the line with 100 cents over 100%. If you taught 10.3, point to its double number line instead: 1.00 lined up with 100%.",
   "check": {
-   "question": "What percent of a dollar is the value of 7 dimes and 1 nickel? How do you know?",
+   "question": "What percentage of a dollar is the value of 7 dimes and 1 nickel? How do you know?",
    "sounds": "The value of 7 dimes and 1 nickel is 75 cents, and a dollar is 100 cents. A percentage is a rate per 100, so it is 75% of a dollar."
   }
  },
@@ -321,7 +322,7 @@
    "routine": "MLR6: Three Reads",
    "language": true,
    "name": "Read the problem three times",
-   "where": "Start of Activity 10.2. You have just said a rate per 100 is called a percentage. The coin task is up, last two questions covered.",
+   "where": "Start of Activity 10.2. The coin task is up, last two questions covered. IM’s launch comes first.",
    "show": [
     "IM’s launch first: a “rate per 1” tells us the amount of one quantity for 1 of another. Today: “rates per 100.”",
     "The task: the coin table, the quarter sentence and its two bars (25 cents, 100 cents), and the matching list."
@@ -401,7 +402,7 @@
    "ask": "What do you say to this student?",
    "aim": "The student says why cents match the percentage for a dollar.",
    "say": [
-    "Why does that work for a dollar?"
+    "That works for a dollar. Why does it work?"
    ],
    "checks": [
     "Agreed the pattern works for a dollar",
@@ -432,7 +433,7 @@
     "Then ask, and let pairs find it:"
    ],
    "say": [
-    "What is wrong with this explanation? What percent of a dollar is the value of 6 quarters, and how do you know?",
+    "What is wrong with this explanation? What percentage of a dollar is the value of 6 quarters, and how do you know?",
     "Fix it with your partner first."
    ],
    "checks": [
@@ -446,7 +447,7 @@
    "why": "IM gives this flawed explanation with MLR3, Clarify, Critique, Correct; Premo runs it through Stronger and Clearer. Students fix IM’s line, then sharpen their own through talk.",
    "runIt": [
     "Show IM’s flawed explanation. Pairs say what is wrong, then each writes it as a correct 6 quarters sentence.",
-    "Round 1: read it to a partner. The listener asks: “Percent of what?” or “How do you know?” Rewrite it.",
+    "Round 1: read it to a partner. The listener asks: “A percentage of what?” or “How do you know?” Rewrite it.",
     "Share 2–3 pairs, cents first and ratio reasoning last. Write a short version of each for all to see.",
     "End with IM’s double number line: 100 cents lined up with 100%."
    ]
@@ -490,7 +491,7 @@
    "show": [
     "Pair A · cents: “6 quarters is 150 cents. A dollar is 100 cents. So 150%.”",
     "Pair B · quarter by quarter: “4 quarters is 100%. 2 more quarters is 50% more. 150%.”",
-    "Pair C · one coin’s percent: “A quarter is 25% of a dollar. 6 × 25% = 150%.”"
+    "Pair C · one coin’s percentage: “A quarter is 25% of a dollar. 6 × 25% = 150%.”"
    ],
    "ask": "Who do you call first? What do you ask them?",
    "aim": "Students see ratio reasoning grow from the cents way.",
@@ -498,7 +499,8 @@
     "Start us off. How did you get 6 quarters?"
    ],
    "notes": [
-    "Order: Pair A, then Pair B, then Pair C. Write a short version of each for all to see."
+    "Order: Pair A, then Pair B, then Pair C. Write a short version of each for all to see.",
+    "If short, share Pair A, then Pair C."
    ],
    "checks": [
     "Called the cents way first",

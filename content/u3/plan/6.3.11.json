@@ -13,14 +13,15 @@
   "NEW for review: the share-order cards’ group and student work (11.2 Groups A–C, 11.3 Students A–C). Checked: 25% of 8 is 2; 8 + 2 = 10; 8 × \\(\\frac{5}{4}\\) = 10; 9, 18, 27, 36, 45; 4.5 × 10 = 45; 9 × 5 = 45.",
   "Non-crux activities carry no language supports (D7).",
   "2026-11-15: persona review fixes. New CLO form and exemplar (see above); precise adds “tick mark,” singular, because the checker needs the exemplar to say every precise term and the frame says “each tick mark.” The exemplar opens with “Andre’s puppy is 30% of its adult weight.” so it says “% of”; the rest matches the form exactly. Band frames: emerging is the form in short sentences; developing adds “because ___”; expanding doesn’t assume a double number line and adds “Another way.” Release, synthesis, m8 and check sounds follow the form. Board language per Dana. “quiet work time” is now “quiet think time” (IM’s own 11.1 launch says “work”). Read 2 listens for Jada’s puppy only. IM’s “What about 110% of 50?” added to pointTo. m8 gets one say line. “IM:” dropped from the Three Reads why. Long sentences split.",
-  "2026-11-15: round-2 review fixes: clo.form now ends “So ___% of the ___ is ___,” so it says “% of” as the board promises; the exemplar is the form only (the “Andre’s puppy…” lead is gone), and every frame and model sentence follows it. The partner talk before the written explanation and the optional Round 2 are deleted, so Round 1 is the first partner talk. IM’s synthesis line and questions added to pointTo. Nonverbal moves fit a line or a table. Math cards show only the double number lines. Long lines split; colons after “asks” and “say.”"
+  "2026-11-15: round-2 review fixes: clo.form now ends “So ___% of the ___ is ___,” so it says “% of” as the board promises; the exemplar is the form only (the “Andre’s puppy…” lead is gone), and every frame and model sentence follows it. The partner talk before the written explanation and the optional Round 2 are deleted, so Round 1 is the first partner talk. IM’s synthesis line and questions added to pointTo. Nonverbal moves fit a line or a table. Math cards show only the double number lines. Long lines split; colons after “asks” and “say.”",
+  "2026-11-15: round-3 fixes. New form (Elena): “On the double number line, ___ is 100%, and ___ is ___% of it. Each tick mark is ___% and ___, so ___% is ___.” It fits the cool-down: the large bottle is 100%, the medium bottle is 70% of it, each tick mark is 10% and 50 ml, so 70% is 350 ml. Every model sentence follows it, checked: Andre 9 ÷ 3 = 3, 3 × 10 = 30; Jada 9 × 5 = 45; posted 28 ÷ 7 = 4, 4 × 10 = 40; check 120 ÷ 3 = 40, 40 × 5 = 200. When finding 100%, the “___%” blank repeats the given 100 (allowed: a given value). Band frames follow; Premo’s match. Read 1 listens for one puppy; pointTo lead cut; synthesis note names one round with IM’s prompts; “percentage” replaces “percent” as a noun; “IM:” dropped before paraphrase (synth:11.3, m11)."
  ],
  "story": "Lesson 11 is the second lesson on percentages. Students find percentages of numbers other than 100 or 1, and find 100% from another percentage. Lesson 12 adds tape diagrams.",
  "previous": "In Lesson 10 students found percentages of 100 cents and of 1 dollar on a double number line. Today 100% lines up with any amount: $40, 8 miles, a puppy’s adult weight.",
  "clo": {
   "imGoal": "Explain (orally) how to use a double number line diagram or table to solve problems such as A% of B is ? and A% of ? is C.",
   "function": "explain",
-  "form": "The ___ is 100%. On the double number line, each tick mark is ___% and ___. So ___% of the ___ is ___.",
+  "form": "On the double number line, ___ is 100%, and ___ is ___% of it. Each tick mark is ___% and ___, so ___% is ___.",
   "board": {
    "content": "We will use a double number line or a table to solve problems about percentages.",
    "language": "We will explain, out loud, how we used the “double number line,” naming what 100% is and using “% of.”"
@@ -37,10 +38,10 @@
    "jumps",
    "count up by"
   ],
-  "exemplar": "The adult weight is 100%. On the double number line, each tick mark is 10% and 3 pounds. So 100% of the adult weight is 30 pounds.",
+  "exemplar": "On the double number line, the adult weight is 100%, and 9 pounds is 30% of it. Each tick mark is 10% and 3 pounds, so 100% is 30 pounds.",
   "lookFor": "The juice answer says the large bottle, 500 ml, is 100%. It finds 70% of it: 10% is 50 ml, so 70% is 7 × 50 = 350 ml. A double number line or a table both count.",
   "posted": {
-   "sentence": "The full height is 100%. On the double number line, each tick mark is 10% and 4 inches. So 100% of the full height is 40 inches."
+   "sentence": "On the double number line, the full height is 100%, and 28 inches is 70% of it. Each tick mark is 10% and 4 inches, so 100% is 40 inches."
   }
  },
  "activities": [
@@ -98,7 +99,7 @@
    "monitor": "Monitor for IM’s three strategies for 125%: skip-counting on the line, 100% plus 25%, multiplying by \\(\\frac{5}{4}\\). Pick one group per strategy, to share in that order.",
    "momentCriteria": {
     "m3": [
-     "Asked what the 25% is a percent of",
+     "Asked what the 25% is a percentage of",
      "Pointed them to 25% on the line",
      "Didn’t tell them 25% of 8"
     ],
@@ -129,7 +130,7 @@
     "Language: “It’s 45,” with no word for what 45 is or why it’s at 100%."
    ],
    "backPocket": [
-    "What percent is the adult weight?",
+    "What percentage is the adult weight?",
     "Is each jump the same size?",
     "What smaller step would land on 100%?",
     "What is 45? Why is it at 100%?"
@@ -155,7 +156,7 @@
    {
     "focus": "The situation",
     "say": "Listen as I read. No numbers yet: what is happening?",
-    "listenFor": "Two puppies are growing. A vet says how close each is to its grown-up weight."
+    "listenFor": "A puppy is growing. A vet says how close it is to its adult weight."
    },
    {
     "focus": "Quantities and units",
@@ -172,23 +173,23 @@
    "successCriteria": "In your puppy explanation, say what 100% stands for, and say each step on the double number line or table.",
    "say": "Say what 100% is, then each step to it.",
    "talkMoments": [
-    "In the Stronger and Clearer round, each student reads their puppy explanation using Today’s frame: “The ___ is 100%. On the double number line, each tick mark is ___% and ___. So ___% of the ___ is ___.”"
+    "In the Stronger and Clearer round, each student reads their puppy explanation using Today’s frame: “On the double number line, ___ is 100%, and ___ is ___% of it. Each tick mark is ___% and ___, so ___% is ___.”"
    ],
    "byBand": {
     "emerging": {
-     "frame": "The ___ is 100%. Each tick mark is ___%. Each tick mark is also ___. So ___% of the ___ is ___.",
+     "frame": "On the double number line, ___ is 100%. ___ is ___% of it. Each tick mark is ___% and ___. So ___% is ___.",
      "stretch": "They say the whole sentence aloud, naming what 100% stands for.",
      "nonverbal": "On their line or table, they circle 100%, write the weight beside it, and mark the equal steps that get there."
     },
     "developing": {
-     "frame": "The ___ is 100%. On the double number line, each tick mark is ___% and ___, because ___. So ___% of the ___ is ___.",
+     "frame": "On the double number line, ___ is 100%, and ___ is ___% of it. Each tick mark is ___% and ___, because ___. So ___% is ___.",
      "stretch": "They say why a smaller step helps for Andre’s puppy.",
      "nonverbal": "They tap each step from 0% to 100%, along a line or down a table, then point to the weight at 100%."
     },
     "expanding": {
-     "frame": "The ___ is 100%. I found ___% first, because ___. So ___% of the ___ is ___. Another way: ___.",
+     "frame": "___ is 100%, and ___ is ___% of it. I found ___% first, because ___. So ___% is ___. Another way: ___.",
      "stretch": "They show the same steps in a table and say which is quicker for 30%.",
-     "nonverbal": "On a line or a 2-row table, they draw arrows from the known percent to 100%."
+     "nonverbal": "On a line or a 2-row table, they draw arrows from the known percentage to 100%."
     }
    }
   },
@@ -202,7 +203,7 @@
     "Ask: what is the same about the two puppies? What is different?"
    ],
    "prompt": "How did you find the adult weight? What does 100% stand for, and how did you get there?",
-   "sounds": "The adult weight is 100%. On the double number line, each tick mark is 20% and 9 pounds. So 100% of the adult weight is 45 pounds."
+   "sounds": "On the double number line, the adult weight is 100%, and 9 pounds is 20% of it. Each tick mark is 20% and 9 pounds, so 100% is 45 pounds."
   }
  },
  "lessonSynthesis": {
@@ -211,10 +212,10 @@
    "To find 100% from another percentage, find a step that reaches 100% in equal jumps. For example, 30% is 9 pounds, so 10% is 3 and 100% is 30.",
    "Always say what 100% stands for: the goal, Saturday’s distance, the adult weight."
   ],
-  "pointTo": "Point to the 11.3 board: the puppy double number lines and the rewritten explanations, with 100% marked. If you taught 11.2, point to its displays: 8 miles at 100%. Then draw IM’s line: 0 and 50 pounds over 0% and 100%. Ask: “What situation might this double number line represent?” “Where can we place some other percentages of 50?” If no one goes past 100%: “What about 110% of 50?”",
+  "pointTo": "Point to the 11.3 board, with 100% marked. Then draw IM’s line: 0 and 50 pounds over 0% and 100%. Ask: “What situation might this double number line represent?” “Where can we place some other percentages of 50?” If no one goes past 100%: “What about 110% of 50?”",
   "check": {
    "question": "A class has read 60% of a book. That is 120 pages. How many pages is the whole book? How do you know?",
-   "sounds": "The whole book is 100%. On the double number line, each tick mark is 20% and 40 pages. So 100% of the whole book is 200 pages."
+   "sounds": "On the double number line, the whole book is 100%, and 120 pages is 60% of it. Each tick mark is 20% and 40 pages, so 100% is 200 pages."
   }
  },
  "beforeClass": [
@@ -354,7 +355,7 @@
     "25% of what? Find 25% on the line."
    ],
    "checks": [
-    "Asked what the 25% is a percent of",
+    "Asked what the 25% is a percentage of",
     "Pointed them to 25% on the line",
     "Didn’t tell them 25% of 8"
    ],
@@ -388,7 +389,7 @@
     "Ended on multiplying 8 by \\(\\frac{5}{4}\\)",
     "Asked why 100% plus 25% works if no one said it"
    ],
-   "why": "IM: sequence the shares in the order the narrative gives. The line shows why 125% is 100% and 25% more, before the shortcut."
+   "why": "IM says to sequence the shares in the order its narrative gives. The line shows why 125% is 100% and 25% more, before the shortcut."
   },
   {
    "id": "math:11.3",
@@ -485,7 +486,7 @@
     "Pointed to Today’s frame on the board",
     "Told them when they’ll read it to a partner"
    ],
-   "sounds": "The adult weight is 100%. On the double number line, each tick mark is 20% and 9 pounds. So 100% of the adult weight is 45 pounds.",
+   "sounds": "On the double number line, the adult weight is 100%, and 9 pounds is 20% of it. Each tick mark is 20% and 9 pounds, so 100% is 45 pounds.",
    "why": "IM’s third goal is saying what we find the percentage of. Naming it before work starts means students decide what 100% is before they count."
   },
   {
@@ -504,16 +505,16 @@
    ],
    "student": "A student labeled the line up to 36 pounds and wrote “36 pounds.”",
    "ask": "What do you say to this student?",
-   "aim": "The student decides what percent the adult weight is, then extends the line.",
+   "aim": "The student decides what percentage the adult weight is, then extends the line.",
    "say": [
-    "What percent is the adult weight?"
+    "What percentage is the adult weight?"
    ],
    "checks": [
-    "Asked what percent the adult weight is",
+    "Asked what percentage the adult weight is",
     "Let them find the 100% tick themselves",
     "Didn’t point to the answer on the line"
    ],
-   "ifNot": "When the puppy is fully grown, what percent of its adult weight is it?",
+   "ifNot": "When the puppy is fully grown, what percentage of its adult weight is it?",
    "goingOn": "Their line is right: equal steps of 9 pounds and 20%. The task never says the adult weight is 100%, so they stopped early."
   },
   {
@@ -533,7 +534,7 @@
    "aim": "Students sharpen their puppy explanation with partners, naming what 100% stands for.",
    "notes": [
     "First, each student writes how they found the adult weight.",
-    "Then send them to partners:"
+    "Then send them to partners for one round, with IM’s prompts."
    ],
    "say": [
     "How did you find the adult weight? What does 100% stand for, and how did you get there?",
@@ -544,10 +545,10 @@
     "Ran one partner round, then had students rewrite",
     "Gave listeners IM’s prompts to press for detail"
    ],
-   "sounds": "The adult weight is 100%. On the double number line, each tick mark is 20% and 9 pounds. So 100% of the adult weight is 45 pounds.",
+   "sounds": "On the double number line, the adult weight is 100%, and 9 pounds is 20% of it. Each tick mark is 20% and 9 pounds, so 100% is 45 pounds.",
    "avoid": "Letting partners say “looks good” and move on.",
    "ifNot": "What would make your partner’s explanation clearer?",
-   "why": "IM: Stronger and Clearer gives students a reason to revise, with partners pressing for detail. Here the press is on what 100% stands for.",
+   "why": "Stronger and Clearer gives students a reason to revise, with partners pressing for detail. Here the press is on what 100% stands for.",
    "runIt": [
     "After Jada’s puppy, each student writes a brief explanation: what 100% is, and how they got there.",
     "Round 1: read it to a partner. The listener asks: “Can you explain how…?” or “You should expand on…”",
@@ -563,7 +564,7 @@
    "type": "language",
    "language": true,
    "name": "Help a student say what 100% is",
-   "where": "About 8 minutes into Activity 11.3. Students are in the first partner round.",
+   "where": "About 8 minutes into Activity 11.3. Students are in the partner round.",
    "show": [
     "Their line for Jada’s puppy:",
     "| weight (pounds) | 0 | 9 | 18 | 27 | 36 | 45",
@@ -577,8 +578,8 @@
     "Gave their level’s frame or a way to show it without words",
     "Didn’t say the sentence for them"
    ],
-   "ifNot": "Point to 45. What percent is under it?",
-   "sounds": "The adult weight is 100%. On the double number line, each tick mark is 20% and 9 pounds. So 100% of the adult weight is 45 pounds.",
+   "ifNot": "Point to 45. What percentage is under it?",
+   "sounds": "On the double number line, the adult weight is 100%, and 9 pounds is 20% of it. Each tick mark is 20% and 9 pounds, so 100% is 45 pounds.",
    "goingOn": "Their count is right and lands on 100%. What 45 stands for, and why it is at 100%, isn’t in their words yet.",
    "say": [
     "What is 45? Why is it at 100%?"

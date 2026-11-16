@@ -17,7 +17,8 @@
   "The Info Gap card text comes from IM’s Teacher Guide (printed page 237), copied in tg/6.3.14.json notes. Data Card 1’s line is quoted on the m8 card.",
   "Non-crux activities carry no language supports (D7).",
   "2026-11-15: persona review fixes. Frames: emerging keeps the fraction step; developing and expanding add a “because ___” clause, expanding also “another way”; the form now says “so it is ___% of ___” so the part isn’t copied twice. Nonverbal moves no longer assume one representation. The exemplar and model sentences match the form exactly (the extra “The percentage off is 25%.” is gone). “Percentage” moved to informal, since the board quotes only precise terms. The m6 levels card has one say line. “Info Gap” is one spelling.",
-  "2026-11-15: round-2 review fixes: “percentage” is back on the precise list, carried by the form (“so as a percentage, it is ___% of ___”) and quoted on the board; the emerging frame ends “So it is ___%.”; the lesson-synthesis check is now $9 off $30 (30%), not the posted answer’s 20%; the synthesis prompt asks “Why or why not?” and is the synthesis card’s only say line; 14.3’s card shows IM’s full Problem Card text; “It’s 25” moved from misconceptions to barriers."
+  "2026-11-15: round-2 review fixes: “percentage” is back on the precise list, carried by the form (“so as a percentage, it is ___% of ___”) and quoted on the board; the emerging frame ends “So it is ___%.”; the lesson-synthesis check is now $9 off $30 (30%), not the posted answer’s 20%; the synthesis prompt asks “Why or why not?” and is the synthesis card’s only say line; 14.3’s card shows IM’s full Problem Card text; “It’s 25” moved from misconceptions to barriers.",
+  "2026-11-15: round-3 review fixes: emerging frame ends “So it is ___% of it.” (plan and Premo); Premo stretches equal the plan’s and produceToday adds “100%”; IM’s three lesson-synthesis questions are quoted in pointTo; m7 moves to about 6 minutes; the 14.2 cut takes overflow from 14.3’s second card set; the 14.1 and 14.2 task cards no longer repeat IM’s task; “IM:” now leads only exact quotes; synthesis and m10 checks match what the model says; “percent off” became “a percentage off.”"
  ],
  "story": "Lesson 14 is late in the percentages section. Diagrams are no longer given: students choose a tape diagram, double number line or table, and find a percentage itself for the first time.",
  "previous": "In Lessons 12 and 13 students used tape diagrams and benchmark percentages. Today they pick their own diagram. They also ask what percentage one amount is of another.",
@@ -141,7 +142,7 @@
     ],
     "m10": [
      "Asked whether $24 is the whole or a part",
-     "Pointed to the 40% on the data card",
+     "Asked what the 40% on the data card describes, if they weren’t sure",
      "Let them place $24 and 40% themselves"
     ]
    }
@@ -174,7 +175,7 @@
    ],
    "byBand": {
     "emerging": {
-     "frame": "___ is 100%. ___ is ___ of it. So it is ___%.",
+     "frame": "___ is 100%. ___ is ___ of it. So it is ___% of it.",
      "stretch": "They say what kind of diagram they used and point to 100% on it.",
      "nonverbal": "They circle the 100% value on their diagram, then circle the pair that answers the question."
     },
@@ -211,10 +212,7 @@
    "type": "task",
    "name": "Do the warm-up yourself",
    "where": "Before class. Solve the number talk: two products, found mentally.",
-   "show": [
-    "\\(6\\boldcdot (0.8)\\boldcdot 2\\)",
-    "\\((4.5)\\boldcdot (0.6)\\boldcdot 4\\)"
-   ],
+   "show": [],
    "ask": "Find each product in your head. Which factors did you multiply first?",
    "aim": "Know both products and two ways to get each.",
    "notes": [
@@ -250,7 +248,7 @@
     "Recorded the first strategy as the student said it",
     "Didn’t demonstrate a strategy of your own"
    ],
-   "why": "IM: in a Number Talk, the teacher selects students to share different strategies. Their ways go on the board, not yours."
+   "why": "IM says that in a Number Talk, the teacher selects students to share different strategies. Their ways go on the board, not yours."
   },
   {
    "id": "math:14.2",
@@ -259,10 +257,7 @@
    "type": "task",
    "name": "Do the coupon task yourself",
    "where": "Before class. Solve the task students do today: two coupon questions, no diagram given.",
-   "show": [
-    "Han buys an item with a normal price of $15, and uses a 10% off coupon. How much does he save by using the coupon?",
-    "Clare buys an item with a normal price of $24, but saves $6 by using a coupon. For what percentage off is this coupon?"
-   ],
+   "show": [],
    "ask": "Answer both questions. Draw a diagram or table for each.",
    "aim": "Know both answers and three ways to show each.",
    "notes": [
@@ -286,7 +281,7 @@
    "routine": "MLR6: Three Reads",
    "language": true,
    "name": "Read the task three times",
-   "where": "Start of Activity 14.2. You’ve shown a few coupons, some dollars off and some percent off. The task is up.",
+   "where": "Start of Activity 14.2. You’ve shown a few coupons, some taking dollars off and some taking a percentage off. The task is up.",
    "show": [
     "Han and Clare go shopping, and they each have a coupon. Answer each question and show your reasoning.",
     "Han buys an item with a normal price of $15, and uses a 10% off coupon. How much does he save by using the coupon?",
@@ -410,7 +405,7 @@
    "momentId": "m7",
    "type": "decision",
    "name": "Choose who shares first",
-   "where": "About 7 minutes into Activity 14.2. Partners have explained. You’re about to start the discussion.",
+   "where": "About 6 minutes into Activity 14.2. Partners have explained. You’re about to start the discussion.",
    "show": [
     "Three papers for Han’s question:",
     "Pair A · tape diagram: $15 in 10 equal parts, one part labeled $1.50.",
@@ -454,9 +449,9 @@
     "Could one double number line solve both questions? Why or why not?"
    ],
    "checks": [
-    "Called a tape diagram first, then a double number line or a table",
-    "Wrote students’ own words, with “100%” or “% of” beside them",
-    "Asked why one line can’t solve both, and let students answer"
+    "Wrote “\\(\\frac{1}{10}\\) of 100%” and “10% of $15” beside Pair C’s words, not in place of them",
+    "Asked whether one double number line could solve both questions, and why or why not",
+    "Let students make the connections, and scribed their answers"
    ],
    "sounds": "No. Han’s line has $15 at 100%, and Clare’s has $24 at 100%. The whole is different, so we need two lines.",
    "why": "Collect and Display turns students’ spoken words into a shared reference. Here it holds IM’s point: two diagrams, because the value for 100% differs.",
@@ -488,7 +483,7 @@
     "Card 1: 10% of $40 is $4, so 60% is six of those. Compare that with each device’s price.",
     "Device B: $25 is 100%, so each dollar is 4%. Or Jada is $1 short, so 4% short.",
     "Card 2: $24 is 40%, so 10% is a quarter of $24. Then multiply by 10 for 100%.",
-    "IM: if time is short, the second set of cards can be optional."
+    "IM says that if time is short, the second set of cards can be optional."
    ],
    "checks": [
     "Found Jada has $24, 60% of $40, so she can afford only Device A",
@@ -518,7 +513,7 @@
     "Had the data partner ask what information was needed",
     "Kept the calculating with the problem-card partner"
    ],
-   "why": "IM: the Info Gap gives students a reason to ask for the information a problem needs. A card read aloud skips that, and the data partner does the math."
+   "why": "IM says the Info Gap has students decide what information they need, then ask for it. A card read aloud skips that, and the data partner does the math."
   },
   {
    "id": "m10",
@@ -541,7 +536,7 @@
    ],
    "checks": [
     "Asked whether $24 is the whole or a part",
-    "Pointed to the 40% on the data card",
+    "Asked what the 40% on the data card describes, if they weren’t sure",
     "Let them place $24 and 40% themselves"
    ],
    "goingOn": "They can find a percentage of an amount, the kind of problem from earlier lessons. Here the whole is unknown, and $24 is the part.",
@@ -554,14 +549,14 @@
    "Every one starts with what lines up with 100%: here, the full 400-liter tank.",
    "To find what percentage 80 is of 400, ask what fraction of 400 is 80. It is \\(\\frac{1}{5}\\), and \\(\\frac{1}{5}\\) of 100% is 20%."
   ],
-  "pointTo": "Point to the 14.2 board: Han’s diagram with $15 at 100%, Clare’s with $24 at 100%, and the words beside them. If you taught 14.3, point to its tables too.",
+  "pointTo": "Point to the 14.2 board: Han’s diagram with $15 at 100%, Clare’s with $24 at 100%, and the words beside them. If you taught 14.3, point to its tables too. Then ask IM’s questions: “What is 20% of a 400 liter tank?” “20% of a full tank is 80 liters. How many liters are in a full tank?” “80 liters is what percentage of a 400 liter tank?”",
   "check": {
    "question": "A $30 game is on sale, and you save $9. What percentage off is the sale? Say it with Today’s frame.",
    "sounds": "In my table, $30 lines up with 100%. $9 is \\(\\frac{3}{10}\\) of $30, so as a percentage, it is 30% of $30."
   }
  },
  "beforeClass": [
-  "For the launch: have a few coupons to display, some dollars off and some percent off.",
+  "For the launch: have a few coupons to display, some taking dollars off and some taking a percentage off.",
   "For Three Reads in 14.2: display the task.",
   "For the release: have the frames for your students’ levels ready to post or hand out.",
   "For Collect and Display (MLR 2): clear board space to draw students’ diagrams side by side, and have a marker ready.",
@@ -574,11 +569,11 @@
   },
   {
    "activityId": "14.3",
-   "note": "IM: if time is short, the second set of cards can be optional. One problem understood well beats two rushed."
+   "note": "IM: “If time is short, the second set of cards can be considered optional.” One problem understood well beats two rushed."
   },
   {
    "activityId": "14.2",
-   "note": "IM gives 10 minutes. Show two or three coupons, not a set, and keep Three Reads to about 2 minutes. If time runs short, compare two diagrams for Han, not three. Never cut quiet think time, partners explaining, or why one line can’t solve both."
+   "note": "IM gives 10 minutes. Show two or three coupons, not a set, and keep Three Reads to about 2 minutes. If time runs short, compare two diagrams for Han, not three. Never cut quiet think time, partners explaining, or why one line can’t solve both. If 14.2 runs to 13 minutes, take the time from 14.3’s second card set (IM says it can be optional)."
   }
  ]
 }

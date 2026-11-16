@@ -69,7 +69,7 @@
   {
    "id": "m4",
    "activityId": "1.2",
-   "kind": "im-misconception",
+   "kind": "student-thinking",
    "see": "A student has the task and a blank page. “I don’t know where to start.”",
    "means": "The task gives no path. A smaller number of windows makes the rate usable.",
    "say": "At this rate, how long will it take the crew to finish 90 windows? 300 windows?",
@@ -294,6 +294,7 @@
   "routine": "MLR7: Compare and Connect",
   "phase": "launch",
   "produceToday": [
+   "per",
    "at this rate"
   ],
   "byBand": {
@@ -309,14 +310,14 @@
     "frame": "At this rate, it is ___ ___ per ___. That is more useful than ___ ___ per ___, because the question asks ___. So I ___ it by ___.",
     "does": "They can say in short phrases how they found their number for 1.",
     "reaching": "Comparing the two numbers for 1 and saying what each one tells.",
-    "stretch": "They say what they do with it next: multiply (or divide) by the windows."
+    "stretch": "They say what the other number for 1 would tell."
    },
    "expanding": {
     "entry": "On the third read, they name two ways to start. They say which number for 1 is more useful for “how long?” and why. They can work it out first in any language they share with a partner.",
     "frame": "At this rate, ___ ___ per ___ is more useful than ___ ___ per ___, because ___. Another way to see it: ___.",
     "does": "They can explain their own way of solving in their own words.",
     "reaching": "Saying why both numbers for 1 are right, and which one fits this question.",
-    "stretch": "They say a question the other number for 1 would answer quickly."
+    "stretch": "They check that the answer makes sense against the 15 and the 18."
    }
   }
  },

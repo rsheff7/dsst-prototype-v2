@@ -76,10 +76,10 @@
      "step": "Post IM’s frames where every station can see them: “I agree/disagree because …,” “How do you know …?” and “Can you give an example?”"
     },
     {
-     "step": "At each station, one student predicts which unit will take more and says why, before measuring."
+     "step": "At each station, while one student records, another says which unit took more and why."
     },
     {
-     "step": "The others answer with a frame: agree or disagree, and why."
+     "step": "The others ask: “How do you know?”"
     },
     {
      "step": "As you circulate, ask one group member “How do you know?” and wait for the answer."
@@ -95,7 +95,7 @@
    "rehearse": true,
    "criteria": [
     "Posted the frames before groups moved",
-    "Had a student predict and give a reason at each station",
+    "Had one student say which unit took more and why at each station",
     "Kept the questions between students, not routed through you"
    ]
   },
@@ -146,7 +146,7 @@
    "id": "m4",
    "activityId": "3.2",
    "kind": "im-misconception",
-   "see": "At Station 5, a group’s table reads 20 milliliters for 6 teaspoons. Their teaspoons are heaped or half full.",
+   "see": "At Station 5, a group’s table reads 20 milliliters for 6 teaspoons. Their teaspoons are only partly full.",
    "means": "Unlevel teaspoons hide the pattern, about 5 milliliters per teaspoon, that the last questions need.",
    "say": "Show me one teaspoon. Is it level with the top?",
    "dont": "Give them the 5 to write down.",
@@ -304,7 +304,8 @@
   "phase": "launch",
   "produceToday": [
    "smaller unit",
-   "larger unit"
+   "larger unit",
+   "same quantity"
   ],
   "byBand": {
    "emerging": {

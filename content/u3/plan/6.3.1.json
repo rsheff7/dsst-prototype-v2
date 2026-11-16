@@ -16,7 +16,8 @@
   "Timing: the 1.2 synthesis has five steps in about 5 minutes of IM’s 20. A reviewer should check they fit (moved here from the cut note).",
   "2026-11-15: persona review fixes. clo.form now evaluates (“more useful than … because the question asks …”) for every band; exemplar, posted, release, m7, synthesis and lesson-synthesis sounds follow it. Three Reads shows both sentences from Read 1. m3 now uses IM’s question (90 and 300 windows); 5 windows gave 6 ÷ 5, not even. m7 has one say line. Synthesis note on why five-sixths is wrong. Avoid lines are gerunds. Developing nonverbal no longer assumes a table. Each band in Premo’s cruxLanguage now has a way in on the third read.",
   "2026-11-15: lesson-synthesis check: 12 pages in 18 seconds is 1.5 seconds per page, or \\(\\frac{2}{3}\\) page per second. Posted: 2 minutes per lap, or \\(\\frac{1}{2}\\) lap per minute.",
-  "2026-11-15: round-2 review fixes: new emerging frame, used by plan and Premo alike; m3 aim and check reworded, Premo m3 say marked Premo’s; synthesis error note gives 12.5 minutes; m7 ifNot is now the 15 ÷ 18 question (the checker allows one question; the which-is-minutes prompt moved to the emerging nonverbal) and emerging nonverbal no longer names the units; 1.2 show emptied; m1 colons; “It’s 1.2” moved to barriers."
+  "2026-11-15: round-2 review fixes: new emerging frame, used by plan and Premo alike; m3 aim and check reworded, Premo m3 say marked Premo’s; synthesis error note gives 12.5 minutes; m7 ifNot is now the 15 ÷ 18 question (the checker allows one question; the which-is-minutes prompt moved to the emerging nonverbal) and emerging nonverbal no longer names the units; 1.2 show emptied; m1 colons; “It’s 1.2” moved to barriers.",
+  "2026-11-15: round-3 review fixes: second release talk moment deleted (it repeated synthesis step 3); IM’s two lesson-synthesis questions added to pointTo; m3 opens by affirming the division and adds the 1-window follow-up; synthesis error note shortened; m7 ifNot left unquoted (the checker needs ifNot to end in “?”, so “…tell you?”” fails); Premo stretches match the plan, produceToday adds “per”, Premo m4 is student-thinking. Answers to IM’s synthesis questions: 10,000 windows take 12,000 minutes; 100,000 take 120,000; the climber is at 345, 310.5 and 303.6 meters."
  ],
  "story": "Lesson 1 opens the unit. Students meet a problem where finding how much for 1, the time for 1 window, is the way through. Lessons 2–4 turn to units of measurement; the rates section picks this idea up again in Lesson 5.",
  "previous": "In Unit 2 students used tables and double number lines for equivalent ratios. They learned that “at this rate” signals equivalent ratios. Today they find how much for 1.",
@@ -168,8 +169,7 @@
    "successCriteria": "Say what your number for 1 means, using “per,” and why it helps answer how long.",
    "say": "Say what your number means, with “per,” and why it helps.",
    "talkMoments": [
-    "After quiet think time, partners take turns saying their number for 1 with Today’s frame.",
-    "Before the class discussion, partners decide which number answers “how long?” and say why."
+    "After quiet think time, partners take turns saying their number for 1 with Today’s frame."
    ],
    "byBand": {
     "emerging": {
@@ -206,9 +206,9 @@
   "ideas": [
    "When the numbers don’t scale easily, find how much for 1: 15 windows in 18 minutes is 1.2 minutes per window.",
    "Each situation has two numbers for 1: 1.2 minutes per window and \\(\\frac{5}{6}\\) window per minute. Both are right.",
-   "Pick the one that fits the question: minutes per window for “how long,” and 138 meters per hour for “how far.”"
+   "Pick the one that fits the question: minutes per window for “how long,” and 138 meters per hour for ‘how far.’”"
   ],
-  "pointTo": "Point to the 1.2 board: both numbers for 1 and the words beside them. If you taught 1.3, point to 138 meters per hour too, IM’s second main rate.",
+  "pointTo": "Point to the 1.2 board: both numbers for 1 and the words beside them. If you taught 1.3, point to 138 meters per hour too, IM’s second main rate. Then ask IM’s questions: “If the Burj Khalifa had 10,000 windows, how many minutes would it take the washing crew to clean all of them? 100,000 windows?” “How high is the climber after 2.5 hours? 2.25 hours? 2.2 hours?”",
   "check": {
    "question": "A printer prints 12 pages in 18 seconds. How long for 150 pages? Which number for 1 helps, and why?",
    "sounds": "At this rate, it is 1.5 seconds per page. That is more useful than \\(\\frac{2}{3}\\) page per second, because the question asks how long."
@@ -423,7 +423,7 @@
    "ask": "What do you say to this student?",
    "aim": "The student reasons with equivalent ratios, then comes back to the time for 1 window.",
    "say": [
-    "At this rate, how long will it take the crew to finish 90 windows? 300 windows?"
+    "Dividing is the right idea. At this rate, how long will it take the crew to finish 90 windows? 300 windows?"
    ],
    "goingOn": "They chose the right division: minutes for each window. A quotient that isn’t a whole number is what stops them.",
    "ifNot": "If 15 windows share 18 minutes equally, does each get more or less than 1 minute?",
@@ -431,6 +431,9 @@
     "Treated the division as a right choice",
     "Asked IM’s question with more windows: 90, then 300",
     "Didn’t do the division for them"
+   ],
+   "notes": [
+    "Once they have 90 windows in 108 minutes, ask: how long for 1 window?"
    ]
   },
   {
@@ -452,7 +455,7 @@
    "ask": "What do you say to this student?",
    "aim": "The student says what 1.2 counts and why it fits the question.",
    "goingOn": "They found the time for 1 window and used it correctly. What 1.2 counts, minutes per window, and why it helps aren’t in words yet.",
-   "ifNot": "If they have only 1.2, ask: what would 15 ÷ 18 tell you?",
+   "ifNot": "If they have only 1.2, ask: “What would 15 ÷ 18 tell you?”",
    "sounds": "At this rate, it is 1.2 minutes per window. That is more useful than \\(\\frac{5}{6}\\) window per minute, because the question asks how long.",
    "checks": [
     "Asked every level the same question: what it means, and why it helps",
@@ -482,8 +485,8 @@
    "aim": "Students say which number answers “how long?” and why.",
    "notes": [
     "Write “per” and “at this rate” beside the students’ words, not in place of them.",
-    "Ask what is the same and what is different, then ask the question below.",
-    "If no one can say why IM’s error is wrong: five-sixths of a minute per window would make 15 windows take 12.5 minutes. That is less than 15, but they take 18."
+    "Ask what is the same and what is different, then ask the question above.",
+    "Five-sixths of a minute per window would make 15 windows take 12.5 minutes, not 18."
    ],
    "say": [
     "Both numbers are right. Which one answers “how long?” more easily, and why?"

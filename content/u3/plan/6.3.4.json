@@ -18,7 +18,8 @@
   "Students produce “per” and “convert,” not “rate per 1”: unit.json lists “rate per 1” as receptive here; students first produce it in Lesson 5. Teacher-facing text still says “rate per 1.” (Elena’s review.)",
   "Teacher lines now write \\(\\frac{5}{8}\\), as the crux does. Students’ spoken words (“80 times five-eighths”) are left as said.",
   "2026-11-15: persona review fixes.",
-  "2026-11-15: round-2 review fixes: the form now ends with the answer and a larger-or-smaller reason, and every model sentence follows it; developing and expanding end with “Another way”; the synthesis prompt asks what the rate means; m7, m5 and the synthesis at minutes 8, 9 and 13, with a new 4.2 cut; “80 times five-eighths” moved to barriers."
+  "2026-11-15: round-2 review fixes: the form now ends with the answer and a larger-or-smaller reason, and every model sentence follows it; developing and expanding end with “Another way”; the synthesis prompt asks what the rate means; m7, m5 and the synthesis at minutes 8, 9 and 13, with a new 4.2 cut; “80 times five-eighths” moved to barriers.",
+  "2026-11-15: round-3 fixes: model answers now carry units (50 miles per hour, 4 yards, 5 feet); IM’s table and rate-per-1 questions added to the lesson synthesis; Premo’s double number line pattern is “build”, not “almost”; the quick check is now centimeters to meters (“than an inch” can’t follow the form’s “than a ___”)."
  ],
  "story": "Lesson 4 closes the unit-conversion section. Students turn “smaller unit, more of them” into exact conversions, using equivalent ratios and a rate per 1. Rates begin in Lesson 5.",
  "previous": "In Lesson 3 students saw that a smaller unit takes more to measure the same thing. Today they find exactly how many more, with a rate per 1.",
@@ -42,10 +43,10 @@
    "about",
    "rate per 1"
   ],
-  "exemplar": "There is \\(\\frac{5}{8}\\) mile per kilometer. To convert 80 kilometers per hour to miles per hour, I multiply by \\(\\frac{5}{8}\\). I get 50, which makes sense because a mile is larger than a kilometer.",
+  "exemplar": "There is \\(\\frac{5}{8}\\) mile per kilometer. To convert 80 kilometers per hour to miles per hour, I multiply by \\(\\frac{5}{8}\\). I get 50 miles per hour, which makes sense because a mile is larger than a kilometer.",
   "lookFor": "The bucket answer is about 7.6 liters (\\(\\frac{38}{5}\\)). The explanation names how many liters there are per gallon, \\(\\frac{19}{5}\\) or 3.8. It multiplies by it, or shows it in a table as IM’s answer does.",
   "posted": {
-   "sentence": "There are 3 feet per yard. To convert 12 feet to yards, I divide by 3. I get 4, which makes sense because a yard is larger than a foot."
+   "sentence": "There are 3 feet per yard. To convert 12 feet to yards, I divide by 3. I get 4 yards, which makes sense because a yard is larger than a foot."
   }
  },
  "activities": [
@@ -210,7 +211,7 @@
     "Leave the board up for the lesson synthesis and the cool-down."
    ],
    "prompt": "What does \\(\\frac{5}{8}\\) mean here, and why multiply 80 by it?",
-   "sounds": "There is \\(\\frac{5}{8}\\) mile per kilometer. To convert 80 kilometers per hour to miles per hour, I multiply by \\(\\frac{5}{8}\\). I get 50, which makes sense because a mile is larger than a kilometer."
+   "sounds": "There is \\(\\frac{5}{8}\\) mile per kilometer. To convert 80 kilometers per hour to miles per hour, I multiply by \\(\\frac{5}{8}\\). I get 50 miles per hour, which makes sense because a mile is larger than a kilometer."
   }
  },
  "rehearsal": [
@@ -348,7 +349,7 @@
     "Pointed to Today’s frame and the frames for their levels",
     "Told them when they’ll say it to a partner"
    ],
-   "sounds": "There is \\(\\frac{5}{8}\\) mile per kilometer. To convert 80 kilometers per hour to miles per hour, I multiply by \\(\\frac{5}{8}\\). I get 50, which makes sense because a mile is larger than a kilometer.",
+   "sounds": "There is \\(\\frac{5}{8}\\) mile per kilometer. To convert 80 kilometers per hour to miles per hour, I multiply by \\(\\frac{5}{8}\\). I get 50 miles per hour, which makes sense because a mile is larger than a kilometer.",
    "why": "Naming what an explanation needs before work starts means students practice it at the pause, not only at the end."
   },
   {
@@ -399,7 +400,7 @@
     "Didn’t say the sentence for them"
    ],
    "ifNot": "\\(\\frac{5}{8}\\) of a mile for each what?",
-   "sounds": "There is \\(\\frac{5}{8}\\) mile per kilometer. To convert 80 kilometers per hour to miles per hour, I multiply by \\(\\frac{5}{8}\\). I get 50, which makes sense because a mile is larger than a kilometer.",
+   "sounds": "There is \\(\\frac{5}{8}\\) mile per kilometer. To convert 80 kilometers per hour to miles per hour, I multiply by \\(\\frac{5}{8}\\). I get 50 miles per hour, which makes sense because a mile is larger than a kilometer.",
    "goingOn": "The math is right, and they chose the right rate. What \\(\\frac{5}{8}\\) stands for, and why multiply, aren’t in words yet.",
    "say": [
     "What does \\(\\frac{5}{8}\\) mean here, and why multiply?"
@@ -463,7 +464,7 @@
     "Wrote students’ own words, with “per” beside them",
     "Asked how the double number line shows the rate, and let them connect it"
    ],
-   "sounds": "There is \\(\\frac{5}{8}\\) mile per kilometer. To convert 80 kilometers per hour to miles per hour, I multiply by \\(\\frac{5}{8}\\). I get 50, which makes sense because a mile is larger than a kilometer.",
+   "sounds": "There is \\(\\frac{5}{8}\\) mile per kilometer. To convert 80 kilometers per hour to miles per hour, I multiply by \\(\\frac{5}{8}\\). I get 50 miles per hour, which makes sense because a mile is larger than a kilometer.",
    "why": "IM: ask what each number means and why that operation. Collect and Display keeps students’ words for the rate, so the lesson synthesis can point back to them.",
    "runIt": [
     "During work, scribe students’ words for each rate as said. Write “per kilometer” or “per mile” beside them.",
@@ -575,10 +576,10 @@
    "Two measurements of the same thing in different units form equivalent ratios: 8 kilometers to 5 miles is the same as 80 to 50.",
    "A rate per 1 converts by multiplying or dividing. 1 kilogram is 2.2 pounds, so 5 kilograms is 11 pounds, and 220 pounds is 100 kilograms."
   ],
-  "pointTo": "Point to the 4.2 board: the double number line, 80 × \\(\\frac{5}{8}\\), and students’ words beside them. If you taught 4.3, point to its pounds and kilograms table too.",
+  "pointTo": "Point to the 4.2 board: the double number line, 80 × \\(\\frac{5}{8}\\), and students’ words beside them. If you taught 4.3, point to its pounds and kilograms table too. Then ask how the pairs of numbers in a table show equivalent ratios, and how a rate per 1 helps convert. IM’s example: 1 kilogram is 2.2 pounds, so 5 × 2.2 = 11 pounds and 220 ÷ 2.2 = 100 kilograms.",
   "check": {
-   "question": "There are 12 inches per foot. How would you convert 60 inches to feet?",
-   "sounds": "There are 12 inches per foot. To convert 60 inches to feet, I divide by 12. I get 5, which makes sense because a foot is larger than an inch."
+   "question": "There are 100 centimeters per meter. How would you convert 500 centimeters to meters?",
+   "sounds": "There are 100 centimeters per meter. To convert 500 centimeters to meters, I divide by 100. I get 5 meters, which makes sense because a meter is larger than a centimeter."
   }
  },
  "beforeClass": [

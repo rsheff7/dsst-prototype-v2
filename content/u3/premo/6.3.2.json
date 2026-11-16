@@ -18,7 +18,7 @@
  "cruxWhy": "2.3 is the lesson’s main task, in IM’s words. Students sort 18 units by what they measure, then match everyday objects to the closest unit. IM’s third goal is exactly this: identify the closest unit and explain the reasoning out loud. IM’s language support, Clarify, Critique, Correct (MLR 3), sits in 2.3’s closing discussion.",
  "object": {
   "name": "the matched cards",
-  "what": "Each group’s layout of picture cards under unit cards: length, volume, and weight or mass. New groups analyze another group’s layout, and the class fixes one common mismatch."
+  "what": "Each group’s layout of picture cards under unit cards: length, volume and weight or mass. New groups analyze another group’s layout, and the class fixes one common mismatch."
  },
  "goal": "Students name everyday objects about the size of each standard unit and match objects to the closest unit. They explain out loud why a unit is closest, by comparing it with an object they know.",
  "rigorCheck": "Does every group still sort the units by attribute before matching, and does every student explain a match with a comparison?",
@@ -301,6 +301,7 @@
   "phase": "synthesis",
   "produceToday": [
    "closest to",
+   "about the same",
    "length",
    "volume",
    "weight or mass"
@@ -311,21 +312,21 @@
     "frame": "The ___ is closest to 1 ___. It is about as heavy (or long, or big) as a ___. 1 ___ is more (or less) than that.",
     "does": "They can point to an object and say if it is big or small, light or heavy.",
     "reaching": "Naming the closest unit and an object it is about the same as.",
-    "stretch": "They say which unit is more: “1 kilogram is more.”"
+    "stretch": "They say the attribute word: “about the same weight as.”"
    },
    "developing": {
     "entry": "On the third read, they suggest comparing each card with an object they know. They tell a partner what is wrong with the mismatch and write the fix with both units. They can work it out first in any language they share with a partner.",
     "frame": "The ___ is closest to 1 ___. It is about the same ___ as a ___, and 1 ___ is more (or less) than that. I know because ___.",
     "does": "They can say which card goes where in short phrases.",
     "reaching": "Writing a justification that names both units and a comparison.",
-    "stretch": "They add which unit is bigger: “1 kilogram is more than 1 pound.”"
+    "stretch": "They name a second object that fits the same unit."
    },
    "expanding": {
     "entry": "On the third read, they say how to decide between two close units, like pound and kilogram. They write a justification of the fix that compares the two units, then read it to the class. They can work it out first in any language they share with a partner.",
     "frame": "The ___ is closest to 1 ___, not 1 ___, because ___. Another way to check: ___.",
     "does": "They can explain a match in their own words.",
     "reaching": "Comparing the two units’ sizes to justify the fix.",
-    "stretch": "They say why the mismatch was easy to make."
+    "stretch": "They say why another group’s different match is less close."
    }
   }
  },

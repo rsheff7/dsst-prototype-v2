@@ -19,7 +19,8 @@
   "Three Reads text (2026-11-15, Elena’s review): the salt question was considered, since a one-line question is thin for three reads. Kept the feet-and-meters question. It is the “which took more, and why” question every station ends in, and it carries the language goal. The salt question needs Station 5’s data, which no group has at the launch.",
   "“I agree/disagree because …” is kept with the slash where it is quoted as IM’s posted frame (IM’s words). Premo’s own lines use “I agree (or disagree) because …”.",
   "2026-11-15: persona review fixes.",
-  "2026-11-15: round-2 review fixes: release at about minute 5, stations about 3½ minutes each with a new cut; IM’s quart and gallon questions in the lesson synthesis; posted and synthesis sentences now only the form filled in; “Feet is more” moved from misconceptions to barriers."
+  "2026-11-15: round-2 review fixes: release at about minute 5, stations about 3½ minutes each with a new cut; IM’s quart and gallon questions in the lesson synthesis; posted and synthesis sentences now only the form filled in; “Feet is more” moved from misconceptions to barriers.",
+  "2026-11-15: round-3 fixes: station talk is now one student records while another says which unit took more and why, and the others ask “How do you know?” (release talk moment, release note, check, Premo m3); Station 5 teaspoons “only partly full”; “same quantity” in produceToday."
  ],
  "story": "Lesson 3 is hands-on measuring. Students find that a smaller unit takes more to measure the same thing. Lesson 4 turns that into conversions with ratios.",
  "previous": "In Lesson 2 students matched everyday objects to units like inches and grams. Today they measure the same things in two units and compare the counts.",
@@ -135,7 +136,7 @@
    "successCriteria": "In every why answer, say which unit took more, which unit is smaller, and the rule for both.",
    "say": "Say which unit took more and which is smaller. Then say the rule.",
    "talkMoments": [
-    "At each station, before measuring, one student predicts which unit will take more and why. The others answer with “I agree (or disagree) because …”",
+    "At each station, while one student records, another says which unit took more and why. The others ask: “How do you know?”",
     "At the summary questions, each student says one answer aloud with the frame for their level before the group writes it."
    ],
    "byBand": {
@@ -322,13 +323,13 @@
    ],
    "notes": [
     "Success criteria: In every why answer, say which unit took more, which unit is smaller, and the rule for both.",
-    "When groups talk: at each station, before measuring, one student predicts which unit will take more and why. The others answer with “I agree (or disagree) because …”",
+    "At each station, while one student records, another says which unit took more and why. The others ask: “How do you know?”",
     "Then: at the summary questions, each student says one answer aloud with the frame for their level before the group writes it."
    ],
    "checks": [
     "Named what every why answer needs: which took more, which is smaller, the rule",
     "Pointed to the frames for their levels and the posted question frames",
-    "Told them a student predicts before measuring at each station"
+    "Told them one student records while another says which unit took more and why"
    ],
    "sounds": "It took more feet than meters because a foot is smaller than a meter. Station 1 showed the same. It takes more of a smaller unit and fewer of a larger unit to measure the same quantity.",
    "why": "Naming the reason’s parts before the stations means groups practice it five times, then use it on the summary questions."

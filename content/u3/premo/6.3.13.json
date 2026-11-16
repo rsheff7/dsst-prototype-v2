@@ -13,10 +13,11 @@
   "IM’s lesson narrative says to avoid writing “25% = \\(\\frac14\\)” and to say “25% of a quantity is \\(\\frac14\\) of that quantity.” Every frame and model here follows that.",
   "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person.",
   "2026-11-15: persona review fixes. Band frames match the plan’s release frames; each band’s entry suggests a way in on read 3; m6’s expanding nonverbal no longer assumes a double number line; m8’s question is completed; “Multiply by 75” spelled one way. Premo’s m8 drops “So” to stay within the 16-word say limit; the plan card keeps the reviewer’s wording.",
-  "2026-11-15: round-2 review fixes: band frames match the plan’s new release frames (each now gives the answer); m4 no longer has a partner share before the rounds; colon in m5; IM’s feedback starter quoted without Premo’s “?”."
+  "2026-11-15: round-2 review fixes: band frames match the plan’s new release frames (each now gives the answer); m4 no longer has a partner share before the rounds; colon in m5; IM’s feedback starter quoted without Premo’s “?”.",
+  "2026-11-15: round-3 review fixes: emerging frame matches the plan; produceToday lists every precise term; emerging entry reworded; “MLR 1” in cruxWhy; m2 (stuck, can’t start) typed student-thinking."
  ],
  "crux": "13.2",
- "cruxWhy": "13.2 is where students find 50%, 10% and 75% of three amounts and then say how to find each of any number. That is both of IM’s goals, and the cool-down asks the same three percentages. IM’s language support for 13.2, Stronger and Clearer Each Time (MLR1), revises the explanation for 75% of any number.",
+ "cruxWhy": "13.2 is where students find 50%, 10% and 75% of three amounts and then say how to find each of any number. That is both of IM’s goals, and the cool-down asks the same three percentages. IM’s language support for 13.2, Stronger and Clearer Each Time (MLR 1), revises the explanation for 75% of any number.",
  "object": {
   "name": "the 75% rule",
   "what": "The sentence each student writes for “How can you find 75% of any number?” Partner rounds test it and make it clearer; the cool-down’s 75% of 60 minutes uses it."
@@ -50,7 +51,7 @@
   {
    "id": "m2",
    "activityId": "13.2",
-   "kind": "im-misconception",
+   "kind": "student-thinking",
    "see": "A student stares at “50% of a 2,000-kilometer trip” and writes nothing.",
    "means": "They don’t yet link 50% to a fraction they know. Half of 2,000 is easy once they do.",
    "say": "How much of 100% is 50%?",
@@ -306,12 +307,14 @@
   "routine": "MLR1: Stronger and Clearer Each Time",
   "phase": "synthesis",
   "produceToday": [
-   "___% of a number is ___ of that number"
+   "of that number",
+   "divide by",
+   "multiply by"
   ],
   "byBand": {
    "emerging": {
-    "entry": "On read 3, they point in order to the 10, the 2,000 and the bar in 2 parts. In the partner rounds, they show their tape for 75% and say or write the fraction. They can work it out first in any language they share with a partner.",
-    "frame": "___% of a number is ___ of it. I ___. That gives ___.",
+    "entry": "On read 3, they point to the 10, then the 2,000, then the bar in 2 parts. In the partner rounds, they show their tape for 75% and say or write the fraction. They can work it out first in any language they share with a partner.",
+    "frame": "___% of a number is ___ of that number. I ___. That gives ___.",
     "does": "They can find half of a number and say or write the answer.",
     "reaching": "Naming the fraction for each percentage and saying the step that goes with it.",
     "stretch": "They check one answer a second way: divide first, then multiply."

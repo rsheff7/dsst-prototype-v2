@@ -14,7 +14,8 @@
   "12.3 dependsOn 12.2: 12.3 asks students to draw tape diagrams, and 12.2 is where they first read one. If 12.2 is skipped, the note says to show one puppy diagram first.",
   "Non-crux activities carry no language supports (D7).",
   "2026-11-15: persona review fixes. IM’s MLR8 move now sits between questions 1 and 2 (minute 7); m5 and the synthesis card moved there, and the synthesis finishes with Diego’s tape and 250%. The synthesis card’s sounds now equal crux.synthesis.sounds (Elena). “% of” added to precise. “(IM’s diagram)” removed from the 10-part tape: unverified. Model sentences now match the frame exactly (“In the tape diagram,” dropped). Band frames reworked: emerging names the whole; developing and expanding add a “because” or “another way” clause. m10 shows IM’s flawed example as such. Diego is “\\(1\\frac{1}{2}\\) times as much” in Premo’s words; IM’s quoted answers are unchanged. The form gained a last sentence, “Each part is ___% of ___,” so the exemplar can use every precise term, including the new “% of.”",
-  "2026-11-15: round-2 review fixes: new form naming what one part is worth (“in ___ equal parts of ___ each … so it is ___% of ___, or ___ as much”), with exemplar, posted, check and every sounds line rewritten to it; precise “as much as” → “as much” (board too); band frames rebuilt on the form; the extra Diego partner talk deleted (IM has none on question 2); IM’s two fraction questions added to pointTo; “greater than 1”, “in this order”, “percentage” as a noun, and colons fixed."
+  "2026-11-15: round-2 review fixes: new form naming what one part is worth (“in ___ equal parts of ___ each … so it is ___% of ___, or ___ as much”), with exemplar, posted, check and every sounds line rewritten to it; precise “as much as” → “as much” (board too); band frames rebuilt on the form; the extra Diego partner talk deleted (IM has none on question 2); IM’s two fraction questions added to pointTo; “greater than 1”, “in this order”, “percentage” as a noun, and colons fixed.",
+  "2026-11-15: round-3 review fixes: IM’s two synthesis questions quoted exactly; “IM:” dropped before paraphrase (m1, m3, 12.4 monitor); math cards show only diagram descriptions (12.3 and 12.4 emptied)."
  ],
  "story": "Lesson 12 is the third lesson on percentages. Students have used double number lines; today tape diagrams show percentages as fractions of a whole, which Lesson 13’s benchmark percentages build on.",
  "previous": "In Lesson 11 students used double number lines and tables for problems like “140% of a number is 28.” Today a tape diagram shows the same problems as equal parts of 100%.",
@@ -173,7 +174,7 @@
     "m10"
    ],
    "grouping": "Think Pair Share: quiet think time to finish, then share the explanation with a partner, then the whole class.",
-   "monitor": "IM: monitor for at least one student using each of a double number line, a table and a tape diagram, to share in the discussion.",
+   "monitor": "IM says to monitor for at least one student using each: a double number line, a table and a tape diagram. Share each in the discussion.",
    "momentCriteria": {
     "m9": [
      "Suggested 10% steps instead of placing 80% for them",
@@ -249,7 +250,7 @@
    "A tape diagram shows it: make the amount you compare to 100%, split it into equal parts, and count the parts.",
    "A percentage over 100% is a fraction greater than 1: 150% as much is \\(1\\frac{1}{2}\\) times as much."
   ],
-  "pointTo": "Point to the 12.3 display: Noah’s tape as 100%, Elena’s 2 of 5 parts, Diego’s 3 halves. If you taught 12.4, point to Andre’s tape: 1.5 liters is one of two halves. Ask IM’s questions: If you have 50% of the money needed to buy a book, what fraction is that? If you run 125% of your goal for the week, what fraction is that?",
+  "pointTo": "Point to the 12.3 display: Noah’s tape as 100%, Elena’s 2 of 5 parts, Diego’s 3 halves. If you taught 12.4, point to Andre’s tape: 1.5 liters is one of two halves. Ask IM’s questions: “If you have 50% of the money needed to buy a book, what fraction is that?” “If you run 125% of your goal for the week, what fraction is that?”",
   "check": {
    "question": "A box holds 20 cups. A bag holds 30% as much as the box. Describe the tape diagram, and say it as a fraction.",
    "sounds": "In the tape diagram, the box’s 20 cups is 100%, in 10 equal parts of 2 cups each. The bag’s 6 cups is 3 of those parts, so it is 30% of the box’s 20 cups, or \\(\\frac{3}{10}\\) as much."
@@ -323,7 +324,7 @@
    "say": [
     "Hold that thought. What do you notice about the two bars?"
    ],
-   "why": "IM: the discussion points are the same-length bars, the four equal pieces and the percentage. The question mark doesn’t need an answer yet.",
+   "why": "IM’s discussion points are the same-length bars, the four equal pieces and the percentage. The question mark doesn’t need an answer yet.",
    "checks": [
     "Held the answer without confirming or rejecting it",
     "Turned the class back to what they notice",
@@ -338,7 +339,6 @@
    "name": "Do the puppy task yourself",
    "where": "Before class. Solve the task students do first: the puppy diagrams.",
    "show": [
-    "Jada’s puppy weighs 9 pounds, about 20% of its adult weight.",
     "Diagram 1: a tape of 5 parts, each 9, one shaded and labeled 20%.",
     "Diagram 2: a tape of 10 parts, each 9 (the dog, 90 pounds), above one box of 9 (the puppy)."
    ],
@@ -373,7 +373,7 @@
    "say": [
     "Ask your partner one question. Where is the \\(\\frac{1}{5}\\) on the diagram?"
    ],
-   "why": "IM: in Stronger and Clearer, students press each other for details. A question gives the writer something to add on the next round.",
+   "why": "In IM’s Stronger and Clearer, students press each other for details. A question gives the writer something to add on the next round.",
    "checks": [
     "Asked partners to ask one question, not to approve",
     "Pointed them to where the \\(\\frac{1}{5}\\) is on the diagram",
@@ -413,13 +413,7 @@
    "type": "task",
    "name": "Do the 5 dollars task yourself",
    "where": "Before class. Solve the task students do today.",
-   "show": [
-    "Noah has $5.",
-    "1. a. Elena has 40% as much as Noah. How much does Elena have?",
-    "b. Compare Elena’s and Noah’s money using fractions. Draw a diagram to illustrate.",
-    "2. a. Diego has 150% as much as Noah. How much does Diego have?",
-    "b. Compare Diego’s and Noah’s money using fractions. Draw a diagram to illustrate."
-   ],
+   "show": [],
    "ask": "Answer all four parts and draw both diagrams. What did you make the whole each time?",
    "aim": "Know every answer and two ways to split Noah’s tape.",
    "notes": [
@@ -633,11 +627,7 @@
    "type": "task",
    "name": "Do the hiking task yourself",
    "where": "Before class. Solve the optional task, in case you teach it.",
-   "show": [
-    "During the first part of a hike, Andre drank 1.5 liters of the water he brought.",
-    "1. If this is 50% of the water he brought, how much water did he bring?",
-    "2. If he drank 80% of his water on his entire hike, how much did he drink?"
-   ],
+   "show": [],
    "ask": "Answer both questions. What is 100% in question 2?",
    "aim": "Know both answers, and which amount is 100% in question 2.",
    "notes": [

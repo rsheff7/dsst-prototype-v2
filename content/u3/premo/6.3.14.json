@@ -14,7 +14,8 @@
   "produceToday is “___% of”. IM’s terminology lists it as receptive for Lesson 14 and lists nothing productive. Premo has students say it because the language goal’s form needs it.",
   "Student responses, the card text and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person.",
   "2026-11-15: persona review fixes. m6 asks every level “What lines up with 100%? What lines up with $6?” Frames match the plan’s release frames; each band’s entry now starts with a way in on the third read. Avoid lines are gerunds. “Info Gap” is one spelling.",
-  "2026-11-15: round-2 review fixes: frames match the plan’s new release frames (“so as a percentage”; emerging “So it is ___%.”); “percentage” added to produceToday by Robert’s decision; “percent” as a noun became “percentage” in m6; m4 asks “why or why not.”"
+  "2026-11-15: round-2 review fixes: frames match the plan’s new release frames (“so as a percentage”; emerging “So it is ___%.”); “percentage” added to produceToday by Robert’s decision; “percent” as a noun became “percentage” in m6; m4 asks “why or why not.”",
+  "2026-11-15: round-3 review fixes: emerging frame matches the plan (“So it is ___% of it.”); stretches equal the plan’s; produceToday adds “100%”; the 25-tick-mark pattern is “build” (a correct, slow strategy); “percent” as a noun became “percentage”; the 14.2 cut names where overflow time comes from."
  ],
  "crux": "14.2",
  "cruxWhy": "14.2 is where the lesson’s new question first appears: what percentage $6 is of $24. IM’s lesson synthesis calls it the third kind of problem, new today. Goal 1, choosing a diagram or table and explaining the method out loud, is 14.2’s work, and its closing discussion compares the diagrams. 14.3 practices the same kinds of problems through an Info Gap.",
@@ -300,7 +301,7 @@
    "activityId": "14.2",
    "type": "language",
    "says": "“It’s 25. Right there.”",
-   "why": "They mean $6 is 25% of $24; “percent,” “of” and the 100% value are left out.",
+   "why": "They mean $6 is 25% of $24; “%,” “of” and the 100% value are left out.",
    "shows": "They found the right tick on their double number line.",
    "from": "premo"
   },
@@ -314,7 +315,7 @@
   },
   {
    "activityId": "14.3",
-   "type": "almost",
+   "type": "build",
    "says": "A double number line for Device B with 25 tick marks, one per dollar.",
    "why": "They trust the double number line and draw all of it.",
    "shows": "They set $25 at 100%. Seeing each dollar as 4% is next.",
@@ -336,37 +337,38 @@
   "routine": "MLR7: Compare and Connect",
   "phase": "synthesis",
   "produceToday": [
+   "100%",
    "___% of",
    "percentage"
   ],
   "byBand": {
    "emerging": {
     "entry": "Third read: they point to each price in order and show which one is the whole. In the closing discussion, they point to the 100% value on two classmates’ diagrams, then to $1.50 in each. They can work it out first in any language they share with a partner.",
-    "frame": "___ is 100%. ___ is ___ of it. So it is ___%.",
+    "frame": "___ is 100%. ___ is ___ of it. So it is ___% of it.",
     "does": "They can point to $15 and 100% on a double number line and read the pair.",
     "reaching": "Saying the part as a fraction of the whole, then as a percentage, with “% of.”",
-    "stretch": "They find the 100% value on a second diagram, such as the table’s top row."
+    "stretch": "They say what kind of diagram they used and point to 100% on it."
    },
    "developing": {
     "entry": "Third read: they tell a partner what they could draw and which amount goes with 100%. Later they say what lines up with 100% in their diagram and a classmate’s. They can work it out first in any language they share with a partner.",
     "frame": "___ lines up with 100%. ___ is ___ of ___, because ___. So as a percentage, it is ___% of ___.",
     "does": "They can say one answer with its unit, like “$1.50” or “25%.”",
     "reaching": "Saying the 100% value before the answer, then the answer with “% of.”",
-    "stretch": "They add a second way, such as “\\(\\frac{1}{10}\\) of $15” or “15 ÷ 10.”"
+    "stretch": "They add how they split the whole: into 10 parts, or into 4 parts."
    },
    "expanding": {
     "entry": "Third read: they suggest two ways to solve, saying what goes with 100% in each. In the closing discussion, they say where 15 times \\(\\frac{1}{10}\\) shows in a classmate’s diagram and compare it with theirs. They can work it out first in any language they share with a partner.",
     "frame": "In my ___, ___ lines up with 100%. ___ is ___ of ___, because ___. So as a percentage, it is ___% of ___. Another way to see it: ___.",
     "does": "They can explain their own diagram for both questions in their own words.",
     "reaching": "Comparing two diagrams and saying why one line can’t solve both questions.",
-    "stretch": "They ask a classmate one question about a diagram that differs from theirs."
+    "stretch": "They check the answer a second way, such as a table against a diagram."
    }
   }
  },
  "cuts": [
   {
    "activityId": "14.3",
-   "note": "IM: if time is short, the second set of cards can be optional. One problem understood well beats two rushed."
+   "note": "IM: “If time is short, the second set of cards can be considered optional.” One problem understood well beats two rushed."
   },
   {
    "activityId": "14.1",
@@ -374,7 +376,7 @@
   },
   {
    "activityId": "14.2",
-   "note": "IM gives 10 minutes. Keep the coupon display brief. Never cut the comparison of diagrams or why one line can’t solve both."
+   "note": "IM gives 10 minutes. Keep the coupon display brief. Never cut the comparison of diagrams or why one line can’t solve both. If 14.2 runs to 13 minutes, take the time from 14.3’s second card set (IM says it can be optional)."
   }
  ],
  "neverCut": [
@@ -398,7 +400,7 @@
   ]
  },
  "beforeClass": [
-  "Have a few coupons to display: some dollars off, some percent off (IM’s launch).",
+  "Have a few coupons to display: some taking dollars off, some taking a percentage off (IM’s launch).",
   "Copy and cut the Info Gap: Music Devices cards, 1 copy for every 4 students (IM’s preparation).",
   "For Compare and Connect (MLR 7): clear board space to draw students’ diagrams side by side.",
   "IM says to demonstrate an Info Gap with a partner the first few times. Plan a one-minute demo for 14.3."
