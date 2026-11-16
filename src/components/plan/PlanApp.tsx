@@ -1692,7 +1692,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
             <div className={s.mv}>
               <span className={s.lab}>Day 1 ends · Day 2 starts here</span>
               <span className={s.mvIf}>
-                <MathText>{day2.where.replace(/^Start of Day 2[:.]\s*/, '')}</MathText>
+                <MathText>{day2.where.replace(/^Start of Day 2[:.]\s*/, '').replace(/^./, (x) => x.toUpperCase())}</MathText>
               </span>
             </div>
           ) : null;
