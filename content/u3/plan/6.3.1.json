@@ -12,14 +12,17 @@
   "Release talk moments add a partner turn that IM's 1.2 launch doesn't name (IM gives 3–5 minutes of quiet think time, then the class discussion). It's Premo's, for the frame practice at release.",
   "The Premo run-routine (m8) and breakdown (m9) for Compare and Connect are left out of 1.2's momentIds; the planning view's own cards run the routines.",
   "NEW student work, Premo's: the m3 crossed-out 18 ÷ 15, the m7 “It’s 1.2. Then I times it,” the m10 “34 r 2 meters” work (IM's misconception, Premo's page), and the synthesis board words. IM's error (\\(\\frac{5}{6}\\) minutes per window) is IM's; the 20,290 minutes it leads to is Premo's arithmetic: 24,348 × \\(\\frac{5}{6}\\) = 20,290.",
-  "Non-crux activities carry no language supports (D7)."
+  "Non-crux activities carry no language supports (D7).",
+  "Timing: the 1.2 synthesis has five steps in about 5 minutes of IM’s 20. A reviewer should check they fit (moved here from the cut note).",
+  "2026-11-15: persona review fixes. clo.form now evaluates (“more useful than … because the question asks …”) for every band; exemplar, posted, release, m7, synthesis and lesson-synthesis sounds follow it. Three Reads shows both sentences from Read 1. m3 now uses IM’s question (90 and 300 windows); 5 windows gave 6 ÷ 5, not even. m7 has one say line. Synthesis note on why five-sixths is wrong. Avoid lines are gerunds. Developing nonverbal no longer assumes a table. Each band in Premo’s cruxLanguage now has a way in on the third read.",
+  "2026-11-15: lesson-synthesis check: 12 pages in 18 seconds is 1.5 seconds per page, or \\(\\frac{2}{3}\\) page per second. Posted: 2 minutes per lap, or \\(\\frac{1}{2}\\) lap per minute."
  ],
  "story": "Lesson 1 opens the unit. Students meet a problem where finding how much for 1, the time for 1 window, is the way through. Lessons 2–4 turn to units of measurement; the rates section picks this idea up again in Lesson 5.",
- "previous": "In Unit 2 students used tables and double number lines for equivalent ratios, and learned that “at this rate” signals equivalent ratios; today they find how much for 1 and use it.",
+ "previous": "In Unit 2 students used tables and double number lines for equivalent ratios. They learned that “at this rate” signals equivalent ratios. Today they find how much for 1.",
  "clo": {
   "imGoal": "Evaluate (orally) the usefulness of calculating a rate per 1 when solving problems involving unfamiliar rates.",
   "function": "evaluate",
-  "form": "At this rate, it is ___ ___ per ___. That is useful because the question asks for ___, so I ___ it by ___.",
+  "form": "At this rate, it is ___ ___ per ___. That is more useful than ___ ___ per ___, because the question asks ___.",
   "board": {
    "content": "We will find how much for 1 and use it to solve problems that happen at the same rate.",
    "language": "We will evaluate, out loud, which amount for 1 helps answer the question, using “per” and “at this rate.”"
@@ -34,10 +37,10 @@
    "each",
    "how long"
   ],
-  "exemplar": "At this rate, it is 1.2 minutes per window. That is useful because the question asks for time, so I multiply it by 24,348 windows.",
-  "lookFor": "The elevator explanation names a number for 1 with “per”: 33 feet per second (330 ÷ 10). It says how that number was used: 33 × 11 = 363 feet, or 330 + 33 = 363 feet. IM accepts both.",
+  "exemplar": "At this rate, it is 1.2 minutes per window. That is more useful than \\(\\frac{5}{6}\\) window per minute, because the question asks how long.",
+  "lookFor": "The elevator explanation names a number for 1 with “per”: 33 feet per second (330 ÷ 10). It says why that number fits “how far,” and how it was used: 33 × 11 = 363 feet, or 330 + 33 = 363 feet. IM accepts both.",
   "posted": {
-   "sentence": "At this rate, it is 2 minutes per lap. That is useful because the question asks for time, so I multiply it by 12 laps."
+   "sentence": "At this rate, it is 2 minutes per lap. That is more useful than \\(\\frac{1}{2}\\) lap per minute, because the question asks how long."
   },
   "progressionNote": "IM’s unit overview lists “interpret” for this lesson (a context in which a unit rate is helpful). The objective follows the lesson’s own goal: “evaluate.”"
  },
@@ -89,7 +92,7 @@
    ],
    "backPocket": [
     "At this rate, how long will it take the crew to finish 90 windows? 300 windows?",
-    "How long for 5 windows? Then how long for 1?",
+    "How long for 30 windows? For 90?",
     "1.2 what? Per what?",
     "Does 1 window take more or less than a minute? How do you know?"
    ],
@@ -164,24 +167,24 @@
    "successCriteria": "Say what your number for 1 means, using “per,” and why it helps answer how long.",
    "say": "Say what your number means, with “per,” and why it helps.",
    "talkMoments": [
-    "After quiet think time, partners take turns saying their number for 1 with Today’s frame: “At this rate, it is ___ ___ per ___.”",
+    "After quiet think time, partners take turns saying their number for 1 with Today’s frame.",
     "Before the class discussion, partners decide which number answers “how long?” and say why."
    ],
    "byBand": {
     "emerging": {
-     "frame": "At this rate, ___ ___ per ___. It helps because the question asks ___.",
+     "frame": "___ ___ per ___ helps more than ___ per ___. The question asks ___.",
      "stretch": "They add what they do with it: “I multiply it by the windows.”",
      "nonverbal": "They circle their number for 1, write its two units beside it, and point to “how long” in the question."
     },
     "developing": {
-     "frame": "At this rate, it is ___ ___ per ___. That helps because the question asks for ___, so I ___ it by ___.",
+     "frame": "At this rate, it is ___ ___ per ___. That is more useful than ___ ___ per ___, because the question asks ___. So I ___ it by ___.",
      "stretch": "They say what the other number for 1 would tell.",
-     "nonverbal": "They point to the row for 1 in their table, then trace to the row for all the windows."
+     "nonverbal": "They point to their number for 1, then to where they used it for all the windows."
     },
     "expanding": {
-     "frame": "At this rate, it is ___ ___ per ___. That is more useful than ___ per ___, because the question asks ___.",
+     "frame": "At this rate, ___ ___ per ___ is more useful than ___ ___ per ___, because ___. Another way to see it: ___.",
      "stretch": "They check that the answer makes sense against the 15 and the 18.",
-     "nonverbal": "They point to both numbers for 1 on the board, then to the one that fits “how long.”"
+     "nonverbal": "They write both numbers for 1 with units, then circle the one that answers “how long.”"
     }
    }
   },
@@ -190,12 +193,12 @@
    "steps": [
     "Call a student who found minutes per window, then one who found windows per minute. Scribe each one’s words beside their number.",
     "Write the math words beside their words: “per,” “at this rate.” Keep their words as said.",
-    "Ask: “What is the same and what is different?” Then: “Which one answers ‘how long?’ more easily, and why?” Partners talk; scribe what two students say.",
+    "Ask what is the same and what is different. Then ask: “Which one answers ‘how long?’ more easily, and why?” Partners talk. Scribe what two students say.",
     "Show IM’s error: \\(\\frac{5}{6}\\) minutes per window. Partners say how they know it’s wrong; scribe it.",
     "Leave the board up for 1.3 and the lesson synthesis."
    ],
    "prompt": "Both numbers are right. Which one answers “how long?” more easily, and why?",
-   "sounds": "At this rate, it is 1.2 minutes per window. That is useful because the question asks for time, so I multiply it by the number of windows."
+   "sounds": "At this rate, it is 1.2 minutes per window. That is more useful than \\(\\frac{5}{6}\\) window per minute, because the question asks how long."
   }
  },
  "lessonSynthesis": {
@@ -207,13 +210,13 @@
   "pointTo": "Point to the 1.2 board: both numbers for 1 and the words beside them. If you taught 1.3, point to 138 meters per hour too, IM’s second main rate.",
   "check": {
    "question": "A printer prints 12 pages in 18 seconds. How long for 150 pages? Which number for 1 helps, and why?",
-   "sounds": "At this rate, it is 1.5 seconds per page. That is useful because the question asks for time, so I multiply it by 150 pages."
+   "sounds": "At this rate, it is 1.5 seconds per page. That is more useful than \\(\\frac{2}{3}\\) page per second, because the question asks how long."
   }
  },
  "beforeClass": [
   "For IM’s launch: have a photo and a map of the Burj Khalifa ready to display.",
   "Have the number of windows, 24,348, in your notes. Share it only after several students ask.",
-  "For Three Reads in 1.2: display the task, with the question covered until the third read.",
+  "For Three Reads in 1.2: display both sentences of the task.",
   "For the release: have the frames for your students’ levels ready to post or hand out.",
   "For Collect and Display: clear board space and have IM’s error ready to show, \\(\\frac{5}{6}\\) minutes per window.",
   "Four-function calculators, if you use them. IM suggests them so students focus on reasoning."
@@ -229,7 +232,7 @@
   },
   {
    "activityId": "1.2",
-   "note": "IM gives 20 minutes. Keep the class questions to about five, and Three Reads to one sentence each. Never cut quiet think time or the synthesis. A reviewer should check the five synthesis steps fit."
+   "note": "IM gives 20 minutes. Keep the class questions to about five, and Three Reads to one sentence each. Never cut quiet think time or the synthesis."
   }
  ],
  "rehearsal": [
@@ -320,7 +323,7 @@
    "routine": "MLR6: Three Reads",
    "language": true,
    "name": "Read the problem three times",
-   "where": "About 4 minutes into Activity 1.2. The class’s questions about the Burj Khalifa are on the board. The task is up, its question covered.",
+   "where": "About 4 minutes into Activity 1.2. The class’s questions about the Burj Khalifa are on the board. Both sentences of the task are up.",
    "show": [
     "A window-washing crew can finish 15 windows in 18 minutes.",
     "If this crew was assigned to wash all the windows on the outside of the Burj Khalifa, how long will the crew be washing at this rate?"
@@ -346,11 +349,11 @@
     "Read 2: asked what can be counted or measured",
     "Read 3: asked how we might solve it, and took ideas without solving"
    ],
-   "why": "IM: Three Reads makes sure students know what they’re being asked to do. Here, the second read shows the number of windows is missing.",
+   "why": "Three Reads makes sure students know what they’re being asked to do. Here, the second read shows the number of windows is missing.",
    "runIt": [
     "Read 1: read it aloud. Ask what’s happening, with no numbers.",
     "Read 2: read it again. Ask what can be counted or measured. Don’t give the number of windows yet.",
-    "Read 3: show the question and read it again. Ask how we might solve it; take ideas without solving.",
+    "Read 3: read it once more. Ask how we might solve it; take ideas without solving.",
     "Then start 3–5 minutes of quiet think time."
    ]
   },
@@ -371,14 +374,14 @@
    "notes": [
     "Success criteria: Say what your number for 1 means, using “per,” and why it helps answer how long.",
     "When partners talk: after quiet think time, partners take turns saying their number for 1.",
-    "They use Today’s frame: “At this rate, it is ___ ___ per ___. That is useful because the question asks for ___, so I ___ it by ___.”"
+    "They use Today’s frame: “At this rate, it is ___ ___ per ___. That is more useful than ___ ___ per ___, because the question asks ___.”"
    ],
    "checks": [
     "Named what every sentence needs: the number for 1, with “per,” and why it helps",
     "Pointed to Today’s frame on the board",
     "Told them when they’ll say it to a partner"
    ],
-   "sounds": "At this rate, it is 1.2 minutes per window. That is useful because the question asks for time, so I multiply it by 24,348 windows.",
+   "sounds": "At this rate, it is 1.2 minutes per window. That is more useful than \\(\\frac{5}{6}\\) window per minute, because the question asks how long.",
    "why": "Naming the language before work starts means students practice it while they solve, not only at the end."
   },
   {
@@ -422,13 +425,13 @@
    "ask": "What do you say to this student?",
    "aim": "The student finds the time for 1 window through a smaller step.",
    "say": [
-    "How long for 5 windows? Then how long for 1?"
+    "At this rate, how long will it take the crew to finish 90 windows? 300 windows?"
    ],
    "goingOn": "They chose the right division: minutes for each window. A quotient that isn’t a whole number is what stops them.",
    "ifNot": "If 15 windows share 18 minutes equally, does each get more or less than 1 minute?",
    "checks": [
     "Kept the division they chose",
-    "Gave a smaller step with equivalent ratios",
+    "Asked IM’s question with more windows: 90, then 300",
     "Didn’t do the division for them"
    ]
   },
@@ -452,11 +455,14 @@
    "aim": "The student says what 1.2 counts and why it fits the question.",
    "goingOn": "They found the time for 1 window and used it correctly. What 1.2 counts, minutes per window, and why it helps aren’t in words yet.",
    "ifNot": "Point to the 18 and the 15. Which one is minutes?",
-   "sounds": "At this rate, it is 1.2 minutes per window. That is useful because the question asks for time, so I multiply it by 24,348 windows.",
+   "sounds": "At this rate, it is 1.2 minutes per window. That is more useful than \\(\\frac{5}{6}\\) window per minute, because the question asks how long.",
    "checks": [
     "Asked every level the same question: what it means, and why it helps",
     "Gave their level’s frame or way in without words",
     "Didn’t say the units for them"
+   ],
+   "say": [
+    "What does 1.2 count? Why does it help?"
    ]
   },
   {
@@ -475,10 +481,11 @@
     "Ready to show (IM’s error): “\\(\\frac{5}{6}\\) minutes per window.”"
    ],
    "ask": "Where do you write “per”? Then what do you ask?",
-   "aim": "Students say which number answers “how long?”, and why.",
+   "aim": "Students say which number answers “how long?” and why.",
    "notes": [
     "Write “per” and “at this rate” beside the students’ words, not in place of them.",
-    "Ask what is the same and what is different, then:"
+    "Ask what is the same and what is different, then:",
+    "Five-sixths of a minute per window would make 15 windows take less than 15 minutes, but they take 18."
    ],
    "say": [
     "Both numbers are right. Which one answers “how long?” more easily, and why?"
@@ -488,7 +495,7 @@
     "Asked which number fits the question, and let students decide",
     "Showed IM’s error and asked how they knew it was wrong"
    ],
-   "sounds": "At this rate, it is 1.2 minutes per window. That is useful because the question asks for time, so I multiply it by the number of windows.",
+   "sounds": "At this rate, it is 1.2 minutes per window. That is more useful than \\(\\frac{5}{6}\\) window per minute, because the question asks how long.",
    "why": "IM: both numbers are valid and have purpose, depending on the question. Collect and Display keeps students’ words up for 1.3 and the lesson synthesis.",
    "runIt": [
     "Call a student who found minutes per window, then one who found windows per minute. Scribe each one’s words beside their number.",
@@ -542,7 +549,7 @@
     "Sketch the climb. Where on it are the final 15 minutes?"
    ],
    "goingOn": "They answered the first two questions, so they can use the rate. The third question switches to minutes and to the end of the climb.",
-   "avoid": "Tell them it’s a quarter of an hour.",
+   "avoid": "Telling them it’s a quarter of an hour.",
    "ifNot": "How many minutes are in the last hour of the climb?",
    "checks": [
     "Asked for a sketch instead of explaining the question",
@@ -570,7 +577,7 @@
     "The 2 left over: 2 what? Write the answer in meters."
    ],
    "goingOn": "They found 138 meters per hour and divided by 4, the right moves. The remainder is the last step.",
-   "avoid": "Write 34.5 for them.",
+   "avoid": "Writing 34.5 for them.",
    "ifNot": "If 2 meters are shared among the 4 quarters of the hour, how much is each share?",
    "checks": [
     "Asked what the remainder means",

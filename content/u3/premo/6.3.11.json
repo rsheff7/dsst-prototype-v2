@@ -8,7 +8,8 @@
   "IM’s own moments: the “more than 100%” surprise in 11.1, the “$50 is 50% of $40” carry-over in 11.1’s synthesis, stopping before or past 100% in 11.3, uneven tick marks in 11.3, the 30-is-not-a-factor-of-100 step in 11.3’s narrative, IM’s share orders in 11.2 and 11.3, and the Stronger and Clearer run and breakdown.",
   "Premo’s moments: “125% of 8 is 8.25” in 11.2, and the language moment “It’s 45” with no word for what 45 is.",
   "Only the warm-up comes before the crux and 11.2. The two upstream moments are both in 11.1; 11.2 has moments but none is rehearsed in this layer.",
-  "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person."
+  "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person.",
+  "2026-11-15: persona review fixes. cruxLanguage frames match the plan’s new release frames; produceToday says “tick mark,” as clo.precise does. Each band’s entry now suggests a way in on the third read. Cuts: 11.2 hears the three ways aloud without displays; 11.3 runs one partner round, not two, and shares only the double number line and the table."
  ],
  "crux": "11.3",
  "cruxWhy": "11.3 is the first time students find 100% when another percentage is known. Nothing in the puppy problem says the adult weight is 100%, so students must say what they are finding the percentage of: IM’s third goal. IM’s language support, Stronger and Clearer Each Time (MLR 1), sits in 11.3: students write how they found Jada’s puppy’s adult weight and sharpen it with partners.",
@@ -312,28 +313,28 @@
   "routine": "MLR1: Stronger and Clearer Each Time",
   "phase": "launch",
   "produceToday": [
-   "tick marks",
+   "tick mark",
    "100%",
    "% of"
   ],
   "byBand": {
    "emerging": {
-    "entry": "In the partner rounds, they point to 100% on their line and to the weight above it, then read a short frame aloud. They can work it out first in any language they share with a partner.",
-    "frame": "The ___ is 100%. ___% is ___ pounds, so 100% is ___ pounds.",
+    "entry": "On the third read, they point to 9 pounds, then 20%, then the blank where the adult weight goes. In the partner rounds, they point to 100% on their line and to the weight above it, then read a short frame aloud. They can work it out first in any language they share with a partner.",
+    "frame": "The ___ is 100%. Each tick mark is ___%. Each tick mark is also ___. So ___% is ___.",
     "does": "They can count up a double number line in equal steps and read the numbers.",
     "reaching": "Saying what 100% stands for: the adult weight.",
-    "stretch": "They say the step they counted by: “each tick mark is 9 pounds and 20%.”"
+    "stretch": "They say the whole sentence aloud, naming what 100% stands for: the adult weight."
    },
    "developing": {
-    "entry": "They read their explanation with the frame, answer one partner question, and add one detail they borrowed. They can work it out first in any language they share with a partner.",
-    "frame": "The ___ is 100%. On the double number line, ___% is ___, so ___% is ___. 100% is ___.",
+    "entry": "On the third read, they say which tick will be the adult weight and what step to count by. They read their explanation with the frame, answer one partner question, and add one detail they borrowed. They can work it out first in any language they share with a partner.",
+    "frame": "The ___ is 100%. On the double number line, each tick mark is ___% and ___, because ___. So ___% is ___.",
     "does": "They can find the adult weight and say the steps in short phrases.",
     "reaching": "Saying the step from the known percent to 100% with “% of.”",
     "stretch": "They say why 10% helps for Andre’s puppy: 30% doesn’t land on 100%."
    },
    "expanding": {
-    "entry": "They explain both puppies to 2–3 partners, press each partner with IM’s prompts, and rewrite theirs clearer once. They can work it out first in any language they share with a partner.",
-    "frame": "The ___ is 100%. On the double number line, ___% is ___, so ___% is ___. 100% is ___ times that: ___.",
+    "entry": "On the third read, they name two ways to start, such as counting by 20% or finding 10% first. They explain both puppies to a partner, press each partner with IM’s prompts, and rewrite theirs clearer once. They can work it out first in any language they share with a partner.",
+    "frame": "The ___ is 100%. I found ___% first, because ___. So ___% is ___. Another way: ___.",
     "does": "They can explain how they found one adult weight, in full sentences.",
     "reaching": "Saying why the same method works for 20% and 30%, and naming what 100% is.",
     "stretch": "They show the same steps in a table beside the double number line."
@@ -347,17 +348,17 @@
   },
   {
    "activityId": "11.2",
-   "note": "If short of time, skip the group displays: hear two ways for 125% aloud, in IM’s order. What is lost: comparing the ways side by side."
+   "note": "Hear the three ways aloud, without displays. Give the time to 11.3’s rounds."
   },
   {
    "activityId": "11.3",
-   "note": "Leave out the bread and wages extension unless students finish early. Keep at least two partner rounds of Stronger and Clearer."
+   "note": "Leave out the bread and wages extension unless students finish early. Run one partner round, not two. In the share, call the double number line and the table only."
   }
  ],
  "neverCut": [
   "Quiet think time before partners talk in 11.3",
   "The puppy explanation, written by every student",
-  "At least two partner rounds that press for detail",
+  "A partner round that presses for detail",
   "Andre’s puppy: finding 100% from 30%"
  ],
  "inClass": {

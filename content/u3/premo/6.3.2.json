@@ -10,7 +10,8 @@
   "Premo’s moments: the warm-up length-for-volume slip (m1), the Take Turns breakdown (m5, from the routine’s definition), and the language moment and its by-level moves (m6).",
   "IM’s English-learner support for 2.3 says “objects that weigh 1 gallon with objects with 1 liter”; gallons and liters are volume, not weight. Looks like a slip in IM. Not repeated here; the example used is pound against kilogram.",
   "IM’s 2.3 response prints “packet of artificial sweeter” (sic). Premo’s text says “artificial sweetener.”",
-  "Facts checked: 1 kilogram is about 2.2 pounds; 1 meter is about 1.09 yards (39.37 inches); 1 liter is about 1.06 quarts. The salt shaker: 2.5 × 2.5 × 2.5 = 15.625 cubic centimeters, close to IM’s 15. The cool-down’s map is not to scale (Lin about 3 squares from school, Elena about 4); IM’s answer rests on “farther,” which holds."
+  "Facts checked: 1 kilogram is about 2.2 pounds; 1 meter is about 1.09 yards (39.37 inches); 1 liter is about 1.06 quarts. The salt shaker: 2.5 × 2.5 × 2.5 = 15.625 cubic centimeters, close to IM’s 15. The cool-down’s map is not to scale (Lin about 3 squares from school, Elena about 4); IM’s answer rests on “farther,” which holds.",
+  "2026-11-15: persona review fixes. Every band’s entry suggests a way in on Three Reads’ third read. The emerging frame names both units, as the mismatch fix needs."
  ],
  "crux": "2.3",
  "cruxWhy": "2.3 is the lesson’s main task, in IM’s words. Students sort 18 units by what they measure, then match everyday objects to the closest unit. IM’s third goal is exactly this: identify the closest unit and explain the reasoning out loud. IM’s language support, Clarify, Critique, Correct (MLR 3), sits in 2.3’s closing discussion.",
@@ -305,21 +306,21 @@
   ],
   "byBand": {
    "emerging": {
-    "entry": "When the class sees the mismatch, they point to where each card belongs and to an object about the same, then say or write the fix. They can work it out first in any language they share with a partner.",
-    "frame": "The ___ goes with 1 ___. It is about the same as a ___.",
+    "entry": "On the third read, they point to L, V and WM in order and hold up a real object for each. When the class sees the mismatch, they point to where each card belongs and to an object about the same, then say or write the fix. They can work it out first in any language they share with a partner.",
+    "frame": "The ___ goes with 1 ___, not 1 ___. It is about the same as a ___.",
     "does": "They can point to an object and say if it is big or small, light or heavy.",
     "reaching": "Naming the closest unit and an object it is about the same as.",
-    "stretch": "They name the other unit: “Not 1 kilogram.”"
+    "stretch": "They say which unit is more: “1 kilogram is more.”"
    },
    "developing": {
-    "entry": "They tell a partner what is wrong with the mismatch and write the fix with both units. They can work it out first in any language they share with a partner.",
+    "entry": "On the third read, they suggest comparing each card with an object they know. They tell a partner what is wrong with the mismatch and write the fix with both units. They can work it out first in any language they share with a partner.",
     "frame": "The ___ is closest to 1 ___, not 1 ___, because it is about the same ___ as a ___.",
     "does": "They can say which card goes where in short phrases.",
     "reaching": "Writing a justification that names both units and a comparison.",
     "stretch": "They add which unit is bigger: “1 kilogram is more than 1 pound.”"
    },
    "expanding": {
-    "entry": "They write a justification of the fix that compares the two units, then read it to the class. They can work it out first in any language they share with a partner.",
+    "entry": "On the third read, they say how to decide between two close units, like pound and kilogram. They write a justification of the fix that compares the two units, then read it to the class. They can work it out first in any language they share with a partner.",
     "frame": "This match is wrong because ___. The ___ is closest to 1 ___, since 1 ___ is about the ___ of a ___.",
     "does": "They can explain a match in their own words.",
     "reaching": "Comparing the two units’ sizes to justify the fix.",

@@ -5,8 +5,8 @@
   "Story and previous: from IM’s lesson narrative (grade 4 and 5 conversions within one system; now between systems, with ratio reasoning), Lesson 3’s narrative (“an important foundation for converting units … in the next lesson”) and unit.json’s sections (Unit Conversion is Lessons 2–4; Rates start at Lesson 5).",
   "Crux is 4.2, as in Premo’s layer. 4.3 is a fair alternative: it carries the same goal with a rate that isn’t given per 1. It was read as mastery (“an opportunity to apply insights from the previous activity”), and the checker won’t take a mastery crux while 4.2 has the new idea.",
   "CLO: imGoal is IM goal 2, copied verbatim (“Explain (orally) how to use a “rate per 1” …”), so mode is “out loud.” Goal 1 (choose a double number line or table) is met in 4.2’s first ways to solve; goal 3 (pairs of measurements are equivalent ratios) is the synthesis connection. unit.json’s progression names no language use for Lesson 4, so no progressionNote.",
-  "Board lines can’t carry a number (checker rule), and “rate per 1” has one. The language line uses IM’s learning-target phrase “how much for 1,” which the checker allows. The precise term “rate per 1” is in the frame, the exemplar and the posted sentence.",
-  "Form: names the rate per 1 with its units, then the conversion and the operation. It allows multiply or divide, since dividing 80 by \\(\\frac{8}{5}\\) also works. Exemplar uses IM’s first strategy: 80 × \\(\\frac{5}{8}\\) = 50. Posted sentence uses a new case: 12 feet ÷ 3 feet per yard = 4 yards, which shows divide.",
+  "Board lines (revised 2026-11-15): students don’t say “rate per 1” yet (receptive until Lesson 5), so the language line quotes only the precise terms “convert” and “per.”",
+  "Form (revised 2026-11-15): “There is (are) ___ ___ per ___,” then the conversion and the operation. It allows multiply or divide, since dividing 80 by \\(\\frac{8}{5}\\) also works. Exemplar uses IM’s first strategy. Posted sentence uses a new case, 12 feet to yards, which shows divide.",
   "Look-for numbers are IM’s cool-down answer: 2 × \\(\\frac{19}{5}\\) = \\(\\frac{38}{5}\\) = 7.6. IM’s answer is a table through 1 gallon, so the look-for accepts a table as well as a stated rate. \\(\\frac{2}{5}\\) × 19 = 7.6 is accepted too; it is a fair scale factor, not a rate per 1, so it meets the math but not the language goal.",
   "Three Reads: IM’s launch shows the sign and asks what it means, then reveals it is metric. The three reads are of the story and the officer’s fact, after that. Question 1 is uncovered after the third read.",
   "Release: IM gives 4.2 no partner talk (quiet work, then whole class). The two talk moments are Premo’s, for the MLR 8 frame (D1): partners check their two rates at IM’s pause, and say how they converted before the discussion.",
@@ -14,21 +14,23 @@
   "IM’s English-learner support for 4.2 says “convert 80 miles per hour into kilometers per hour, where 80 is multiplied by \\(\\frac58\\).” That should be kilometers per hour into miles per hour. Not repeated here.",
   "Minutes in 4.2 are estimates: IM gives 15 minutes, 2 of them quiet work before the pause, but no other split.",
   "NEW (Premo-written, not in IM): the m3 student’s swapped rates, the m7 student’s words, the board’s words on the synthesis card (from IM’s three strategies), the m8 student’s decimal, the m9 student’s “zero cups” work shown with IM’s numbers, and every ifNot question.",
-  "Non-crux activities carry no language supports (D7)."
+  "Non-crux activities carry no language supports (D7).",
+  "Students produce “per” and “convert,” not “rate per 1”: unit.json lists “rate per 1” as receptive here; students first produce it in Lesson 5. Teacher-facing text still says “rate per 1.” (Elena’s review.)",
+  "Teacher lines now write \\(\\frac{5}{8}\\), as the crux does. Students’ spoken words (“80 times five-eighths”) are left as said.",
+  "2026-11-15: persona review fixes."
  ],
  "story": "Lesson 4 closes the unit-conversion section. Students turn “smaller unit, more of them” into exact conversions, using equivalent ratios and a rate per 1. Rates begin in Lesson 5.",
  "previous": "In Lesson 3 students saw that a smaller unit takes more to measure the same thing. Today they find exactly how many more, with a rate per 1.",
  "clo": {
   "imGoal": "Explain (orally) how to use a “rate per 1” to solve problems involving unit conversion.",
   "function": "explain",
-  "form": "The rate per 1 is ___ ___ per ___. To convert ___ to ___, I multiply (or divide) by ___.",
+  "form": "There is (are) ___ ___ per ___. To convert ___ to ___, I multiply (or divide) by ___.",
   "board": {
    "content": "We will convert measurements from one unit to another using equivalent ratios.",
-   "language": "We will explain, out loud, how to “convert” units by thinking about “how much for 1.”"
+   "language": "We will explain, out loud, how to “convert” units by finding how many there are “per” unit."
   },
   "mode": "out loud",
   "precise": [
-   "rate per 1",
    "per",
    "convert"
   ],
@@ -36,12 +38,13 @@
    "how much for 1",
    "in 1 mile",
    "times",
-   "about"
+   "about",
+   "rate per 1"
   ],
-  "exemplar": "The rate per 1 is \\(\\frac{5}{8}\\) mile per kilometer. To convert 80 kilometers per hour to miles per hour, I multiply by \\(\\frac{5}{8}\\) and get 50.",
-  "lookFor": "The bucket answer is about 7.6 liters (\\(\\frac{38}{5}\\)). The explanation names a rate per 1, \\(\\frac{19}{5}\\) or 3.8 liters per gallon. It multiplies by it, or shows it in a table as IM’s answer does.",
+  "exemplar": "There is \\(\\frac{5}{8}\\) mile per kilometer. To convert 80 kilometers per hour to miles per hour, I multiply by \\(\\frac{5}{8}\\) and get 50.",
+  "lookFor": "The bucket answer is about 7.6 liters (\\(\\frac{38}{5}\\)). The explanation names how many liters there are per gallon, \\(\\frac{19}{5}\\) or 3.8. It multiplies by it, or shows it in a table as IM’s answer does.",
   "posted": {
-   "sentence": "The rate per 1 is 3 feet per yard. To convert 12 feet to yards, I divide by 3 and get 4 yards."
+   "sentence": "There are 3 feet per yard. To convert 12 feet to yards, I divide by 3 and get 4 yards."
   }
  },
  "activities": [
@@ -172,34 +175,34 @@
    }
   ],
   "release": {
-   "successCriteria": "When you explain, name the rate per 1 with its units, and say whether you multiply or divide by it.",
-   "say": "Name your rate per 1 with units. Say multiply or divide.",
+   "successCriteria": "When you explain, say how many of one unit there are per one of the other, with units. Say whether you multiply or divide by it.",
+   "say": "Say how many there are per unit, with units. Then say multiply or divide.",
    "talkMoments": [
-    "At the pause after question 1, partners check each other’s two rates, saying each with “There are ___ ___ per ___.”",
-    "After question 2, each student tells a partner how they converted, with Today’s frame, before the discussion."
+    "At the pause after question 1, partners check each other’s two rates, saying each with “There is (are) ___ ___ per ___.”",
+    "After question 2, each student tells a partner how they converted, with the frame for their level, before the discussion."
    ],
    "byBand": {
     "emerging": {
-     "frame": "1 ___ is about ___ ___. I multiply / divide by ___.",
-     "stretch": "They say which unit they start in and which they end in.",
-     "nonverbal": "On a double number line, point to 1 kilometer, then to its miles below it."
+     "frame": "There is (are) ___ ___ per ___. I start in ___ and end in ___. I multiply (or divide) by ___.",
+     "stretch": "They say why: which unit is longer, so whether the number gets bigger or smaller.",
+     "nonverbal": "They point to the 1 in their work, whatever they used. Then they point to the amount of the other unit that goes with it."
     },
     "developing": {
-     "frame": "There are ___ ___ per ___. To convert ___ to ___, I multiply / divide by ___.",
-     "stretch": "They add why: what one kilometer is worth in miles.",
-     "nonverbal": "Draw an arrow from the unit they start in to the unit they end in, and write the operation and rate on it."
+     "frame": "There is (are) ___ ___ per ___. To convert ___ to ___, I multiply (or divide) by ___ because ___.",
+     "stretch": "They check the answer against which unit is longer.",
+     "nonverbal": "They draw an arrow from the unit they start in to the unit they end in, and write the operation and rate on it."
     },
     "expanding": {
-     "frame": "The rate per 1 is ___ ___ per ___. To convert ___ to ___, I multiply (or divide) by ___.",
+     "frame": "There is (are) ___ ___ per ___. To convert ___ to ___, I multiply (or divide) by ___ because ___. Another way: ___.",
      "stretch": "They convert the other way too, and say why both show she was speeding.",
-     "nonverbal": "Mark 80 on the kilometers line of a double number line and write its miles below."
+     "nonverbal": "They mark 80 kilometers in their own work, a line or a table, and write its miles beside it."
     }
    }
   },
   "synthesis": {
    "routine": "MLR2: Collect and Display",
    "steps": [
-    "During work, scribe students’ words for each rate as said, such as “1.6 kilometers in a mile.” Write “rate per 1” and “per” beside them.",
+    "During work, scribe students’ words for each rate as said, such as “1.6 kilometers in a mile.” Write “per kilometer” or “per mile” beside them.",
     "Call students in IM’s order: a double number line or table, then 80 × \\(\\frac{5}{8}\\), then 75 × \\(\\frac{8}{5}\\).",
     "For each, ask what the rate means here and why they multiplied, as IM says. Scribe their words beside the work.",
     "Ask: “Where does \\(\\frac{5}{8}\\) show up on the double number line?” Students connect the ways; you scribe.",
@@ -311,7 +314,7 @@
     "Read 2: asked what each number counts, and in what unit",
     "Read 3: asked how we might find out, and took ideas without solving"
    ],
-   "why": "IM: Three Reads makes sure students know what they are being asked to do. Here, it sorts out which speed is in which unit before anyone compares them.",
+   "why": "Three Reads makes sure students know what they are being asked to do. Here, it sorts out which speed is in which unit before anyone compares them.",
    "runIt": [
     "Show the sign and ask what it means, as IM says. Let them find that it may be in kilometers.",
     "Read 1: read the story aloud. Ask what is happening. No numbers.",
@@ -330,21 +333,21 @@
    "name": "Send students to work",
    "where": "About 3 minutes into Activity 4.2. Three Reads just ended. Next: 2 minutes of quiet work, then a pause after question 1.",
    "ask": "What do you tell the class to say when they explain a conversion?",
-   "aim": "Students know to name the rate per 1, with units, and the operation.",
+   "aim": "Students know to name how many per unit, with units, and the operation.",
    "say": [
-    "Name your rate per 1 with units. Say multiply or divide."
+    "Say how many there are per unit, with units. Then say multiply or divide."
    ],
    "notes": [
-    "Success criteria: When you explain, name the rate per 1 with its units, and say whether you multiply or divide by it.",
-    "When partners talk: at the pause after question 1, partners check each other’s two rates, saying each with “There are ___ ___ per ___.”",
-    "Then: after question 2, each student tells a partner how they converted, with Today’s frame, before the discussion."
+    "Success criteria: When you explain, say how many of one unit there are per one of the other, with units. Say whether you multiply or divide by it.",
+    "When partners talk: at the pause after question 1, partners check each other’s two rates, saying each with “There is (are) ___ ___ per ___.”",
+    "Then: after question 2, each student tells a partner how they converted, with the frame for their level, before the discussion."
    ],
    "checks": [
-    "Named what every explanation needs: the rate per 1, its units, the operation",
-    "Pointed to Today’s frame on the board",
+    "Named what every explanation needs: how many per unit, the units, the operation",
+    "Pointed to Today’s frame and the level frames",
     "Told them when they’ll say it to a partner"
    ],
-   "sounds": "The rate per 1 is \\(\\frac{5}{8}\\) mile per kilometer. To convert 80 kilometers per hour to miles per hour, I multiply by \\(\\frac{5}{8}\\) and get 50.",
+   "sounds": "There is \\(\\frac{5}{8}\\) mile per kilometer. To convert 80 kilometers per hour to miles per hour, I multiply by \\(\\frac{5}{8}\\) and get 50.",
    "why": "Naming what an explanation needs before work starts means students practice it at the pause, not only at the end."
   },
   {
@@ -371,7 +374,7 @@
     "Didn’t swap the answers for them"
    ],
    "goingOn": "They divided the right two numbers, both ways. They haven’t checked which unit is bigger, so the two rates landed on the wrong questions.",
-   "ifNot": "Does 1 mile hold more than 1 kilometer, or less?"
+   "ifNot": "If 8 kilometers is 5 miles, which is longer: 1 mile or 1 kilometer?"
   },
   {
    "id": "m7",
@@ -384,7 +387,7 @@
    "where": "About 9 minutes into Activity 4.2. Students are telling a partner how they converted.",
    "show": [
     "Their work: 80 × \\(\\frac{5}{8}\\) = 50. 75 − 50 = 25. Yes, speeding.",
-    "Today’s frame on the board."
+    "Today’s frame on the board, and the frames for your students’ levels."
    ],
    "student": "A student says: “I did 80 times five-eighths. It’s 50.”",
    "ask": "What do you say to this student?",
@@ -394,9 +397,12 @@
     "Gave their level’s frame or the way in without words",
     "Didn’t say the sentence for them"
    ],
-   "ifNot": "Five-eighths of a mile for each what?",
-   "sounds": "The rate per 1 is \\(\\frac{5}{8}\\) mile per kilometer, so I multiply the 80 kilometers by \\(\\frac{5}{8}\\) to convert to miles.",
-   "goingOn": "The math is right, and they chose the right rate. What \\(\\frac{5}{8}\\) stands for, and why multiply, aren’t in words yet."
+   "ifNot": "\\(\\frac{5}{8}\\) of a mile for each what?",
+   "sounds": "There is \\(\\frac{5}{8}\\) mile per kilometer. To convert 80 kilometers per hour to miles per hour, I multiply by \\(\\frac{5}{8}\\) and get 50.",
+   "goingOn": "The math is right, and they chose the right rate. What \\(\\frac{5}{8}\\) stands for, and why multiply, aren’t in words yet.",
+   "say": [
+    "What does \\(\\frac{5}{8}\\) mean here, and why multiply?"
+   ]
   },
   {
    "id": "m5",
@@ -438,30 +444,30 @@
    "show": [
     "On the board:",
     "Student A: “8 kilometers is 5 miles, so 80 kilometers is 50 miles.”",
-    "Student B: “Five-eighths of a mile in every kilometer, times 80.”",
+    "Student B: “\\(\\frac{5}{8}\\) of a mile in every kilometer, times 80.”",
     "Student C: “1.6 kilometers in a mile, times 75.”"
    ],
    "ask": "Student B’s words are up. What do you write beside them? What do you ask?",
    "aim": "Students find the rate per 1 on the double number line.",
    "notes": [
-    "Write beside Student B’s and C’s words: “rate per 1,” “per kilometer,” “per mile.”",
+    "Write beside Student B’s and C’s words: “per kilometer” and “per mile.”",
     "Then ask, and let students make the connection:"
    ],
    "say": [
-    "Where does five-eighths show up on the double number line? Why multiply 80 by it?"
+    "Where does \\(\\frac{5}{8}\\) show up on the double number line? Why multiply 80 by it?"
    ],
    "checks": [
     "Called students in IM’s order: double number line, then a rate per 1",
-    "Wrote students’ own words, with “rate per 1” or “per” beside them",
+    "Wrote students’ own words, with “per” beside them",
     "Asked how the double number line shows the rate, and let them connect it"
    ],
    "sounds": "On the double number line, 8 kilometers lines up with 5 miles, so 1 kilometer is \\(\\frac{5}{8}\\) mile. So 80 kilometers is 80 times \\(\\frac{5}{8}\\) mile.",
    "why": "IM: ask what each number means and why that operation. Collect and Display keeps students’ words for the rate, so the lesson synthesis can point back to them.",
    "runIt": [
-    "During work, scribe students’ words for each rate as said. Write “rate per 1” and “per” beside them.",
+    "During work, scribe students’ words for each rate as said. Write “per kilometer” or “per mile” beside them.",
     "Call students in IM’s order: double number line or table, then 80 × \\(\\frac{5}{8}\\), then 75 × \\(\\frac{8}{5}\\).",
     "For each, ask what the rate means here and why they multiplied. Scribe their words beside the work.",
-    "Ask where five-eighths shows up on the double number line. Students connect; you scribe.",
+    "Ask where \\(\\frac{5}{8}\\) shows up on the double number line. Students connect; you scribe.",
     "Leave the board up for the lesson synthesis and the cool-down."
    ]
   },
@@ -570,12 +576,12 @@
   "pointTo": "Point to the 4.2 board: the double number line, 80 × \\(\\frac{5}{8}\\), and students’ words beside them. If you taught 4.3, point to its pounds and kilograms table too.",
   "check": {
    "question": "There are 12 inches per foot. How would you convert 60 inches to feet?",
-   "sounds": "The rate per 1 is 12 inches per foot. To convert 60 inches to feet, I divide by 12 and get 5 feet."
+   "sounds": "There are 12 inches per foot. To convert 60 inches to feet, I divide by 12 and get 5 feet."
   }
  },
  "beforeClass": [
   "For Three Reads in 4.2: display the “Maximum 80” sign and the story, with the questions covered until after the third read.",
-  "For the release: have Today’s frame for your students’ levels ready to post or hand out.",
+  "For the release: have the frames for your students’ levels ready to post or hand out.",
   "For Collect and Display (MLR 2): clear board space with room for a double number line, kilometers over miles; start writing as students work.",
   "For 4.4 if taught: four-function calculators."
  ],

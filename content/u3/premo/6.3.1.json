@@ -11,7 +11,8 @@
   "Premo's moments: the warm-up's partners swapping numbers without talking about units (m1, built on IM's displayed questions), the language moment and its by-level moves (m7), the Compare and Connect run sheet (m8) and breakdown (m9).",
   "Math checked: 18 ÷ 15 = 1.2 minutes per window; 24,348 × 1.2 = 29,217.6 minutes; 15 ÷ 18 = \\(\\frac{5}{6}\\) window per minute. IM's error (\\(\\frac{5}{6}\\) minutes per window) gives 24,348 × \\(\\frac{5}{6}\\) = 20,290 minutes, fewer minutes than windows, which can't be right when 1 window takes more than a minute. 1.3: 828 ÷ 6 = 138 meters per hour; 2 hours, 276; 5 hours, 690; 15 minutes = \\(\\frac{1}{4}\\) hour, 138 ÷ 4 = 34.5 meters. Cool-down: 330 ÷ 10 = 33 feet per second; 33 × 11 = 363 feet.",
   "29,217.6 minutes is about 487 hours (29,217.6 ÷ 60 = 486.96), about 20 days without stopping. IM welcomes students raising this; the number is Premo's arithmetic.",
-  "Dividing 24,348 by \\(\\frac{5}{6}\\) is grade 6 Unit 4 work. A student who found windows per minute will likely need to scale up or switch to minutes per window; the moments treat that as useful, not wrong."
+  "Dividing 24,348 by \\(\\frac{5}{6}\\) is grade 6 Unit 4 work. A student who found windows per minute will likely need to scale up or switch to minutes per window; the moments treat that as useful, not wrong.",
+  "2026-11-15: persona review fixes. m3 now gives IM’s question (90 and 300 windows), so sayFrom is IM. Every band’s entry suggests a way in on Three Reads’ third read. Emerging and developing frames now evaluate which number for 1 fits the question. Quoted-question punctuation fixed."
  ],
  "crux": "1.2",
  "cruxWhy": "1.2 is the problem the lesson is built around. IM calls it a “meaty problem that rewards finding and making sense of a rate per 1.” 15 windows in 18 minutes doesn’t scale to 24,348 windows, so students find the time for 1 window. IM’s synthesis then makes the lesson’s point: both numbers for 1 are right, and one fits the question better. IM’s language support for 1.2 is Compare and Connect (MLR 7), when students present their ways.",
@@ -82,15 +83,15 @@
    "kind": "im-misconception",
    "see": "A student writes 18 ÷ 15, then crosses it out: “15 doesn’t go into 18.”",
    "means": "They chose the right division. A quotient that isn’t a whole number is what stops them.",
-   "say": "How long for 5 windows? Then how long for 1?",
+   "say": "At this rate, how long will it take the crew to finish 90 windows? 300 windows?",
    "dont": "Do the long division for them.",
    "from": "im",
-   "sayFrom": "premo",
+   "sayFrom": "im",
    "evidence": "Students may get stuck when they try to find the minutes per window because 15 does not divide evenly into 18. Help them reason in terms of equivalent ratios or recall grade 5 methods for determining a quotient that is not a whole number.",
    "rehearse": true,
    "criteria": [
     "Kept the division they chose",
-    "Gave a smaller step with equivalent ratios",
+    "Asked IM’s question with more windows: 90, then 300",
     "Didn’t do the division for them"
    ]
   },
@@ -162,11 +163,11 @@
     "developing": {
      "say": "1.2 what, per what? Why does it help?",
      "move": "With Today’s frame, they tell a partner what the 1.2 means and why it fits the question. They can work it out first in any language they share with a partner.",
-     "nonverbal": "They point to 1.2 in their table, then trace to the row for all the windows."
+     "nonverbal": "They point to 1.2, then to the line where they multiplied it by the windows."
     },
     "expanding": {
      "say": "What does 1.2 mean here, and why use it?",
-     "move": "They say what 1.2 means with “per,” say why it fits “how long?”, and say what the other number for 1 would tell. They can work it out first in any language they share with a partner.",
+     "move": "They say what 1.2 means with “per,” say why it fits “how long?” and say what the other number for 1 would tell. They can work it out first in any language they share with a partner.",
      "nonverbal": "They point to the 1.2 and the question, then to the other number for 1 a partner found."
     }
    },
@@ -296,21 +297,21 @@
   ],
   "byBand": {
    "emerging": {
-    "entry": "When students present, they point to the number for 1 in two ways of solving and say or write what each one counts. They can work it out first in any language they share with a partner.",
-    "frame": "This way: ___ per ___. That way: ___ per ___.",
+    "entry": "On the third read, they point to the 15 and the 18 in order and say which is windows and which is minutes. When students present, they point to the number for 1 in two ways and say or write what each one counts. They can work it out first in any language they share with a partner.",
+    "frame": "This way: ___ per ___. That way: ___ per ___. The question asks ___, so ___ per ___ helps more.",
     "does": "They can point to the 15 and the 18 and say which is windows and which is minutes.",
     "reaching": "Naming a number for 1 with its units: minutes per window.",
-    "stretch": "They say which number answers “how long?”"
+    "stretch": "They add what they do with it: “I multiply it by the windows.”"
    },
    "developing": {
-    "entry": "They tell a classmate what is the same and what is different about two ways, naming each number for 1. They can work it out first in any language they share with a partner.",
-    "frame": "Both ways use ___ and ___. One finds ___ per ___. The other finds ___ per ___.",
+    "entry": "On the third read, they suggest finding the time for 1 window, or for a smaller number of windows. They tell a classmate what is the same and what is different about two ways, naming each number for 1. They can work it out first in any language they share with a partner.",
+    "frame": "Both ways use ___ and ___. One finds ___ per ___. The other finds ___ per ___. ___ per ___ fits the question better, because ___.",
     "does": "They can say in short phrases how they found their number for 1.",
     "reaching": "Comparing the two numbers for 1 and saying what each one tells.",
-    "stretch": "They add why one fits the question: “The question asks how long.”"
+    "stretch": "They say what they do with it next: multiply (or divide) by the windows."
    },
    "expanding": {
-    "entry": "They compare two ways aloud and say which number for 1 is more useful for “how long?”, and why. They can work it out first in any language they share with a partner.",
+    "entry": "On the third read, they name two ways to start and say which one fits “how long.” They compare two ways aloud and say which number for 1 is more useful for “how long?” and why. They can work it out first in any language they share with a partner.",
     "frame": "At this rate, ___ per ___ is more useful here than ___ per ___, because the question asks ___.",
     "does": "They can explain their own way of solving in their own words.",
     "reaching": "Saying why both numbers for 1 are right, and which one fits this question.",

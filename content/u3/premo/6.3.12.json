@@ -10,7 +10,8 @@
   "m5 is a share-order moment, but IM’s 12.3 synthesis gives no order: it says show diagrams, then show IM’s if no one has something equivalent. So m5 is typed student-thinking, and the order (5 parts, then 10 parts, then the bare calculation) is Premo’s.",
   "Language mode: none of IM’s three goals for Lesson 12 names a mode. The plan uses “out loud and in writing,” since the crux synthesis is spoken and the cool-down is written. A reviewer should confirm.",
   "Math checked: 12.2: 5 × 9 = 45, 9 is \\(\\frac{1}{5}\\) of 45; 90 ÷ 9 = 10, so \\(\\frac{1}{10}\\) and 10%. 12.3: 40% of $5 is $2 (each 20% is $1); 150% of $5 is $7.50 (each 50% is $2.50); Noah has 250%, or \\(\\frac{5}{2}\\), as much as Elena. 12.4: 1.5 is 50% of 3; 80% of 3 is 2.4. Cool-down: 36 is 3 of 4 equal parts, so each is 12 and the large holds 48.",
-  "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person. The diagram lines in the tg file are descriptions, not IM’s words."
+  "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person. The diagram lines in the tg file are descriptions, not IM’s words.",
+  "2026-11-15: persona review fixes. Band frames now match the plan’s release frames; each band’s entry suggests a way in on read 3; m6’s expanding nonverbal no longer assumes 5 parts; “quiet think time” throughout; Diego is “\\(1\\frac{1}{2}\\) times as much” in Premo’s words."
  ],
  "crux": "12.3",
  "cruxWhy": "12.3 is where students first draw their own tape diagram for a percentage and say the same comparison as a fraction. It is the lesson’s only required activity that addresses the standard, and the cool-down asks the same thing with a new situation. IM’s language support for the lesson, Discussion Supports (MLR8), sits in 12.3’s class discussion: “where do you see 40% or \\(\\frac{2}{5}\\)?”",
@@ -179,7 +180,7 @@
     "expanding": {
      "say": "Say it as a percent and as a fraction.",
      "move": "They say the full comparison in their own words, then make it clearer once after a partner asks “What is 100%?” They can work it out first in any language they share with a partner.",
-     "nonverbal": "They label each part of Noah’s tape 20%, then point to Elena’s two."
+     "nonverbal": "They label each part of Noah’s tape with its percent, then point to Elena’s parts."
     }
    },
    "dont": "Say the sentence for them.",
@@ -324,22 +325,22 @@
   ],
   "byBand": {
    "emerging": {
-    "entry": "In the discussion, they point to Noah’s whole tape, then to Elena’s parts, and say or write the percent and the fraction. They can work it out first in any language they share with a partner.",
-    "frame": "___ has ___% as much as ___, or ___ as much. 100% is ___ parts. ___ is ___ parts.",
+    "entry": "On read 3, they point in order to Noah’s $5, then 40%, then 150%. In the discussion, they point to Noah’s whole tape, then Elena’s parts, and say or write the percent and the fraction. They can work it out first in any language they share with a partner.",
+    "frame": "___ has ___% as much as ___, or ___ as much. ___ is 100%. It has ___ equal parts. ___ is ___ of the parts. Each part is ___%.",
     "does": "They can count the parts of a tape and say or write the numbers.",
     "reaching": "Naming the whole as 100% and saying Elena’s part as a percent and a fraction.",
     "stretch": "They add what one part is worth: “Each part is $1.”"
    },
    "developing": {
-    "entry": "They tell a partner where they see 40% and \\(\\frac{2}{5}\\) on the tape, then say it to the class with the frame. They can work it out first in any language they share with a partner.",
-    "frame": "___ has ___% as much as ___, or ___ as much. ___ is 100%, in ___ equal parts. ___ is ___ of those parts.",
+    "entry": "On read 3, they suggest drawing Noah’s $5 as a tape in equal parts. Later they tell a partner where they see 40% and \\(\\frac{2}{5}\\) on the tape, then say it to the class with the frame. They can work it out first in any language they share with a partner.",
+    "frame": "___ has ___% as much as ___, or ___ as much. In the tape diagram, ___ is 100%, in ___ equal parts of ___% each. ___ is ___ of those parts, because ___.",
     "does": "They can tell a partner, in short phrases, what part of the tape is shaded.",
     "reaching": "Saying the comparison as a percent and a fraction, and linking both to the parts.",
     "stretch": "They do the same for Diego, with a tape longer than 100%."
    },
    "expanding": {
-    "entry": "They explain to the class where 40% and \\(\\frac{2}{5}\\) are on the tape, then try the challenge: where is 250%? They can work it out first in any language they share with a partner.",
-    "frame": "___ has ___% as much as ___, or ___ as much. ___ is 100%, split into ___ equal parts, and ___ is ___ of those parts.",
+    "entry": "On read 3, they suggest how to split Noah’s tape so 40% is easy to see. In the discussion they explain where 40% and \\(\\frac{2}{5}\\) are, then try the challenge: where is 250%? They can work it out first in any language they share with a partner.",
+    "frame": "___ has ___% as much as ___, or ___ as much, because ___. Another way to see it: ___.",
     "does": "They can explain how they drew their tape in their own words.",
     "reaching": "Explaining why 40% and \\(\\frac{2}{5}\\) name the same parts of the same whole.",
     "stretch": "They turn it around: Noah has 250%, or \\(\\frac{5}{2}\\), as much as Elena."
@@ -364,7 +365,7 @@
   "Every student drawing Elena’s tape diagram in 12.3",
   "Asking where 40% and \\(\\frac{2}{5}\\) are on the tape",
   "Naming what is 100% before solving",
-  "Quiet work time before partners talk in 12.3"
+  "Quiet think time before partners talk in 12.3"
  ],
  "inClass": {
   "launch": "“Noah’s $5 is the whole. Draw it, then show Elena’s money.”",
@@ -383,6 +384,6 @@
  "beforeClass": [
   "For Think Pair Share in 12.3: write “Noah has $5.” on the board, with space for two tapes.",
   "For Discussion Supports: have a marker ready to mark students’ diagrams on the display.",
-  "Know the answers: Elena $2, \\(\\frac{2}{5}\\) as much; Diego $7.50, \\(1\\frac{1}{2}\\) as much."
+  "Know the answers: Elena $2, \\(\\frac{2}{5}\\) as much; Diego $7.50, \\(1\\frac{1}{2}\\) times as much."
  ]
 }

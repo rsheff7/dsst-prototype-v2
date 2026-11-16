@@ -10,7 +10,8 @@
   "Premo’s moments: m7 (the language moment and its by-level moves) and m10 (the rotation running out of time). The 3.2 timing in m10 and the cuts is Premo’s: IM gives 35 minutes and no split between stations and questions.",
   "The IM layer’s 3.2 task is now the print version the Teacher Guide uses, with real containers and a scale (extractor fixed 2026-11-15).",
   "Station 1’s answer, 250 cubic centimeters, is IM’s. The 2 by 2 by 4 inch box is about 262 cubic centimeters (5.08 × 5.08 × 10.16), so students who pack carefully may get more than 250. Not repeated here as a number students must hit.",
-  "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person."
+  "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person.",
+  "2026-11-15: persona review fixes."
  ],
  "crux": "3.2",
  "cruxWhy": "3.2 is where students measure the same things in two units and then say what they found: the smaller unit took more. IM’s first goal, generalize orally and in writing, is met in its summary questions. IM’s language support for the lesson, Discussion Supports (MLR 8), runs at its stations.",
@@ -192,17 +193,17 @@
     "emerging": {
      "say": "Show me. Which unit is smaller?",
      "move": "They point to the smaller unit, then to the bigger count in their table, and say or write it with their frame. They can work it out first in any language they share with a partner.",
-     "nonverbal": "Hold a ruler beside a meter stick, point to the smaller unit, then point to the bigger count in the table."
+     "nonverbal": "They hold a ruler beside a meter stick and point to the smaller unit. Then they point to the bigger count in the table."
     },
     "developing": {
      "say": "Which took more? Why? Use the frame.",
-     "move": "With “It took more ___ than ___ because a ___ is smaller,” they tell a partner, then write it. They can work it out first in any language they share with a partner.",
-     "nonverbal": "Circle the bigger count in the table and draw an arrow to the unit that made it."
+     "move": "With the frame for their level, they tell a partner, then write it. They can work it out first in any language they share with a partner.",
+     "nonverbal": "They circle the bigger count in the table and draw an arrow to the unit that made it."
     },
     "expanding": {
      "say": "Which took more, and why? Make it fit every station.",
      "move": "They give the reason for this station, then say a rule that fits the others too. They can work it out first in any language they share with a partner.",
-     "nonverbal": "Sketch two bars of the same length, one split into feet and one into meters."
+     "nonverbal": "They sketch the same length split into feet and into meters, any way they choose, and label each count."
     }
    },
    "dont": "Say the reason for them.",
@@ -306,25 +307,25 @@
   ],
   "byBand": {
    "emerging": {
-    "entry": "At each station, they point to the unit they think will take more before measuring, then point to the bigger count after. A partner answers with a posted frame. They can work it out first in any language they share with a partner.",
-    "frame": "More ___, because a ___ is smaller. Smaller unit, ___ of them.",
+    "entry": "On the third read, they point to the two units in the question, in order. At each station, they point to the unit they think will take more, then to the bigger count after. A partner answers with a posted frame. They can work it out first in any language they share with a partner.",
+    "frame": "It took more ___ because a ___ is smaller. Station ___ showed the same. Smaller unit, ___ of them. Larger unit, ___ of them.",
     "does": "They can read a count from the table and say which is more.",
-    "reaching": "Saying which unit is smaller as the reason for the bigger count.",
-    "stretch": "They say the other half: a larger unit, fewer of them."
+    "reaching": "Saying which unit is smaller as the reason for the bigger count, at two stations.",
+    "stretch": "They say the rule as one sentence, with “smaller unit” and “larger unit.”"
    },
    "developing": {
-    "entry": "At each station, they predict which unit will take more with “I think ___ because ___,” then agree or disagree with a partner after measuring. They can work it out first in any language they share with a partner.",
-    "frame": "It took more ___ than ___ because a ___ is smaller. A smaller unit takes ___; a larger unit takes ___.",
+    "entry": "On the third read, they say how to find out: measure both ways and compare. At each station, they predict with “I think ___ because ___,” then agree or disagree with a partner after measuring. They can work it out first in any language they share with a partner.",
+    "frame": "It took more ___ than ___ because a ___ is smaller than a ___. At Station ___, it took more ___ because ___. A smaller unit takes ___, and a larger unit takes ___.",
     "does": "They can say which unit took more at one station.",
-    "reaching": "Giving unit size as the reason, then the rule for both units.",
-    "stretch": "They check the rule at a second station and say whether it held."
+    "reaching": "Giving unit size as the reason at two stations, then the rule for both units.",
+    "stretch": "They predict the next station’s result from the rule before measuring, then check it."
    },
    "expanding": {
-    "entry": "They ask a groupmate “How do you know?” at each station, and at the summary questions they say a rule that fits every station. They can work it out first in any language they share with a partner.",
-    "frame": "It took more ___ than ___ because a ___ is smaller than a ___. It takes more of a ___ unit and fewer of a ___ unit to measure the same quantity.",
+    "entry": "On the third read, they say how to find out and what reason would explain the counts. They ask a groupmate “How do you know?” at each station. At the summary questions they say a rule that fits every station. They can work it out first in any language they share with a partner.",
+    "frame": "It took more ___ than ___ because ___. Station ___ showed the same, because ___. So it takes ___ of a smaller unit and ___ of a larger unit. Another way to see it: ___.",
     "does": "They can explain why one station took more of one unit.",
     "reaching": "Stating one rule that fits all five stations, using “smaller unit” and “larger unit.”",
-    "stretch": "They predict the next station’s result from the rule before measuring, then check it."
+    "stretch": "They say about how many times as many of the smaller unit it took, not just more."
    }
   }
  },

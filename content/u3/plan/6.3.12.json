@@ -4,22 +4,23 @@
   "No person has reviewed this file.",
   "Story and previous: from IM’s lesson narrative (double number lines in earlier lessons, tape diagrams today) and the student summary, which reuses Lesson 11’s problems (30% of 50 pounds; 140% of a number is 28).",
   "CLO: imGoal is IM goal 3, copied verbatim. Function is “interpret,” the verb in IM’s goal and the one IM’s language progression names for Lesson 12, so there is no progressionNote. IM’s goals name no mode; “out loud and in writing” is Premo’s choice (spoken synthesis, written cool-down). A reviewer should confirm.",
-  "Form: “___ has ___% as much as ___, or ___ as much. ___ is 100%, split into ___ equal parts, and ___ is ___ of those parts.” It fits all three uses: Elena (40%, \\(\\frac{2}{5}\\), 5 parts, 2 of them), Diego (150%, \\(1\\frac{1}{2}\\), 2 parts, 3 of them) and the cool-down (75%, \\(\\frac{3}{4}\\), 4 parts, 3 of them). Precise terms follow IM’s terminology (productive: “tape diagram”; receptive: “___% as much”) plus “100%” and “equal parts.”",
+  "Form: “___ has ___% as much as ___, or ___ as much. In the tape diagram, ___ is 100%, split into ___ equal parts, and ___ is ___ of those parts. Each part is ___% of ___.” It fits all three uses: Elena (40%, \\(\\frac{2}{5}\\), 5 parts, 2 of them, 20% each), Diego (150%, \\(1\\frac{1}{2}\\), 2 parts, 3 of them, 50% each) and the cool-down (75%, \\(\\frac{3}{4}\\), 4 parts, 3 of them, 25% each). The last sentence carries “% of” and the step a strong student uses. Precise terms follow IM’s terminology (productive: “tape diagram”; receptive: “___% as much”) plus “% of,” “100%” and “equal parts.”",
   "Math checked: exemplar 40% of $5 is $2, 2 of 5 parts of $1. Posted sentence 60% of $10 is $6, 3 of 5 parts of $2. Look-for: 36 ÷ 3 = 12, 12 × 4 = 48. Lesson-synthesis check: 20% is \\(\\frac{1}{5}\\), 1 of 5 parts. Synthesis Sounds like: 150% of $5 is $7.50, 3 parts of $2.50.",
   "Crux is 12.3, as in Premo’s layer. Per D1 it uses Three Reads to launch, a frame at release, and MLR 2 Collect and Display in the synthesis. IM’s own support for 12.3 is MLR8 Discussion Supports (press for where $2, $5, 40% and \\(\\frac{2}{5}\\) are on the diagram); that move is built into Collect and Display (D1 option 3), including IM’s 250% challenge.",
   "Synthesis routine: MLR 2, not MLR 1. IM’s 12.3 synthesis is show-and-explain diagrams, then IM’s diagrams if needed, and its support marks up a shared display. MLR 1 is IM’s routine for 12.2, and its partner rounds won’t fit 12.3’s last 5 minutes.",
-  "Timing in 12.3, from IM’s launch: 3 minutes quiet work, partner talk on question 1, 3 minutes quiet on question 2, then the class discussion. With Three Reads first, the discussion starts at about 10 of IM’s 15 minutes.",
+  "Timing in 12.3, from IM’s launch: 3 minutes quiet work, partner talk on question 1, 3 minutes quiet think time on question 2, then the class discussion. IM’s MLR8 support runs between the two questions, at about minute 7, so the Collect and Display chart starts there and finishes with Diego’s tape. The plan says “quiet think time” throughout, per the house style.",
   "Share order in m5 is Premo’s: IM gives none. NEW student work on the cards (all Premo’s, for review): m1’s call-out, m2’s 100% label, m3’s partner exchange, m4’s “$40,” m5’s three diagrams, m6’s “2 of them,” m9’s number line. m10’s “1.2 liters” is IM’s own flawed answer.",
   "Misconceptions: IM gives them only for 12.4, used there. The rest are Premo’s and need checking.",
   "12.3 dependsOn 12.2: 12.3 asks students to draw tape diagrams, and 12.2 is where they first read one. If 12.2 is skipped, the note says to show one puppy diagram first.",
-  "Non-crux activities carry no language supports (D7)."
+  "Non-crux activities carry no language supports (D7).",
+  "2026-11-15: persona review fixes. IM’s MLR8 move now sits between questions 1 and 2 (minute 7); m5 and the synthesis card moved there, and the synthesis finishes with Diego’s tape and 250%. The synthesis card’s sounds now equal crux.synthesis.sounds (Elena). “% of” added to precise. “(IM’s diagram)” removed from the 10-part tape: unverified. Model sentences now match the frame exactly (“In the tape diagram,” dropped). Band frames reworked: emerging names the whole; developing and expanding add a “because” or “another way” clause. m10 shows IM’s flawed example as such. Diego is “\\(1\\frac{1}{2}\\) times as much” in Premo’s words; IM’s quoted answers are unchanged. The form gained a last sentence, “Each part is ___% of ___,” so the exemplar can use every precise term, including the new “% of.”"
  ],
  "story": "Lesson 12 is the third lesson on percentages. Students have used double number lines; today tape diagrams show percentages as fractions of a whole, which Lesson 13’s benchmark percentages build on.",
  "previous": "In Lesson 11 students used double number lines and tables for problems like “140% of a number is 28.” Today a tape diagram shows the same problems as equal parts of 100%.",
  "clo": {
   "imGoal": "Interpret tape diagrams that represent multiplicative comparisons and express such comparisons using fractions and percentages.",
   "function": "interpret",
-  "form": "___ has ___% as much as ___, or ___ as much. ___ is 100%, split into ___ equal parts, and ___ is ___ of those parts.",
+  "form": "___ has ___% as much as ___, or ___ as much. In the tape diagram, ___ is 100%, split into ___ equal parts, and ___ is ___ of those parts. Each part is ___% of ___.",
   "board": {
    "content": "We will use tape diagrams to compare two amounts with a percentage and with a fraction.",
    "language": "We will interpret tape diagrams, out loud and in writing, using “as much as” and “equal parts.”"
@@ -28,6 +29,7 @@
   "precise": [
    "tape diagram",
    "as much as",
+   "% of",
    "100%",
    "equal parts"
   ],
@@ -36,10 +38,10 @@
    "pieces",
    "the whole tape"
   ],
-  "exemplar": "Elena has 40% as much as Noah, or \\(\\frac{2}{5}\\) as much. In the tape diagram, Noah’s $5 is 100%, split into 5 equal parts, and Elena’s $2 is 2 of those parts.",
-  "lookFor": "Any situation and unit is fine. The large holds 48 units. The diagram (a tape diagram or a double number line, as IM accepts) shows the large as 100% in 4 equal parts of 12, and the small’s 36 as 3 of them. Strong answers also say \\(\\frac{3}{4}\\) as much.",
+  "exemplar": "Elena has 40% as much as Noah, or \\(\\frac{2}{5}\\) as much. In the tape diagram, Noah’s $5 is 100%, split into 5 equal parts, and Elena’s $2 is 2 of those parts. Each part is 20% of Noah’s $5.",
+  "lookFor": "Any situation and unit is fine. The large holds 48 units. The diagram may be a tape diagram or a double number line, as IM accepts. It shows the large as 100% in 4 equal parts of 12, and the small’s 36 as 3 of them. Strong answers also say \\(\\frac{3}{4}\\) as much.",
   "posted": {
-   "sentence": "A sandwich costs 60% as much as a salad, or \\(\\frac{3}{5}\\) as much. The salad’s $10 is 100%, split into 5 equal parts, and the sandwich’s $6 is 3 of those parts."
+   "sentence": "A sandwich costs 60% as much as a salad, or \\(\\frac{3}{5}\\) as much. In the tape diagram, the salad’s $10 is 100%, split into 5 equal parts, and the sandwich’s $6 is 3 of those parts. Each part is 20% of the salad’s $10."
   }
  },
  "activities": [
@@ -93,7 +95,7 @@
     "m3",
     "m2"
    ],
-   "grouping": "Pairs: 1 minute of quiet think time and partner talk for question 1, then a class poll and 100% label, then the same for question 2.",
+   "grouping": "Pairs: 1 minute of quiet think time and partner talk for question 1. Then a class poll and the 100% label. Then the same for question 2.",
    "monitor": "Watch which tape students treat as 100% in question 2. Listen for explanations that point to the 5 equal pieces for \\(\\frac{1}{5}\\).",
    "momentCriteria": {
     "m3": [
@@ -107,9 +109,9 @@
    "id": "12.3",
    "strategies": [
     "Split Noah’s $5 into 5 parts of $1, each 20%: 40% is 2 parts, so $2, or \\(\\frac{2}{5}\\) as much.",
-    "Split Noah’s $5 into 10 parts of 50 cents, each 10%: 40% is 4 parts, so $2 (IM’s diagram).",
+    "Split Noah’s $5 into 10 parts of 50 cents, each 10%: 40% is 4 parts, so $2.",
     "Multiply: 0.4 × 5 = 2, then show it on a tape.",
-    "For Diego, split Noah’s $5 into 2 parts of $2.50, each 50%: 150% is 3 parts, so $7.50, or \\(1\\frac{1}{2}\\) as much."
+    "For Diego, split Noah’s $5 into 2 parts of $2.50, each 50%: 150% is 3 parts, so $7.50, or \\(1\\frac{1}{2}\\) times as much."
    ],
    "barriers": [
     "“40% as much as” needs a whole: which amount is 100%?",
@@ -130,7 +132,7 @@
     "m6",
     "m5"
    ],
-   "grouping": "Pairs: 3 minutes of quiet work, partner talk on question 1, 3 minutes of quiet think time on question 2, then the whole class.",
+   "grouping": "Pairs: 3 minutes of quiet think time, then partner talk on question 1. The class discusses question 1. Then 3 minutes of quiet think time on question 2, then the whole class.",
    "monitor": "Track who splits Noah’s tape into 5 parts, who uses 10, and who only calculates, to show in that order. Note who draws Diego’s tape past Noah’s.",
    "momentCriteria": {
     "m5": [
@@ -147,7 +149,7 @@
   {
    "id": "12.4",
    "strategies": [
-    "Tape diagram: 1.5 liters is one of 2 halves, so 3 liters; split 3 liters into 5 parts of 0.6, and 80% is 4 parts, 2.4 liters.",
+    "Tape diagram: 1.5 liters is one of 2 halves, so 3 liters. Split 3 liters into 5 parts of 0.6; 80% is 4 parts, 2.4 liters.",
     "Double number line in 10% steps of 0.3 liters: 80% lines up with 2.4.",
     "Table: 1.5 is 50%, double to 3.0 and 100%, times \\(\\frac{1}{5}\\) to 0.6 and 20%, times 4 to 2.4 and 80%."
    ],
@@ -207,22 +209,22 @@
    "successCriteria": "In every sentence, name what is 100%, say the percent and the fraction, and point to the equal parts on your tape diagram.",
    "say": "Name what is 100%. Then say the percent and the fraction.",
    "talkMoments": [
-    "After quiet work, partners take turns saying the Elena comparison with Today’s frame, pointing to their tape diagram.",
+    "After quiet think time, partners take turns saying the Elena comparison with Today’s frame, pointing to their tape diagram.",
     "Before the class discussion, partners say the Diego comparison: the percent, the fraction and how many parts."
    ],
    "byBand": {
     "emerging": {
-     "frame": "___ has ___% as much as ___, or ___ as much. 100% is ___ parts. ___ is ___ parts.",
+     "frame": "___ has ___% as much as ___, or ___ as much. ___ is 100%. It has ___ equal parts. ___ is ___ of the parts. Each part is ___%.",
      "stretch": "They add what one part is worth: “Each part is $1.”",
      "nonverbal": "They trace Noah’s whole tape, then hold up fingers for Elena’s parts and for all the parts."
     },
     "developing": {
-     "frame": "___ has ___% as much as ___, or ___ as much. ___ is 100%, in ___ equal parts. ___ is ___ of those parts.",
+     "frame": "___ has ___% as much as ___, or ___ as much. In the tape diagram, ___ is 100%, in ___ equal parts of ___% each. ___ is ___ of those parts, because ___.",
      "stretch": "They do the same for Diego, with a tape longer than 100%.",
      "nonverbal": "They draw a bracket under Noah’s tape, label it 100%, and circle Elena’s parts."
     },
     "expanding": {
-     "frame": "___ has ___% as much as ___, or ___ as much. ___ is 100%, split into ___ equal parts, and ___ is ___ of those parts.",
+     "frame": "___ has ___% as much as ___, or ___ as much, because ___. Another way to see it: ___.",
      "stretch": "They turn it around: Noah has 250%, or \\(\\frac{5}{2}\\), as much as Elena.",
      "nonverbal": "They label each part of Noah’s tape with its percent, then point to Elena’s parts."
     }
@@ -231,11 +233,11 @@
   "synthesis": {
    "routine": "MLR2: Collect and Display",
    "steps": [
-    "Display students’ tapes in our order: 5 parts of $1, then 10 parts of 50 cents, then the calculation drawn on a tape.",
-    "Ask where they see Elena’s $2 and Noah’s $5 (IM’s Discussion Supports). Mark each on the display as students point, and scribe their words beside it.",
-    "Ask where they see 40% and \\(\\frac{2}{5}\\). Scribe students’ words; write the math word beside them: 100%, equal parts, as much as.",
-    "Do the same for Diego’s tape, past 100%. Show IM’s diagrams only if no one has something equivalent. As a challenge, ask where 250% is.",
-    "Leave the display up for the lesson synthesis and the cool-down."
+    "At about minute 7, after partner talk on question 1, bring the class together. Display students’ tapes in our order: 5 parts, 10 parts, then the calculation drawn on a tape.",
+    "Ask where they see Elena’s $2 and Noah’s $5, then 40% and \\(\\frac{2}{5}\\). Mark the tape as students point, and start the Collect and Display chart with their words.",
+    "Write the math word beside students’ words: 100%, equal parts, % of, as much as. Then give 3 minutes of quiet think time on question 2.",
+    "Finish with Diego’s tape, past 100%. Show IM’s diagrams only if no one has something equivalent. As a challenge, ask where 250% is.",
+    "Leave the chart up for the lesson synthesis and the cool-down."
    ],
    "prompt": "Where do you see 40% on this tape? Where do you see \\(\\frac{2}{5}\\)?",
    "sounds": "Noah’s $5 is 100%, split into 5 equal parts of $1. Elena’s $2 is 2 of those parts, so she has 40%, or \\(\\frac{2}{5}\\), as much as Noah."
@@ -245,19 +247,19 @@
   "ideas": [
    "If you compare two amounts using percentages, you can also compare them using fractions: 40% as much is \\(\\frac{2}{5}\\) as much.",
    "A tape diagram shows it: make the amount you compare to 100%, split it into equal parts, and count the parts.",
-   "A percentage over 100% is a fraction over 1: 150% as much is \\(1\\frac{1}{2}\\) as much."
+   "A percentage over 100% is a fraction over 1: 150% as much is \\(1\\frac{1}{2}\\) times as much."
   ],
   "pointTo": "Point to the 12.3 display: Noah’s tape as 100%, Elena’s 2 of 5 parts, Diego’s 3 halves. If you taught 12.4, point to Andre’s tape: 1.5 liters is one of two halves.",
   "check": {
    "question": "A bag holds 20% as much as a box. Say it as a fraction, and describe the tape diagram.",
-   "sounds": "The bag holds 20% as much as the box, or \\(\\frac{1}{5}\\) as much. The box is 100%, split into 5 equal parts, and the bag is 1 of those parts."
+   "sounds": "The bag holds 20% as much as the box, or \\(\\frac{1}{5}\\) as much. In the tape diagram, the box is 100%, split into 5 equal parts, and the bag is 1 of those parts. Each part is 20% of the box."
   }
  },
  "beforeClass": [
   "For Three Reads in 12.3: display the task with the questions covered until the third read.",
   "For the release: have the frames for your students’ levels ready to post or hand out.",
   "For Collect and Display: clear board space for two or three student tapes, and have a marker ready.",
-  "Know the answers: Elena $2, \\(\\frac{2}{5}\\) as much; Diego $7.50, \\(1\\frac{1}{2}\\) as much; Noah 250% of Elena."
+  "Know the answers: Elena $2, \\(\\frac{2}{5}\\) as much; Diego $7.50, \\(1\\frac{1}{2}\\) times as much; Noah 250% of Elena."
  ],
  "cuts": [
   {
@@ -274,7 +276,7 @@
   },
   {
    "activityId": "12.3",
-   "note": "IM gives 15 minutes. Never cut the quiet work or the discussion. Keep Three Reads to one sentence a read, so the discussion starts by about minute 10."
+   "note": "IM gives 15 minutes. Three Reads ends by minute 2, question 1 by 7, its discussion by 9, and question 2 by 12. Diego’s tape takes the last 3. Never cut the quiet think time or the discussion. If time runs short, show one Diego tape, not several, and save the 250% challenge for the lesson synthesis."
   }
  ],
  "rehearsal": [
@@ -423,13 +425,13 @@
    "notes": [
     "How students might solve it:",
     "5 parts: split Noah’s $5 into 5 parts of $1, each 20%. 40% is 2 parts, so $2, or \\(\\frac{2}{5}\\) as much.",
-    "10 parts: split Noah’s $5 into 10 parts of 50 cents, each 10%. 40% is 4 parts (IM’s diagram).",
+    "10 parts: split Noah’s $5 into 10 parts of 50 cents, each 10%. 40% is 4 parts.",
     "Calculation: 0.4 × 5 = 2, then shown on a tape.",
-    "Diego: split Noah’s $5 into 2 parts of $2.50, each 50%. 150% is 3 parts, so $7.50, or \\(1\\frac{1}{2}\\) as much."
+    "Diego: split Noah’s $5 into 2 parts of $2.50, each 50%. 150% is 3 parts, so $7.50, or \\(1\\frac{1}{2}\\) times as much."
    ],
    "checks": [
     "Got $2 and $7.50",
-    "Said Elena has \\(\\frac{2}{5}\\) as much and Diego \\(1\\frac{1}{2}\\) as much",
+    "Said Elena has \\(\\frac{2}{5}\\) as much and Diego \\(1\\frac{1}{2}\\) times as much",
     "Drew Noah’s $5 as the whole tape both times"
    ]
   },
@@ -472,11 +474,11 @@
     "Read 2: asked what each number tells us and what is 100%",
     "Read 3: asked how we might solve it, without solving"
    ],
-   "why": "IM: Three Reads makes sure students know what they’re being asked to do. Here, it settles which amount is 100% before anyone draws.",
+   "why": "Three Reads makes sure students know what they’re being asked to do. Here, it settles which amount is 100% before anyone draws.",
    "runIt": [
     "Read 1: read it aloud. Ask what’s happening, with no numbers.",
     "Read 2: read it again. Ask what each number tells us and what is 100%.",
-    "Read 3: show the questions and read it again. Ask how we might solve it, and take ideas without solving. Then start quiet work time."
+    "Read 3: show the questions and read it again. Ask how we might solve it, and take ideas without solving. Then start quiet think time."
    ]
   },
   {
@@ -487,7 +489,7 @@
    "routine": "MLR8: Discussion Supports",
    "language": true,
    "name": "Send students to work",
-   "where": "About 2 minutes into Activity 12.3. Three Reads just ended. Next come 3 minutes of quiet work time, then partner talk.",
+   "where": "About 2 minutes into Activity 12.3. Three Reads just ended. Next come 3 minutes of quiet think time, then partner talk.",
    "ask": "What do you tell the class to name in every sentence?",
    "aim": "Students know each sentence names the whole, the percent and the fraction.",
    "say": [
@@ -495,15 +497,15 @@
    ],
    "notes": [
     "Success criteria: In every sentence, name what is 100%, say the percent and the fraction, and point to the equal parts on your tape diagram.",
-    "When partners talk: after quiet work, partners take turns saying the Elena comparison.",
-    "They use Today’s frame: “___ has ___% as much as ___, or ___ as much. ___ is 100%, split into ___ equal parts, and ___ is ___ of those parts.”"
+    "When partners talk: after quiet think time, partners take turns saying the Elena comparison.",
+    "They use Today’s frame: “___ has ___% as much as ___, or ___ as much. In the tape diagram, ___ is 100%, split into ___ equal parts, and ___ is ___ of those parts. Each part is ___% of ___.”"
    ],
    "checks": [
     "Named what every sentence needs: the whole, the percent, the fraction",
     "Pointed to Today’s frame on the board",
     "Told them when they’ll say it to a partner"
    ],
-   "sounds": "Elena has 40% as much as Noah, or \\(\\frac{2}{5}\\) as much. In the tape diagram, Noah’s $5 is 100%, split into 5 equal parts, and Elena’s $2 is 2 of those parts.",
+   "sounds": "Elena has 40% as much as Noah, or \\(\\frac{2}{5}\\) as much. In the tape diagram, Noah’s $5 is 100%, split into 5 equal parts, and Elena’s $2 is 2 of those parts. Each part is 20% of Noah’s $5.",
    "why": "Naming the language before work starts means students practice it while they draw, not only at the end."
   },
   {
@@ -513,7 +515,7 @@
    "momentId": "m4",
    "type": "student",
    "name": "A student writes “Elena has $40”",
-   "where": "About 4 minutes into Activity 12.3. Students are in quiet work time.",
+   "where": "About 4 minutes into Activity 12.3. Students are in quiet think time.",
    "show": [
     "The task: Noah has $5. Elena has 40% as much as Noah. How much does Elena have?",
     "The student’s paper: “Elena has $40.” No diagram."
@@ -553,7 +555,10 @@
     "Didn’t say the sentence for them"
    ],
    "ifNot": "What does the whole tape stand for?",
-   "sounds": "Elena has 40% as much as Noah, or \\(\\frac{2}{5}\\) as much. Noah’s $5 is 100%, split into 5 equal parts, and Elena’s $2 is 2 of those parts."
+   "sounds": "Elena has 40% as much as Noah, or \\(\\frac{2}{5}\\) as much. In the tape diagram, Noah’s $5 is 100%, split into 5 equal parts, and Elena’s $2 is 2 of those parts. Each part is 20% of Noah’s $5.",
+   "say": [
+    "What is 100% on your tape? How much of it is Elena’s, as a percent and a fraction?"
+   ]
   },
   {
    "id": "m5",
@@ -562,7 +567,7 @@
    "momentId": "m5",
    "type": "decision",
    "name": "Choose whose tape to show first",
-   "where": "About 10 minutes into Activity 12.3. Students finished question 2. You’re about to start the discussion.",
+   "where": "About 7 minutes into Activity 12.3. Partners just shared question 1. You’re bringing the class together.",
    "show": [
     "Student A · 5 parts: Noah’s tape in 5 parts of $1, 2 shaded for Elena.",
     "Student B · 10 parts: Noah’s tape in 10 parts of 50 cents, 4 shaded.",
@@ -591,7 +596,7 @@
    "routine": "MLR2: Collect and Display",
    "language": true,
    "name": "Finish on the board",
-   "where": "About 11 minutes into Activity 12.3. Students A and B’s tapes are displayed. They have said where Noah’s $5 is.",
+   "where": "About 8 minutes into Activity 12.3. You brought the class together after question 1. Students A and B’s tapes are displayed, and students said where Noah’s $5 is.",
    "show": [
     "On the board, with students’ words beside the tapes:",
     "Student A’s tape (5 parts): “The whole thing is Noah’s.” Beside it: 100%.",
@@ -604,21 +609,21 @@
    ],
    "notes": [
     "Mark each place a student points to on the display. Write their words beside it, and the math word beside their words.",
-    "Then do the same for Diego’s tape, past 100%."
+    "Then give 3 minutes of quiet think time on question 2. Finish with Diego’s tape, past 100%, and the 250% challenge."
    ],
    "checks": [
     "Asked where 40% and the fraction are on the tape, and let students point",
     "Wrote students’ own words, with the math word beside them",
     "Took Diego’s tape past 100% before ending"
    ],
-   "sounds": "Noah’s $5 is 100%, split into 2 equal parts of $2.50. Diego has 3 of those parts, so 150%, or \\(1\\frac{1}{2}\\) as much as Noah.",
-   "why": "IM: Collect and Display turns students’ spoken words into a shared reference. Asking where each number sits on the tape, IM’s own move, links the percent to the fraction.",
+   "sounds": "Noah’s $5 is 100%, split into 5 equal parts of $1. Elena’s $2 is 2 of those parts, so she has 40%, or \\(\\frac{2}{5}\\), as much as Noah.",
+   "why": "Collect and Display turns students’ spoken words into a shared reference. Asking where each number sits on the tape, IM’s own move, links the percent to the fraction.",
    "runIt": [
-    "Display students’ tapes in our order: 5 parts of $1, then 10 parts of 50 cents, then the calculation drawn on a tape.",
-    "Ask where they see Elena’s $2 and Noah’s $5. Mark each as students point, and scribe their words beside it.",
-    "Ask where they see 40% and \\(\\frac{2}{5}\\). Write the math word beside students’ words: 100%, equal parts, as much as.",
-    "Do the same for Diego’s tape, past 100%. As a challenge, ask where 250% is.",
-    "Leave the display up for the lesson synthesis and the cool-down."
+    "At about minute 7, display students’ tapes in our order: 5 parts, 10 parts, then the calculation drawn on a tape.",
+    "Ask where they see Elena’s $2 and Noah’s $5, then 40% and \\(\\frac{2}{5}\\). Mark the tape and start the chart with students’ words.",
+    "Write the math word beside students’ words: 100%, equal parts, % of, as much as. Then give 3 minutes of quiet think time on question 2.",
+    "Finish with Diego’s tape, past 100%. As a challenge, ask where 250% is.",
+    "Leave the chart up for the lesson synthesis and the cool-down."
    ]
   },
   {
@@ -681,7 +686,7 @@
    "name": "A student takes 80% of the wrong amount",
    "where": "About 7 minutes into Activity 12.4. Partners are sharing their explanations.",
    "show": [
-    "IM’s flawed answer, on a student’s paper: “If Andre drank 80% of his water on his entire hike, then he drank 1.2 liters of water because 0.8 times 1.5 liters is 1.2 liters.”"
+    "A student’s answer, like IM’s flawed example: “If Andre drank 80% of his water on his entire hike, then he drank 1.2 liters of water because 0.8 times 1.5 liters is 1.2 liters.”"
    ],
    "student": "A student wrote 1.2 liters, taking 80% of the 1.5 liters.",
    "ask": "What do you say to this student?",

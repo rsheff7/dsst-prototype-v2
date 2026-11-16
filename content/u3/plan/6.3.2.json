@@ -3,32 +3,31 @@
  "reviewNotes": [
   "No person has reviewed this file.",
   "IM marks the whole lesson optional, and both activities after the warm-up are optional slots. The crux is 2.3, the card sort, which IM calls the lesson’s main task. If a school skips this lesson, nothing in Lessons 3–17 depends on this plan.",
-  "CLO: imGoal is IM goal 3 (“Identify which unit is closest … and explain (orally) the reasoning”), copied verbatim. Function “explain” matches the unit’s language progression for Lesson 2 (“reasoning for estimating and sorting measurements”), so there is no progression note. Goal 1 (“Compare (orally) the relative size…”) is carried by the frame’s last clause: “and 1 ___ is (more / less) than that.”",
-  "The form follows how a strong student matches a card: name the closest unit, compare the object with a known object, rule out the other unit. Precise terms are “closest to,” “weight,” “pound” and “kilogram,” the words of the crux’s common mismatch; the board line names all three attributes. A reviewer may prefer attribute words only.",
+  "CLO: imGoal is IM goal 3 (“Identify which unit is closest … and explain (orally) the reasoning”), copied verbatim. Function “explain” matches the unit’s language progression for Lesson 2 (“reasoning for estimating and sorting measurements”), so there is no progression note. Goal 1 (“Compare (orally) the relative size…”) is carried by the frame’s last clause: “and 1 ___ is more (or less) than that.”",
+  "The form follows how a strong student matches a card: name the closest unit, compare the object with a known object, compare with the other unit. Precise terms are “closest to” and “about the same,” the comparison words every match needs; the board line quotes only those.",
   "Exemplar facts checked against IM’s 2.3 response and summary: jar of peanut butter under 1 pound, “1 pound is about the weight of a loaf of bread,” 1 kilogram about a textbook. A kilogram is about 2.2 pounds. Posted sentence: a bottle cap is about 1 inch across (about 3 centimeters), not on IM’s cards. Lesson synthesis check: letter-size paper is 11 inches long, closest to 1 foot.",
   "Routines at the crux (D1): Three Reads launches the card sort, a frame at release, and MLR1 Stronger and Clearer in the synthesis. D1 option 3: IM’s Clarify, Critique, Correct move, a common mismatch shown to the class and a written justification with units, is Stronger and Clearer’s first round. The flawed match is NEW and Premo’s, built on IM’s example (pound objects under kilogram); its reason sentence is Premo’s.",
   "Release talk moments build in Take Turns, which IM lists for 2.3: one card each, said with the frame.",
   "Timing: IM gives 2.3 25 minutes, with sort, check, match, new groups and the class fix. Stronger and Clearer adds a partner round; the run sheet keeps one round. A reviewer should check it fits.",
   "The Premo run-routine (m7) and breakdown (m8) for Clarify, Critique, Correct are left out of 2.3’s momentIds; the synthesis card runs IM’s move inside Stronger and Clearer.",
   "NEW student work, Premo’s: the m1 “2 centimeters,” the m3 two piles, the m4 kilogram pile, the m6 “It’s small. Ounce,” and the flawed match’s reason sentence.",
-  "Non-crux activities carry no language supports (D7)."
+  "Non-crux activities carry no language supports (D7).",
+  "2026-11-15: persona review fixes. Synthesis sounds now justify the bread with the box of 96 crayons (IM puts both under 1 pound); peanut butter was in the mismatch too. That sentence keeps “, not 1 kilogram” beyond the frame, because it answers the mismatch. Release talk moments restore IM’s new-group questions. Board line and precise terms aligned: precise is now “closest to” and “about the same” (both in the frame), and the board line quotes only those. Choice marks now “more (or less).” Emerging frame keeps the comparison with the other unit; developing and expanding frames add an open clause. m6 has one say line. Long sentences split. Each band in Premo’s cruxLanguage now has a way in on the third read."
  ],
  "story": "Lesson 2 is optional. It gives every standard unit a size students can picture, using everyday objects. Lessons 3 and 4 then use ratios to convert between units.",
- "previous": "In Lesson 1 students estimated a tree’s height in feet or meters and found minutes per window; today they anchor how big each unit of length, volume, and weight or mass is.",
+ "previous": "In Lesson 1 students estimated a tree’s height and found minutes per window. Today they anchor how big each unit of length, volume, and weight or mass is.",
  "clo": {
   "imGoal": "Identify which unit is closest to the length, volume, weight, or mass of a given object, and explain (orally) the reasoning.",
   "function": "explain",
-  "form": "The ___ is closest to 1 ___. It is about the same ___ as a ___, and 1 ___ is (more / less) than that.",
+  "form": "The ___ is closest to 1 ___. It is about the same ___ as a ___, and 1 ___ is more (or less) than that.",
   "board": {
    "content": "We will match everyday objects to the closest unit of length, volume, weight, or mass.",
-   "language": "We will explain, out loud, which unit is “closest to” an object, using its “length,” “volume,” or “weight.”"
+   "language": "We will explain, out loud, which unit is “closest to” an object, naming an object “about the same” size."
   },
   "mode": "out loud",
   "precise": [
    "closest to",
-   "weight",
-   "pound",
-   "kilogram"
+   "about the same"
   ],
   "informal": [
    "about as heavy as",
@@ -37,7 +36,7 @@
    "like a"
   ],
   "exemplar": "The jar of peanut butter is closest to 1 pound. It is about the same weight as a loaf of bread, and 1 kilogram is more than that.",
-  "lookFor": "Each cool-down answer picks the right unit and says which unit is bigger: yards are longer than feet, gallons bigger than cups, kilograms heavier than pounds. It ties that to the picture, as IM does: Elena’s house is farther, her tank larger, her brother bigger.",
+  "lookFor": "Each cool-down answer picks the right unit and says which unit is bigger. Yards are longer than feet, gallons bigger than cups, kilograms heavier than pounds. It ties that to the picture, as IM does: Elena’s house is farther, her tank larger, her brother bigger.",
   "posted": {
    "sentence": "A bottle cap is closest to 1 inch across. It is about the same length as my thumb to the first knuckle, and 1 centimeter is less than that."
   }
@@ -158,22 +157,22 @@
    "successCriteria": "When you place a card, say the closest unit and compare it with an object you know.",
    "say": "Say the closest unit, and compare it with something you know.",
    "talkMoments": [
-    "While matching, take turns: one card each. Say why with Today’s frame: “The ___ is closest to 1 ___. It is about the same ___ as a ___.”",
-    "In the new groups, the student from the original group explains one match with the frame; the others agree or disagree."
+    "While matching, take turns: one card each. Say why with Today’s frame.",
+    "In the new groups, use IM’s questions: Did your groups match the same? Which objects did you match differently? Which were easiest, and hardest, and why?"
    ],
    "byBand": {
     "emerging": {
-     "frame": "The ___ is closest to 1 ___. It is about the same ___ as a ___.",
-     "stretch": "They add the other unit: “1 ___ is more than that.”",
+     "frame": "The ___ is closest to 1 ___. It is about as heavy (or long, or big) as a ___. 1 ___ is more (or less) than that.",
+     "stretch": "They say the attribute word: “about the same weight as.”",
      "nonverbal": "They place the picture card under its unit, then point to a real object on display that is about the same."
     },
     "developing": {
-     "frame": "The ___ is closest to 1 ___. It is about the same ___ as a ___, and 1 ___ is (more / less) than that.",
+     "frame": "The ___ is closest to 1 ___. It is about the same ___ as a ___, and 1 ___ is more (or less) than that. I know because ___.",
      "stretch": "They name a second object that fits the same unit.",
      "nonverbal": "They hold a real object, lift a book or bottle to compare, then point to the unit card."
     },
     "expanding": {
-     "frame": "The ___ is closest to 1 ___, not 1 ___, because 1 ___ is about the ___ of a ___.",
+     "frame": "The ___ is closest to 1 ___, not 1 ___, because ___. Another way to check: ___.",
      "stretch": "They say why another group’s different match is less close.",
      "nonverbal": "They line up three picture cards from smallest to largest under the units."
     }
@@ -182,14 +181,14 @@
   "synthesis": {
    "routine": "MLR1: Stronger and Clearer Each Time",
    "steps": [
-    "After new groups finish, show one common mismatch: the loaf of bread and the jar of peanut butter under 1 kilogram, with “Pound or kilogram, either works.”",
+    "After new groups finish, show one common mismatch, like IM’s example: the loaf of bread and the jar of peanut butter under 1 kilogram. Its reason: “Pound or kilogram, either works.”",
     "Pairs: say what is wrong, then write a justification of the fix that names the units (IM).",
     "Round 1: meet a partner and read it aloud. The listener asks “Which unit is more? How do you know?”",
     "Rewrite it stronger and clearer. Read one or two aloud beside the real objects.",
     "Leave the fixed match up for the lesson synthesis."
    ],
    "prompt": "What is wrong with this match? Where do these cards belong, and why?",
-   "sounds": "The loaf of bread is closest to 1 pound, not 1 kilogram. It is about the same weight as a jar of peanut butter, and 1 kilogram is more than that."
+   "sounds": "The loaf of bread is closest to 1 pound, not 1 kilogram. It is about the same weight as a box of 96 crayons, and 1 kilogram is more than that."
   }
  },
  "lessonSynthesis": {
@@ -351,7 +350,7 @@
     "How students might do it:",
     "Sort first: 8 units of length, 5 of volume, 5 of weight or mass.",
     "Match by comparing with a known object: the loaf of bread is about 1 pound, the textbook about 1 kilogram.",
-    "Close pairs: a kilogram is more than a pound; a liter is a little more than a quart; a meter is a little longer than a yard."
+    "Close pairs: a kilogram is more than a pound. A liter is a little more than a quart. A meter is a little longer than a yard."
    ],
    "checks": [
     "Sorted the units into length, volume, and weight or mass",
@@ -395,7 +394,7 @@
     "Read 2: asked what the units measure and what L, V and WM mean",
     "Read 3: asked how we might decide, and took ideas without sorting"
    ],
-   "why": "IM: Three Reads makes sure students know what they’re being asked to do. Here, it makes “attribute” and the three letters clear before the sort.",
+   "why": "Three Reads makes sure students know what they’re being asked to do. Here, it makes “attribute” and the three letters clear before the sort.",
    "runIt": [
     "Read 1: read the directions aloud. Ask what we will do, with no details.",
     "Read 2: read them again. Ask what the units measure, and what L, V and WM mean.",
@@ -420,7 +419,7 @@
    "notes": [
     "Success criteria: When you place a card, say the closest unit and compare it with an object you know.",
     "When groups match: take turns, one card each.",
-    "They use Today’s frame: “The ___ is closest to 1 ___. It is about the same ___ as a ___, and 1 ___ is (more / less) than that.”"
+    "They use Today’s frame: “The ___ is closest to 1 ___. It is about the same ___ as a ___, and 1 ___ is more (or less) than that.”"
    ],
    "checks": [
     "Named what every match needs: the closest unit and a comparison",
@@ -476,7 +475,7 @@
    "say": [
     "Textbook: about 1 kilogram. Bread: about 1 pound. Where does the peanut butter go?"
    ],
-   "goingOn": "They know all three are about the same kind of heavy, and that these are weights. Pound and kilogram don’t have a size for them yet.",
+   "goingOn": "They know all three are weights and feel close. They don’t yet have a sense of how heavy a pound and a kilogram are.",
    "ifNot": "Hold the textbook, then the bread. Which is heavier?",
    "checks": [
     "Gave one object for each unit, as IM says",
@@ -508,6 +507,9 @@
     "Asked every level the same question: why that unit is closest",
     "Gave their level’s frame or way in without words",
     "Didn’t say the comparison for them"
+   ],
+   "say": [
+    "Why is that unit closest? Compare it with something you know."
    ]
   },
   {
@@ -520,7 +522,7 @@
    "name": "Make the fix stronger",
    "where": "About 20 minutes into Activity 2.3. New groups have analyzed another group’s matches.",
    "show": [
-    "The mismatch, on the board:",
+    "A common mismatch, like IM’s example, on the board:",
     "Under 1 kilogram: loaf of bread, jar of peanut butter.",
     "Its reason: “Pound or kilogram, either works. They’re about the same.”",
     "On display: a textbook, a loaf of bread."
@@ -538,7 +540,7 @@
     "Had pairs write a fix that names both units",
     "Ran one partner round, then had students rewrite"
    ],
-   "sounds": "The loaf of bread is closest to 1 pound, not 1 kilogram. It is about the same weight as a jar of peanut butter, and 1 kilogram is more than that.",
+   "sounds": "The loaf of bread is closest to 1 pound, not 1 kilogram. It is about the same weight as a box of 96 crayons, and 1 kilogram is more than that.",
    "avoid": "Fixing the match for the class yourself.",
    "ifNot": "Which is heavier: the textbook or the loaf of bread?",
    "why": "IM shows a common mismatch with Clarify, Critique, Correct; Premo runs it through Stronger and Clearer. Students fix work that isn’t theirs, then sharpen their words through talk.",

@@ -8,7 +8,8 @@
   "Premo’s moments: m3 (the two rates swapped; IM only says to make sure question 1 is right before question 2), m7 (the language moment and its by-level moves).",
   "IM’s English-learner support for 4.2 says “if they convert 80 miles per hour into kilometers per hour, where 80 is multiplied by \\(\\frac58\\).” The speed limit is 80 kilometers per hour, and multiplying by \\(\\frac58\\) converts it into miles per hour. IM’s activity synthesis has it right. Looks like a slip in IM; not repeated here.",
   "IM’s 4.1 English-learner support (MLR 8) is on one line with its design principle in the source, so the extractor left it in 4.1’s synthesis text instead of the supports. Reported as an extractor issue; nothing here depends on it.",
-  "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person."
+  "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person.",
+  "2026-11-15: persona review fixes."
  ],
  "crux": "4.2",
  "cruxWhy": "4.2 is where students first find two rates per 1 between units, kilometers per mile and miles per kilometer, and use one to convert. IM’s goal 2, explaining how to use a “rate per 1,” is met in its closing discussion. IM’s language support for the activity, Compare and Connect (MLR 7), sits there too.",
@@ -140,19 +141,19 @@
    "means": "The math is right, and they picked the right rate. What \\(\\frac{5}{8}\\) stands for, and why multiply, aren’t in words yet.",
    "byBand": {
     "emerging": {
-     "say": "Point to the five-eighths. What is it?",
-     "move": "They point to \\(\\frac{5}{8}\\) and to 1 kilometer on a double number line, then say or write it with their frame. They can work it out first in any language they share with a partner.",
-     "nonverbal": "On a double number line, point to 1 kilometer, then to \\(\\frac{5}{8}\\) mile below it."
+     "say": "Point to the \\(\\frac{5}{8}\\). What is it?",
+     "move": "They point to \\(\\frac{5}{8}\\) in their work and to the 1 kilometer it goes with, then say or write it with their frame. They can work it out first in any language they share with a partner.",
+     "nonverbal": "They point to 1 kilometer in their work, a line or a table, then to the \\(\\frac{5}{8}\\) mile that goes with it."
     },
     "developing": {
-     "say": "What does five-eighths mean here? Use the frame.",
-     "move": "With “There are ___ ___ per ___. To convert ___ to ___, I multiply by ___,” they tell a partner, then the class. They can work it out first in any language they share with a partner.",
-     "nonverbal": "Draw an arrow from kilometers to miles and write the operation and rate on it."
+     "say": "What does \\(\\frac{5}{8}\\) mean here? Use the frame.",
+     "move": "With the frame for their level, they tell a partner, then the class. They can work it out first in any language they share with a partner.",
+     "nonverbal": "They draw an arrow from kilometers to miles and write the operation and rate on it."
     },
     "expanding": {
-     "say": "What does five-eighths mean, and why multiply?",
+     "say": "What does \\(\\frac{5}{8}\\) mean, and why multiply?",
      "move": "They say what \\(\\frac{5}{8}\\) is per kilometer and why multiplying converts 80 kilometers, then hear a classmate who used \\(\\frac{8}{5}\\). They can work it out first in any language they share with a partner.",
-     "nonverbal": "Mark 80 on the kilometers line of a double number line and write its miles below."
+     "nonverbal": "They mark 80 kilometers in their own work, a line or a table, and write its miles beside it."
     }
    },
    "dont": "Say the sentence for them.",
@@ -190,7 +191,7 @@
    "routine": "MLR7: Compare and Connect",
    "see": "Three students show their work one after another. Each reads out numbers, and nobody compares.",
    "means": "Showing isn’t comparing. Compare and Connect works when students say how two ways are alike and differ.",
-   "say": "Where is the five-eighths on the double number line?",
+   "say": "Where is the \\(\\frac{5}{8}\\) on the double number line?",
    "dont": "Thank each student and call the next.",
    "from": "im",
    "sayFrom": "premo",
@@ -314,26 +315,27 @@
   "routine": "MLR7: Compare and Connect",
   "phase": "synthesis",
   "produceToday": [
-   "rate per 1"
+   "per",
+   "convert"
   ],
   "byBand": {
    "emerging": {
-    "entry": "As the ways are compared, they point to where \\(\\frac{5}{8}\\) or \\(\\frac{8}{5}\\) appears in two ways, and say or write it with a frame. They can work it out first in any language they share with a partner.",
-    "frame": "1 ___ is about ___ ___. I multiply / divide by ___.",
+    "entry": "On the third read, they point to the quantities in order: 75 miles per hour, the 80 limit, then 8 kilometers and 5 miles. As ways are compared, they point to where \\(\\frac{5}{8}\\) or \\(\\frac{8}{5}\\) appears in two ways. They can work it out first in any language they share with a partner.",
+    "frame": "There is (are) ___ ___ per ___. I start in ___ and end in ___. I multiply (or divide) by ___.",
     "does": "They can find a matching pair on a double number line, like 8 kilometers and 5 miles.",
-    "reaching": "Naming a rate per 1 with its units, and the operation that uses it.",
-    "stretch": "They say which unit they start in and which they end in."
+    "reaching": "Naming how many of one unit there are per one of the other, and the operation that uses it.",
+    "stretch": "They say why: which unit is longer, so whether the number gets bigger or smaller."
    },
    "developing": {
-    "entry": "They tell a partner what one rate per 1 means, then say whether a classmate’s way used the same rate. They can work it out first in any language they share with a partner.",
-    "frame": "There are ___ ___ per ___. To convert ___ to ___, I multiply / divide by ___.",
+    "entry": "On the third read, they suggest putting both speeds in one unit. In the discussion, they tell a partner what one rate means, then say whether a classmate used the same rate. They can work it out first in any language they share with a partner.",
+    "frame": "There is (are) ___ ___ per ___. To convert ___ to ___, I multiply (or divide) by ___ because ___.",
     "does": "They can say the steps they took: “80 times five-eighths.”",
     "reaching": "Saying what the rate means and why that operation converts.",
-    "stretch": "They add why: what one kilometer is worth in miles."
+    "stretch": "They check the answer against which unit is longer."
    },
    "expanding": {
-    "entry": "They compare their way with a classmate’s aloud: which rate per 1 each used, and why both reach the same decision. They can work it out first in any language they share with a partner.",
-    "frame": "The rate per 1 is ___ ___ per ___. To convert ___ to ___, I multiply / divide by ___. So she was speeding by about ___.",
+    "entry": "On the third read, they suggest two ways to compare the speeds. In the discussion, they compare their way with a classmate’s: which rate each used, and why both reach the same decision. They can work it out first in any language they share with a partner.",
+    "frame": "There is (are) ___ ___ per ___. To convert ___ to ___, I multiply (or divide) by ___ because ___. Another way: ___.",
     "does": "They can convert and explain their own steps.",
     "reaching": "Comparing two ways and saying how the double number line shows the rate per 1.",
     "stretch": "They convert the other way too, and say why both show she was speeding."

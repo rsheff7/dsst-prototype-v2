@@ -9,7 +9,8 @@
   "Two rehearsed moments upstream of the crux are not possible: only the warm-up comes before 10.2. One upstream moment is the warm-up’s “no dollars in one cent”; the other five rehearsed moments are at the crux.",
   "The share order in m4 (cents first, then quarter by quarter, then a quarter is 25% so 6 quarters is 6 × 25%) is Premo’s. IM says to select successful strategies and, if no one reasons with ratios, to illustrate it; it gives no order.",
   "IM’s 10.3 English-learner support (Compare and Connect) was not split out by the extractor: IM spells its tag line “Design Principles(s):”, so the support and its tag stay in 10.3’s synthesis lines. It doesn’t affect the crux.",
-  "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person."
+  "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person.",
+  "2026-11-15: persona review fixes. cruxLanguage frames match the plan’s new release frames; produceToday says “% of,” matching clo.precise. Each band’s entry now suggests a way in on the third read. The developing say points to the student’s frame, not “Today’s frame.”"
  ],
  "crux": "10.2",
  "cruxWhy": "10.2 is where students learn that a percentage is a rate per 100, which is IM’s first goal for the lesson. IM says the last two questions, 6 dimes and 6 quarters, “should be the focus of the activity.” The cool-down asks the same kind of question with 8 dimes. IM’s language support, Clarify, Critique, Correct (MLR 3), sits in 10.2’s closing discussion.",
@@ -142,7 +143,7 @@
      "nonverbal": "They draw a 100-cent bar for the dollar, then a longer bar for 6 quarters, and write the % on it."
     },
     "developing": {
-     "say": "150 what? Of what? Use Today’s frame.",
+     "say": "150 what? Of what? Use your frame.",
      "move": "With the frame, they tell a partner what 6 quarters are worth in cents and what percent of a dollar that is. They can work it out first in any language they share with a partner."
     },
     "expanding": {
@@ -290,26 +291,26 @@
   "produceToday": [
    "percentage",
    "rate per 100",
-   "% of a dollar"
+   "% of"
   ],
   "byBand": {
    "emerging": {
-    "entry": "In the class discussion of the flawed explanation, they point to the 6 quarters and the dollar bar, then say or write the percent with its symbol. They can work it out first in any language they share with a partner.",
-    "frame": "___ is ___ cents. ___ cents per 100 cents is ___% of a dollar.",
+    "entry": "On the third read, they point to each coin’s value in order, then to the 100 cents in a dollar. In the class discussion of the flawed explanation, they point to the 6 quarters and the dollar bar, then say or write the percent with its symbol. They can work it out first in any language they share with a partner.",
+    "frame": "The value of ___ is ___ cents. A dollar is 100 cents. So it is ___% of a dollar.",
     "does": "They can say what each coin is worth in cents.",
     "reaching": "Writing a percent with its % symbol, and saying it is “of a dollar.”",
     "stretch": "They say the whole sentence aloud: “6 quarters is 150% of a dollar.”"
    },
    "developing": {
-    "entry": "They tell their partner what is wrong with “50%,” then write a correct line together with the frame. They can work it out first in any language they share with a partner.",
-    "frame": "___ is worth ___ cents. That is ___ per 100 cents, so it is ___% of a dollar.",
+    "entry": "On the third read, they say one way to start: find the cents, or use one coin’s percent. They tell their partner what is wrong with “50%,” then write a correct line together with the frame. They can work it out first in any language they share with a partner.",
+    "frame": "The value of ___ is ___ cents, and a dollar is 100 cents, so it is ___% of a dollar. It is more (or less) than 100% because ___.",
     "does": "They can find the cents in a group of coins and say a number for the percent.",
     "reaching": "Saying the percent as a rate per 100: “150 cents per 100 cents.”",
     "stretch": "They check it another way: one quarter is 25% of a dollar, times 6 quarters."
    },
    "expanding": {
-    "entry": "They rewrite the flawed explanation so it is true, read it to another pair, and make it clearer once. They can work it out first in any language they share with a partner.",
-    "frame": "___ is worth ___ cents and a dollar is 100 cents, so it is ___% of a dollar. The explanation meant ___.",
+    "entry": "On the third read, they name two ways to start and say which they would use. They rewrite the flawed explanation so it is true, read it to another pair, and make it clearer once. They can work it out first in any language they share with a partner.",
+    "frame": "One ___ is ___% of a dollar, so ___ of them is ___% of a dollar. Another way: ___.",
     "does": "They can explain the 6 quarters answer with cents and the % symbol.",
     "reaching": "Saying what the flawed line meant: 50% greater than a dollar, not 50% of a dollar.",
     "stretch": "They say why a percent can be more than 100%: the coins are worth more than a dollar."

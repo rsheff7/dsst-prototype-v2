@@ -2,20 +2,21 @@
  "status": "draft",
  "reviewNotes": [
   "No person has reviewed this file.",
-  "Crux is 14.2 (Coupons), not 14.3 (Info Gap). 14.2 is where the lesson’s new question first appears: Clare’s $6 of $24, what percentage one amount is of another. IM’s lesson synthesis calls it the third kind of problem, “also addressed” in this lesson. Goal 1 (choose a diagram or table, explain the method orally) is 14.2’s work, and the unit’s language progression names Lesson 14 for “explain”. 14.3 has twice the minutes and goal 2, but its purpose is practicing language through the info gap. A reviewer could argue for 14.3.",
-  "Task purposes (Premo’s reading): 14.2 new-concept, from “and the other way around” (finding the percentage from the dollars); 14.3 practice-language, from IM’s info gap sentence. IM’s lesson narrative says students “solve similar problems but with less support,” so 14.2 could also be read as mastery; the lesson synthesis is the evidence that the third kind of problem is new.",
+  "Crux is 14.2 (Coupons), not 14.3 (Info Gap). 14.2 is where the lesson’s new question first appears: Clare’s $6 of $24, what percentage one amount is of another. IM’s lesson synthesis calls it the third kind of problem, “also addressed” in this lesson. Goal 1 (choose a diagram or table, explain the method orally) is 14.2’s work, and the unit’s language progression names Lesson 14 for “explain”. 14.3 has twice the minutes and goal 2, but its purpose is practicing language through the Info Gap. A reviewer could argue for 14.3.",
+  "Task purposes (Premo’s reading): 14.2 new-concept, from “and the other way around” (finding the percentage from the dollars); 14.3 practice-language, from IM’s Info Gap sentence. IM’s lesson narrative says students “solve similar problems but with less support,” so 14.2 could also be read as mastery; the lesson synthesis is the evidence that the third kind of problem is new.",
   "EXTRACTOR: 14.2’s English-learner support (MLR7 Compare and Connect, synthesis) is not in the IM layer’s ell list. IM’s next line reads “Design Principles(s):” (IM’s typo), and scripts/u3-extract.mjs only accepts “Design Principle(s):”. The support text stays in 14.2’s synthesis lines instead. Until the extractor is fixed, the checker reports that cruxLanguage.routine is not IM’s support for 14.2. The same typo occurs in Lessons 10, 13, 15 and 16.",
   "Testable object: the 100% value, the amount each student lines up with 100% before solving ($15 for Han, $24 for Clare). IM’s narrative says students must “first determine what value is associated with 100%”, and IM’s synthesis tests it: one double number line can’t solve both, because 100% differs. Naming it as the object is Premo’s reading.",
   "Upstream moments: the only activity before 14.2 is the warm-up, so one rehearsed moment is upstream (m1, a Number Talk breakdown) and five are at the crux. The warm-up’s decimal products don’t feed the coupon task directly; IM marks it building on 5.NBT.B.7.",
   "IM’s own moments: m1 (Number Talk; say line is IM’s verbatim), m2 and m3 (IM’s two misconceptions for 14.2), m4 and m5 (IM’s Compare and Connect support; say lines verbatim), m7 (IM’s share order), m8 (Info Gap breakdown; say line verbatim from the task), m9 (IM’s 25-tick-mark note). Premo’s: m6 (the language moment and its by-level moves) and m10 (40% of $24).",
   "IM gives the share order (tape diagram, then double number line or table) but no reason for it. The reason in m7’s means is Premo’s.",
   "14.2 is only 10 minutes. The crux rehearses five moments and the run-routine in that time; in class, Three Reads, quiet think time, partner sharing and the comparison will be tight. A reviewer should check whether the comparison fits.",
-  "The info gap card text is in IM’s Teacher Guide (printed page 237, copied in tg/6.3.14.json notes), not on the web page. Moments m8–m10 use it.",
+  "The Info Gap card text is in IM’s Teacher Guide (printed page 237, copied in tg/6.3.14.json notes), not on the web page. Moments m8–m10 use it.",
   "produceToday is “___% of”. IM’s terminology lists it as receptive for Lesson 14 and lists nothing productive. Premo has students say it because the language goal’s form needs it.",
-  "Student responses, the card text and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person."
+  "Student responses, the card text and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person.",
+  "2026-11-15: persona review fixes. m6 asks every level “What lines up with 100%? What lines up with $6?” Frames match the plan’s release frames; each band’s entry now starts with a way in on the third read. Avoid lines are gerunds. “Info Gap” is one spelling."
  ],
  "crux": "14.2",
- "cruxWhy": "14.2 is where the lesson’s new question first appears: what percentage $6 is of $24. IM’s lesson synthesis calls it the third kind of problem, new today. Goal 1, choosing a diagram or table and explaining the method out loud, is 14.2’s work, and its closing discussion compares the diagrams. 14.3 practices the same kinds of problems through an info gap.",
+ "cruxWhy": "14.2 is where the lesson’s new question first appears: what percentage $6 is of $24. IM’s lesson synthesis calls it the third kind of problem, new today. Goal 1, choosing a diagram or table and explaining the method out loud, is 14.2’s work, and its closing discussion compares the diagrams. 14.3 practices the same kinds of problems through an Info Gap.",
  "object": {
   "name": "the 100% value",
   "what": "The amount each student lines up with 100% before solving: Han’s $15 and Clare’s $24. IM says students must first decide what value goes with 100%. The closing discussion tests it: one double number line can’t solve both questions, because the 100% value is different."
@@ -36,7 +37,7 @@
    "see": "A student shares: “6 times 2 is 12, then 0.8 of 12 is 9.6.” You start to show the class your own way.",
    "means": "In a Number Talk the strategies come from students. Once yours is on the board, theirs stop coming.",
    "say": "Did anyone solve the problem in a different way?",
-   "dont": "Show your own strategy before students share theirs.",
+   "dont": "Showing your own strategy before students share theirs.",
    "from": "im",
    "sayFrom": "im",
    "evidence": "The teacher selects students to share different strategies for each problem",
@@ -54,7 +55,7 @@
    "see": "For Clare’s question, a student writes “$6” and moves on.",
    "means": "The first question asked for dollars, so this one looks the same. It asks what percentage off the coupon is.",
    "say": "What does the question ask you to find?",
-   "dont": "Tell them the answer is a percentage.",
+   "dont": "Telling them the answer is a percentage.",
    "from": "im",
    "sayFrom": "premo",
    "evidence": "some students may think that $6 is the answer to the second question and not realize that it is asking them to find the percentage.",
@@ -72,7 +73,7 @@
    "see": "For Han’s question, a student writes “$13.50.”",
    "means": "They found the sale price: $15 take away the discount. The question asks how much he saves, the discount itself.",
    "say": "Is $13.50 what he pays, or what he saves?",
-   "dont": "Mark it wrong without asking what the number is.",
+   "dont": "Marking it wrong without asking what the number is.",
    "from": "im",
    "sayFrom": "premo",
    "evidence": "some students may try to find the sale price on the first question and the percentage of the sale price on the second question, instead of the discount and the percentage of the discount.",
@@ -103,7 +104,7 @@
      "step": "Ask whether one double number line could solve both questions, and why not."
     }
    ],
-   "dont": "Let pairs present one after another with no comparison.",
+   "dont": "Letting pairs present one after another with no comparison.",
    "from": "im",
    "sayFrom": "im",
    "evidence": "Encourage students to make comparisons and connections between the various representations of the situation.",
@@ -122,7 +123,7 @@
    "see": "Three students show their diagrams one after another. You thank each one and call the next.",
    "means": "Showing isn’t comparing. Compare and Connect works when students say how two diagrams show the same 10% of $15.",
    "say": "“Where do you see the product of 15 and \\(\\frac{1}{10}\\) represented in the diagram?”",
-   "dont": "Thank each one and call the next.",
+   "dont": "Thanking each one and calling the next.",
    "from": "im",
    "sayFrom": "im",
    "evidence": "as they identify, compare, and contrast different mathematical approaches, representations, and language.",
@@ -142,25 +143,25 @@
    "means": "The answer is right: $6 lines up with 25%. What lines up with 100%, and that 25 is a percent of $24, isn’t in words yet.",
    "byBand": {
     "emerging": {
-     "say": "What is 100%? What is $6? Point, then say.",
+     "say": "What lines up with 100%? What lines up with $6? Point, then say.",
      "move": "They point to $24 and 100%, then to $6 and its percent, and say or write each pair. They can work it out first in any language they share with a partner.",
      "nonverbal": "They circle $24 with 100%, and $6 with its percent, on their own line."
     },
     "developing": {
-     "say": "What is 100%? What is $6? Use the frame.",
+     "say": "What lines up with 100%? What lines up with $6? Use the frame.",
      "move": "They tell a partner with the frame; you write their words on the board. They can work it out first in any language they share with a partner."
     },
     "expanding": {
-     "say": "What is 100%? What is $6? Explain how you know.",
+     "say": "What lines up with 100%? What lines up with $6? Explain how you know.",
      "move": "They explain the equal parts from 0 to $24, and a partner checks them. They can work it out first in any language they share with a partner."
     }
    },
-   "dont": "Say the sentence for them.",
+   "dont": "Saying the sentence for them.",
    "from": "premo",
    "sayFrom": "premo",
    "rehearse": true,
    "criteria": [
-    "Asked every level the same question: what is 100%, and what is $6",
+    "Asked every level the same question: what lines up with 100%, and what lines up with $6",
     "Matched the way in to the student’s level",
     "Didn’t say the sentence for them"
    ]
@@ -172,7 +173,7 @@
    "see": "On desks for Han’s question: a tape diagram in 10 parts, a double number line by tens, and a table with 15 and 100.",
    "means": "IM’s order is a tape diagram first, then a double number line or a table. A tape diagram shows the 10 equal parts plainly, so the others can be read against it.",
    "say": "Start us off. What did you draw for Han’s coupon?",
-   "dont": "Start with the table because it’s quickest.",
+   "dont": "Starting with the table because it’s quickest.",
    "from": "im",
    "sayFrom": "premo",
    "evidence": "Select students who used different representations: first a tape diagram, then a double number line or a table (or both, time permitting).",
@@ -188,10 +189,10 @@
    "activityId": "14.3",
    "kind": "routine-breakdown",
    "routine": "MLR4: Information Gap Cards",
-   "see": "A data-card partner reads all four lines of the card aloud, then says, “So she has $24.”",
-   "means": "The info gap works when the problem-card partner asks for each fact and says why. Read out, the card leaves nothing to ask, and $24 is the data partner’s calculation.",
+   "see": "A data-card partner reads all four lines of the card aloud, then says: “So she has $24.”",
+   "means": "The Info Gap works when the problem-card partner asks for each fact and says why. Read out, the card leaves nothing to ask, and $24 is the data partner’s calculation.",
    "say": "“What specific information do you need?”",
-   "dont": "Let the pair carry on because they got the answer.",
+   "dont": "Letting the pair carry on because they got the answer.",
    "from": "im",
    "sayFrom": "im",
    "evidence": "Students ask each other questions like “What information do you need?” and are expected to explain what they will do with the information.",
@@ -204,7 +205,7 @@
    "see": "For Device B, a student is drawing a double number line with a tick for every dollar from 0 to 25.",
    "means": "It works, but slowly. If $25 is 100%, each dollar is 4%, and that structure is the short way.",
    "say": "If $25 is 100%, what is each dollar worth?",
-   "dont": "Tell them to multiply 24 by 4.",
+   "dont": "Telling them to multiply 24 by 4.",
    "from": "im",
    "sayFrom": "premo",
    "evidence": "Encourage students to look for and make use of any noticeable structure (MP7) or pattern (MP8) to help them solve more efficiently.",
@@ -217,7 +218,7 @@
    "see": "For Device D, a student writes “40% of $24 is $9.60.”",
    "means": "They found a percentage of the amount they were given. Here $24 is the part, 40% of Device D’s price; the price is the unknown whole.",
    "say": "Is $24 the whole price, or part of it?",
-   "dont": "Tell them to put $24 at 40%.",
+   "dont": "Telling them to put $24 at 40%.",
    "from": "premo",
    "sayFrom": "premo",
    "rehearse": false
@@ -338,22 +339,22 @@
   ],
   "byBand": {
    "emerging": {
-    "entry": "In the closing discussion, they point to the 100% value on two classmates’ diagrams, then to $1.50 in each. They can work it out first in any language they share with a partner.",
-    "frame": "___ is 100%. So ___ is ___% of ___.",
+    "entry": "Third read: they point to each price in order and show which one is the whole. In the closing discussion, they point to the 100% value on two classmates’ diagrams, then to $1.50 in each. They can work it out first in any language they share with a partner.",
+    "frame": "___ is 100%. ___ is ___ of it. So ___ is ___%.",
     "does": "They can point to $15 and 100% on a double number line and read the pair.",
-    "reaching": "Saying the part as a percent of the whole, with “% of.”",
+    "reaching": "Saying the part as a fraction of the whole, then as a percent, with “% of.”",
     "stretch": "They find the 100% value on a second diagram, such as the table’s top row."
    },
    "developing": {
-    "entry": "They tell a partner what lines up with 100% in their diagram and in a classmate’s, and whether both show the same thing. They can work it out first in any language they share with a partner.",
-    "frame": "___ lines up with 100%. ___ is ___ of ___, so ___ is ___% of ___.",
+    "entry": "Third read: they tell a partner what they could draw and which amount goes with 100%. Later they say what lines up with 100% in their diagram and a classmate’s. They can work it out first in any language they share with a partner.",
+    "frame": "___ lines up with 100%. ___ is ___ of ___, because ___. So it is ___% of ___.",
     "does": "They can say one answer with its unit, like “$1.50” or “25%.”",
     "reaching": "Saying the 100% value before the answer, then the answer with “% of.”",
-    "stretch": "They add how they found it, such as “\\(\\frac{1}{10}\\) of $15” or “15 ÷ 10.”"
+    "stretch": "They add a second way, such as “\\(\\frac{1}{10}\\) of $15” or “15 ÷ 10.”"
    },
    "expanding": {
-    "entry": "In the closing discussion, they say where 15 times \\(\\frac{1}{10}\\) shows in a classmate’s diagram and compare it with theirs. They can work it out first in any language they share with a partner.",
-    "frame": "In my ___, ___ lines up with 100%. ___ is ___ of ___, so ___ is ___% of ___.",
+    "entry": "Third read: they suggest two ways to solve, saying what goes with 100% in each. In the closing discussion, they say where 15 times \\(\\frac{1}{10}\\) shows in a classmate’s diagram and compare it with theirs. They can work it out first in any language they share with a partner.",
+    "frame": "In my ___, ___ lines up with 100%. ___ is ___ of ___, because ___. So it is ___% of ___. Another way to see it: ___.",
     "does": "They can explain their own diagram for both questions in their own words.",
     "reaching": "Comparing two diagrams and saying why one line can’t solve both questions.",
     "stretch": "They ask a classmate one question about a diagram that differs from theirs."
@@ -398,6 +399,6 @@
   "Have a few coupons to display: some dollars off, some percent off (IM’s launch).",
   "Copy and cut the Info Gap: Music Devices cards, 1 copy for every 4 students (IM’s preparation).",
   "For Compare and Connect (MLR 7): clear board space to draw students’ diagrams side by side.",
-  "IM says to demonstrate an info gap with a partner the first few times. Plan a one-minute demo for 14.3."
+  "IM says to demonstrate an Info Gap with a partner the first few times. Plan a one-minute demo for 14.3."
  ]
 }

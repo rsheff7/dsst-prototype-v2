@@ -380,7 +380,7 @@ for (const f of planFiles) {
     }
     const COMMON = /^(Another|That|This|It|He|She|We|You|Who|Which|What|Stronger|Clearer|Everyone|Someone|Nobody|Either|Neither|Your|My|Our)$/;
     // Names by pattern: a capitalized word acting as a student ("X says", "X’s table") that IM's lesson doesn't use.
-    const ALLOW = new Set(['A', 'The', 'Pair', 'Group', 'Partner', 'Partners', 'Student', 'Students', 'Card', 'Store', 'Level', 'Levels', 'Read', 'IM', 'Today', 'They', 'Their', 'Each', 'One', 'Both', 'Crux', 'Hands', 'Pencils', 'Most', 'Some', 'Everyone', 'Nobody', 'Ask', 'Then', 'Look']);
+    const ALLOW = new Set(['A', 'Premo', 'IM’s', 'The', 'Pair', 'Group', 'Partner', 'Partners', 'Student', 'Students', 'Card', 'Store', 'Level', 'Levels', 'Read', 'IM', 'Today', 'They', 'Their', 'Each', 'One', 'Both', 'Crux', 'Hands', 'Pencils', 'Most', 'Some', 'Everyone', 'Nobody', 'Ask', 'Then', 'Look']);
     for (const m2 of flat({ ...c, more: [] }).join(' ').matchAll(/\b([A-Z][a-zà-ÿ]+)(?:’s|'s| (?:says|said|writes|wrote|points|pointed|stares|thinks|asks|doubles|counts|is stuck|has|stops|stopped))\b/g))
       if (!ALLOW.has(m2[1]) && !COMMON.test(m2[1]) && !new RegExp(`\\b${m2[1]}\\b`).test(flat(im).join(' '))) err(cat, `“${m2[1]}” looks like a student name; write “a student” or “Pair A”`);
     // Line length (25 words); Aims are checked at 15 above. IM's verbatim text in show, and any long quotation in “…”, is exempt.
