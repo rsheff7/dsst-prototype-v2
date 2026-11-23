@@ -69,3 +69,20 @@
 
 /* WIDA sheet body spacing. */
 .sheetBody { padding-top: 4px; }
+
+/* Arc section: visually bridges planning-process vs. lesson-content. */
+.arcSection {
+  padding-top: 16px;
+  display: grid;
+  gap: 8px;
+}
+.arcHeader {
+  display: grid;
+  gap: 4px;
+}
+.arcHeader h3 { margin: 0; }
+.arcSub {
+  font-size: 13.5px;
+  color: var(--color-ink-muted);
+  line-height: 1.4;
+}

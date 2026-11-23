@@ -352,8 +352,11 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
           </div>
         </details>
       </section>
-      <section className={s.stack}>
-        <h3>The arc</h3>
+<section className={p.arcSection}>
+        <div className={p.arcHeader}>
+          <h3>Activities</h3>
+          <span className={p.arcSub}>This lesson has {im.activities.length} activities. Tap any for IM's full notes. The crux is the one you'll rehearse.</span>
+        </div>
         <ol className={s.tl}>
           {im.activities.map((a) => (
             <li key={a.id} className={cx(a.id === cruxId && s.tlCrux)}>
@@ -372,9 +375,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
             </li>
           ))}
         </ol>
-        <span className={cx(s.muted, s.small)}>
-          <b>Crux:</b> the activity the lesson turns on. You’ll rehearse it in full. Tap any activity for IM’s notes.
-        </span>
+        
       </section>
     </div>
   );
