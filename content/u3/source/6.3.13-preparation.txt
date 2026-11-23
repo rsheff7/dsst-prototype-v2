@@ -1,0 +1,36 @@
+Source: https://im.kendallhunt.com/MS/teachers/1/3/13/preparation.html
+
+## Lesson 13
+## Benchmark Percentages
+ View Student Lesson
+## Lesson Narrative
+ The goal of this lesson is to help students understand the connection between benchmark percentages and common fractions (MP7). In these materials, we have identified 10%, 25%, 50%, and 75% as primary benchmark percentages and multiples of 10% as secondary benchmark percentages.
+ It is common to say that \(25\% = \frac14\) or \(10\% = \frac{1}{10}\). In these materials we avoid this usage and say rather that 25% of a quantity is \(\frac14\) of that quantity, or that 10% of a quantity is \(\frac{1}{10}\) of that quantity.
+ This lesson builds on understanding of equivalent fractions, multiplying fractions, and dividing by unit fractions from grades 4 and 5.
+## Learning Goals
+## Teacher Facing
+ Explain (orally and in writing) how to solve problems involving the percentages 10%, 25%, 50%, and 75% by reasoning about the fractions $\frac{1}{10}$, $\frac14$, $\frac12$, and $\frac34$.
+ Generalize (orally) processes for calculating 10%, 25%, 50%, and 75% of a quantity.
+## Student Facing
+ Let’s contrast percentages and fractions.
+## Learning Targets
+## Student Facing
+ When I read or hear that something is 10%, 25%, 50%, or 75% of an amount, I know what fraction of that amount they are referring to.
+## CCSS Standards
+ Building On
+ 4.NF.B
+ 5.NF.B
+ Addressing
+ 6.RP.A.3.c
+ Building Towards
+ 6.RP.A.3.c
+## Print Formatted Materials
+ Teachers with a valid work email address can click here to register or sign in for free access to Cool Down, Teacher Guide, and PowerPoint materials.
+ | Student Task Statements | pdf | docx 
+ | Cumulative Practice Problem Set | pdf | docx 
+ | Cool Down | | Log In 
+ | Teacher Guide | | Log In 
+ | Teacher Presentation Materials | pdf | docx 
+## Additional Resources
+ | Google Slides | | Log In 
+ | PowerPoint Slides | | Log In

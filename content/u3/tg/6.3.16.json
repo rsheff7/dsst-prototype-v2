@@ -1,0 +1,67 @@
+{
+  "section": "Percentages",
+  "activities": {
+    "16.1": {
+      "response": [
+        "Student explanations will vary.",
+        "1. False; 25% is equal to \\(\\frac{1}{4}\\), but 512 is not equal to 500.",
+        "2. True; These are equal, because 90% is equal to 0.9",
+        "3. True; These are equal because \\(\\frac{3}{10} \\boldcdot 44 = \\frac{3}{100} \\boldcdot 440\\)",
+        "4. True; These are equal, because \\(\\frac{21}{28} = \\frac{3}{4} = \\frac{30}{40}\\)"
+      ],
+      "extensionResponse": null
+    },
+    "16.2": {
+      "response": [
+        "1. 15 minutes is 75% of 20 minutes.",
+        "2. 24 minutes is 120% of 20 minutes.",
+        "3. 9 minutes is 45% of 20 minutes.",
+        "4. Here is the table:",
+        "| time (minutes) | percentage | time/20",
+        "| 20 | 100 | \\(\\frac{20}{20} = 1\\)",
+        "| 15 | 75 | \\(\\frac{15}{20} = 0.75\\)",
+        "| 24 | 120 | \\(\\frac{24}{20} = 1.2\\)",
+        "| 9 | 45 | \\(\\frac{9}{20} = 0.45\\)",
+        "5. The percentages in the second to last column are 100 times the decimals in the last column. To find what percentage a number is of 20, divide it by 20, and then multiply by 100."
+      ],
+      "extensionResponse": null
+    },
+    "16.3": {
+      "response": [
+        "Reasonings vary.",
+        "1. 9 people is 12% of 75 people. Sample reasoning:",
+        "\\(\\frac{9}{75}\\) is equivalent to \\(\\frac{3}{25}\\), which is equivalent to \\(\\frac{12}{100}\\).",
+        "\\(\\frac{9}{75} \\boldcdot 100 = \\frac{900}{75}\\), which is 12.",
+        "2. 51 people is 68% of 75 people. Sample reasonings:",
+        "\\(\\frac{51}{75}\\) is equivalent to \\(\\frac{17}{25}\\), which is equivalent to \\(\\frac{68}{100}\\).",
+        "\\(\\frac{51}{75} \\boldcdot 100 = \\frac{5,\\!100}{75}\\), which is 68.",
+        "If 9 people is 12% of 75, then 45 people, which is \\(5 \\boldcdot 9\\), is \\(5 \\boldcdot 12\\) or 60%. 6 more people is \\(\\frac{6}{9} \\boldcdot 12\\) or 8%. That means 51 people is \\((60 + 8)\\) (or 68%).",
+        "3. 84 people is 112% of 75 people. Sample reasoning:",
+        "84 is 9 more than 75. We already know that 9 people is 12% and 75 people is 100%, so 84 people is \\((12 + 100)\\) or 112%.",
+        "\\(\\frac{84}{75} \\boldcdot 100 = \\frac{8,\\!400}{75}\\), which is 112."
+      ],
+      "extensionResponse": [
+        "1,330,560,000 cubic kilometers of salt water",
+        "55,440,000 cubic kilometers of fresh water"
+      ]
+    }
+  },
+  "coolDown": {
+    "task": [
+      "A jet plane can carry up to 200,000 liters of fuel. It used 130,000 liters of fuel during a flight. What percentage of the fuel capacity did it use on this flight?"
+    ],
+    "response": [
+      "\\(130,\\!000 \\div 200,\\!000 = 0.65\\), so it burned 65% of its fuel capacity on the flight."
+    ]
+  },
+  "pages": [261, 263, 264, 265, 266, 267],
+  "notes": [
+    "Printed page numbers are 2 less than the image filenames (p263.png = printed 261, p269.png = printed 267). Printed pages 260 and 262 (p262.png, p264.png) hold the lesson opener and the 16.2 narrative and launch, which are on the web pages; no student response or cool-down is on them. Practice pages 268–270 were not transcribed, as in the other lessons.",
+    "16.1 response: “True;” is followed by a capital “These” in print, and items 2 and 3 have no closing period. Transcribed as printed.",
+    "16.2 response item 4: the printed table has three columns headed “time (minutes)”, “percentage” and “time/20”, with no name column, unlike the task’s table (which has Diego, Jada, Lin, Noah and the header “time ÷ 20”). Transcribed as printed.",
+    "16.3 response: the sample reasonings under each item are hollow sub-bullets in print; the bullet characters are not reproduced. The print writes 5,100 and 8,400 inside fractions; written here as 5,\\!100 and 8,\\!400 in LaTeX.",
+    "16.3 response, second reasoning for item 2: printed as “That means 51 people is \\((60 + 8)\\) (or 68%).”, with “(or 68%)” in parentheses as shown.",
+    "Cool-down response: the print typesets the numbers as “130, 000 ÷ 200, 000 = 0.65” in math type; written as 130,\\!000 and 200,\\!000. The response says “burned” where the task says “used”; transcribed as printed.",
+    "Dollar signs, where any appear, are written as plain $."
+  ]
+}

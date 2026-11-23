@@ -1,0 +1,365 @@
+{
+ "status": "draft",
+ "reviewNotes": [
+  "No person has reviewed this file. Drafted 2026-11-15 by a model.",
+  "Crux is 3.2, the only activity in the lesson besides the warm-up. It is where IM’s main idea is meant to be said: “it takes more of a smaller unit and less of a larger unit to measure the same quantity.” Goal 1 (generalize, orally and in writing) is met in its summary questions.",
+  "Task purpose read as new-context (experience with standard units through measuring), not new-concept. The lesson narrative leads with “familiarity … through the tactile experiences of measuring objects.” A reviewer could call it new-concept, since the main idea is new.",
+  "Testable object: the station tables. Each group records the same thing in two units at five stations. The summary questions then test whether the tables show the pattern: the smaller unit took more.",
+  "The crux’s language routine is MLR 8 (Discussion Supports), IM’s only English-learner support for 3.2, placed at the launch: frames for pressing each other at the stations. m3 runs it; m6 is it slipping (groups record in silence).",
+  "IM’s own moments used: 3.1’s “more” with “larger” (m1) and its no-rods think time (m2); 3.2’s rods-not-cubes (m8), unlevel teaspoons (m4), weight and mass (m9) and 15 teaspoons → 3 milliliters (m5).",
+  "Premo’s moments: m7 (the language moment and its by-level moves) and m10 (the rotation running out of time). The 3.2 timing in m10 and the cuts is Premo’s: IM gives 35 minutes and no split between stations and questions.",
+  "The IM layer’s 3.2 task is now the print version the Teacher Guide uses, with real containers and a scale (extractor fixed 2026-11-15).",
+  "Station 1’s answer, 250 cubic centimeters, is IM’s. The 2 by 2 by 4 inch box is about 262 cubic centimeters (5.08 × 5.08 × 10.16), so students who pack carefully may get more than 250. Not repeated here as a number students must hit.",
+  "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person.",
+  "2026-11-15: persona review fixes.",
+  "2026-11-15: round-2 review fixes: the 3.2 cut now gives stations about 3½ minutes each and posts station directions."
+ ],
+ "crux": "3.2",
+ "cruxWhy": "3.2 is where students measure the same things in two units and then say what they found: the smaller unit took more. IM’s first goal, generalize orally and in writing, is met in its summary questions. IM’s language support for the lesson, Discussion Supports (MLR 8), runs at its stations.",
+ "object": {
+  "name": "the station tables",
+  "what": "The table each group fills at each station: one quantity, measured in two units. The summary questions test them: which unit took more, and why?"
+ },
+ "goal": "Students measure the same quantity in two units and say the rule: it takes more of a smaller unit and fewer of a larger one.",
+ "rigorCheck": "Does every group still fill the station tables and answer the why questions in its own words?",
+ "watchFor": {
+  "3.1": "A student says more blue rods, because blue rods are bigger.",
+  "3.2": "A group writes numbers in silence and moves on, with no reason for which unit took more."
+ },
+ "moments": [
+  {
+   "id": "m2",
+   "activityId": "3.1",
+   "kind": "teacher-move",
+   "see": "You hold up a green rod and a blue rod. Hands reach for the bin before anyone has predicted.",
+   "means": "IM gives think time first and the rods later. A prediction made without the rods is what the rods then test.",
+   "say": "Rods stay here for now. Picture it: which takes more?",
+   "dont": "Pass the rods around right away.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Give them quiet think time but not the manipulatives.",
+   "rehearse": true,
+   "criteria": [
+    "Kept the rods back until students predicted",
+    "Asked for a prediction from everyone",
+    "Didn’t hand out the rods first"
+   ]
+  },
+  {
+   "id": "m1",
+   "activityId": "3.1",
+   "kind": "im-misconception",
+   "see": "A student says: “More blue rods. They’re bigger.”",
+   "means": "They link “more” with “larger,” which is often true. Here the larger thing is the unit, so fewer of them fit.",
+   "say": "Test it. Line up the blue rods, then the green.",
+   "dont": "Tell them it’s the green rods.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Some students may assume that it will take more of the longer rods because they are used to associating the idea of “more” with “larger.”",
+   "rehearse": true,
+   "criteria": [
+    "Sent them to the rods to test it",
+    "Asked them to explain what they found",
+    "Didn’t give them the answer"
+   ]
+  },
+  {
+   "id": "m3",
+   "activityId": "3.2",
+   "kind": "run-routine",
+   "routine": "MLR8: Discussion Supports",
+   "see": "Groups are heading to their first station. The frames are posted, and you’re about to circulate.",
+   "means": "IM uses Discussion Supports (MLR 8) here so students press each other for details as they rotate. The frames give them the words to do it.",
+   "say": "Before you write a number, say how you know.",
+   "runSheet": [
+    {
+     "step": "Post IM’s frames where every station can see them: “I agree/disagree because …,” “How do you know …?” and “Can you give an example?”"
+    },
+    {
+     "step": "At each station, while one student records, another says which unit took more and why."
+    },
+    {
+     "step": "The others ask: “How do you know?”"
+    },
+    {
+     "step": "As you circulate, ask one group member “How do you know?” and wait for the answer."
+    },
+    {
+     "step": "At the summary questions, each student says one answer aloud before the group writes it."
+    }
+   ],
+   "dont": "Answer the group’s question yourself to keep the rotation moving.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "encourage students to solidify their own understanding by pressing for details and questioning their peers' explanations",
+   "rehearse": true,
+   "criteria": [
+    "Posted the frames before groups moved",
+    "Had one student say which unit took more and why at each station",
+    "Kept the questions between students, not routed through you"
+   ]
+  },
+  {
+   "id": "m6",
+   "activityId": "3.2",
+   "kind": "routine-breakdown",
+   "routine": "MLR8: Discussion Supports",
+   "see": "At Station 2, one student measures, one writes, and nobody talks. The table fills; no one asks why.",
+   "means": "Discussion Supports work only when students question each other. Silent stations give the summary questions numbers with no reasons behind them.",
+   "say": "Before you write it, ask each other: how do you know?",
+   "dont": "Tell them the number so the rotation keeps moving.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Use this routine to support small-group discussion.",
+   "rehearse": true,
+   "criteria": [
+    "Stopped the group before the next number went down",
+    "Pointed them to a posted frame",
+    "Didn’t supply the number or the reason"
+   ]
+  },
+  {
+   "id": "m8",
+   "activityId": "3.2",
+   "kind": "im-misconception",
+   "see": "At Station 1, a group writes 25 cubic centimeters: they counted the rods in the box.",
+   "means": "Each rod is 10 cubic centimeters. The question asks for cubes, so 25 rods is 250 cubes.",
+   "say": "The question asks for cubes. How many cubes in one rod?",
+   "dont": "Change the 25 to 250 for them.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "students may count the number of base-10 centimeter rods rather than the number of centimeter cubes"
+  },
+  {
+   "id": "m9",
+   "activityId": "3.2",
+   "kind": "im-misconception",
+   "see": "At Station 4, a student says you can’t compare pounds and kilograms: “One is weight, one is mass.”",
+   "means": "They know a real distinction. For today, IM treats all four units as weight on Earth.",
+   "say": "Today we mean weight here on Earth. Record what the scale says.",
+   "dont": "Start a lesson on weight and mass.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Clarify that we are talking only about the weight of the objects on Earth’s surface."
+  },
+  {
+   "id": "m4",
+   "activityId": "3.2",
+   "kind": "im-misconception",
+   "see": "At Station 5, a group’s table reads 20 milliliters for 6 teaspoons. Their teaspoons are only partly full.",
+   "means": "Unlevel teaspoons hide the pattern, about 5 milliliters per teaspoon, that the last questions need.",
+   "say": "Show me one teaspoon. Is it level with the top?",
+   "dont": "Give them the 5 to write down.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "some students may consistently use under-filled or rounded teaspoons of salt"
+  },
+  {
+   "id": "m10",
+   "activityId": "3.2",
+   "kind": "teacher-move",
+   "see": "About 26 minutes in, two groups are still at their fourth station. The summary questions haven’t started.",
+   "means": "The summary questions are where groups say the rule. Losing them loses the lesson’s goal.",
+   "say": "Two minutes here, then start the summary questions.",
+   "dont": "Let every group finish every station.",
+   "from": "premo",
+   "sayFrom": "premo"
+  },
+  {
+   "id": "m5",
+   "activityId": "3.2",
+   "kind": "im-misconception",
+   "see": "For 15 teaspoons of salt, a group writes “3 milliliters.” Their work: 15 ÷ 5.",
+   "means": "They know 5 is the link between the units. They divided instead of multiplying, because they didn’t ask which unit is bigger.",
+   "say": "Which unit is bigger? What does that tell you about the numbers?",
+   "dont": "Tell them to multiply by 5.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Students may answer 3 milliliters for the question about 15 teaspoons because they divided by 5 instead of multiplying by 5.",
+   "rehearse": true,
+   "criteria": [
+    "Asked which unit is bigger",
+    "Had them say which number should be larger",
+    "Didn’t tell them to multiply"
+   ]
+  },
+  {
+   "id": "m7",
+   "activityId": "3.2",
+   "kind": "language",
+   "routine": "MLR8: Discussion Supports",
+   "see": "At the question about feet and meters, a student says: “Feet. Feet is more.”",
+   "means": "The answer is right, from their table. The reason, a foot is smaller than a meter, isn’t in words yet.",
+   "byBand": {
+    "emerging": {
+     "say": "Show me. Which unit is smaller?",
+     "move": "They point to the smaller unit, then to the bigger count in their table, and say or write it with their frame. They can work it out first in any language they share with a partner.",
+     "nonverbal": "They hold a ruler beside a meter stick and point to the smaller unit. Then they point to the bigger count in the table."
+    },
+    "developing": {
+     "say": "Which took more? Why? Use the frame.",
+     "move": "With the frame for their level, they tell a partner, then write it. They can work it out first in any language they share with a partner.",
+     "nonverbal": "They circle the bigger count in the table and draw an arrow to the unit that made it."
+    },
+    "expanding": {
+     "say": "Which took more, and why? Make it fit every station.",
+     "move": "They give the reason for this station, then say a rule that fits the others too. They can work it out first in any language they share with a partner.",
+     "nonverbal": "They sketch the same length split into feet and into meters, any way they choose, and label each count."
+    }
+   },
+   "dont": "Say the reason for them.",
+   "from": "premo",
+   "sayFrom": "premo",
+   "rehearse": true,
+   "criteria": [
+    "Asked every level the same question: which took more, and why",
+    "Matched the way in to the student’s level",
+    "Didn’t say the reason for them"
+   ]
+  }
+ ],
+ "patterns": [
+  {
+   "activityId": "3.1",
+   "type": "error",
+   "says": "“More blue rods. They’re bigger.”",
+   "why": "“More” goes with “larger” in most of their experience.",
+   "shows": "They compare the rods’ sizes. Linking size to the count is next.",
+   "from": "im",
+   "evidence": "Some students may assume that it will take more of the longer rods"
+  },
+  {
+   "activityId": "3.1",
+   "type": "build",
+   "says": "“More green. They’re shorter, so you need more to get across.”",
+   "why": "They picture the rods laid end to end.",
+   "shows": "The lesson’s idea with rods as the units.",
+   "from": "im",
+   "evidence": "It takes more green rods, because they are shorter than the blue rods."
+  },
+  {
+   "activityId": "3.2",
+   "type": "error",
+   "says": "25 cubic centimeters for the box.",
+   "why": "They counted rods, not cubes.",
+   "shows": "They packed the box carefully. Each rod is 10 cubes, which is the step left.",
+   "from": "im",
+   "evidence": "students may count the number of base-10 centimeter rods rather than the number of centimeter cubes"
+  },
+  {
+   "activityId": "3.2",
+   "type": "error",
+   "says": "“3 milliliters” for 15 teaspoons.",
+   "why": "They divided by 5 without asking which unit is bigger.",
+   "shows": "They found the 5 between the units. Which way to use it is next.",
+   "from": "im",
+   "evidence": "because they divided by 5 instead of multiplying by 5"
+  },
+  {
+   "activityId": "3.2",
+   "type": "almost",
+   "says": "“More feet, because 20 is more than 6.”",
+   "why": "The reason repeats the counts instead of saying why they differ.",
+   "shows": "They read their table right. Unit size is the reason still to say.",
+   "from": "premo"
+  },
+  {
+   "activityId": "3.2",
+   "type": "build",
+   "says": "“More feet, because feet are smaller than meters.”",
+   "why": "They tie the count to the size of the unit.",
+   "shows": "The lesson’s idea at one station.",
+   "from": "im",
+   "evidence": "It took more feet because feet are smaller than meters."
+  },
+  {
+   "activityId": "3.2",
+   "type": "stretch",
+   "says": "“A meter is a bit more than 3 feet, so it takes about 3 times as many feet.”",
+   "why": "They see how much more, not just more.",
+   "shows": "Ratio reasoning between units: the next lesson’s conversions.",
+   "from": "premo"
+  },
+  {
+   "activityId": "3.2",
+   "type": "language",
+   "says": "“Feet is more.”",
+   "why": "The answer is ahead of the words for the reason.",
+   "shows": "They read their table and compared the counts.",
+   "from": "premo"
+  }
+ ],
+ "predict": {
+  "context": "Groups rotate through five stations. At each one they measure one thing in two units, such as a length in meters and in feet. Then they answer questions like “Did it take more feet or meters to measure the indicated length? Why?”",
+  "question": "What will most groups write after “Why?”",
+  "countQuestion": "How many groups will give a reason about the size of the units?",
+  "countUnit": "groups will give a reason about the size of the units.",
+  "tell": "If few do, groups recorded numbers without asking why. Pressing each other at the stations is the fix: the fourth moment you’ll rehearse.",
+  "activityIds": [
+   "3.2"
+  ]
+ },
+ "cruxLanguage": {
+  "routine": "MLR8: Discussion Supports",
+  "phase": "launch",
+  "produceToday": [
+   "smaller unit",
+   "larger unit",
+   "same quantity"
+  ],
+  "byBand": {
+   "emerging": {
+    "entry": "On the third read, they point to the two units in the question, in order. At each station, they point to the unit they think will take more, then to the bigger count after. A partner answers with a posted frame. They can work it out first in any language they share with a partner.",
+    "frame": "It took more ___ because a ___ is smaller. Station ___ showed the same. Smaller unit, ___ of them. Larger unit, ___ of them.",
+    "does": "They can read a count from the table and say which is more.",
+    "reaching": "Saying which unit is smaller as the reason for the bigger count, at two stations.",
+    "stretch": "They say the rule as one sentence, with “smaller unit” and “larger unit.”"
+   },
+   "developing": {
+    "entry": "On the third read, they say how to find out: measure both ways and compare. At each station, they predict with “I think ___ because ___,” then agree or disagree with a partner after measuring. They can work it out first in any language they share with a partner.",
+    "frame": "It took more ___ than ___ because a ___ is smaller than a ___. At Station ___, it took more ___ because ___. A smaller unit takes ___, and a larger unit takes ___.",
+    "does": "They can say which unit took more at one station.",
+    "reaching": "Giving unit size as the reason at two stations, then the rule for both units.",
+    "stretch": "They predict the next station’s result from the rule before measuring, then check it."
+   },
+   "expanding": {
+    "entry": "On the third read, they say how to find out and what reason would explain the counts. They ask a groupmate “How do you know?” at each station. At the summary questions they say a rule that fits every station. They can work it out first in any language they share with a partner.",
+    "frame": "It took more ___ than ___ because ___. Station ___ showed the same, because ___. So it takes ___ of a smaller unit and ___ of a larger unit. Another way to see it: ___.",
+    "does": "They can explain why one station took more of one unit.",
+    "reaching": "Stating one rule that fits all five stations, using “smaller unit” and “larger unit.”",
+    "stretch": "They say about how many times as many of the smaller unit it took, not just more."
+   }
+  }
+ },
+ "cuts": [
+  {
+   "activityId": "3.1",
+   "note": "Keep it short: one prediction each, one test with the rods, then move on."
+  },
+  {
+   "activityId": "3.2",
+   "note": "IM gives 35 minutes and no split. Stations get about 3½ minutes each; post each station’s directions instead of reading them aloud."
+  }
+ ],
+ "neverCut": [
+  "Predicting before the rods come out in 3.1",
+  "Every station table, in both units",
+  "The summary questions’ “Why?” in each group’s own words",
+  "The closing discussion that turns five reasons into one rule"
+ ],
+ "inClass": {
+  "launch": "“At every station, ask: which unit took more, and why?”",
+  "launchFrom": "premo",
+  "momentIds": [
+   "m3",
+   "m5",
+   "m7"
+  ]
+ },
+ "beforeClass": [
+  "Set up the five stations from IM’s preparation list. Include the assembled 2 by 2 by 4 inch box, and something about 20 feet long for Station 2.",
+  "Have 6-cm and 9-cm rods (or small and large paper clips) ready for the warm-up.",
+  "For Discussion Supports (MLR 8), post IM’s frames at each station. “I agree/disagree because …,” “How do you know …?” and “Can you give an example?”",
+  "Practice a level teaspoon with a straightedge, to demonstrate at the launch."
+ ]
+}

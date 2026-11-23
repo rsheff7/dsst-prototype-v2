@@ -104,7 +104,8 @@ for (const f of premoFiles) {
 
   const crux = acts.get(p.crux);
   if (!crux) err(at, `crux ${p.crux} is not an activity`);
-  else if (crux.slot !== 'activity') err(at, `crux ${p.crux} is a ${crux.slot}; the crux is never a warm-up, optional activity or cool-down`);
+  // IM marks some whole lessons optional (6.3.2): then an optional activity may be the crux.
+  else if (crux.slot !== 'activity' && !(crux.slot === 'optional' && !im.activities.some((a) => a.slot === 'activity'))) err(at, `crux ${p.crux} is a ${crux.slot}; the crux is never a warm-up, optional activity or cool-down`);
   else if (
     (crux.purpose === 'mastery' || crux.purpose === 'practice-language') &&
     im.activities.some((a) => a.slot === 'activity' && a.purpose !== 'mastery' && a.purpose !== 'practice-language')
@@ -211,13 +212,19 @@ for (const f of planFiles) {
   if (!pl.clo?.precise?.length) err(at, 'clo.precise needs at least one term');
   // Vocabulary in use (R2.3): the exemplar says every term the CLO marks as precise.
   const low = (s) => (s ?? '').toLowerCase().replace(/[’']/g, "'");
-  for (const term of pl.clo?.precise ?? []) if (!low(pl.clo?.exemplar).includes(low(term))) err(at, `clo.exemplar doesn’t use the precise term “${term}”`);
+  // Each precise term is in the frame or the model sentence (Robert, 2026-11-15: relaxed from the model
+  // sentence alone, which pushed "percentage" off the list). The board quotes only precise terms.
+  for (const term of pl.clo?.precise ?? []) if (!low(`${pl.clo?.form} ${pl.clo?.exemplar}`).includes(low(term))) err(at, `neither clo.form nor clo.exemplar uses the precise term “${term}”`);
+  for (const m of (pl.clo?.board?.language ?? '').matchAll(/“([^”]+?)[.,]?”/g)) if (!(pl.clo?.precise ?? []).some((t) => low(t) === low(m[1]))) err(at, `clo.board.language quotes “${m[1]}”, which isn’t a precise term`);
+  // New lessons: the Premo layer's level frames (used by the phone prep) match the plan's. 6.3.5–6.3.9's differ by design.
+  if (!['6.3.5', '6.3.6', '6.3.7', '6.3.8', '6.3.9'].includes(code)) for (const [b, v] of Object.entries(pl.crux?.release?.byBand ?? {})) if (pr.cruxLanguage?.byBand?.[b] && pr.cruxLanguage.byBand[b].frame !== v.frame) err(at, `premo cruxLanguage.byBand.${b}.frame differs from the plan’s release frame`);
   // The board version (Robert, 2026-11-03): two lines for students and visitors.
   for (const k of ['content', 'language']) {
     const v = pl.clo?.board?.[k] ?? '';
     if (!/^We will /.test(v)) err(at, `clo.board.${k} must start “We will”`);
     if (wordsIn(v) > 20) err(at, `clo.board.${k} is ${wordsIn(v)} words; keep it to 20`);
-    if (/\d/.test(v.replace(/\bfor 1\b/, ''))) err(at, `clo.board.${k} has a number from the task`);
+    // Numbers that are part of a math term are fine (Robert, 2026-11-15); numbers from the task aren't.
+    if (/\d/.test(v.replace(/\b(?:rate )?per 1(?:00)?\b|\bfor 1\b|\b(?:1|100)%|\b(?:multiply|divide) by 100\b/g, ''))) err(at, `clo.board.${k} has a number from the task`);
   }
   if (pl.clo?.board && !low(pl.clo.board.language).includes(low(pl.clo.function))) err(at, 'clo.board.language must use the function verb');
   if (pl.clo?.board && !low(pl.clo.board.language).includes(low(pl.clo.mode))) err(at, 'clo.board.language must say the mode');
@@ -324,7 +331,7 @@ for (const f of planFiles) {
     for (const k of NEEDS[c.type]) if (!has[k] || (Array.isArray(has[k]) && !has[k].length)) err(cat, `a ${c.type} card needs ${k}`);
     if (c.type === 'routine' && c.runIt && (c.runIt.length < 3 || c.runIt.length > 5)) err(cat, 'runIt needs 3–5 steps');
     if (c.type === 'routine' && c.kind !== 'rounds' && !c.sounds) err(cat, 'a routine card needs sounds (Three Reads has its listen-for lines instead)');
-    if (c.ifNot && !/\?\s*$/.test(c.ifNot)) err(cat, 'ifNot is one question');
+    if (c.ifNot && !/\?[”"’]?\s*$/.test(c.ifNot)) err(cat, 'ifNot is one question');
     if (c.why && wordsIn(c.why) > 40) err(cat, `why is ${wordsIn(c.why)} words; keep it to two short sentences`);
     if (c.more) err(cat, 'more is retired; use the rule’s guidance fields');
     // Model: every card but Do the task, Three Reads and the by-level card says something.
@@ -335,7 +342,7 @@ for (const f of planFiles) {
     // Where we are: one of three forms, minutes within IM's time for the activity.
     const actMin = im.activities.find((x) => x.id === c.activityId)?.minutes ?? 0;
     const wm = /^About (\d+) minutes? into Activity (\d+\.\d+)\. \S/.exec(c.where ?? '');
-    if (!(wm || /^Before class\. /.test(c.where ?? '') || /^Start of Activity \d+\.\d+\. /.test(c.where ?? '')))
+    if (!(wm || /^Before class\. /.test(c.where ?? '') || /^Start of Activity \d+\.\d+\. /.test(c.where ?? '') || /^Start of Day \d+[.:] /.test(c.where ?? '')))
       err(cat, 'where must start "Before class. ", "Start of Activity X.Y. " or "About N minutes into Activity X.Y. " and say what just happened');
     if (wm && wm[2] !== c.activityId) err(cat, `where names Activity ${wm[2]}, but the card is ${c.activityId}`);
     if (wm && Number(wm[1]) > actMin) err(cat, `where says ${wm[1]} minutes into a ${actMin}-minute activity`);
@@ -378,13 +385,13 @@ for (const f of planFiles) {
     }
     const COMMON = /^(Another|That|This|It|He|She|We|You|Who|Which|What|Stronger|Clearer|Everyone|Someone|Nobody|Either|Neither|Your|My|Our)$/;
     // Names by pattern: a capitalized word acting as a student ("X says", "X’s table") that IM's lesson doesn't use.
-    const ALLOW = new Set(['A', 'The', 'Pair', 'Group', 'Partner', 'Partners', 'Student', 'Students', 'Card', 'Store', 'Level', 'Levels', 'Read', 'IM', 'Today', 'They', 'Their', 'Each', 'One', 'Both', 'Crux', 'Hands', 'Pencils', 'Most', 'Some', 'Everyone', 'Nobody', 'Ask', 'Then', 'Look']);
-    for (const m2 of flat({ ...c, checks: [], more: [] }).join(' ').matchAll(/\b([A-Z][a-zà-ÿ]+)(?:’s|'s| (?:says|said|writes|wrote|points|pointed|stares|thinks|asks|doubles|counts|is stuck|has|stops|stopped))\b/g))
+    const ALLOW = new Set(['A', 'Premo', 'IM’s', 'The', 'Pair', 'Group', 'Partner', 'Partners', 'Student', 'Students', 'Card', 'Store', 'Level', 'Levels', 'Read', 'IM', 'Today', 'They', 'Their', 'Each', 'One', 'Both', 'Crux', 'Hands', 'Pencils', 'Most', 'Some', 'Everyone', 'Nobody', 'Ask', 'Then', 'Look']);
+    for (const m2 of flat({ ...c, more: [] }).join(' ').matchAll(/\b([A-Z][a-zà-ÿ]+)(?:’s|'s| (?:says|said|writes|wrote|points|pointed|stares|thinks|asks|doubles|counts|is stuck|has|stops|stopped))\b/g))
       if (!ALLOW.has(m2[1]) && !COMMON.test(m2[1]) && !new RegExp(`\\b${m2[1]}\\b`).test(flat(im).join(' '))) err(cat, `“${m2[1]}” looks like a student name; write “a student” or “Pair A”`);
     // Line length (25 words); Aims are checked at 15 above. IM's verbatim text in show, and any long quotation in “…”, is exempt.
     for (const [k, v] of [['ask', c.ask], ['ifNot', c.ifNot], ['avoid', c.avoid], ...(c.checks ?? []).map((x) => ['check', x]), ...(c.say ?? []).map((x) => ['say', x])])
       // A word-for-word quotation (IM's text, in “…”) counts as one word: it can't be cut.
-      if (v && v.replace(/“[^”]{40,}”/g, 'QUOTE').split(/(?<=[.?!])\s+/).some((sen) => wordsIn(sen) > 25)) err(cat, `${k} has a sentence over 25 words`);
+      if (v && v.replace(/“[^”]{40,}”/g, 'QUOTE').split(/(?<=[.?!][”"’]?)\s+/).some((sen) => wordsIn(sen) > 25)) err(cat, `${k} has a sentence over 25 words`);
   }
   // Ids unique; every activity has a Do the task card; the crux has its four routine cards.
   const seen = new Set();
@@ -392,17 +399,76 @@ for (const f of planFiles) {
     if (seen.has(c.id)) err(at, `duplicate card id ${c.id}`);
     seen.add(c.id);
   }
+  // Frames have blanks (Priya, round 4).
+  if (pl.clo?.form && !/___/.test(pl.clo.form)) err(at, 'clo.form has no blanks');
+  for (const [b, v] of Object.entries(pl.crux?.release?.byBand ?? {})) if (v.frame && !/___/.test(v.frame)) err(at, `release frame ${b} has no blanks`);
+  // Every Premo sentence is 25 words or fewer, wherever it sits (Robert's rule). IM's words (show, imGoal,
+  // threeReads text) and long quotations are exempt; reviewNotes are for reviewers, not teachers.
+  {
+    const skip = new Set(['show', 'imGoal', 'reviewNotes', 'evidence', 'text']);
+    // Symbols (×, =, ÷) aren't words. A student's model sentence follows the frame, so its length only warns.
+    const words = (s) => s.replace(/\\\(|\\\)/g, ' ').split(/\s+/).filter((w) => /[A-Za-z0-9]/.test(w)).length;
+    const model = new Set(['sounds', 'exemplar', 'sentence', 'listenFor']);
+    let soft = false;
+    const walk = (x, key) => Array.isArray(x) ? x.forEach((y) => walk(y, key)) : x && typeof x === 'object' ? Object.entries(x).forEach(([k, y]) => !skip.has(k) && walk(y, k)) : typeof x === 'string' && x.replace(/“[^”]{40,}”/g, 'QUOTE').split(/(?<=[.?!][”"’]?)\s+/).some((sen) => words(sen) > 25) && (model.has(key) || soft ? warn : err)(at, `${key} has a sentence over 25 words: “${x.slice(0, 60)}…”`);
+    walk(pl, '');
+    // The Premo layer too (Priya, round 2), outside IM's quoted evidence and verbatim fields.
+    // 6.3.5–6.3.9's Premo layers are the reviewed phone prep; long lines there only warn.
+    const reviewed = ['6.3.5', '6.3.6', '6.3.7', '6.3.8', '6.3.9'].includes(code);
+    soft = reviewed;
+    walk({ ...pr, reviewNotes: [], status: '' }, '');
+    soft = false;
+  }
+  // New lessons (round 3): model sentences are the frame filled in; Premo stretch lines, word lists
+  // and spelling match the plan; no note ends on a colon that points at nothing.
+  if (!['6.3.5', '6.3.6', '6.3.7', '6.3.8', '6.3.9'].includes(code)) {
+    const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const formRe = (form) => {
+      let out = '^';
+      for (const tok of form.trim().split(/(___|\s?\([^)]*\))/)) {
+        if (tok === '___') out += '(.+?)';
+        else if (/^\s?\(([^)]*)\)$/.test(tok)) out += `(?:\\s?\\(?${esc(tok.trim().slice(1, -1))}\\)?)?`;
+        else out += esc(tok);
+      }
+      return new RegExp(out.replace(/ is\(\?:\\s\?\\\(\?are\\\)\?\)\?/, ' (?:is|are)').replace('(?:\\s?\\(?or divide\\)?)?', '').replace(/multiply/g, '(?:multiply|divide)').replace('more(?:\\s?\\(?or less\\)?)?', '(?:more|less)').replace('larger(?:\\s?\\(?or smaller\\)?)?', '(?:larger|smaller)') + '$', 's');
+    };
+    if (pl.clo?.form) {
+      const re = formRe(pl.clo.form);
+      const rc = (pl.rehearsal ?? []).find((c) => c.kind === 'release' && c.activityId === pr.crux);
+      for (const [k, s] of [['clo.exemplar', pl.clo.exemplar], ['clo.posted.sentence', pl.clo.posted?.sentence], ['lessonSynthesis.check.sounds', pl.lessonSynthesis?.check?.sounds], [`card ${rc?.id}.sounds`, rc?.sounds]])
+        if (s && !re.test(s.trim())) err(at, `${k} doesn’t follow clo.form exactly`);
+    }
+    for (const [b, v] of Object.entries(pl.crux?.release?.byBand ?? {})) if (pr.cruxLanguage?.byBand?.[b] && v.stretch && pr.cruxLanguage.byBand[b].stretch !== v.stretch) err(at, `premo cruxLanguage.byBand.${b}.stretch differs from the plan’s`);
+    const produce = [pr.cruxLanguage?.produceToday ?? []].flat().map(low);
+    for (const term of pl.clo?.precise ?? []) if (!produce.some((x) => x.includes(low(term)))) err(at, `premo cruxLanguage.produceToday is missing the precise term “${term}”`);
+    for (const s of flat({ ...pr, reviewNotes: [] })) if (/maths|colour|grey\b|favour|behaviour|centre\b|organis|practise\b|metre\b|analys(?:e|ing)\b|labell|modell|travell|litre|percentageage/.test(s)) err(at, `spelling in the Premo layer: "${s.slice(0, 50)}…"`);
+  }
+  // The release card says what the crux release says.
+  { const rc = (pl.rehearsal ?? []).find((c) => c.kind === 'release' && c.activityId === pr.crux);
+    if (rc && pl.crux?.release?.say && !(rc.say ?? []).includes(pl.crux.release.say)) err(at, `card ${rc.id}: say doesn’t include crux.release.say`); }
+  // "a student named X" is a name, whatever X is.
+  for (const m of flat(pl).join(' ').matchAll(/\bnamed ([A-Z][a-zà-ÿ]+)/g)) if (!new RegExp(`\\b${m[1]}\\b`).test(flat(im).join(' '))) err(at, `“named ${m[1]}”: write “a student” or “Pair A”`);
+  // The crux synthesis card says what the crux says.
+  {
+    const sc = (pl.rehearsal ?? []).find((c) => c.kind === 'synthesis' && c.activityId === pr.crux);
+    if (sc && pl.crux?.synthesis?.sounds && sc.sounds !== pl.crux.synthesis.sounds) err(at, `card ${sc.id}: sounds differs from crux.synthesis.sounds`);
+    if (sc && pl.crux?.synthesis?.prompt && !(sc.say ?? []).includes(pl.crux.synthesis.prompt)) err(at, `card ${sc.id}: say doesn’t include crux.synthesis.prompt`);
+  }
   if (pl.rehearsal) {
     // One card per moment; cards in class order within each activity; Three Reads before the release.
     const mids = pl.rehearsal.filter((c) => c.momentId).map((c) => c.momentId);
     for (const m3 of new Set(mids)) if (mids.filter((x) => x === m3).length > 1) err(at, `two cards rehearse moment ${m3}`);
-    const minuteOf = (c) => (/^Before class/.test(c.where) ? -1 : /^Start of/.test(c.where) ? 0 : Number(/^About (\d+)/.exec(c.where)?.[1] ?? 0));
+    // A lesson IM runs over two days (6.3.17) counts each day from 0: "Day N" in a card's where marks it.
+    const minuteIn = (c) => (/^Before class/.test(c.where) ? -1 : /^Start of/.test(c.where) ? 0 : Number(/^About (\d+)/.exec(c.where)?.[1] ?? 0));
+    const minuteOf = (c) => minuteIn(c) + 1000 * (Number(/\bDay (\d+)/.exec(c.where ?? '')?.[1] ?? 1) - 1);
     for (const id of ids) {
       const cs = pl.rehearsal.filter((c) => c.activityId === id);
       for (let i = 1; i < cs.length; i++) if (minuteOf(cs[i]) < minuteOf(cs[i - 1])) err(at, `${id}: card ${cs[i].id} comes before ${cs[i - 1].id} in class time`);
       const ri = cs.findIndex((c) => c.kind === 'rounds'), li = cs.findIndex((c) => c.kind === 'release');
       if (ri >= 0 && li >= 0 && li < ri) err(at, `${id}: the release card comes before Three Reads`);
     }
+    // A card can't happen after its activity has ended.
+    for (const c of pl.rehearsal) { const a = im.activities.find((x) => x.id === c.activityId); if (a?.minutes && minuteIn(c) >= a.minutes) err(at, `card ${c.id} is at minute ${minuteIn(c)} of a ${a.minutes}-minute activity`); }
     for (const id of ids) if (!pl.rehearsal.some((c) => c.activityId === id && c.kind === 'math')) err(at, `no Do the task card for ${id}`);
     for (const k of ['rounds', 'release', 'synthesis']) if (!pl.rehearsal.some((c) => c.activityId === pr.crux && c.kind === k)) err(at, `the crux has no ${k} card`);
     if (!pl.rehearsal.some((c) => c.activityId === pr.crux && c.kind === 'levels')) err(at, 'the crux has no by-level language card');
@@ -412,7 +478,7 @@ for (const f of planFiles) {
     else if (moves(pr.crux) > 8) warn(at, `crux-only night is ${moves(pr.crux)} moves; the target is 8`);
     for (const id of ids.filter((x) => x !== pr.crux)) if (moves(id) > 2) err(at, `${id} adds ${moves(id)} moves; the most is 2`);
   }
-  for (const [where, s] of flat(pl).map((s) => ['', s])) if (/maths|colour|grey\b|favour|behaviour|centre\b|organis|practise\b|metre\b/.test(s)) err(at, `US spelling: "${s.slice(0, 50)}…"`);
+  for (const [where, s] of flat(pl).map((s) => ['', s])) if (/maths|colour|grey\b|favour|behaviour|centre\b|organis|practise\b|metre\b|analys(?:e|ing)\b|labell|modell|travell|litre/.test(s)) err(at, `US spelling: "${s.slice(0, 50)}…"`);
 }
 
 // ---------------------------------------------------------------------------

@@ -1,0 +1,384 @@
+{
+ "status": "draft",
+ "reviewNotes": [
+  "No person has reviewed this file. Drafted 2026-11-15 by a model.",
+  "Crux is 4.2, not 4.3. 4.2’s narrative states the lesson’s new idea (pairs of measurements in two units form equivalent ratios, and each ratio has two rates per 1). Goal 2, explaining how to use a “rate per 1,” is met in its second question and closing discussion. 4.3 is “an opportunity to apply insights from the previous activity,” read as mastery; 4.4 is optional practice.",
+  "Testable object: the two rates per 1 from 4.2’s first question (about \\(\\frac{8}{5}\\) kilometers in 1 mile and \\(\\frac{5}{8}\\) mile in 1 kilometer). The second question tests them: was she speeding?",
+  "IM’s own moments used: the 80-miles-per-hour guess in the launch (m10), the uncertainty about 5 ÷ 8 (m11), the share order (m5), the decimal bog-down in 4.3 (m8), “zero cups” in 4.4 (m9). The Number Talk breakdowns (m1, m2) come from IM’s routine definition and its 4.1 narrative.",
+  "Premo’s moments: m3 (the two rates swapped; IM only says to make sure question 1 is right before question 2), m7 (the language moment and its by-level moves).",
+  "IM’s English-learner support for 4.2 says “if they convert 80 miles per hour into kilometers per hour, where 80 is multiplied by \\(\\frac58\\).” The speed limit is 80 kilometers per hour, and multiplying by \\(\\frac58\\) converts it into miles per hour. IM’s activity synthesis has it right. Looks like a slip in IM; not repeated here.",
+  "IM’s 4.1 English-learner support (MLR 8) is on one line with its design principle in the source, so the extractor left it in 4.1’s synthesis text instead of the supports. Reported as an extractor issue; nothing here depends on it.",
+  "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person.",
+  "2026-11-15: persona review fixes.",
+  "2026-11-15: round-2 review fixes: band frames now match the plan’s (answer and a larger-or-smaller reason; developing and expanding end with “Another way”), with new stretches."
+ ],
+ "crux": "4.2",
+ "cruxWhy": "4.2 is where students first find two rates per 1 between units, kilometers per mile and miles per kilometer, and use one to convert. IM’s goal 2, explaining how to use a “rate per 1,” is met in its closing discussion. IM’s language support for the activity, Compare and Connect (MLR 7), sits there too.",
+ "object": {
+  "name": "the two rates per 1",
+  "what": "Each student’s answers to 4.2’s first question: kilometers in 1 mile, and miles in 1 kilometer. The second question tests them: convert one speed and compare."
+ },
+ "goal": "Students see that measurements in two units form equivalent ratios, and explain how a rate per 1 converts one unit to the other.",
+ "rigorCheck": "Does every student still find both rates per 1, use one to convert a speed, and hear what the rate means?",
+ "watchFor": {
+  "4.1": "You explain a strategy before a student does.",
+  "4.2": "The two rates per 1 come out swapped: \\(\\frac{5}{8}\\) kilometer in a mile.",
+  "4.3": "A student turns \\(\\frac{10}{22}\\) into a long decimal and stalls.",
+  "4.4": "A student writes “zero cups” for 6 tablespoons."
+ },
+ "moments": [
+  {
+   "id": "m1",
+   "activityId": "4.1",
+   "kind": "routine-breakdown",
+   "routine": "Number Talk",
+   "see": "A student starts explaining \\(\\frac{3}{4}\\) of 32, then stalls. You want to show the quick way.",
+   "means": "In a Number Talk, students’ strategies are the content. Your strategy, shown first, becomes the one everyone copies.",
+   "say": "Take your time. What did you do first?",
+   "dont": "Show the class your own quick way.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "The teacher selects students to share different strategies for each problem",
+   "rehearse": true,
+   "criteria": [
+    "Waited for the student to finish their own strategy",
+    "Recorded it as they said it",
+    "Didn’t show a strategy of your own"
+   ]
+  },
+  {
+   "id": "m2",
+   "activityId": "4.1",
+   "kind": "routine-breakdown",
+   "routine": "Number Talk",
+   "see": "Six students want to share for the first problem, and the warm-up is at 8 minutes.",
+   "means": "IM asks for two or three different strategies per problem, not every one.",
+   "say": "Who thought about it a different way?",
+   "dont": "Hear every hand on the first problem.",
+   "from": "im",
+   "sayFrom": "im",
+   "evidence": "Consider gathering only two or three different strategies per problem."
+  },
+  {
+   "id": "m10",
+   "activityId": "4.2",
+   "kind": "im-misconception",
+   "see": "You show the sign. A student says: “Maximum 80. You can go 80 miles an hour.”",
+   "means": "IM expects this guess. The sign is in kilometers per hour, which is why the story needs a conversion.",
+   "say": "Where might you see this sign? What units might it use?",
+   "dont": "Tell them it’s kilometers before anyone wonders.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "They will likely guess it is a speed limit sign and assume it means 80 miles per hour."
+  },
+  {
+   "id": "m3",
+   "activityId": "4.2",
+   "kind": "student-thinking",
+   "see": "At the pause after question 1, a student’s answers read: “a. \\(\\frac{5}{8}\\) kilometer. b. \\(\\frac{8}{5}\\) miles.”",
+   "means": "They divided the right two numbers. They didn’t check which unit is bigger, so the two rates swapped.",
+   "say": "Which is longer, a mile or a kilometer? Does your answer fit?",
+   "dont": "Tell them to swap the two answers.",
+   "from": "premo",
+   "sayFrom": "premo",
+   "rehearse": true,
+   "criteria": [
+    "Asked which unit is longer",
+    "Had them check each answer against that",
+    "Didn’t swap the answers for them"
+   ]
+  },
+  {
+   "id": "m11",
+   "activityId": "4.2",
+   "kind": "im-misconception",
+   "see": "A student writes 5 ÷ 8 and stops: “8 doesn’t go into 5.”",
+   "means": "They chose the right division. The quotient can stay a fraction.",
+   "say": "Can you write 5 ÷ 8 as a fraction?",
+   "dont": "Do the long division for them.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "If students express uncertainty about carrying out the division of \\(5 \\div 8\\) or \\(8 \\div 5\\), encourage them to express the quotient in fraction form."
+  },
+  {
+   "id": "m4",
+   "activityId": "4.2",
+   "kind": "run-routine",
+   "routine": "MLR7: Compare and Connect",
+   "see": "Students have answered question 2. Some used a double number line, some multiplied by \\(\\frac{5}{8}\\), some by \\(\\frac{8}{5}\\).",
+   "means": "Compare and Connect puts the ways side by side. IM says to ask what each number means here and why that operation.",
+   "say": "Show your way. Then say what each number means.",
+   "runSheet": [
+    {
+     "step": "Students display their work for question 2 where others can see it."
+    },
+    {
+     "step": "As each way is shared, ask what each quantity means, such as “What does \\(\\frac{5}{8}\\) mean here?”"
+    },
+    {
+     "step": "Ask why they multiplied or divided by it."
+    },
+    {
+     "step": "If a table or double number line was used, ask how it connects to the other ways."
+    }
+   ],
+   "dont": "Explain what \\(\\frac{5}{8}\\) means yourself.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Ask students to display their approaches to determine whether or not Elena’s mom was speeding.",
+   "rehearse": true,
+   "criteria": [
+    "Got different ways displayed side by side",
+    "Asked what a number means, not just what it is",
+    "Asked how the table or double number line connects"
+   ]
+  },
+  {
+   "id": "m7",
+   "activityId": "4.2",
+   "kind": "language",
+   "routine": "MLR7: Compare and Connect",
+   "see": "A student says: “I did 80 times five-eighths. It’s 50.”",
+   "means": "The math is right, and they picked the right rate. What \\(\\frac{5}{8}\\) stands for, and why multiply, aren’t in words yet.",
+   "byBand": {
+    "emerging": {
+     "say": "Point to the \\(\\frac{5}{8}\\). What is it?",
+     "move": "They point to \\(\\frac{5}{8}\\) in their work and to the 1 kilometer it goes with, then say or write it with their frame. They can work it out first in any language they share with a partner.",
+     "nonverbal": "They point to 1 kilometer in their work, a line or a table, then to the \\(\\frac{5}{8}\\) mile that goes with it."
+    },
+    "developing": {
+     "say": "What does \\(\\frac{5}{8}\\) mean here? Use the frame.",
+     "move": "With the frame for their level, they tell a partner, then the class. They can work it out first in any language they share with a partner.",
+     "nonverbal": "They draw an arrow from kilometers to miles and write the operation and rate on it."
+    },
+    "expanding": {
+     "say": "What does \\(\\frac{5}{8}\\) mean, and why multiply?",
+     "move": "They say what \\(\\frac{5}{8}\\) is per kilometer and why multiplying converts 80 kilometers, then hear a classmate who used \\(\\frac{8}{5}\\). They can work it out first in any language they share with a partner.",
+     "nonverbal": "They mark 80 kilometers in their own work, a line or a table, and write its miles beside it."
+    }
+   },
+   "dont": "Say the sentence for them.",
+   "from": "premo",
+   "sayFrom": "premo",
+   "rehearse": true,
+   "criteria": [
+    "Asked every level the same question: what the rate means, and why multiply",
+    "Matched the way in to the student’s level",
+    "Didn’t say the sentence for them"
+   ]
+  },
+  {
+   "id": "m5",
+   "activityId": "4.2",
+   "kind": "which-work-first",
+   "see": "On desks: a double number line to 80 kilometers, “80 × \\(\\frac{5}{8}\\),” and “75 × \\(\\frac{8}{5}\\).”",
+   "means": "IM puts less-efficient methods first, so the rates per 1 make sense against a picture students trust.",
+   "say": "Start us off. What does each tick mark show?",
+   "dont": "Call the fastest way first.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "If any students with less-efficient methods were selected, have them go first in the sequence, or present one of these representations yourself.",
+   "rehearse": true,
+   "criteria": [
+    "Called the double number line or table first",
+    "Ended with a rate per 1",
+    "Didn’t start with the quickest way"
+   ]
+  },
+  {
+   "id": "m6",
+   "activityId": "4.2",
+   "kind": "routine-breakdown",
+   "routine": "MLR7: Compare and Connect",
+   "see": "Three students show their work one after another. Each reads out numbers, and nobody compares.",
+   "means": "Showing isn’t comparing. Compare and Connect works when students say how two ways are alike and differ.",
+   "say": "Where is the \\(\\frac{5}{8}\\) on the double number line?",
+   "dont": "Thank each student and call the next.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "As students share their work, encourage them to explain the meaning of each quantity they use.",
+   "rehearse": true,
+   "criteria": [
+    "Stopped to ask how two ways connect",
+    "Pointed them to the same number in both ways",
+    "Didn’t move on without a comparison"
+   ]
+  },
+  {
+   "id": "m8",
+   "activityId": "4.3",
+   "kind": "im-misconception",
+   "see": "A student writes 10 ÷ 22 = 0.454545… and stops.",
+   "means": "They found the right rate per 1. The decimal doesn’t end, so the fraction is easier here.",
+   "say": "Can you keep it as a fraction and multiply?",
+   "dont": "Give them a rounded decimal to use.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Students working with the unit rate \\(\\frac{10}{22}\\) may want to convert it to a decimal and get bogged down.",
+   "criteria": [
+    "Asked them to keep the rate as a fraction",
+    "Let them do the multiplying",
+    "Didn’t hand them a rounded decimal"
+   ]
+  },
+  {
+   "id": "m9",
+   "activityId": "4.4",
+   "kind": "im-misconception",
+   "see": "For 6 tablespoons of cocoa, a student writes “zero cups.”",
+   "means": "They see that 6 tablespoons is less than a cup. Part of a cup is the step left.",
+   "say": "What fraction of a cup is 6 tablespoons?",
+   "dont": "Write \\(\\frac{6}{16}\\) for them.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Ask them to consider what fraction of a cup would be equivalent to 6 tablespoons.",
+   "criteria": [
+    "Asked what fraction of a cup it is",
+    "Kept “less than a cup” as true",
+    "Didn’t write the fraction for them"
+   ]
+  }
+ ],
+ "patterns": [
+  {
+   "activityId": "4.1",
+   "type": "build",
+   "says": "“\\(\\frac{3}{8}\\) is half of \\(\\frac{3}{4}\\), so it’s half of 24.”",
+   "why": "They use the problem before.",
+   "shows": "They see the structure IM built into the problems.",
+   "from": "im",
+   "evidence": "the product is half of the product in the second question"
+  },
+  {
+   "activityId": "4.2",
+   "type": "error",
+   "says": "“\\(\\frac{5}{8}\\) kilometer in a mile.”",
+   "why": "They divided 5 by 8 for the wrong question.",
+   "shows": "They know a rate per 1 is a division. Which unit is bigger is the check.",
+   "from": "premo"
+  },
+  {
+   "activityId": "4.2",
+   "type": "build",
+   "says": "A double number line to 80 kilometers and 50 miles.",
+   "why": "Equivalent ratios are the tool they trust.",
+   "shows": "They see the pairs as equivalent ratios, the lesson’s first idea.",
+   "from": "im",
+   "evidence": "Creating a double number line or a table to represent the association between miles and the equivalent distance in kilometers as a set of equivalent ratios."
+  },
+  {
+   "activityId": "4.2",
+   "type": "build",
+   "says": "“80 × \\(\\frac{5}{8}\\) = 50 miles per hour, and 75 is more.”",
+   "why": "They use the rate per 1 as a factor.",
+   "shows": "The lesson’s second idea.",
+   "from": "im",
+   "evidence": "Converting 80 kilometers into 50 miles by evaluating \\(80 \\boldcdot \\frac58\\)"
+  },
+  {
+   "activityId": "4.2",
+   "type": "stretch",
+   "says": "“She was 25 miles per hour over, which is 40 kilometers per hour over.”",
+   "why": "They convert both ways and see the two answers agree.",
+   "shows": "Either rate per 1 works, if you know which way you’re going.",
+   "from": "im",
+   "evidence": "Yes, she was speeding by about 25 miles per hour or about 40 kilometers per hour."
+  },
+  {
+   "activityId": "4.2",
+   "type": "language",
+   "says": "“I did 80 times five-eighths.”",
+   "why": "The steps are ahead of the words for what the rate means.",
+   "shows": "They chose the right rate and operation.",
+   "from": "premo"
+  },
+  {
+   "activityId": "4.3",
+   "type": "almost",
+   "says": "10 ÷ 22 = 0.4545… and stuck.",
+   "why": "Decimals feel like the finished form of a rate.",
+   "shows": "They found the right rate per 1.",
+   "from": "im",
+   "evidence": "may want to convert it to a decimal and get bogged down"
+  }
+ ],
+ "predict": {
+  "context": "A sign reads “Maximum 80.” A driver goes 75 miles per hour, and 8 kilometers is about 5 miles. Students find kilometers in 1 mile and miles in 1 kilometer, then decide whether she was speeding, and by how much.",
+  "question": "How will most students convert in the speeding question?",
+  "countQuestion": "How many students will use a rate per 1 from the first question, not a double number line or table?",
+  "countUnit": "students will use a rate per 1.",
+  "tell": "If few do, the rates from the first question didn’t read as tools. That is why the discussion starts with the double number line and builds to the rate per 1: the fifth moment you’ll rehearse.",
+  "activityIds": [
+   "4.2"
+  ]
+ },
+ "cruxLanguage": {
+  "routine": "MLR7: Compare and Connect",
+  "phase": "synthesis",
+  "produceToday": [
+   "per",
+   "convert"
+  ],
+  "byBand": {
+   "emerging": {
+    "entry": "On the third read, they point to the quantities in order: 75 miles per hour, the 80 limit, then 8 kilometers and 5 miles. As ways are compared, they point to where \\(\\frac{5}{8}\\) or \\(\\frac{8}{5}\\) appears in two ways. They can work it out first in any language they share with a partner.",
+    "frame": "There is (are) ___ ___ per ___. I start in ___ and end in ___. I multiply (or divide) by ___. I get ___, which makes sense because a ___ is larger (or smaller) than a ___.",
+    "does": "They can find a matching pair on a double number line, like 8 kilometers and 5 miles.",
+    "reaching": "Naming how many of one unit there are per one of the other, and the operation that uses it.",
+    "stretch": "They say another way to convert, such as with a double number line."
+   },
+   "developing": {
+    "entry": "On the third read, they suggest putting both speeds in one unit. In the discussion, they tell a partner what one rate means, then say whether a classmate used the same rate. They can work it out first in any language they share with a partner.",
+    "frame": "There is (are) ___ ___ per ___. To convert ___ to ___, I multiply (or divide) by ___. I get ___, which makes sense because a ___ is larger (or smaller) than a ___. Another way: ___.",
+    "does": "They can say the steps they took: “80 times five-eighths.”",
+    "reaching": "Saying what the rate means and why that operation converts.",
+    "stretch": "They say the other rate too, with units, and when it would be easier to use."
+   },
+   "expanding": {
+    "entry": "On the third read, they suggest two ways to compare the speeds. In the discussion, they compare their way with a classmate’s: which rate each used, and why both reach the same decision. They can work it out first in any language they share with a partner.",
+    "frame": "There is (are) ___ ___ per ___. To convert ___ to ___, I multiply (or divide) by ___. I get ___, which makes sense because ___. Another way: ___.",
+    "does": "They can convert and explain their own steps.",
+    "reaching": "Comparing two ways and saying how the double number line shows the rate per 1.",
+    "stretch": "They convert the other way too, and say why both show she was speeding."
+   }
+  }
+ },
+ "cuts": [
+  {
+   "activityId": "4.4",
+   "note": "Optional, with no new math. Cut it first."
+  },
+  {
+   "activityId": "4.1",
+   "note": "Keep to two or three strategies per problem, as IM says."
+  },
+  {
+   "activityId": "4.3",
+   "note": "If short, do Fido (88 pounds) and the 25-kilogram medicine question. Lost: the fraction practice in Bella’s \\(5\\frac{1}{2}\\) pounds."
+  }
+ ],
+ "neverCut": [
+  "The pause after 4.2’s first question, so every student has both rates per 1",
+  "The speeding question, converted with a rate or a table",
+  "The closing discussion in IM’s order, with what each number means"
+ ],
+ "inClass": {
+  "launch": "“What does this sign mean?”",
+  "launchFrom": "premo",
+  "momentIds": [
+   "m4",
+   "m7",
+   "m5"
+  ],
+  "sequence": [
+   "A student who drew a double number line or table to 80 kilometers",
+   "A student who multiplied 80 by \\(\\frac{5}{8}\\)",
+   "A student who multiplied 75 by \\(\\frac{8}{5}\\)"
+  ]
+ },
+ "beforeClass": [
+  "For 4.2: have the “Maximum 80” sign ready to display, and draw a blank double number line, kilometers over miles.",
+  "Know the answers: about \\(\\frac{8}{5}\\) (1.6) kilometers per mile, \\(\\frac{5}{8}\\) (0.625) mile per kilometer. Speeding by about 25 miles per hour, or 40 kilometers per hour.",
+  "For 4.4 if taught: four-function calculators."
+ ]
+}

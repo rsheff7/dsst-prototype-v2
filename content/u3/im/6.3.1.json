@@ -1,0 +1,327 @@
+{
+ "code": "6.3.1",
+ "title": "The Burj Khalifa",
+ "section": "Units of Measurement",
+ "goals": [
+  {
+   "text": "Evaluate (orally) the usefulness of calculating a rate per 1 when solving problems involving unfamiliar rates.",
+   "modes": [
+    "orally"
+   ]
+  },
+  {
+   "text": "Explain (orally, in writing, and through other representations) how to solve a problem involving rates in a less familiar context, e.g., minutes per window.",
+   "modes": [
+    "orally",
+    "in writing",
+    "other representations"
+   ]
+  }
+ ],
+ "targets": [
+  "I can see that thinking about “how much for 1” is useful for solving different types of problems."
+ ],
+ "narrative": [
+  "In the previous unit, students began to develop an understanding of ratios and familiarity with ratio and rate language. They represented equivalent ratios using discrete diagrams, double number lines, and tables. They learned that \\(a:b\\) is equivalent to every other ratio \\(sa:sb\\), where \\(s\\) is a positive number. They learned that “at this rate” or “at the same rate” signals a situation that is characterized by equivalent ratios.",
+  "In this unit, students find the two values \\(\\frac{a}{b}\\) and \\(\\frac{b}{a}\\) that are associated with the ratio \\(a:b\\), and interpret these values as rates per 1. For example, if a person walks 13 meters in 10 seconds, that means they walked \\(\\frac{13}{10}\\) meters per 1 second and \\(\\frac{10}{13}\\) seconds per 1 meter.",
+  "To kick off this work, in this lesson, students tackle a meaty problem that rewards finding and making sense of a rate per 1 (MP1). Note there is no need to use or define the term “rate per 1” with students in this lesson. All of the work and discussion takes place within a context, so students will be expected to understand and talk about, for example, the minutes per window or the meters climbed per minute, but they will not be expected to use or understand the more general term “rate per 1.”"
+ ],
+ "materials": [
+  "Four-function calculators"
+ ],
+ "preparation": [
+  "All computations in this lesson can be done with methods students learned up through grade 5. However, you may wish to provide access to calculators to deemphasize computation and allow students to focus on reasoning about the context."
+ ],
+ "standards": {
+  "buildingOn": [
+   "4.MD.A.1",
+   "5.MD.A.1"
+  ],
+  "addressing": [
+   "6.RP.A.2"
+  ],
+  "buildingTowards": []
+ },
+ "activities": [
+  {
+   "id": "1.1",
+   "slot": "warm-up",
+   "title": "Estimating Height",
+   "minutes": 10,
+   "purpose": null,
+   "purposeEvidence": null,
+   "routines": [
+    "Think Pair Share"
+   ],
+   "fivePractices": false,
+   "alignment": {
+    "buildingOn": [
+     "4.MD.A.1",
+     "5.MD.A.1"
+    ],
+    "addressing": [],
+    "buildingTowards": []
+   },
+   "narrative": [
+    "This warm-up prompts students to reason about appropriate units of measurement in estimation and to review related work in grade 5 (converting across different-sized standard units within a given measurement system and using conversions to solve multi-step, real-world problems). It also allows them to form a reference for really tall things and convert measurements, which will be part of upcoming work.",
+    "As students discuss their estimates with a partner, monitor the discussions and identify students who use different strategies for estimating so they can share later."
+   ],
+   "launch": [
+    "Arrange students in groups of 2. Tell students they will be estimating the height of the tallest tree in the world, Hyperion. Ask students to give a signal when they have an estimate of the height of the tree. Give students 2 minutes of quiet think time followed by 3 minutes to discuss their estimates with a partner. Ask them to discuss the following questions, displayed for all to see:",
+    "How close are your estimates to one another?",
+    "How did you decide on the unit of measure?",
+    "What was important to you in the image when making your estimate?",
+    "Could you record your measurement using a different unit?"
+   ],
+   "task": [
+    "Use the picture to estimate the height of Hyperion, the tallest known tree.",
+    "[image: An image of a person, tree, and the Statue of Liberty. The tree is taller than the Statue of Liberty. The person is smaller than both. ] [image: Expand image]",
+    "[image: An image of a person, tree, and the Statue of Liberty. The tree is taller than the Statue of Liberty. The person is smaller than both. ]"
+   ],
+   "response": [
+    "100 m or 400 ft or anything reasonably close to those values. Sample reasoning: Based on the height of [some building whose height is known in relation to the Statue of Liberty], I think the Statue of Liberty is about 300 feet tall. From the picture, it looks like Hyperion would be about 400 feet tall."
+   ],
+   "misconceptions": [],
+   "synthesis": [
+    "Invite selected students to share their estimates, how they chose their unit of measurement, and any information in the image that informs their estimates. After each explanation, solicit questions from the class that could help the student clarify his or her reasoning. Ask if there is another way to write each shared estimate in a different unit. Record the estimates and conversions and display them for all to see."
+   ],
+   "extension": null,
+   "ell": [],
+   "access": []
+  },
+  {
+   "id": "1.2",
+   "slot": "activity",
+   "title": "Window Washing",
+   "minutes": 20,
+   "purpose": "new-concept",
+   "purposeEvidence": "The purpose of this task is to give students a good reason to compute a rate “per 1.”",
+   "routines": [
+    "MLR7: Compare and Connect"
+   ],
+   "fivePractices": false,
+   "alignment": {
+    "buildingOn": [],
+    "addressing": [
+     "6.RP.A.2"
+    ],
+    "buildingTowards": []
+   },
+   "narrative": [
+    "The purpose of this task is to give students a good reason to compute a rate “per 1.” Since the task statement doesn't provide all the information needed to answer the question and does not suggest a solution pathway, it is an opportunity for students to make sense of the problem (MP1) and engage in some aspects of mathematical modeling (MP4).",
+    "Students learn about the Burj Khalifa, the tallest high-rise in the world, and try to determine how long it would take to wash all of its 24,348 windows given a specific rate of work by a window-washing crew. The fact that the total number of windows is not a multiple of the corresponding value in the given ratio (15 windows in 18 minutes) motivates students to identify the rate for 1 and then scale that number to answer the question.",
+    "This activity does not specify which “per 1” rate students should find. Some students are likely to first calculate \\(\\frac56\\) windows per minute instead of \\(1\\frac15\\) or 1.2 minutes per window. Students are not expected to name the above quantities as “rates per 1” or “unit rates” at this time. As students work, ask them to explain what the quantity they calculated (either windows per minute or minutes per window) means and how they plan to use it. If students are unsure where to start with the problem, ask, “At this rate, how long will it take the crew to finish 90 windows? 300 windows?”"
+   ],
+   "launch": [
+    "Ask students to close their workbooks or devices, and ask if they know what the Burj Khalifa is. Allow students who are familiar with the building to share what they know.",
+    "Then, display a picture of the building and a map of its location.",
+    "[image: photo of the Burj Khalifa] [image: Expand image]",
+    "[image: photo of the Burj Khalifa] Attribution: By smarko. Public Domain. Pixabay. Source.",
+    "Once students see that the Burj Khalifa is the tallest artificial structure in the world and is located on the coast of the Arabian Gulf, surrounded by desert, ask what else they wonder about the building. Pause here to allow students time to think of a question. Keep the photo and map of the Burj Khalifa displayed.",
+    "Select students to share their questions, limiting it to one question per student. Record 5–10 questions for all to see. If no students wonder about the number of windows, say that you also have a question about the building and add to the list: “How long does it take to wash all the windows on the Burj Khalifa?”",
+    "Explain that your question came to mind after watching an online video of a window washing crew on the Burj Khalifa, using brushes and squeegees to clean the windows while harnessed to ropes.",
+    "Tell students they will now try to answer a question about the window washing. Give students 3–5 minutes of quiet think time to do so.",
+    "Answering the question requires knowing how many windows the Burj Khalifa has. The amount, 24,348 windows, is readily available through online searches if students are allowed and able to go online. Otherwise, have the number ready to share, and consider announcing the value to the whole class only after several students have requested the information. Recognizing missing information and the steps needed to acquire it is part of the mathematical modeling process.",
+    "Some facts on the Burj Khalifa:",
+    "Height: 2,722 ft (829.8 meters)",
+    "Tallest artificial structure in the world (as of January 2016)",
+    "154 usable floors, 9 maintenance floors, 46 spire levels, 2 below-ground parking lots (Wikipedia)",
+    "57 total elevators",
+    "It took 6 hours for an individual to climb to the top of the Burj Khalifa in 2011."
+   ],
+   "task": [
+    "[image: Photo of window washers on a building.] [image: Expand image]",
+    "[image: Photo of window washers on a building.] Attribution: Window Washers, by sneakerdog. CC BY 2.0. Flickr. Source.",
+    "A window-washing crew can finish 15 windows in 18 minutes.",
+    "If this crew was assigned to wash all the windows on the outside of the Burj Khalifa, how long will the crew be washing at this rate?"
+   ],
+   "response": [
+    "To wash all 24,348 windows, it will take the crew 29,217.6 minutes. Representations vary. Sample response in a table:",
+    "| number of windows | time in minutes",
+    "| 15 | 18",
+    "| 15,000 | 18,000",
+    "| 1 | 1.2",
+    "| 24,348 | 29,217.6"
+   ],
+   "misconceptions": [
+    "Students may get stuck when they try to find the minutes per window because 15 does not divide evenly into 18. Help them reason in terms of equivalent ratios or recall grade 5 methods for determining a quotient that is not a whole number."
+   ],
+   "synthesis": [
+    "Invite a few students to explain their reasoning and solutions. Ask students who used both \\(1\\frac15\\) or 1.2 minutes per window and \\(\\frac56\\) windows per minute to share. Emphasize that both quantities are valid and have purpose, depending on the question you are answering.",
+    "Focus the discussion on strategies for identifying and correcting errors. As rate problems grow more complex, students become more likely to mix up numbers, calculate less-helpful rates per 1, or make arithmetic mistakes that are left unquestioned. If possible, have several students share approaches that did not work, and errors that were made, and ask them to explain how they knew they must have made an error.",
+    "If no students offer to share, have an example of a student error ready to display for the class. For example, a student may incorrectly calculate \\(\\frac56\\) minutes per window instead of \\(1\\frac15\\) minutes per window. Ask students to discuss with a partner what they think the error is and how they would help the student. Select 1–2 students to share their ideas with the class; while they share, make the corrections for all to see.",
+    "Lastly, students may point out that the answer, 29,217.6 minutes, is a total time and is not representative of how many normal work days it would take the crew to do the job. Time permitting, pursue this valuable line of thinking, as it shows that students are thinking about the math and the context (MP2)."
+   ],
+   "extension": null,
+   "ell": [
+    {
+     "routine": "MLR7: Compare and Connect",
+     "phase": "launch",
+     "domains": [
+      "speaking"
+     ],
+     "principles": [
+      "maximize-meta-awareness"
+     ],
+     "text": "Speaking: MLR7 Compare and Connect. Use this routine when students present their strategy and representations to find how long it will take to wash all the windows. Ask students to consider what is the same and what is different about each approach. Draw students’ attention to the different quantities they calculated (either windows per minute or minutes per window). These exchanges can strengthen students’ mathematical language use and reasoning to make sense of strategies used to compute a rate “per 1.”",
+     "principleLine": "Design Principle(s): Maximize meta-awareness"
+    }
+   ],
+   "access": [
+    {
+     "area": "Action and Expression",
+     "title": "Internalize Executive Functions",
+     "text": "Action and Expression: Internalize Executive Functions. Chunk this task into more manageable parts to support students who benefit from support with organization and problem solving. For example, ask students to identify the rate for 1 window or 1 minute. Next, ask students to find how long it would take to wash a portion of the windows, such as 100 or 1000. After that, ask students how long it would take to wash all the windows of the Burj Khalifa.",
+     "supports": [
+      "Organization",
+      "Attention"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "1.3",
+   "slot": "activity",
+   "title": "Climbing the Burj Khalifa",
+   "minutes": 15,
+   "purpose": "new-concept",
+   "purposeEvidence": "this activity asks students to calculate how much of an activity would be finished—specifically, how much height would be scaled by a climber—in a given amount of time.",
+   "routines": [
+    "MLR6: Three Reads",
+    "MLR7: Compare and Connect",
+    "Think Pair Share"
+   ],
+   "fivePractices": false,
+   "alignment": {
+    "buildingOn": [],
+    "addressing": [
+     "6.RP.A.2"
+    ],
+    "buildingTowards": []
+   },
+   "narrative": [
+    "The first activity of this lesson asked students how long a window-washing crew would be washing—i.e., time to complete an activity, which prompted students to calculate the amount of time per window instead of the number of windows per unit of time. Keeping in mind the context of the Burj Khalifa, this activity asks students to calculate how much of an activity would be finished—specifically, how much height would be scaled by a climber—in a given amount of time.",
+    "Students are likely to approach the first question by scaling down (dividing both the given height and the number of hours by 3), and the second question by calculating a rate per 1 hour (dividing the height and hours by 6), and then scaling up (multiplying by 5). The final question is meant to challenge students both in problem solving and in working with rational numbers. If students struggle to make sense of the problem, suggest they create a sketch of the situation to help determine what the third question is asking. As students work, identify several students who approach the task in different ways or use different representations to reason so they can share later."
+   ],
+   "launch": [
+    "Recap that in the previous activity, students tried to find the time it took to complete an activity—washing all the windows—given a certain rate of working. Tell students they are now to find the amount of an activity that's been completed, given a particular amount of time. Give students 5 minutes of quiet think time, and then a minute to share their responses with a partner. Ask students to be prepared to explain their thinking."
+   ],
+   "task": [
+    "In 2011, a professional climber scaled the outside of the Burj Khalifa, making it all the way to 828 meters (the highest point on which a person can stand) in 6 hours.",
+    "Assuming they climbed at the same rate the whole way:",
+    "How far did they climb in the first 2 hours?",
+    "How far did they climb in 5 hours?",
+    "How far did they climb in the final 15 minutes?"
+   ],
+   "response": [
+    "1. After two hours, the climber was at 276 meters.",
+    "2. After five hours, the climber was at 690 meters.",
+    "3. After \\(5\\frac{3}{4}\\) hours, the climber was at 793.5 meters, so they climbed 34.5 meters in the last quarter hour. Representations vary. Sample responses:",
+    "| height (meters) | 0 | 138 | 276 | 414 | 552 | 690 | 828",
+    "| time (hours) | 0 | 1 | 2 | 3 | 4 | 5 | 6",
+    "| time (hours) | height (meters)",
+    "| 6 | 828",
+    "| 1 | 138",
+    "| \\(\\frac{1}{4}\\) | 34.5",
+    "| \\(\\frac{3}{4}\\) | 103.5",
+    "| \\(5\\frac{3}{4}\\) | 793.5"
+   ],
+   "misconceptions": [
+    "In the third question, students may struggle to divide 138 by 4. They may say the answer is 34 with a remainder of 2 or write 34.2, not knowing how to deal with the remainder. Ask those students what the remainder means and ask them to write the answer in terms of meters."
+   ],
+   "synthesis": [
+    "For each question, invite 1–2 students with different solution paths to share their work, starting with those who used a more common approach. See MLR 7 (Compare and Connect) for more examples.",
+    "For example, in the second question, many students are likely to first calculate the number of meters per hour, and then multiply by 5 to find the number of meters in 5 hours. An alternative approach, but likely less common, is to calculate the number of meters per hour and then subtract that distance from the total height of the climb in 6 hours, since the distance climbed in the first hour and the last hour is assumed to be the same."
+   ],
+   "extension": {
+    "task": [
+     "Have you ever seen videos of astronauts on the Moon jumping really high? An object on the Moon weighs less than it does on Earth because the Moon has much less mass than Earth.",
+     "A person who weighs 100 pounds on Earth weighs 16.5 pounds on the Moon. If a boy weighs 60 pounds on Earth, how much does he weigh on the Moon?",
+     "Every 100 pounds on Earth are the equivalent to 38 pounds on Mars. If the same boy travels to Mars, how much would he weigh there?"
+    ],
+    "response": [
+     "1. The boy weighs 9.9 pounds on the Moon.",
+     "2. The boy would weigh 22.8 pounds on Mars."
+    ]
+   },
+   "ell": [
+    {
+     "routine": "MLR6: Three Reads",
+     "phase": "launch",
+     "domains": [
+      "listening",
+      "reading",
+      "conversing"
+     ],
+     "principles": [
+      "support-sense-making"
+     ],
+     "text": "Reading, Listening, Conversing: MLR6 Three Reads. Use this routine to support reading comprehension of this word problem. In the first read, students read the problem with the goal of comprehending the situation (e.g., A climber is scaling outside of Burj Khalifa.). In the second read, ask students what can be counted or measured, without focusing on the values. Listen for, and amplify, the important quantities that vary in relation to each other in this situation: the height reached by the climber, in meters; the amount of time spent climbing, in hours. In the third read, ask students to brainstorm possible mathematical solution strategies to answer the questions. This helps students connect the language in the word problem and the reasoning needed to solve the problem.",
+     "principleLine": "Design Principle(s): Support sense-making"
+    }
+   ],
+   "access": [
+    {
+     "area": "Representation",
+     "title": "Internalize Comprehension",
+     "text": "Representation: Internalize Comprehension. Activate or supply background knowledge. Provide students with access to a blank double number line to support information processing.",
+     "supports": [
+      "Memory",
+      "Conceptual processing"
+     ]
+    }
+   ]
+  }
+ ],
+ "lessonSynthesis": [
+  "In this lesson, we focused on finding and using the number of minutes per window and the number of meters per hour to solve problems in an efficient way.",
+  "Display the two main rates (\\(1\\frac15\\) minutes per window and 138 meters per hour) from this lesson. Reinforce the usefulness of these quantities by questions such as:",
+  "If the Burj Khalifa had 10,000 windows, how many minutes would it take the washing crew to clean all of them? 100,000 windows?",
+  "How high is the climber after 2.5 hours? 2.25 hours? 2.2 hours?"
+ ],
+ "coolDown": {
+  "id": "1.4",
+  "title": "Going Up?",
+  "minutes": 5,
+  "task": [
+   "The fastest elevators in the Burj Khalifa can travel 330 feet in just 10 seconds. How far does the elevator travel in 11 seconds? Explain your reasoning."
+  ],
+  "response": [
+   "363 feet. Possible strategies:",
+   "If the elevator travels 330 feet in 10 seconds, then it is traveling 33 feet per second. Multiplying 33 by 11 gives 363 feet in 11 seconds.",
+   "If the elevator travels 330 feet in 10 seconds, then it is traveling 33 feet per second. Adding 33 feet per second to 330 feet in 10 seconds gives 363 feet in 11 seconds."
+  ]
+ },
+ "summary": [
+  "There are many real-world situations in which something keeps happening at the same rate. For example:",
+  "a bus stop that is serviced by 4 buses per hour",
+  "a washing machine that takes 45 minutes per load of laundry",
+  "a school cafeteria that serves 15 students per minute",
+  "In situations like these, we can use equivalent ratios to predict how long it will take for something to happen some number of times, or how many times it will happen in a particular length of time.",
+  "For example, how long will it take the school cafeteria to serve 600 students?",
+  "The table shows that it will take the cafeteria 40 minutes to serve 600 students.",
+  "number of students | time in minutes",
+  "| 15 | 1",
+  "| 60 | 4",
+  "| 600 | 40",
+  "How many students can the cafeteria serve in 1 hour?",
+  "[image: Double number line. Number of students. Time, minutes. ] [image: Expand image]",
+  "Description: <p>Double number line, 4 evenly spaced tick marks. Top line, number of students. Beginning at first tick mark, labels: 0, 300, 600, 900. Bottom line, time in minutes. Beginning at first tick mark, labels: 0, 20, 40, 60. </p>",
+  "[image: Double number line. Number of students. Time, minutes. ]",
+  "The double number line shows that the cafeteria can serve 900 students in 1 hour."
+ ],
+ "vocabulary": {
+  "receptive": [],
+  "productive": [
+   "at this rate"
+  ]
+ },
+ "languageUses": [
+  "interpret"
+ ],
+ "sources": [
+  "https://im.kendallhunt.com/MS/teachers/1/3/1/index.html",
+  "https://im.kendallhunt.com/MS/teachers/1/3/1/preparation.html",
+  "IM 6–8 Math Teacher Guide, Grade 6 Unit 3 (CC BY), transcribed from page images"
+ ]
+}

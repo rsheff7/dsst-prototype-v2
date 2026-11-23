@@ -1,0 +1,38 @@
+Source: https://im.kendallhunt.com/MS/teachers/1/3/1/preparation.html
+
+## Lesson 1
+## The Burj Khalifa
+ View Student Lesson
+## Lesson Narrative
+ In the previous unit, students began to develop an understanding of ratios and familiarity with ratio and rate language. They represented equivalent ratios using discrete diagrams, double number lines, and tables. They learned that \(a:b\) is equivalent to every other ratio \(sa:sb\), where \(s\) is a positive number. They learned that “at this rate” or “at the same rate” signals a situation that is characterized by equivalent ratios.
+ In this unit, students find the two values \(\frac{a}{b}\) and \(\frac{b}{a}\) that are associated with the ratio \(a:b\), and interpret these values as rates per 1. For example, if a person walks 13 meters in 10 seconds, that means they walked \(\frac{13}{10}\) meters per 1 second and \(\frac{10}{13}\) seconds per 1 meter.
+ To kick off this work, in this lesson, students tackle a meaty problem that rewards finding and making sense of a rate per 1 (MP1). Note there is no need to use or define the term “rate per 1” with students in this lesson. All of the work and discussion takes place within a context, so students will be expected to understand and talk about, for example, the minutes per window or the meters climbed per minute, but they will not be expected to use or understand the more general term “rate per 1.”
+## Learning Goals
+## Teacher Facing
+ Evaluate (orally) the usefulness of calculating a rate per 1 when solving problems involving unfamiliar rates.
+ Explain (orally, in writing, and through other representations) how to solve a problem involving rates in a less familiar context, e.g., minutes per window.
+## Student Facing
+ Let’s investigate the Burj Khalifa building.
+## Required Materials
+ Four-function calculators
+## Required Preparation
+ All computations in this lesson can be done with methods students learned up through grade 5. However, you may wish to provide access to calculators to deemphasize computation and allow students to focus on reasoning about the context.
+## Learning Targets
+## Student Facing
+ I can see that thinking about “how much for 1” is useful for solving different types of problems.
+## CCSS Standards
+ Building On
+ 4.MD.A.1
+ 5.MD.A.1
+ Addressing
+ 6.RP.A.2
+## Print Formatted Materials
+ Teachers with a valid work email address can click here to register or sign in for free access to Cool Down, Teacher Guide, and PowerPoint materials.
+ | Student Task Statements | pdf | docx 
+ | Cumulative Practice Problem Set | pdf | docx 
+ | Cool Down | | Log In 
+ | Teacher Guide | | Log In 
+ | Teacher Presentation Materials | pdf | docx 
+## Additional Resources
+ | Google Slides | | Log In 
+ | PowerPoint Slides | | Log In

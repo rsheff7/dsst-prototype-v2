@@ -1,0 +1,386 @@
+{
+ "status": "draft",
+ "reviewNotes": [
+  "No person has reviewed this file.",
+  "Crux is 11.3, chosen over 11.2. 11.3 is where the new problem appears: find 100% when another percentage is known (IM: “Here they are asked to find 100% of quantities given other percentages”). It also carries goal 3, stating what we are finding the percentage of, since the task never says the adult weight is 100%. IM’s language support for the lesson, Stronger and Clearer (MLR 1), is in 11.3. The case for 11.2: the cool-down (70% of 500 ml) is the 11.2 kind of problem, and 11.2 has IM’s full share order. A reviewer could reasonably choose 11.2.",
+  "Testable object: the puppy explanation, the short written explanation IM’s Stronger and Clearer support asks for after Jada’s puppy. Partners press it in rounds, and Andre’s puppy (30%, not a factor of 100) tests whether the explanation’s method carries over.",
+  "IM puts its Stronger and Clearer support in 11.3’s launch section, and the extractor tags it “launch.” In class it runs after students find Jada’s puppy’s weight, partway through the work. cruxLanguage.phase follows the IM layer’s tag.",
+  "IM’s own moments: the “more than 100%” surprise in 11.1, the “$50 is 50% of $40” carry-over in 11.1’s synthesis, stopping before or past 100% in 11.3, uneven tick marks in 11.3, the 30-is-not-a-factor-of-100 step in 11.3’s narrative, IM’s share orders in 11.2 and 11.3, and the Stronger and Clearer run and breakdown.",
+  "Premo’s moments: “125% of 8 is 8.25” in 11.2, and the language moment “It’s 45” with no word for what 45 is.",
+  "Only the warm-up comes before the crux and 11.2. The two upstream moments are both in 11.1; 11.2 has moments but none is rehearsed in this layer.",
+  "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person.",
+  "2026-11-15: persona review fixes. cruxLanguage frames match the plan’s new release frames; produceToday says “tick mark,” as clo.precise does. Each band’s entry now suggests a way in on the third read. Cuts: 11.2 hears the three ways aloud without displays; 11.3 runs one partner round, not two, and shares only the double number line and the table.",
+  "2026-11-15: round-2 review fixes: cruxLanguage frames match the plan’s new release frames (“___% of the ___ is ___”); goal, cruxWhy and m9 split under 25 words; colon in m7; 11.3 cut hears one line or table for Andre’s puppy.",
+  "2026-11-15: round-3 fixes: band frames follow the plan’s new form; stretches equal the plan’s; produceToday adds “double number line”; m6 runs one partner round (IM suggests 2–3), and m7, m8 say “the round”; “percentage” replaces “percent” as a noun."
+ ],
+ "crux": "11.3",
+ "cruxWhy": "11.3 is the first time students find 100% when another percentage is known. Nothing in the puppy problem says the adult weight is 100%, so students must say what they are finding the percentage of: IM’s third goal. IM’s language support, Stronger and Clearer Each Time (MLR 1), sits in 11.3. Students write how they found Jada’s puppy’s adult weight and sharpen it with partners.",
+ "object": {
+  "name": "the puppy explanation",
+  "what": "The short explanation each student writes after finding Jada’s puppy’s adult weight: what is 100%, and how they got there from 20%. Partners press it in rounds; Andre’s puppy, at 30%, tests whether the method carries over."
+ },
+ "goal": "Students use a double number line or table to find a percentage of a number, and to find 100% from another percentage. They say what 100% stands for.",
+ "rigorCheck": "Does every student still write the puppy explanation, saying what 100% is, and sharpen it with at least one partner?",
+ "watchFor": {
+  "11.1": "A student is puzzled by 150%: “You can’t raise more than all of it.”",
+  "11.2": "“125% of 8 is 8.25”: a quarter of a mile added, not a quarter of 8.",
+  "11.3": "A student stops at 36 pounds, or keeps going past 45."
+ },
+ "moments": [
+  {
+   "id": "m1",
+   "activityId": "11.1",
+   "kind": "im-misconception",
+   "see": "A student says: “Andre can’t have 150%. 100% is all of it.”",
+   "means": "From Lesson 10’s coins, a percentage can feel like part of a whole. Here 100% is the goal, and Andre raised more than the goal.",
+   "say": "What was the goal? Did Andre raise more or less?",
+   "dont": "Just tell them percentages can go over 100.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Students may be surprised by a percentage greater than 100. If they are puzzled by this, explain that Andre raised more money than the goal.",
+   "rehearse": true,
+   "criteria": [
+    "Asked about the goal before explaining",
+    "Tied 150% to raising more than the goal",
+    "Didn’t just state a rule about percentages over 100"
+   ]
+  },
+  {
+   "id": "m2",
+   "activityId": "11.1",
+   "kind": "im-misconception",
+   "see": "A student writes: “Jada raised $50. 50% is 50.”",
+   "means": "Lesson 10’s pattern, cents matching the percentage, worked because a dollar is 100 cents. Here 100% is $40, so the pattern breaks.",
+   "say": "What lines up with 100% here?",
+   "dont": "Cross out 50 and write 20.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "find this strategy unworkable here (as $50 is not 50% of $40)",
+   "rehearse": true,
+   "criteria": [
+    "Asked what lines up with 100%",
+    "Linked the slip to Lesson 10’s 100 cents",
+    "Didn’t write the right number in for them"
+   ]
+  },
+  {
+   "id": "m3",
+   "activityId": "11.2",
+   "kind": "student-thinking",
+   "see": "For Monday, a student writes: “125% is 8.25 miles.”",
+   "means": "They know 125% is 100% and 25% more. They added a quarter of a mile, not a quarter of 8 miles.",
+   "say": "25% of what? Find 25% on the line.",
+   "dont": "Tell them 25% of 8 is 2.",
+   "from": "premo",
+   "sayFrom": "premo"
+  },
+  {
+   "id": "m11",
+   "activityId": "11.2",
+   "kind": "which-work-first",
+   "see": "Group displays for 125%: skip-counting by 2 on the line, “8 + 2,” and “8 × \\(\\frac{5}{4}\\).”",
+   "means": "IM gives the order: skip-counting on the double number line, then 100% plus 25%, then multiplying 8 by \\(\\frac{3}{4}\\) and \\(\\frac{5}{4}\\).",
+   "say": "Start us off. What did you put on the first tick?",
+   "dont": "Start with the fastest group.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Sequence the presentations in the order they are presented in the Activity Narrative."
+  },
+  {
+   "id": "m4",
+   "activityId": "11.3",
+   "kind": "im-misconception",
+   "see": "On Jada’s line, a student labels 9, 18, 27, 36 and stops: “36 pounds.”",
+   "means": "They built the line correctly. Nothing in the task says the adult weight is 100%, so they stopped at 80%.",
+   "say": "What percentage is the adult weight?",
+   "dont": "Point to the 100% tick for them.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Students may stop before they reach 100% or go further than 100%. If this happens, explain that in this situation, the adult weight is at exactly 100%.",
+   "rehearse": true,
+   "criteria": [
+    "Asked what percentage the adult weight is",
+    "Let them find the 100% tick themselves",
+    "Didn’t point to the answer on the line"
+   ]
+  },
+  {
+   "id": "m5",
+   "activityId": "11.3",
+   "kind": "im-misconception",
+   "see": "On Andre’s line, a student’s ticks get closer together toward 100%.",
+   "means": "A double number line needs equal steps. Uneven ticks give the wrong weight.",
+   "say": "Is each jump the same size? How do you know?",
+   "dont": "Redraw the line for them.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Students may not use equal-sized increments between the tick marks they draw and label."
+  },
+  {
+   "id": "m10",
+   "activityId": "11.3",
+   "kind": "im-misconception",
+   "see": "On Andre’s line: “30%, 60%, 90%… I can’t land on 100%.”",
+   "means": "Counting by 30% skips 100%. A smaller step that fits both, 10%, gets there.",
+   "say": "What smaller step would land on 100%?",
+   "dont": "Tell them to use 10%.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Since 100 is not a multiple of 30, students may use strategies such as subdividing the double number line into intervals of 10% and scaling up from there to find the value of 100%."
+  },
+  {
+   "id": "m6",
+   "activityId": "11.3",
+   "kind": "run-routine",
+   "routine": "MLR1: Stronger and Clearer Each Time",
+   "see": "Students have found Jada’s puppy’s adult weight. You ask each to write a short explanation of how.",
+   "means": "Stronger and Clearer Each Time (MLR 1) has students explain to 2–3 partners in a row, each pressing for detail. They borrow ideas and words, then rewrite. Here the press is on what 100% is and how they got there.",
+   "say": "Write how you found the adult weight. Then find a partner.",
+   "runSheet": [
+    {
+     "step": "After Jada’s puppy, each student writes a brief explanation of their process."
+    },
+    {
+     "step": "Students meet one partner and read their explanation aloud. IM suggests 2–3; this plan runs one round for time."
+    },
+    {
+     "step": "Listeners press with IM’s prompts: “Can you explain how…?” or “You should expand on…”"
+    },
+    {
+     "step": "Students borrow ideas and language from their partner."
+    },
+    {
+     "step": "Each student rewrites their explanation, stronger and clearer."
+    }
+   ],
+   "dont": "Skip the writing and go straight to sharing.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "After students have had the opportunity to determine the adult weight of Jada’s puppy, ask students to write a brief explanation of their process.",
+   "rehearse": true,
+   "criteria": [
+    "Had every student write an explanation first",
+    "Ran one partner round, with the listener pressing for detail",
+    "Gave listeners IM’s prompts to press for detail"
+   ]
+  },
+  {
+   "id": "m7",
+   "activityId": "11.3",
+   "kind": "routine-breakdown",
+   "routine": "MLR1: Stronger and Clearer Each Time",
+   "see": "In the round, partners read their explanations and say: “Looks good.” Nobody asks anything.",
+   "means": "Stronger and Clearer only works if listeners press for detail. Without questions, nothing gets clearer.",
+   "say": "Listener, ask one question. Try “Can you explain how…?”",
+   "dont": "Let the round end without a question.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "students should be pressed for details, and encouraged to press each other for details.",
+   "rehearse": true,
+   "criteria": [
+    "Got each listener to ask at least one question",
+    "Pointed them to IM’s feedback prompts",
+    "Didn’t let a round end with only “looks good”"
+   ]
+  },
+  {
+   "id": "m8",
+   "activityId": "11.3",
+   "kind": "language",
+   "routine": "MLR1: Stronger and Clearer Each Time",
+   "see": "In the round, a student reads: “I did 9, 18, 27, 36, 45. It’s 45.”",
+   "means": "The math is right. What 45 is, and why it’s at 100%, isn’t in their words yet.",
+   "byBand": {
+    "emerging": {
+     "say": "What is 45? Point to its percentage.",
+     "move": "They point to 45, then to 100%, and say or write what it stands for. They can work it out first in any language they share with a partner.",
+     "nonverbal": "They circle 45 and 100% on their line and draw a line between them, then write “adult” beside it."
+    },
+    "developing": {
+     "say": "What is 45? Why is it at 100%? Use the frame.",
+     "move": "With the frame, they tell their partner what 100% stands for and how they got there from 20%. They can work it out first in any language they share with a partner."
+    },
+    "expanding": {
+     "say": "What is 45, and why is it at 100%?",
+     "move": "They add what 100% stands for and the step from 20% to 100%, then rewrite it clearer. They can work it out first in any language they share with a partner."
+    }
+   },
+   "dont": "Say “45 pounds is the adult weight” for them.",
+   "from": "premo",
+   "sayFrom": "premo",
+   "rehearse": true,
+   "criteria": [
+    "Asked every level the same question: what 45 is, and why at 100%",
+    "Matched the way in to the student’s level",
+    "Didn’t say the sentence for them"
+   ]
+  },
+  {
+   "id": "m9",
+   "activityId": "11.3",
+   "kind": "which-work-first",
+   "see": "On desks for Jada’s puppy: a line counting by 9, a line in 10% steps, “20% is \\(\\frac{1}{5}\\), so 5 × 9,” and a table.",
+   "means": "IM’s order starts with the double number line counting by 9 and 20%, then more efficient ways. Show a table if no one used one.",
+   "say": "Start us off. How did you label your line?",
+   "dont": "Start with the shortest way.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Start with someone who solved the first question using a double number line as follows, and follow with increasingly efficient strategies."
+  }
+ ],
+ "patterns": [
+  {
+   "activityId": "11.1",
+   "type": "build",
+   "says": "“$40 is the goal, so it’s 100%. Half is $20.”",
+   "why": "They line up the goal with 100% from the context.",
+   "shows": "What 100% stands for, IM’s third goal, already in their words.",
+   "from": "im",
+   "evidence": "they may understand from the fundraising context of the problem that \\$40 is 100% because it is the amount of the goal."
+  },
+  {
+   "activityId": "11.1",
+   "type": "error",
+   "says": "“Jada raised $50.”",
+   "why": "Lesson 10’s pattern: the percentage matched the cents.",
+   "shows": "They remember a percentage as a rate per 100. Lining up the goal with 100% is next.",
+   "from": "im",
+   "evidence": "as \\$50 is not 50% of \\$40"
+  },
+  {
+   "activityId": "11.2",
+   "type": "build",
+   "says": "“25% is 2 miles, so 125% is 8 + 2 = 10.”",
+   "why": "They split 125% into 100% and 25%.",
+   "shows": "They can build any percentage from 100% and a piece of it.",
+   "from": "im",
+   "evidence": "Reason about 125% of the distance as 100% of the distance plus 25% of the distance"
+  },
+  {
+   "activityId": "11.2",
+   "type": "almost",
+   "says": "“125% is 8.25 miles.”",
+   "why": "They added 25 hundredths of a mile, not a quarter of 8.",
+   "shows": "They know 125% is 100% and 25% more.",
+   "from": "premo"
+  },
+  {
+   "activityId": "11.3",
+   "type": "almost",
+   "says": "“36 pounds” for Jada’s puppy.",
+   "why": "They stopped at 80%: the task never says the adult weight is 100%.",
+   "shows": "Their line is built correctly, in equal steps of 9 and 20%.",
+   "from": "im",
+   "evidence": "Students may stop before they reach 100% or go further than 100%."
+  },
+  {
+   "activityId": "11.3",
+   "type": "build",
+   "says": "“10% is half of 20%, so 10% is 4.5, and 100% is 45.”",
+   "why": "They find a step that reaches 100% in whole jumps.",
+   "shows": "The move that also solves Andre’s puppy, where 30% doesn’t reach 100%.",
+   "from": "im",
+   "evidence": "10% is half of 20%, so 10% is 4.5, and then 100% is 45."
+  },
+  {
+   "activityId": "11.3",
+   "type": "stretch",
+   "says": "“9 × \\(\\frac{10}{3}\\) = 30 for Andre’s puppy.”",
+   "why": "They go straight from 30% to 100% with one factor.",
+   "shows": "Percentages as equivalent ratios, the efficient end of IM’s sequence.",
+   "from": "im",
+   "evidence": "they have to multiply 9 by \\(\\frac{10}{3}\\) to go directly from 9 pounds to the puppy’s adult weight, which might not occur to most students."
+  },
+  {
+   "activityId": "11.3",
+   "type": "language",
+   "says": "“It’s 45.”",
+   "why": "The number feels like the whole answer.",
+   "shows": "They found the adult weight. Saying it is 100%, and why, is next.",
+   "from": "premo"
+  }
+ ],
+ "predict": {
+  "context": "Two puppies each weigh 9 pounds. The vet says Jada’s is about 20% of its adult weight and Andre’s about 30%. Students get a double number line with only 0, 9, 0% and 20% (or 30%) labeled.",
+  "question": "What will most students write in their puppy explanation?",
+  "countQuestion": "How many students will say the adult weight is 100% before they start counting?",
+  "countUnit": "students will say the adult weight is 100% first.",
+  "tell": "If few do, the task’s 100% is hidden from them, and some will stop at 36 pounds. Ask what percentage the adult weight is: the third moment you’ll rehearse.",
+  "activityIds": [
+   "11.1",
+   "11.3"
+  ]
+ },
+ "cruxLanguage": {
+  "routine": "MLR1: Stronger and Clearer Each Time",
+  "phase": "launch",
+  "produceToday": [
+   "double number line",
+   "tick mark",
+   "100%",
+   "% of"
+  ],
+  "byBand": {
+   "emerging": {
+    "entry": "On the third read, they point to 9 pounds, then 20%, then the blank where the adult weight goes. In the partner rounds, they point to 100% on their line and to the weight above it, then read a short frame aloud. They can work it out first in any language they share with a partner.",
+    "frame": "On the double number line, ___ is 100%. ___ is ___% of it. Each tick mark is ___% and ___. So ___% is ___.",
+    "does": "They can count up a double number line in equal steps and read the numbers.",
+    "reaching": "Saying what 100% stands for: the adult weight.",
+    "stretch": "They say the whole sentence aloud, naming what 100% stands for."
+   },
+   "developing": {
+    "entry": "On the third read, they say which tick will be the adult weight and what step to count by. They read their explanation with the frame, answer one partner question, and add one detail they borrowed. They can work it out first in any language they share with a partner.",
+    "frame": "On the double number line, ___ is 100%, and ___ is ___% of it. Each tick mark is ___% and ___, because ___. So ___% is ___.",
+    "does": "They can find the adult weight and say the steps in short phrases.",
+    "reaching": "Saying the step from the known percentage to 100% with “% of.”",
+    "stretch": "They say why a smaller step helps for Andre’s puppy."
+   },
+   "expanding": {
+    "entry": "On the third read, they name two ways to start, such as counting by 20% or finding 10% first. They explain both puppies to a partner, press each partner with IM’s prompts, and rewrite theirs clearer once. They can work it out first in any language they share with a partner.",
+    "frame": "___ is 100%, and ___ is ___% of it. I found ___% first, because ___. So ___% is ___. Another way: ___.",
+    "does": "They can explain how they found one adult weight, in full sentences.",
+    "reaching": "Saying why the same method works for 20% and 30%, and naming what 100% is.",
+    "stretch": "They show the same steps in a table and say which is quicker for 30%."
+   }
+  }
+ },
+ "cuts": [
+  {
+   "activityId": "11.1",
+   "note": "Keep it short: hear two ways for Andre’s 150%, then ask why $50 isn’t 50% of $40."
+  },
+  {
+   "activityId": "11.2",
+   "note": "Hear the three ways aloud, without displays. Give the time to 11.3’s rounds."
+  },
+  {
+   "activityId": "11.3",
+   "note": "Leave out the bread and wages extension unless students finish early. Run one partner round, not two. In the share, call the double number line and the table only. Andre’s puppy: hear one line or table, not both."
+  }
+ ],
+ "neverCut": [
+  "Quiet think time before partners talk in 11.3",
+  "The puppy explanation, written by every student",
+  "A partner round that presses for detail",
+  "Andre’s puppy: finding 100% from 30%"
+ ],
+ "inClass": {
+  "launch": "“First, decide what 100% is. Then use the line.”",
+  "launchFrom": "premo",
+  "momentIds": [
+   "m4",
+   "m6",
+   "m8"
+  ],
+  "sequence": [
+   "A student whose double number line counts by 9 pounds and 20%",
+   "A student who found 10% first, then 100%",
+   "A student who used a table: 20% times 5, or 30% times \\(\\frac{1}{3}\\) then times 10"
+  ]
+ },
+ "beforeClass": [
+  "Draw both puppy double number lines on the board: 0 and 9 above, 0% and 20% (or 30%) below.",
+  "Post IM’s feedback prompts for the partner rounds: “Can you explain how…?” and “You should expand on…”",
+  "Know the answers: $40, $20, $60; 8, 6 and 10 miles; 45 and 30 pounds; 350 ml on the cool-down."
+ ]
+}

@@ -54,7 +54,7 @@
    "the gap"
   ],
   "exemplar": "Each hour, the distance apart changes by 6.4 miles, because the speeds are 3 and 3.4 miles per hour. So I divide 24 by 6.4 to find the time: 3.75 hours.",
-  "lookFor": "The penguin explanation uses the form: names a rate with “per” (\\(\\frac{5}{3}\\) feet per second, or 0.6 seconds per foot) and says what it multiplies: 45 × \\(\\frac{5}{3}\\) = 75 feet, 45 × 0.6 = 27 seconds.",
+  "lookFor": "The penguin explanation uses the form: names a rate with “per” (\\(\\frac{5}{3}\\) feet per second, or 0.6 seconds per foot). It says what it multiplies: 45 × \\(\\frac{5}{3}\\) = 75 feet, 45 × 0.6 = 27 seconds.",
   "posted": {
    "sentence": "Each hour, the distance changes by 60 miles, because the speed is 60 miles per hour. So I divide 150 by 60 to find the time: 2.5 hours."
   },
@@ -94,7 +94,7 @@
     "Take both walks off each hour: 24 − 3 − 3.4 = 17.6 miles after 1 hour, then 11.2 and 4.8.",
     "Use a four-column table: hours, Kiran’s miles, Clare’s miles and distance apart.",
     "Add the speeds: the distance apart decreases by 6.4 miles each hour, so 24 ÷ 6.4 = 3.75 hours, and they meet at 11:45 a.m.",
-    "For Kiran’s jog: 24 ÷ 2.5 = 9.6 miles closer each hour, and 9.6 − 3.4 = 6.2 miles per hour; or 3.4 × 2.5 = 8.5, 24 − 8.5 = 15.5, 15.5 ÷ 2.5 = 6.2.",
+    "For Kiran’s jog: 24 ÷ 2.5 = 9.6 miles closer each hour, and 9.6 − 3.4 = 6.2 miles per hour. Or 3.4 × 2.5 = 8.5, 24 − 8.5 = 15.5, 15.5 ÷ 2.5 = 6.2.",
     "Sketch the trail and mark off where each friend is each hour."
    ],
    "barriers": [
@@ -178,7 +178,7 @@
   ],
   "release": {
    "successCriteria": "When you explain, name each speed with “per,” miles per hour, and say how you used it.",
-   "say": "Name the speed with ‘per,’ and say how you used it.",
+   "say": "Name each speed with “per,” and say how you used it.",
    "talkMoments": [
     "After quiet think time, partners take turns saying the 1-hour row in their level’s frame.",
     "After the class sees a solution to the first two questions, groups brainstorm how to check Kiran’s claim.",

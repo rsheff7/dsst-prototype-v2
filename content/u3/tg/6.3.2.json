@@ -1,0 +1,58 @@
+{
+  "section": "Unit Conversion",
+  "activities": {
+    "2.1": {
+      "response": [
+        "Reasonable estimates would be close to \\(\\frac{1}{2}\\) ounce, 3 teaspoons, 15 milliliters, or 15 cubic centimeters."
+      ],
+      "extensionResponse": null
+    },
+    "2.2": {
+      "response": [
+        "Strings of varying lengths"
+      ],
+      "extensionResponse": null
+    },
+    "2.3": {
+      "response": [
+        "1. Units grouped by attribute:",
+        "| length | volume | weight or mass",
+        "| 1 inch, 1 foot, 1 yard, 1 mile, 1 millimeter, 1 centimeter, 1 meter, 1 kilometer | 1 cup, 1 quart, 1 gallon, 1 milliliter, 1 liter | 1 ounce, 1 pound, 1 ton, 1 gram, 1 kilogram",
+        "2. Objects matched to units of length:",
+        "| 1 inch | 1 foot | 1 yard | 1 mile",
+        "| length of a thumb, width of a quarter, thickness of a hockey puck | length of a ruler, length of a shoe, length of a football, length of a license plate | length from chest to fingers, length of a baseball bat | distance run in 10 minutes",
+        "| 1 millimeter | 1 centimeter | 1 meter | 1 kilometer",
+        "| thickness of a dime | width of a pinky finger, width of the head of a golf tee | length from fingers to opposite armpit, length of a baseball bat and ball | distance walked in 10 minutes",
+        "3. Objects matched to units of volume:",
+        "| 1 cup | 1 quart | 1 gallon | 1 milliliter | 1 liter",
+        "| measuring cup, school milk carton | large sports drink bottle, small paint can | large milk jug, large paint can | raindrop, 1s cube, packet of artificial sweeter | reusable water bottle, 1,000s cube, half of a large soda bottle",
+        "4. Objects matched to units of weight or mass:",
+        "| 1 ounce | 1 pound | 1 ton | 1 gram | 1 kilogram",
+        "| slice of bread, birthday card, mouse | loaf of bread, jar of peanut butter, box of 96 crayons, hooded sweatshirt, crow | small car, draft horse | paperclip, dollar bill, 2 raisins | textbook, bunch of bananas, guinea pig"
+      ],
+      "extensionResponse": null
+    }
+  },
+  "coolDown": {
+    "task": [
+      "Lin and Elena have discovered they have so much in common.",
+      "1. They each walk 500 units to school. Who walks 500 feet, and who walks 500 yards? Explain your reasoning.",
+      "2. They each have a fish tank holding 20 units of water. Whose tank holds 20 gallons, and whose holds 20 cups? Explain your reasoning.",
+      "3. They each have a brother who weighs 40 units. Whose brother weighs 40 pounds, and whose weighs 40 kilograms? Explain your reasoning."
+    ],
+    "response": [
+      "1. Lin walks 500 feet, and Elena walks 500 yards, because yards are longer than feet and Elena’s house is farther away than Lin’s. For example, it looks like 500 rulers could reach from Lin’s house to the school, but it would take 500 yardsticks to reach from Elena’s house to the school.",
+      "2. Elena’s fish tank holds 20 gallons, and Lin’s fish bowl holds 20 cups, because gallons are bigger than cups, and Elena’s tank is larger. For example, it looks like Elena’s fish tank could hold 20 large milk jugs of water while Lin’s fish bowl could only hold 20 school milk cartons of water.",
+      "3. Lin’s brother weighs 40 pounds, and Elena’s brother weighs 40 kilograms, because kilograms are heavier than pounds and Elena’s brother is bigger. For example, it looks like Lin’s brother would weigh as much as 40 boxes of crayons while Elena’s brother would weigh as much as 40 textbooks."
+    ]
+  },
+  "pages": [46, 47, 50, 51, 52, 53, 54, 55],
+  "notes": [
+    "Printed page = PDF page − 2: p48.png is printed 46 (2.1 response), p49.png is 47 (2.2 response), p52.png to p54.png are 50–52 (2.3 response), p55.png and p56.png are 53–54 (cool-down task and response), p57.png is 55 (end of the cool-down response). The lesson runs PDF pages 45–61; the other pages hold IM text already on the web pages, and the practice problems.",
+    "2.1 response: the fraction \\(\\frac{1}{2}\\) is dropped by the PDF text layer and read from the page image.",
+    "2.3 response: each table prints a header row of units, then one cell per unit with its objects on separate lines. Here the objects in a cell are joined with commas, and each table is a header row and one row of cells. The length matches are printed as two tables (inch to mile, then millimeter to kilometer) and kept as two.",
+    "2.3 response: “packet of artificial sweeter” is printed as is (not “sweetener”). “1s cube” and “1,000s cube” are printed as is (base-ten blocks).",
+    "Cool-down task: each item is printed beside a picture. Item 1: a 3-by-5 grid map. School is in the top row, middle column; Lin’s house is in the middle row, far left; Elena’s house is in the bottom row, far right, farther from the school. The map is not to scale (about 3 squares against 4). Item 2: Lin’s small round fish bowl and Elena’s large fish tank. Item 3: Elena’s brother, taller, and Lin’s brother, shorter. The pictures are described here, not transcribed; the task lines are IM's words.",
+    "IM’s web page has no cool-down text; the cool-down's own narrative (“Students use their reinforced understanding of how big standard units are to compare a pair of lengths, a pair of volumes, and a pair of weight and mass. Both measurements in each pair have the same numerical value but different units.”) and launch are on printed page 53 only."
+  ]
+}

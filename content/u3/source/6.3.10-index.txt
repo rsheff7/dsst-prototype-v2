@@ -1,0 +1,140 @@
+Source: https://im.kendallhunt.com/MS/teachers/1/3/10/index.html
+
+## Lesson 10
+## What Are Percentages?
+ View Student Lesson
+## 10.1: Dollars and Cents (5 minutes)
+## CCSS Standards
+ Building On
+ 2.MD.C.8
+ 5.NBT.A.3
+ Building Towards
+ 6.RP.A.3.c
+## Warm-up
+ This warm-up prompts students to reason in monetary terms, preparing them for subsequent tasks in the lesson. It also provides insight into students’ understanding of dollars and cents as well as their ability to reason mentally.
+## Launch
+ Display questions for all to see. Ask students to solve them mentally.
+## Student Facing
+ Find each answer mentally.
+ A sticker costs 25 cents. How many dollars is that?
+ A pen costs 1.50 dollars. How many cents is that?
+ How many cents are in one dollar?
+ How many dollars are in one cent? 
+## Student Response
+ Teachers with a valid work email address can click here to register or sign in for free access to Student Response.
+## Anticipated Misconceptions
+ In response to “how many dollars are in one cent,” students might say there are no dollars at all in one cent. Ask them what fraction of a dollar one cent represents.
+## Activity Synthesis
+ After students solved all problems mentally, for each problem, ask 1–2 students to share their thinking. Pause between problems to give everyone time to reflect on the shared answers.
+## 10.2: Coins (15 minutes)
+## CCSS Standards
+ Building Towards
+ 6.RP.A.3.c
+ Routines and Materials
+ Instructional Routines
+ MLR3: Clarify, Critique, Correct
+## Activity
+ In this activity, students learn the definition of a percentage as a rate per 100 and apply this definition in the context of money. They label various coin amounts as percentages of 100 cents or 1 dollar.
+ Students are likely able to name the values of each coin and their individual percentages (in the first two questions) fairly quickly. Assigning a percentage to a group of coins (in the last two questions) adds complexity and should be the focus of the activity as students may use a variety of strategies. One possible strategy is to reason in terms of ratios. For example, a student may think that if a dime is 10% of a dollar, then 6 dimes is 60% of a dollar. This type of ratio thinking is a robust way for dealing with percent problems and should be encouraged early.
+ As students work, notice the strategies being used to solve the two problems and identify those with effective approaches so they can share later.
+## Launch
+ Remind students that previously they have learned that a “rate per 1” tells us the amount of one quantity for 1 of another quantity. Explain that in this task, they will explore “rates per 100.”
+ Solicit a couple of ideas on what “rates per 100” might mean. Students are likely to suggest a description along the lines of “the amount of something for 100 of something else.” Tell students that a rate per 100 is called a percentage and that they will explore percentages in the context of money. Point out the half-dollar and dollar coins in the task, as some students may not be familiar with them.
+ Arrange students in groups of 2. Give students 3 minutes of quiet think time to begin work on the task. After that time, ask students to share their responses with a partner and complete the remaining questions together.
+ Action and Expression: Develop Expression and Communication. Invite students to talk about their ideas with a partner before writing them down. Display sentence frames to support students when they explain their ideas. For example, “If _____ then _____ because…” or “How do you know…?”
+ Supports accessibility for: Language; Organization 
+## Student Facing
+ Complete the table to show the values of these U.S. coins.
+ [image: An image of 6 U.S. coins. A penny, nickel, dime, quarter, half dollar, and dollar coin are presented.] [image: Expand image] 
+ [image: An image of 6 U.S. coins. A penny, nickel, dime, quarter, half dollar, and dollar coin are presented.] Attribution: By United States Mint. Public Domain. United States Mint. Source.
+ ​
+ | coin | penny | nickel | dime | quarter | half dollar | dollar 
+ | value (cents) | | | | | | 
+ The value of a quarter is 25% of the value of a dollar because there are 25 cents for every 100 cents.
+ [image: A diagram of two bars with different lengths.] [image: Expand image] 
+ Description: <p>A diagram of two bars with different lengths. The top bar is labeled 1 Quarter and 25 cents is labeled inside the bar. The bottom bar is labeled 1 Dollar. It is 4 times longer than the top bar and 100 cents is labeled inside the bar.</p> 
+ [image: A diagram of two bars with different lengths.] 
+ Write the name of the coin that matches each expression.
+ 25% of a dollar
+ 5% of a dollar
+ 1% of a dollar
+ 100% of a dollar
+ 10% of a dollar
+ 50% of a dollar
+ The value of 6 dimes is what percent of the value of a dollar? 
+ The value of 6 quarters is what percent of the value of a dollar? 
+## Student Response
+ Teachers with a valid work email address can click here to register or sign in for free access to Student Response.
+## Student Facing
+## Are you ready for more?
+## Find two different sets of coins that each make 120% of a dollar, where no type of coin is in both sets.
+## Student Response
+ Teachers with a valid work email address can click here to register or sign in for free access to Extension Student Response.
+## Anticipated Misconceptions
+ Students may notice a pattern particular to this activity—that the percent value is the same as that for cents—and carry that assumption forward and apply it incorrectly to situations in which 100% does not correspond to 100. This conversation is addressed in the Activity Synthesis.
+## Activity Synthesis
+ Focus the discussion on the ways students approached the last two questions and on precise use of language and notation (MP6). For example, in the first two problems students can write only a number or matched a coin to a pre-written phrase. In the last two problems, however, expressing a percentage with only a number and without the % symbol should be considered an incomplete answer.
+ Select students with successful strategies to share their thinking with the class. Display a concise version of their reasoning for all to see. Invite others to express support, disagreement, or questions (MP3).
+ If no one reasoned about percentages in terms of ratios (e.g., If a quarter is 25% of a dollar, 6 quarters are 150% of a dollar), illustrate it.
+ Many students may reason by noticing a pattern—that the number of cents in an amount matches its percentage of a dollar (e.g., 60 cents is 60%)—rather by thinking in terms of ratio or scaling. Since the pattern only holds up in the context of percentages of 100 of a quantity, students will need to be prompted to look more closely at the meaning of “rate per 100.” Conclude the discussion by displaying the following double number line with 100 at the 100%:
+ [image: A double number line for the cent value of coins: 0, 50, 100, 150 and percentages: 0, 50, 100, 150.] [image: Expand image] 
+ [image: A double number line for the cent value of coins: 0, 50, 100, 150 and percentages: 0, 50, 100, 150.] 
+ Point out that we were finding percentages of 100, so in the double number line, we line up 100% and 100 because 100% of 100 is 100.
+ Reading, Writing, Speaking: MLR3 Clarify, Critique, Correct. Before students share their explanations for the final question, present an incorrect answer and explanation. For example, “The value of 6 quarters is 50% of the value of a dollar because the value of 6 quarters is 150 cents, which is 50 cents greater than 100 cents. This means that the value of 6 quarters is 50% of the value of a dollar.” Ask students to identify the error, critique the reasoning, and write a correct explanation. As students discuss in pairs, listen for students who identify and clarify the ambiguous language in the statement. For example, the author probably meant to say that 6 quarters is 50% greater than the value of a dollar, or that 6 quarters is 150% of the value of a dollar. This will help students understand how to use percentages to describe the size of one quantity as a percentage of another quantity.
+ Design Principle(s): Optimize output (for explanation); Maximize meta-awareness 
+## 10.3: Coins on a Number Line (10 minutes)
+## CCSS Standards
+ Building On
+ 6.RP.A
+ Addressing
+ 6.RP.A.3.c
+ Routines and Materials
+ Instructional Routines
+ MLR7: Compare and Connect
+ Think Pair Share
+## Activity
+ Previously, students found percentages of 100 cents. In this activity, they reason about percentages of 1 dollar.
+ One important question to think about here is how students know or decide how the numbers on the double number line diagram should be aligned. Students build on their extensive work on equivalent ratios and double number lines to make sense of percentages and “per 100” reasoning.
+## Launch
+ Recap that in the previous activity students found percentages of 100 cents. Tell students they will now find percentages of 1 dollar. Draw their attention to the fact that, on the double number line, the 1 dollar and 100% are lined up vertically to reflect this.
+ Keep students in the same groups. Give students 2–3 minutes of quiet think time, and then ask them to share their responses with their partner. Display and read aloud the following questions. Ask partners to use them to guide their discussion.
+ How did each of you arrive at your answers for the first two questions?
+ Where do your answers fall on the double number line diagram? How do you know?
+ Are your answers the same for the third question? If they are not, can they both be correct? If they are, can you think of another answer that would also be correct?
+## Student Facing
+ [image: An image of a 1 dollar coin.] [image: Expand image] 
+ [image: An image of a 1 dollar coin.] 
+ A $1 coin is worth 100% of the value of a dollar. Here is a double number line that shows this.
+ [image: Double number line, 7 evenly spaced tick marks. Top line, value of coins, dollars. Beginning at first tick mark, labels: 0, blank, blank, blank, 1, blank, blank. Bottom line, percent. Scale 0 to 150, by 25’s.] [image: Expand image] 
+ [image: Double number line, 7 evenly spaced tick marks. Top line, value of coins, dollars. Beginning at first tick mark, labels: 0, blank, blank, blank, 1, blank, blank. Bottom line, percent. Scale 0 to 150, by 25’s.] 
+ The coins in Jada’s pocket are worth 75% of a dollar. How much are they worth (in dollars)? 
+ The coins in Diego’s pocket are worth 150% of a dollar. How much are they worth (in dollars)? 
+ Elena has 3 quarters and 5 dimes. What percentage of a dollar does she have? 
+## Student Response
+ Teachers with a valid work email address can click here to register or sign in for free access to Student Response.
+## Anticipated Misconceptions
+ Based on previous work with labeling number lines less than 1, students may label the tick marks with fractions instead of the decimal value of the coins. This may not be helpful for answering the first two questions, but provides an opportunity to discuss alternative ways to label the number line given the context of the problem. Consider prompting them to write fractional values as cents or to rewrite the cents as dollar values.
+## Activity Synthesis
+ Select students who used the provided double number line to share their reasoning. This is an opportunity to refresh students’ number line reasoning. Some students may see the four equally spaced tick marks from 0 to 1 and conclude that each is worth 0.25, or \(\frac14\). Others may fill in the 0.50 first, as it is half of 1, then the 0.25 for half of 0.50, and then use additive thinking to fill in the other tick mark values along the top.
+ Some students may reason in terms of equivalent ratios and say, for example, that since 100 divided by 4 is 25, then \(1\div4=0.25\) must be 25% of 1. They would then assign the 0.25 value to the first tick mark and use additive thinking to conclude that 0.75 is 75% of a dollar. Ask students who used such an approach to present last to emphasize that the familiar ratio thinking applies to percentage problems as well, even though the % symbol may be unfamiliar. If no students took this approach, illustrate it to make this point.
+ Speaking, Listening: MLR7 Compare and Connect. As students prepare a visual display of how they made sense of the problem, look for students who labeled the tick marks on the double number line with fractions or cents instead of dollar values. This may result in answers such as \(¾\), or 75 cents is 75% of a dollar rather than 0.75 is 75% of a dollar. Although 75 cents is 75% of a dollar, the number line should be labeled with the decimal value of the coins in dollars. As students investigate each other's work, ask students to share what worked or did not work well in the way they labeled the double number line. Is there a particular advantage to using decimals instead of fractions to label the double number line? Emphasize that although there are several ways to label the double number line given the context of the problem, certain methods are more helpful for answering the question. This will foster students’ meta-awareness and support constructive conversations as they compare the various ways to label a double number line given a context.
+ Design Principles(s): Cultivate conversation; Maximize meta-awareness 
+## Lesson Synthesis
+## Lesson Synthesis
+ Remind students that a percentage is a “rate per 100.” We saw that the value of a quarter is 25% of the value of a dollar, because a quarter is worth 25 cents and a dollar is worth 100 cents. Reiterate that we found percentages of the value of a dollar using a double number line as shown here:
+ [image: A double number line for the dollar value of money: 0, 0.25, 0.50, 0.75, 1, 1.25, 1.50 and percentages: 0, 25, 50, 75, 100, 125, 150.] [image: Expand image] 
+ [image: A double number line for the dollar value of money: 0, 0.25, 0.50, 0.75, 1, 1.25, 1.50 and percentages: 0, 25, 50, 75, 100, 125, 150.] 
+ Here, 100% corresponds to 1 dollar, and this is reflected in the fact that the 1.00 and 100% are aligned in the double number line.
+## 10.4: Cool-down - Eight Dimes (5 minutes)
+## CCSS Standards
+ Addressing
+ 6.RP.A.3.c
+## Cool-Down
+ Teachers with a valid work email address can click here to register or sign in for free access to Cool-Downs.
+## Student Lesson Summary
+## Student Facing
+ A percentage is a rate per 100.
+ We can find percentages of \$10 using a double number line where 10 and 100% are aligned, as shown here:
+ [image: A double number line for the dollar value of money: 0, 2.50,5.00, 7.50, 10.00, 12.50, 15.00 and percentages: 0, 25, 50, 75, 100, 125, 150.] [image: Expand image] 
+ [image: A double number line for the dollar value of money: 0, 2.50,5.00, 7.50, 10.00, 12.50, 15.00 and percentages: 0, 25, 50, 75, 100, 125, 150.] 
+ Looking at the double number line, we can see that \$5.00 is 50% of \$10.00 and that \$12.50 is 125% of \$10.00.

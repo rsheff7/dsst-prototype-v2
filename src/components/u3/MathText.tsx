@@ -33,6 +33,9 @@ function renderMath(tex: string, key: string): ReactNode {
       .replace(/\\boldcdot|\\cdot/g, '·')
       .replace(/\\div/g, '÷')
       .replace(/\\approx/g, '≈')
+      .replace(/\\times/g, '×')
+      .replace(/\\text\s*/g, '')
+      .replace(/\\%/g, '%')
       .replace(/\\\$/g, '$')
       .replace(/\\left|\\right/g, '')
       .replace(/\\,|\\!|\\ /g, '')
@@ -69,7 +72,12 @@ function renderMath(tex: string, key: string): ReactNode {
 
 export function MathText({ children }: { children: string | null | undefined }) {
   if (!children) return null;
-  const parts = children.replace(/\\\$/g, '$').split(/\\\(|\\\)/);
+  // Some IM lines use $…$ around a command (\$\frac14\$), and \% outside math: read both.
+  const parts = children
+    .replace(/\$(\\[^$]*?)\$/g, '\\($1\\)')
+    .replace(/\\\$/g, '$')
+    .split(/\\\(|\\\)/)
+    .map((p, i) => (i % 2 ? p : p.replace(/\\%/g, '%')));
   return (
     <>
       {parts.map((p, i) =>

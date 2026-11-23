@@ -1,0 +1,47 @@
+{
+  "section": "Let’s Put it to Work",
+  "activities": {
+    "17.1": {
+      "response": [
+        "Possible responses: paint, paint brushes, paint rollers, drop cloths, painter’s tape, mixing sticks, ladder, paint can opener"
+      ],
+      "extensionResponse": null
+    },
+    "17.2": {
+      "response": [
+        "1. The total wall area that will be painted is 300 square feet. (North - 76, East - 72, South - 65, West - 51, small wall - 36)",
+        "2. 6 quarts of paint should cover 525 square feet, which is too little for two coats, while 7 quarts should cover 612.5 sq feet, which is a bit more than two full coats. So, 7 quarts, or 1.75 gallons, of paint should be purchased. Purchasing 2 1-gallon containers or 1 1-gallon container and 3 1-quart containers instead of 7 1-quart containers would also work.",
+        "3. Possible answers:",
+        "| quarts | gallons | painting supplies | total cost",
+        "| - | 2 for $69.80 | $20.00 | $89.80",
+        "| 7 for $76.30 | - | $20.00 | $96.30",
+        "| 3 for $32.70 | 1 for $34.90 | $20.00 | $87.60",
+        "4. Since the discount is only on the quart containers, option A above will stay the same price, option B is now $81.04, and option C is now $81.06."
+      ],
+      "extensionResponse": null
+    },
+    "17.3": {
+      "response": [
+        "1. Your friend is incorrect, but not by much. The East wall is only \\(\\frac{72}{300} \\boldcdot 100 = 24\\%\\) of the total area, not 25%.",
+        "2. Since it took you 96 minutes to finish 24% of the painting, it should take 304 minutes to finish the remaining 76% of the painting on your own. The friend saved you 154 minutes, because \\(304 - 150 = 154\\)."
+      ],
+      "extensionResponse": null
+    }
+  },
+  "coolDown": {
+    "task": null,
+    "response": null
+  },
+  "pages": [271, 272, 273, 274, 275, 276, 277, 278],
+  "notes": [
+    "Printed page numbers are 2 less than the image filenames (p273.png = printed 271, p280.png = printed 278). Printed page 279 (p281.png) is blank apart from its footer. PDF pages 282–290 (printed 280–288) are the course glossary, not part of Lesson 17, and were not transcribed.",
+    "Lesson 17 has no cool-down, no lesson synthesis, no student lesson summary and no practice problems in the Teacher Guide, as IM’s course guide says of the unit’s application lesson. coolDown is left null.",
+    "17.2 response item 3: the table’s rows are not labeled A, B, C in print, but item 4 calls them “option A above”, “option B” and “option C”. Read in row order: A is 2 gallons, B is 7 quarts, C is 3 quarts and 1 gallon; the numbers bear that out (7 × 10.90 × 0.8 + 20 = 81.04; 3 × 10.90 × 0.8 + 34.90 + 20 = 81.06).",
+    "17.2 response item 3: an empty cell is printed as a hyphen (“-”); kept as “-”.",
+    "17.2 response item 1: the parenthesis uses spaced hyphens (“North - 76”) in print; transcribed as printed.",
+    "17.3 response item 1: “East” is capitalized in print; transcribed as printed.",
+    "The 17.2 activity synthesis in print ends one sentence with a stray “$” (“= total cost. $ For the final question…”). That text is on the web page too, so it is not transcribed here.",
+    "The Teacher Guide prints 17.2 as 35 minutes, as the web page does, though the lesson narrative says the two main activities’ times are “intentionally left blank.”",
+    "Dollar signs in prose are written as plain $."
+  ]
+}

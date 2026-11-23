@@ -1,0 +1,362 @@
+{
+ "code": "6.3.15",
+ "title": "Finding This Percent of That",
+ "section": "Percentages",
+ "goals": [
+  {
+   "text": "Choose and create diagrams to calculate A% of B, and explain (orally) the solution method.",
+   "modes": [
+    "orally"
+   ]
+  },
+  {
+   "text": "Generalize a process for finding A% of B and justify (orally) why this can be abstracted as $\\frac{A}{100} \\boldcdot B$.",
+   "modes": [
+    "orally"
+   ]
+  },
+  {
+   "text": "Identify equivalent expressions that could be used to find A% of B and justify (orally) that they are equivalent.",
+   "modes": [
+    "orally"
+   ]
+  }
+ ],
+ "targets": [
+  "I can solve different problems like “What is 40% of 60?” by dividing and multiplying."
+ ],
+ "narrative": [
+  "Students have practiced solving three different types of percentage problems (corresponding to finding \\(A\\), \\(B\\), or \\(C\\) respectively when \\(A\\%\\) of \\(B\\) is \\(C\\)). This lesson focuses on finding “\\(A\\%\\) of \\(B\\)” as efficiently as possible. While the previous lesson used numbers that students could calculate mentally, the numbers in this lesson are purposefully chosen to be difficult for students to calculate mentally or to represent on a double number line diagram, so as to motivate them to find the simplest way to do the calculation by hand.",
+  "The third activity hints at work students will do in grade 7, namely finding a constant of proportionality and writing an equation to represent a proportional relationship."
+ ],
+ "materials": [],
+ "preparation": [],
+ "standards": {
+  "buildingOn": [
+   "5.NBT.B.6"
+  ],
+  "addressing": [
+   "6.RP.A.3",
+   "6.RP.A.3.c"
+  ],
+  "buildingTowards": []
+ },
+ "activities": [
+  {
+   "id": "15.1",
+   "slot": "warm-up",
+   "title": "Number Talk: Decimals",
+   "minutes": 5,
+   "purpose": null,
+   "purposeEvidence": null,
+   "routines": [
+    "MLR8: Discussion Supports",
+    "Number Talk"
+   ],
+   "fivePractices": false,
+   "alignment": {
+    "buildingOn": [
+     "5.NBT.B.6"
+    ],
+    "addressing": [],
+    "buildingTowards": []
+   },
+   "narrative": [
+    "The purpose of this number talk is to help students multiply and divide decimal numbers by 100 in preparation for their work with percentages later in the lesson."
+   ],
+   "launch": [
+    "Display one problem at a time. Give students 30 seconds of quiet think time for each problem, and ask them to give a signal when they have an answer and a strategy. Keep all previous problems displayed throughout the task."
+   ],
+   "task": [
+    "Find the value of each expression mentally.",
+    "\\((0.23) \\boldcdot 100\\)",
+    "\\(50 \\div 100\\)",
+    "\\(145 \\boldcdot \\frac{1}{100}\\)",
+    "\\(7 \\div 100\\)"
+   ],
+   "response": [
+    "23. Possible reasoning: 23 hundredths times 100 is 23.",
+    "0.5. Possible reasoning: 50 is one half of 100, and one half can be written as 0.5.",
+    "1.45. Possible reasoning: 145 is bigger than 100 but close to 100, and the answer has to have the digits 1, 4, and 5, so it must be 1.45.",
+    "0.07. The answer is the same as 7 times \\(\\frac{1}{100}\\), which is \\(\\frac{7}{100}\\)."
+   ],
+   "misconceptions": [],
+   "synthesis": [
+    "Select a couple of students to share their answer and strategies for each problem. Record and display their explanations for all to see. After evaluating all four expressions, ask students:",
+    "How is multiplying by \\(\\frac{1}{100}\\) related to division?",
+    "What is important to remember about dividing a one digit number by 100?",
+    "To involve more students in the conversation, consider asking as the students share their ideas:",
+    "Who can restate ___’s reasoning in a different way?",
+    "Did anyone solve the problem the same way but would explain it differently?",
+    "Did anyone solve the problem in a different way?",
+    "Does anyone want to add on to _____’s strategy?",
+    "Do you agree or disagree? Why?"
+   ],
+   "extension": null,
+   "ell": [
+    {
+     "routine": "MLR8: Discussion Supports",
+     "phase": "synthesis",
+     "domains": [
+      "speaking"
+     ],
+     "principles": [
+      "optimize-output"
+     ],
+     "text": "Speaking: MLR8 Discussion Supports.: Display sentence frames to support students when they explain their strategy. For example, \"First, I _____ because . . .\" or \"I noticed _____ so I . . . .\" Some students may benefit from the opportunity to rehearse what they will say with a partner before they share with the whole class.",
+     "principleLine": "Design Principle(s): Optimize output (for explanation)"
+    }
+   ],
+   "access": [
+    {
+     "area": "Representation",
+     "title": "Internalize Comprehension",
+     "text": "Representation: Internalize Comprehension. To support working memory, provide students with sticky notes or mini whiteboards.",
+     "supports": [
+      "Memory",
+      "Organization"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "15.2",
+   "slot": "activity",
+   "title": "Audience Size",
+   "minutes": 15,
+   "purpose": "new-concept",
+   "purposeEvidence": "In this activity, students encounter percentage problems that are inconvenient to solve by drawing double number lines, encouraging them to reason differently and begin noticing that \\(P\\%\\) of a number is \\(\\frac{P}{100}\\) times that number.",
+   "routines": [
+    "MLR7: Compare and Connect"
+   ],
+   "fivePractices": false,
+   "alignment": {
+    "buildingOn": [],
+    "addressing": [
+     "6.RP.A.3"
+    ],
+    "buildingTowards": []
+   },
+   "narrative": [
+    "In this activity, students encounter percentage problems that are inconvenient to solve by drawing double number lines, encouraging them to reason differently and begin noticing that \\(P\\%\\) of a number is \\(\\frac{P}{100}\\) times that number.",
+    "The first two questions, which ask students to find 30% and 140% of some values, can be solved using a familiar percentage,10%, as a stepping stone. For example, to solve for 30% of 250, students may find 10% or \\(\\frac{1}{10}\\) of 250 and then multiply the result by 3. This intermediate percentage does not work well for the last question, however, prompting them to find a workaround.",
+    "Students may resort to using a double number line, but may soon find it impractical. For example, they may decide to divide by 100% into 25 parts to find the value of 4%, which they can then multiply by 11. As time consuming drawing 25 tick marks is, it may encourage students to look for structure that may open a shorter path to the solution. For example, once they know that they need tickmarks every 4% and every 10 people, they can bypass the rest of the tick marks and multiply (\\(4 \\boldcdot 11 = 44\\) and \\(10 \\boldcdot 11 = 110\\)) to find that 110 people attended literacy night.",
+    "Others may see that dividing the given value by 100 to find the value of 1% and then multiplying the result by the targeted percentage works well. Identify students who take this path so they can share later."
+   ],
+   "launch": [
+    "Give students quiet think time to complete the activity and then time to share their explanation with a partner."
+   ],
+   "task": [
+    "A school held several evening activities last month—a music concert, a basketball game, a drama play, and literacy night. The music concert was attended by 250 people. How many people came to each of the other activities?",
+    "Attendance at a basketball game was 30% of attendance at the concert.",
+    "Attendance at the drama play was 140% of attendance at the concert.",
+    "Attendance at literacy night was 44% of attendance at the concert."
+   ],
+   "response": [
+    "1. 75 people attended the basketball game.",
+    "2. 350 people attended the drama play. Possible strategies:",
+    "[double number line] number of people: 0, 25, 75, 250, 350; percentage: 0%, 10%, 30%, 100%, 140%, with a tick every 10%. 75 and 30% are circled; 350 and 140% are circled.",
+    "| number of people | percentage",
+    "| 250 | 100",
+    "| 25 | 10",
+    "| 75 | 30",
+    "| 350 | 140",
+    "3. 110 people attended literacy night. Possible strategies:",
+    "There is 4% for every 10 people, so multiply \\(10 \\boldcdot 11 = 110\\).",
+    "First find 1%, then multiply by 44 to find 44%.",
+    "| number of people | percentage",
+    "| 250 | 100",
+    "| 2.5 | 1",
+    "| 110 | 44"
+   ],
+   "misconceptions": [],
+   "synthesis": [
+    "Invite a couple of students to share their work on the first two questions, but focus the whole-class discussion on the last one. Select several students who effectively found 44% of 250 to share, saving the strategy involving 1% for last. If no one used this method, illustrate and explain it. Consider using a table in doing so, as shown below.",
+    "people | percentage",
+    "| 250 | 100",
+    "| 2.5 | 1",
+    "| 110 | 44",
+    "Guide students to see that this method of finding percentages can be generalized across all such problems, much like finding a unit rate is an effective way to solve any ratio problem."
+   ],
+   "extension": {
+    "task": [
+     "50% of the people who attended the drama play also attended the music concert. What percentage of the people who attended the music concert also attended the drama play?"
+    ],
+    "response": [
+     "70%. Half of 350 is 175, and 175 is 70% of 250."
+    ]
+   },
+   "ell": [
+    {
+     "routine": "MLR7: Compare and Connect",
+     "phase": "synthesis",
+     "domains": [
+      "speaking",
+      "representing"
+     ],
+     "principles": [
+      "cultivate-conversation",
+      "maximize-meta-awareness"
+     ],
+     "text": "Representing, Speaking: MLR7 Compare and Connect. As students share their strategies, make sure you hear from students with different strategies for calculating the number of people who attended literacy night. Encourage students to make comparisons and connections between when they are able to use familiar percentages, and when they cannot. Ask questions such as, “How did you decide which percentages to use?” and “How is using 1% as a strategy similar to or different from other percentages?” This will foster students’ meta-awareness and support constructive conversations as they compare and connect the various ways to find a percentage of a quantity.",
+     "principleLine": "Design Principles(s): Cultivate conversation; Maximize meta-awareness"
+    }
+   ],
+   "access": [
+    {
+     "area": "Action and Expression",
+     "title": "Internalize Executive Functions",
+     "text": "Action and Expression: Internalize Executive Functions. Chunk this task into more manageable parts. Check in with students after the first 2-3 minutes of work time. If students are finding that double number lines are not practical, invite others to share other strategies they have attempted so far.",
+     "supports": [
+      "Organization",
+      "Attention"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "15.3",
+   "slot": "activity",
+   "title": "Everything is On Sale",
+   "minutes": 15,
+   "purpose": "formalize-definition",
+   "purposeEvidence": "In general, \\(P\\%\\) of something is \\(\\frac{P}{100}\\) times that thing. The purpose of this activity is to make this explicit.",
+   "routines": [
+    "MLR1: Stronger and Clearer Each Time"
+   ],
+   "fivePractices": false,
+   "alignment": {
+    "buildingOn": [],
+    "addressing": [
+     "6.RP.A.3.c"
+    ],
+    "buildingTowards": []
+   },
+   "narrative": [
+    "In general, \\(P\\%\\) of something is \\(\\frac{P}{100}\\) times that thing. The purpose of this activity is to make this explicit. In this activity, students are asked to find 80% of several different values, generalize their process, and express their generalization in different ways. As they make repeated calculations, students look for and express regularity in their work (MP8) and see more explicitly that \\(P\\%\\) of a number is \\(\\frac{P}{100}\\) times that number. Once they arrive at one or more generalizations, students practice articulating why each generalization always works (MP3)."
+   ],
+   "launch": [
+    "Give students quiet think time to complete the activity and then time to share their explanation with a partner."
+   ],
+   "task": [
+    "During a sale, every item in a store is 80% of its regular price.",
+    "If the regular price of a T-shirt is $10, what is its sale price?",
+    "The regular prices of five items are shown here. Find the sale price of each item.",
+    "| item 1 | item 2 | item 3 | item 4 | item 5",
+    "| regular price | $1 | $4 | $10 | $55 | $120",
+    "| sale price | | | | |",
+    "You found 80% of many values. Was there a process you repeated over and over to find the sale prices? If so, describe it.",
+    "[image: Two equivalent tape diagrams, each partitioned the same. The top diagram is labeled 100%, partition labeled 80%. The bottom diagram is labeled x, partition labeled with a question mark.] [image: Expand image]",
+    "[image: Two equivalent tape diagrams, each partitioned the same. The top diagram is labeled 100%, partition labeled 80%. The bottom diagram is labeled x, partition labeled with a question mark.]",
+    "Select all of the expressions that could be used to find 80% of \\(x\\). Be prepared to explain your reasoning.",
+    "\\(\\frac{8}{100} \\boldcdot x\\)",
+    "\\(\\frac{80}{100} \\boldcdot x\\)",
+    "\\(\\frac{8}{10} \\boldcdot x\\)",
+    "\\(\\frac{4}{10} \\boldcdot x\\)",
+    "\\(\\frac85 \\boldcdot x\\)",
+    "\\(\\frac45 \\boldcdot x\\)",
+    "\\(80 \\boldcdot x\\)",
+    "\\(8 \\boldcdot x\\)",
+    "\\((0.8) \\boldcdot x\\)",
+    "\\((0.08) \\boldcdot x\\)"
+   ],
+   "response": [
+    "1. $8",
+    "2. Here is the table:",
+    "|  | item 1 | item 2 | item 3 | item 4 | item 5",
+    "| normal price | $1 | $4 | $10 | $55 | $120",
+    "| sale price | $0.80 | $3.20 | $8 | $44 | $96",
+    "3. Answers vary. Sample response: Multiply each normal price by 0.8 (or by \\(\\frac{80}{100}\\)) to find the sale price.",
+    "4. These expressions work:",
+    "\\(\\frac{80}{100} \\boldcdot x\\) (See discussion.)",
+    "\\(\\frac{8}{10} \\boldcdot x\\) because \\(\\frac{80}{100} = \\frac{8}{10}\\)",
+    "\\(\\frac{4}{5} \\boldcdot x\\) because \\(\\frac{8}{10} = \\frac{4}{5}\\)",
+    "\\((0.8) \\boldcdot x\\) because \\(\\frac{80}{100} = 0.8\\)"
+   ],
+   "misconceptions": [],
+   "synthesis": [
+    "Make sure students have the correct values in the table for the second question. Then, discuss the expressions, starting with \\(\\displaystyle \\frac{80}{100} \\boldcdot x.\\)",
+    "Guide students to see that if we know the value of 100%, dividing that value by 100 (or equivalently, multiplying it by \\(\\frac{1}{100}\\)) tells us the corresponding value for 1%. We can then multiply that value by the desired percentage. Consider using a table to organize this argument, as shown below:",
+    "percentage | regular price",
+    "| 100 | \\(x\\)",
+    "| 1 | \\(\\frac{1}{100} \\boldcdot x\\)",
+    "| 80 | \\(\\frac{80}{100} \\boldcdot x\\)",
+    "After everyone understands where this expression comes from, ask students to discuss the remaining expressions with a partner. This is a good opportunity for just-in-time review on equivalent fractions, if needed."
+   ],
+   "extension": null,
+   "ell": [
+    {
+     "routine": "MLR1: Stronger and Clearer Each Time",
+     "phase": "launch",
+     "domains": [
+      "speaking",
+      "listening",
+      "writing"
+     ],
+     "principles": [
+      "optimize-output",
+      "maximize-meta-awareness"
+     ],
+     "text": "Writing, Speaking, Listening: MLR1 Stronger and Clearer Each Time. Use this with successive pair shares to give students a structured opportunity to revise and refine their own strategies to determine 80% of any value to find a sale price. Make sure students include a table as well as an expression in their explanations. Ask each student to meet with 2–3 other partners in a row for feedback. Provide students with prompts for feedback that will help them strengthen their ideas and clarify their language (e.g., “Can you explain how…”, “Will this expression always work? How do you know?”, etc.). Students can borrow ideas and language from each partner to refine and clarify their original explanation. This will help students refine their own strategies and learn about other ways to find the sale price of an item.",
+     "principleLine": "Design Principles(s): Optimize output (for explanation); Maximize meta-awareness"
+    }
+   ],
+   "access": [
+    {
+     "area": "Representation",
+     "title": "Internalize Comprehension",
+     "text": "Representation: Internalize Comprehension. Activate or supply background knowledge about equivalent fractions. Incorporate explicit opportunities for review and practice if necessary. Allow students to use calculators to ensure inclusive participation in the activity.",
+     "supports": [
+      "Memory",
+      "Conceptual processing"
+     ]
+    }
+   ]
+  }
+ ],
+ "lessonSynthesis": [
+  "The main idea in this lesson is that to find \\(P\\%\\) of \\(x\\), multiply: \\(\\displaystyle \\frac{P}{100} \\boldcdot x\\) Ask students to describe a procedure for finding a percent of a number. If they struggle to describe a general method, ask about some specific examples, like “How could you find 32% of 500?” (You could multiply 500 by \\(\\frac{32}{100}\\).)"
+ ],
+ "coolDown": {
+  "id": "15.4",
+  "title": "Ordering Percentages of Different Numbers",
+  "minutes": 5,
+  "task": [
+   "Order these three values from least to greatest. Explain or show your reasoning.",
+   "65% of 80",
+   "82% of 50",
+   "170% of 30"
+  ],
+  "response": [
+   "The least is 82% of 50, because \\((0.82) \\boldcdot 50 = 41\\). Next is 170% of 30, because \\((1.7) \\boldcdot 30 = 51\\). The greatest is 65% of 80, \\((0.65) \\boldcdot 80 = 52\\)."
+  ]
+ },
+ "summary": [
+  "To find 49% of a number, we can multiply the number by \\(\\frac{49}{100}\\) or 0.49.",
+  "[image: Two tape diagrams, each partitioned once in the same place. Top diagram labeled 100% with the partition labeled 49%. Bottom diagram labeled x with the partition labeled point 49 x.] [image: Expand image]",
+  "[image: Two tape diagrams, each partitioned once in the same place. Top diagram labeled 100% with the partition labeled 49%. Bottom diagram labeled x with the partition labeled point 49 x.]",
+  "To find 135% of a number, we can multiply the number by \\(\\frac{135}{100}\\) or 1.35.",
+  "To find 6% of a number, we can multiply the number by \\(\\frac{6}{100}\\) or 0.06.",
+  "[image: A triple number line.] [image: Expand image]",
+  "Description: <p>A triple number line with 5 tick marks. For the top number line, starting with the first tick mark, the numbers 0, the fraction 6 over 100, end fraction, times x, the fraction 49 over 100, end fraction, times x, x, and the fraction 135 over 100, end fraction, times x, are labeled. For the middle number line, starting with the first tick mark, the numbers 0, 0 point 0 6, times x, 0 point 4 9, times x, x, and 1 point 3 5, times x are labeled. For the bottom number line, starting with the first tick mark, the numbers 0, 6 percent, 49 percent, 100 percent, and 135 percent are labeled.</p>",
+  "[image: A triple number line.]",
+  "In general, to find \\(P\\%\\) of \\(x\\), we can multiply: \\(\\displaystyle \\frac{P}{100} \\boldcdot x\\)"
+ ],
+ "vocabulary": {
+  "receptive": [
+   "regular price",
+   "sale price"
+  ],
+  "productive": [
+   "percentage"
+  ]
+ },
+ "languageUses": [
+  "justify"
+ ],
+ "sources": [
+  "https://im.kendallhunt.com/MS/teachers/1/3/15/index.html",
+  "https://im.kendallhunt.com/MS/teachers/1/3/15/preparation.html",
+  "IM 6–8 Math Teacher Guide, Grade 6 Unit 3 (CC BY), transcribed from page images"
+ ]
+}

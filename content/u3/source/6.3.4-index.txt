@@ -1,0 +1,169 @@
+Source: https://im.kendallhunt.com/MS/teachers/1/3/4/index.html
+
+## Lesson 4
+## Converting Units
+ View Student Lesson
+## 4.1: Number Talk: Fractions of a Number (10 minutes)
+## CCSS Standards
+ Building On
+ 5.NF.B.4.a
+ Routines and Materials
+ Instructional Routines
+ MLR8: Discussion Supports
+ Number Talk
+## Warm-up
+ This number talk encourages students to think about numbers and rely on what they know about structure, patterns, multiplication, division, and properties of operations to mentally solve a problem. Discussion of strategies is integral to the activity, but it may not be possible to share every possible strategy for each problem given limited time. Consider gathering only two or three different strategies per problem.
+ The factors in the problems are chosen such that their connections become increasingly more apparent as students progress. If such connections do not arise during discussions, make them explicit. Students should also be able to state that taking a fraction of a number involves multiplication and can be done with either multiplication or division.
+## Launch
+ Display one problem at a time. Give students 1 minute of quiet think time per problem and ask them to give a signal when they have an answer and a strategy. Follow with a whole-class discussion.
+ Representation: Internalize Comprehension. To support working memory, provide students with sticky notes or mini whiteboards.
+ Supports accessibility for: Memory; Organization 
+## Student Facing
+ Find the values mentally.
+ \(\frac14\) of 32
+ \(\frac34\) of 32
+ \(\frac38\) of 32
+ \(\frac38\) of 64
+## Student Response
+ Teachers with a valid work email address can click here to register or sign in for free access to Student Response.
+## Activity Synthesis
+ Ask students to share their strategies for each problem. Record and display their explanations for all to see. If not mentioned by students as they discuss the last three problems, ask if or how the given factors impacted their strategy choice.
+ To involve more students in the conversation, consider asking:
+ “Who can restate ___’s reasoning in a different way?”
+ “Did anyone solve the problem the same way but would explain it differently?”
+ “Did anyone solve the problem in a different way?”
+ “Does anyone want to add on to _____’s strategy?”
+ “Do you agree or disagree? Why?” If time permits, ask students if they notice any connections between the problems. Have them share any relationships they notice.
+ Speaking: MLR8 Discussion Supports.: Display sentence frames to support students when they explain their strategy. For example, "First, I _____ because . . ." or "I noticed _____ so I . . . ." Some students may benefit from the opportunity to rehearse what they will say with a partner before they share with the whole class. Design Principle(s): Optimize output (for explanation)
+## 4.2: Road Trip (15 minutes)
+## CCSS Standards
+ Addressing
+ 6.RP.A.3.d
+ Routines and Materials
+ Instructional Routines
+ Anticipate, Monitor, Select, Sequence, Connect
+ MLR7: Compare and Connect
+## Activity
+ The purpose of this activity is to help students understand that quantities measured using the same two units of measure form a set of equivalent ratios. All of the strategies and representations they have for reasoning about equivalent ratios can be used for reasoning about converting from one unit of measure to another. Any ratio \(a:b\) has two associated unit rates: \(\frac{a}{b}\) and \(\frac{b}{a}\), with a particular meaning in the context. For example, since there are 8 kilometers in approximately 5 miles, there are \(\frac85\) kilometers in 1 mile, and there are \(\frac58\) of a mile in one kilometer. We want students to notice that finding “how much per 1” and reasoning with these unit rates is efficient, but to make sense of these efficient strategies by using familiar representations like double number lines and tables. In a constant speed context, students are explicitly asked to compute each unit rate, and then they are asked to solve a problem where either unit rate can be used. For the second problem, monitor for one student who uses each strategy to solve the problem:
+ Creating a double number line or a table to represent the association between miles and the equivalent distance in kilometers as a set of equivalent ratios. (If both of these representations are used, it is fine to include both.)
+ Converting 80 kilometers into 50 miles by evaluating \(80 \boldcdot \frac58\) (in order to compare the resulting 50 miles per hour with 75 miles per hour)
+ Converting 75 miles into 120 kilometers by evaluating \(75 \boldcdot \frac85\) (in order to compare the resulting 120 kilometers per hour with 80 kilometers per hour)
+ Continuing to draw connections between representations of equivalent ratios and more efficient methods will help students make sense of the more efficient methods.
+## Launch
+ Display the image from the task statement for all to see, tell students it is a traffic sign you might see while driving, and ask students to explain what it means. They will likely guess it is a speed limit sign and assume it means 80 miles per hour. If no one brings it up, tell students that this is a sign you might see while driving in Canada or another country that uses the metric system for more things than we use it for in the United States. 
+ Give students 2 minutes of quiet work time and ask them to pause after the first question. Ensure that everyone has correct answers for the first question before proceeding with the second question. Follow with whole-class discussion. 
+ Representation: Internalize Comprehension. Provide appropriate reading accommodations and supports to ensure students access to written directions, word problems and other text-based content.
+ Supports accessibility for: Language; Conceptual processing 
+## Student Facing
+ Elena and her mom are on a road trip outside the United States. Elena sees this road sign.
+ Elena’s mom is driving 75 miles per hour when she gets pulled over for speeding.
+ [image: An image of a speed limit sign labeled “Maximum 80.”] [image: Expand image] 
+ [image: An image of a speed limit sign labeled “Maximum 80.”] 
+ The police officer explains that 8 kilometers is approximately 5 miles.
+ How many kilometers are in 1 mile? 
+ How many miles are in 1 kilometer?
+ If the speed limit is 80 kilometers per hour, and Elena’s mom was driving 75 miles per hour, was she speeding? By how much? 
+## Student Response
+ Teachers with a valid work email address can click here to register or sign in for free access to Student Response.
+## Anticipated Misconceptions
+ It is acceptable to express the answers to the first question in either fraction or decimal form. If students express uncertainty about carrying out the division of \(5 \div 8\) or \(8 \div 5\), encourage them to express the quotient in fraction form.
+## Activity Synthesis
+ Focus discussion on different approaches to the second question. If any students with less-efficient methods were selected, have them go first in the sequence, or present one of these representations yourself. As students are presenting their work, encourage them to explain the meaning of any numbers used and the reason they decided to use particular operations. For example, if a student multiplies 80 by \(\frac58\), ask them to explain what \(\frac58\) means in this context and why they decided to multiply 80 by it. It can be handy to have representations like double number lines or tables displayed to facilitate these explanations.
+ Representing, Listening, Speaking: MLR7 Compare and Connect. Ask students to display their approaches to determine whether or not Elena’s mom was speeding. As students share their work, encourage them to explain the meaning of each quantity they use. For example, if they convert 80 miles per hour into kilometers per hour, where 80 is multiplied by \(\frac58\), ask what \(\frac58\) means in this context and why they decide to multiply it by 80. If students used a table or a double number line, ask how these representations connect with other strategies. This will help students make sense of the various approaches to reason about equivalent ratios which can be used for reasoning about converting one unit of measure to another.
+ Design Principle(s): Cultivate conversation; Maximize meta-awareness 
+## 4.3: Veterinary Weights (10 minutes)
+## CCSS Standards
+ Addressing
+ 6.RP.A.3.d
+ Routines and Materials
+ Instructional Routines
+ MLR2: Collect and Display
+ Think Pair Share
+## Activity
+ This activity is an opportunity to apply insights from the previous activity in a different context. In this activity, students convert between pounds and kilograms. The conversion factor is not given as a unit rate. As a result of the work in the previous activity, some students may compute and use unit rates, and some may still reason using various representations of equivalent ratios. The numbers are also purposely chosen such that the unit rate \(\frac{10}{22}\) does not have a convenient decimal equivalent, suggesting that fractions are sometimes much more convenient to work with than decimals. Students should have learned efficient methods for multiplying fractions in grade 5 (5.NF.B.4a), but may need support. Additionally, while all measurements within this activity are accurate with rounding to the nearest integer, you may choose to point out before or after the task that \(\frac{10}{22}\) is a common approximation of the conversion factor from pounds to kilograms and not the true conversion factor.
+ As students work, identify those who computed and used the unit rates \(\frac{10}{22}\) and \(\frac{22}{10}\). Highlight these strategies in the discussion, while continuing to refer to other representations to make sense of them as needed.
+## Launch
+ Ask students to recall which is heavier: 1 pound or 1 kilogram? (1 kilogram is heavier.) Tell them that in this activity, they will be given weights in pounds and asked to express it in kilograms, and also the other way around. The pairs of measurements in pounds and kilograms for a set of objects are all equivalent ratios. Encourage students to consider how finding unit rates—how many kilograms in 1 pound and how many pounds in 1 kilogram—can make their work more efficient.
+ Give students quiet think time to complete the activity, and then time to share their explanation with a partner. Follow with whole-class discussion.
+ Action and Expression: Internalize Executive Functions. Chunk this task into more manageable parts to support students who benefit from support with organization and problem solving. For example, ask students to first draw a table or double number line to organize their thinking and then find a ratio for converting pounds to kilograms. Next, ask students to convert the weight of each dog separately. After that, ask students to complete the last question.
+ Supports accessibility for: Organization; Attention 
+## Student Facing
+ A veterinarian uses weights in kilograms to figure out what dosages of medicines to prescribe for animals. For every 10 kilograms, there are 22 pounds.
+ Calculate each animal’s weight in kilograms. Explain or show your reasoning. If you get stuck, consider drawing a double number line or table.
+ Fido the Labrador weighs 88 pounds. 
+ Spot the Beagle weighs 33 pounds. 
+ Bella the Chihuahua weighs \(5\frac12\) pounds. 
+ A certain medication says it can only be given to animals over 25 kilograms. How much is this in pounds?
+## Student Response
+ Teachers with a valid work email address can click here to register or sign in for free access to Student Response.
+## Anticipated Misconceptions
+ Students working with the unit rate \(\frac{10}{22}\) may want to convert it to a decimal and get bogged down. Encourage them to work with the fraction, reviewing strategies for multiplying by a fraction as necessary.
+## Activity Synthesis
+ Invite one or more students to share who used the unit rates \(\frac{10}{22}\) and \(\frac{22}{10}\) as part of their work. Display a table of equivalent ratios as needed to help students make sense of this approach, including attending to the meaning of these numbers and the rationale for any operations used.
+ Listening, Speaking: MLR2 Collect and Display. As students share their explanations for the first and second questions with a partner followed with whole class discussion, listen for and scribe the words and phrases that students used when converting between pounds and kilograms. Some students may convert to decimals and find this method more challenging, while others may show reasoning using the unit rates \(\frac{10}{22}\) and \(\frac{22}{10}\). Highlight key vocabulary that students use in the discussion, while continuing to refer to other representations to make sense of them as needed. This will help students increase sense-making while simultaneously support meta-awareness of language.
+ Design Principle(s): Support sense-making; Maximize meta-awareness 
+## 4.4: Cooking with a Tablespoon (15 minutes)
+## CCSS Standards
+ Addressing
+ 6.RP.A.3.d
+ Routines and Materials
+ Instructional Routines
+ MLR3: Clarify, Critique, Correct
+ Think Pair Share
+ Required Materials
+ Four-function calculators
+## Optional activity
+ This optional activity is an opportunity to practice the methods in this lesson to convert between cups and tablespoons. The conversion factor is given in the form of a unit rate, so students only need to decide whether to multiply or divide. They might, however, choose to create a double number line diagram or a table to support their reasoning. Several of the measurements include fractions, giving students an opportunity to practice multiplying mixed numbers by whole numbers (5.NF.B.6) and dividing whole numbers that result in fractions (5.NF.B.3).
+## Launch
+ Tell students they will now convert between tablespoons and cups. Just as with pairs of weights in pounds and kilograms, these pairs of tablespoons and cups can also be thought of as equivalent ratios. Welcome any strategies for reasoning about equivalent ratios, but encourage students to try to find efficient methods using multiplication and division.
+ Give students quiet think time to complete the activity and then time to share their explanation with a partner. Follow with whole-class discussion.
+ Representation: Internalize Comprehension. Activate or supply background knowledge related to measuring using tablespoons and cups. Allow students to use calculators to ensure inclusive participation in the activity.
+ Supports accessibility for: Memory; Conceptual processing 
+## Student Facing
+ Diego is trying to follow a recipe, but he cannot find any measuring cups! He only has a tablespoon. In the cookbook, it says that 1 cup equals 16 tablespoons.
+ How could Diego use the tablespoon to measure out these ingredients?
+ \(\frac12\) cup almonds
+ \(1\frac14\) cup of oatmeal
+ \(2\frac34\) cup of flour
+ Diego also adds the following ingredients. How many cups of each did he use?
+ 28 tablespoons of sugar
+ 6 tablespoons of cocoa powder
+## Student Response
+ Teachers with a valid work email address can click here to register or sign in for free access to Student Response.
+## Anticipated Misconceptions
+ Students may answer “zero cups” for the last question, because it is less than one. Ask them to consider what fraction of a cup would be equivalent to 6 tablespoons.
+## Activity Synthesis
+ As in the previous task, select students to share based on their strategies, sequencing from less efficient to more efficient, being sure to highlight approaches using multiplication or division (by 16, or multiplication by \(\frac{1}{16}\)). Record the representations or strategies students shared and display them for all to see.
+ When discussing the last strategy, ask students how they would know whether to multiply or to divide. Highlight that we multiply or divide depending on the information we have. Since 1 cup equals 16 tablespoons, if we know a quantity in cups, we can multiply it by 16 to find the number of tablespoons. On the other hand, if we know a quantity in tablespoons, we can divide it by 16 (or multiply by \(\frac{1}{16}\)) to find the number of cups.
+ Reading, Writing, Speaking: MLR3 Clarify, Critique, Correct. Before students share their answers to the second question, present an incorrect solution and explanation or representation. For example, “Diego used zero cups of cocoa powder because 6 tablespoons is less than 1.” Ask students to identify the error(s), analyze the response in light of their own understanding of the problem, and work with a partner to propose an improved response. This will help students understand how a “rate per 1” could help convert between units.
+ Design Principle(s): Optimize output (for explanation); Maximize meta-awareness 
+## Lesson Synthesis
+## Lesson Synthesis
+ In this lesson, students learned two important points:
+ Two measurements of the same object in different units form equivalent ratios, and we can use all of our familiar tools to reason about equivalent ratios when we are thinking about converting units of measure.
+ If we know a “rate per 1” that relates the two units, we can use it to convert one measurement to the other by multiplication or division.
+ To highlight the first point, choose and display a couple of tables of equivalent ratios from the lesson, each table showing two different units (e.g., pounds and kilograms, or cups and teaspoons). Ask students to explain how pairs of numbers in the table represent equivalent ratios and how to use equivalent ratios to convert between units of measurement.
+ Then, ask if and how a “rate per 1” could help us convert between units. Show examples from the lesson about how multiplying and dividing a rate per 1 helps us with conversion. For instance, we know that 1 kilogram is 2.2 pounds. With this information, we can convert 5 kilograms into 11 pounds, because \(5 \boldcdot (2.2) = 11\). We can also convert 220 pounds into 100 kilograms, because \(220 \div 2.2 = 100\).
+## 4.5: Cool-down - Buckets (5 minutes)
+## CCSS Standards
+ Addressing
+ 6.RP.A.3.d
+## Cool-Down
+ Teachers with a valid work email address can click here to register or sign in for free access to Cool-Downs.
+## Student Lesson Summary
+## Student Facing
+ When we measure something in two different units, the measurements form an equivalent ratio. We can reason with these equivalent ratios to convert measurements from one unit to another.
+ Suppose you cut off 20 inches of hair. Your Canadian friend asks how many centimeters of hair that was. Since 100 inches equal 254 centimeters, we can use equivalent ratios to find out how many centimeters equal 20 inches.
+ Using a double number line:
+ [image: Double number line, 6 evenly spaced tick marks. Top line, length, inches. Scale 0 to 100, by 20’s. Bottom line, length, centimeters. Scale 0 to 254, by 50 point 8’s. Ovals drawn around second and last tick marks on each line.] [image: Expand image] 
+ [image: Double number line, 6 evenly spaced tick marks. Top line, length, inches. Scale 0 to 100, by 20’s. Bottom line, length, centimeters. Scale 0 to 254, by 50 point 8’s. Ovals drawn around second and last tick marks on each line.] 
+ Using a table:
+ | 
+ length (in) | length (cm) 
+ | 100 | 254 
+ | 1 | 2.54 
+ | 20 | 50.8 
+ One quick way to solve the problem is to start by finding out how many centimeters are in 1 inch. We can then multiply 2.54 and 20 to find that 20 inches equal 50.8 centimeters.
+## Video Summary
+## Student Facing
+ Video VLS G6U3V1 Converting Measurements (Lessons 2–4) available at https://player.vimeo.com/video/469298365.

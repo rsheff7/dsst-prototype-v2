@@ -1,0 +1,77 @@
+{
+  "section": "Unit Conversion",
+  "activities": {
+    "3.1": {
+      "response": [
+        "It takes more green rods, because they are shorter than the blue rods."
+      ],
+      "extensionResponse": null
+    },
+    "3.2": {
+      "response": [
+        "|  | cubic inches | cubic centimeters",
+        "| volume of the box | 16 | 250",
+        "|  | meters | feet",
+        "| length of ____________ | 6 | 20",
+        "|  | quarts | liters",
+        "| 1 gallon of water | 4 | a little less than 4",
+        "| object to weigh | ounces | pounds | grams | kilograms",
+        "| Answers vary |  |  |  | ",
+        "|  | milliliters | teaspoons",
+        "| small amount of salt | 20 | 4",
+        "| medium amount of salt | 40 | 8",
+        "| large amount of salt | 50 | 10",
+        "1. A cubic inch is larger. More cubic centimeters fit in the box because they are smaller.",
+        "2. It took more feet because feet are smaller than meters.",
+        "3. A liter is bigger than a quart because the gallon filled fewer of them.",
+        "4. From least to greatest, the units are gram, ounce, pound, and kilogram, because each object’s weight was the largest number of grams, fewer ounces, even fewer pounds, and the smallest number of kilograms.",
+        "5. a. About 20 teaspoons for 100 milliliters of salt",
+        "| milliliters | teaspoons",
+        "| 20 | 4",
+        "| 40 | 8",
+        "| 50 | 10",
+        "| 100 | 20",
+        "[image: Arrows labeled \\(\\div 5\\) go from each number of milliliters to its number of teaspoons. Arrows labeled \\(\\boldcdot 5\\) go from 20 to 100 and from 4 to 20. Arrows labeled \\(\\boldcdot 2\\) go from 50 to 100 and from 10 to 20.]",
+        "b. About 75 milliliters for 15 teaspoons of salt",
+        "c. About 5 milliliters per teaspoon",
+        "d. About \\(\\frac{1}{5}\\) teaspoons per milliliter"
+      ],
+      "extensionResponse": [
+        "Answers vary and may include:",
+        "Unit conversions are simpler",
+        "Calculations are often simpler"
+      ]
+    }
+  },
+  "coolDown": {
+    "task": [
+      "1. Lin has a pet German Shepherd that weighs 38 when measured in one unit and 84 when measured in a different unit. Which measurement is in pounds, and which is in kilograms?",
+      "38 ________ 84 ________",
+      "2. Elena has a pet parakeet that weighs 6 when measured in one unit and 170 when measured in a different unit. Which measurement is in ounces, and which is in grams?",
+      "6 ________ 170 ________",
+      "3. Behind Lin’s house there is a kiddie pool that holds 180 or 680 units of water, depending on which unit you are using to measure. Which measurement is in gallons, and which is in liters?",
+      "180 ________ 680 ________",
+      "4. Behind Elena’s house there is a portable storage container that holds 29 or 1024 units, depending on which unit you are using to measure. Which measurement is in cubic feet, and which is in cubic meters?",
+      "29 ________ 1024 ________"
+    ],
+    "response": [
+      "1. 38 is in kilograms and 84 is in pounds because a kilograms is heavier than a pound, so you need fewer kilograms to measure the same quantity.",
+      "2. 6 is in ounces and 170 is in grams because an ounce weighs more than a gram.",
+      "3. 180 is in gallons and 680 is in liters because gallons are a larger unit than liters.",
+      "4. 29 is in cubic meters and 1024 is in cubic feet because cubic meters are larger than cubic feet, so you need fewer of them to measure the same quantity."
+    ]
+  },
+  "pages": [63, 67, 68, 69, 70],
+  "notes": [
+    "Printed page = PDF page − 2: p65.png is printed 63 (3.1 response), p69.png and p70.png are printed 67–68 (3.2 response and extension), p71.png and p72.png are printed 69–70 (cool-down task and response).",
+    "The 3.2 response tables are printed with the row label in the first column and an empty top-left cell; the empty cell is kept as an empty first cell. The Station 2 row label is “length of” over a blank line, written “length of ____________”.",
+    "The Station 4 table's only body row reads “Answers vary” under “object to weigh”; the other four cells are blank in print.",
+    "The 3.2 summary answers are numbered 1–5 as in the Teacher Guide's task (1 a/b in the print task are answered in one line, “1.”). Answer 5a is followed by a diagram: the salt table with a fourth row, 100 and 20, printed below the table's border, and green arrows. The arrows are described in one [image: …] line; it is a description, not IM's words. Multiplication arrows are printed “•5” and “•2”, written \\(\\boldcdot 5\\) and \\(\\boldcdot 2\\).",
+    "Answer 5d prints a stacked fraction one-fifth, written \\(\\frac{1}{5}\\). The text layer drops it (“About teaspoons per milliliter”).",
+    "Extension response: the two items are bullets in print; the bullets are not reproduced as characters.",
+    "Cool-down response 1 reads “a kilograms is heavier than a pound” as printed; transcribed as is.",
+    "Cool-down task: each item is followed by its two numbers with an answer blank after each (for example “38____ 84____”), set apart on its own line. Written “38 ________ 84 ________”.",
+    "Station 2's response, 6 meters and 20 feet, is printed as is; 6 meters is about 19.7 feet, so the two are rounded to the nearest meter and foot, as the task asks.",
+    "Nothing on these pages was unreadable."
+  ]
+}

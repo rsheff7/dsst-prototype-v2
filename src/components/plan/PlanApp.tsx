@@ -265,6 +265,13 @@ function BoardCLO({ plan }: { plan: PlanLesson }) {
   );
 }
 
+/** A card's description line that just repeats IM's task (numbered or not) isn't shown twice. */
+const normLine = (s: string) => s.replace(/^\s*(?:\d+|[a-z])[.)]\s*/i, '').replace(/\s+/g, ' ').trim().toLowerCase();
+const inTask = (task: string[], line: string) => {
+  const l = normLine(line);
+  return l.length > 0 && task.some((t) => { const x = normLine(t); return x === l || (l.length > 20 && (x.includes(l) || l.includes(x) && x.length > 20)); });
+};
+
 export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: PlanLesson }) {
   const { im, premo } = lesson;
   const { st, update, reset } = usePlanState(im.code);
@@ -447,26 +454,39 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
 
   const stepCool = () => (
     <div className={s.stackLg}>
-      <section className={cx(s.card, s.stack)}>
-        <span className={s.eyebrow}>Cool-down · {im.coolDown.title}</span>
-        <IMLines lines={im.coolDown.task} fill={fill('cool', im.coolDown.response, !!st.shown.cool)} />
-        <p className={cx(s.muted, s.small)}>
-          {(im.coolDown.task ?? []).some((l) => l.includes('|')) ? 'Fill in the table, write your reasoning, then say it out loud.' : 'Write your answer and reasoning, then say it out loud.'}
-        </p>
-      </section>
+      {(im.coolDown.task ?? []).length ? (
+        <section className={cx(s.card, s.stack)}>
+          <span className={s.eyebrow}>Cool-down · {im.coolDown.title}</span>
+          <IMLines lines={im.coolDown.task} fill={fill('cool', im.coolDown.response, !!st.shown.cool)} />
+          <p className={cx(s.muted, s.small)}>
+            {(im.coolDown.task ?? []).some((l) => l.includes('|')) ? 'Fill in the table or diagram, write your reasoning, then say it out loud.' : 'Write your answer and reasoning, then say it out loud.'}
+          </p>
+        </section>
+      ) : (
+        // A project lesson (6.3.17) has no cool-down in IM: check the end goal against the lesson's closing check instead.
+        <section className={cx(s.card, s.stack)}>
+          <span className={s.eyebrow}>No cool-down in IM for this lesson</span>
+          <p>Instead, write what a strong student would say at the lesson’s closing check. What to look for:</p>
+          <p className={s.say}>
+            <MathText>{plan.clo.lookFor}</MathText>
+          </p>
+        </section>
+      )}
       <label htmlFor="plan-cool" className={s.lab}>
         Your answer, as a strong student
       </label>
       <textarea id="plan-cool" value={st.cool} placeholder="Your reasoning…" onChange={(e) => update({ cool: e.target.value })} />
       {st.shown.cool && (
         <section className={cx(s.stack, s.reveal)}>
-          <div className={s.flat}>
-            <span className={s.lab}>IM’s response</span>
-            <IMLines lines={im.coolDown.response} />
-          </div>
+          {(im.coolDown.response ?? []).length > 0 && (
+            <div className={s.flat}>
+              <span className={s.lab}>IM’s response</span>
+              <IMLines lines={im.coolDown.response} />
+            </div>
+          )}
           <h3>Would your answer show these?</h3>
           <div className={s.checks}>
-            {[...im.targets, plan.clo.lookFor].map((t, i) => (
+            {[...im.targets, ...((im.coolDown.task ?? []).length ? [plan.clo.lookFor] : [])].map((t, i) => (
               <Check key={i} on={!!st.ticks[`cool#${i}`]} onClick={() => toggle('ticks', `cool#${i}`)}>
                 <MathText>{t}</MathText>
               </Check>
@@ -496,7 +516,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
                 {a.id} · {a.title}
               </b>
               <span className={cx(s.muted, s.small)}>
-                {SLOT[a.slot]} · {a.minutes} min in class
+                {isCrux && a.slot === 'optional' ? 'Optional in IM (the whole lesson is)' : SLOT[a.slot]} · {a.minutes} min in class
                 {plan.rehearsal && (() => {
                   const cs = plan.rehearsal.filter((c) => c.activityId === a.id);
                   const mv = cs.filter(isMove).length;
@@ -981,7 +1001,8 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
         return (
           <div className={s.pc}>
             <b>
-              <MathText>{q(m.byBand[b].say)}</MathText>
+              {/* Every level hears the card's one question when it has one (Jordan, round 2). */}
+              <MathText>{q(c.say?.[0] ?? m.byBand[b].say)}</MathText>
             </b>
             <span className={cx(s.muted, s.small)}>{tier ? TIER_WORDS[tier].frame : 'Their frame'}:</span>
             <span className={s.frame}>
@@ -1044,9 +1065,20 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
           <b>Where we are:</b> <MathText>{where}</MathText>
         </p>
         {c.kind === 'math' ? (
-          <div className={s.flat}>
-            <IMLines lines={a.task.filter((l) => !/^\[image:|Attribution:/.test(l))} fill={fill(`task:${a.id}`, a.response, done)} />
-          </div>
+          <>
+            {/* IM's pictures aren't in the text: the card's description stands in for them. */}
+            {(() => { const extra = (show ?? []).filter((l) => !inTask(a.task, l)); return extra.length > 0; })() && (
+              <div className={s.stack} style={{ gap: 4 }}>
+                <span className={s.lab}>What students see (Premo’s description)</span>
+                <div className={s.flat}>
+                  <IMLines lines={(show ?? []).filter((l) => !inTask(a.task, l))} />
+                </div>
+              </div>
+            )}
+            <div className={s.flat}>
+              <IMLines lines={a.task.filter((l) => !/^\[image:|Attribution:/.test(l))} fill={fill(`task:${a.id}`, a.response, done)} />
+            </div>
+          </>
         ) : c.kind === 'rounds' && !show ? (
           // Three Reads reads the problem, so the problem is on the card.
           <div className={s.flat}>
@@ -1123,9 +1155,18 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
             )}
             {c.notes && c.notes.length > 0 && (
               <div className={s.flat}>
-                {c.notes.map((x, i) => (
+                {c.notes.map((x, i, all) => (
                   <p key={i} className={s.small}>
                     <MathText>{x}</MathText>
+                    {/* A last note ending "…the connection:" leads into the card's question; repeat it here so it points at something. */}
+                    {i === all.length - 1 && /:\s*$/.test(x) && say?.[0] && (
+                      <>
+                        {' '}
+                        <b>
+                          <MathText>{q(say[0])}</MathText>
+                        </b>
+                      </>
+                    )}
                   </p>
                 ))}
               </div>
@@ -1252,13 +1293,15 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
         <Check on={!!st.said['lsynth']} onClick={() => toggle('said', 'lsynth')}>
           I said the ideas out loud, pointing to the display
         </Check>
-        <details className={s.more}>
-          <summary>IM’s lesson synthesis</summary>
-          <IMLines lines={im.lessonSynthesis} />
-        </details>
+        {im.lessonSynthesis.length > 0 && (
+          <details className={s.more}>
+            <summary>IM’s lesson synthesis</summary>
+            <IMLines lines={im.lessonSynthesis} />
+          </details>
+        )}
       </section>
       <section className={cx(s.card, s.stack)}>
-        <span className={s.eyebrow}>Quick check before the cool-down</span>
+        <span className={s.eyebrow}>{(im.coolDown.task ?? []).length ? 'Quick check before the cool-down' : 'Quick check before class ends'}</span>
         <p className={s.prompt} style={{ fontSize: 19 }}>
           <MathText>{q(plan.lessonSynthesis.check.question)}</MathText>
         </p>
@@ -1562,7 +1605,8 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
             {st.started ? `Resume: ${STEPS[st.step].name}` : 'Start planning'}
           </button>
         </section>
-        <footer className={s.foot}>
+
+          <footer className={s.foot}>
           <button type="button" onClick={reset}>
             Start over
           </button>
@@ -1639,6 +1683,18 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
             </span>
           ))}
         </div>
+        {(() => {
+          // A lesson IM runs over two days (6.3.17): show where Day 1 ends.
+          const day2 = plan.rehearsal?.find((c) => /^Start of Day 2/.test(c.where ?? ''));
+          return day2 ? (
+            <div className={s.mv}>
+              <span className={s.lab}>Day 1 ends · Day 2 starts here</span>
+              <span className={s.mvIf}>
+                <MathText>{day2.where.replace(/^Start of Day 2[:.]\s*/, '').replace(/^./, (x) => x.toUpperCase())}</MathText>
+              </span>
+            </div>
+          ) : null;
+        })()}
         <div className={s.mv}>
           <span className={s.lab}>Release</span>
           <span className={s.mvDo}>
@@ -1653,10 +1709,10 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
           <span className={s.lab}>Synthesis · {routineTitle(plan.crux.synthesis.routine)}</span>
           {/* What the teacher rehearsed on the synthesis card, when there is one. */}
           <span className={s.mvDo}>
-            <MathText>{q(synthCard?.say?.[0] ?? plan.crux.synthesis.prompt)}</MathText>
+            <MathText>{q(plan.crux.synthesis.prompt)}</MathText>
           </span>
           <span className={s.mvIf}>
-            Listen for: <MathText>{q(synthCard?.sounds ?? plan.crux.synthesis.sounds)}</MathText>
+            Listen for: <MathText>{q(plan.crux.synthesis.sounds)}</MathText>
           </span>
         </div>
         {/* Where students get stuck at the crux, including the points no card rehearses. */}
@@ -1688,7 +1744,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
                 const skipped = c.ifSkipped && !chosen.includes(c.ifSkipped.activityId) ? c.ifSkipped : null;
                 const line =
                   c.kind === 'levels' && m.byBand
-                    ? m.byBand[bandsToRehearse()[0]].say
+                    ? (c.say?.[0] ?? m.byBand[bandsToRehearse()[0]].say)
                     : (skipped?.say ?? c.say ?? [m.say ?? ''])[0];
                 return (
                   <div key={c.id} className={s.mv}>

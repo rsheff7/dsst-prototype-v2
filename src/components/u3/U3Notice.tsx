@@ -1,10 +1,17 @@
 import s from './u3.module.css';
 
-// Shown on preview deployments only; the live site (production) has none.
+import { APP_VERSION, RELEASE_DATE } from '@/lib/version';
+
+// The live site (production) shows its version and date; previews also say they're a draft.
 const PREVIEW = process.env.NEXT_PUBLIC_VERCEL_ENV !== 'production';
 
 export function PilotBanner() {
-  return PREVIEW ? <div className={s.pilot}>Pilot draft</div> : null;
+  return (
+    <div className={s.pilot}>
+      {PREVIEW ? 'Pilot draft · ' : ''}
+      {APP_VERSION} · {RELEASE_DATE}
+    </div>
+  );
 }
 
 /** CC BY credit: source, licence, and that it was changed. */

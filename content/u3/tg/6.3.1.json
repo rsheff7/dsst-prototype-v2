@@ -1,0 +1,59 @@
+{
+  "section": "Units of Measurement",
+  "activities": {
+    "1.1": {
+      "response": [
+        "100 m or 400 ft or anything reasonably close to those values. Sample reasoning: Based on the height of [some building whose height is known in relation to the Statue of Liberty], I think the Statue of Liberty is about 300 feet tall. From the picture, it looks like Hyperion would be about 400 feet tall."
+      ],
+      "extensionResponse": null
+    },
+    "1.2": {
+      "response": [
+        "To wash all 24,348 windows, it will take the crew 29,217.6 minutes. Representations vary. Sample response in a table:",
+        "| number of windows | time in minutes",
+        "| 15 | 18",
+        "| 15,000 | 18,000",
+        "| 1 | 1.2",
+        "| 24,348 | 29,217.6"
+      ],
+      "extensionResponse": null
+    },
+    "1.3": {
+      "response": [
+        "1. After two hours, the climber was at 276 meters.",
+        "2. After five hours, the climber was at 690 meters.",
+        "3. After \\(5\\frac{3}{4}\\) hours, the climber was at 793.5 meters, so they climbed 34.5 meters in the last quarter hour. Representations vary. Sample responses:",
+        "| height (meters) | 0 | 138 | 276 | 414 | 552 | 690 | 828",
+        "| time (hours) | 0 | 1 | 2 | 3 | 4 | 5 | 6",
+        "| time (hours) | height (meters)",
+        "| 6 | 828",
+        "| 1 | 138",
+        "| \\(\\frac{1}{4}\\) | 34.5",
+        "| \\(\\frac{3}{4}\\) | 103.5",
+        "| \\(5\\frac{3}{4}\\) | 793.5"
+      ],
+      "extensionResponse": [
+        "1. The boy weighs 9.9 pounds on the Moon.",
+        "2. The boy would weigh 22.8 pounds on Mars."
+      ]
+    }
+  },
+  "coolDown": {
+    "task": [
+      "The fastest elevators in the Burj Khalifa can travel 330 feet in just 10 seconds. How far does the elevator travel in 11 seconds? Explain your reasoning."
+    ],
+    "response": [
+      "363 feet. Possible strategies:",
+      "If the elevator travels 330 feet in 10 seconds, then it is traveling 33 feet per second. Multiplying 33 by 11 gives 363 feet in 11 seconds.",
+      "If the elevator travels 330 feet in 10 seconds, then it is traveling 33 feet per second. Adding 33 feet per second to 330 feet in 10 seconds gives 363 feet in 11 seconds."
+    ]
+  },
+  "pages": [30, 33, 35, 36, 37],
+  "notes": [
+    "Printed page = PDF page − 2: p32.png is printed 30 (1.1 response), p35.png is 33 (1.2 response), p37.png is 35 and p38.png is 36 (1.3 response and extension), p39.png is 37 (cool-down). The lesson runs PDF pages 29–44; the other pages hold IM text already on the web pages, and the practice problems.",
+    "1.2 response: the table is printed with a header row and four rows, transcribed as is.",
+    "1.3 response item 3: the first sample is a double number line (an image). Its two lines are given as two table rows, each starting with the line's label, then the tick labels left to right. The arrows and tick marks are not reproduced.",
+    "Cool-down response: the two strategies are printed as bullets; the bullets are not reproduced as characters.",
+    "The 1.2 narrative and synthesis on the web pages already carry the fractions (\\(\\frac56\\), \\(1\\frac15\\)) that the PDF text layer drops; the page images match them."
+  ]
+}

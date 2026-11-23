@@ -1,0 +1,406 @@
+{
+ "code": "6.3.13",
+ "title": "Benchmark Percentages",
+ "section": "Percentages",
+ "goals": [
+  {
+   "text": "Explain (orally and in writing) how to solve problems involving the percentages 10%, 25%, 50%, and 75% by reasoning about the fractions $\\frac{1}{10}$, $\\frac14$, $\\frac12$, and $\\frac34$.",
+   "modes": [
+    "orally",
+    "in writing"
+   ]
+  },
+  {
+   "text": "Generalize (orally) processes for calculating 10%, 25%, 50%, and 75% of a quantity.",
+   "modes": [
+    "orally"
+   ]
+  }
+ ],
+ "targets": [
+  "When I read or hear that something is 10%, 25%, 50%, or 75% of an amount, I know what fraction of that amount they are referring to."
+ ],
+ "narrative": [
+  "The goal of this lesson is to help students understand the connection between benchmark percentages and common fractions (MP7). In these materials, we have identified 10%, 25%, 50%, and 75% as primary benchmark percentages and multiples of 10% as secondary benchmark percentages.",
+  "It is common to say that \\(25\\% = \\frac14\\) or \\(10\\% = \\frac{1}{10}\\). In these materials we avoid this usage and say rather that 25% of a quantity is \\(\\frac14\\) of that quantity, or that 10% of a quantity is \\(\\frac{1}{10}\\) of that quantity.",
+  "This lesson builds on understanding of equivalent fractions, multiplying fractions, and dividing by unit fractions from grades 4 and 5."
+ ],
+ "materials": [],
+ "preparation": [],
+ "standards": {
+  "buildingOn": [
+   "4.NF.B",
+   "5.NF.B"
+  ],
+  "addressing": [
+   "6.RP.A.3.c"
+  ],
+  "buildingTowards": [
+   "6.RP.A.3.c"
+  ]
+ },
+ "activities": [
+  {
+   "id": "13.1",
+   "slot": "warm-up",
+   "title": "What Percentage Is Shaded?",
+   "minutes": 5,
+   "purpose": null,
+   "purposeEvidence": null,
+   "routines": [
+    "Think Pair Share"
+   ],
+   "fivePractices": false,
+   "alignment": {
+    "buildingOn": [
+     "4.NF.B"
+    ],
+    "addressing": [],
+    "buildingTowards": [
+     "6.RP.A.3.c"
+    ]
+   },
+   "narrative": [
+    "In this warm-up, students are presented with tape diagrams with a shaded portion, and they identify the percentage that is shaded."
+   ],
+   "launch": [
+    "Display the image in the task statement for all to see, and ask students to think of at least one thing they notice. Ask a few students to share something they notice. It is likely that students notice there are three tape diagrams of the same length, but the first is divided into 10 equal pieces, the second into 2 equal pieces, and the last into 4 equal pieces. Students may make claims about what fraction of each tape is shaded. Remind students that when we wonder, \"What percent of something is shaded?\" it is understood that the whole thing is 100%.",
+    "Arrange students in groups of 2. Give 1–2 minutes of quiet think time, followed by partner- and whole-class discussions."
+   ],
+   "task": [
+    "What percentage of each diagram is shaded?",
+    "[image: Three tape diagrams A, B, and C. Tape A has 10 parts, 1 green, 9 white. Tape B has 2 parts, 1 blue, 1 white. Tape C has 4 parts, 3 yellow, 1 white.] [image: Expand image]",
+    "[image: Three tape diagrams A, B, and C. Tape A has 10 parts, 1 green, 9 white. Tape B has 2 parts, 1 blue, 1 white. Tape C has 4 parts, 3 yellow, 1 white.]"
+   ],
+   "response": [
+    "A. 10%",
+    "B. 50%",
+    "C. 75%"
+   ],
+   "misconceptions": [],
+   "synthesis": [
+    "Invite students to share how they reasoned about the percentage of each tape diagram that is shaded. Record and display their explanations for all to see. Highlight alternative ways of naming the size of the shaded portion, for example, “\\(\\frac34\\) of the diagram” and “75% of the diagram.”"
+   ],
+   "extension": null,
+   "ell": [],
+   "access": []
+  },
+  {
+   "id": "13.2",
+   "slot": "activity",
+   "title": "Liters, Meters, and Hours",
+   "minutes": 15,
+   "purpose": "new-concept",
+   "purposeEvidence": "In this activity, students calculate three different benchmark percentages—50%, 10%, and 75%—given three different values that correspond to 100%.",
+   "routines": [
+    "MLR1: Stronger and Clearer Each Time",
+    "Think Pair Share"
+   ],
+   "fivePractices": false,
+   "alignment": {
+    "buildingOn": [
+     "5.NF.B"
+    ],
+    "addressing": [
+     "6.RP.A.3.c"
+    ],
+    "buildingTowards": []
+   },
+   "narrative": [
+    "In this activity, students calculate three different benchmark percentages—50%, 10%, and 75%—given three different values that correspond to 100%. The repetition of the benchmark percentages allows students to notice regularity and engage in MP8. They generalize the patterns in their calculations to determine how to find those percentages when the 100% value is \\(x\\)."
+   ],
+   "launch": [
+    "Ask students to complete the first three sub-questions of each problem mentally. If necessary, clarify that “using mental math” means working out an answer without writing down their calculations and just recording the answer. For the last sub-question, ask them to write a sentence or two to explain their approach. Give students quiet think time to complete the activity and then time to share their explanation with a partner."
+   ],
+   "task": [
+    "How much is 50% of 10 liters of milk?",
+    "How far is 50% of a 2,000-kilometer trip?",
+    "How long is 50% of a 24-hour day?",
+    "How can you find 50% of any number?",
+    "How far is 10% of a 2,000-kilometer trip?",
+    "How much is 10% of 10 liters of milk?",
+    "How long is 10% of a 24-hour day?",
+    "How can you find 10% of any number?",
+    "How long is 75% of a 24-hour day?",
+    "How far is 75% of a 2,000-kilometer trip?",
+    "How much is 75% of 10 liters of milk?",
+    "How can you find 75% of any number?",
+    "[image: Tape diagram with three rows. Top row 10. Second row 2,000. Third row, two parts, first part question mark and labeled 50%.] [image: Expand image]",
+    "[image: Tape diagram with three rows. Top row 10. Second row 2,000. Third row, two parts, first part question mark and labeled 50%.]"
+   ],
+   "response": [
+    "1. a. 5 liters of milk",
+    "b. 1,000 kilometers",
+    "c. 12 hours",
+    "d. Divide by 2, or multiply by \\(\\frac{1}{2}\\).",
+    "2. a. 200 kilometers",
+    "b. 1 liter of milk",
+    "c. 2.4 hours",
+    "d. Divide by 10, or multiply by \\(\\frac{1}{10}\\).",
+    "3. a. 18 hours",
+    "b. 1,500 kilometers",
+    "c. 7.5 liters of milk",
+    "d. Divide by 4, and multiply by 3 (or multiply by \\(\\frac{3}{4}\\))."
+   ],
+   "misconceptions": [
+    "If students struggle to get started with mental math, offer some scaffolding. For example, ask, “How much of 100% is 50%?” Suggest to students that if they know that 50% of a number is the same as \\(\\frac12\\) of that number, then they can think about what \\(\\frac12\\) of the number is."
+   ],
+   "synthesis": [
+    "Highlight the following:",
+    "50% of a quantity is \\(\\frac12\\) of that quantity. We can calculate it by dividing the quantity by 2 or multiplying the quantity by \\(\\frac12\\). If no students bring up the multiplication method, ask what fraction 50% reminds them of or what number they could multiply by to get the same answer; either \\(\\frac12\\) or 0.5 is fine.",
+    "[image: Double number line.] [image: Expand image]",
+    "[image: Double number line.]",
+    "10% of a quantity is \\(\\frac{1}{10}\\) of that quantity. You can calculate it by dividing the quantity by 10, or multiplying the quantity by \\(\\frac{1}{10}\\).",
+    "[image: A double number line.] [image: Expand image]",
+    "[image: A double number line.]",
+    "75% of a quantity is \\(\\frac34\\) of that quantity. You can calculate it by dividing the quantity by four and then multiplying by 3, or by multiplying the quantity by \\(\\frac34\\).",
+    "[image: Double number line.] [image: Expand image]",
+    "[image: Double number line.]"
+   ],
+   "extension": null,
+   "ell": [
+    {
+     "routine": "MLR1: Stronger and Clearer Each Time",
+     "phase": "synthesis",
+     "domains": [
+      "speaking",
+      "listening",
+      "writing"
+     ],
+     "principles": [
+      "optimize-output",
+      "maximize-meta-awareness"
+     ],
+     "text": "Writing, Speaking, Listening: MLR1 Stronger and Clearer Each Time. After providing some independent think time, use this routine with successive pair shares to give students a structured opportunity to revise and refine their explanations for how to find 75% of any number. Ask each student to meet with 2–3 other partners in a row for feedback. Provide students with prompts for feedback that will help them strengthen their ideas and clarify their language (e.g., “Can you explain how…”, “You should expand on...”, etc.). Students can borrow ideas and language from each partner to refine and clarify their original explanation. This will help students refine their own explanation and learn about other strategies to find 75% of any number.",
+     "principleLine": "Design Principles(s): Optimize output (for explanation); Maximize meta-awareness"
+    }
+   ],
+   "access": [
+    {
+     "area": "Representation",
+     "title": "Internalize Comprehension",
+     "text": "Representation: Internalize Comprehension. To support working memory, provide students with sticky notes or mini whiteboards.",
+     "supports": [
+      "Memory",
+      "Organization"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "13.3",
+   "slot": "activity",
+   "title": "Nine is . . .",
+   "minutes": 10,
+   "purpose": "new-concept",
+   "purposeEvidence": "In this activity students find the values for 100% given different benchmark percentages.",
+   "routines": [
+    "MLR3: Clarify, Critique, Correct",
+    "Think Pair Share"
+   ],
+   "fivePractices": false,
+   "alignment": {
+    "buildingOn": [
+     "5.NF.B"
+    ],
+    "addressing": [
+     "6.RP.A.3.c"
+    ],
+    "buildingTowards": []
+   },
+   "narrative": [
+    "In this activity students find the values for 100% given different benchmark percentages. Students are likely to calculate the answers quickly. They are to spend the majority of the task time discussing how they reason about the questions."
+   ],
+   "launch": [
+    "Give students quiet think time to complete the activity and then time to share their explanations with a partner."
+   ],
+   "task": [
+    "Explain how you can calculate each value mentally.",
+    "9 is 50% of what number?",
+    "9 is 25% of what number?",
+    "9 is 10% of what number?",
+    "9 is 75% of what number?",
+    "9 is 150% of what number?",
+    "[image: Tape diagram, two parts, first part 9. First part labeled 50%. Both parts together labeled with a question mark.] [image: Expand image]",
+    "[image: Tape diagram, two parts, first part 9. First part labeled 50%. Both parts together labeled with a question mark.]"
+   ],
+   "response": [
+    "Answers vary. Sample responses:",
+    "1. Because 50% of a quantity is \\(\\frac{1}{2}\\) of that quantity, I can multiply \\(9 \\boldcdot 2 = 18\\).",
+    "2. Because 25% of a quantity is \\(\\frac{1}{4}\\) of that quantity, I can multiply \\(9 \\boldcdot 4 = 36\\).",
+    "3. Because 10% of a quantity is \\(\\frac{1}{10}\\) of that quantity, I can multiply \\(9 \\boldcdot 10 = 90\\).",
+    "4. Because 75% of a quantity is \\(\\frac{3}{4}\\) of that quantity, I can divide \\(9 \\div 3 = 3\\) to find \\(\\frac{1}{4}\\) of the quantity and then multiply \\(3 \\boldcdot 4 = 12\\).",
+    "5. Because 150% of a quantity is \\(\\frac{3}{2}\\) of that quantity, I can divide \\(9 \\div 3 = 3\\) to find \\(\\frac{1}{2}\\) of the quantity and then multiply \\(3 \\boldcdot 2 = 6\\)."
+   ],
+   "misconceptions": [
+    "Students may think 9 is 100% and try to find the percentage of the number given. You can use the diagram in the task statement to help them make sense of the first question and then encourage them to use mental math, or draw additional diagrams, to solve the other four questions."
+   ],
+   "synthesis": [
+    "Invite students to share different strategies for answering the questions, with or without using fractions. For example, some may multiply the given 9 by 2, 4, and 10, respectively, to find values of 100% given the values of 50%, 25%, and 10% in the first three problems. Highlight any fractions students used to make sense of and solve the problems."
+   ],
+   "extension": null,
+   "ell": [
+    {
+     "routine": "MLR3: Clarify, Critique, Correct",
+     "phase": "synthesis",
+     "domains": [
+      "speaking",
+      "writing",
+      "reading"
+     ],
+     "principles": [
+      "optimize-output",
+      "maximize-meta-awareness"
+     ],
+     "text": "Reading, Writing, Speaking: MLR3 Clarify, Critique, Correct. Before students share their answers for the first question, present an incorrect answer and explanation. For example, “9 is 50% of 4.5 because 9 times \\(\\frac12\\) is 4.5.” Ask students to identify the error, critique the reasoning, and write a correct explanation. Encourage students to use the tape diagram in the task statement to make sense of the question. As students discuss in partners, listen for students who clarify what it means for a quantity to be a percentage of another quantity. Also, listen for students who state that 50% of quantity is \\(\\frac12\\) of that quantity. Prompt students to share their critiques and corrected explanations with the class. This routine will engage students in meta-awareness as they clarify the meaning of the statement “9 is 50% of a number” as “9 is \\(\\frac12\\) of that number”.",
+     "principleLine": "Design Principle(s): Optimize output (for explanation); Maximize meta-awareness"
+    }
+   ],
+   "access": [
+    {
+     "area": "Representation",
+     "title": "Internalize Comprehension",
+     "text": "Representation: Internalize Comprehension. Activate or supply background knowledge. Allow students to use calculators to ensure inclusive participation in the activity.",
+     "supports": [
+      "Memory",
+      "Conceptual processing"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "13.4",
+   "slot": "optional",
+   "title": "Matching the Percentage",
+   "minutes": 10,
+   "purpose": "mastery",
+   "purposeEvidence": "In this activity, students calculate benchmark percentages. Students are likely to calculate the answers quickly",
+   "routines": [
+    "Think Pair Share"
+   ],
+   "fivePractices": false,
+   "alignment": {
+    "buildingOn": [
+     "5.NF.B"
+    ],
+    "addressing": [
+     "6.RP.A.3.c"
+    ],
+    "buildingTowards": []
+   },
+   "narrative": [
+    "In this activity, students calculate benchmark percentages. Students are likely to calculate the answers quickly They are to spend the majority of the task time discussing how they reason about the questions."
+   ],
+   "launch": [
+    "Give students quiet think time to complete the activity and then time to share their explanation with a partner."
+   ],
+   "task": [
+    "Match the percentage that describes the relationship between each pair of numbers. One percentage will be left over. Be prepared to explain your reasoning.",
+    "7 is what percentage of 14?",
+    "5 is what percentage of 20?",
+    "3 is what percentage of 30?",
+    "6 is what percentage of 8?",
+    "20 is what percentage of 5?",
+    "4%",
+    "10%",
+    "25%",
+    "50%",
+    "75%",
+    "400%"
+   ],
+   "response": [
+    "1. 50%. 7 is half of 14, so 7 is 50% of 14.",
+    "2. 25%. 5 times 4 is 20, so 5 is \\(\\frac{1}{4}\\) (or 25%) of 20.",
+    "3. 10%. 3 times 10 is 30, so 3 is \\(\\frac{1}{10}\\) (or 10%) of 30.",
+    "4. 75%. 2 is \\(\\frac{1}{4}\\) of 8, so 6 is \\(\\frac{3}{4}\\) (or 75%) of 8.",
+    "5. 400%. 5 is 100% of 5, and 20 is 4 times that, so 20 is 400% of 5."
+   ],
+   "misconceptions": [
+    "Because 5 goes into 20 four times, students may answer that 5 is 4% of 20. If this happens, explain that 5 is really \\(\\frac14\\) of 20 and ask them what percentage represents one quarter."
+   ],
+   "synthesis": [
+    "Invite students to share their mental math strategies. If needed, consider illustrating the relationship between of \\(B\\) and \\(C\\) (where \\(A\\%\\) of \\(B\\) is \\(C\\)) using tape diagrams or double number line diagrams to help students visualize the association between the benchmark percentages and fractions."
+   ],
+   "extension": {
+    "task": [
+     "What percentage of the world’s current population is under the age of 14?",
+     "How many people is that?",
+     "How many people are 14 or older?"
+    ],
+    "response": [
+     "Answers may vary depending on the year.",
+     "1. 25% (as of 2017)",
+     "2. 1.875 billion people are under 14 years old (as of 2017)",
+     "3. 5.625 billion people are over 14 years old (as of 2017)"
+    ]
+   },
+   "ell": [],
+   "access": [
+    {
+     "area": "Representation",
+     "title": "Internalize Comprehension",
+     "text": "Representation: Internalize Comprehension. Provide appropriate reading accommodations and supports to ensure students access to written directions, word problems and other text-based content.",
+     "supports": [
+      "Language",
+      "Conceptual processing"
+     ]
+    }
+   ]
+  }
+ ],
+ "lessonSynthesis": [
+  "Certain percentages are easy to think about in terms of fractions. Ask students how they can think about each benchmark percentage by using a fraction. Demonstrate the correspondences using a double number line, tape diagram, or a table (as shown).",
+  "25% of a number is always \\(\\frac14\\) of that number.",
+  "50% of a number is always \\(\\frac12\\) of that number.",
+  "75% of a number is always \\(\\frac34\\) of that number",
+  "10% of a number is always \\(\\frac{1}{10}\\) of that number.",
+  "[image: A table with two columns.] [image: Expand image]",
+  "Description: <p>A table with two columns. The first column is labeled \"value\". The second column is labeled \"percentage\". The data are as follows: row 1: x, 100 percent; row 2: one fourth x, 25 percent; row 3: one half x, 50 percent; row 4: three fourths x, 75 percent; Arrows on both sides of the table from row 1 to row 2 are labeled \"multiply by one fourth.\" Arrows on both sides of the table from row 1 to row 3 are labeled \"multiply by one half\". Arrows on both sides of the table from row 1 to row 4 are labeled \"multiply by three fourths\".</p>",
+  "[image: A table with two columns.]"
+ ],
+ "coolDown": {
+  "id": "13.5",
+  "title": "Around the Clock",
+  "minutes": 5,
+  "task": [
+   "Answer each question and explain your reasoning.",
+   "1. How long is 50% of 60 minutes?",
+   "2. How long is 10% of 60 minutes?",
+   "3. How long is 75% of 60 minutes?"
+  ],
+  "response": [
+   "1. 30 minutes because it is \\(\\frac{1}{2}\\) of an hour",
+   "2. 6 minutes because it is \\(\\frac{1}{10}\\) of an hour",
+   "3. 45 minutes because it is \\(\\frac{3}{4}\\) of an hour"
+  ]
+ },
+ "summary": [
+  "Certain percentages are easy to think about in terms of fractions.",
+  "[image: A double number line.] [image: Expand image]",
+  "Description: <p>A double number line with 5 evenly spaced tick marks. The tick marks on the top number line are labeled 0, one fourth times x, one half times x, three fourths times x, and x. The tick marks on the bottom number line are labeled 0 percent, 25 percent, 50 percent, 75 percent, and 100 percent.</p>",
+  "[image: A double number line.]",
+  "25% of a number is always \\(\\frac14\\) of that number.",
+  "For example, 25% of 40 liters is \\(\\frac14 \\boldcdot 40\\) or 10 liters.",
+  "50% of a number is always \\(\\frac12\\) of that number.",
+  "For example, 50% of 82 kilometers \\(\\frac12 \\boldcdot 82\\) or 41 kilometers.",
+  "75% of a number is always \\(\\frac34\\) of that number.",
+  "For example, 75% of 1 pound is \\(\\frac34\\) pound.",
+  "10% of a number is always \\(\\frac{1}{10}\\) of that number.",
+  "For example, 10% of 95 meters is 9.5 meters.",
+  "We can also find multiples of 10% using tenths.",
+  "For example, 70% of a number is always \\(\\frac{7}{10}\\) of that number, so 70% of 30 days is \\(\\frac{7}{10} \\boldcdot 30\\) or 21 days.",
+  "[image: A double number line.] [image: Expand image]",
+  "Description: <p>A double number line with 11 evenly spaced tick marks. For the top number line the number 0 is on the first tick mark, one tenth times x on the second, seven tenths times x on the eigthth, and x on the eleventh. The remaining tick marks are blank. On the bottom number line starting from the first tick mark, zero percent, 10 percent, 20 percent, 30 percent, 40 percent, 50 percent, 60 percent, 70 percent, 80 percent, 90 percent, and 100 percent are labeled.</p>",
+  "[image: A double number line.]"
+ ],
+ "vocabulary": {
+  "receptive": [],
+  "productive": []
+ },
+ "languageUses": [],
+ "sources": [
+  "https://im.kendallhunt.com/MS/teachers/1/3/13/index.html",
+  "https://im.kendallhunt.com/MS/teachers/1/3/13/preparation.html",
+  "IM 6–8 Math Teacher Guide, Grade 6 Unit 3 (CC BY), transcribed from page images"
+ ]
+}

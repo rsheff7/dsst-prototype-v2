@@ -1,0 +1,393 @@
+{
+ "status": "draft",
+ "reviewNotes": [
+  "No person has reviewed this file.",
+  "Crux is 16.2. It is the only activity with new mathematics: IM’s narrative says its purpose is for students to see that to find what percentage one number is of another, divide them and then multiply by 100. 16.3 is IM’s practice of that insight (“a chance to practice their new-found insight”), so it is mastery and can’t be the crux. Goal 2 (generalize, then justify orally) is 16.2’s goal, and the lesson synthesis states its rule.",
+  "Testable object: the last two columns of the 16.2 table (percentage, and time ÷ 20 as a decimal). Students fill them for Jada, Lin and Noah, then question 5 asks what they notice. The rule students state rests on that table; if the columns are wrong or half-filled, there is nothing to notice.",
+  "IM’s English-learner support for 16.2 is MLR8: Discussion Supports at the launch, so cruxLanguage uses it. IM’s phrases to amplify are “15 minutes is 75% of 20 minutes” and “75% of 20 minutes is equivalent to \\(\\frac{15}{20}\\)”. The run-routine moment (m6) and its breakdown (m7) are built from that support text. The routine catalog lists no breakdowns for MLR8, so m7’s “75” with no “of what” is Premo’s reading of IM’s support.",
+  "Upstream moments are both in the warm-up (16.1), the only activity before the crux. m1 is IM’s True or False breakdown, with IM’s catalog line “Who thought about it a different way?” used verbatim. m2 (item 4, “21 is not 30, so false”) is Premo’s; its link to the crux (the percentage C is of B is the fraction \\(\\frac{C}{B}\\)) is Premo’s reading.",
+  "Premo’s moments with no IM basis: m3 (Lin’s 24 minutes can’t be a percentage), m5 (“you just move the decimal”), m9 (9 people is 9%). m4 rests on IM’s launch note about grade 5 fraction-to-decimal work.",
+  "16.3’s English-learner support is MLR7: Compare and Connect in the synthesis. The extractor did not pull it out as a support: IM’s line under it reads “Design Principles(s):”, not “Design Principle(s):”, so the support text sits in 16.3’s synthesis in the IM layer. m11 cites 16.3’s routine list, which is right.",
+  "IM’s 16.2 response table has no name column and heads the last column “time/20”, where the task says “time ÷ 20”. Transcribed as printed in tg; this file says “time ÷ 20”.",
+  "The cool-down response says “burned” for the task’s “used.” Not repeated here.",
+  "Math checked: 15 ÷ 20 = 0.75, 24 ÷ 20 = 1.2, 9 ÷ 20 = 0.45; 100 ÷ 20 = 5% per minute; 9 ÷ 75 = 0.12, 51 ÷ 75 = 0.68, 84 ÷ 75 = 1.12; 3 people is 4% of 75 (75 ÷ 25 = 3, 100 ÷ 25 = 4); 25% of 512 = 128, not 125; 0.3 × 44 = 0.03 × 440 = 13.2; \\(\\frac{21}{28} = \\frac{30}{40} = \\frac{3}{4}\\); extension 0.96 × 1,386 = 1,330.56 million and 0.04 × 1,386 = 55.44 million; cool-down 130,000 ÷ 200,000 = 0.65.",
+  "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person.",
+  "2026-11-15: persona review fixes. Band frames match the plan’s new frames; each entry suggests a way in on the third read; m1 and m2 means reworded; m5 emerging uses its level’s frame.",
+  "2026-11-15: round-2 review fixes: developing and expanding frames match the plan’s finished reason sentence; m5’s developing say matches the card’s say line.",
+  "2026-11-15: round-3 review fixes: developing and expanding frames match the plan’s new reason (the quotient, per 100); developing reaching and m5 expanding move follow it."
+ ],
+ "crux": "16.2",
+ "cruxWhy": "16.2 is where the new idea arrives. IM says its purpose is for students to see that to find one number as a percentage of another, you divide, then multiply by 100. Goal 2 asks students to generalize that and justify it out loud, and question 5 is where they do. 16.3 is IM’s practice of the same idea, and the lesson synthesis states 16.2’s rule.",
+ "object": {
+  "name": "the last two columns",
+  "what": "The percentage and time ÷ 20 columns of the 16.2 table. Students fill them for Jada (15 minutes), Lin (24) and Noah (9) against Diego’s 20 minutes. Question 5 asks what students notice about them; the rule (divide by 20, then multiply by 100) is read off these two columns."
+ },
+ "goal": "Students find what percentage one number is of another by dividing, then multiplying by 100. They say out loud why that works for any two numbers.",
+ "rigorCheck": "Does every student still fill in the last two columns and say, out loud, what they notice about them?",
+ "watchFor": {
+  "16.1": "A student works out 25% of 512 in full before deciding, instead of comparing 512 with 500.",
+  "16.2": "“24 minutes can’t be a percentage. It’s more than Diego’s whole time.”",
+  "16.3": "“9 people is 9%”: the count read as the percentage, with 75 people as the whole."
+ },
+ "moments": [
+  {
+   "id": "m1",
+   "activityId": "16.1",
+   "kind": "routine-breakdown",
+   "routine": "True or False",
+   "see": "On the first statement, a student has 512 ÷ 4 = 128 and 500 ÷ 4 = 125 written out, then signals “false.”",
+   "means": "The answer is right, and the work is careful. True or False asks for a way without computing: both sides take \\(\\frac{1}{4}\\), and 512 is not 500.",
+   "say": "“Who thought about it a different way?”",
+   "dont": "Praise the full working and move to the next statement.",
+   "from": "im",
+   "sayFrom": "im",
+   "evidence": "encourage students to think about ways to reason that do not require complete computations.",
+   "rehearse": true,
+   "criteria": [
+    "Kept the full working as one valid way",
+    "Asked the class for a way with less working",
+    "Didn’t explain the shortcut yourself"
+   ]
+  },
+  {
+   "id": "m2",
+   "activityId": "16.1",
+   "kind": "student-thinking",
+   "see": "On the fourth statement: “False. 21 and 28 aren’t the same as 30 and 40.”",
+   "means": "They compare the numbers, not the percentages. The percentage 21 is of 28 is the fraction \\(\\frac{21}{28}\\), and it equals \\(\\frac{30}{40}\\). That is today’s idea in a simple case.",
+   "say": "What fraction of 28 is 21? Of 40 is 30?",
+   "dont": "Tell them both are 75%.",
+   "from": "premo",
+   "sayFrom": "premo",
+   "rehearse": true,
+   "criteria": [
+    "Took their comparison seriously",
+    "Asked what fraction each number is of the other",
+    "Didn’t tell them both are 75%"
+   ]
+  },
+  {
+   "id": "m3",
+   "activityId": "16.2",
+   "kind": "student-thinking",
+   "see": "On Lin’s row, a student stops: “24 minutes can’t be a percentage. It’s more than Diego’s whole time.”",
+   "means": "They know Diego’s 20 minutes is 100%, which is the key fact. They think 100% is the most there can be.",
+   "say": "If 20 minutes is 100%, what is 4 more minutes?",
+   "dont": "Tell them percentages can go over 100.",
+   "from": "premo",
+   "sayFrom": "premo",
+   "rehearse": true,
+   "criteria": [
+    "Started from what they know: 20 minutes is 100%",
+    "Asked about the extra minutes, not the rule",
+    "Didn’t tell them percentages can go over 100"
+   ]
+  },
+  {
+   "id": "m4",
+   "activityId": "16.2",
+   "kind": "im-misconception",
+   "see": "A student has \\(\\frac{9}{20}\\) in the last column and stops: “I don’t know how to make that a decimal.”",
+   "means": "They set up the quotient right. Writing a fraction as a decimal is grade 5 work, and that is what stops them, not the idea.",
+   "say": "What could you multiply 20 by to get 100?",
+   "dont": "Do the division for them.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Depending on students' strengths in grade 5 work, it may be beneficial to offer some strategies for writing a fraction in an equivalent decimal form before students start working.",
+   "rehearse": false
+  },
+  {
+   "id": "m6",
+   "activityId": "16.2",
+   "kind": "run-routine",
+   "routine": "MLR8: Discussion Supports",
+   "see": "Students start the jump rope questions. IM’s phrase, with blanks, is on the board, and partners will share soon.",
+   "say": "When you share, say it like this: what percentage, of what.",
+   "runSheet": [
+    {
+     "step": "Before work, post IM’s phrase with blanks: “___ minutes is ___% of 20 minutes.” Hold IM’s filled-in examples until Jada’s row is shared."
+    },
+    {
+     "step": "Ask students to use the phrase when they share Jada’s, Lin’s and Noah’s times."
+    },
+    {
+     "step": "When a student gives a bare number, ask them to say it again with “of.”"
+    },
+    {
+     "step": "Revoice or rephrase only when needed, then have the student say it back."
+    }
+   ],
+   "means": "Discussion Supports (MLR 8) gives students IM’s phrases for linking a time, its percentage and the fraction. IM says to invite students to use the phrases when stating their ideas, and to revoice and rephrase as necessary.",
+   "dont": "Say the full sentence for every student yourself.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "invite students to use these phrases when stating their ideas, revoicing and rephrasing as necessary.",
+   "rehearse": true,
+   "criteria": [
+    "Posted IM’s phrase before partner sharing started",
+    "Asked students to use “of” when they shared",
+    "Had students say it back after any revoicing"
+   ]
+  },
+  {
+   "id": "m7",
+   "activityId": "16.2",
+   "kind": "routine-breakdown",
+   "routine": "MLR8: Discussion Supports",
+   "see": "Partners share Jada’s row. One says: “75.” The other says: “Yeah, same.” They move on.",
+   "means": "Discussion Supports (MLR 8) has slipped. “75” names no percentage and no whole, so the phrase on the board was never used.",
+   "say": "75 what, of what? Say it with the phrase.",
+   "dont": "Say “75% of 20 minutes” for them.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "invite students to use these phrases when stating their ideas",
+   "rehearse": true,
+   "criteria": [
+    "Stopped the pair when a bare number was shared",
+    "Pointed them to the phrase on the board",
+    "Didn’t say the full phrase for them"
+   ]
+  },
+  {
+   "id": "m5",
+   "activityId": "16.2",
+   "kind": "language",
+   "routine": "MLR8: Discussion Supports",
+   "see": "On question 5, a student points at the last two columns: “You just move the decimal.”",
+   "means": "They have seen the pattern, which is the point of the table. What they haven’t said is what moving the decimal does (multiply by 100) or why it gives a percentage.",
+   "byBand": {
+    "emerging": {
+     "say": "What did you do to 0.75? Show me in the table.",
+     "move": "They point from 0.75 to 75 and say the step. They can work it out first in any language they share with a partner. Then they use their level’s frame.",
+     "nonverbal": "They point from the 0.75 to the 75 and write “× 100” between them."
+    },
+    "developing": {
+     "say": "Moving the decimal is multiplying by what? Why does that give a percentage?",
+     "move": "They say the step as multiplying by 100, then say why with the frame. They can work it out first in any language they share with a partner."
+    },
+    "expanding": {
+     "say": "Say it as a rule for any time, and say why.",
+     "move": "They state the rule with “divide” and “multiply by 100,” then give the reason: a percentage is the quotient per 100. They can work it out first in any language they share with a partner."
+    }
+   },
+   "dont": "Say “divide by 20 and multiply by 100” for them.",
+   "from": "premo",
+   "sayFrom": "premo",
+   "rehearse": true,
+   "criteria": [
+    "Asked every level the same question: what step, and why",
+    "Gave their level’s way in: frame, point, or rule",
+    "Didn’t say the rule for them"
+   ]
+  },
+  {
+   "id": "m8",
+   "activityId": "16.2",
+   "kind": "which-work-first",
+   "see": "On desks for Jada: “15 is \\(\\frac{3}{4}\\) of 20, so 75%,” a 5%-per-minute table, and “15 ÷ 20 = 0.75.”",
+   "means": "IM says to have students share strategies for the first three problems, then ask about the last two columns. One order that works: fraction of 20, then 5% per minute, then dividing by 20, which leads into question 5.",
+   "say": "Start us off. How did you find Jada’s percentage?",
+   "dont": "Show only the divide-by-20 way.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Have students share their strategies for the first three problems."
+  },
+  {
+   "id": "m9",
+   "activityId": "16.3",
+   "kind": "student-thinking",
+   "see": "On the first question, a student writes: “9 people is 9%.”",
+   "means": "They know a percentage is out of 100 and read 9 out of 100. Here the whole is 75 people, not 100.",
+   "say": "What percentage is the full 75 people?",
+   "dont": "Tell them to divide 9 by 75.",
+   "from": "premo",
+   "sayFrom": "premo"
+  },
+  {
+   "id": "m10",
+   "activityId": "16.3",
+   "kind": "which-work-first",
+   "see": "On desks for 9 people: a double number line counting by 3 people and 4%. Also “\\(\\frac{9}{75} = \\frac{3}{25} = \\frac{12}{100}\\),” and “9 ÷ 75 × 100.”",
+   "means": "IM says to sequence less-efficient methods before more-efficient ones, and to make sure everyone sees dividing 9 by 75, then multiplying by 100.",
+   "say": "Start us off. How did you find 9 people?",
+   "dont": "Skip the number line because it is slower.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Sequence less-efficient methods before more-efficient ones."
+  },
+  {
+   "id": "m11",
+   "activityId": "16.3",
+   "kind": "routine-breakdown",
+   "routine": "MLR7: Compare and Connect",
+   "see": "A number line is shared, then \\(\\frac{9}{75} = \\frac{12}{100}\\), and the class moves to the next question.",
+   "means": "In Compare and Connect (MLR 7), students set two ways side by side and say where one shows up in the other. Here: where 12% is on the number line.",
+   "say": "Where do you see 12% in the number line?",
+   "dont": "Say “both are right” and move on.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "as they identify, compare, and contrast different mathematical approaches, representations, and language."
+  }
+ ],
+ "patterns": [
+  {
+   "activityId": "16.1",
+   "type": "build",
+   "says": "“False. Both are a quarter, but 512 isn’t 500.”",
+   "why": "They see 25% and \\(\\frac{1}{4}\\) as the same and compare only what is left.",
+   "shows": "They reason about the structure without full working, which True or False is for.",
+   "from": "im",
+   "evidence": "False; 25% is equal to \\(\\frac{1}{4}\\), but 512 is not equal to 500."
+  },
+  {
+   "activityId": "16.1",
+   "type": "error",
+   "says": "“False. 21 and 28 aren’t 30 and 40.”",
+   "why": "They compare the numbers, not the fractions they make.",
+   "shows": "They read the statement closely. Seeing “the percentage 21 is of 28” as \\(\\frac{21}{28}\\) is next.",
+   "from": "premo"
+  },
+  {
+   "activityId": "16.2",
+   "type": "build",
+   "says": "“15 is \\(\\frac{3}{4}\\) of 20, so it’s 75%.”",
+   "why": "They see a friendly fraction of 20 and use the percentage it names.",
+   "shows": "They can link a fraction of the whole to a percentage.",
+   "from": "premo"
+  },
+  {
+   "activityId": "16.2",
+   "type": "almost",
+   "says": "“Each minute is 5%. 15 minutes is 75%.”",
+   "why": "They found the percentage for 1 minute, IM’s unit-rate row.",
+   "shows": "They use a unit rate. Connecting 5% per minute to “divide by 20, multiply by 100” is next.",
+   "from": "im",
+   "evidence": "A table showing the percentage for 1 minute might also help"
+  },
+  {
+   "activityId": "16.2",
+   "type": "error",
+   "says": "“24 minutes can’t be a percentage. It’s more than 100.”",
+   "why": "They think 100% is the most there can be.",
+   "shows": "They know Diego’s 20 minutes is 100%.",
+   "from": "premo"
+  },
+  {
+   "activityId": "16.2",
+   "type": "language",
+   "says": "“You just move the decimal.”",
+   "why": "They mean the percentage is 100 times the decimal, with no word for the step or the reason.",
+   "shows": "They noticed the pattern between the last two columns.",
+   "from": "premo"
+  },
+  {
+   "activityId": "16.2",
+   "type": "stretch",
+   "says": "“For any number of minutes, divide by 20 and times by 100. 20 minutes is the whole, 100%.”",
+   "why": "They state the rule for any time, with a reason.",
+   "shows": "They can generalize, the goal of question 5.",
+   "from": "im",
+   "evidence": "To find what percentage a number is of 20, divide it by 20, and then multiply by 100."
+  },
+  {
+   "activityId": "16.3",
+   "type": "error",
+   "says": "“9 people is 9%.”",
+   "why": "They read the count as a percentage, out of 100.",
+   "shows": "They know a percentage is out of 100. Seeing 75 people as the 100% is next.",
+   "from": "premo"
+  },
+  {
+   "activityId": "16.3",
+   "type": "build",
+   "says": "“3 people is 4%, so 9 people is 12%.”",
+   "why": "They split 75 people and 100% into 25 equal parts.",
+   "shows": "A less-efficient way IM expects, and one that explains the quicker one.",
+   "from": "im",
+   "evidence": "3 people is 4% of 75 people because 100% divided by 25 is 4%"
+  }
+ ],
+ "predict": {
+  "context": "Diego jumped rope for 20 minutes. Students find what percentage of his time Jada (15 minutes), Lin (24) and Noah (9) jumped. They fill a table with the percentage and time ÷ 20 as a decimal, then say what they notice about the last two columns.",
+  "question": "What will most students write about the last two columns?",
+  "countQuestion": "How many students will say the percentage is the decimal times 100, or divide by 20 then multiply by 100?",
+  "countUnit": "students will name the multiply-by-100 step.",
+  "tell": "If few do, students saw a pattern but have no words for the step. Ask what moving the decimal does: the language moment you’ll rehearse.",
+  "activityIds": [
+   "16.1",
+   "16.2"
+  ]
+ },
+ "cruxLanguage": {
+  "routine": "MLR8: Discussion Supports",
+  "phase": "launch",
+  "produceToday": [
+   "percentage",
+   "of",
+   "divide",
+   "multiply by 100"
+  ],
+  "byBand": {
+   "emerging": {
+    "entry": "On the third read, they point to Diego’s 20 minutes, then Jada’s 15 minutes, in order. IM’s phrase is posted with blanks. They point to a time and its percentage in the table and say it with the phrase. They can work it out first in any language they share with a partner.",
+    "frame": "___ minutes is ___% of 20 minutes. I ___, then ___. 1 minute is ___%.",
+    "does": "They can find a percentage for a friendly time, like 10 minutes being half.",
+    "reaching": "Saying a time and its percentage with “of,” then naming the two steps.",
+    "stretch": "They say the same for a second time in the table."
+   },
+   "developing": {
+    "entry": "On the third read, they suggest one way to start, such as finding 1 minute. They tell their partner one row with the phrase, then name both steps. You revoice only if needed, and they say it back. They can work it out first in any language they share with a partner.",
+    "frame": "To find what percentage ___ is of ___, I ___, then ___. That works because the quotient, ___, is how much of the whole it is, and a percentage is that amount per 100: ___%. It is more (or less) than 100% because ___.",
+    "does": "They can give a percentage and one step, such as “divide by 20.”",
+    "reaching": "Saying both steps and the reason: the quotient is part of the whole, and a percentage is that per 100.",
+    "stretch": "They say why Lin’s percentage is more than 100."
+   },
+   "expanding": {
+    "entry": "On the third read, they suggest two ways to start and say which is quicker. They state the rule for any time, with the reason, using the phrases. They can work it out first in any language they share with a partner.",
+    "frame": "To find what percentage ___ is of ___, I ___, then ___. That works because the quotient, ___, is how much of the whole it is, and a percentage is that amount per 100: ___%. Another way to see it is ___.",
+    "does": "They can state the rule for one row with numbers.",
+    "reaching": "Stating it for any time, and saying why multiplying by 100 gives a percentage.",
+    "stretch": "They say the rule for any whole, not only 20 minutes."
+   }
+  }
+ },
+ "cuts": [
+  {
+   "activityId": "16.1",
+   "note": "Keep it short: one way of reasoning per statement. Keep statement 4; it previews the crux."
+  },
+  {
+   "activityId": "16.3",
+   "note": "If you’re short of time, do the first question only and hear a less-efficient way, then dividing by 75. What is lost: practice past 100%, with 84 people."
+  },
+  {
+   "activityId": "16.2",
+   "note": "Skip IM’s fraction-to-decimal warm-up (\\(\\frac{15}{25}\\)) if students are fluent. Never cut question 5 or the closing discussion."
+  }
+ ],
+ "neverCut": [
+  "Every student fills in the last two columns",
+  "Question 5: what students notice, said out loud",
+  "The closing discussion and IM’s 1-minute row",
+  "Dividing then multiplying by 100, said as a rule"
+ ],
+ "inClass": {
+  "launch": "“When you share, say what percentage, of what time.”",
+  "launchFrom": "premo",
+  "momentIds": [
+   "m3",
+   "m7",
+   "m5"
+  ],
+  "sequence": [
+   "A student who used a friendly fraction of 20, such as \\(\\frac{3}{4}\\)",
+   "A student who found the percentage for 1 minute",
+   "A student who divided by 20 and wrote the decimal"
+  ]
+ },
+ "beforeClass": [
+  "Work the jump rope table yourself, including Lin’s 24 minutes, and say your answer to question 5 out loud.",
+  "For Discussion Supports (MLR 8): post IM’s phrase with blanks where every student can see it: “___ minutes is ___% of 20 minutes.” IM’s filled-in examples (15 minutes, 75%) give away Jada’s answer, so add them after her row is shared.",
+  "Have IM’s 1-minute table ready to add in the closing discussion (Diego 20 minutes, 100%; 1 minute, 5%)."
+ ]
+}

@@ -1,0 +1,383 @@
+{
+ "status": "draft",
+ "reviewNotes": [
+  "No person has reviewed this file.",
+  "Lesson 17 is the unit’s Let’s Put it to Work project. It doesn’t fit the usual shape: there is no cool-down, no lesson synthesis and no student summary, and IM says it may take more than one class. IM also says the two main activities’ times are “intentionally left blank,” though its pages print 35 and 15 minutes. Minutes here use 35 and 15 and are estimates.",
+  "Crux is 17.2. Both 17.2 and 17.3 are application tasks (IM: modeling, MP4). 17.2 was chosen because it carries goal 1’s “how much it will cost … and explain (orally) the reasoning,” IM’s synthesis asks students to explain their cost estimates (“Can all of these values be correct?”), and it is the only activity with IM routines or an English-learner support (MLR6: Three Reads). 17.3 carries the “how long it will take” half of goal 1 and uses percentages more directly; a reviewer could choose it, but it has no routine for the language layer to sit in.",
+  "Testable object: the 300 square feet, the total wall area each pair works out and the class agrees on before moving on (IM’s launch). Every paint amount and cost in 17.2, and the 24% in 17.3, rests on it.",
+  "Adapted for a project: the rehearsed moments sit at the points where the project goes wrong (the area misses a surface, the paint is planned for one coat, a student can’t explain why another cost is also right), not at a single new idea.",
+  "IM’s English-learner support for 17.2 is MLR6: Three Reads at the launch, so cruxLanguage uses it. The run-routine moment (m6) follows IM’s three reads: situation, important quantities (added to the floor plan), then strategies once the questions are shown. The breakdown (m2) is from the routine catalog.",
+  "IM’s moments: m1 (17.1, few students have painted; IM’s video suggestion), m3 (17.2 missed surfaces, IM’s narrative), m4 (17.2 units, IM’s narrative), m5 (17.2 one coat, IM’s synthesis), m8 (17.2 explain how much paint, IM’s synthesis order), m9 (17.3 drying time, IM’s misconception). Premo’s: m7 (the language moment and its by-level moves) and m10 (17.3, “one of four walls, so 25%”).",
+  "Math checked: east 9 × 8 = 72; south 80 − 15 = 65; west 72 − 21 = 51; north 3 × 8 + 6.5 × 8 = 24 + 52 = 76 (10 − 6.5 − 0.5 = 3 feet of wall west of the small wall); small wall 16 + 16 + 4 = 36; total 300. 175 ÷ 2 = 87.5 square feet per quart; two coats is 600 square feet; 600 ÷ 87.5 ≈ 6.86, so 7 quarts (612.5 square feet). 7 × 10.90 = 76.30; 2 × 34.90 = 69.80; 34.90 + 3 × 10.90 = 67.60; with IM’s $20 kit: 96.30, 89.80, 87.60. Coupon: 76.30 × 0.8 + 20 = 81.04; 32.70 × 0.8 + 34.90 + 20 = 81.06. 17.3: 72 ÷ 300 = 24%; 96 ÷ 24 = 4 minutes per 1%; 76 × 4 = 304; 304 − 150 = 154.",
+  "IM’s 17.2 response calls the cost rows “option A,” “B” and “C” without labeling them; read in row order (2 gallons, 7 quarts, 1 gallon and 3 quarts), the coupon numbers bear that out.",
+  "IM’s 17.2 synthesis has a stray “$” mid-paragraph, and its launch says “on the the plan”; 17.3’s misconception says “Point out the the problem.” Not repeated.",
+  "Student responses were transcribed from the Teacher Guide page images by a model, not checked by a person.",
+  "2026-11-15: persona review fixes. Two days, per Robert. Band frames match the plan’s new form; each entry suggests a way in on the third read. produceToday “per” became “cover.” object.what shortened. Deleted the stale note on the extractor’s junk text (the IM layer’s lessonSynthesis is now empty).",
+  "2026-11-15: round-2 review fixes: band frames match the plan’s new form (1 quart covers ___; so with ___); m7 see reworded; the in-class launch line and the 17.2 cut say where Day 1 ends.",
+  "2026-11-15: round-3 review fixes: Day 1 debrief added to the in-class launch; emerging entry shortened. m3 and m5 keep their short say lines (the checker caps Premo say length); the plan’s cards add the opening credit their checks praise."
+ ],
+ "crux": "17.2",
+ "cruxWhy": "17.2 carries the cost half of IM’s first goal. Its closing discussion is where students explain their reasoning out loud: “Can all of these values be correct?” It is also the only activity with an IM routine, Three Reads, for the floor plan.",
+ "object": {
+  "name": "the 300 square feet",
+  "what": "The total wall area to paint: north 76, east 72, south 65, west 51 and the small wall 36. Pairs work it out; the class agrees on it before moving on."
+ },
+ "goal": "Students use rates and percentages to work out what painting a room costs and how long it takes. They explain their reasoning out loud.",
+ "rigorCheck": "Does the class still agree on the 300 square feet before buying paint, and does every student explain how their own total cost was found?",
+ "watchFor": {
+  "17.1": "Hands stay down: few students have painted a room, so the tool list stalls at “paint.”",
+  "17.2": "“264 square feet”: four walls done, the small wall beside the closet left out.",
+  "17.3": "“Yes, 25%. The east wall is one of four walls.”"
+ },
+ "moments": [
+  {
+   "id": "m1",
+   "activityId": "17.1",
+   "kind": "student-thinking",
+   "see": "Asked for tools, a group writes “paint” and stops. Nobody in it has painted a room.",
+   "means": "The context is new to them, so they have nothing to list from. IM expects this and suggests a short video of someone painting.",
+   "say": "Watch the painter. What are they holding? What’s on the floor?",
+   "dont": "Read them your own list of tools.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "If no students (or only one or two) are familiar with room painting, consider finding and showing a video of someone doing detail painting.",
+   "rehearse": true,
+   "criteria": [
+    "Gave them something to look at, not a list",
+    "Asked what they noticed the painter using",
+    "Didn’t read them your own list"
+   ]
+  },
+  {
+   "id": "m2",
+   "activityId": "17.2",
+   "kind": "routine-breakdown",
+   "routine": "MLR6: Three Reads",
+   "see": "On the first read of the floor plan, a student is already writing 10 × 8.",
+   "means": "Three Reads (MLR 6) has slipped: the first read is for the situation, what we’re painting and what we aren’t. Calculating now skips which surfaces count, the step that goes wrong later.",
+   "say": "Pencils down for now. What are we painting, and what aren’t we?",
+   "dont": "Let the early calculation stand because it is right.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "To ensure that students know what they are being asked to do",
+   "rehearse": true,
+   "criteria": [
+    "Paused the calculating without saying it was wrong",
+    "Asked what gets painted and what doesn’t",
+    "Kept the questions covered until the third read"
+   ]
+  },
+  {
+   "id": "m3",
+   "activityId": "17.2",
+   "kind": "im-misconception",
+   "see": "A pair shows 264 square feet: “North, east, south, west. Done.”",
+   "means": "Their four walls are right. They left out the small wall beside the closet, 36 square feet on three sides. IM lists it among the likely omissions.",
+   "say": "Walk me around the room. Which surfaces get paint?",
+   "dont": "Tell them they forgot the small wall.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Because of the variations in the bedroom’s walls and features, keeping track of the shapes to be included or excluded from the area calculation may be challenging to students.",
+   "rehearse": true,
+   "criteria": [
+    "Kept their four walls as right",
+    "Asked them to trace every surface on the plan",
+    "Didn’t name the missing wall for them"
+   ]
+  },
+  {
+   "id": "m4",
+   "activityId": "17.2",
+   "kind": "im-misconception",
+   "see": "For the east wall, a student writes 3 × 8 = 24.",
+   "means": "The method is right: length times height. The 3 is yards and the 8 is feet, so the units need to match first.",
+   "say": "3 what, and 8 what?",
+   "dont": "Change the 3 to 9 for them.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Convert lengths to a common unit before determining area or before adding areas of different faces of the room.",
+   "rehearse": false
+  },
+  {
+   "id": "m6",
+   "activityId": "17.2",
+   "kind": "run-routine",
+   "routine": "MLR6: Three Reads",
+   "see": "The floor plan and the room’s list are up. The four questions are covered.",
+   "say": "We’ll read this three times. Nobody solves yet.",
+   "runSheet": [
+    {
+     "step": "Read 1: read the floor plan and the list. Ask what’s happening: what will be painted, and what won’t?"
+    },
+    {
+     "step": "Read 2: read again. Ask for the important quantities, and write each on the floor plan."
+    },
+    {
+     "step": "Read 3: show the questions. Ask for ways to solve that use the quantities on the plan."
+    },
+    {
+     "step": "Then pairs start the first question, the total wall area."
+    }
+   ],
+   "means": "Three Reads (MLR 6) helps students make sense of the floor plan and its text before the questions. IM says to add the quantities students name to the floor plan, and to reveal the questions only on the third read.",
+   "dont": "Answer the questions while you read.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "In the third read, reveal the questions and ask students to brainstorm possible solution strategies that connect to the important floor plan details and quantities they have listed.",
+   "rehearse": true,
+   "criteria": [
+    "Kept the questions covered until read 3",
+    "Wrote students’ quantities on the floor plan",
+    "Took ideas on read 3 without solving"
+   ]
+  },
+  {
+   "id": "m5",
+   "activityId": "17.2",
+   "kind": "im-misconception",
+   "see": "A student writes: “300 square feet. 2 quarts cover 175, so 4 quarts.”",
+   "means": "They used the rate well for one coat: 4 quarts cover 350 square feet. The task asks for two coats, so the paint must cover 600 square feet.",
+   "say": "How many coats? How much wall does that make?",
+   "dont": "Double their answer for them.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Students should see that using the total wall area alone to find the volume of paint to purchase is not going to be adequate, since two full coats are needed, and paint can only be purchased in specific quantities.",
+   "rehearse": true,
+   "criteria": [
+    "Said what they did right: used the rate for one coat",
+    "Sent them back to the question’s two coats",
+    "Didn’t double the answer for them"
+   ]
+  },
+  {
+   "id": "m8",
+   "activityId": "17.2",
+   "kind": "which-work-first",
+   "see": "On desks: 7 quarts ($96.30), 2 gallons ($89.80), and 1 gallon with 3 quarts ($87.60), each with IM’s $20 kit.",
+   "means": "IM says to begin with 1–2 students explaining how much paint is needed, then discuss costs. One order that works: 7 quarts first, since it follows the 2 quarts per 175 square feet directly, then the gallon choices.",
+   "say": "Start us off. How much paint did you need, and why?",
+   "dont": "Start with the cheapest total.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Begin by asking 1–2 students to explain their calculations on how much paint is needed."
+  },
+  {
+   "id": "m7",
+   "activityId": "17.2",
+   "kind": "language",
+   "see": "You ask, “Can all of these values be correct?” A student says: “Ours is $87.60. $96.30 is wrong.”",
+   "means": "Their own total is right, and they compared it with another. They haven’t yet explained what the other student bought, so both can be right.",
+   "byBand": {
+    "emerging": {
+     "say": "Can both be right? Point to what each one bought.",
+     "move": "They point to the containers on each total, then say one line with their level’s frame. They can work it out first in any language they share with a partner.",
+     "nonverbal": "They point to “7 quarts” on one total and “1 gallon, 3 quarts” on theirs."
+    },
+    "developing": {
+     "say": "Can both be right? Say what each one bought.",
+     "move": "They name the containers in each total, then explain their own with the frame. They can work it out first in any language they share with a partner."
+    },
+    "expanding": {
+     "say": "Can both be right? Explain how each total was found.",
+     "move": "They explain both totals: the same 7 quarts of paint, bought in different containers. They can work it out first in any language they share with a partner."
+    }
+   },
+   "dont": "Say “they bought different cans” for them.",
+   "from": "premo",
+   "sayFrom": "premo",
+   "rehearse": true,
+   "criteria": [
+    "Asked every level the same question: can both be right?",
+    "Gave their level’s way in: point, name, or explain",
+    "Didn’t explain the other total for them"
+   ]
+  },
+  {
+   "id": "m9",
+   "activityId": "17.3",
+   "kind": "im-misconception",
+   "see": "A student adds an hour for the paint to dry between coats.",
+   "means": "They are thinking like a real painter. The problem counts only painting time, not drying time.",
+   "say": "Read it again. Which time does the problem count?",
+   "dont": "Cross out their drying time for them.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Some students may try to account for the amount of time that it takes the paint to dry between applying the first and second coat."
+  },
+  {
+   "id": "m10",
+   "activityId": "17.3",
+   "kind": "student-thinking",
+   "see": "“Yes, 25%. The east wall is one of four walls.”",
+   "means": "They link a part of the job to a percentage, which is the right idea. The walls aren’t the same size: the east wall is 72 of 300 square feet.",
+   "say": "Are all four walls the same size? How do you know?",
+   "dont": "Tell them to divide 72 by 300.",
+   "from": "premo",
+   "sayFrom": "premo"
+  }
+ ],
+ "patterns": [
+  {
+   "activityId": "17.1",
+   "type": "build",
+   "says": "“Paint, brushes, rollers, tape, a ladder.”",
+   "why": "They picture the job and list what it needs.",
+   "shows": "They can model a real task, the start of the cost estimate.",
+   "from": "im",
+   "evidence": "Possible responses: paint, paint brushes, paint rollers, drop cloths, painter’s tape, mixing sticks, ladder, paint can opener"
+  },
+  {
+   "activityId": "17.2",
+   "type": "error",
+   "says": "“East wall: 3 × 8 = 24.”",
+   "why": "Yards times feet, before converting.",
+   "shows": "They know area is length times height.",
+   "from": "im",
+   "evidence": "Convert lengths to a common unit before determining area or before adding areas of different faces of the room."
+  },
+  {
+   "activityId": "17.2",
+   "type": "almost",
+   "says": "“264 square feet.”",
+   "why": "Four walls right, the small wall’s three sides missed.",
+   "shows": "They can find each wall’s area and subtract the window and door.",
+   "from": "im",
+   "evidence": "Look out for likely omissions or missed steps."
+  },
+  {
+   "activityId": "17.2",
+   "type": "error",
+   "says": "“2 quarts cover 175, so 4 quarts.”",
+   "why": "They planned one coat, not two.",
+   "shows": "They can use the rate, 2 quarts per 175 square feet.",
+   "from": "im",
+   "evidence": "since two full coats are needed"
+  },
+  {
+   "activityId": "17.2",
+   "type": "build",
+   "says": "“1 gallon is 4 quarts, plus 3 quarts is 7. That’s $67.60 of paint.”",
+   "why": "They mix container sizes to reach exactly 7 quarts.",
+   "shows": "They convert units and choose the cheapest way.",
+   "from": "im",
+   "evidence": "1 1-gallon container and 3 1-quart containers"
+  },
+  {
+   "activityId": "17.2",
+   "type": "language",
+   "says": "“Ours is $87.60. $96.30 is wrong.”",
+   "why": "They compare totals but don’t say what each bought.",
+   "shows": "They found a correct total of their own.",
+   "from": "premo"
+  },
+  {
+   "activityId": "17.2",
+   "type": "stretch",
+   "says": "“With the coupon, 7 quarts is $81.04, and 1 gallon with 3 quarts is $81.06. Almost the same now.”",
+   "why": "They apply 20% off only to the quarts, as the coupon says.",
+   "shows": "They can use a percentage inside a bigger problem.",
+   "from": "im",
+   "evidence": "option B is now $81.04, and option C is now $81.06"
+  },
+  {
+   "activityId": "17.3",
+   "type": "error",
+   "says": "“Yes, 25%. It’s one of four walls.”",
+   "why": "They treat the four walls as equal parts.",
+   "shows": "They link a part of the job to a percentage.",
+   "from": "premo"
+  },
+  {
+   "activityId": "17.3",
+   "type": "build",
+   "says": "“3 square feet is 1%, so 72 square feet is 24%.”",
+   "why": "They find 1% first, then scale.",
+   "shows": "A way IM expects; it leads to \\(\\frac{72}{300} \\boldcdot 100\\) directly.",
+   "from": "im",
+   "evidence": "students may solve it by figuring out that 3 square feet is 1% and scaling it to 72 square feet to correspond to 24%."
+  }
+ ],
+ "predict": {
+  "context": "The class has agreed the walls are 300 square feet. The paint ad says 2 quarts cover 175 square feet, and the walls need two coats. Paint comes in quarts ($10.90), gallons ($34.90) and 5 gallons ($165.00).",
+  "question": "What will most students plan to buy for paint?",
+  "countQuestion": "How many students will plan paint for both coats before choosing containers?",
+  "countUnit": "students will plan paint for both coats.",
+  "tell": "If few do, students used the rate for one coat only. Send them back to the two coats: the third moment you’ll rehearse.",
+  "activityIds": [
+   "17.1",
+   "17.2"
+  ]
+ },
+ "cruxLanguage": {
+  "routine": "MLR6: Three Reads",
+  "phase": "launch",
+  "produceToday": [
+   "square feet",
+   "cover",
+   "total cost"
+  ],
+  "byBand": {
+   "emerging": {
+    "entry": "On the first two reads, they point to the plan’s features (window, door, closet, small wall) and each quantity as it is named. On the third read, they point to the quantities on the plan in order, wall by wall, as a way to start. They can work it out first in any language they share with a partner.",
+    "frame": "I need ___ quarts. 1 quart covers ___ square feet. Two coats is ___ square feet. Buying ___ costs $___. With ___, the total cost is $___.",
+    "does": "They can point to a wall and its length on the floor plan.",
+    "reaching": "Naming the paint they need and the total cost, with the rate.",
+    "stretch": "They say why they need more paint than one coat."
+   },
+   "developing": {
+    "entry": "On the second read they name one quantity with its unit, such as “3 yards,” for you to add to the plan. On the third read they suggest a first step, such as changing yards to feet. They can work it out first in any language they share with a partner.",
+    "frame": "I need ___ quarts, because 1 quart covers ___ square feet, and two coats is ___ square feet. Buying ___ costs $___, so with ___, the total cost is $___. I chose those containers because ___.",
+    "does": "They can name a quantity and its unit from the list.",
+    "reaching": "Explaining how the rate gives the paint, then the cost.",
+    "stretch": "They say why a different total can also be right."
+   },
+   "expanding": {
+    "entry": "On the third read they suggest a plan that uses the quantities: each wall’s area, minus the window and door, then the total. They can work it out first in any language they share with a partner.",
+    "frame": "I need ___ quarts, because 1 quart covers ___ square feet, and two coats is ___ square feet. Buying ___ costs $___, so with ___, the total cost is $___. Another way to buy it is ___, which costs $___.",
+    "does": "They can plan the steps: area, then paint, then cost.",
+    "reaching": "Explaining why two different totals can both be right.",
+    "stretch": "They explain how the coupon changes which containers to buy."
+   }
+  }
+ },
+ "cuts": [
+  {
+   "activityId": "17.1",
+   "note": "Keep it short: one list, and IM’s $20 painting kit for supplies. Skip the warm-up only if you give students the $20 kit price."
+  },
+  {
+   "activityId": "17.3",
+   "note": "If you’re short of time, do the first question only: is the friend right about 25%? What is lost: the time saved, which uses 24% again."
+  },
+  {
+   "activityId": "17.2",
+   "note": "This lesson runs over two days. Day 1 gives IM’s full 15 minutes on the area, and ends once the class agrees on 300 square feet. Day 2 opens with paint and cost, then 17.3."
+  }
+ ],
+ "neverCut": [
+  "The class agrees on the 300 square feet",
+  "Paint planned for two coats",
+  "“Can all of these values be correct?”",
+  "Each student explains their own total cost"
+ ],
+ "inClass": {
+  "launch": "“Today we find the wall area. Tomorrow we buy the paint. We’ll read this three times. Nobody solves yet.” Day 1 ends with IM’s debrief: a few students share their wall area; settle disagreements until the class agrees on 300 square feet.",
+  "launchFrom": "premo",
+  "momentIds": [
+   "m3",
+   "m5",
+   "m7"
+  ],
+  "sequence": [
+   "A student who bought 7 quarts",
+   "A student who bought 2 gallons",
+   "A student who bought 1 gallon and 3 quarts"
+  ]
+ },
+ "beforeClass": [
+  "This lesson runs over two days. Day 1: 17.1, then 17.2 until the class agrees on 300 square feet. Day 2: the rest of 17.2, then 17.3.",
+  "Work 17.2 yourself first: the total wall area, the paint for two coats, and two different ways to buy it.",
+  "Find a floor plan of your classroom to display, as IM suggests. Also find a short video of someone painting a room, in case few students have painted.",
+  "For Three Reads (MLR 6): display the floor plan and the room’s list, with the four questions covered until the third read."
+ ]
+}

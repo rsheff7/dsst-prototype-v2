@@ -1,0 +1,74 @@
+{
+  "section": "Percentages",
+  "activities": {
+    "11.1": {
+      "response": [
+        "1. $40. Lin raised $40 since $40 is 100% of the goal.",
+        "2. $20. Half of 100 is 50, and half of $40 is $20, so Jada raised $20, which is 50% of $40.",
+        "3. $60. Since the first tick mark is $20, the third tick mark must be $60. This means Andre raised $60, which is 150% of the $40 goal."
+      ],
+      "extensionResponse": null
+    },
+    "11.2": {
+      "response": [
+        "| distance (miles) | 0 | 2 | 4 | 6 | 8 | 10 | 12",
+        "|  | 0% | 25% | 50% | 75% | 100% | 125% | 150%",
+        "1. 8 miles. She biked 8 miles total, so 100% of her distance is 8 miles.",
+        "2. 6 miles. 75% of 8 miles is 6 miles, so she biked 6 miles on Sunday.",
+        "3. 10 miles. Sample strategies:",
+        "Complete the double number line and observe that 125% aligns with 10 miles.",
+        "25% of the distance is 2 miles, and 100% of the distance is 8 miles, and \\(2 + 8 = 10\\).",
+        "Multiply 8 by 1.25 (or \\(\\frac{5}{4}\\))."
+      ],
+      "extensionResponse": null
+    },
+    "11.3": {
+      "response": [
+        "1. 45 pounds. Possible approaches:",
+        "Complete the double number line with multiples of 9 and 20%:",
+        "| weight (pounds) | 0 | 9 | 18 | 27 | 36 | 45",
+        "|  | 0% | 20% | 40% | 60% | 80% | 100%",
+        "Complete the double number line in 10% increments:",
+        "| weight (pounds) | 0 | 4.5 | 9 | 13.5 | 18 | 22.5 | 27 | 31.5 | 36 | 40.5 | 45",
+        "|  | 0% | 10% | 20% | 30% | 40% | 50% | 60% | 70% | 80% | 90% | 100%",
+        "20% is \\(\\frac{1}{5}\\) of 100%, so 100% is \\(5 \\boldcdot 9 = 45\\).",
+        "10% is half of 20%, so 10% is 4.5, and then 100% is 45.",
+        "2. 30 pounds. The strategies for this problem are similar to the previous ones, although they have to multiply 9 by \\(\\frac{10}{3}\\) to go directly from 9 pounds to the puppy’s adult weight, which might not occur to most students.",
+        "| weight (pounds) | 0 | 3 | 6 | 9 | 12 | 15 | 18 | 21 | 24 | 27 | 30",
+        "|  | 0% | 10% | 20% | 30% | 40% | 50% | 60% | 70% | 80% | 90% | 100%",
+        "3. Both puppies weigh the same right now. The puppies will weigh different amounts when they are adults."
+      ],
+      "extensionResponse": [
+        "1. 8%",
+        "2. $0.80 an hour"
+      ]
+    }
+  },
+  "coolDown": {
+    "task": [
+      "A large bottle of juice contains 500 milliliters of juice. A medium bottle contains 70% as much juice as the large bottle. How many milliliters of juice are in the medium bottle?",
+      "| juice (ml) | 0 |  |  |  |  |  |  |  |  |  | ",
+      "|  | 0% |  |  |  |  |  |  |  |  |  | 100%"
+    ],
+    "response": [
+      "350 ml. Possible strategies: 10% of 500 is 50, so 70% of 500 is \\(7 \\boldcdot 50 = 350\\).",
+      "| juice (ml) | 0 | 50 |  |  |  |  |  | 350 |  |  | 500",
+      "|  | 0% | 10% |  |  |  |  |  | 70% |  |  | 100%",
+      "| juice (ml) | percentage",
+      "| 500 | 100",
+      "| 50 | 10",
+      "| 350 | 70"
+    ]
+  },
+  "pages": [191, 193, 195, 196, 197, 198],
+  "notes": [
+    "Printed page = PDF page − 2: p193.png is printed 191 (11.1 response), p195.png is 193 (11.2 response), p197.png is 195 and p198.png is 196 (11.3 response and extension), p199.png is 197 (cool-down heading), p200.png is 198 (cool-down task and response). The lesson runs PDF pages 191–204; the other pages hold IM text already on the web pages, and the practice problems.",
+    "Double number lines are images. Each is given as two table rows, the line's label first, then the tick labels left to right. Where IM prints no label for the bottom line, its first cell is left empty. Arrows and tick marks are not reproduced.",
+    "11.2 response item 3 and 11.3 response item 1: the sample strategies are printed as hollow bullets; the bullets are not reproduced as characters. In 11.3 item 1, each double number line follows the bullet that introduces it.",
+    "11.3 response item 2 ends with a double number line counting by 3 pounds and 10%, given as two rows after the text.",
+    "Cool-down task: the double number line has 18 evenly spaced tick marks in the print. Only 0 (top) and 0% and 100% (bottom) are labeled; 100% is on the eleventh tick. The rows are given up to the 100% tick only; the seven ticks after it are not reproduced.",
+    "Cool-down response: on the double number line, the labels shown are 0, 50, 350, 500 on top and 0%, 10%, 70%, 100% below, at ticks 1, 2, 8 and 11. The ticks after 100% are not reproduced. The table that follows has headings “juice (ml)” and “percentage”.",
+    "The Teacher Guide gives no anticipated misconception or purpose line for the 11.4 cool-down.",
+    "No “Are You Ready for More?” appears for 11.1 or 11.2; only 11.3 has an extension."
+  ]
+}

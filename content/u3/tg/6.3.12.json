@@ -1,0 +1,87 @@
+{
+  "section": "Percentages",
+  "activities": {
+    "12.1": {
+      "response": [
+        "Things students may notice:",
+        "It looks like a tape diagram.",
+        "There are two rectangles that are the same length.",
+        "One rectangle is yellow and the other is blue and white.",
+        "One of the rectangles is divided into four pieces of equal length.",
+        "One of the rectangles is labeled 80.",
+        "Things students may wonder:",
+        "What do tape diagrams have to do with percentages?",
+        "What do the different colors mean?",
+        "What situation does this represent?",
+        "What percentage should be used in place of the question mark?"
+      ],
+      "extensionResponse": null
+    },
+    "12.2": {
+      "response": [
+        "1. For the diagram showing 20%.",
+        "a. The adult weight will be 45 pounds because there are 5 9's and \\(5 \\boldcdot 9 = 45\\).",
+        "b. The puppy is \\(\\frac{1}{5}\\) of its adult weight because the whole is divided into 5 pieces of equal length.",
+        "2. For the diagram showing ten 9's compared with one 9.",
+        "a. The dog's weight is 10 times greater than the weight of the puppy.",
+        "b. The puppy's weight is \\(\\frac{1}{10}\\) the weight of the dog.",
+        "c. The puppy's weight is 10% the weight of the dog."
+      ],
+      "extensionResponse": null
+    },
+    "12.3": {
+      "response": [
+        "1. a. Elena has $2.",
+        "b. Answers vary. Sample responses: Elena has \\(\\frac{2}{5}\\) as much money as Noah; Noah has \\(\\frac{5}{2}\\) as much money as Elena.",
+        "2. a. Diego has $7.50.",
+        "b. Answers vary. Sample responses: Diego has \\(1\\frac{1}{2}\\) as much money as Noah; Noah has \\(\\frac{2}{3}\\) as much money as Diego."
+      ],
+      "extensionResponse": null
+    },
+    "12.4": {
+      "response": [
+        "1. Andre brought 3 liters of water on the hike.",
+        "2. Andre drank 2.4 liters of water.",
+        "Possible strategies:",
+        "[diagram: a tape diagram of 2 equal parts, each labeled 1.5; the first part is labeled 50%]",
+        "[diagram: a tape diagram of 5 equal parts, each labeled 0.6; the first 4 parts together are labeled 80%]",
+        "[diagram: a double number line. water (liters): 0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3.0. Percentages: 0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 100%. 2.4 and 80% are circled together, and 3.0 and 100% are circled together.]",
+        "| water (liters) | percentage",
+        "| 1.5 | 50",
+        "| 3.0 | 100",
+        "| 0.6 | 20",
+        "| 2.4 | 80",
+        "[arrows on both sides of the table, from row to row: \\(\\boldcdot 2\\), then \\(\\boldcdot \\frac{1}{5}\\), then \\(\\boldcdot 4\\)]"
+      ],
+      "extensionResponse": [
+        "1. This is possible because it means he will bring \\(1\\frac{1}{2}\\) times as much water next time.",
+        "2. This is not possible, because it means he will drink more water than he brought. He can only do so if he drinks someone else's water!"
+      ]
+    }
+  },
+  "coolDown": {
+    "task": [
+      "Complete the statement with a situation and a unit of your choice. Then answer the question and draw a diagram.",
+      "A small ________ holds 75% as much as a large ________.",
+      "1. If the small holds 36 units, how much does the large hold?",
+      "2. Draw a diagram to illustrate your answer."
+    ],
+    "response": [
+      "Answers vary. Sample response. A small scoop holds 75% as much as a large scoop.",
+      "1. 48 units",
+      "2. Answers vary. Sample diagrams:",
+      "[diagram: a tape diagram of 4 equal parts, each labeled 12; the first 3 parts together are labeled 75%]",
+      "[diagram: a double number line. units: 0, 12, 24, 36, 48. Percentages: 0%, 25%, 50%, 75%, 100%.]"
+    ]
+  },
+  "pages": [205, 207, 209, 210, 211, 212, 213],
+  "notes": [
+    "Printed page = PDF page − 2 (p207.png is printed 205, p215.png is printed 213). Pages read: printed 205 (12.1 response), 207 (12.2 response), 209 (12.3 response), 210–211 (12.4 response and extension), 212–213 (cool-down task and response).",
+    "Lines in square brackets beginning “[diagram:” or “[arrows” are descriptions of IM's printed diagrams, written for this file. They are not IM's words. All other lines are copied from the print.",
+    "12.1 response: the two lists are bulleted in print; the bullets are not reproduced. The print says “One rectangle is yellow”; the rendered image looks orange, and the IM web alt text says orange. Kept as printed.",
+    "12.3 response: item numbers and sub-letters are printed side by side (“1. a. Elena has $2.”), so they are kept on one line.",
+    "12.4 response: the double number line's tick labels were read from the image; they rise by 0.3 liters and 10%. The ovals circle 2.4 with 80% and 3.0 with 100%.",
+    "Cool-down task: the two blanks are printed as long underscores; written here as ________.",
+    "Cool-down response: the second sample diagram is a double number line with only ticks and labels, no circles. The two sample diagrams are separate in print."
+  ]
+}

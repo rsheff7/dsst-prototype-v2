@@ -1,0 +1,152 @@
+Source: https://im.kendallhunt.com/MS/teachers/1/3/2/index.html
+
+## Lesson 2
+## Anchoring Units of Measurement
+ View Student Lesson
+## 2.1: Estimating Volume (10 minutes)
+## CCSS Standards
+ Building On
+ 4.MD.A.1
+ Routines and Materials
+ Instructional Routines
+ Think Pair Share
+## Warm-up
+ This warm-up prompts students to reason about appropriate units of measurement in estimation and to review related work in grade 5 (converting across different-sized standard units within a given measurement system and using conversions to solve multi-step, real-world problems).
+ If there is time after sharing the estimates and reasoning, give the students the side lengths of the salt shaker (the length, width, and height are all 2.5 cm) and ask them to use that information to check the reasonableness of their answer. It may help to know that 1 cubic centimeter is the same volume as 1 milliliter.
+## Launch
+ Arrange students in groups of 2. Tell students they will be estimating the volume of a tiny salt shaker. Ask students to give a signal when they have an estimate. Give students 2 minutes of quiet think time followed by 3 minutes to discuss their estimates with a partner. Ask them to discuss the following questions, displayed for all to see:
+ How close are your estimates to one another?
+ How did you decide on the unit of measure?
+ What was important to you in the image when making your estimate?
+ Could you record your measurement using a different unit?
+## Student Facing
+ Estimate the volume of the tiny salt shaker.
+ [image: A photo of a small salt shaker. A woman's hand holds a small, cubic shaped salt shaker that has an approximate edge length of the width of 2 of her fingers.] [image: Expand image] 
+ [image: A photo of a small salt shaker. A woman's hand holds a small, cubic shaped salt shaker that has an approximate edge length of the width of 2 of her fingers.] 
+## Student Response
+ Teachers with a valid work email address can click here to register or sign in for free access to Student Response.
+## Activity Synthesis
+ Invite a few students to share their estimates, how they chose their unit of measurement, and any information in the image that informs their estimates. After each explanation, solicit questions from the class that could help the student clarify his or her reasoning. Ask if there is another way to write each shared estimate in a different unit. Record the estimates and conversions and display them for all to see.
+ During the discussion, students may question if the volume indicates how much salt the shaker will realistically hold. This will depend on how high the salt is filled within the shaker. Welcome questions such as these and discuss how students’ assumptions impacted their estimates.
+## 2.2: Cutting String (10 minutes)
+## CCSS Standards
+ Building On
+ 2.MD.A.3
+ 4.MD.A.1
+ Routines and Materials
+ Instructional Routines
+ MLR8: Discussion Supports
+ Required Materials
+ Scissors
+ String
+## Optional activity
+ This task is an opportunity to assess students’ prior knowledge of standard units of length and find out the kinds of objects students already use as benchmarks for estimating length units.
+ Note that groups will likely produce their length of string pretty quickly. The majority of the time in this activity will be spent comparing and discussing with the whole group.
+ Expect some students who are assigned 1 meter to say that it is basically the same as 1 yard (which is acceptable during the group work). Be sure to address this in the class discussion.
+## Launch
+ Hold up a pen, an envelope, or another object whose length is likely unfamiliar to students (unlike an index card or a letter-size paper, which are more likely to be familiar). Choose one length of the object and ask students to estimate how long it is in centimeters. (Consider taking a quick walk around the room with the object so students can get a closer look.) Ask them to share their estimate with a partner, and then reveal the actual length.
+ Tell students that people who work with certain units of length on a repeated basis can get very good at estimating lengths with those units. For example, someone who sews may be very good at estimating yards of fabric. Explain that they will cut a piece of string as close to their assigned length as possible without using a measurement tool.
+ Arrange students in groups of 2. Distribute scissors and string. Assign each group one of the following lengths: 1 centimeter, 1 foot, 1 inch, 1 meter, or 1 yard. Not all of these lengths have to be used, but each length to be used should be assigned to 2–3 different groups so their estimations can be compared at the end.
+## Student Facing
+ Your teacher will assign you one of the following lengths:
+ 1 centimeter, 1 foot, 1 inch, 1 meter, or 1 yard.
+ Estimate and cut a piece of string as close to your assigned length as you can without using a measurement tool.
+## Student Response
+ Teachers with a valid work email address can click here to register or sign in for free access to Student Response.
+## Activity Synthesis
+ Gather the strings into groups based on their assigned length. Display each group of strings for all to compare, starting with the groups assigned 1 foot. Then display a measuring tool next to the group of strings and show the actual assigned length. For the shorter lengths, it may be useful to project them using a document camera, or tape them to a colored piece of paper so they can be held up for all to see. Discuss the following:
+ “How close are these estimates to each other?”
+ “How close are these estimates to the actual length?”
+ “What strategies or benchmarks were used to make estimates?”
+ Highlight any benchmark comparisons you heard students make when discussing with their partner (if the students themselves do not repeat these for the whole class). For example, a student might mention that an inch is approximately the length of your thumb, or a yard is approximately the length of your arm. However, now is not the time to provide students with a list of benchmarks they did not mention themselves.
+ Lastly, hold up both the yardstick and the meter stick to compare their actual lengths. Ensure students notice that 1 meter is slightly longer than 1 yard. Then, hold up all the strings that were assigned to be 1 yard or 1 meter and have students tell how to regroup them based on which of the two units they were closer to.
+ Speaking: MLR8 Discussion Supports. Ask students to chorally repeat phrases that include measurements in context (e.g., “This piece of string measures 1 centimeter,” “The length of this piece of string is 1 foot,” etc.). Use this to amplify mathematical uses of language to communicate about units of measure.
+ Design Principle(s): Support sense-making 
+## 2.3: Card Sort: Measurements (25 minutes)
+## CCSS Standards
+ Building On
+ 4.MD.A.1
+ Building Towards
+ 6.RP.A.3.d
+ Routines and Materials
+ Instructional Routines
+ MLR3: Clarify, Critique, Correct
+ Take Turns
+ Required Materials
+ Household items
+ Meter sticks
+ Pre-printed slips, cut from copies of the blackline master
+ Quart-sized bottle
+ Rulers
+ Yardsticks
+## Optional activity
+ The previous activity included only units of length, which are the most familiar to students since they started working with length in second grade and because rulers, yardsticks, and meter sticks are common classroom tools. This activity expands the list to include units of volume, weight, and mass. First, students categorize the units by the attribute they measure: length, volume, and weight or mass. Then they go through each type of unit, matching each provided benchmark object with the closest unit of measurement.
+ Display several examples of real objects that are depicted on the cards, so the students can see them at actual size. The quart-sized bottle is an especially crucial real example to have, because many things that are packaged in quarts are also commonly available in other sizes.
+ After each group of students has sorted the units by attribute, review their categories and prompt them to fix any mistakes. It is important they have the units grouped correctly before they move on to matching the object pictures with the units. If students are very unfamiliar with any of the units of volume, weight, or mass, tell them one object that matches with that unit and have them decide by comparison how other objects should be matched.
+ Expect some students to sort the units into plausible categories but which are not aligned to the purposes of this activity. Clarify as needed.
+ If they sort the units into customary and metric groups, say that all units of length should be grouped together, and if necessary, that there are two other categories.
+ If students separated units of weight from units of mass, tell them that for the sake of this activity, weight and mass should be grouped together. If necessary, say that we are referring to the weight of objects on Earth’s surface.
+ Also expect students to equate units that are very close (e.g., to say 1 liter is basically the same as 1 quart). This is acceptable at this point and will be investigated further in the next lesson.
+ When students have completed the sorting and matching, they form new groups to analyze the matches made by one of the original groups. Those who are analyzing someone else’s work can voice their support or disagreement with the placements of the cards (MP3). One student—who now belongs to a new group but whose work with the original group is being analyzed—can defend the placement decisions to the others.
+ At the end of the discussion, students mix the cards up and put them back in the envelopes for the next class to use.
+## Launch
+ Arrange students in groups of 4–6 in two dimensions. (Assign each student to a group and then a label within it, so that new groups—consisting of one student from each the original groups—can be formed later).
+ Say to students that they have just looked at standard units of length, but as length is not the only measurable attribute, they will look at other attributes. Tell students this activity has two parts—a sorting-and-matching part and a discussion—and that they will complete each part in a different group.
+ Explain the sorting-and-matching activity:
+ “Your group will receive two sets of cards. One set contains units of measurements. Your job is to sort them based on the attribute they measure. For example, all units that measure length should be grouped together. The second set of cards contains pictures of objects. Your job is to match each one with an appropriate unit that can be used to measure the object.”
+ Distribute sets of cards to be sorted. Ask students to pause after their group has sorted the unit cards and have their work reviewed before moving on to match the object cards.
+ Representation: Internalize Comprehension. Chunk this task into more manageable parts to differentiate the degree of difficulty or complexity by beginning with fewer cards. For example, give students cards a subset of the cards to start with and introduce the remaining cards once students have completed their initial sort or set of matches.
+ Supports accessibility for: Conceptual processing; Organization 
+## Student Facing
+ Your teacher will give you some cards with the names of different units of measurement and other cards with pictures of objects.
+ Sort the units of measurement into groups based on the attribute they measure. Pause here so your teacher can review your groups.
+ Match each picture card that has “L” in the top right corner with the closest unit to the length of the object.
+ Match each picture card that has “V” in the top right corner with the closest unit to the volume of the object.
+ Match each picture card that has “WM” in the top right corner with the closest unit to the weight or mass of the object.
+ Your teacher will assign you a new group to discuss how you matched the objects. If you disagree, work to reach an agreement.
+## Student Response
+ Teachers with a valid work email address can click here to register or sign in for free access to Student Response.
+## Anticipated Misconceptions
+ Students may struggle to sort objects that weigh 1 pound versus 1 kilogram. Tell them one object that matches with each unit and have them decide the other objects by comparison.
+## Activity Synthesis
+ When most groups have finished matching the objects with the units, have them form new groups consisting of one person from each original group. Assign each new group a set of matched cards (matched by an original group) to analyze. Display and read aloud the following guiding questions:
+ Did your original groups match the objects to the same units?
+ Which objects did your groups match differently?
+ Which objects or units were the easiest to match? Why?
+ Which objects or units were the hardest to match? Why? Observe whether any object or unit was matched incorrectly by most of the class and tell what the correct match is.
+ Representing, Listening, Conversing: MLR3 Clarify, Critique, Correct. After the secondary groups finish analyzing the original matches, present a match showing a conceptual (or common) error to the whole class. For example, students may match objects that weigh 1 pound with objects that weigh 1 kilogram or objects that weigh 1 gallon with objects with 1 liter and may reason that either unit can be used to measure the object. Ask students to work in pairs to identify and analyze the mismatch, and write a justification of the revision that includes units of measure. If time allows, ask students to share their written justifications with the class. This will help students understand the difference between standards units of length, volume, weight, and mass.
+ Design Principle(s): Cultivate conversation; Maximize meta-awareness 
+## Lesson Synthesis
+## Lesson Synthesis
+ After the preprinted slips for the sorting activity are put away, hold up real objects that match the objects pictured on some of the cards and ask the students to express the length, volume, weight, or mass of the object. For each unit of measure, consider having students record a benchmark object of their choice on a classroom display or in a notebook to serve as a reference for later.
+## 2.4: Cool-down - So Much in Common (5 minutes)
+## CCSS Standards
+ Building On
+ 4.MD.A.1
+ 5.MD.A.1
+## Cool-Down
+ Teachers with a valid work email address can click here to register or sign in for free access to Cool-Downs.
+## Student Lesson Summary
+## Student Facing
+ We can use everyday objects to estimate standard units of measurement.
+ For units of length:
+ 1 millimeter is about the thickness of a dime.
+ 1 centimeter is about the width of a pinky finger.
+ 1 inch is about the length from the tip of your thumb to the first knuckle.
+ 1 foot is the length of a football.
+ 1 yard is about the length of a baseball bat.
+ 1 meter is about the length of a baseball bat and ball.
+ 1 kilometer is about the distance someone walks in ten minutes.
+ 1 mile is about the distance someone runs in ten minutes.
+ For units of volume:
+ 1 milliliter is about the volume of a raindrop.
+ 1 cup is about the volume of a school milk carton.
+ 1 quart is about the volume of a large sports drink bottle.
+ 1 liter is about the volume of a reusable water bottle.
+ 1 gallon is about the volume of a large milk jug.
+ For units of weight and mass:
+ 1 gram is about the mass of a raisin.
+ 1 ounce is about the weight of a slice of bread.
+ 1 pound is about the weight of a loaf of bread.
+ 1 kilogram is about the mass of a textbook.
+ 1 ton is about the weight of a small car.

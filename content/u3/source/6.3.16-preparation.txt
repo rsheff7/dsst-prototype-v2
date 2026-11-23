@@ -1,0 +1,29 @@
+Source: https://im.kendallhunt.com/MS/teachers/1/3/16/preparation.html
+
+## Lesson 16
+## Finding the Percentage
+ View Student Lesson
+## Lesson Narrative
+ While students have found percentages with easy numbers before now, in this lesson they will develop a general structure (MP7) that will work for any numbers.
+## Learning Goals
+## Teacher Facing
+ Critique or justify (orally) statements about percentages and equivalent numerical expressions.
+ Generalize a process for finding the percentage that C is of B and justify (orally) why this can be abstracted as $\frac{C}{B} \boldcdot 100$.
+## Student Facing
+ Let’s find percentages in general.
+## Learning Targets
+## Student Facing
+ I can solve different problems like “60 is what percentage of 40?” by dividing and multiplying.
+## CCSS Standards
+ Addressing
+ 6.RP.A.3.c
+## Print Formatted Materials
+ Teachers with a valid work email address can click here to register or sign in for free access to Cool Down, Teacher Guide, and PowerPoint materials.
+ | Student Task Statements | pdf | docx 
+ | Cumulative Practice Problem Set | pdf | docx 
+ | Cool Down | | Log In 
+ | Teacher Guide | | Log In 
+ | Teacher Presentation Materials | pdf | docx 
+## Additional Resources
+ | Google Slides | | Log In 
+ | PowerPoint Slides | | Log In

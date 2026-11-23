@@ -1,0 +1,558 @@
+{
+ "status": "draft",
+ "reviewNotes": [
+  "No person has reviewed this file.",
+  "IM marks the whole lesson optional, and both activities after the warm-up are optional slots. The crux is 2.3, the card sort, which IM calls the lesson’s main task. If a school skips this lesson, nothing in Lessons 3–17 depends on this plan.",
+  "CLO: imGoal is IM goal 3 (“Identify which unit is closest … and explain (orally) the reasoning”), copied verbatim. Function “explain” matches the unit’s language progression for Lesson 2 (“reasoning for estimating and sorting measurements”), so there is no progression note. Goal 1 (“Compare (orally) the relative size…”) is carried by the frame’s last clause: “and 1 ___ is more (or less) than that.”",
+  "The form follows how a strong student matches a card: name the closest unit, compare the object with a known object, compare with the other unit. Precise terms are “closest to” and “about the same,” the comparison words every match needs; the board line quotes only those.",
+  "Exemplar facts checked against IM’s 2.3 response and summary: jar of peanut butter under 1 pound, “1 pound is about the weight of a loaf of bread,” 1 kilogram about a textbook. A kilogram is about 2.2 pounds. Posted sentence: a bottle cap is about 1 inch across (about 3 centimeters), not on IM’s cards. Lesson synthesis check: letter-size paper is 11 inches long, closest to 1 foot.",
+  "Routines at the crux (D1): Three Reads launches the card sort, a frame at release, and MLR1 Stronger and Clearer in the synthesis. D1 option 3: IM’s Clarify, Critique, Correct move, a common mismatch shown to the class and a written justification with units, is Stronger and Clearer’s first round. The flawed match is NEW and Premo’s, built on IM’s example (pound objects under kilogram); its reason sentence is Premo’s.",
+  "Release talk moments build in Take Turns, which IM lists for 2.3: one card each, said with the frame.",
+  "Timing: IM gives 2.3 25 minutes, with sort, check, match, new groups and the class fix. Stronger and Clearer adds a partner round; the run sheet keeps one round. A reviewer should check it fits.",
+  "The Premo run-routine (m7) and breakdown (m8) for Clarify, Critique, Correct are left out of 2.3’s momentIds; the synthesis card runs IM’s move inside Stronger and Clearer.",
+  "NEW student work, Premo’s: the m1 “2 centimeters,” the m3 two piles, the m4 kilogram pile, the m6 “It’s small. Ounce,” and the flawed match’s reason sentence.",
+  "Non-crux activities carry no language supports (D7).",
+  "2026-11-15: persona review fixes. Synthesis sounds now justify the bread with the box of 96 crayons (IM puts both under 1 pound); peanut butter was in the mismatch too. That sentence keeps “, not 1 kilogram” beyond the frame, because it answers the mismatch. Release talk moments restore IM’s new-group questions. Board line and precise terms aligned: precise is now “closest to” and “about the same” (both in the frame), and the board line quotes only those. Choice marks now “more (or less).” Emerging frame keeps the comparison with the other unit; developing and expanding frames add an open clause. m6 has one say line. Long sentences split. Each band in Premo’s cruxLanguage now has a way in on the third read.",
+  "2026-11-15: round-2 review fixes: new-group questions quoted from IM word for word; 2.3 cut now skips the rewrite if short; posted sentence is the bottle cap against a thumb tip; synthesis sounds end where the form ends (no “not 1 kilogram”); colons after “asks”; “It’s small. Ounce” moved to barriers; Premo frames now equal the plan’s.",
+  "2026-11-15: round-3 review fixes: Premo stretches now match the plan’s for every band; Premo produceToday carries both precise terms (“closest to,” “about the same”); board content line and other Premo lists drop the Oxford comma (house style). imGoal stays verbatim."
+ ],
+ "story": "Lesson 2 is optional. It gives every standard unit a size students can picture, using everyday objects. Lessons 3 and 4 then use ratios to convert between units.",
+ "previous": "In Lesson 1 students estimated a tree’s height and found minutes per window. Today they anchor how big each unit of length, volume and weight or mass is.",
+ "clo": {
+  "imGoal": "Identify which unit is closest to the length, volume, weight, or mass of a given object, and explain (orally) the reasoning.",
+  "function": "explain",
+  "form": "The ___ is closest to 1 ___. It is about the same ___ as a ___, and 1 ___ is more (or less) than that.",
+  "board": {
+   "content": "We will match everyday objects to the closest unit of length, volume, weight or mass.",
+   "language": "We will explain, out loud, which unit is “closest to” an object, naming an object “about the same” size."
+  },
+  "mode": "out loud",
+  "precise": [
+   "closest to",
+   "about the same"
+  ],
+  "informal": [
+   "about as heavy as",
+   "bigger",
+   "smaller",
+   "like a"
+  ],
+  "exemplar": "The jar of peanut butter is closest to 1 pound. It is about the same weight as a loaf of bread, and 1 kilogram is more than that.",
+  "lookFor": "Each cool-down answer picks the right unit and says which unit is bigger. Yards are longer than feet, gallons bigger than cups, kilograms heavier than pounds. It ties that to the picture, as IM does: Elena’s house is farther, her tank larger, her brother bigger.",
+  "posted": {
+   "sentence": "The bottle cap is closest to 1 inch. It is about the same length as a thumb tip, and 1 centimeter is less than that."
+  }
+ },
+ "activities": [
+  {
+   "id": "2.1",
+   "strategies": [
+    "Compare with a spoon: about 3 teaspoons, or about 15 milliliters (IM).",
+    "Picture a cube about 2.5 centimeters on each side: about 15 cubic centimeters.",
+    "Use a customary unit: about \\(\\frac{1}{2}\\) ounce."
+   ],
+   "barriers": [
+    "“Volume” may not yet mean how much something holds.",
+    "Milliliters and cubic centimeters may be new names for the same size."
+   ],
+   "misconceptions": [
+    "Giving a length, like “2 centimeters,” for the volume.",
+    "Picking a much bigger unit, like a cup, for a tiny shaker."
+   ],
+   "backPocket": [
+    "Is that how long it is, or how much it holds?",
+    "What spoon or cup would it fill?",
+    "Could you record your measurement using a different unit?"
+   ],
+   "momentIds": [
+    "m1"
+   ],
+   "grouping": "Pairs: 2 minutes of quiet think time, then 3 minutes to discuss estimates with a partner, using IM’s four questions on the board.",
+   "monitor": "Listen for the unit each pair chose and why. Choose a few estimates to share, and record each one with a conversion.",
+   "momentCriteria": {
+    "m1": [
+     "Asked whether it’s a length or how much it holds",
+     "Let them choose a volume unit themselves",
+     "Didn’t give them an answer to copy"
+    ]
+   }
+  },
+  {
+   "id": "2.2",
+   "strategies": [
+    "Use a body benchmark: an inch is about a thumb, a yard is about an arm (IM’s examples).",
+    "Use a known object: a foot is about a ruler or a shoe.",
+    "Start from one unit to get another: a meter is a little longer than a yard."
+   ],
+   "barriers": [
+    "Students may not have used centimeters or meters outside school.",
+    "Cutting without a tool can feel like a test; it’s an estimate."
+   ],
+   "misconceptions": [
+    "“A meter is basically a yard” (IM: fine in pairs; settle it in the discussion).",
+    "Mixing up an inch and a centimeter."
+   ],
+   "backPocket": [
+    "What on your body is about that long?",
+    "Is your string longer or shorter than a ruler?",
+    "Which stick is longer: the yardstick or the meter stick?"
+   ],
+   "momentIds": [
+    "m2"
+   ],
+   "grouping": "Pairs, each assigned one length; each length goes to 2–3 pairs so the strings can be compared.",
+   "monitor": "Listen for benchmarks pairs use, like a thumb for an inch, so you can highlight them if students don’t share them. Don’t hand out a list of benchmarks."
+  },
+  {
+   "id": "2.3",
+   "strategies": [
+    "Sort first by what each unit measures: 8 units of length, 5 of volume, 5 of weight or mass.",
+    "Match by comparing with an object you know: the loaf of bread is about 1 pound, so the jar of peanut butter goes there too.",
+    "Compare the two close units: a kilogram is more than a pound, so the textbook goes under 1 kilogram.",
+    "Use the real objects on display, like the quart bottle, to check sizes."
+   ],
+   "barriers": [
+    "Unit names students may rarely use: quart, milliliter, ton, kilogram.",
+    "Words: “attribute,” “volume,” and “mass.”",
+    "Objects some students may not know, like a draft horse or a guinea pig.",
+    "Saying it in everyday words: “It’s small. Ounce,” with no comparison. The match is right; the comparison words come next."
+   ],
+   "misconceptions": [
+    "Sorting into customary and metric piles instead of by what each unit measures (IM).",
+    "Putting pound objects, like the loaf of bread, under 1 kilogram (IM).",
+    "Keeping weight and mass in separate piles (IM: group them together today)."
+   ],
+   "backPocket": [
+    "What does this unit measure: length, volume, or weight?",
+    "Is it closer to the loaf of bread or the textbook?",
+    "Which is more: 1 pound or 1 kilogram? How do you know?",
+    "Which card do you know already? Compare this one with it."
+   ],
+   "momentIds": [
+    "m3",
+    "m4",
+    "m6"
+   ],
+   "grouping": "Groups of 4–6, each student labeled so new groups can form later. Sort, pause for your check, match, then new groups analyze another group’s matches.",
+   "monitor": "Check every group’s sort before they match. Track which objects most groups match wrongly, so you can show one in the synthesis."
+  }
+ ],
+ "crux": {
+  "threeReads": [
+   {
+    "focus": "The situation",
+    "say": "Listen as I read. No details yet: what will we do?",
+    "listenFor": "Sort cards with units on them, then match picture cards to units."
+   },
+   {
+    "focus": "Quantities and units",
+    "say": "Read it again. What do the units measure? What do L, V and WM mean?",
+    "listenFor": "Length, volume and weight or mass. L is length, V is volume, WM is weight or mass."
+   },
+   {
+    "focus": "Ways to solve it",
+    "say": "Read it once more. How might we decide which unit is closest?",
+    "listenFor": "Compare with something we know. Use the real objects. Compare two units that are close, like pound and kilogram."
+   }
+  ],
+  "release": {
+   "successCriteria": "When you place a card, say the closest unit and compare it with an object you know.",
+   "say": "Say the closest unit, and compare it with something you know.",
+   "talkMoments": [
+    "While matching, take turns: one card each. Say why with Today’s frame.",
+    "In the new groups, use IM’s questions: “Did your original groups match the objects to the same units?” “Which objects did your groups match differently?” “Which objects or units were the easiest to match? Why?” “Which objects or units were the hardest to match? Why?”"
+   ],
+   "byBand": {
+    "emerging": {
+     "frame": "The ___ is closest to 1 ___. It is about as heavy (or long, or big) as a ___. 1 ___ is more (or less) than that.",
+     "stretch": "They say the attribute word: “about the same weight as.”",
+     "nonverbal": "They place the picture card under its unit, then point to a real object on display that is about the same."
+    },
+    "developing": {
+     "frame": "The ___ is closest to 1 ___. It is about the same ___ as a ___, and 1 ___ is more (or less) than that. I know because ___.",
+     "stretch": "They name a second object that fits the same unit.",
+     "nonverbal": "They hold a real object, lift a book or bottle to compare, then point to the unit card."
+    },
+    "expanding": {
+     "frame": "The ___ is closest to 1 ___, not 1 ___, because ___. Another way to check: ___.",
+     "stretch": "They say why another group’s different match is less close.",
+     "nonverbal": "They line up three picture cards from smallest to largest under the units."
+    }
+   }
+  },
+  "synthesis": {
+   "routine": "MLR1: Stronger and Clearer Each Time",
+   "steps": [
+    "After new groups finish, show one common mismatch, like IM’s example: the loaf of bread and the jar of peanut butter under 1 kilogram. Its reason: “Pound or kilogram, either works.”",
+    "Pairs: say what is wrong, then write a justification of the fix that names the units (IM).",
+    "Round 1: meet a partner and read it aloud. The listener asks: “Which unit is more? How do you know?”",
+    "Rewrite it stronger and clearer. Read one or two aloud beside the real objects.",
+    "Leave the fixed match up for the lesson synthesis."
+   ],
+   "prompt": "What is wrong with this match? Where do these cards belong, and why?",
+   "sounds": "The loaf of bread is closest to 1 pound. It is about the same weight as a box of 96 crayons, and 1 kilogram is more than that."
+  }
+ },
+ "lessonSynthesis": {
+  "ideas": [
+   "Each unit measures one thing: length, volume, or weight or mass.",
+   "Everyday objects help us picture a unit: 1 pound is about a loaf of bread, and 1 kilogram is about a textbook.",
+   "Units with close sizes are still different: a kilogram is more than a pound, and a meter is a little longer than a yard."
+  ],
+  "pointTo": "Point to the fixed match from 2.3 and the real objects. Then, as IM says, hold up real objects and ask students for their length, volume, or weight. Students record one benchmark per unit.",
+  "check": {
+   "question": "Hold up a sheet of paper. Is its length closest to 1 inch, 1 foot, or 1 meter? Why?",
+   "sounds": "The sheet of paper is closest to 1 foot. It is about the same length as a ruler, and 1 meter is more than that."
+  }
+ },
+ "beforeClass": [
+  "For 2.3: one copy of IM’s blackline master per group of 4–6, cut into cards, each set on its own color if you can.",
+  "For 2.3: real objects from the cards on display, above all a quart-sized bottle.",
+  "For 2.2: scissors, string spools, and one ruler, yardstick and meter stick.",
+  "For Three Reads in 2.3: display the task statement, with the matching steps covered until the third read.",
+  "For the release: have the frames for your students’ levels ready to post or hand out.",
+  "For Stronger and Clearer: the mismatch ready to show (bread and peanut butter under 1 kilogram)."
+ ],
+ "cuts": [
+  {
+   "activityId": "2.2",
+   "note": "Optional. Cut it first; 2.3 does not need it. Lost: length benchmarks and meter against yard."
+  },
+  {
+   "activityId": "2.1",
+   "note": "Keep it short: two or three estimates, each in a second unit."
+  },
+  {
+   "activityId": "2.3",
+   "note": "If time is tight, start groups with fewer cards (IM’s access support), and keep Three Reads to one sentence each. If short, skip the rewrite: pairs read their written fix aloud once. Never cut the pause to check the sort."
+  }
+ ],
+ "rehearsal": [
+  {
+   "id": "math:2.1",
+   "activityId": "2.1",
+   "kind": "math",
+   "type": "task",
+   "name": "Do the warm-up yourself",
+   "where": "Before class. Try the warm-up students start with.",
+   "show": [
+    "Estimate the volume of the tiny salt shaker.",
+    "The photo: a small cube-shaped shaker held in a hand, about two fingers wide."
+   ],
+   "ask": "How much does the shaker hold? Give your estimate in two units.",
+   "aim": "Have an estimate and a reason, so you can take any close answer.",
+   "notes": [
+    "How students might see it:",
+    "Compare with a spoon: about 3 teaspoons, about 15 milliliters.",
+    "Picture a cube about 2.5 centimeters on each side: about 15 cubic centimeters.",
+    "IM also accepts about \\(\\frac{1}{2}\\) ounce."
+   ],
+   "checks": [
+    "Estimated close to 15 milliliters or 15 cubic centimeters",
+    "Used a unit of volume, not length",
+    "Wrote it in a second unit, like 3 teaspoons"
+   ]
+  },
+  {
+   "id": "m1",
+   "activityId": "2.1",
+   "kind": "moment",
+   "momentId": "m1",
+   "type": "student",
+   "name": "A student gives a length for a volume",
+   "where": "About 3 minutes into Activity 2.1. Students are in quiet think time.",
+   "show": [
+    "The task: Estimate the volume of the tiny salt shaker.",
+    "Their page: “2 centimeters.”"
+   ],
+   "student": "A student wrote “2 centimeters” as the volume.",
+   "ask": "What do you say to this student?",
+   "aim": "The student gives an estimate in a unit of volume.",
+   "say": [
+    "Is that how long it is, or how much it holds?"
+   ],
+   "goingOn": "Their length is a good estimate of one side. Volume asks how much the shaker holds, so it needs a different kind of unit.",
+   "ifNot": "What spoon would it fill?",
+   "checks": [
+    "Asked whether it’s a length or how much it holds",
+    "Let them choose a volume unit themselves",
+    "Didn’t give them an answer to copy"
+   ]
+  },
+  {
+   "id": "math:2.2",
+   "activityId": "2.2",
+   "kind": "math",
+   "type": "task",
+   "name": "Do the string task yourself",
+   "where": "Before class. Try the optional task, in case you teach it.",
+   "show": [
+    "Your teacher will assign you one of the following lengths:",
+    "1 centimeter, 1 foot, 1 inch, 1 meter, or 1 yard.",
+    "Estimate and cut a piece of string as close to your assigned length as you can without using a measurement tool."
+   ],
+   "ask": "Without a ruler, how would you show each length? What would you use?",
+   "aim": "Have a benchmark for each length, and know a meter is longer than a yard.",
+   "notes": [
+    "How students might do it:",
+    "Body benchmarks: an inch is about a thumb, a yard is about an arm (IM’s examples).",
+    "Known objects: a foot is about a ruler or a shoe; a centimeter is about the width of a pinky finger.",
+    "A meter is a little longer than a yard."
+   ],
+   "checks": [
+    "Named a benchmark for each of the five lengths",
+    "Knew a meter is a little longer than a yard",
+    "Picked benchmarks you could show to a student who is stuck"
+   ]
+  },
+  {
+   "id": "m2",
+   "activityId": "2.2",
+   "kind": "moment",
+   "momentId": "m2",
+   "type": "decision",
+   "name": "Settle meter against yard",
+   "where": "About 7 minutes into Activity 2.2. The strings are grouped by length. You hold the yardstick and the meter stick.",
+   "show": [
+    "On display: the 1-yard strings and the 1-meter strings.",
+    "In your hands: a yardstick and a meter stick."
+   ],
+   "student": "A student says: “A meter is basically a yard. They’re the same.”",
+   "ask": "What do you do, and what do you ask?",
+   "aim": "Students see a meter is slightly longer than a yard, and say so.",
+   "say": [
+    "Look at both sticks. Which one is longer?"
+   ],
+   "notes": [
+    "Then hold up the yard and meter strings. Ask students which pile each string belongs in (IM)."
+   ],
+   "why": "IM: the mix-up is fine in pairs, and the class settles it. Seeing the two sticks side by side anchors both sizes.",
+   "checks": [
+    "Held up the yardstick and the meter stick side by side",
+    "Let students say which is longer",
+    "Didn’t give the conversion"
+   ]
+  },
+  {
+   "id": "math:2.3",
+   "activityId": "2.3",
+   "kind": "math",
+   "type": "task",
+   "name": "Do the card sort yourself",
+   "where": "Before class. Do the card sort students do today.",
+   "show": [
+    "Unit cards: inch, foot, yard, mile, millimeter, centimeter, meter, kilometer, cup, quart, gallon, milliliter, liter, ounce, pound, ton, gram, kilogram.",
+    "L cards: thumb, ruler, dime, quarter, shoe, pinky finger, football, baseball bat, golf tee head, license plate, hockey puck, chest to fingers, fingers to opposite armpit, baseball bat and ball, distance run in 10 minutes, distance walked in 10 minutes.",
+    "V cards: raindrop, measuring cup, large milk jug, school milk carton, small paint can, reusable water bottle, large paint can, 1s cube, 1,000s cube, large sports drink bottle, packet of artificial sweetener, half of a large soda bottle.",
+    "WM cards: mouse, textbook, crow, loaf of bread, small car, slice of bread, paperclip, guinea pig, birthday card, draft horse, dollar bill, 2 raisins, jar of peanut butter, bunch of bananas, box of 96 crayons, hooded sweatshirt."
+   ],
+   "ask": "Sort the units by what they measure. Then match each picture to its closest unit.",
+   "aim": "Know every match, and an object you’d compare with for each unit.",
+   "notes": [
+    "How students might do it:",
+    "Sort first: 8 units of length, 5 of volume, 5 of weight or mass.",
+    "Match by comparing with a known object: the loaf of bread is about 1 pound, the textbook about 1 kilogram.",
+    "Close pairs: a kilogram is more than a pound. A liter is a little more than a quart. A meter is a little longer than a yard."
+   ],
+   "checks": [
+    "Sorted the units into length, volume and weight or mass",
+    "Put the loaf of bread under 1 pound and the textbook under 1 kilogram",
+    "Matched the large sports drink bottle to 1 quart and the large milk jug to 1 gallon"
+   ]
+  },
+  {
+   "id": "launch:2.3",
+   "activityId": "2.3",
+   "kind": "rounds",
+   "type": "routine",
+   "routine": "MLR6: Three Reads",
+   "language": true,
+   "name": "Read the directions three times",
+   "where": "About 2 minutes into Activity 2.3. Groups are formed and labeled. The directions are up; the cards aren’t out yet.",
+   "show": [
+    "Sort the units of measurement into groups based on the attribute they measure. Pause here so your teacher can review your groups.",
+    "Match each picture card that has “L” in the top right corner with the closest unit to the length of the object.",
+    "Match each picture card that has “V” in the top right corner with the closest unit to the volume of the object.",
+    "Match each picture card that has “WM” in the top right corner with the closest unit to the weight or mass of the object."
+   ],
+   "ask": "Read the directions aloud. After each read, ask one question. Nobody sorts yet.",
+   "aim": "Students know the two jobs and what each letter means, before the cards come out.",
+   "rounds": [
+    {
+     "ask": "You’ve read it once. What do you ask?",
+     "aim": "Students say what they will do, with no details."
+    },
+    {
+     "ask": "You’ve read it twice. What do you ask?",
+     "aim": "Students say what the units measure and what each letter means."
+    },
+    {
+     "ask": "You’ve read it three times. What do you ask?",
+     "aim": "Students suggest how to decide which unit is closest."
+    }
+   ],
+   "checks": [
+    "Read 1: asked what we will do, with no details",
+    "Read 2: asked what the units measure and what L, V and WM mean",
+    "Read 3: asked how we might decide, and took ideas without sorting"
+   ],
+   "why": "Three Reads makes sure students know what they’re being asked to do. Here, it makes “attribute” and the three letters clear before the sort.",
+   "runIt": [
+    "Read 1: read the directions aloud. Ask what we will do, with no details.",
+    "Read 2: read them again. Ask what the units measure, and what L, V and WM mean.",
+    "Read 3: read them once more. Ask how we might decide which unit is closest; take ideas.",
+    "Then hand out the unit cards only, and remind groups to pause after sorting."
+   ]
+  },
+  {
+   "id": "release:2.3",
+   "activityId": "2.3",
+   "kind": "release",
+   "type": "send",
+   "routine": "MLR8: Discussion Supports",
+   "language": true,
+   "name": "Send students to work",
+   "where": "About 4 minutes into Activity 2.3. Three Reads just ended. Groups have the unit cards.",
+   "ask": "What do you tell groups to say each time they place a card?",
+   "aim": "Students know to name the closest unit and compare with a known object.",
+   "say": [
+    "Say the closest unit, and compare it with something you know."
+   ],
+   "notes": [
+    "Success criteria: When you place a card, say the closest unit and compare it with an object you know.",
+    "When groups match: take turns, one card each.",
+    "They use Today’s frame: “The ___ is closest to 1 ___. It is about the same ___ as a ___, and 1 ___ is more (or less) than that.”"
+   ],
+   "checks": [
+    "Named what every match needs: the closest unit and a comparison",
+    "Pointed to Today’s frame on the board",
+    "Told groups to take turns, one card each"
+   ],
+   "sounds": "The jar of peanut butter is closest to 1 pound. It is about the same weight as a loaf of bread, and 1 kilogram is more than that.",
+   "why": "Naming the language before work starts means students practice it on every card, not only at the end."
+  },
+  {
+   "id": "m3",
+   "activityId": "2.3",
+   "kind": "moment",
+   "momentId": "m3",
+   "type": "student",
+   "name": "A group sorts by system",
+   "where": "About 7 minutes into Activity 2.3. Groups have paused for you to check their sort.",
+   "show": [
+    "Their sort, two piles:",
+    "“American”: inch, foot, yard, mile, cup, quart, gallon, ounce, pound, ton.",
+    "“Metric”: millimeter, centimeter, meter, kilometer, milliliter, liter, gram, kilogram."
+   ],
+   "student": "A group says: “We split them into American and metric.”",
+   "ask": "What do you say to this group?",
+   "aim": "The group re-sorts the units by what each one measures.",
+   "say": [
+    "Put all the units of length together. What’s left?"
+   ],
+   "goingOn": "Their sort is right for a different question: which system each unit belongs to. This task asks what each unit measures.",
+   "ifNot": "What does a cup measure, and what does a pound measure?",
+   "checks": [
+    "Said their sort makes sense, then named the task’s sort",
+    "Asked for the length units first",
+    "Didn’t re-sort the cards for them"
+   ]
+  },
+  {
+   "id": "m4",
+   "activityId": "2.3",
+   "kind": "moment",
+   "momentId": "m4",
+   "type": "student",
+   "name": "A group mixes up pound and kilogram",
+   "where": "About 11 minutes into Activity 2.3. Groups are matching the WM cards.",
+   "show": [
+    "Under 1 kilogram: loaf of bread, jar of peanut butter, textbook.",
+    "Under 1 pound: nothing yet.",
+    "On display: a textbook and a loaf of bread."
+   ],
+   "student": "A group put the loaf of bread, the jar of peanut butter and the textbook all under 1 kilogram.",
+   "ask": "What do you say to this group?",
+   "aim": "The group places each card by comparing it with a known object.",
+   "say": [
+    "Textbook: about 1 kilogram. Bread: about 1 pound. Where does the peanut butter go?"
+   ],
+   "goingOn": "They know all three are weights and feel close. They don’t yet have a sense of how heavy a pound and a kilogram are.",
+   "ifNot": "Hold the textbook, then the bread. Which is heavier?",
+   "checks": [
+    "Gave one object for each unit, as IM says",
+    "Let the group place the other cards by comparing",
+    "Didn’t move the cards for them"
+   ]
+  },
+  {
+   "id": "m6",
+   "activityId": "2.3",
+   "kind": "levels",
+   "type": "language",
+   "momentId": "m6",
+   "language": true,
+   "name": "Help a student say why it’s closest",
+   "where": "About 14 minutes into Activity 2.3. Groups are taking turns placing WM cards.",
+   "show": [
+    "Unit cards: 1 ounce, 1 pound, 1 kilogram.",
+    "The card in their hand: a mouse.",
+    "Today’s frame is on the board."
+   ],
+   "student": "A student places the mouse card under 1 ounce and says: “It’s small. Ounce.”",
+   "ask": "What do you say to this student?",
+   "aim": "The student compares the mouse with a known object to say why ounce.",
+   "goingOn": "The match is right, and they know an ounce is small. What the mouse is about the same as, and why not a pound, aren’t in words yet.",
+   "ifNot": "Which card here weighs about as much as the mouse?",
+   "sounds": "The mouse is closest to 1 ounce. It is about the same weight as a slice of bread, and 1 pound is more than that.",
+   "checks": [
+    "Asked every level the same question: why that unit is closest",
+    "Gave their level’s frame or way in without words",
+    "Didn’t say the comparison for them"
+   ],
+   "say": [
+    "Why is that unit closest? Compare it with something you know."
+   ]
+  },
+  {
+   "id": "synth:2.3",
+   "activityId": "2.3",
+   "kind": "synthesis",
+   "type": "routine",
+   "routine": "MLR1: Stronger and Clearer Each Time",
+   "language": true,
+   "name": "Make the fix stronger",
+   "where": "About 20 minutes into Activity 2.3. New groups have analyzed another group’s matches.",
+   "show": [
+    "A common mismatch, like IM’s example, on the board:",
+    "Under 1 kilogram: loaf of bread, jar of peanut butter.",
+    "Its reason: “Pound or kilogram, either works. They’re about the same.”",
+    "On display: a textbook, a loaf of bread."
+   ],
+   "ask": "Here is the mismatch. What do you ask pairs to do first?",
+   "aim": "Pairs write a fix that names both units and compares them.",
+   "notes": [
+    "Pairs say what is wrong, then write the fix with units (IM). Then one partner round."
+   ],
+   "say": [
+    "What is wrong with this match? Where do these cards belong, and why?"
+   ],
+   "checks": [
+    "Showed a mismatch that isn’t one student’s work",
+    "Had pairs write a fix that names both units",
+    "Ran one partner round, then had students rewrite"
+   ],
+   "sounds": "The loaf of bread is closest to 1 pound. It is about the same weight as a box of 96 crayons, and 1 kilogram is more than that.",
+   "avoid": "Fixing the match for the class yourself.",
+   "ifNot": "Which is heavier: the textbook or the loaf of bread?",
+   "why": "IM shows a common mismatch with Clarify, Critique, Correct; Premo runs it through Stronger and Clearer. Students fix work that isn’t theirs, then sharpen their words through talk.",
+   "runIt": [
+    "Show the mismatch. Pairs say what is wrong.",
+    "Pairs write a justification of the fix that names the units (IM).",
+    "Partner round: read it aloud. The listener asks: “Which unit is more? How do you know?”",
+    "Rewrite it stronger and clearer. Read one or two aloud beside the real objects.",
+    "Leave the fixed match up for the lesson synthesis."
+   ]
+  }
+ ]
+}

@@ -1,0 +1,65 @@
+{
+  "section": "Percentages",
+  "activities": {
+    "10.1": {
+      "response": [
+        "1. \\(\\frac{1}{4}\\) (or 0.25) of a dollar. There are four quarters in a dollar, and a quarter is 25 cents.",
+        "2. 150 cents. There are 100 cents in 1 dollar, so 1.50 dollars is multiplied by 100 to find the number of cents.",
+        "3. There are 100 cents in 1 dollar.",
+        "4. \\(\\frac{1}{100}\\) (or 0.01) of a dollar. Since there are 100 cents in 1 dollar, 1 dollar is divided by 100."
+      ],
+      "extensionResponse": null
+    },
+    "10.2": {
+      "response": [
+        "1. From left to right in the table: 1, 5, 10, 25, 50, 100",
+        "2. a. Quarter",
+        "b. Nickel",
+        "c. Penny",
+        "d. Dollar",
+        "e. Dime",
+        "f. Half-dollar",
+        "3. The value of 6 dimes are 60 cents and a dollar is 100 cents, so 6 dimes are 60% of the value of 1 dollar.",
+        "4. The value of 6 quarters is 150 cents and a dollar is 100 cents, so 6 quarters is 150% of the value of 1 dollar."
+      ],
+      "extensionResponse": [
+        "Answers vary. Sample response: A dollar and two dimes, four quarters and four nickels"
+      ]
+    },
+    "10.3": {
+      "response": [
+        "| value of coins (dollars) | 0 | 0.25 | 0.50 | 0.75 | 1.00 | 1.25 | 1.50",
+        "|  | 0% | 25% | 50% | 75% | 100% | 125% | 150%",
+        "1. $0.75",
+        "2. $1.50",
+        "3. 125%"
+      ],
+      "extensionResponse": null
+    }
+  },
+  "coolDown": {
+    "task": [
+      "1. Fill in the blank: The value of 8 dimes is ______% of the value of a dollar.",
+      "2. Name a combination of coins that is 130% of the value of a dollar."
+    ],
+    "response": [
+      "1. 80%. 8 dimes are 80 cents, and a dollar is 100 cents, so 8 dimes are 80% the value of 1 dollar.",
+      "2. Answers vary. Sample responses:",
+      "a. 1 dollar and 3 dimes",
+      "b. 5 quarters and 1 nickel",
+      "c. 13 dimes",
+      "d. 26 nickels"
+    ]
+  },
+  "pages": [176, 177, 179, 182, 183, 184],
+  "notes": [
+    "Printed page = PDF page − 2: p178.png is printed 176 and p179.png is 177 (10.1 response), p181.png is 179 (10.2 response and extension), p184.png is 182 (10.3 response), p185.png is 183 and p186.png is 184 (cool-down). The lesson runs PDF pages 176–190; the other pages hold IM text already on the web pages, and the practice problems.",
+    "10.2 response item 2: the item number and part a are printed on one line (“2.  a. Quarter”); parts b–f follow on their own lines.",
+    "10.2 response item 3 reads “The value of 6 dimes are 60 cents” as printed (“are”, not “is”); transcribed as is.",
+    "10.3 response: the double number line is an image. Its two lines are given as two table rows, each starting with the line's label, then the tick labels left to right. The top line is labeled “value of coins (dollars)”; the bottom line has no label in the print, so its first cell is left empty. The arrows and tick marks are not reproduced. In the print, the 0.75/75% and 1.50/150% pairs are each circled.",
+    "Cool-down: IM's title is “10.4 Eight Dimes”, Cool Down: 5 minutes. The Teacher Guide gives a purpose and an anticipated misconception that are not on the web pages, transcribed here word for word: “The purpose of this activity is to see how students make sense of the percentage as a rate per 100.” and “In the first question, students may write that 8 dimes is 8% of the value of a dollar because they account for the number of coins but not account their value. In the second question, students may put 130 cents as the answer, not differentiating between combination of coins and the value of the coins.”",
+    "Cool-down response item 2: the sample responses a–d are printed indented under the item; given as their own entries.",
+    "The blank in cool-down item 1 is a printed underline; it is written as six underscores.",
+    "No “Are You Ready for More?” appears for 10.1 or 10.3; only 10.2 has an extension."
+  ]
+}

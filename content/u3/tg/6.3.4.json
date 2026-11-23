@@ -1,0 +1,82 @@
+{
+  "section": "Unit Conversion",
+  "activities": {
+    "4.1": {
+      "response": [
+        "8. Possible strategies: \\(32 \\div 4\\) or \\(4 \\boldcdot 8\\).",
+        "24. Possible strategies: \\(32 \\div 4 \\boldcdot 3\\), or since one of the factors in the first question tripled and the other remained constant, the product triples (\\(8 \\boldcdot 3\\)).",
+        "12. Possible strategies: \\(32 \\div 8 \\boldcdot 3\\), or since \\(\\frac{3}{8}\\) is half of \\(\\frac{3}{4}\\), the product is half of the product in the second question (\\(24 \\div 2\\)).",
+        "24. Possible strategies: \\(64 \\div 8 \\boldcdot 3\\), or since one factor doubled from the previous problem and the other stayed the same, the product doubles (\\(12 \\boldcdot 2\\))."
+      ],
+      "extensionResponse": null
+    },
+    "4.2": {
+      "response": [
+        "1. a. About \\(\\frac{8}{5}\\) or 1.6 kilometers",
+        "b. About \\(\\frac{5}{8}\\) or 0.625 miles",
+        "2. Yes, she was speeding by about 25 miles per hour or about 40 kilometers per hour. Possible strategies:",
+        "Convert 80 kilometers per hour into miles per hour: \\(80 \\boldcdot \\frac{5}{8} = 50\\) and \\(75 - 50 = 25\\)",
+        "Convert 75 miles per hour into kilometers per hour: \\(75 \\boldcdot \\frac{8}{5} = 120\\) and \\(120 - 80 = 40\\)"
+      ],
+      "extensionResponse": null
+    },
+    "4.3": {
+      "response": [
+        "1. Sample reasoning for each part: There are \\(\\frac{10}{22}\\) kilograms per pound, so I can multiply by \\(\\frac{10}{22}\\) to convert from pounds to kilograms.",
+        "a. 40, because \\(88 \\boldcdot \\frac{10}{22} = 40\\)",
+        "b. 15, because \\(33 \\boldcdot \\frac{10}{22} = 15\\)",
+        "c. \\(2\\frac{1}{2}\\) (or equivalent). \\(5\\frac{1}{2} \\boldcdot \\frac{10}{22} = 2\\frac{1}{2}\\)",
+        "2. 55 pounds. Sample reasoning: Since 10 kilograms is 22 pounds, 1 kilogram is \\(\\frac{22}{10}\\) pounds. Therefore, 25 kilograms is 55 pounds because \\(\\frac{22}{10} \\boldcdot 25 = 55\\).",
+        "Here is a table that may be used to organize the work:",
+        "| weight (pounds) | weight (kilograms)",
+        "| 22 | 10",
+        "| 1 | \\(\\frac{10}{22}\\)",
+        "| 88 | 40",
+        "| 33 | 15",
+        "| \\(5\\frac{1}{2}\\) | \\(2\\frac{1}{2}\\)",
+        "| \\(\\frac{22}{10}\\) | 1",
+        "| 55 | 25"
+      ],
+      "extensionResponse": null
+    },
+    "4.4": {
+      "response": [
+        "1. Cup to tablespoon conversions:",
+        "a. 8 tablespoons of almonds, because \\(\\frac{1}{2} \\boldcdot 16 = 8\\).",
+        "b. 20 tablespoons of oatmeal, because \\(\\frac{1}{4} \\boldcdot 16 = 4\\) and \\(16 + 4 = 20\\).",
+        "c. 44 tablespoons of flour, because \\(2\\frac{3}{4} \\boldcdot 16 = 44\\).",
+        "2. Tablespoon to cup conversions",
+        "a. \\(1\\frac{3}{4}\\) cups of sugar. Possible strategies:",
+        "From earlier, 20 tablespoons is \\(1\\frac{1}{4}\\) cups. For 28 tablespoons, you need an additional 8 tablespoons, or an additional \\(\\frac{1}{2}\\) cup. \\(1\\frac{1}{4} + \\frac{1}{2} = 1\\frac{3}{4}\\).",
+        "1 tablespoon is \\(\\frac{1}{16}\\) of a cup. \\(\\frac{1}{16} \\boldcdot 28 = \\frac{28}{16}\\), which is equivalent to \\(1\\frac{12}{16}\\) and \\(1\\frac{3}{4}\\).",
+        "b. \\(\\frac{3}{8}\\) cup of cocoa powder. Possible strategies:",
+        "Notice that to convert from tablespoons to cups, always divide by 16, so \\(6 \\div 16 = \\frac{6}{16} = \\frac{3}{8}\\).",
+        "1 tablespoon is \\(\\frac{1}{16}\\) of a cup, so \\(\\frac{1}{16} \\boldcdot 6 = \\frac{6}{16} = \\frac{3}{8}\\)."
+      ],
+      "extensionResponse": null
+    }
+  },
+  "coolDown": {
+    "task": [
+      "A large bucket holds 5 gallons of water, which is about the same as 19 liters of water.",
+      "A small bucket holds 2 gallons of water. About how many liters does it hold?"
+    ],
+    "response": [
+      "\\(\\frac{38}{5}\\) (or 7.6 or equivalent). Possible strategy:",
+      "| gallons | liters",
+      "| 5 | 19",
+      "| 1 | \\(\\frac{19}{5}\\)",
+      "| 2 | \\(\\frac{38}{5}\\)"
+    ]
+  },
+  "pages": [77, 79, 80, 82, 84, 85, 86],
+  "notes": [
+    "Printed page = PDF page − 2: p79.png is printed 77 (4.1 response), p81.png and p82.png are printed 79–80 (4.2 response), p84.png is printed 82 (4.3 response), p86.png and p87.png are printed 84–85 (4.4 response), p88.png is printed 86 (cool-down task and response).",
+    "4.1 response items are unnumbered bullets in print, each starting with its answer (8, 24, 12, 24). The bullets are not reproduced as characters. Multiplication dots are printed “·” and written \\boldcdot, as in the other lessons.",
+    "4.2 response: “1.” and “a.” are printed on one line; the two strategy lines under item 2 are open-circle sub-bullets in print, not reproduced as characters.",
+    "4.3 response: the table is printed below the answers under “Here is a table that may be used to organize the work:”.",
+    "4.4 response: the strategy lines under 2a and 2b are square sub-bullets in print, not reproduced as characters. Item 2b’s first strategy line runs onto printed page 85.",
+    "No “Are You Ready for More?” appears in Lesson 4.",
+    "Nothing on these pages was unreadable."
+  ]
+}

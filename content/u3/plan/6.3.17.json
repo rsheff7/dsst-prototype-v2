@@ -1,0 +1,607 @@
+{
+ "status": "draft",
+ "reviewNotes": [
+  "No person has reviewed this file.",
+  "What was adapted: Lesson 17 is IM’s Let’s Put it to Work project, with no cool-down, no lesson synthesis and no student summary. IM says it may take more than one class. The plan keeps the usual shape: crux 17.2, with Three Reads, a release frame, and Collect and Display. Where IM has nothing, Premo wrote it: the look-for checks the crux’s closing question instead of a cool-down, and the lesson synthesis is Premo’s. The planning view’s “Do the cool-down” step has nothing of IM’s to show for this lesson.",
+  "Story and previous: from IM’s lesson narrative (“applying and integrating many concepts and skills from the past three units”), Lesson 16’s goal (what percentage C is of B), and unit.json’s sections (Let’s Put it to Work is Lesson 17 alone).",
+  "Crux is 17.2, as in Premo’s layer. 17.3 (painting time, percentages) carries the other half of goal 1 and is a fair alternative, but it has no IM routine or support.",
+  "CLO: imGoal is IM goal 1, verbatim. Function is “explain,” from the goal. unit.json’s language progression lists “interpret” (situations involving measurement, rates, and cost) and “justify” (reasoning about costs and time) for Lesson 17, so there is a progressionNote. Goal 2 (simplifying assumptions) is in the synthesis’s “Can all of these values be correct?” but not in the objective.",
+  "Per D1: Three Reads is IM’s own 17.2 support, so the launch card follows IM’s three reads, including adding quantities to the floor plan. MLR 8 frames come at release, which here is after the class agrees on 300 square feet, before paint and cost: the CLO is about the cost. MLR 2 Collect and Display in the synthesis builds in IM’s own moves (D1 option 3): explain the paint first, poll cost ranges, ask “Can all of these values be correct?”, record and display.",
+  "Minutes inside 17.2 are estimates. IM prints 35 minutes, but its launch gives 15 minutes of quiet think time for the area alone, and its narrative says the times are “intentionally left blank.” Day 1 cards count from the start of 17.2; Day 2 cards count from the release.",
+  "17.2 momentIds: m3, m5, m7, within the cap of three. m2 (Three Reads slipping) is not a card; its line is in the launch card’s notes. m4 (yards times feet) is a back-pocket question. m8’s share order is in the synthesis steps. m6 (running Three Reads) is the launch card’s job.",
+  "17.2 depends on 17.1 for IM’s $20 painting kit, which the cost answers include. If 17.1 is skipped, the teacher gives the price.",
+  "Math checked: see Premo’s notes (300 square feet; 7 quarts; $89.80, $96.30, $87.60; $81.04, $81.06; 24%, 304, 154). The lesson synthesis check: two coats is 2 × 250 = 500; 4 quarts cover 480, 5 cover 600, so 5 quarts; 5 × $12 + $10 = $70.",
+  "NEW (Premo-written, unreviewed): every student’s words and work on the cards, every ifNot, the goingOn lines, the frames by level and their nonverbal ways in, the Sounds like lines, and the whole lesson synthesis.",
+  "Non-crux activities carry no language supports (D7).",
+  "2026-11-15: persona review fixes. Robert’s decisions: the lesson runs over two days (story, beforeClass, every card’s where, the 17.2 cut), and math:17.2 now shows Premo’s description of IM’s floor plan, read from Teacher Guide printed page 275 (PDF 277), with every wall worked in the notes. New clo.form (Elena): “I need ___ quarts, because ___ quarts cover ___ square feet…”. Precise “per” became “cover,” since the form no longer says “per”; the board line matches. Exemplar, posted, release, m7, synthesis and check sounds follow the form. Look-for is now 17.3’s first question, in writing (24%). Synthesis card say and sounds match crux.synthesis. IM’s full cost ranges restored. Band frames: emerging keeps every step; developing and expanding add a clause. Nonverbal moves are student actions. The lesson synthesis check now has two coats and a brush, so it fits the form: 2 × 250 = 500; 4 quarts cover 480, 5 cover 600; 5 × $12 + $10 = $70. Posted: 5 × 90 = 450 ≥ 400; 5 × $8 = $40, plus $15 = $55.",
+  "Look-for: it checks goal 1’s percentage half (17.3’s 24%), not the objective. The objective’s frame is about the cost, which the closing discussion hears but doesn’t record per student.",
+  "2026-11-15: round-2 review fixes: two days made real (Day 1 keeps IM’s 15 minutes on the area; Day 2 cards count from the release; Day split on the launch and release lines and the cut). New form names the rate (1 quart covers 87.5) and the other supplies (“so with ___”). Posted sentence fixed: 6 quarts cover 525 ≥ 500; 6 × $8 = $48, plus a $15 brush, $63. Synthesis sounds cut to one total. Three Reads shows IM’s six list lines. Day 2 board repost added. Checker note: “Start of Day 2” isn’t a where form the checker knows.",
+  "2026-11-15: round-3 review fixes: posted sentence uses 1 quart per 90 square feet, so 87.5 isn’t given away (6 × 90 = 540 ≥ 500; 5 × 90 = 450 < 500; 6 × $8 = $48, plus $15 = $63). Two-night prep line in beforeClass[0] and the 17.2 cut; its card numbers are for a crux-only night (17.2’s seven cards), and shift if 17.1 is added. Day 1 debrief added to the launch card. m3 and m5 say lines now make the moves their checks praise; m5 shows the student’s line once. m7 sounds follow the expanding frame ($87.60; another way, 7 quarts, $96.30). Synthesis sounds: “Yes, if each one buys enough paint for 600 square feet,” plus one total. 17.1’s “price the paint now” removed from misconceptions (IM’s sequencing)."
+ ],
+ "story": "Lesson 17 puts the unit to work, over two days. Students plan a painting job: wall area, paint from a rate, cost with a coupon, and time with percentages. Day 1 is the warm-up and the wall area, ending when the class agrees on 300 square feet. Day 2 opens at the release: paint, cost, the coupon and the discussion, then 17.3.",
+ "previous": "In Lesson 16 students found what percentage one number is of another; today they use that, and unit rates, in one project.",
+ "clo": {
+  "imGoal": "Apply rates and percentages to calculate how long it will take and how much it will cost to complete a painting project, and explain (orally) the reasoning.",
+  "function": "explain",
+  "form": "I need ___ quarts, because 1 quart covers ___ square feet, and two coats is ___ square feet. Buying ___ costs $___, so with ___, the total cost is $___.",
+  "board": {
+   "content": "We will use rates and percentages to find what a painting project costs.",
+   "language": "We will explain, out loud, how we found the cost, using “square feet,” “cover” and “total cost.”"
+  },
+  "mode": "out loud",
+  "precise": [
+   "square feet",
+   "cover",
+   "total cost"
+  ],
+  "informal": [
+   "cans",
+   "how much paint",
+   "a bit extra",
+   "the kit"
+  ],
+  "exemplar": "I need 7 quarts, because 1 quart covers 87.5 square feet, and two coats is 600 square feet. Buying 1 gallon and 3 quarts costs $67.60, so with the $20 kit, the total cost is $87.60.",
+  "lookFor": "Each student’s written answer to 17.3’s first question: the friend is not quite right. The east wall is 72 of 300 square feet, so \\(\\frac{72}{300} \\boldcdot 100 = 24\\%\\), not 25%. Finding 1% first (3 square feet) also counts.",
+  "posted": {
+   "sentence": "I need 6 quarts, because 1 quart covers 90 square feet, and two coats is 500 square feet. Buying 6 quarts costs $48, so with a $15 brush, the total cost is $63."
+  },
+  "progressionNote": "IM’s unit overview lists “interpret” and “justify” for this lesson. The objective follows the lesson’s own goal: “explain.”"
+ },
+ "activities": [
+  {
+   "id": "17.1",
+   "strategies": [
+    "IM’s list: paint, paint brushes, paint rollers, drop cloths, painter’s tape, mixing sticks, ladder, paint can opener.",
+    "Some groups add a cost for each item. IM: hardware stores sell painting kits (brushes, rollers, a tray, a drop sheet) for around $20."
+   ],
+   "barriers": [
+    "Some students have never painted a room or seen one painted.",
+    "Tool names (roller, drop cloth, painter’s tape) may be new words."
+   ],
+   "misconceptions": [
+    "Listing only paint, because the job is unfamiliar."
+   ],
+   "backPocket": [
+    "What is the painter holding?",
+    "What protects the floor?",
+    "What might this cost at a hardware store?"
+   ],
+   "momentIds": [
+    "m1"
+   ],
+   "grouping": "Small groups, each with at least one student who has painted, if possible. IM: poll the class first.",
+   "monitor": "Listen for tools beyond paint. Record the class list, with costs where you can, and keep it up all lesson."
+  },
+  {
+   "id": "17.2",
+   "strategies": [
+    "Area, wall by wall: east 72, south 65 (80 minus the 15 square foot window), west 51 (72 minus the 21 square foot door). North 76, small wall 36. Total 300 square feet.",
+    "Paint: 2 quarts per 175 square feet is 87.5 square feet per quart. Two coats is 600 square feet, so about 6.86 quarts: buy 7.",
+    "Containers: 7 quarts ($76.30), 2 gallons ($69.80), or 1 gallon and 3 quarts ($67.60). With IM’s $20 kit: $96.30, $89.80 or $87.60.",
+    "Coupon, 20% off quarts only: 7 quarts gives $81.04; 1 gallon and 3 quarts gives $81.06; 2 gallons stays $89.80."
+   ],
+   "barriers": [
+    "Floor plans may be new: which lines are walls, the door, the window, the closet.",
+    "Mixed units: yards for two walls, feet for the rest; quarts and gallons for paint.",
+    "Words such as “coats,” “mirrored closet doors” and “floor-to-ceiling.”"
+   ],
+   "misconceptions": [
+    "Leaving out a surface: the small wall, the 3 square feet above the door, or the wall above and below the window.",
+    "Multiplying yards by feet: 3 × 8 for the east wall.",
+    "Planning paint for one coat only, from 300 square feet.",
+    "Language: “Ours is right, theirs is wrong,” with no reason for either total."
+   ],
+   "backPocket": [
+    "Walk me around the room. Which surfaces get paint?",
+    "3 what, and 8 what?",
+    "How many coats? How much wall does that make?",
+    "Can both be right? What did each one buy?"
+   ],
+   "momentIds": [
+    "m3",
+    "m5",
+    "m7"
+   ],
+   "grouping": "Pairs: quiet think time alone on the area, then partners compare. Class agrees on the area, then each student finishes alone.",
+   "monitor": "IM: notice who organizes their work methodically and who needs help. Track each pair’s area, then each student’s containers and total.",
+   "dependsOn": {
+    "activityId": "17.1",
+    "note": "IM’s cost answers include the $20 painting kit from 17.1’s closing. If you skip 17.1, give students that price before question 3."
+   }
+  },
+  {
+   "id": "17.3",
+   "strategies": [
+    "Divide, then multiply by 100: \\(\\frac{72}{300} \\boldcdot 100\\) is 24%, so the friend is not quite right.",
+    "1% first: 3 square feet is 1%, so 72 square feet is 24%.",
+    "Time: 96 minutes for 24% is 4 minutes per 1%. The other 76% takes 304 minutes alone, so the friend saved 304 − 150, or 154 minutes."
+   ],
+   "barriers": [
+    "17.3 needs 17.2’s 300 square feet and the east wall’s 72.",
+    "“25% finished” is about the painting, not the time."
+   ],
+   "misconceptions": [
+    "Counting drying time between coats; the problem counts painting time only.",
+    "Saying 25% because the east wall is one of four walls.",
+    "Subtracting 150 from 96, or from 400, instead of from the time alone for the rest."
+   ],
+   "backPocket": [
+    "Are all four walls the same size?",
+    "How many minutes is 1% of the painting?",
+    "Which time does the problem count?"
+   ],
+   "momentIds": [
+    "m10",
+    "m9"
+   ],
+   "grouping": "Alone, then pairs: quiet think time, then partners check each other’s work. Each student gets ready to explain their partner’s way.",
+   "monitor": "Check the first answer before partners move on; IM says the second needs it. Note who finds 1% first and who divides 72 by 300.",
+   "momentCriteria": {
+    "m10": [
+     "Took the link from one wall to a percentage seriously",
+     "Asked whether the four walls are the same size",
+     "Didn’t tell them to divide 72 by 300"
+    ],
+    "m9": [
+     "Credited their real-world thinking",
+     "Sent them back to what the problem counts",
+     "Didn’t cross out the drying time for them"
+    ]
+   }
+  }
+ ],
+ "crux": {
+  "threeReads": [
+   {
+    "focus": "The situation",
+    "say": "Listen as I read the plan and the list. What are we painting?",
+    "listenFor": "All the walls, inside the closet too, but not the window, the door or the mirrored closet doors."
+   },
+   {
+    "focus": "Quantities and units",
+    "say": "Read it again. What are the important quantities? I’ll add them to the plan.",
+    "listenFor": "The east wall is 3 yards. The window is 5 feet by 3 feet. The ceiling is 8 feet high. The small wall is 0.5 feet by 2 feet."
+   },
+   {
+    "focus": "Ways to solve",
+    "say": "Here are the questions. Read once more. How might we start?",
+    "listenFor": "Find each wall’s area and add; take away the window and the door; change yards to feet first."
+   }
+  ],
+  "release": {
+   "successCriteria": "Name the paint you need and the square feet it covers for two coats, the containers you buy, and the total cost.",
+   "say": "Yesterday we agreed on 300 square feet. Say how much paint you need, using the rate. Then say how you got your total cost.",
+   "talkMoments": [
+    "Before the coupon question, partners take turns explaining their total cost with Today’s frame.",
+    "In the closing discussion, students who chose different containers each explain their total."
+   ],
+   "byBand": {
+    "emerging": {
+     "frame": "I need ___ quarts. 1 quart covers ___ square feet. Two coats is ___ square feet. Buying ___ costs $___. With ___, the total cost is $___.",
+     "stretch": "They say why they need more paint than one coat.",
+     "nonverbal": "They point to the area, then the ad’s rate, then the containers they chose, in order."
+    },
+    "developing": {
+     "frame": "I need ___ quarts, because 1 quart covers ___ square feet, and two coats is ___ square feet. Buying ___ costs $___, so with ___, the total cost is $___. I chose those containers because ___.",
+     "stretch": "They say why a different total can also be right.",
+     "nonverbal": "They draw arrows from the area to the quarts to the cost, and label each arrow with its unit."
+    },
+    "expanding": {
+     "frame": "I need ___ quarts, because 1 quart covers ___ square feet, and two coats is ___ square feet. Buying ___ costs $___, so with ___, the total cost is $___. Another way to buy it is ___, which costs $___.",
+     "stretch": "They explain how the coupon changes which containers to buy.",
+     "nonverbal": "They write the chain area, paint, cost, with a unit on each step, before they speak."
+    }
+   }
+  },
+  "synthesis": {
+   "routine": "MLR2: Collect and Display",
+   "steps": [
+    "Ask 1–2 students how much paint they needed. Scribe their words as said, such as “two coats.” Write “cover” and “square feet” beside them.",
+    "Poll IM’s cost ranges: $80–$84.99, $85–$89.99, $90–$94.99, $95–$99.99, $100 or more. Then ask, “Can all of these values be correct?”",
+    "After quiet think time, call 2–3 students with different containers. Scribe each total as said, with the containers beside it.",
+    "Write “total cost” beside their words. Ask how the coupon changes the best buy; students decide, and you scribe.",
+    "Leave the board up for 17.3 and the close of the lesson."
+   ],
+   "prompt": "Can all of these values be correct? How?",
+   "sounds": "Yes, if each one buys enough paint for 600 square feet. Buying 7 quarts costs $76.30, so with the $20 kit, the total cost is $96.30."
+  }
+ },
+ "rehearsal": [
+  {
+   "id": "math:17.1",
+   "activityId": "17.1",
+   "kind": "math",
+   "type": "task",
+   "name": "Do the warm-up yourself",
+   "where": "Before class. For Day 1. Answer the warm-up: list the tools that help when painting a room.",
+   "show": [
+    "What are some tools that are helpful when painting a room?"
+   ],
+   "ask": "What tools would you list? Which would you price now, and which later?",
+   "aim": "Know IM’s list, and why paint isn’t priced yet.",
+   "notes": [
+    "IM’s list: paint, paint brushes, paint rollers, drop cloths, painter’s tape, mixing sticks, ladder, paint can opener.",
+    "IM: price the tools, but not the paint; its amount comes later. A painting kit is around $20."
+   ],
+   "checks": [
+    "Listed tools beyond paint, such as rollers and tape",
+    "Left the paint unpriced until the amount is known",
+    "Knew the painting kit price from IM’s closing"
+   ]
+  },
+  {
+   "id": "m1",
+   "activityId": "17.1",
+   "kind": "moment",
+   "momentId": "m1",
+   "type": "student",
+   "name": "A group has only paint",
+   "where": "About 2 minutes into Activity 17.1. Day 1. Groups are brainstorming tools.",
+   "show": [
+    "A group’s list so far: “paint.”",
+    "The class poll: two hands for “I’ve painted a room.”"
+   ],
+   "student": "A student in the group says: “Paint. That’s all we know.”",
+   "ask": "What do you do for this group?",
+   "aim": "The group adds tools from something they watched or pictured.",
+   "say": [
+    "Watch the painter. What are they holding? What’s on the floor?"
+   ],
+   "checks": [
+    "Gave them something to look at, not a list",
+    "Asked what they noticed the painter using",
+    "Didn’t read them your own list"
+   ],
+   "goingOn": "They know paint is needed, and the job itself is new to them. IM expects this and suggests a short video of someone painting.",
+   "ifNot": "If you painted your bedroom wall, what would you need first?"
+  },
+  {
+   "id": "math:17.2",
+   "activityId": "17.2",
+   "kind": "math",
+   "type": "task",
+   "name": "Do the painting task yourself",
+   "where": "Before class. Solve the task: wall area (Day 1), then paint for two coats and the cost (Day 2).",
+   "show": [
+    "A description of IM’s floor plan (not IM’s words), a view from above with North at the top:",
+    "The room is a rectangle. It is 10 ft from west to east (the south wall’s label) and 3 yd from north to south (the east wall’s label).",
+    "West wall: a 3 ft door at its north end, swinging into the room. Below it, 6 ft of solid wall runs to the south corner.",
+    "North wall, from the west corner: a stretch of wall with no label, then the small wall, then the closet.",
+    "The small wall is 0.5 ft wide. It sticks 2 ft south into the room from the north wall.",
+    "The closet runs 6.5 ft, from the small wall to the east wall, and is 2 ft deep. Its back is the north wall.",
+    "A dashed line marks the mirrored closet doors, across the closet’s front from the end of the small wall to the east wall.",
+    "South wall: a 5 ft window, labeled “Windows,” partway along it. East wall: one solid wall, 3 yd, with the closet’s east end against it.",
+    "The plan shows no heights. The list gives the ceiling (8 ft) and the window’s other side (3 ft)."
+   ],
+   "ask": "How many square feet? How much paint for two coats? What are two ways to buy it, and their costs?",
+   "aim": "Know the area, the paint needed, and two ways to buy it.",
+   "notes": [
+    "How students might solve it, wall by wall (ceiling 8 ft):",
+    "East: 3 yd is 9 ft, and 9 × 8 = 72. It runs the full depth, closet included.",
+    "South: 10 × 8 = 80, minus the 5 × 3 window: 65.",
+    "West: 9 × 8 = 72, minus the 7 × 3 door: 51.",
+    "North: the unlabeled stretch is 10 − 0.5 − 6.5 = 3 ft. With the 6.5 ft closet back, (3 + 6.5) × 8 = 76.",
+    "Small wall: two 2 ft sides and the 0.5 ft end, so 16 + 16 + 4 = 36. Total: 300 square feet.",
+    "Paint: two coats is 600 square feet. At 87.5 square feet per quart, that is about 6.86 quarts, so buy 7.",
+    "Containers: 7 quarts, 2 gallons, or 1 gallon and 3 quarts. Add IM’s $20 kit for the total cost.",
+    "Coupon: 20% off the quarts only, so 2 gallons doesn’t change."
+   ],
+   "checks": [
+    "Got 300 square feet: north 76, east 72, south 65, west 51, small wall 36",
+    "Planned 7 quarts of paint, enough for 612.5 square feet",
+    "Found two totals, such as $89.80 and $87.60, and a coupon total of $81.04 or $81.06"
+   ]
+  },
+  {
+   "id": "launch:17.2",
+   "activityId": "17.2",
+   "kind": "rounds",
+   "type": "routine",
+   "routine": "MLR6: Three Reads",
+   "language": true,
+   "name": "Read the floor plan three times",
+   "where": "About 3 minutes into Activity 17.2. Day 1. You’ve shown a floor plan of the classroom. The bedroom plan and its list are up, questions covered.",
+   "show": [
+    "The bedroom floor plan: North at the top. A door at the north end of the west wall, a window in the south wall, mirrored doors across the closet.",
+    "The east wall is 3 yards long.",
+    "The south wall is 10 feet long but has a window, 5 feet by 3 feet, that does not need to be painted.",
+    "The west wall is 3 yards long but has a door, 7 feet tall and 3 feet wide, that does not need to be painted.",
+    "The north wall includes a closet, 6.5 feet wide, with floor-to-ceiling mirrored doors that do not need to be painted. There is, however, a smaller wall between the west wall and the closet that does need to be painted on all sides. The wall is 0.5 feet wide and extends 2 feet into the room.",
+    "The ceiling in this room is 8 feet high.",
+    "All of the corners are right angles."
+   ],
+   "ask": "Read the plan and list aloud three times. After each read, ask one question. Nobody solves yet.",
+   "aim": "Students know what gets painted and the key quantities before anyone solves.",
+   "rounds": [
+    {
+     "ask": "You’ve read it once. What do you ask?",
+     "aim": "Students say what will be painted and what won’t, with no numbers."
+    },
+    {
+     "ask": "You’ve read it twice. What do you ask?",
+     "aim": "Students name the important quantities, with units, for the plan."
+    },
+    {
+     "ask": "You’ve shown the questions and read it three times. What do you ask?",
+     "aim": "Students suggest ways to start that use the plan’s quantities."
+    }
+   ],
+   "notes": [
+    "If a student starts calculating on the first read: “Pencils down for now. What are we painting, and what aren’t we?”"
+   ],
+   "checks": [
+    "Read 1: asked what gets painted and what doesn’t, with no numbers",
+    "Read 2: asked for quantities and wrote them on the floor plan",
+    "Read 3: showed the questions, asked how to start, and took ideas without solving"
+   ],
+   "why": "IM: Three Reads here helps students make sense of the diagram and text before the questions. It catches missing surfaces before anyone adds up an area.",
+   "runIt": [
+    "Read 1: read the plan and list aloud. Ask what will be painted and what won’t.",
+    "Read 2: read again. Ask for the important quantities, and write each on the floor plan.",
+    "Read 3: show the questions and read once more. Ask how we might start. Take ideas; nobody solves.",
+    "Then pairs start quiet think time on the first question, the total wall area.",
+    "Day 1 ends with IM’s debrief: a few students share their wall area; settle disagreements until the class agrees on 300 square feet."
+   ]
+  },
+  {
+   "id": "m3",
+   "activityId": "17.2",
+   "kind": "moment",
+   "momentId": "m3",
+   "type": "student",
+   "name": "A pair misses a wall",
+   "where": "About 15 minutes into Activity 17.2. Day 1. Pairs are in IM’s 15 minutes of quiet think time on the total wall area.",
+   "show": [
+    "Their work: north 76, east 72, south 65, west 51. Total: 264 square feet.",
+    "The floor plan: the small wall, 0.5 feet wide, sticks out 2 feet between the west wall and the closet."
+   ],
+   "student": "A pair says: “North, east, south, west. Done. 264 square feet.”",
+   "ask": "What do you say to this pair?",
+   "aim": "The pair traces every surface on the plan and finds the one they missed.",
+   "say": [
+    "Your four walls look right. Walk me around the room. Which surfaces get paint?"
+   ],
+   "checks": [
+    "Kept their four walls as right",
+    "Asked them to trace every surface on the plan",
+    "Didn’t name the missing wall for them"
+   ],
+   "goingOn": "Their four walls are right, window and door taken away. They left out the small wall beside the closet, painted on three sides.",
+   "ifNot": "Put your finger on the closet. What sticks out beside it?"
+  },
+  {
+   "id": "release:17.2",
+   "activityId": "17.2",
+   "kind": "release",
+   "type": "send",
+   "routine": "MLR8: Discussion Supports",
+   "language": true,
+   "name": "Send students to work",
+   "where": "Start of Day 2: the paint and cost part of 17.2. The class agreed on 300 square feet on Day 1. Next: paint and cost, each student alone.",
+   "show": [
+    "On the board again: north 76, east 72, south 65, west 51, small wall 36. Total 300 square feet."
+   ],
+   "ask": "What must every cost explanation include? What do you tell the class?",
+   "aim": "Students know to name the paint with the rate, the containers, the total.",
+   "say": [
+    "Yesterday we agreed on 300 square feet. Say how much paint you need, using the rate. Then say how you got your total cost."
+   ],
+   "notes": [
+    "Success criteria: Name the paint you need and the square feet it covers for two coats, the containers you buy, and the total cost.",
+    "When partners talk: before the coupon question, partners take turns explaining their total cost with Today’s frame.",
+    "Then: in the closing discussion, students who chose different containers each explain their total."
+   ],
+   "checks": [
+    "Named what every explanation needs: the paint with the rate, the containers, the total cost",
+    "Pointed to Today’s frame on the board",
+    "Told them when they’ll explain it to a partner"
+   ],
+   "sounds": "I need 7 quarts, because 1 quart covers 87.5 square feet, and two coats is 600 square feet. Buying 1 gallon and 3 quarts costs $67.60, so with the $20 kit, the total cost is $87.60.",
+   "why": "The closing discussion asks students to explain how different totals can all be right. Naming the parts now means each student can explain their own."
+  },
+  {
+   "id": "m5",
+   "activityId": "17.2",
+   "kind": "moment",
+   "momentId": "m5",
+   "type": "student",
+   "name": "A student plans one coat",
+   "where": "About 4 minutes into Activity 17.2. Day 2, counting from the release. Students are working alone on the paint.",
+   "show": [
+    "The question: “If you need to apply two coats of paint on all the walls, how much paint do you need to buy?”"
+   ],
+   "student": "A student wrote: “300 square feet. 2 quarts cover 175, so 4 quarts.”",
+   "ask": "What do you say to this student?",
+   "aim": "The student plans paint for both coats before choosing containers.",
+   "say": [
+    "You used the rate right for one coat. How many coats? How much wall does that make?"
+   ],
+   "checks": [
+    "Said what they did right: used the rate for one coat",
+    "Sent them back to the question’s two coats",
+    "Didn’t double the answer for them"
+   ],
+   "goingOn": "They used the rate well: 4 quarts covers one coat of 300 square feet. The question asks for two coats.",
+   "ifNot": "Read the question again. What does it say about coats?"
+  },
+  {
+   "id": "m7",
+   "activityId": "17.2",
+   "kind": "levels",
+   "momentId": "m7",
+   "type": "language",
+   "language": true,
+   "name": "Help a student explain two totals",
+   "where": "About 16 minutes into Activity 17.2. Day 2, counting from the release. You polled cost ranges and just asked whether all the totals can be correct.",
+   "show": [
+    "On the board: $87.60 (1 gallon, 3 quarts, kit) and $96.30 (7 quarts, kit)."
+   ],
+   "student": "A student says: “Ours is $87.60. $96.30 is wrong.”",
+   "ask": "What do you say to this student?",
+   "aim": "The student explains what each total bought, so both can be right.",
+   "checks": [
+    "Asked every level the same question: whether both can be right",
+    "Gave their level’s frame or way in without words",
+    "Didn’t explain the other total for them"
+   ],
+   "goingOn": "Their own total is right, and they compared it with another. They haven’t yet said what each student bought, which is why both can be right.",
+   "avoid": "Saying “they bought different cans” for them.",
+   "ifNot": "How many quarts of paint does each total buy?",
+   "sounds": "I need 7 quarts, because 1 quart covers 87.5 square feet, and two coats is 600 square feet. Buying 1 gallon and 3 quarts costs $67.60, so with the $20 kit, the total cost is $87.60. Another way to buy it is 7 quarts, which costs $96.30.",
+   "say": [
+    "Can both totals be right? What did each one buy?"
+   ]
+  },
+  {
+   "id": "synth:17.2",
+   "activityId": "17.2",
+   "kind": "synthesis",
+   "type": "routine",
+   "routine": "MLR2: Collect and Display",
+   "language": true,
+   "name": "Finish on the board",
+   "where": "About 19 minutes into Activity 17.2. Day 2, counting from the release. You asked, “Can all of these values be correct?” Three students explained their totals. Their words are on the board.",
+   "show": [
+    "On the board:",
+    "Student A · 7 quarts: “7 quarts is enough for two coats. $76.30 plus the kit.”",
+    "Student B · 2 gallons: “2 gallons, $69.80, plus $20.”",
+    "Student C · 1 gallon and 3 quarts: “A gallon is 4 quarts, so 3 more. $87.60 in all.”"
+   ],
+   "ask": "Their words are up. What do you write beside them? What do you ask the class?",
+   "aim": "Students explain how different totals are all correct, then judge the coupon.",
+   "notes": [
+    "Write beside their words: “cover,” “square feet,” “total cost.”",
+    "Ask the class how all the totals can be right. Then ask about the coupon, and let students decide."
+   ],
+   "say": [
+    "Can all of these values be correct? How?",
+    "The coupon is 20% off quarts only. Which way is the best deal now, and why?"
+   ],
+   "checks": [
+    "Started with how much paint, then compared costs, as IM orders it",
+    "Wrote students’ own words, with “cover” or “total cost” beside them",
+    "Let students explain the different totals, then decide the coupon’s best buy"
+   ],
+   "sounds": "Yes, if each one buys enough paint for 600 square feet. Buying 7 quarts costs $76.30, so with the $20 kit, the total cost is $96.30.",
+   "why": "IM: record and display students’ responses so everyone sees how different costs are possible. Their words show the same paint bought different ways.",
+   "runIt": [
+    "Ask 1–2 students how much paint they needed. Scribe their words; write “cover” and “square feet” beside them.",
+    "Poll IM’s cost ranges, then ask, “Can all of these values be correct?”",
+    "Call 2–3 students with different containers. Scribe each total with its containers.",
+    "Write “total cost” beside their words. Ask how the coupon changes the best buy; students decide.",
+    "Leave the board up for 17.3 and the close of the lesson."
+   ]
+  },
+  {
+   "id": "math:17.3",
+   "activityId": "17.3",
+   "kind": "math",
+   "type": "task",
+   "name": "Do the painting-time task yourself",
+   "where": "Before class. For Day 2. Solve the task: whether the friend is right about 25%, and the time saved.",
+   "show": [
+    "After buying the supplies, you start painting the east wall. It takes you 96 minutes to put two coats of paint on that wall (not including a lunch break between the two coats).",
+    "Your friend stops by to see how you are doing and comments that you are 25% finished with the painting. Are they correct?",
+    "Your friend offers to help you with the rest of the painting. It takes the two of you 150 more minutes of painting time to finish the entire room. How much time did your friend save you?"
+   ],
+   "ask": "Is the friend right? How much time did the friend save?",
+   "aim": "Know both answers, and why the first one is needed for the second.",
+   "notes": [
+    "How students might solve it:",
+    "\\(\\frac{72}{300} \\boldcdot 100\\) is 24%, so the friend is not quite right.",
+    "1% first: 3 square feet is 1%, so 72 square feet is 24%.",
+    "Time: 96 minutes for 24% is 4 minutes per 1%. Then find the rest alone, and take away 150."
+   ],
+   "checks": [
+    "Said the friend is not quite right: the east wall is 24%, not 25%",
+    "Found 304 minutes for the remaining 76% alone",
+    "Found the friend saved 154 minutes"
+   ]
+  },
+  {
+   "id": "m10",
+   "activityId": "17.3",
+   "kind": "moment",
+   "momentId": "m10",
+   "type": "student",
+   "name": "A student says one wall is 25%",
+   "where": "About 4 minutes into Activity 17.3. Day 2. Students are in quiet think time.",
+   "show": [
+    "On the 17.2 board: north 76, east 72, south 65, west 51, small wall 36. Total 300 square feet."
+   ],
+   "student": "A student says: “Yes, 25%. The east wall is one of four walls.”",
+   "ask": "What do you say to this student?",
+   "aim": "The student compares the east wall’s area with the total area.",
+   "say": [
+    "Are all four walls the same size? How do you know?"
+   ],
+   "checks": [
+    "Took the link from one wall to a percentage seriously",
+    "Asked whether the four walls are the same size",
+    "Didn’t tell them to divide 72 by 300"
+   ],
+   "goingOn": "They link a part of the job to a percentage, which is the right idea. The walls aren’t the same size, and there is a small wall too.",
+   "ifNot": "What percentage of 300 square feet is 72 square feet?"
+  },
+  {
+   "id": "m9",
+   "activityId": "17.3",
+   "kind": "moment",
+   "momentId": "m9",
+   "type": "student",
+   "name": "A student adds drying time",
+   "where": "About 7 minutes into Activity 17.3. Day 2. Students are working on the time saved.",
+   "show": [
+    "The task: “It takes you 96 minutes to put two coats of paint on that wall (not including a lunch break between the two coats).”",
+    "Their work: an hour added for the paint to dry between coats."
+   ],
+   "student": "A student says: “Paint has to dry, so I added an hour.”",
+   "ask": "What do you say to this student?",
+   "aim": "The student uses painting time only, as the problem says.",
+   "say": [
+    "Read it again. Which time does the problem count?"
+   ],
+   "checks": [
+    "Credited their real-world thinking",
+    "Sent them back to what the problem counts",
+    "Didn’t cross out the drying time for them"
+   ],
+   "goingOn": "They are thinking like a real painter. IM says to point out that the problem refers only to painting time, not drying time.",
+   "ifNot": "What does “150 more minutes of painting time” leave out?"
+  }
+ ],
+ "beforeClass": [
+  "This lesson runs over two days. Day 1: 17.1, then 17.2 until the class agrees on 300 square feet. Day 2: 17.2 from the release, then 17.3. Prep over two nights: before Day 1, every card marked Day 1; before Day 2, the release and every card after it.",
+  "Work 17.2 yourself: the area, the paint for two coats, and two ways to buy it, with and without the coupon.",
+  "Find a floor plan of your classroom to display, and a short video of someone painting, in case few students have painted.",
+  "For Three Reads in 17.2: display the bedroom plan and its list, with the four questions covered until the third read. Have a marker to add quantities to the plan.",
+  "For Collect and Display (MLR 2): clear board space, and have IM’s cost ranges ready to poll: $80–$84.99, $85–$89.99, $90–$94.99, $95–$99.99, $100 or more.",
+  "Day 2: post the wall areas again (north 76, east 72, south 65, west 51, small wall 36; total 300) for the release and 17.3."
+ ],
+ "cuts": [
+  {
+   "activityId": "17.1",
+   "note": "Keep it short: one class list, and IM’s $20 painting kit for supplies. Skip the warm-up only if you give students the $20 kit price."
+  },
+  {
+   "activityId": "17.3",
+   "note": "If short of time, do the first question only: is the friend right about 25%? Lost: the time saved, which uses 24% again."
+  },
+  {
+   "activityId": "17.2",
+   "note": "Two days. Day 1 gives IM’s full 15 minutes of quiet think time on the area. Day 1 ends when the class agrees on 300 square feet. Day 2 starts at the release; its card minutes count from there. If the cost work runs long, hear two totals, not three. Never cut the closing discussion. Prep over two nights: before Day 1, every card marked Day 1; before Day 2, the release and every card after it."
+  }
+ ],
+ "lessonSynthesis": {
+  "ideas": [
+   "A real project takes steps: the area first, then the paint, then the cost.",
+   "A rate links them: 2 quarts per 175 square feet tells how much paint 600 square feet needs.",
+   "A percentage compares a part with the whole: the east wall’s 72 of 300 square feet is 24% of the job."
+  ],
+  "pointTo": "Point to the 17.2 board: the different totals and students’ words for how each was found. If you taught 17.3, point to the 24%.",
+  "check": {
+   "question": "A fence has 250 square feet to stain, and it needs two coats. One quart of stain covers 120 square feet and costs $12. A brush costs $10. What does the job cost, and why?",
+   "sounds": "I need 5 quarts, because 1 quart covers 120 square feet, and two coats is 500 square feet. Buying 5 quarts costs $60, so with a $10 brush, the total cost is $70."
+  }
+ }
+}

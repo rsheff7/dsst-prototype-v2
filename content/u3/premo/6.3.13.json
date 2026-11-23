@@ -1,0 +1,372 @@
+{
+ "status": "draft",
+ "reviewNotes": [
+  "No person has reviewed this file.",
+  "Crux is 13.2 (Liters, Meters, and Hours). Both IM goals happen there: students explain how to find 50%, 10% and 75% (goal 1) and generalize to any number (goal 2, the d-questions). The cool-down asks the same three percentages of 60 minutes. 13.3 is the alternative: it runs the same fractions backward (9 is 50% of what?) and carries IM’s MLR3. A reviewer could pick 13.3, but it is shorter and IM says students spend it discussing, not learning a new idea.",
+  "Testable object: the 75% rule, the sentence each student writes for “How can you find 75% of any number?” Stronger and Clearer (IM’s MLR1 for 13.2) tests it in partner rounds, and the cool-down’s 75% of 60 minutes uses it.",
+  "KNOWN CHECKER ERROR: cruxLanguage.routine is MLR1, IM’s English-learner support for 13.2. The extractor misses it: IM’s text has a typo, “Design Principles(s):”, so the support stays in 13.2’s synthesis and ell is empty. The checker then says MLR1 “is not IM’s support for 13.2 (none)”. The fix is in the extractor, not here; see the build report.",
+  "IM’s own moments: IM’s scaffold “How much of 100% is 50%?” (m2, IM’s words), the MLR1 partner rounds (m4, m5), the 9-is-100% misconception and IM’s flawed MLR3 answer in 13.3 (m7), and the 4% misconception in 13.4 (m9).",
+  "Premo’s moments: m1 (1% for one shaded box), m3 (“multiply by 75”), m6 (the language moment), m8 (13.5 for 150%).",
+  "Upstream: only the warm-up comes before 13.2, so one rehearsed moment is upstream (m1) and five are at the crux. The warm-up feeds the crux: naming the shaded part as a percentage and a fraction is 13.2’s idea.",
+  "Three Reads on 13.2: the task is twelve short questions, so the reads cover the first set (50%) and its diagram. Premo’s adaptation.",
+  "Math checked: 13.2: 10 ÷ 2 = 5, 2,000 ÷ 2 = 1,000, 24 ÷ 2 = 12; 2,000 ÷ 10 = 200, 10 ÷ 10 = 1, 24 ÷ 10 = 2.4; 24 ÷ 4 × 3 = 18, 2,000 ÷ 4 × 3 = 1,500, 10 ÷ 4 × 3 = 7.5. 13.3: 18, 36, 90, 12, 6. 13.4: 50%, 25%, 10%, 75%, 400%; 4% is left over. Cool-down: 30, 6, 45 minutes.",
+  "IM’s lesson narrative says to avoid writing “25% = \\(\\frac14\\)” and to say “25% of a quantity is \\(\\frac14\\) of that quantity.” Every frame and model here follows that.",
+  "Student responses and the cool-down were transcribed from the Teacher Guide page images by a model, not checked by a person.",
+  "2026-11-15: persona review fixes. Band frames match the plan’s release frames; each band’s entry suggests a way in on read 3; m6’s expanding nonverbal no longer assumes a double number line; m8’s question is completed; “Multiply by 75” spelled one way. Premo’s m8 drops “So” to stay within the 16-word say limit; the plan card keeps the reviewer’s wording.",
+  "2026-11-15: round-2 review fixes: band frames match the plan’s new release frames (each now gives the answer); m4 no longer has a partner share before the rounds; colon in m5; IM’s feedback starter quoted without Premo’s “?”.",
+  "2026-11-15: round-3 review fixes: emerging frame matches the plan; produceToday lists every precise term; emerging entry reworded; “MLR 1” in cruxWhy; m2 (stuck, can’t start) typed student-thinking."
+ ],
+ "crux": "13.2",
+ "cruxWhy": "13.2 is where students find 50%, 10% and 75% of three amounts and then say how to find each of any number. That is both of IM’s goals, and the cool-down asks the same three percentages. IM’s language support for 13.2, Stronger and Clearer Each Time (MLR 1), revises the explanation for 75% of any number.",
+ "object": {
+  "name": "the 75% rule",
+  "what": "The sentence each student writes for “How can you find 75% of any number?” Partner rounds test it and make it clearer; the cool-down’s 75% of 60 minutes uses it."
+ },
+ "goal": "Students find 10%, 25%, 50% and 75% of a number by thinking of the matching fraction, and explain the rule for any number.",
+ "rigorCheck": "Does every student still write a 75% rule and make it stronger with partners before the class names the fractions?",
+ "watchFor": {
+  "13.1": "A student calls diagram A “1%” because one box is shaded.",
+  "13.2": "A student’s rule for 75% is “Multiply by 75.”",
+  "13.3": "A student treats 9 as 100% and answers 4.5.",
+  "13.4": "A student says 5 is 4% of 20."
+ },
+ "moments": [
+  {
+   "id": "m1",
+   "activityId": "13.1",
+   "kind": "student-thinking",
+   "see": "For diagram A, 1 of 10 boxes shaded, a student writes “1%.”",
+   "means": "They counted shaded boxes. The whole tape is 100%, so each of the 10 boxes is 10%.",
+   "say": "If the whole tape is 100%, what is each box?",
+   "dont": "Tell them each box is 10%.",
+   "from": "premo",
+   "sayFrom": "premo",
+   "rehearse": true,
+   "criteria": [
+    "Named the whole tape as 100%",
+    "Asked what one box is worth",
+    "Let the student work out the 10%"
+   ]
+  },
+  {
+   "id": "m2",
+   "activityId": "13.2",
+   "kind": "student-thinking",
+   "see": "A student stares at “50% of a 2,000-kilometer trip” and writes nothing.",
+   "means": "They don’t yet link 50% to a fraction they know. Half of 2,000 is easy once they do.",
+   "say": "How much of 100% is 50%?",
+   "dont": "Tell them to divide by 2.",
+   "from": "im",
+   "sayFrom": "im",
+   "evidence": "If students struggle to get started with mental math, offer some scaffolding.",
+   "rehearse": true,
+   "criteria": [
+    "Asked how 50% compares to 100%",
+    "Waited for them to name the fraction",
+    "Didn’t give the divide-by-2 step"
+   ]
+  },
+  {
+   "id": "m3",
+   "activityId": "13.2",
+   "kind": "student-thinking",
+   "see": "For “How can you find 75% of any number?” a student writes: “Multiply by 75.”",
+   "means": "They link 75% to 75 but not to “per 100.” Testing the rule on a number they know shows it breaks.",
+   "say": "Try your rule on the 24-hour day. Does it make sense?",
+   "dont": "Cross it out and write “multiply by \\(\\frac34\\).”",
+   "from": "premo",
+   "sayFrom": "premo",
+   "rehearse": true,
+   "criteria": [
+    "Asked them to test the rule on a known amount",
+    "Let them see the answer is too big",
+    "Didn’t write the correct rule for them"
+   ]
+  },
+  {
+   "id": "m4",
+   "activityId": "13.2",
+   "kind": "run-routine",
+   "routine": "MLR1: Stronger and Clearer Each Time",
+   "see": "Students have written their rule for 75% of any number. The first partner round is about to start.",
+   "means": "Stronger and Clearer gives students rounds of feedback, so the rule gets clearer each time. IM uses it for the 75% explanation.",
+   "say": "Find a partner. Ask one question about their rule.",
+   "runSheet": [
+    {
+     "step": "Each student has their written rule for finding 75% of any number."
+    },
+    {
+     "step": "Students meet 2–3 partners in a row. Each partner asks one question, such as “Can you explain how…” or “You should expand on…”"
+    },
+    {
+     "step": "After each round, the writer adds one idea or word to their rule."
+    },
+    {
+     "step": "Students rewrite their rule, stronger and clearer."
+    }
+   ],
+   "dont": "Skip the rounds and have one student read a rule to the class.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Ask each student to meet with 2–3 other partners in a row for feedback.",
+   "rehearse": true,
+   "criteria": [
+    "Started from each student’s own written rule",
+    "Gave partners a question to ask",
+    "Had students rewrite their rule at the end"
+   ]
+  },
+  {
+   "id": "m5",
+   "activityId": "13.2",
+   "kind": "routine-breakdown",
+   "routine": "MLR1: Stronger and Clearer Each Time",
+   "see": "Two partners read each other’s 75% rule. One says: “Same as mine.” They sit back.",
+   "means": "Stronger and Clearer works when partners press for details. Agreeing gives the writer nothing to add.",
+   "say": "Ask them one question: why does that work for any number?",
+   "dont": "Let the round end on “same as mine.”",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "students should be pressed for details, and encouraged to press each other for details.",
+   "rehearse": true,
+   "criteria": [
+    "Asked partners to ask a question, not to agree",
+    "Pointed them to why the rule works for any number",
+    "Didn’t end the round on agreement"
+   ]
+  },
+  {
+   "id": "m6",
+   "activityId": "13.2",
+   "kind": "language",
+   "routine": "MLR1: Stronger and Clearer Each Time",
+   "see": "A student’s rule for 75% reads: “÷ 4 × 3.” Asked to explain, they say: “You just do that.”",
+   "means": "The method is right. The words for why, 75% of a number is \\(\\frac34\\) of that number, aren’t there yet.",
+   "byBand": {
+    "emerging": {
+     "say": "Show me 75% on a tape. What fraction is that?",
+     "move": "They shade 3 of 4 equal parts of a tape, then say or write the fraction with their frame. They can work it out first in any language they share with a partner.",
+     "nonverbal": "They shade 3 of 4 equal parts of a tape and point to the shaded part."
+    },
+    "developing": {
+     "say": "75% is what fraction of the number? Finish the frame.",
+     "move": "With their frame, they tell a partner the fraction and the steps, then add it to their written rule. They can work it out first in any language they share with a partner.",
+     "nonverbal": "They draw a tape in 4 equal parts, label each 25%, and shade three."
+    },
+    "expanding": {
+     "say": "Why does dividing by 4 work? What fraction is 75%?",
+     "move": "They explain the rule with the fraction in their own words, then make it clearer once after a partner’s question. They can work it out first in any language they share with a partner.",
+     "nonverbal": "On a tape or a double number line, they mark 25%, 50% and 75% of the number and point to 75%."
+    }
+   },
+   "dont": "Say the sentence for them.",
+   "from": "premo",
+   "sayFrom": "premo",
+   "rehearse": true,
+   "criteria": [
+    "Asked every level for the fraction and the steps",
+    "Matched the way in to the student’s level",
+    "Didn’t say the sentence for them"
+   ]
+  },
+  {
+   "id": "m7",
+   "activityId": "13.3",
+   "kind": "im-misconception",
+   "see": "For “9 is 50% of what number?” a student writes 4.5.",
+   "means": "They treated 9 as 100% and took half of it. In the diagram, 9 is the half.",
+   "say": "Point to the 9 on the diagram. Is it the whole or half?",
+   "dont": "Tell them to double 9.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Students may think 9 is 100% and try to find the percentage of the number given."
+  },
+  {
+   "id": "m8",
+   "activityId": "13.3",
+   "kind": "student-thinking",
+   "see": "For “9 is 150% of what number?” a student writes 13.5.",
+   "means": "They found 150% of 9. Here 9 is the 150%, so the whole is smaller than 9.",
+   "say": "Is 9 more or less than the whole? Is your answer more or less than 9?",
+   "dont": "Show them 9 ÷ 3 × 2.",
+   "from": "premo",
+   "sayFrom": "premo"
+  },
+  {
+   "id": "m9",
+   "activityId": "13.4",
+   "kind": "im-misconception",
+   "see": "A student matches “5 is what percentage of 20?” with 4%.",
+   "means": "5 goes into 20 four times, so 4 felt right. 5 is \\(\\frac14\\) of 20.",
+   "say": "5 is one quarter of 20. What percentage is one quarter?",
+   "dont": "Move their match to 25% for them.",
+   "from": "im",
+   "sayFrom": "premo",
+   "evidence": "Because 5 goes into 20 four times, students may answer that 5 is 4% of 20."
+  }
+ ],
+ "patterns": [
+  {
+   "activityId": "13.1",
+   "type": "error",
+   "says": "“1%” for diagram A.",
+   "why": "They counted one shaded box.",
+   "shows": "They see equal parts. Making the whole 100% is the step left.",
+   "from": "premo"
+  },
+  {
+   "activityId": "13.1",
+   "type": "build",
+   "says": "“\\(\\frac34\\) of the diagram” for C.",
+   "why": "They name the shaded part as a fraction first.",
+   "shows": "The bridge IM highlights: \\(\\frac34\\) of the diagram and 75% of the diagram.",
+   "from": "im",
+   "evidence": "Highlight alternative ways of naming the size of the shaded portion"
+  },
+  {
+   "activityId": "13.2",
+   "type": "build",
+   "says": "“Divide by 2, or multiply by \\(\\frac12\\).”",
+   "why": "They saw the same move work on milk, a trip and a day.",
+   "shows": "A rule for any number, the generalization IM wants.",
+   "from": "im",
+   "evidence": "Divide by 2, or multiply by \\(\\frac{1}{2}\\)."
+  },
+  {
+   "activityId": "13.2",
+   "type": "error",
+   "says": "“Multiply by 75” for 75% of any number.",
+   "why": "75% is read as the number 75.",
+   "shows": "They know 75 is in the rule. “Per 100” is the missing piece.",
+   "from": "premo"
+  },
+  {
+   "activityId": "13.2",
+   "type": "almost",
+   "says": "“2 hours 4 minutes” for 10% of a 24-hour day.",
+   "why": "They read 2.4 hours as 2 hours and 4 minutes.",
+   "shows": "They found 2.4 by dividing by 10. Turning 0.4 hours into minutes is a separate step.",
+   "from": "premo"
+  },
+  {
+   "activityId": "13.2",
+   "type": "stretch",
+   "says": "“75% is 50% plus 25%, so half plus half of half.”",
+   "why": "They build 75% from benchmarks they know.",
+   "shows": "Percentages add like fractions: \\(\\frac12 + \\frac14 = \\frac34\\).",
+   "from": "premo"
+  },
+  {
+   "activityId": "13.2",
+   "type": "language",
+   "says": "“÷ 4 × 3. You just do that.”",
+   "why": "The method is ahead of the words.",
+   "shows": "They know the steps; the fraction is the reason they can learn to say.",
+   "from": "premo"
+  },
+  {
+   "activityId": "13.3",
+   "type": "error",
+   "says": "“9 is 50% of 4.5.”",
+   "why": "They treated 9 as the whole.",
+   "shows": "They can find 50% of a number. Reading which number is the whole is the step left.",
+   "from": "im",
+   "evidence": "9 is 50% of 4.5 because 9 times \\(\\frac12\\) is 4.5."
+  },
+  {
+   "activityId": "13.3",
+   "type": "build",
+   "says": "“I can multiply \\(9 \\boldcdot 4 = 36\\).”",
+   "why": "25% is \\(\\frac14\\), so the whole is 4 nines.",
+   "shows": "The same fractions, run backward.",
+   "from": "im",
+   "evidence": "Because 25% of a quantity is \\(\\frac{1}{4}\\) of that quantity, I can multiply \\(9 \\boldcdot 4 = 36\\)."
+  },
+  {
+   "activityId": "13.4",
+   "type": "error",
+   "says": "“5 is 4% of 20.”",
+   "why": "5 goes into 20 four times.",
+   "shows": "They found the right relationship, 4 times. Naming one quarter as 25% is the step left.",
+   "from": "im",
+   "evidence": "Because 5 goes into 20 four times, students may answer that 5 is 4% of 20."
+  }
+ ],
+ "predict": {
+  "context": "Students find 50%, 10% and 75% of 10 liters of milk, a 2,000-kilometer trip and a 24-hour day in their heads. After each set, they write how to find that percentage of any number.",
+  "question": "What will most students write for “How can you find 75% of any number?”",
+  "countQuestion": "How many students will name \\(\\frac34\\) in their 75% rule?",
+  "countUnit": "students will name \\(\\frac34\\).",
+  "tell": "If few do, the steps came before the fraction. That’s why the partner rounds ask why the rule works: the language moment you’ll rehearse.",
+  "activityIds": [
+   "13.2",
+   "13.3"
+  ]
+ },
+ "cruxLanguage": {
+  "routine": "MLR1: Stronger and Clearer Each Time",
+  "phase": "synthesis",
+  "produceToday": [
+   "of that number",
+   "divide by",
+   "multiply by"
+  ],
+  "byBand": {
+   "emerging": {
+    "entry": "On read 3, they point to the 10, then the 2,000, then the bar in 2 parts. In the partner rounds, they show their tape for 75% and say or write the fraction. They can work it out first in any language they share with a partner.",
+    "frame": "___% of a number is ___ of that number. I ___. That gives ___.",
+    "does": "They can find half of a number and say or write the answer.",
+    "reaching": "Naming the fraction for each percentage and saying the step that goes with it.",
+    "stretch": "They check one answer a second way: divide first, then multiply."
+   },
+   "developing": {
+    "entry": "On read 3, they suggest a way to find half, such as splitting the bar into 2 equal parts. In each round, they read their rule with the frame and add one detail. They can work it out first in any language they share with a partner.",
+    "frame": "___% of a number is ___ of that number. So for ___, I ___, which gives ___. Another way: I ___.",
+    "does": "They can tell a partner, in short phrases, how they found one answer.",
+    "reaching": "Saying the rule for any number, with the fraction as the reason.",
+    "stretch": "They say how 10% helps find 30% or 70% of a number."
+   },
+   "expanding": {
+    "entry": "On read 3, they suggest a way that would work for any number, not only these three. In each round, they explain why their rule works, then make it clearer once. They can work it out first in any language they share with a partner.",
+    "frame": "___% of a number is ___ of that number. So for ___, I ___, which gives ___. This works for any number because ___.",
+    "does": "They can explain their method for one problem in their own words.",
+    "reaching": "Explaining why the rule works for any number, using “of that number.”",
+    "stretch": "They explain why 75% is three 25% parts, on a tape or double number line."
+   }
+  }
+ },
+ "cuts": [
+  {
+   "activityId": "13.4",
+   "note": "Optional, with no new math. Cut it first."
+  },
+  {
+   "activityId": "13.1",
+   "note": "Keep it short: three answers, then the two names for C, \\(\\frac34\\) and 75%."
+  },
+  {
+   "activityId": "13.3",
+   "note": "If time is tight, do questions 1, 2 and 5, and IM’s flawed answer for question 1."
+  }
+ ],
+ "neverCut": [
+  "Every student writing a 75% rule in 13.2",
+  "At least two partner rounds on the 75% rule",
+  "Naming the fraction for each percentage before the cool-down",
+  "Quiet think time before partners talk"
+ ],
+ "inClass": {
+  "launch": "“Do these in your head. Then write how you’d do it for any number.”",
+  "launchFrom": "premo",
+  "momentIds": [
+   "m2",
+   "m4",
+   "m6"
+  ]
+ },
+ "beforeClass": [
+  "For 13.2: have mini whiteboards or sticky notes ready, as IM suggests, for mental math.",
+  "For Stronger and Clearer: post the two feedback starters, “Can you explain how…” and “You should expand on…”",
+  "Know the answers: 5, 1,000, 12; 200, 1, 2.4; 18, 1,500, 7.5."
+ ]
+}
