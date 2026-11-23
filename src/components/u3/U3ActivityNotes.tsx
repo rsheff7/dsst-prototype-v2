@@ -6,7 +6,7 @@ import { IMLines, MathText, noteFor, sentences } from './MathText';
 import s from './u3.module.css';
 
 const SLOT: Record<ImActivity['slot'], string> = { 'warm-up': 'Warm-up', activity: 'Activity', optional: 'Optional', 'cool-down': 'Cool-down' };
-const PHASE = { launch: 'at the launch', work: 'while students work', synthesis: 'in the closing discussion' } as const;
+
 
 /** IM's support text, minus its "Domains: MLRn Name." opening, one sentence per line. */
 const supportSentences = (text: string) =>
@@ -19,21 +19,50 @@ const supportSentences = (text: string) =>
 /** One activity, in IM's own words and in IM's order. */
 export default function U3ActivityNotes({ a, heading }: { a: ImActivity; heading?: string }) {
   return (
-    <div className={s.notes} style={{ fontSize: 15 }}>
+    <div className={s.notes} style={{ fontSize: 14 }}>
       {heading && <h2>{heading}</h2>}
-      <span className={s.muted}>
-        {SLOT[a.slot]} · {a.minutes} min{a.routines.length ? ` · ${a.routines.map(routineTitle).join(' · ')}` : ''}
+      <span className={s.muted} style={{ fontSize: 13.5 }}>
+        {SLOT[a.slot]}{a.routines.length ? ` · ${a.routines.map(routineTitle).join(' · ')}` : ''}
       </span>
       <div>
         <span className={s.lab}>What it is for</span>
         <IMLines lines={a.narrative} />
       </div>
-      {a.launch.length > 0 && (
+            {a.launch.length > 0 && (
         <div>
           <span className={s.lab}>Launch</span>
           <IMLines lines={a.launch} />
         </div>
       )}
+      {a.ell.filter((e) => e.phase === 'launch').map((e, i) => (
+        <div key={`e-lun${i}`} className={s.support}>
+          <span className={s.lab}>Multilingual learners · {e.domains.join(', ')}</span>
+          <p>
+            <b>
+              {routineTitle(e.routine)}, at the launch.
+            </b>{' '}
+            <MathText>{supportSentences(e.text)[0]}</MathText>
+          </p>
+          {supportSentences(e.text).length > 1 && (
+            <details>
+              <summary className={s.muted} style={{ cursor: 'pointer', fontSize: 13, fontWeight: 600, color: 'var(--color-accent-ink)' }}>
+                The rest of IM's support
+              </summary>
+              {supportSentences(e.text)
+                .slice(1)
+                .map((x, j) => (
+                  <p key={j}>
+                    <MathText>{x}</MathText>
+                  </p>
+                ))}
+              {noteFor(e.text) && <p className={s.correction}>Note: {noteFor(e.text)}</p>}
+              {(e as { principleLine?: string }).principleLine && (
+                <p className={s.muted}>{(e as { principleLine?: string }).principleLine}</p>
+              )}
+            </details>
+          )}
+        </div>
+      ))}
       {a.task.length > 0 && (
         <div>
           <span className={s.lab}>Student task</span>
@@ -41,12 +70,10 @@ export default function U3ActivityNotes({ a, heading }: { a: ImActivity; heading
         </div>
       )}
       {a.response && (
-        <details>
-          <summary className={s.lab} style={{ cursor: 'pointer' }}>
-            Student response
-          </summary>
+        <div>
+          <span className={s.lab}>Student response</span>
           <IMLines lines={a.response} />
-        </details>
+        </div>
       )}
       {a.misconceptions.length > 0 && (
         <div>
@@ -60,19 +87,19 @@ export default function U3ActivityNotes({ a, heading }: { a: ImActivity; heading
           <IMLines lines={a.synthesis} />
         </div>
       )}
-      {a.ell.map((e, i) => (
-        <div key={`e${i}`} className={s.support}>
+      {a.ell.filter((e) => e.phase === 'synthesis').map((e, i) => (
+        <div key={`e-syn${i}`} className={s.support}>
           <span className={s.lab}>Multilingual learners · {e.domains.join(', ')}</span>
           <p>
             <b>
-              {routineTitle(e.routine)}, {PHASE[e.phase]}.
+              {routineTitle(e.routine)}, in the closing discussion.
             </b>{' '}
             <MathText>{supportSentences(e.text)[0]}</MathText>
           </p>
           {supportSentences(e.text).length > 1 && (
             <details>
-              <summary className={s.muted} style={{ cursor: 'pointer' }}>
-                The rest of IM’s support
+              <summary className={s.muted} style={{ cursor: 'pointer', fontSize: 13, fontWeight: 600, color: 'var(--color-accent-ink)' }}>
+                The rest of IM's support
               </summary>
               {supportSentences(e.text)
                 .slice(1)

@@ -327,17 +327,14 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
   // --------------------------------------------------------------- steps
   const stepGoal = () => (
     <div className={s.stackLg}>
-      <section className={cx(s.card, s.stack)}>
-        <span className={s.eyebrow}>The idea</span>
-        <p className={s.goal}>
+      <section className={cx(p.contentBlock, s.stack)}>
+        <p className={p.goalSans}>
           <MathText>{premo.goal}</MathText>
         </p>
-        <p className={s.small}>
+        <p className={p.supporting}>
           <MathText>{plan.story}</MathText>
         </p>
-        <p className={cx(s.small, s.muted)}>
-          <b>Builds on:</b> <MathText>{plan.previous}</MathText>
-        </p>
+        
         <details className={s.more}>
           <summary>IM’s lesson narrative and goals</summary>
           <div className={s.stack}>
@@ -349,29 +346,35 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
                 </li>
               ))}
             </ul>
+            <p className={cx(s.small, s.muted)}>
+              <b>Builds on:</b> <MathText>{plan.previous}</MathText>
+            </p>
           </div>
         </details>
       </section>
 <section className={p.arcSection}>
         <div className={p.arcHeader}>
-          <h3>Activities</h3>
+          <span className={s.lab} style={{ fontSize: 14, color: 'inherit' }}>Activities</span>
           <span className={p.arcSub}>This lesson has {im.activities.length} activities. Tap any for IM's full notes. The crux is the one you'll rehearse.</span>
         </div>
         <ol className={s.tl}>
           {im.activities.map((a) => (
             <li key={a.id} className={cx(a.id === cruxId && s.tlCrux)}>
               <span className={s.tlTime}>{a.minutes}m</span>
-              <button type="button" className={s.tlBtn} onClick={() => setSheet(`act:${a.id}`)}>
-                <span className={s.tlName}>
-                  {a.id} · {a.title}
-                  {a.id === cruxId ? <span className={cx(s.pill, s.pillCrux)}>Crux</span> : <span className={s.pill}>{SLOT[a.slot]}</span>}
-                </span>
+              <div className={p.actBlock}>
+                <div className={p.actInfo}>
+                  <span className={p.actTitle}>{a.id} · {a.title}</span>
+                  <span className={cx(s.pill, a.id === cruxId && s.pillCrux)}>{a.id === cruxId ? 'Crux' : SLOT[a.slot]}</span>
+                </div>
                 {premo.watchFor[a.id] && (
-                  <span className={s.tlWatch}>
+                  <p className={s.tlWatch}>
                     <MathText>{premo.watchFor[a.id]}</MathText>
-                  </span>
+                  </p>
                 )}
-              </button>
+                <button type="button" className={p.actLink} onClick={() => setSheet(`act:${a.id}`)}>
+                  View IM&rsquo;s notes
+                </button>
+              </div>
             </li>
           ))}
         </ol>
@@ -1495,7 +1498,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
   };
   const action = (): ReactNode => {
     const k = STEPS[st.step].key;
-    const nextLabel = st.step < STEPS.length - 1 ? `Next: ${STEPS[st.step + 1].name} →` : '';
+    const nextLabel = st.step < STEPS.length - 1 ? `Next: Step ${st.step + 2} “${STEPS[st.step + 1].name}”` : '';
     const btn = (label: string, on: () => void, disabled = false) => (
       <button type="button" className={cx(s.btn, s.pri)} disabled={disabled} onClick={on}>
         {label}
@@ -1623,27 +1626,17 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
     return (
       <>
         <div className={s.bar}>
-          <button type="button" className={s.iconbtn} aria-label="Back" onClick={() => (i === 0 ? update({ view: 'home' }) : go(i - 1))}>
-            {Icon.back}
+          <button type="button" className={s.backBtn} onClick={() => (i === 0 ? update({ view: 'home' }) : go(i - 1))}>
+            {Icon.back} Back to {im.code} Planning overview
           </button>
-          <div className={s.ttl}>
-            <b>{im.code} planning</b>
-            <span>
-              Step {i + 1} of {STEPS.length} · {minutes(x.key, x.min)} min
-            </span>
-          </div>
           <span />
           <button type="button" className={s.iconbtn} aria-label="Home" onClick={() => update({ view: 'home' })}>
             {Icon.home}
           </button>
         </div>
-        <div className={s.segs} aria-hidden="true" style={{ gridTemplateColumns: `repeat(${STEPS.length}, 1fr)` }}>
-          {STEPS.map((y, j) => (
-            <i key={y.key} className={cx(j < i ? s.done : j === i && s.on)} />
-          ))}
-        </div>
         <main className={s.main}>
           <header className={s.stephead}>
+            <span className={s.eyebrow}>Step {i + 1} · About {minutes(x.key, x.min)} min</span>
             <h2>{x.name}</h2>
           </header>
           {STEP_VIEWS[i]()}
@@ -1784,7 +1777,7 @@ export default function PlanApp({ lesson, plan }: { lesson: U3Lesson; plan: Plan
       {st.view === 'incl' && inClass}
       {sheetAct && (
         <Sheet onClose={() => setSheet(null)}>
-          <SheetTop eyebrow={`${sheetAct.id} · ${sheetAct.minutes} min`} onClose={() => setSheet(null)} />
+          <SheetTop eyebrow={`Lesson ${sheetAct.id} · ${sheetAct.minutes} min`} onClose={() => setSheet(null)} />
           <U3ActivityNotes a={sheetAct} heading={sheetAct.title} />
         </Sheet>
       )}
